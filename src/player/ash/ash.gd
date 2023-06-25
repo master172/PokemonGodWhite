@@ -12,6 +12,9 @@ var percent_moved_to_next_tile = 0.0
 #import variables
 @onready var animation_tree = $AnimationTree
 @onready var anim_state  = animation_tree.get("parameters/playback")
+@onready var collision_cast = $CollisionCast
+@onready var water_cast = $WaterCast
+@onready var surf_checker = $SurfChecker
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING}
@@ -25,6 +28,8 @@ func _ready():
 	animation_tree.active = true
 
 func _physics_process(delta):
+	
+	#handle movement
 	if playerState == PlayerState.TURNING:
 		return
 	elif is_moving == false:
@@ -35,6 +40,9 @@ func _physics_process(delta):
 	else:
 		anim_state.travel("Idle")
 		is_moving = false
+		
+		#handle water checking
+	check_water()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -48,6 +56,11 @@ func process_player_input():
 		animation_tree.set("parameters/Turn/blend_position",input_direction)
 		
 		if need_to_turn():
+			var desired_step: Vector2 = input_direction * TILE_SIZE/2
+			
+			water_cast.set_target_position(desired_step)
+			water_cast.force_raycast_update()
+			surf_checker.position = Vector2(0,-8)
 			playerState = PlayerState.TURNING
 			anim_state.travel("Turn")
 		else:
@@ -57,13 +70,31 @@ func process_player_input():
 		anim_state.travel("Idle")
 	
 func move(delta):
-	percent_moved_to_next_tile += walk_speed * delta
-	if percent_moved_to_next_tile >= 1:
-		position = initial_position +(TILE_SIZE * input_direction)
-		percent_moved_to_next_tile = 0.0
+	#checking for collision
+	#finding where the player wants to move
+	var desired_step: Vector2 = input_direction * TILE_SIZE/2
+	
+	#checking for collideable collision
+	collision_cast.set_target_position(desired_step)
+	collision_cast.force_raycast_update()
+	
+	#checking for water collision
+	water_cast.set_target_position(desired_step)
+	water_cast.force_raycast_update()
+	
+	#stopping or allowing movement based on collision
+	
+	if collision_cast.is_colliding() or water_cast.is_colliding():
 		is_moving = false
+		percent_moved_to_next_tile = 0.0
 	else:
-		position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
+		percent_moved_to_next_tile += walk_speed * delta
+		if percent_moved_to_next_tile >= 1:
+			position = initial_position +(TILE_SIZE * input_direction)
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+		else:
+			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 		
 
 func need_to_turn():
@@ -86,3 +117,29 @@ func need_to_turn():
 
 func exit_turning_state():
 	playerState = PlayerState.IDLE
+
+func check_water():
+	if Input.is_action_just_pressed("CheckWater"):
+		if water_cast.is_colliding():
+			var desired_step: Vector2
+			if get_current_facing_direction() != Vector2(0,-1):
+				desired_step = (get_current_facing_direction() * TILE_SIZE * 2)+Vector2(0,-8)
+			else:
+				desired_step = (get_current_facing_direction() * TILE_SIZE * 1.5)
+				
+			surf_checker.position = desired_step
+			print("shore ahead")
+
+func get_current_facing_direction():
+	if facingDirection == FacingDirection.UP:
+		return Vector2(0,-1)
+	elif facingDirection == FacingDirection.DOWN:
+		return Vector2(0,1)
+	elif facingDirection == FacingDirection.LEFT:
+		return Vector2(-1,0)
+	elif facingDirection == FacingDirection.RIGHT:
+		return Vector2(1,0)
+
+
+func _on_surf_checker_body_entered(body):
+	print("can surf")
