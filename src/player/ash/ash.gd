@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 #export variables
-@export var  walk_speed = 4.0
+@export var walk_speed = 4.0
+@export var Run_speed = 8.0
 @export var can_surf : bool = true
+@export var can_run = true
 const TILE_SIZE = 16
 
 #tile based movement variables
@@ -12,7 +14,9 @@ var is_moving = false
 var percent_moved_to_next_tile = 0.0
 
 #movement_state_variables
+var is_running:bool = false
 var is_surfing:bool = false
+var speed = 4.0
 
 #import variables
 @onready var animation_tree = $AnimationTree
@@ -48,7 +52,10 @@ func _physics_process(delta):
 			anim_state.travel("Surf")
 			surf(delta)
 		else:
-			anim_state.travel("Walk")
+			if is_running == false:
+				anim_state.travel("Walk")
+			else:
+				anim_state.travel("Run")
 			move(delta)
 	else:
 		if playerState == PlayerState.SURFING:
@@ -58,11 +65,11 @@ func _physics_process(delta):
 			anim_state.travel("Idle")
 			is_moving = false
 		
-		#handle water checking
-	
+	#handle process functions
 	check_water()
 	check_shore()
 	diable_casts()
+	Run()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -76,6 +83,7 @@ func process_player_input():
 		animation_tree.set("parameters/Turn/blend_position",input_direction)
 		animation_tree.set("parameters/Surf/blend_position",input_direction)
 		animation_tree.set("parameters/SurfTurn/blend_position",input_direction)
+		animation_tree.set("parameters/Run/blend_position",input_direction)
 		
 		if need_to_turn():
 			surf_checker.position = Vector2(0,-8)
@@ -119,7 +127,7 @@ func move(delta):
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
 	else:
-		percent_moved_to_next_tile += walk_speed * delta
+		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1:
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
@@ -166,7 +174,6 @@ func check_water():
 					
 				surf_checker.position = desired_step
 				
-				#print("shore ahead")
 
 func get_current_facing_direction():
 	if facingDirection == FacingDirection.UP:
@@ -181,7 +188,6 @@ func get_current_facing_direction():
 
 func _on_surf_checker_body_entered(body):
 	start_surfing()
-	#print("can surf")
 
 func surf(delta):
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
@@ -194,7 +200,7 @@ func surf(delta):
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
 	else:
-		percent_moved_to_next_tile += walk_speed * delta
+		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1:
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
@@ -231,7 +237,6 @@ func check_shore():
 					
 				shore_checker.position = desired_step
 				
-				#print("shore ahead to land")
 
 func update_casts():
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
@@ -253,3 +258,11 @@ func diable_casts():
 	else:
 		shore_cast.enabled = true
 
+func Run():
+	if can_run == true:
+		if Input.is_action_pressed("Run"):
+			is_running = true
+			speed = Run_speed
+		else:
+			is_running = false
+			speed = walk_speed
