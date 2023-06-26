@@ -85,7 +85,7 @@ func process_player_input():
 		animation_tree.set("parameters/SurfTurn/blend_position",input_direction)
 		animation_tree.set("parameters/Run/blend_position",input_direction)
 		
-		if need_to_turn():
+		if need_to_turn() and is_running == false:
 			surf_checker.position = Vector2(0,-8)
 			shore_checker.position = Vector2(0,-8)
 			if playerState == PlayerState.SURFING:
