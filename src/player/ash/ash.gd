@@ -211,9 +211,7 @@ func surf(delta):
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
 	
 	update_casts()
-	
 	#stopping or allowing movement based on collision
-	
 	if shore_cast.is_colliding():
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
@@ -237,13 +235,23 @@ func start_surfing():
 		shore_checker.position = Vector2(0,-8)
 
 
-func _on_shore_checker_body_entered(body):
+func enter_shore():
 	if playerState == PlayerState.SURFING:
-		is_surfing = false
-		playerState = PlayerState.IDLE
-		position = shore_checker.global_position-Vector2(0,-8)
-		surf_checker.position = Vector2(0,-8)
-		shore_checker.position = Vector2(0,-8)
+		var dat
+		if Utils.tilemap != null:
+			var tile_map = Utils.tilemap
+			var standing_cell = tile_map.local_to_map(shore_checker.position)
+			var data = tile_map.get_cell_tile_data(0, standing_cell)
+			if data:
+				dat = data.get_custom_data("surf")
+			else:
+				dat = 0
+		if dat == -1:
+			is_surfing = false
+			playerState = PlayerState.IDLE
+			position = shore_checker.global_position-Vector2(0,-8)
+			surf_checker.position = Vector2(0,-8)
+			shore_checker.position = Vector2(0,-8)
 
 func check_shore():
 	if playerState == PlayerState.SURFING:
@@ -256,6 +264,7 @@ func check_shore():
 					desired_step = (get_current_facing_direction() * TILE_SIZE)+Vector2(0,-4)
 					
 				shore_checker.position = desired_step
+				enter_shore()
 				
 
 func update_casts():
