@@ -3,8 +3,10 @@ extends CharacterBody2D
 #export variables
 @export var walk_speed = 4.0
 @export var Run_speed = 8.0
+@export var Cycle_speed = 12.0
 @export var can_surf : bool = true
-@export var can_run = true
+@export var can_run : bool = true
+@export var can_cycle : bool = true
 const TILE_SIZE = 16
 
 #tile based movement variables
@@ -16,6 +18,7 @@ var percent_moved_to_next_tile = 0.0
 #movement_state_variables
 var is_running:bool = false
 var is_surfing:bool = false
+var is_cycling:bool = false
 var speed = 4.0
 
 #import variables
@@ -28,7 +31,7 @@ var speed = 4.0
 @onready var shore_checker = $shoreChecker
 
 #player_states
-enum PlayerState {IDLE, TURNING, WALKING,SURFING}
+enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
 enum FacingDirection {LEFT,RIGHT,UP,DOWN}
 
 var playerState = PlayerState.IDLE
@@ -51,6 +54,9 @@ func _physics_process(delta):
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
 			surf(delta)
+		elif playerState == PlayerState.CYCLING:
+			anim_state.travel("cycle")
+			move(delta)
 		else:
 			if is_running == false:
 				anim_state.travel("Walk")
@@ -61,6 +67,9 @@ func _physics_process(delta):
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
 			is_moving = false
+		elif playerState == PlayerState.CYCLING:
+			anim_state.travel("cycleIdle")
+			is_moving = false
 		else:
 			anim_state.travel("Idle")
 			is_moving = false
@@ -70,6 +79,8 @@ func _physics_process(delta):
 	check_shore()
 	diable_casts()
 	Run()
+	switch_cycling()
+	speed_handler()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -84,11 +95,14 @@ func process_player_input():
 		animation_tree.set("parameters/Surf/blend_position",input_direction)
 		animation_tree.set("parameters/SurfTurn/blend_position",input_direction)
 		animation_tree.set("parameters/Run/blend_position",input_direction)
+		animation_tree.set("parameters/cycle/blend_position",input_direction)
+		animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
+		animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 		
-		if need_to_turn() and is_running == false:
+		if need_to_turn() and is_running == false and is_cycling == false:
 			surf_checker.position = Vector2(0,-8)
 			shore_checker.position = Vector2(0,-8)
-			if playerState == PlayerState.SURFING:
+			if playerState == PlayerState.SURFING :
 				var desired_step: Vector2 = input_direction * TILE_SIZE/2
 			
 				shore_cast.set_target_position(desired_step)
@@ -113,6 +127,8 @@ func process_player_input():
 	else:
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
+		elif playerState == PlayerState.CYCLING:
+			anim_state.travel("cycleIdle")
 		else:
 			anim_state.travel("Idle")
 	
@@ -159,6 +175,8 @@ func need_to_turn():
 func exit_turning_state():
 	if is_surfing == true:
 		playerState = PlayerState.SURFING
+	elif is_cycling == true:
+		playerState = PlayerState.CYCLING
 	else:
 		playerState = PlayerState.IDLE
 
@@ -211,6 +229,8 @@ func surf(delta):
 func start_surfing():
 	if can_surf == true:
 		is_surfing = true
+		is_cycling = false
+		is_running = false
 		playerState = PlayerState.SURFING
 		position = surf_checker.global_position -Vector2(0,-8)
 		surf_checker.position = Vector2(0,-8)
@@ -260,9 +280,32 @@ func diable_casts():
 
 func Run():
 	if can_run == true:
-		if Input.is_action_pressed("Run"):
-			is_running = true
-			speed = Run_speed
-		else:
-			is_running = false
-			speed = walk_speed
+		if not is_cycling and not is_surfing:
+			if Input.is_action_pressed("Run"):
+				is_running = true
+				
+			else:
+				is_running = false
+
+func switch_cycling():
+	if can_cycle == true:
+		if Input.is_action_just_pressed("cycleQuick"):
+			if is_cycling == false and playerState == PlayerState.IDLE:
+				if not is_surfing:
+					is_cycling = true
+					playerState = PlayerState.CYCLING
+				else:
+					is_cycling = false
+					playerState = PlayerState.SURFING
+			elif is_cycling == true:
+				is_cycling = false
+				playerState = PlayerState.IDLE
+				
+
+func speed_handler():
+	if is_running == true:
+		speed = Run_speed
+	elif is_cycling == true:
+		speed = Cycle_speed
+	else:
+		speed = walk_speed
