@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
-Utils="*res://autoload/Utils.gd"
 
 [display]
 
@@ -80,3 +79,7 @@ cycleQuick={
 2d_physics/layer_2="Collideables"
 2d_physics/layer_3="Water"
 2d_physics/layer_4="player"
+
+[rendering]
+
+renderer/rendering_method="mobile"
