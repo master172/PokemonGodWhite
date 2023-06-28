@@ -1203,4 +1203,3 @@ shape = SubResource("CircleShape2D_sw5xo")
 debug_color = Color(0, 0.701961, 0.0745098, 0.419608)
 
 [connection signal="body_entered" from="SurfChecker" to="." method="_on_surf_checker_body_entered"]
-[connection signal="script_changed" from="shoreChecker" to="." method="_on_shore_checker_script_changed"]
