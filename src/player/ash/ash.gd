@@ -350,25 +350,33 @@ func speed_handler():
 
 func _on_surf_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
-		var dat = process_tilemap_collision(body,body_rid)
+		var dat = process_tilemap_collision(body,body_rid,"surf")
 
-func process_tilemap_collision(body: Node2D, body_rid:RID):
+func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
+	var returning_value = []
+	var can_return_non_zero:bool = true
 	var current_tilemap = body
 	
 	var collison_cords = current_tilemap.get_coords_for_body_rid(body_rid)
 	
-	var tile_data = current_tilemap.get_cell_tile_data(0,collison_cords)
-	if tile_data:
-		return tile_data.get_custom_data("surf")
-	else:
-		return 0
+	for index in current_tilemap.get_layers_count():
+		var tile_data = current_tilemap.get_cell_tile_data(index,collison_cords)
+		if tile_data:
+			returning_value.append(tile_data.get_custom_data("surf"))
+		else:
+			pass
+	
+	if check == "shore":
+		if returning_value != [-1]:
+			return 0
+		else:
+			return -1
 	
 
 
 func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
-		var dat = process_tilemap_collision(body,body_rid)
-		print(dat)
+		var dat = process_tilemap_collision(body,body_rid,"shore")
 		if dat == -1:
 			if playerState == PlayerState.SURFING:
 				is_surfing = false

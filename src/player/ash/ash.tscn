@@ -1178,7 +1178,7 @@ position_smoothing_enabled = true
 visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 18
+collision_mask = 50
 collide_with_areas = true
 
 [node name="LedgeCast" type="RayCast2D" parent="."]
