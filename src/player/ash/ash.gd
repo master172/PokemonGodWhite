@@ -39,6 +39,7 @@ var speed = 4.0
 @onready var shore_checker = $shoreChecker
 @onready var ledge_cast = $LedgeCast
 @onready var shadow = $Shadow
+@onready var door_cast = $DoorCast
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -385,3 +386,6 @@ func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, loca
 				surf_checker.position = Vector2(0,-8)
 				shore_checker.position = Vector2(0,-8)
 				shore_checker.get_child(0).set_deferred("disabled",true)
+
+func get_surf_data():
+	pass

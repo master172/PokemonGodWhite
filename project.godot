@@ -81,3 +81,4 @@ cycleQuick={
 2d_physics/layer_4="player"
 2d_physics/layer_5="ledges"
 2d_physics/layer_6="AboveGround"
+2d_physics/layer_7="Door"

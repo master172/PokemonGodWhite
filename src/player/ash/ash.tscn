@@ -1198,6 +1198,13 @@ visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 
+[node name="DoorCast" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+target_position = Vector2(0, 8)
+collision_mask = 64
+collide_with_areas = true
+
 [node name="SurfChecker" type="Area2D" parent="."]
 position = Vector2(0, -8)
 collision_layer = 0

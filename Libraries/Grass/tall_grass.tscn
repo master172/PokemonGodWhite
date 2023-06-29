@@ -88,6 +88,7 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_y4cml")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_ruy2p")
 }

@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://de4orwgmqtds5"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://de4orwgmqtds5"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_bu5mm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_autio"]
 [ext_resource type="PackedScene" uid="uid://c6h1kkkqjrqw1" path="res://Libraries/Grass/tall_grass.tscn" id="3_2lb74"]
 [ext_resource type="Texture2D" uid="uid://d1pkglneoxq4a" path="res://assets/PokemonTilesets/ledge.png" id="4_vv2lv"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_uqjwb"]
+[ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_lky6b"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -12282,6 +12283,11 @@ texture = ExtResource("5_uqjwb")
 0:33/0/physics_layer_4/linear_velocity = Vector2(0, 0)
 0:33/0/physics_layer_4/angular_velocity = 0.0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fxy7e"]
+resource_name = "Houses"
+scenes/1/scene = ExtResource("6_lky6b")
+scenes/1/display_placeholder = ExtResource("6_lky6b")
+
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
@@ -12309,3 +12315,4 @@ sources/0 = SubResource("TileSetScenesCollectionSource_3da4n")
 sources/2 = SubResource("TileSetScenesCollectionSource_17v5c")
 sources/3 = SubResource("TileSetAtlasSource_w4ajd")
 sources/4 = SubResource("TileSetAtlasSource_l5qym")
+sources/5 = SubResource("TileSetScenesCollectionSource_fxy7e")
