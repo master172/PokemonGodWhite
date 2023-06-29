@@ -52,6 +52,9 @@ func _ready():
 	animation_tree.active = true
 	shadow.visible = false
 	
+	surf_checker.get_child(0).disabled = true
+	shore_checker.get_child(0).disabled = true
+	
 func _physics_process(delta):
 	
 	#handle movement
@@ -214,13 +217,17 @@ func check_water():
 	if playerState != PlayerState.SURFING:
 		if Input.is_action_just_pressed("CheckWater"):
 			if water_cast.is_colliding():
-				var desired_step: Vector2
-				if get_current_facing_direction() != Vector2(0,-1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)
-				else:
-					desired_step = (get_current_facing_direction() * TILE_SIZE)
-					
-				surf_checker.position = desired_step
+				var desired_place: Vector2 = Vector2.ZERO
+				if get_current_facing_direction() == Vector2(0,-1):
+					surf_checker.position = Vector2(0,-24)
+				elif get_current_facing_direction() == Vector2(0,1):
+					surf_checker.position = Vector2(0,24)
+				elif get_current_facing_direction() == Vector2(-1,0):
+					surf_checker.position = Vector2(-32,-8)
+				elif get_current_facing_direction() == Vector2(1,0):
+					surf_checker.position = Vector2(32,-8)
+				
+				surf_checker.get_child(0).disabled = false
 				
 
 func get_current_facing_direction():
@@ -262,30 +269,27 @@ func start_surfing():
 		is_cycling = false
 		is_running = false
 		playerState = PlayerState.SURFING
-		position = surf_checker.global_position
+		position = surf_checker.global_position + Vector2(0,8)
 		surf_checker.position = Vector2(0,-8)
 		shore_checker.position = Vector2(0,-8)
+		surf_checker.get_child(0).set_deferred("disabled",true)
 
-
-func _on_shore_checker_body_entered(body):
-	if playerState == PlayerState.SURFING:
-		is_surfing = false
-		playerState = PlayerState.IDLE
-		position = shore_checker.global_position
-		surf_checker.position = Vector2(0,-8)
-		shore_checker.position = Vector2(0,-8)
 
 func check_shore():
 	if playerState == PlayerState.SURFING:
 		if Input.is_action_just_pressed("CheckWater"):
 			if shore_cast.is_colliding():
-				var desired_step: Vector2
-				if get_current_facing_direction() != Vector2(0,1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)
-				else:
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 1.5)-Vector2(0,8)
+				if get_current_facing_direction() == Vector2(0,-1):
+					shore_checker.position = Vector2(0,-40)
+				elif get_current_facing_direction() == Vector2(0,1):
+					shore_checker.position = Vector2(0,8)
+				elif get_current_facing_direction() == Vector2(-1,0):
+					shore_checker.position = Vector2(-32,-8)
+				elif get_current_facing_direction() == Vector2(1,0):
+					shore_checker.position = Vector2(32,-8)
+				
+				shore_checker.get_child(0).disabled = false
 					
-				shore_checker.position = desired_step
 				
 
 func update_casts():
@@ -342,3 +346,34 @@ func speed_handler():
 		speed = Cycle_speed
 	else:
 		speed = walk_speed
+
+
+func _on_surf_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body is TileMap:
+		var dat = process_tilemap_collision(body,body_rid)
+
+func process_tilemap_collision(body: Node2D, body_rid:RID):
+	var current_tilemap = body
+	
+	var collison_cords = current_tilemap.get_coords_for_body_rid(body_rid)
+	
+	var tile_data = current_tilemap.get_cell_tile_data(0,collison_cords)
+	if tile_data:
+		return tile_data.get_custom_data("surf")
+	else:
+		return 0
+	
+
+
+func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body is TileMap:
+		var dat = process_tilemap_collision(body,body_rid)
+		print(dat)
+		if dat == -1:
+			if playerState == PlayerState.SURFING:
+				is_surfing = false
+				playerState = PlayerState.IDLE
+				position = shore_checker.global_position + Vector2(0,8)
+				surf_checker.position = Vector2(0,-8)
+				shore_checker.position = Vector2(0,-8)
+				shore_checker.get_child(0).set_deferred("disabled",true)
