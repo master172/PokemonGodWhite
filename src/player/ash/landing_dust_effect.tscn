@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4nv0qkt1vjec"]
+
+[ext_resource type="Texture2D" uid="uid://cj78dl11mcxbf" path="res://assets/player/ash/jump_landing_dust.png" id="1_mknvy"]
+[ext_resource type="Script" path="res://src/player/ash/landing_dust_effect.gd" id="2_lnc4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8vtb"]
+atlas = ExtResource("1_mknvy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at1p0"]
+atlas = ExtResource("1_mknvy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs0lr"]
+atlas = ExtResource("1_mknvy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnomt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8vtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at1p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs0lr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LandingDustEffect" type="AnimatedSprite2D"]
+z_index = 1
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_fnomt")
+script = ExtResource("2_lnc4y")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

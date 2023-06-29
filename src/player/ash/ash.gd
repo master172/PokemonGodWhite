@@ -10,7 +10,10 @@ signal player_stopped_signal
 @export var can_surf : bool = true
 @export var can_run : bool = true
 @export var can_cycle : bool = true
+
 const TILE_SIZE = 16
+
+const LandingDustEffect = preload("res://src/player/ash/landing_dust_effect.tscn")
 
 #tile based movement variables
 var initial_position = Vector2(0,0)
@@ -23,6 +26,7 @@ var is_running:bool = false
 var is_surfing:bool = false
 var is_cycling:bool = false
 var jumping_over_ledge:bool = false
+
 var speed = 4.0
 
 #import variables
@@ -34,6 +38,7 @@ var speed = 4.0
 @onready var shore_cast = $ShoreCast
 @onready var shore_checker = $shoreChecker
 @onready var ledge_cast = $LedgeCast
+@onready var shadow = $Shadow
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -45,7 +50,8 @@ var facingDirection = FacingDirection.DOWN
 func _ready():
 	initial_position = position
 	animation_tree.active = true
-
+	shadow.visible = false
+	
 func _physics_process(delta):
 	
 	#handle movement
@@ -149,7 +155,15 @@ func move(delta):
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
 			jumping_over_ledge = false
+			shadow.visible = false
+			
+			var DustEffect = LandingDustEffect.instantiate()
+			DustEffect.position = position-Vector2(0,8)
+			get_tree().current_scene.add_child(DustEffect)
+			
+			
 		else:
+			shadow.visible = true
 			jumping_over_ledge = true
 			var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
 			position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
@@ -202,9 +216,9 @@ func check_water():
 			if water_cast.is_colliding():
 				var desired_step: Vector2
 				if get_current_facing_direction() != Vector2(0,-1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)-Vector2(0,8)
+					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)
 				else:
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 1.5)
+					desired_step = (get_current_facing_direction() * TILE_SIZE)
 					
 				surf_checker.position = desired_step
 				
@@ -267,9 +281,9 @@ func check_shore():
 			if shore_cast.is_colliding():
 				var desired_step: Vector2
 				if get_current_facing_direction() != Vector2(0,1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)-Vector2(0,8)
+					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)
 				else:
-					desired_step = (get_current_facing_direction() * TILE_SIZE*1.5)
+					desired_step = (get_current_facing_direction() * TILE_SIZE * 1.5)-Vector2(0,8)
 					
 				shore_checker.position = desired_step
 				

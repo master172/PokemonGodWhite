@@ -1,7 +1,8 @@
-[gd_scene load_steps=117 format=3 uid="uid://dxlq67ad6kjdr"]
+[gd_scene load_steps=118 format=3 uid="uid://dxlq67ad6kjdr"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
+[ext_resource type="Texture2D" uid="uid://bf3hlxiuvp4hm" path="res://assets/player/ash/player_shadow.png" id="2_hcuyf"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1132,6 +1133,11 @@ radius = 2.0
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_kcwe4")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+texture = ExtResource("2_hcuyf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
