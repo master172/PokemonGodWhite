@@ -25,7 +25,7 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
+window/vsync/vsync_mode=3
 
 [editor_plugins]
 
@@ -79,7 +79,4 @@ cycleQuick={
 2d_physics/layer_2="Collideables"
 2d_physics/layer_3="Water"
 2d_physics/layer_4="player"
-
-[rendering]
-
-renderer/rendering_method="mobile"
+2d_physics/layer_5="ledges"

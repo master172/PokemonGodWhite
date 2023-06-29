@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+signal player_moving_signal
+signal player_stopped_signal
 #export variables
 @export var walk_speed = 4.0
+@export var jump_speed = 4.0
 @export var Run_speed = 8.0
 @export var Cycle_speed = 12.0
 @export var can_surf : bool = true
@@ -19,6 +22,7 @@ var percent_moved_to_next_tile = 0.0
 var is_running:bool = false
 var is_surfing:bool = false
 var is_cycling:bool = false
+var jumping_over_ledge:bool = false
 var speed = 4.0
 
 #import variables
@@ -29,6 +33,7 @@ var speed = 4.0
 @onready var surf_checker = $SurfChecker
 @onready var shore_cast = $ShoreCast
 @onready var shore_checker = $shoreChecker
+@onready var ledge_cast = $LedgeCast
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -133,24 +138,35 @@ func process_player_input():
 			anim_state.travel("Idle")
 	
 func move(delta):
-	#checking for collision
-	#finding where the player wants to move
 	update_casts()
 	
 	#stopping or allowing movement based on collision
 	
-	if collision_cast.is_colliding() or water_cast.is_colliding():
+	if (ledge_cast.is_colliding() and get_current_facing_direction() == Vector2(0,1)) or jumping_over_ledge == true:
+		percent_moved_to_next_tile += jump_speed * delta
+		if percent_moved_to_next_tile >= 2.0:
+			position = initial_position + input_direction * TILE_SIZE * 2
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			jumping_over_ledge = false
+		else:
+			jumping_over_ledge = true
+			var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
+			position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
+	elif collision_cast.is_colliding() or water_cast.is_colliding():
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
 	else:
+		if percent_moved_to_next_tile == 0.0:
+			emit_signal("player_moving_signal")
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1:
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
+			emit_signal("player_stopped_signal")
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
-		
 
 
 			
@@ -186,7 +202,7 @@ func check_water():
 			if water_cast.is_colliding():
 				var desired_step: Vector2
 				if get_current_facing_direction() != Vector2(0,-1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)+Vector2(0,-8)
+					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)-Vector2(0,8)
 				else:
 					desired_step = (get_current_facing_direction() * TILE_SIZE * 1.5)
 					
@@ -232,7 +248,7 @@ func start_surfing():
 		is_cycling = false
 		is_running = false
 		playerState = PlayerState.SURFING
-		position = surf_checker.global_position -Vector2(0,-8)
+		position = surf_checker.global_position
 		surf_checker.position = Vector2(0,-8)
 		shore_checker.position = Vector2(0,-8)
 
@@ -241,7 +257,7 @@ func _on_shore_checker_body_entered(body):
 	if playerState == PlayerState.SURFING:
 		is_surfing = false
 		playerState = PlayerState.IDLE
-		position = shore_checker.global_position-Vector2(0,-8)
+		position = shore_checker.global_position
 		surf_checker.position = Vector2(0,-8)
 		shore_checker.position = Vector2(0,-8)
 
@@ -251,9 +267,9 @@ func check_shore():
 			if shore_cast.is_colliding():
 				var desired_step: Vector2
 				if get_current_facing_direction() != Vector2(0,1):
-					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)+Vector2(0,-8)
+					desired_step = (get_current_facing_direction() * TILE_SIZE * 2)-Vector2(0,8)
 				else:
-					desired_step = (get_current_facing_direction() * TILE_SIZE)+Vector2(0,-4)
+					desired_step = (get_current_facing_direction() * TILE_SIZE*1.5)
 					
 				shore_checker.position = desired_step
 				
@@ -271,6 +287,9 @@ func update_casts():
 	
 	shore_cast.set_target_position(desired_step)
 	shore_cast.force_raycast_update()
+	
+	ledge_cast.set_target_position(desired_step)
+	ledge_cast.force_raycast_update()
 
 func diable_casts():
 	if playerState != PlayerState.SURFING:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxd3fxljtidla"]
+[gd_scene load_steps=3 format=3 uid="uid://bxd3fxljtidla"]
 
 [ext_resource type="Texture2D" uid="uid://b3ktyru4t3vem" path="res://assets/trees/tree1.png" id="1_6msj0"]
-[ext_resource type="Script" path="res://src/World/trees/tree.gd" id="1_ctv85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkc67"]
 size = Vector2(32, 32)
@@ -9,7 +8,6 @@ size = Vector2(32, 32)
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_ctv85")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

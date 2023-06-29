@@ -1172,7 +1172,13 @@ position_smoothing_enabled = true
 visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 2
+collision_mask = 18
+collide_with_areas = true
+
+[node name="LedgeCast" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 8)
+collision_mask = 16
 collide_with_areas = true
 
 [node name="WaterCast" type="RayCast2D" parent="."]
@@ -1182,6 +1188,7 @@ target_position = Vector2(0, 8)
 collision_mask = 6
 
 [node name="ShoreCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 
