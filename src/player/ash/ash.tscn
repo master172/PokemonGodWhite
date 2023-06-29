@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dxlq67ad6kjdr"]
+[gd_scene load_steps=118 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
@@ -1222,6 +1222,5 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_sw5xo")
 debug_color = Color(0, 0.701961, 0.0745098, 0.419608)
 
-[connection signal="body_entered" from="SurfChecker" to="." method="_on_surf_checker_body_entered"]
 [connection signal="body_shape_entered" from="SurfChecker" to="." method="_on_surf_checker_body_shape_entered"]
 [connection signal="body_shape_entered" from="shoreChecker" to="." method="_on_shore_checker_body_shape_entered"]

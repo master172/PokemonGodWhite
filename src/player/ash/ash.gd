@@ -96,6 +96,7 @@ func _physics_process(delta):
 	Run()
 	switch_cycling()
 	speed_handler()
+	get_clicked_tile_power()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -228,6 +229,7 @@ func check_water():
 				elif get_current_facing_direction() == Vector2(1,0):
 					surf_checker.position = Vector2(32,-8)
 				
+				get_surf_data(surf_checker)
 				surf_checker.get_child(0).disabled = false
 				
 
@@ -241,9 +243,6 @@ func get_current_facing_direction():
 	elif facingDirection == FacingDirection.RIGHT:
 		return Vector2(1,0)
 
-
-func _on_surf_checker_body_entered(body):
-	start_surfing()
 
 func surf(delta):
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
@@ -264,18 +263,6 @@ func surf(delta):
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 
-func start_surfing():
-	if can_surf == true:
-		is_surfing = true
-		is_cycling = false
-		is_running = false
-		playerState = PlayerState.SURFING
-		position = surf_checker.global_position + Vector2(0,8)
-		surf_checker.position = Vector2(0,-8)
-		shore_checker.position = Vector2(0,-8)
-		surf_checker.get_child(0).set_deferred("disabled",true)
-
-
 func check_shore():
 	if playerState == PlayerState.SURFING:
 		if Input.is_action_just_pressed("CheckWater"):
@@ -289,8 +276,9 @@ func check_shore():
 				elif get_current_facing_direction() == Vector2(1,0):
 					shore_checker.position = Vector2(32,-8)
 				
+				get_surf_data(shore_checker)
 				shore_checker.get_child(0).disabled = false
-					
+				
 				
 
 func update_casts():
@@ -352,6 +340,16 @@ func speed_handler():
 func _on_surf_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
 		var dat = process_tilemap_collision(body,body_rid,"surf")
+		if dat == 0:
+			if can_surf == true:
+				is_surfing = true
+				is_cycling = false
+				is_running = false
+				playerState = PlayerState.SURFING
+				position = surf_checker.global_position + Vector2(0,8)
+				surf_checker.position = Vector2(0,-8)
+				shore_checker.position = Vector2(0,-8)
+				surf_checker.get_child(0).set_deferred("disabled",true)
 
 func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
 	var returning_value = []
@@ -373,6 +371,12 @@ func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
 		else:
 			return -1
 	
+	elif check == "surf":
+		if returning_value != [0]:
+			return 1
+		else:
+			return 0
+	
 
 
 func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
@@ -387,5 +391,33 @@ func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, loca
 				shore_checker.position = Vector2(0,-8)
 				shore_checker.get_child(0).set_deferred("disabled",true)
 
-func get_surf_data():
-	pass
+func get_surf_data(checker):
+	var current_tilemap = Utils.Tilemap
+	if current_tilemap:
+		
+		
+		var tile_pos = current_tilemap.local_to_map(checker.position)
+		var data = current_tilemap.get_cell_tile_data(0,tile_pos)
+		if data:
+			if data.get_custom_data("surf") == 1:
+				print("tile surf data is: ",data.get_custom_data("surf"), " water block")
+				print("checker position: ",checker.global_position, " check name: ", checker.name)
+				print("global tile pos: ", to_global(tile_pos))
+			elif data.get_custom_data("surf") == -1:
+				print("tile surf data is: ",data.get_custom_data("surf"), " ground block")
+				print("checker position: ",checker.global_position, " check name: ", checker.name)
+				print("global tile pos: ", to_global(tile_pos))
+			elif data.get_custom_data("surf") == 0:
+				print("tile surf data is: ",data.get_custom_data("surf"), " shore_block")
+				print("checker position: ",checker.global_position, " check name: ", checker.name)
+				print("global tile pos: ", to_global(tile_pos))
+		
+
+func get_clicked_tile_power():
+	if Input.is_action_just_pressed("LeftClick"):
+		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
+		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
+		if data:
+			print(data.get_custom_data("surf"))
+		else:
+			print("null")
