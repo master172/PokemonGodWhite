@@ -34,7 +34,7 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="player" parent="." instance=ExtResource("1_rl12o")]
 unique_name_in_owner = true
-position = Vector2(-312, 32)
+position = Vector2(72, -48)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2Ddel" type="Marker2D" parent="."]
 position = Vector2(-296, -40)

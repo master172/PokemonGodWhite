@@ -30,7 +30,7 @@ func process_tilemap_collision(player:Node2D,check:String):
 
 		if check == "shore":
 			if returning_value != [true]:
-				print(returning_value)
+				#print(returning_value)
 				return faliure
 			return sucess
 

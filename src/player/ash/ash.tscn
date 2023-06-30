@@ -1127,7 +1127,6 @@ graph_offset = Vector2(-260, -24)
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h3dwx"]
 
 [node name="Ash" type="CharacterBody2D"]
-collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_kcwe4")
 
@@ -1175,23 +1174,23 @@ position_smoothing_enabled = true
 visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 50
+collision_mask = 18
 collide_with_areas = true
 
 [node name="LedgeCast" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 16
+collision_mask = 4
 collide_with_areas = true
 
 [node name="DoorCast" type="RayCast2D" parent="."]
 visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 64
+collision_mask = 8
 collide_with_areas = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2Ddel" type="Marker2D" parent="."]
 position = Vector2(0, 8)
 
 [node name="SurfTimer" type="Timer" parent="."]

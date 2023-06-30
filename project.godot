@@ -81,10 +81,7 @@ LeftClick={
 
 [layer_names]
 
-2d_physics/layer_1="Ground"
+2d_physics/layer_1="player"
 2d_physics/layer_2="Collideables"
-2d_physics/layer_3="Water"
-2d_physics/layer_4="player"
-2d_physics/layer_5="ledges"
-2d_physics/layer_6="AboveGround"
-2d_physics/layer_7="Door"
+2d_physics/layer_3="ledges"
+2d_physics/layer_4="Door"
