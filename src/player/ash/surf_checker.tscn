@@ -10,8 +10,3 @@ script = ExtResource("1_i6bbf")
 position = Vector2(4.76837e-07, -4.76837e-07)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2iwcx")
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

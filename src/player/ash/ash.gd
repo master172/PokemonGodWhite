@@ -28,6 +28,8 @@ var is_surfing:bool = false
 var is_cycling:bool = false
 var jumping_over_ledge:bool = false
 
+var surf_timer_active:bool = false
+
 var speed = 4.0
 
 #import variables
@@ -37,6 +39,7 @@ var speed = 4.0
 @onready var ledge_cast = $LedgeCast
 @onready var shadow = $Shadow
 @onready var door_cast = $DoorCast
+@onready var surf_timer = $SurfTimer
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -199,36 +202,22 @@ func exit_turning_state():
 		playerState = PlayerState.IDLE
 
 func check_water():
-	if playerState != PlayerState.SURFING:
+	if playerState != PlayerState.SURFING and surf_timer_active == false:
 		if Input.is_action_just_pressed("CheckWater"):
+			surf_timer_active = true
+			surf_timer.start()
 			var desired_place: Vector2 = Vector2.ZERO
 			if get_current_facing_direction() == Vector2(0,-1):
 				desired_place = Vector2(0,-24)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"surf")
 				
 			elif get_current_facing_direction() == Vector2(0,1):
 				desired_place = Vector2(0,24)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"surf")
 				
 			elif get_current_facing_direction() == Vector2(-1,0):
 				desired_place = Vector2(-32,-8)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"surf")
 				
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"surf")
 			
 			var Surf = SurfChecker.instantiate()
 			Surf.position = to_global(desired_place)
@@ -266,36 +255,23 @@ func surf(delta):
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 
 func check_shore():
-	if playerState == PlayerState.SURFING:
+	if playerState == PlayerState.SURFING and surf_timer_active == false:
 		if Input.is_action_just_pressed("CheckWater"):
+			surf_timer_active = true
+			surf_timer.start()
 			var desired_place = Vector2.ZERO
 			if get_current_facing_direction() == Vector2(0,-1):
 				desired_place = Vector2(0,-40)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"shore")
 				
 			elif get_current_facing_direction() == Vector2(0,1):
-				desired_place = Vector2(0,-8)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"shore")
+				desired_place = Vector2(0,8)
 				
 			elif get_current_facing_direction() == Vector2(-1,0):
 				desired_place = Vector2(-32,-8)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"shore")
 				
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
-#				var Surf = SurfChecker.instantiate()
-#				Surf.position = to_global(desired_place)
-#				get_tree().current_scene.add_child(Surf)
-#				Surf.process_tile(self,"shore")
+				
 			var Surf = SurfChecker.instantiate()
 			Surf.position = to_global(desired_place)
 			get_tree().current_scene.add_child(Surf)
@@ -347,23 +323,6 @@ func speed_handler():
 	else:
 		speed = walk_speed
 
-
-func _on_surf_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body is TileMap:
-		var dat = process_tilemap_collision(body,body_rid,"surf")
-		if dat == 0:
-#			if can_surf == true:
-#				is_surfing = true
-#				is_cycling = false
-#				is_running = false
-#				playerState = PlayerState.SURFING
-#				position = surf_checker.global_position + Vector2(0,8)
-#				surf_checker.position = Vector2(0,-8)
-#				shore_checker.position = Vector2(0,-8)
-#				surf_checker.get_child(0).set_deferred("disabled",true)
-			pass
-
-
 func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
 	var returning_value = []
 	var can_return_non_zero:bool = true
@@ -390,21 +349,6 @@ func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
 		else:
 			return 0
 	
-
-
-func _on_shore_checker_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body is TileMap:
-		var dat = process_tilemap_collision(body,body_rid,"shore")
-		if dat == -1:
-#			if playerState == PlayerState.SURFING:
-#				is_surfing = false
-#				playerState = PlayerState.IDLE
-#				position = shore_checker.global_position + Vector2(0,8)
-#				surf_checker.position = Vector2(0,-8)
-#				shore_checker.position = Vector2(0,-8)
-#				shore_checker.get_child(0).set_deferred("disabled",true)
-			pass
-
 		
 
 func get_clicked_tile_power():
@@ -416,5 +360,21 @@ func get_clicked_tile_power():
 		else:
 			print("null")
 
-func Iniatiate_Surf_Checking():
-	pass
+func player_surfing(data,check):
+	if data != "no tiles":
+		if check == "surf" and data[0] == true:
+			if can_surf == true:
+				is_surfing = true
+				is_cycling = false
+				is_running = false
+				playerState = PlayerState.SURFING
+				global_position = data[1]+Vector2(0,8)
+		elif check == "shore" and data[0] == true:
+			if playerState == PlayerState.SURFING:
+				is_surfing = false
+				playerState = PlayerState.IDLE
+				global_position = data[1]+Vector2(0,8)
+
+
+func _on_surf_timer_timeout():
+	surf_timer_active = false
