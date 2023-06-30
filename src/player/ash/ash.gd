@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 signal player_moving_signal
 signal player_stopped_signal
+
+signal player_entering_door_signal
+signal player_entered_door_signal
 #export variables
 @export var walk_speed = 4.0
 @export var jump_speed = 4.0
@@ -10,6 +13,7 @@ signal player_stopped_signal
 @export var can_surf : bool = true
 @export var can_run : bool = true
 @export var can_cycle : bool = true
+@export var can_move : bool = true
 
 const TILE_SIZE = 16
 
@@ -40,6 +44,8 @@ var speed = 4.0
 @onready var shadow = $Shadow
 @onready var door_cast = $DoorCast
 @onready var surf_timer = $SurfTimer
+@onready var skin = $Skin
+@onready var animation_player = $AnimationPlayer
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -52,29 +58,27 @@ func _ready():
 	initial_position = position
 	animation_tree.active = true
 	shadow.visible = false
+	skin.visible = true
 	
 func _physics_process(delta):
 	
 	#handle movement
-	if playerState == PlayerState.TURNING:
+	if playerState == PlayerState.TURNING or can_move == false:
 		return
-		
 	elif is_moving == false:
 		process_player_input()
 		
 	elif input_direction != Vector2.ZERO:
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
-			surf(delta)
 		elif playerState == PlayerState.CYCLING:
 			anim_state.travel("cycle")
-			move(delta)
 		else:
 			if is_running == false:
 				anim_state.travel("Walk")
 			else:
 				anim_state.travel("Run")
-			move(delta)
+		move(delta)
 	else:
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
@@ -90,7 +94,7 @@ func _physics_process(delta):
 	check_water()
 	check_shore()
 	Run()
-	switch_cycling()
+	cycle()
 	speed_handler()
 	get_clicked_tile_power()
 
@@ -133,48 +137,7 @@ func process_player_input():
 			anim_state.travel("cycleIdle")
 		else:
 			anim_state.travel("Idle")
-	
-func move(delta):
-	update_casts()
-	
-	#stopping or allowing movement based on collision
-	
-	if (ledge_cast.is_colliding() and get_current_facing_direction() == Vector2(0,1)) or jumping_over_ledge == true:
-		percent_moved_to_next_tile += jump_speed * delta
-		if percent_moved_to_next_tile >= 2.0:
-			position = initial_position + input_direction * TILE_SIZE * 2
-			percent_moved_to_next_tile = 0.0
-			is_moving = false
-			jumping_over_ledge = false
-			shadow.visible = false
-			
-			var DustEffect = LandingDustEffect.instantiate()
-			DustEffect.position = position-Vector2(0,8)
-			get_tree().current_scene.add_child(DustEffect)
-			
-			
-		else:
-			shadow.visible = true
-			jumping_over_ledge = true
-			var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
-			position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
-	elif collision_cast.is_colliding():
-		is_moving = false
-		percent_moved_to_next_tile = 0.0
-	else:
-		if percent_moved_to_next_tile == 0.0:
-			emit_signal("player_moving_signal")
-		percent_moved_to_next_tile += speed * delta
-		if percent_moved_to_next_tile >= 1:
-			position = initial_position +(TILE_SIZE * input_direction)
-			percent_moved_to_next_tile = 0.0
-			is_moving = false
-			emit_signal("player_stopped_signal")
-		else:
-			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 
-
-			
 func need_to_turn():
 	var new_facing_direction
 	if input_direction.x < 0:
@@ -201,6 +164,107 @@ func exit_turning_state():
 	else:
 		playerState = PlayerState.IDLE
 
+func Run():
+	if can_run == true:
+		if not is_cycling and not is_surfing:
+			if Input.is_action_pressed("Run"):
+				is_running = true
+				
+			else:
+				is_running = false
+
+func cycle():
+	if can_cycle == true:
+		if Input.is_action_just_pressed("cycleQuick"):
+			if is_cycling == false and playerState == PlayerState.IDLE:
+				if not is_surfing:
+					is_cycling = true
+					playerState = PlayerState.CYCLING
+				else:
+					is_cycling = false
+					playerState = PlayerState.SURFING
+			elif is_cycling == true:
+				is_cycling = false
+				playerState = PlayerState.IDLE
+				
+
+func speed_handler():
+	if is_running == true:
+		speed = Run_speed
+	elif is_cycling == true:
+		speed = Cycle_speed
+	else:
+		speed = walk_speed
+
+func move(delta):
+	update_casts()
+	
+	#stopping or allowing movement based on collision
+	
+	if door_cast.is_colliding():
+		
+		if percent_moved_to_next_tile == 0.0:
+			emit_signal("player_entering_door_signal")
+			print("colliding")
+		percent_moved_to_next_tile += speed * delta
+		if percent_moved_to_next_tile >= 1.0:
+			position = initial_position + input_direction * TILE_SIZE
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			can_move = false
+			animation_player.play("dissapear")
+			
+		else:
+			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
+			
+	elif (ledge_cast.is_colliding() and get_current_facing_direction() == Vector2(0,1)) or jumping_over_ledge == true:
+		percent_moved_to_next_tile += jump_speed * delta
+		if percent_moved_to_next_tile >= 2.0:
+			position = initial_position + input_direction * TILE_SIZE * 2
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			jumping_over_ledge = false
+			shadow.visible = false
+			
+			var DustEffect = LandingDustEffect.instantiate()
+			DustEffect.position = position-Vector2(0,8)
+			get_tree().current_scene.add_child(DustEffect)
+			
+			
+		else:
+			shadow.visible = true
+			jumping_over_ledge = true
+			var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
+			position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
+			
+	elif collision_cast.is_colliding():
+		is_moving = false
+		percent_moved_to_next_tile = 0.0
+		
+	else:
+		if percent_moved_to_next_tile == 0.0:
+			emit_signal("player_moving_signal")
+		percent_moved_to_next_tile += speed * delta
+		if percent_moved_to_next_tile >= 1:
+			position = initial_position +(TILE_SIZE * input_direction)
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			emit_signal("player_stopped_signal")
+		else:
+			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
+
+
+
+func get_current_facing_direction():
+	if facingDirection == FacingDirection.UP:
+		return Vector2(0,-1)
+	elif facingDirection == FacingDirection.DOWN:
+		return Vector2(0,1)
+	elif facingDirection == FacingDirection.LEFT:
+		return Vector2(-1,0)
+	elif facingDirection == FacingDirection.RIGHT:
+		return Vector2(1,0)
+
 func check_water():
 	if playerState != PlayerState.SURFING and surf_timer_active == false:
 		if Input.is_action_just_pressed("CheckWater"):
@@ -224,35 +288,6 @@ func check_water():
 			get_tree().current_scene.add_child(Surf)
 			Surf.process_tile(self,"surf")
 
-func get_current_facing_direction():
-	if facingDirection == FacingDirection.UP:
-		return Vector2(0,-1)
-	elif facingDirection == FacingDirection.DOWN:
-		return Vector2(0,1)
-	elif facingDirection == FacingDirection.LEFT:
-		return Vector2(-1,0)
-	elif facingDirection == FacingDirection.RIGHT:
-		return Vector2(1,0)
-
-
-func surf(delta):
-	var desired_step: Vector2 = input_direction * TILE_SIZE/2
-	
-	update_casts()
-	
-	#stopping or allowing movement based on collision
-	
-	if collision_cast.is_colliding():
-		is_moving = false
-		percent_moved_to_next_tile = 0.0
-	else:
-		percent_moved_to_next_tile += speed * delta
-		if percent_moved_to_next_tile >= 1:
-			position = initial_position +(TILE_SIZE * input_direction)
-			percent_moved_to_next_tile = 0.0
-			is_moving = false
-		else:
-			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 
 func check_shore():
 	if playerState == PlayerState.SURFING and surf_timer_active == false:
@@ -276,89 +311,6 @@ func check_shore():
 			Surf.position = to_global(desired_place)
 			get_tree().current_scene.add_child(Surf)
 			Surf.process_tile(self,"shore")
-				
-				
-
-func update_casts():
-	var desired_step: Vector2 = input_direction * TILE_SIZE/2
-	
-	#checking for collideable collision
-	collision_cast.set_target_position(desired_step)
-	collision_cast.force_raycast_update()
-	
-	
-	ledge_cast.set_target_position(desired_step)
-	ledge_cast.force_raycast_update()
-
-
-func Run():
-	if can_run == true:
-		if not is_cycling and not is_surfing:
-			if Input.is_action_pressed("Run"):
-				is_running = true
-				
-			else:
-				is_running = false
-
-func switch_cycling():
-	if can_cycle == true:
-		if Input.is_action_just_pressed("cycleQuick"):
-			if is_cycling == false and playerState == PlayerState.IDLE:
-				if not is_surfing:
-					is_cycling = true
-					playerState = PlayerState.CYCLING
-				else:
-					is_cycling = false
-					playerState = PlayerState.SURFING
-			elif is_cycling == true:
-				is_cycling = false
-				playerState = PlayerState.IDLE
-				
-
-func speed_handler():
-	if is_running == true:
-		speed = Run_speed
-	elif is_cycling == true:
-		speed = Cycle_speed
-	else:
-		speed = walk_speed
-
-func process_tilemap_collision(body: Node2D, body_rid:RID,check:String):
-	var returning_value = []
-	var can_return_non_zero:bool = true
-	var current_tilemap = body
-	
-	var collison_cords = current_tilemap.get_coords_for_body_rid(body_rid)
-	
-	for index in current_tilemap.get_layers_count():
-		var tile_data = current_tilemap.get_cell_tile_data(index,collison_cords)
-		if tile_data:
-			returning_value.append(tile_data.get_custom_data("surf"))
-		else:
-			pass
-	
-	if check == "shore":
-		if returning_value != [-1]:
-			return 0
-		else:
-			return -1
-	
-	elif check == "surf":
-		if returning_value != [0]:
-			return 1
-		else:
-			return 0
-	
-		
-
-func get_clicked_tile_power():
-	if Input.is_action_just_pressed("LeftClick"):
-		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
-		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
-		if data:
-			print(data.get_custom_data("surf"))
-		else:
-			print("null")
 
 func player_surfing(data,check):
 	if data[0] != false:
@@ -378,3 +330,33 @@ func player_surfing(data,check):
 
 func _on_surf_timer_timeout():
 	surf_timer_active = false
+
+
+func update_casts():
+	var desired_step: Vector2 = input_direction * TILE_SIZE/2
+	
+	#checking for collideable collision
+	collision_cast.set_target_position(desired_step)
+	collision_cast.force_raycast_update()
+	
+	
+	ledge_cast.set_target_position(desired_step)
+	ledge_cast.force_raycast_update()
+	
+	door_cast.set_target_position(desired_step)
+	door_cast.force_raycast_update()
+
+
+
+
+func get_clicked_tile_power():
+	if Input.is_action_just_pressed("LeftClick"):
+		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
+		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
+		if data:
+			print(data.get_custom_data("surf"))
+		else:
+			print("null")
+
+func entered_door():
+	emit_signal("player_entered_door_signal")

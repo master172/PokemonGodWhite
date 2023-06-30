@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=118 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
@@ -17,6 +17,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_kgrl3"]
@@ -796,6 +808,36 @@ tracks/0/keys = {
 "values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19), Rect2(152, 9, 16, 19), Rect2(115, 9, 16, 19)]
 }
 
+[sub_resource type="Animation" id="Animation_yea41"]
+resource_name = "dissapear"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"entered_door"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qbwx"]
 _data = {
 "RESET": SubResource("Animation_48a5r"),
@@ -815,6 +857,7 @@ _data = {
 "cycleTurnRight": SubResource("Animation_g7fcw"),
 "cycleTurnUp": SubResource("Animation_gc1sl"),
 "cycleUp": SubResource("Animation_t3tm6"),
+"dissapear": SubResource("Animation_yea41"),
 "idleDown": SubResource("Animation_a4dbl"),
 "idleLeft": SubResource("Animation_j2ks2"),
 "idleRight": SubResource("Animation_5gfbc"),
@@ -1135,7 +1178,8 @@ texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("2_hcuyf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Skin" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture_repeat = 3
 position = Vector2(0, -9.5)
@@ -1144,7 +1188,7 @@ region_enabled = true
 region_rect = Rect2(6, 9, 16, 19)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
+root_node = NodePath("../Skin")
 libraries = {
 "": SubResource("AnimationLibrary_1qbwx")
 }
@@ -1171,26 +1215,27 @@ parameters/cycleTurn/blend_position = Vector2(0, 0)
 position_smoothing_enabled = true
 
 [node name="CollisionCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 18
+collision_mask = 6
 collide_with_areas = true
 
 [node name="LedgeCast" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="DoorCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 8
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Marker2Ddel" type="Marker2D" parent="."]
+visible = false
 position = Vector2(0, 8)
 
 [node name="SurfTimer" type="Timer" parent="."]

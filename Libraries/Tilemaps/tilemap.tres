@@ -2817,12 +2817,18 @@ texture = ExtResource("2_autio")
 3:16/0/terrains_peering_bit/top_left_corner = 0
 3:16/0/terrains_peering_bit/top_right_corner = 3
 3:7/0 = 0
+3:7/0/terrain_set = 0
+3:7/0/terrain = 0
 3:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:7/0/physics_layer_0/angular_velocity = 0.0
 3:7/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 3:7/0/physics_layer_1/angular_velocity = 0.0
 3:7/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 3:7/0/physics_layer_2/angular_velocity = 0.0
+3:7/0/terrains_peering_bit/bottom_right_corner = 0
+3:7/0/terrains_peering_bit/bottom_left_corner = 0
+3:7/0/terrains_peering_bit/top_left_corner = 0
+3:7/0/terrains_peering_bit/top_right_corner = 1
 3:7/0/custom_data_1 = true
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_17v5c"]

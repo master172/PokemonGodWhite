@@ -10,8 +10,9 @@ const grass_overlay_texture = preload("res://assets/tallgrass/stepped_tall_grass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().current_scene.get_node("%player").connect("player_moving_signal",player_exiting_grass)
-	get_tree().current_scene.get_node("%player").connect("player_stopped_signal",player_in_grass)
+	var player = find_parent("Current_scene").get_children().back().get_node("player")
+	player.connect("player_moving_signal",player_exiting_grass)
+	player.connect("player_stopped_signal",player_in_grass)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
