@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cihhbke63xn4w"]
+
+[ext_resource type="Script" path="res://SurfChecker.gd" id="1_i6bbf"]
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_2iwcx"]
+
+[node name="SurfChecker" type="Node2D"]
+script = ExtResource("1_i6bbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -4.76837e-07)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2iwcx")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
