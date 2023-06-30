@@ -361,15 +361,15 @@ func get_clicked_tile_power():
 			print("null")
 
 func player_surfing(data,check):
-	if data != "no tiles":
-		if check == "surf" and data[0] == true:
+	if data[0] != false:
+		if check == "surf":
 			if can_surf == true:
 				is_surfing = true
 				is_cycling = false
 				is_running = false
 				playerState = PlayerState.SURFING
 				global_position = data[1]+Vector2(0,8)
-		elif check == "shore" and data[0] == true:
+		elif check == "shore":
 			if playerState == PlayerState.SURFING:
 				is_surfing = false
 				playerState = PlayerState.IDLE

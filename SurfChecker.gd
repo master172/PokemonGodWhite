@@ -4,6 +4,7 @@ extends Node2D
 func process_tile(player:Node2D,check:String):
 	var result = process_tilemap_collision(player,check)
 	player.player_surfing(result,check)
+	#print(result,check)
 	queue_free()
 	
 func process_tilemap_collision(player:Node2D,check:String):
@@ -23,21 +24,20 @@ func process_tilemap_collision(player:Node2D,check:String):
 
 				elif check == "shore":
 					returning_value.append(tile_data.get_custom_data("land"))
-			else:
-				return "no tiles"
-
 
 		var sucess =  [true,position,tile_cords]
 		var faliure = [false,position,tile_cords]
 
 		if check == "shore":
 			if returning_value != [true]:
+				print(returning_value)
 				return faliure
 			return sucess
 
 		elif check == "surf":
 			if returning_value != [true]:
+				#print(returning_value)
 				return faliure
 			return sucess
 	else:
-			return "no tiles"
+			return [false]
