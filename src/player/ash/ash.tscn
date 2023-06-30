@@ -101,7 +101,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yhfbn"]
 resource_name = "cycleDown"
-length = 0.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -110,7 +110,7 @@ tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(22, 97, 16, 22), Rect2(4, 97, 16, 21), Rect2(41, 97, 16, 22), Rect2(4, 97, 16, 21)]
@@ -186,7 +186,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yu0lv"]
 resource_name = "cycleLeft"
-length = 0.4
+length = 1.2
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -196,7 +196,7 @@ tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(118, 97, 20, 22), Rect2(142, 97, 20, 22), Rect2(166, 97, 20, 22), Rect2(142, 97, 20, 22)]
@@ -204,7 +204,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hcfy1"]
 resource_name = "cycleRight"
-length = 0.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -213,7 +213,7 @@ tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(189, 97, 20, 22), Rect2(213, 97, 20, 22), Rect2(237, 97, 20, 22), Rect2(213, 97, 20, 22)]
@@ -345,7 +345,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_t3tm6"]
 resource_name = "cycleUp"
-length = 0.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -354,10 +354,40 @@ tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(80, 97, 16, 22), Rect2(61, 97, 16, 22), Rect2(99, 97, 16, 22), Rect2(61, 97, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_yea41"]
+resource_name = "dissapear"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"entered_door"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_a4dbl"]
@@ -806,36 +836,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19), Rect2(152, 9, 16, 19), Rect2(115, 9, 16, 19)]
-}
-
-[sub_resource type="Animation" id="Animation_yea41"]
-resource_name = "dissapear"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"entered_door"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qbwx"]
