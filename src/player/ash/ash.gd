@@ -283,10 +283,11 @@ func check_water():
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
 			
-			var Surf = SurfChecker.instantiate()
-			Surf.position = to_global(desired_place)
-			get_tree().current_scene.add_child(Surf)
-			Surf.process_tile(self,"surf")
+			if can_surf:
+				var Surf = SurfChecker.instantiate()
+				Surf.position = to_global(desired_place)
+				get_tree().current_scene.add_child(Surf)
+				Surf.process_tile(self,"surf")
 
 
 func check_shore():
@@ -306,11 +307,12 @@ func check_shore():
 				
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
-				
-			var Surf = SurfChecker.instantiate()
-			Surf.position = to_global(desired_place)
-			get_tree().current_scene.add_child(Surf)
-			Surf.process_tile(self,"shore")
+			
+			if can_surf:
+				var Surf = SurfChecker.instantiate()
+				Surf.position = to_global(desired_place)
+				get_tree().current_scene.add_child(Surf)
+				Surf.process_tile(self,"shore")
 
 func player_surfing(data,check):
 	if data[0] != false:
