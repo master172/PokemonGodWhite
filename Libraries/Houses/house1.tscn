@@ -18,3 +18,5 @@ polygon = PackedVector2Array(-32, -24, 32, -24, 32, 24, 0, 24, 0, -8, -16, -8, -
 
 [node name="Door" parent="." instance=ExtResource("2_8h3i4")]
 next_scene_path = "res://src/World/Houses/InnHouse.tscn"
+Spawn_location = Vector2(24, 64)
+Spawn_direction = Vector2(0, -1)

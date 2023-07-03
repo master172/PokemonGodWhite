@@ -6,10 +6,15 @@ signal player_stopped_signal
 signal player_entering_door_signal
 signal player_entered_door_signal
 #export variables
-@export var walk_speed = 4.0
-@export var jump_speed = 4.0
-@export var Run_speed = 8.0
-@export var Cycle_speed = 12.0
+
+@export_category("Movement")
+@export_group("MovementSpeed")
+@export var walk_speed :float = 4.0
+@export var jump_speed :float= 4.0
+@export var Run_speed :float = 8.0
+@export var Cycle_speed :float= 12.0
+
+@export_group("CanMove")
 @export var can_surf : bool = true
 @export var can_run : bool = true
 @export var can_cycle : bool = true
@@ -21,10 +26,10 @@ const LandingDustEffect = preload("res://src/player/ash/landing_dust_effect.tscn
 const SurfChecker = preload("res://src/player/ash/surf_checker.tscn")
 
 #tile based movement variables
-var initial_position = Vector2(0,0)
-var input_direction = Vector2(0,0)
-var is_moving = false
-var percent_moved_to_next_tile = 0.0
+var initial_position :Vector2 = Vector2(0,0)
+var input_direction :Vector2 = Vector2(0,1)
+var is_moving :bool = false
+var percent_moved_to_next_tile :float= 0.0
 
 #movement_state_variables
 var is_running:bool = false
@@ -34,7 +39,7 @@ var jumping_over_ledge:bool = false
 
 var surf_timer_active:bool = false
 
-var speed = 4.0
+var speed :float= 4.0
 
 #import variables
 @onready var animation_tree = $AnimationTree
@@ -54,11 +59,25 @@ enum FacingDirection {LEFT,RIGHT,UP,DOWN}
 var playerState = PlayerState.IDLE
 var facingDirection = FacingDirection.DOWN
 
+#ledge_jumping_variables
+var ledge_direction:Vector2 = Vector2.ZERO
+
 func _ready():
 	initial_position = position
 	animation_tree.active = true
 	shadow.visible = false
 	skin.visible = true
+	
+	#set looking direction
+	animation_tree.set("parameters/Idle/blend_position",input_direction)
+	animation_tree.set("parameters/Walk/blend_position",input_direction)
+	animation_tree.set("parameters/Turn/blend_position",input_direction)
+	animation_tree.set("parameters/Surf/blend_position",input_direction)
+	animation_tree.set("parameters/SurfTurn/blend_position",input_direction)
+	animation_tree.set("parameters/Run/blend_position",input_direction)
+	animation_tree.set("parameters/cycle/blend_position",input_direction)
+	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
+	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 	
 func _physics_process(delta):
 	
@@ -97,6 +116,7 @@ func _physics_process(delta):
 	cycle()
 	speed_handler()
 	get_clicked_tile_power()
+	check_ledge_direction()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -205,7 +225,6 @@ func move(delta):
 		
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_entering_door_signal")
-			print("colliding")
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1.0:
 			position = initial_position + input_direction * TILE_SIZE
@@ -217,7 +236,7 @@ func move(delta):
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 			
-	elif (ledge_cast.is_colliding() and get_current_facing_direction() == Vector2(0,1)) or jumping_over_ledge == true:
+	elif (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
 		percent_moved_to_next_tile += jump_speed * delta
 		if percent_moved_to_next_tile >= 2.0:
 			position = initial_position + input_direction * TILE_SIZE * 2
@@ -234,9 +253,19 @@ func move(delta):
 		else:
 			shadow.visible = true
 			jumping_over_ledge = true
-			var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
-			position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
-			
+			if ledge_direction == Vector2(0,1):
+				var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
+				position.y = initial_position.y + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
+			elif ledge_direction == Vector2(0,-1):
+				var input = input_direction.y * TILE_SIZE * percent_moved_to_next_tile
+				position.y = initial_position.y + (-0.96 - 0.53 * input - 0.05 * pow(input, 2))
+			elif ledge_direction == Vector2(-1,0):
+				var input = input_direction.x * TILE_SIZE * percent_moved_to_next_tile
+				position.x = initial_position.x + (-0.96 - 0.53 * input - 0.05 * pow(input, 2))
+			elif ledge_direction == Vector2(1,0):
+				var input = input_direction.x * TILE_SIZE * percent_moved_to_next_tile
+				position.x = initial_position.x + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
+		
 	elif collision_cast.is_colliding():
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
@@ -362,3 +391,24 @@ func get_clicked_tile_power():
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
+
+func set_spawn(location:Vector2,direction:Vector2):
+		animation_tree.set("parameters/Idle/blend_position",direction)
+		animation_tree.set("parameters/Walk/blend_position",direction)
+		animation_tree.set("parameters/Turn/blend_position",direction)
+		animation_tree.set("parameters/Surf/blend_position",direction)
+		animation_tree.set("parameters/SurfTurn/blend_position",direction)
+		animation_tree.set("parameters/Run/blend_position",direction)
+		animation_tree.set("parameters/cycle/blend_position",direction)
+		animation_tree.set("parameters/cycleIdle/blend_position",direction)
+		animation_tree.set("parameters/cycleTurn/blend_position",direction)
+		position = location
+
+func check_ledge_direction():
+	if ledge_cast.is_colliding():
+		var body_rid = ledge_cast.get_collider_rid()
+		var collided_tile_cords = Utils.Tilemap.get_coords_for_body_rid(body_rid)
+			
+		var tile_data = Utils.Tilemap.get_cell_tile_data(1,collided_tile_cords)
+		if tile_data:
+			ledge_direction = tile_data.get_custom_data("ledgeDirection")

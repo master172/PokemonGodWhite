@@ -5,7 +5,17 @@ extends Area2D
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 
+@export var invisible:bool = false
+
+@export var Spawn_location:Vector2 = Vector2(0,0)
+@export var Spawn_direction:Vector2 = Vector2(0,0)
+
+var player_entered:bool = false
+
+
 func _ready():
+	if invisible == true:
+		visible = false
 	sprite_2d.visible = false
 	var player = find_parent("Current_scene").get_children().back().get_node("player")
 	player.connect("player_entering_door_signal",enter_door)
@@ -13,10 +23,22 @@ func _ready():
 	
 
 func enter_door():
-	animation_player.play("OpenDoor")
+	if player_entered == true:
+		animation_player.play("OpenDoor")
 
 func close_door():
-	animation_player.play("CloseDoor")
+	if player_entered == true:
+		animation_player.play("CloseDoor")
 
 func door_closed():
-	get_node(NodePath("/root/SceneManager")).transition_to_scene(next_scene_path)
+	if player_entered == true:
+		get_node(NodePath("/root/SceneManager")).transition_to_scene(next_scene_path,Spawn_location,Spawn_direction)
+	
+
+
+func _on_body_entered(body):
+	player_entered = true
+
+
+func _on_body_exited(body):
+	player_entered = false
