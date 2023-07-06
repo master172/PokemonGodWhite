@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://qr11x4n8f2gi"]
+
+[ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
+[ext_resource type="FontFile" uid="uid://cwetmuxdwym5x" path="res://assets/Fonts/Aller/Aller_Bd.ttf" id="2_emcjj"]
+[ext_resource type="FontFile" uid="uid://2c3q1khp4ecn" path="res://assets/Fonts/Aller/Aller_BdIt.ttf" id="3_o8rfm"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
+[ext_resource type="FontFile" uid="uid://eaars3fxvohf" path="res://assets/Fonts/Aller/Aller_It.ttf" id="4_py4b8"]
+[ext_resource type="FontFile" uid="uid://bnvjccueg62l" path="res://assets/Fonts/Aller/Aller_Rg.ttf" id="5_lck8p"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="6_5wetc"]
+
+[sub_resource type="Resource" id="Resource_iipoy"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Hello world"
+Speakers = Array[NodePath]([])
+Listners = Array[NodePath]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+next = 1
+
+[sub_resource type="Resource" id="Resource_socbl"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Second Dialog"
+Speakers = Array[NodePath]([])
+Listners = Array[NodePath]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+next = 0
+
+[sub_resource type="Resource" id="Resource_pw24y"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Third Dialog"
+Speakers = Array[NodePath]([])
+Listners = Array[NodePath]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+next = 0
+
+[sub_resource type="Resource" id="Resource_3udj0"]
+script = ExtResource("3_pnle8")
+Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_iipoy"), SubResource("Resource_socbl"), SubResource("Resource_pw24y")])
+
+[sub_resource type="Theme" id="Theme_3ihsn"]
+RichTextLabel/colors/font_outline_color = Color(1, 0.0431373, 0.133333, 1)
+RichTextLabel/constants/line_separation = 10
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/font_sizes/bold_font_size = 32
+RichTextLabel/font_sizes/bold_italics_font_size = 32
+RichTextLabel/font_sizes/italics_font_size = 32
+RichTextLabel/font_sizes/mono_font_size = 32
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/bold_font = ExtResource("2_emcjj")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_o8rfm")
+RichTextLabel/fonts/italics_font = ExtResource("4_py4b8")
+RichTextLabel/fonts/mono_font = ExtResource("5_lck8p")
+RichTextLabel/fonts/normal_font = ExtResource("6_5wetc")
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_klog6")
+current_dialog = SubResource("Resource_3udj0")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -232.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.152941, 0.152941, 0.152941, 0.603922)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0125
+anchor_top = 0.0689655
+anchor_right = 0.9875
+anchor_bottom = 0.931035
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3ihsn")
+bbcode_enabled = true
+text = "margin awareness is something to ponder on truly mesmerising how a few pixels of margin contribute to such an autistic experience of true freedom"
+metadata/_edit_use_anchors_ = true

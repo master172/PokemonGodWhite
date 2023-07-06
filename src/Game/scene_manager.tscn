@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=8 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://bmo5vwylgv02b" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
+[ext_resource type="PackedScene" uid="uid://qr11x4n8f2gi" path="res://src/DialogManager/dialog.tscn" id="3_vq3rt"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
 resource_name = "FadeToBlack"
@@ -90,3 +91,7 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_5vqoy")
 }
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="DialogLayer" instance=ExtResource("3_vq3rt")]
