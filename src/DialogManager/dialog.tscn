@@ -27,7 +27,7 @@ Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
-next = 0
+next = 2
 
 [sub_resource type="Resource" id="Resource_pw24y"]
 script = ExtResource("2_48l1n")
@@ -37,7 +37,7 @@ Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
-next = 0
+next = -1
 
 [sub_resource type="Resource" id="Resource_3udj0"]
 script = ExtResource("3_pnle8")
