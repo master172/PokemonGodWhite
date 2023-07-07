@@ -17,3 +17,6 @@ enum dialog_Type {
 
 @export var Options:Array[Option]
 @export var next:int
+
+func get_dialog_type():
+	return Dialog_type
