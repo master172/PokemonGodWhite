@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=18 format=3 uid="uid://qr11x4n8f2gi"]
 
 [ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
@@ -40,11 +40,17 @@ next = 3
 script = ExtResource("3_s3u0i")
 text = "Yo"
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-next = -1
+next = 4
 
 [sub_resource type="Resource" id="Resource_nsmhb"]
 script = ExtResource("3_s3u0i")
 text = "bro"
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+next = 5
+
+[sub_resource type="Resource" id="Resource_4g6a2"]
+script = ExtResource("3_s3u0i")
+text = "Hi"
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 next = -1
 
@@ -55,12 +61,44 @@ text = "Hello Question"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb")])
+Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
+next = 0
+
+[sub_resource type="Resource" id="Resource_qxet3"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Option 1"
+Speakers = Array[NodePath]([])
+Listners = Array[NodePath]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[ExtResource("3_s3u0i")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_a5bnm"]
+script = ExtResource("3_s3u0i")
+text = "continue"
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+next = 0
+
+[sub_resource type="Resource" id="Resource_m5ghp"]
+script = ExtResource("3_s3u0i")
+text = "dont"
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_b3jue"]
+script = ExtResource("2_48l1n")
+Dialog_type = 1
+text = "Second Question"
+Speakers = Array[NodePath]([])
+Listners = Array[NodePath]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
 next = 0
 
 [sub_resource type="Resource" id="Resource_3udj0"]
 script = ExtResource("3_pnle8")
-Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_iipoy"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx")])
+Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_iipoy"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue")])
 
 [node name="Dialog" type="Control"]
 layout_mode = 3
