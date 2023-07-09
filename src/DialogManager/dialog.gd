@@ -32,6 +32,8 @@ func _ready():
 	
 func _start(dialogueLine:DialogueLine):
 	Utils.DialogProcessing = true
+	if Utils.Player != null:
+		Utils.Player.set_physics_process(false)
 	current_dialog = dialogueLine
 	state = State.Normal
 	set_text_empty()
@@ -144,3 +146,5 @@ func clear():
 	state = State.Empty
 	await get_tree().create_timer(0.5).timeout
 	Utils.DialogProcessing = false
+	if Utils.Player != null:
+		Utils.Player.set_physics_process(true)

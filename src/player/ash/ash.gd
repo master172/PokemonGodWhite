@@ -64,6 +64,7 @@ var facingDirection = FacingDirection.DOWN
 var ledge_direction:Vector2 = Vector2.ZERO
 
 func _ready():
+	Utils.Player = self
 	initial_position = position
 	animation_tree.active = true
 	shadow.visible = false

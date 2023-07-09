@@ -2,6 +2,7 @@ extends Node2D
 
 var can_return:bool = true
 
+	
 func process_tile(player:Node2D,check:String):
 	var result = process_tilemap_collision(player,check)
 	player.player_surfing(result,check)
@@ -25,7 +26,7 @@ func process_tilemap_collision(player:Node2D,check:String):
 			if index == 1:
 				var scene_tile = current_tilemap.get_cell_source_id(index,tile_cords)
 				if scene_tile != -1:
-					print(scene_tile)
+					#print(scene_tile)
 					if scene_tile == 6 or scene_tile == 3:
 						can_return = false
 					else:
@@ -55,3 +56,6 @@ func process_tilemap_collision(player:Node2D,check:String):
 			return sucess
 	else:
 			return [false]
+
+
+
