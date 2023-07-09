@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5iywfojdo8oo"]
+[gd_scene load_steps=19 format=3 uid="uid://c5iywfojdo8oo"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_065gg"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="1_bqae5"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d1pkglneoxq4a" path="res://assets/PokemonTilesets/ledge.png" id="4_amtgd"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_2vb15"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_ccnt7"]
+[ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_d6v8b"]
+[ext_resource type="PackedScene" uid="uid://diw3id2cyxe0k" path="res://src/DialogManager/dialog_layer.tscn" id="10_xvuwq"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -7964,6 +7966,10 @@ texture = ExtResource("5_2vb15")
 resource_name = "Houses"
 scenes/1/scene = ExtResource("6_ccnt7")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1vc5r"]
+resource_name = "Signs"
+scenes/1/scene = ExtResource("7_d6v8b")
+
 [sub_resource type="TileSet" id="TileSet_fyfio"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
@@ -7992,6 +7998,7 @@ sources/2 = SubResource("TileSetScenesCollectionSource_17v5c")
 sources/3 = SubResource("TileSetAtlasSource_w4ajd")
 sources/4 = SubResource("TileSetAtlasSource_l5qym")
 sources/5 = SubResource("TileSetScenesCollectionSource_fxy7e")
+sources/6 = SubResource("TileSetScenesCollectionSource_1vc5r")
 
 [node name="Test" type="Node2D"]
 
@@ -8006,8 +8013,10 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(2, 262147, 3, -65534, 262147, 2, -131070, 262147, 1, -65540, 3, 1, -4, 3, 2, 65532, 3, 3, 196607, 131075, 4, 196606, 65539, 4, 131072, 196611, 4, -196610, 65539, 0, -196609, 131075, 0, -262144, 196611, 0)
+layer_1/tile_data = PackedInt32Array(2, 262147, 3, -65534, 262147, 2, -131070, 262147, 1, -65540, 3, 1, -4, 3, 2, 65532, 3, 3, 196607, 131075, 4, 196606, 65539, 4, 131072, 196611, 4, -196610, 65539, 0, -196609, 131075, 0, -262144, 196611, 0, 131071, 6, 65536)
 script = ExtResource("1_bqae5")
 
 [node name="player" parent="." instance=ExtResource("2_mblat")]
 position = Vector2(-8, 0)
+
+[node name="DialogLayer" parent="." instance=ExtResource("10_xvuwq")]

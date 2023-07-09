@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=18 format=3 uid="uid://bmo5vwylgv02b"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1pkglneoxq4a" path="res://assets/PokemonTilesets/ledge.png" id="4_3hqum"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_l5egc"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_gix2c"]
+[ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -7964,6 +7965,10 @@ texture = ExtResource("5_l5egc")
 resource_name = "Houses"
 scenes/1/scene = ExtResource("6_gix2c")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tr3qo"]
+resource_name = "Signs"
+scenes/1/scene = ExtResource("7_agoln")
+
 [sub_resource type="TileSet" id="TileSet_338l5"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
@@ -7992,6 +7997,7 @@ sources/2 = SubResource("TileSetScenesCollectionSource_17v5c")
 sources/3 = SubResource("TileSetAtlasSource_w4ajd")
 sources/4 = SubResource("TileSetAtlasSource_l5qym")
 sources/5 = SubResource("TileSetScenesCollectionSource_fxy7e")
+sources/6 = SubResource("TileSetScenesCollectionSource_tr3qo")
 
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
@@ -8011,7 +8017,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = -1
-layer_1/tile_data = PackedInt32Array(-327676, 0, 65536, 65537, 2, 65536, 65538, 2, 65536, -2, 2, 65536, -65539, 2, 65536, -3, 2, 65536, -1, 2, 65536, 0, 2, 65536, 2, 2, 65536, 3, 2, 65536, 131070, 2, 65536, 131071, 2, 65536, 65533, 2, 65536, 65535, 2, 65536, 131069, 2, 65536, -65538, 2, 65536, 589796, 2, 65536, 589797, 2, 65536, 655333, 2, 65536, 589798, 2, 65536, 524262, 2, 65536, 524263, 2, 65536, 589799, 2, 65536, 524261, 2, 65536, 65509, 0, 65536, 131043, 0, 65536, -131068, 65539, 4, -131067, 196611, 4, -131074, 3, 3, -196610, 3, 1)
+layer_1/tile_data = PackedInt32Array(-327676, 0, 65536, 65537, 2, 65536, 65538, 2, 65536, -2, 2, 65536, -65539, 2, 65536, -3, 2, 65536, -1, 2, 65536, 0, 2, 65536, 2, 2, 65536, 3, 2, 65536, 131070, 2, 65536, 131071, 2, 65536, 65533, 2, 65536, 65535, 2, 65536, 131069, 2, 65536, -65538, 2, 65536, 589796, 2, 65536, 589797, 2, 65536, 655333, 2, 65536, 589798, 2, 65536, 524262, 2, 65536, 524263, 2, 65536, 589799, 2, 65536, 524261, 2, 65536, 65509, 0, 65536, 131043, 0, 65536, -131068, 65539, 4, -131067, 196611, 4, -131074, 3, 3, -196610, 3, 1, -327681, 6, 65536)
 layer_2/name = "airObjects"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)

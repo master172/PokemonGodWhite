@@ -26,10 +26,6 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=3
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/DialogManager/plugin.cfg")
-
 [input]
 
 W={
@@ -88,3 +84,4 @@ Yes={
 2d_physics/layer_2="Collideables"
 2d_physics/layer_3="ledges"
 2d_physics/layer_4="Door"
+2d_physics/layer_5="Interactables"

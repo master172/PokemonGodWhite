@@ -17,6 +17,7 @@ var handling_options :bool = false
 var current_selected : int = 0
 
 enum State {
+	Empty,
 	Normal,
 	Question
 }
@@ -24,7 +25,15 @@ var state = State.Normal
 
 signal text_completed
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
+	Utils.DialogBar = self
+	clear()
+	
+func _start(dialogueLine:DialogueLine):
+	Utils.DialogProcessing = true
+	current_dialog = dialogueLine
+	state = State.Normal
 	set_text_empty()
 	process_dialog()
 
@@ -80,8 +89,11 @@ func process_dialog():
 					add_options(dialog)
 					state = State.Question
 			elif current_index == -1:
-				set_text_empty()
-				hide()
+				clear()
+		else:
+			clear()
+	else:
+		clear()
 
 func add_options(dialog):
 	for i in dialog.Options.size() :
@@ -121,3 +133,14 @@ func handle_input_choice(dialog,option):
 
 func Text_completed():
 	emit_signal("text_completed")
+
+func clear():
+	current_index = 0
+	handling_options = false
+	current_selected = 0
+	set_text_empty()
+	hide()
+	current_dialog = null
+	state = State.Empty
+	await get_tree().create_timer(0.5).timeout
+	Utils.DialogProcessing = false

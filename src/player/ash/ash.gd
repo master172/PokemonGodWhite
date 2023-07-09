@@ -51,6 +51,7 @@ var speed :float= 4.0
 @onready var surf_timer = $SurfTimer
 @onready var skin = $Skin
 @onready var animation_player = $AnimationPlayer
+@onready var interaction_cast = $InteractionCast
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -117,6 +118,7 @@ func _physics_process(delta):
 	speed_handler()
 	get_clicked_tile_power()
 	check_ledge_direction()
+	check_interaction()
 
 func process_player_input():
 	if input_direction.y == 0:
@@ -376,6 +378,9 @@ func update_casts():
 	
 	door_cast.set_target_position(desired_step)
 	door_cast.force_raycast_update()
+	
+	interaction_cast.set_target_position(desired_step)
+	interaction_cast.force_raycast_update()
 
 
 
@@ -402,6 +407,7 @@ func set_spawn(location:Vector2,direction:Vector2):
 		animation_tree.set("parameters/cycle/blend_position",direction)
 		animation_tree.set("parameters/cycleIdle/blend_position",direction)
 		animation_tree.set("parameters/cycleTurn/blend_position",direction)
+		
 		position = location
 
 func check_ledge_direction():
@@ -412,3 +418,12 @@ func check_ledge_direction():
 		var tile_data = Utils.Tilemap.get_cell_tile_data(1,collided_tile_cords)
 		if tile_data:
 			ledge_direction = tile_data.get_custom_data("ledgeDirection")
+
+func check_interaction():
+	if interaction_cast.is_colliding():
+		
+		if Input.is_action_just_pressed("Yes") and Utils.DialogProcessing == false:
+	
+			var interactable = interaction_cast.get_collider()
+			if Utils.DialogBar != null:
+				interactable._interact()

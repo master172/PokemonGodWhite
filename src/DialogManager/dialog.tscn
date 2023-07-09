@@ -100,7 +100,7 @@ next = 0
 script = ExtResource("3_pnle8")
 Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_iipoy"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue")])
 
-[node name="Dialog" type="Control"]
+[node name="DialogBar" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1212,12 +1212,14 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="CollisionCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 6
+collision_mask = 22
 collide_with_areas = true
 
 [node name="LedgeCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 4
@@ -1225,9 +1227,17 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="DoorCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="InteractionCast" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 8)
+collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 
