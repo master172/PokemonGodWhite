@@ -31,6 +31,9 @@ func _ready():
 	clear()
 	
 func _start(dialogueLine:DialogueLine):
+	current_index = 0
+	current_selected = 0
+	handling_options = false
 	Utils.DialogProcessing = true
 	if Utils.Player != null:
 		Utils.Player.set_physics_process(false)
@@ -45,7 +48,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("Yes"):
 			if DialogDisplay.get_visible_ratio() == 1.0:
 				process_dialog()
-			else:
+			elif DialogDisplay.get_visible_ratio() > 0.1:
 				skip_display_animation()
 	elif state == State.Question:
 		handle_questions(dialog)
@@ -55,6 +58,7 @@ func set_text_empty():
 	DialogDisplay.text = ""
 	
 func displayText(text):
+	
 	DialogDisplay.text = text
 	await get_tree().create_timer(0.2).timeout
 	
@@ -72,9 +76,12 @@ func process_dialog():
 	if current_dialog != null:
 		if current_dialog.Dialogs.size() >= 1:
 			if current_index >= 0:
+				current_dialog.replace_symbols(current_index)
 				if current_dialog.Dialogs[current_index].get_dialog_type() == 0:
 					show()
 					set_text_empty()
+					call_functions()
+					
 					displayText(current_dialog.Dialogs[current_index].text)
 					dialog = current_dialog.Dialogs[current_index]
 					state = State.Normal
@@ -83,6 +90,7 @@ func process_dialog():
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 1:
 					show()
 					set_text_empty()
+					call_functions()
 					displayText(current_dialog.Dialogs[current_index].text)
 					dialog = current_dialog.Dialogs[current_index]
 					await self.text_completed
@@ -130,6 +138,8 @@ func handle_input_choice(dialog,option):
 	current_selected = 0
 	for i in options_container.get_children():
 		i.queue_free()
+	
+	call_option_function(dialog.Options[option])
 	current_index = dialog.Options[option].next
 	process_dialog()
 
@@ -148,3 +158,21 @@ func clear():
 	Utils.DialogProcessing = false
 	if Utils.Player != null:
 		Utils.Player.set_physics_process(true)
+
+func call_functions():
+	if current_dialog.Dialogs[current_index].functions.size() >= 1:
+		for i in current_dialog.Dialogs[current_index].functions:
+			if i.parameters.size() >= 1:
+				get_node(i.callable).call_deferred(i.function,i.parameters)
+			else:
+				get_node(i.callable).call_deferred(i.function)
+
+func call_option_function(index:Option):
+	for i in index.functions:
+		if i.parameters.size() >= 1:
+			get_node(i.callable).call_deferred(i.function,i.parameters)
+		else:
+			get_node(i.callable).call_deferred(i.function)
+			
+func test_function():
+	print("test")

@@ -20,3 +20,9 @@ enum dialog_Type {
 
 func get_dialog_type():
 	return Dialog_type
+
+func format_text(format):
+	text = text.format(format)
+	if Options.size() >= 1:
+		for i in Options:
+			i.format_text(format)

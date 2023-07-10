@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_s0xhx")
 Dialogs = Array[Resource("res://Libraries/Resources/Dialog/Dialog.gd")]([])
+Format = {}

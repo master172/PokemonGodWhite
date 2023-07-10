@@ -1,10 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=20 format=3 uid="uid://qr11x4n8f2gi"]
 
 [ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_bu7wt"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
+
+[sub_resource type="Resource" id="Resource_02cbl"]
+script = ExtResource("2_bu7wt")
+callable = NodePath(".")
+function = "test_function"
+parameters = []
 
 [sub_resource type="Resource" id="Resource_iipoy"]
 script = ExtResource("2_48l1n")
@@ -12,7 +19,7 @@ Dialog_type = 0
 text = "Hello world"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_02cbl")])
 Options = Array[ExtResource("3_s3u0i")]([])
 next = 1
 
@@ -22,7 +29,7 @@ Dialog_type = 0
 text = "Second Dialog"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 next = 2
 
@@ -32,26 +39,26 @@ Dialog_type = 0
 text = "Third Dialog"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 next = 3
 
 [sub_resource type="Resource" id="Resource_dfbbq"]
 script = ExtResource("3_s3u0i")
 text = "Yo"
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 next = 4
 
 [sub_resource type="Resource" id="Resource_nsmhb"]
 script = ExtResource("3_s3u0i")
 text = "bro"
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 next = 5
 
 [sub_resource type="Resource" id="Resource_4g6a2"]
 script = ExtResource("3_s3u0i")
 text = "Hi"
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_dplxx"]
@@ -60,7 +67,7 @@ Dialog_type = 1
 text = "Hello Question"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
 next = 0
 
@@ -70,20 +77,20 @@ Dialog_type = 0
 text = "Option 1"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_a5bnm"]
 script = ExtResource("3_s3u0i")
 text = "continue"
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 next = 0
 
 [sub_resource type="Resource" id="Resource_m5ghp"]
 script = ExtResource("3_s3u0i")
 text = "dont"
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_b3jue"]
@@ -92,13 +99,14 @@ Dialog_type = 1
 text = "Second Question"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
 next = 0
 
 [sub_resource type="Resource" id="Resource_3udj0"]
 script = ExtResource("3_pnle8")
 Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_iipoy"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue")])
+Format = {}
 
 [node name="DialogBar" type="Control"]
 layout_mode = 3

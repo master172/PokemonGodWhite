@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://qdqx1fmiqvo4"]
+
+[sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_6qi6a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+syntax_highlighter = SubResource("SyntaxHighlighter_6qi6a")
+symbol_lookup_on_click = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true

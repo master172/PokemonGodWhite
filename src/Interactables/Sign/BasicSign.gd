@@ -11,4 +11,6 @@ func _process(delta):
 	pass
 
 func _interact():
+	Current_dialog.add_symbols_to_replace({"NewfoundLand":"Godot"})
 	Utils.DialogBar._start(self.Current_dialog)
+	

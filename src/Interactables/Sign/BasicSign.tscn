@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_0sakw"]
 script = ExtResource("2_v4m4j")
 Dialog_type = 0
-text = "Welcome to NewfoundLand"
+text = "Welcome to {NewfoundLand}"
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
@@ -18,6 +18,9 @@ next = -1
 [sub_resource type="Resource" id="Resource_la14q"]
 script = ExtResource("3_bv0gl")
 Dialogs = Array[ExtResource("2_v4m4j")]([SubResource("Resource_0sakw")])
+Format = {
+"Welcome": "Hola"
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksmod"]
 size = Vector2(16, 16)
