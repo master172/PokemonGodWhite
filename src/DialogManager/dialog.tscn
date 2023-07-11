@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=27 format=3 uid="uid://qr11x4n8f2gi"]
 
 [ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/StVar.gd" id="4_nux8y"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/ChangeVariable.gd" id="5_6hmhl"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
 
 [sub_resource type="Resource" id="Resource_lpre6"]
@@ -26,6 +27,8 @@ Options = Array[ExtResource("3_s3u0i")]([])
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_socbl"]
 script = ExtResource("2_48l1n")
@@ -39,6 +42,8 @@ Options = Array[ExtResource("3_s3u0i")]([])
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_pw24y"]
 script = ExtResource("2_48l1n")
@@ -52,6 +57,8 @@ Options = Array[ExtResource("3_s3u0i")]([])
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_rjd3e"]
 script = ExtResource("4_nux8y")
@@ -72,6 +79,15 @@ set_variables = SubResource("Resource_rjd3e")
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
+
+[sub_resource type="Resource" id="Resource_kilpi"]
+script = ExtResource("5_6hmhl")
+node = NodePath(".")
+variable = {
+"Viq": 4
+}
 
 [sub_resource type="Resource" id="Resource_sdfav"]
 script = ExtResource("4_nux8y")
@@ -81,7 +97,7 @@ item = {
 
 [sub_resource type="Resource" id="Resource_tajse"]
 script = ExtResource("2_48l1n")
-Dialog_type = 4
+Dialog_type = 2
 text = ""
 next = 0
 Speakers = Array[NodePath]([])
@@ -92,6 +108,8 @@ set_variables = SubResource("Resource_sdfav")
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([SubResource("Resource_kilpi")])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_dfbbq"]
 script = ExtResource("3_s3u0i")
@@ -123,6 +141,8 @@ Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResou
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_qxet3"]
 script = ExtResource("2_48l1n")
@@ -136,6 +156,8 @@ Options = Array[ExtResource("3_s3u0i")]([])
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_a5bnm"]
 script = ExtResource("3_s3u0i")
@@ -161,6 +183,8 @@ Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResou
 StNext = 0
 get_variables = {}
 GtNext = 0
+change_variables = Array[ExtResource("5_6hmhl")]([])
+ChNext = 0
 
 [sub_resource type="Resource" id="Resource_3udj0"]
 script = ExtResource("3_pnle8")

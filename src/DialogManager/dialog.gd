@@ -87,6 +87,7 @@ func process_dialog():
 					state = State.Normal
 					
 					current_index = current_dialog.Dialogs[current_index].next
+					
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 1:
 					show()
 					set_text_empty()
@@ -98,6 +99,17 @@ func process_dialog():
 					
 					add_options(dialog)
 					state = State.Question
+				
+				elif current_dialog.Dialogs[current_index].get_dialog_type() == 2:
+					change_variables()
+					
+					if current_dialog.Dialogs[current_index].ChNext != 0:
+						current_index = current_dialog.Dialogs[current_index].ChNext
+					else:
+						current_index += 1
+					
+
+					process_dialog()
 					
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 4:
 					current_dialog.Dialogs[current_index].set_variables.add()
@@ -189,3 +201,23 @@ func call_option_function(index:Option):
 			
 func test_function():
 	print("test")
+
+func change_variables():
+	for i in current_dialog.Dialogs[current_index].change_variables:
+		var node = i.node
+		var variable = i.variable
+		if get_node(node).has_method("changeVariables"):
+			get_node(node).changeVariables(variable)
+
+var Viq :int = 2
+func changeVariables(variable):
+	var map_dict:Dictionary = {
+		"Viq":Viq
+	}
+	for key in variable.keys():
+		var value = variable[key]
+		if map_dict.has(key):
+			map_dict[key] = value
+	print(variable.keys())
+	print(map_dict)
+	print(Viq)

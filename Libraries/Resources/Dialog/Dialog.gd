@@ -5,7 +5,7 @@ class_name Dialog
 enum dialog_Type {
 	Normal,
 	Question,
-	Set_Variable,
+	Change_Variable,
 	Get_Variable,
 	Create_Variable
 }
@@ -34,6 +34,10 @@ enum dialog_Type {
 @export_subgroup("get")
 @export var get_variables:Dictionary = {}
 @export var GtNext:int = 0
+
+@export_subgroup("Change")
+@export var change_variables:Array[ChangeVariables]
+@export var ChNext:int = 0
 
 func get_dialog_type():
 	return Dialog_type
