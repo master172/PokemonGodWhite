@@ -26,9 +26,9 @@ var state = State.Normal
 signal text_completed
 # Called when the node enters the scene tree for the first time.
 
-func _ready():
-	Utils.DialogBar = self
-	clear()
+#func _ready():
+#	Utils.DialogBar = self
+#	clear()
 	
 func _start(dialogueLine:DialogueLine):
 	current_index = 0
@@ -98,6 +98,17 @@ func process_dialog():
 					
 					add_options(dialog)
 					state = State.Question
+					
+				elif current_dialog.Dialogs[current_index].get_dialog_type() == 4:
+					current_dialog.Dialogs[current_index].set_variables.add()
+					if current_dialog.Dialogs[current_index].StNext != 0:
+						current_index = current_dialog.Dialogs[current_index].StNext
+					else:
+						current_index += 1
+					
+					print(Global.Global_Variables.values())
+					process_dialog()
+					
 			elif current_index == -1:
 				clear()
 		else:
@@ -110,10 +121,12 @@ func add_options(dialog):
 		var optionNode = OptionNode.instantiate()
 		optionNode.text = dialog.Options[i].text
 		options_container.add_child(optionNode)
+	
 	set_option_true()
 
 func set_option_true():
-	options_container.get_child(current_selected).change_selected(true)
+	if is_instance_valid(options_container.get_child(current_selected)):
+		options_container.get_child(current_selected).change_selected(true)
 	
 func handle_questions(dialog):
 	if Input.is_action_just_pressed("W"):

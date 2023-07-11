@@ -9,11 +9,14 @@
 script = ExtResource("2_v4m4j")
 Dialog_type = 0
 text = "Welcome to {NewfoundLand}"
+next = -1
 Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
-next = -1
+StNext = 0
+get_variables = {}
+GtNext = 0
 
 [sub_resource type="Resource" id="Resource_la14q"]
 script = ExtResource("3_bv0gl")
