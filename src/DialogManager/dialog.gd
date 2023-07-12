@@ -26,9 +26,9 @@ var state = State.Normal
 signal text_completed
 # Called when the node enters the scene tree for the first time.
 
-#func _ready():
-#	Utils.DialogBar = self
-#	clear()
+func _ready():
+	Utils.DialogBar = self
+	clear()
 	
 func _start(dialogueLine:DialogueLine):
 	current_index = 0
@@ -99,27 +99,8 @@ func process_dialog():
 					
 					add_options(dialog)
 					state = State.Question
-				
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 2:
-					change_variables()
-					
-					if current_dialog.Dialogs[current_index].ChNext != 0:
-						current_index = current_dialog.Dialogs[current_index].ChNext
-					else:
-						current_index += 1
-					
-
-					process_dialog()
-					
-				elif current_dialog.Dialogs[current_index].get_dialog_type() == 4:
-					current_dialog.Dialogs[current_index].set_variables.add()
-					if current_dialog.Dialogs[current_index].StNext != 0:
-						current_index = current_dialog.Dialogs[current_index].StNext
-					else:
-						current_index += 1
-					
-					print(Global.Global_Variables.values())
-					process_dialog()
+					call_functions()
 					
 			elif current_index == -1:
 				clear()
@@ -198,26 +179,12 @@ func call_option_function(index:Option):
 			get_node(i.callable).call_deferred(i.function,i.parameters)
 		else:
 			get_node(i.callable).call_deferred(i.function)
-			
+
+
 func test_function():
 	print("test")
 
-func change_variables():
-	for i in current_dialog.Dialogs[current_index].change_variables:
-		var node = i.node
-		var variable = i.variable
-		if get_node(node).has_method("changeVariables"):
-			get_node(node).changeVariables(variable)
-
-var Viq :int = 2
-func changeVariables(variable):
-	var map_dict:Dictionary = {
-		"Viq":Viq
-	}
-	for key in variable.keys():
-		var value = variable[key]
-		if map_dict.has(key):
-			map_dict[key] = value
-	print(variable.keys())
-	print(map_dict)
-	print(Viq)
+func Change_Dialog(param):
+	current_dialog = param[0]
+	current_index = 0
+	process_dialog()

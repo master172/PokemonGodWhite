@@ -5,9 +5,7 @@ class_name Dialog
 enum dialog_Type {
 	Normal,
 	Question,
-	Change_Variable,
-	Get_Variable,
-	Create_Variable
+	Conditional,
 }
 
 
@@ -23,21 +21,6 @@ enum dialog_Type {
 @export_group("methods")
 @export var functions :Array[Function] = []
 @export var Options:Array[Option]
-
-
-@export_group("variables")
-
-@export_subgroup("set")
-@export var set_variables:SetVariable
-@export var StNext:int = 0
-
-@export_subgroup("get")
-@export var get_variables:Dictionary = {}
-@export var GtNext:int = 0
-
-@export_subgroup("Change")
-@export var change_variables:Array[ChangeVariables]
-@export var ChNext:int = 0
 
 func get_dialog_type():
 	return Dialog_type

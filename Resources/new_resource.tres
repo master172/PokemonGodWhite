@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="SetVariable" load_steps=2 format=3 uid="uid://drbvdpencrvub"]
-
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/StVar.gd" id="1_qml7q"]
-
-[resource]
-script = ExtResource("1_qml7q")
-item = {}

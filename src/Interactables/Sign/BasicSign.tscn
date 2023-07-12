@@ -14,11 +14,6 @@ Speakers = Array[NodePath]([])
 Listners = Array[NodePath]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
-StNext = 0
-get_variables = {}
-GtNext = 0
-change_variables = Array[Resource("res://Libraries/Resources/Dialog/ChangeVariable.gd")]([])
-ChNext = 0
 
 [sub_resource type="Resource" id="Resource_la14q"]
 script = ExtResource("3_bv0gl")

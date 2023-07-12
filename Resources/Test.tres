@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://yvcoywdmlu0l"]
-
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="1_s0xhx"]
-
-[resource]
-script = ExtResource("1_s0xhx")
-Dialogs = Array[Resource("res://Libraries/Resources/Dialog/Dialog.gd")]([])
-Format = {}
