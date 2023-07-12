@@ -15,8 +15,7 @@ enum dialog_Type {
 @export var next:int
 
 @export_group("actors")
-@export var Speakers :Array[NodePath] =[]
-@export var Listners :Array[NodePath] =[]
+@export var Actors :Array[Actor] =[]
 
 @export_group("methods")
 @export var functions :Array[Function] = []

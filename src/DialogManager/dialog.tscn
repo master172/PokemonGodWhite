@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
-[ext_resource type="Resource" uid="uid://c4vikkbymtjnl" path="res://Resources/NewLine.tres" id="5_vp6sx"]
+[ext_resource type="Resource" uid="uid://c4vikkbymtjnl" path="res://Resources/Dialogs/NewLine.tres" id="5_ixvud"]
 
 [sub_resource type="Resource" id="Resource_lpre6"]
 script = ExtResource("2_bu7wt")
@@ -19,8 +19,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "First Dialog"
 next = 1
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_lpre6")])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -29,8 +28,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Second Dialog"
 next = 2
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -39,8 +37,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Third Dialog"
 next = 3
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -67,8 +64,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Hello Question"
 next = 0
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
 
@@ -77,8 +73,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Option 1"
 next = -1
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -99,8 +94,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Second Question"
 next = 0
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
 
@@ -108,15 +102,14 @@ Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResou
 script = ExtResource("2_bu7wt")
 callable = NodePath(".")
 function = "Change_Dialog"
-parameters = [ExtResource("5_vp6sx")]
+parameters = [ExtResource("5_ixvud")]
 
 [sub_resource type="Resource" id="Resource_7142w"]
 script = ExtResource("2_48l1n")
 Dialog_type = 2
 text = ""
 next = 0
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_8helj")])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -166,3 +159,18 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Actors" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1280.0
+offset_bottom = 488.0
+
+[node name="Speakers" type="HBoxContainer" parent="Actors"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Listners" type="HBoxContainer" parent="Actors"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2

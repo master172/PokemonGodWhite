@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq52puj5i2wvk"]
+[gd_scene load_steps=9 format=3 uid="uid://dq52puj5i2wvk"]
 
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="1_4cukr"]
 [ext_resource type="Script" path="res://src/Interactables/Sign/BasicSign.gd" id="1_l04gh"]
+[ext_resource type="Resource" uid="uid://budscqmll3kan" path="res://Resources/Dialogs/AshActor.tres" id="2_5nit4"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_v4m4j"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_bv0gl"]
 
@@ -10,8 +11,7 @@ script = ExtResource("2_v4m4j")
 Dialog_type = 0
 text = "Welcome to {NewfoundLand}"
 next = -1
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([ExtResource("2_5nit4")])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
 Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
 

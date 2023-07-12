@@ -2,6 +2,9 @@ extends Control
 
 @onready var DialogDisplay = $Background/RichTextLabel
 @onready var options_container = $OptionsContainer
+@onready var actors = $Actors
+@onready var speakers = $Actors/Speakers
+@onready var listners = $Actors/Listners
 
 @export var current_dialog:DialogueLine
 
@@ -9,6 +12,7 @@ var current_index:int = 0
 var tween
 
 @onready var OptionNode = preload("res://src/DialogManager/option.tscn")
+@onready var ActorNode = preload("res://src/DialogManager/actor.tscn")
 
 var dialog
 
@@ -101,14 +105,19 @@ func process_dialog():
 		if current_dialog.Dialogs.size() >= 1:
 			if current_index >= 0:
 				
+				get_rid_of_actors()
+				
 				dialog_changed.emit(current_dialog.Dialogs[current_index])
 				
 				current_dialog.replace_symbols(current_index)
+				
 				
 				if current_dialog.Dialogs[current_index].get_dialog_type() == 0:
 					show()
 					set_text_empty()
 					call_functions()
+					
+					add_actors(current_dialog.Dialogs[current_index])
 					
 					displayText(current_dialog.Dialogs[current_index].text)
 					dialog = current_dialog.Dialogs[current_index]
@@ -120,6 +129,9 @@ func process_dialog():
 					show()
 					set_text_empty()
 					call_functions()
+					
+					add_actors(current_dialog.Dialogs[current_index])
+					
 					displayText(current_dialog.Dialogs[current_index].text)
 					dialog = current_dialog.Dialogs[current_index]
 					await self.text_completed
@@ -231,3 +243,27 @@ func Change_Dialog(param,at_what:int = 0):
 	index_changed.emit(current_index)
 	dialogLine_Changed.emit(current_dialog)
 	process_dialog()
+
+func add_actors(dialog:Dialog):
+	if dialog.Actors.size() >= 1:
+		for i in dialog.Actors:
+			var Actor_Type = i.get_actor_type()
+			if Actor_Type == 0:
+				pass
+			elif Actor_Type == 1:
+				pass
+			elif Actor_Type == 2:
+				var speaker = ActorNode.instantiate()
+				speaker.texture = i.get_sprite()
+				speakers.add_child(speaker)
+			elif Actor_Type == 3:
+				var listner = ActorNode.instantiate()
+				listner.texture = i.get_sprite()
+				listner.flip_h = true
+				listners.add_child(listner)
+
+func get_rid_of_actors():
+	for i in speakers.get_children():
+		i.queue_free()
+	for i in listners.get_children():
+		i.queue_free()
