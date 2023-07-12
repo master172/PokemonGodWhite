@@ -24,6 +24,20 @@ enum State {
 var state = State.Normal
 
 signal text_completed
+
+#signals for feature completeness
+signal started(DialogLine)
+signal finsished(DialogLine)
+signal dialogLine_Changed(DialogLine)
+
+signal dialog_changed(DialogNo)
+
+signal StartOptions(Options)
+signal option(OptionNo)
+
+signal Functions(FunctionNo)
+
+signal index_changed(at)
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -31,15 +45,25 @@ func _ready():
 	clear()
 	
 func _start(dialogueLine:DialogueLine):
+	#handling necessary variables
 	current_index = 0
+	index_changed.emit(current_index)
 	current_selected = 0
 	handling_options = false
 	Utils.DialogProcessing = true
+	
+	#Stopping the player
 	if Utils.Player != null:
 		Utils.Player.set_physics_process(false)
+	
+	#Changing states
 	current_dialog = dialogueLine
 	state = State.Normal
+	
 	set_text_empty()
+	
+	started.emit(current_dialog)
+	
 	process_dialog()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -76,7 +100,11 @@ func process_dialog():
 	if current_dialog != null:
 		if current_dialog.Dialogs.size() >= 1:
 			if current_index >= 0:
+				
+				dialog_changed.emit(current_dialog.Dialogs[current_index])
+				
 				current_dialog.replace_symbols(current_index)
+				
 				if current_dialog.Dialogs[current_index].get_dialog_type() == 0:
 					show()
 					set_text_empty()
@@ -87,7 +115,7 @@ func process_dialog():
 					state = State.Normal
 					
 					current_index = current_dialog.Dialogs[current_index].next
-					
+					index_changed.emit(current_index)
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 1:
 					show()
 					set_text_empty()
@@ -115,6 +143,7 @@ func add_options(dialog):
 		optionNode.text = dialog.Options[i].text
 		options_container.add_child(optionNode)
 	
+	StartOptions.emit(dialog.Options)
 	set_option_true()
 
 func set_option_true():
@@ -146,7 +175,11 @@ func handle_input_choice(dialog,option):
 		i.queue_free()
 	
 	call_option_function(dialog.Options[option])
+	
 	current_index = dialog.Options[option].next
+	
+	index_changed.emit(current_index)
+	
 	process_dialog()
 
 func Text_completed():
@@ -154,37 +187,47 @@ func Text_completed():
 
 func clear():
 	current_index = 0
+	index_changed.emit(current_index)
 	handling_options = false
 	current_selected = 0
 	set_text_empty()
 	hide()
-	current_dialog = null
+	
 	state = State.Empty
 	await get_tree().create_timer(0.5).timeout
 	Utils.DialogProcessing = false
+	
 	if Utils.Player != null:
 		Utils.Player.set_physics_process(true)
+		
+	finsished.emit(current_dialog)
+	current_dialog = null
 
 func call_functions():
 	if current_dialog.Dialogs[current_index].functions.size() >= 1:
 		for i in current_dialog.Dialogs[current_index].functions:
+			Functions.emit(i)
 			if i.parameters.size() >= 1:
 				get_node(i.callable).call_deferred(i.function,i.parameters)
 			else:
 				get_node(i.callable).call_deferred(i.function)
 
 func call_option_function(index:Option):
+	option.emit(index)
 	for i in index.functions:
+		Functions.emit(i)
 		if i.parameters.size() >= 1:
 			get_node(i.callable).call_deferred(i.function,i.parameters)
 		else:
 			get_node(i.callable).call_deferred(i.function)
-
+	
 
 func test_function():
 	print("test")
 
-func Change_Dialog(param):
+func Change_Dialog(param,at_what:int = 0):
 	current_dialog = param[0]
-	current_index = 0
+	current_index = at_what
+	index_changed.emit(current_index)
+	dialogLine_Changed.emit(current_dialog)
 	process_dialog()
