@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5rtlmuoteprh"]
+
+[ext_resource type="PackedScene" uid="uid://bp3pvr52m44pv" path="res://src/Ui/Menu/app.tscn" id="1_g61nd"]
+[ext_resource type="Texture2D" uid="uid://d3emvp7hw0j6j" path="res://assets/player/ash/Smartphones/SmartphoneUltra.png" id="1_js7b5"]
+[ext_resource type="Script" path="res://src/Ui/Menu/Smartphone.gd" id="1_tvmvy"]
+[ext_resource type="Texture2D" uid="uid://fo0qcmub4hu6" path="res://assets/player/ash/Smartphones/Apps/icons/PokeBall.png" id="3_7fj72"]
+[ext_resource type="Texture2D" uid="uid://5q76wpo0whv6" path="res://assets/player/ash/Smartphones/Apps/icons/Bag.png" id="4_hbbpv"]
+[ext_resource type="Texture2D" uid="uid://bjyov745dr3vo" path="res://assets/player/ash/Smartphones/Apps/icons/Search.png" id="4_numim"]
+[ext_resource type="Texture2D" uid="uid://cd1hf2vlky3ms" path="res://assets/player/ash/Smartphones/Apps/icons/Player.png" id="5_8t6ye"]
+[ext_resource type="Texture2D" uid="uid://g74an7u6yq8q" path="res://assets/player/ash/Smartphones/Apps/icons/saveIcon.png" id="6_ilx1m"]
+[ext_resource type="Texture2D" uid="uid://gm2rcstwastj" path="res://assets/player/ash/Smartphones/Apps/icons/Wrench.png" id="7_y5w2m"]
+
+[node name="Smartphone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvmvy")
+
+[node name="Screen" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 153.0
+offset_right = 1074.0
+offset_bottom = 567.0
+color = Color(0.00784314, 0.0352941, 0.219608, 0.486275)
+
+[node name="GridContainer" type="GridContainer" parent="Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -183.0
+offset_right = 397.5
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 78
+theme_override_constants/v_separation = 78
+columns = 4
+
+[node name="App" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("3_7fj72")
+
+[node name="App2" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("4_numim")
+
+[node name="App3" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("4_hbbpv")
+
+[node name="App4" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("5_8t6ye")
+
+[node name="TextureRect" parent="Screen/GridContainer/App4" index="0"]
+offset_left = -76.0
+offset_top = -77.0
+offset_right = 78.0
+offset_bottom = 76.0
+
+[node name="App5" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("6_ilx1m")
+
+[node name="App6" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+icon = ExtResource("7_y5w2m")
+
+[node name="App7" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+disabled = true
+
+[node name="App8" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
+layout_mode = 2
+disabled = true
+
+[node name="Base" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_js7b5")
+
+[editable path="Screen/GridContainer/App4"]

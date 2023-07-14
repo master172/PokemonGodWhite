@@ -17,6 +17,7 @@ var tween
 var dialog
 
 var handling_options :bool = false
+var changing_dialog :bool = false
 
 var current_selected : int = 0
 
@@ -72,14 +73,15 @@ func _start(dialogueLine:DialogueLine):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if state == State.Normal:
-		if Input.is_action_just_pressed("Yes"):
-			if DialogDisplay.get_visible_ratio() == 1.0:
-				process_dialog()
-			elif DialogDisplay.get_visible_ratio() > 0.1:
-				skip_display_animation()
-	elif state == State.Question:
-		handle_questions(dialog)
+	if changing_dialog == false:
+		if state == State.Normal:
+			if Input.is_action_just_pressed("Yes"):
+				if DialogDisplay.get_visible_ratio() == 1.0:
+					process_dialog()
+				elif DialogDisplay.get_visible_ratio() > 0.1:
+					skip_display_animation()
+		elif state == State.Question:
+			handle_questions(dialog)
 		
 func set_text_empty():
 	DialogDisplay.set_visible_characters(0)
@@ -140,6 +142,7 @@ func process_dialog():
 					add_options(dialog)
 					state = State.Question
 				elif current_dialog.Dialogs[current_index].get_dialog_type() == 2:
+					changing_dialog = true
 					call_functions()
 					
 			elif current_index == -1:
@@ -166,10 +169,7 @@ func handle_questions(dialog):
 	if Input.is_action_just_pressed("W"):
 		options_container.get_child(current_selected).change_selected(false)
 		
-		if current_selected == 0:
-			current_selected = (dialog.Options.size() - 1)
-		else:
-			current_selected = current_selected- 1
+		current_selected = (current_selected - 1) % dialog.Options.size()
 			
 		options_container.get_child(current_selected).change_selected(true)
 		
@@ -242,6 +242,7 @@ func Change_Dialog(param,at_what:int = 0):
 	current_index = at_what
 	index_changed.emit(current_index)
 	dialogLine_Changed.emit(current_dialog)
+	changing_dialog = false
 	process_dialog()
 
 func add_actors(dialog:Dialog):

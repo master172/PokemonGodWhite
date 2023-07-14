@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=9 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://bmo5vwylgv02b" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
 [ext_resource type="PackedScene" uid="uid://diw3id2cyxe0k" path="res://src/DialogManager/dialog_layer.tscn" id="3_7stum"]
+[ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
 resource_name = "FadeToBlack"
@@ -77,6 +78,12 @@ script = ExtResource("1_iar6v")
 
 [node name="Area0" parent="Current_scene" instance=ExtResource("1_7uays")]
 
+[node name="DialogLayer" parent="." instance=ExtResource("3_7stum")]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="Menu" instance=ExtResource("4_14eu5")]
+
 [node name="ScreenTranistion" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="ScreenTranistion"]
@@ -91,5 +98,3 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_5vqoy")
 }
-
-[node name="DialogLayer" parent="." instance=ExtResource("3_7stum")]

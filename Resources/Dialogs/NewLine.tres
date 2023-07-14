@@ -10,8 +10,7 @@ script = ExtResource("1_blnca")
 Dialog_type = 0
 text = "New Dialog Line"
 next = 1
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("3_kyod8")]([])
 Options = Array[ExtResource("2_iakjl")]([])
 
@@ -32,8 +31,7 @@ script = ExtResource("1_blnca")
 Dialog_type = 1
 text = "Checking if it works"
 next = 0
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("3_kyod8")]([])
 Options = Array[ExtResource("2_iakjl")]([SubResource("Resource_yu0gf"), SubResource("Resource_uupue")])
 
@@ -48,8 +46,7 @@ script = ExtResource("1_blnca")
 Dialog_type = 0
 text = "Functions"
 next = 3
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("3_kyod8")]([SubResource("Resource_14skd")])
 Options = Array[ExtResource("2_iakjl")]([])
 
@@ -58,8 +55,7 @@ script = ExtResource("1_blnca")
 Dialog_type = 0
 text = "Last"
 next = -1
-Speakers = Array[NodePath]([])
-Listners = Array[NodePath]([])
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("3_kyod8")]([])
 Options = Array[ExtResource("2_iakjl")]([])
 
