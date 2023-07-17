@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://u5trsui58q1i" path="res://assets/tallgrass/tall_grass.png" id="1_s3ykv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4cml"]
-size = Vector2(14, 14)
+size = Vector2(12, 12)
 
 [sub_resource type="Animation" id="Animation_b1hme"]
 resource_name = "Idle"

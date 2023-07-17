@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://cxf5ewkbq7wsk"]
+[gd_scene load_steps=7 format=3 uid="uid://cxf5ewkbq7wsk"]
+
+[ext_resource type="Script" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
+[ext_resource type="Texture2D" uid="uid://c7ub68vb0b7qa" path="res://assets/Ui/PartyScreen/party_background.png" id="1_7fxw8"]
+[ext_resource type="PackedScene" uid="uid://bbk2dilhl5dmm" path="res://src/Ui/Pokemon/main_slot.tscn" id="2_shw64"]
+[ext_resource type="PackedScene" uid="uid://bomnjll0jderl" path="res://src/Ui/Pokemon/SubSlot.tscn" id="3_7xald"]
+[ext_resource type="Texture2D" uid="uid://dn4wxipelwxhl" path="res://assets/Ui/PartyScreen/exit_background_button.png" id="4_dbhfa"]
+[ext_resource type="Script" path="res://src/Ui/Pokemon/Cancel.gd" id="6_umcrd"]
 
 [node name="PartyScreen" type="Control"]
 layout_mode = 3
@@ -7,11 +14,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4o2vg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_7fxw8")
+
+[node name="MainSlot" parent="." instance=ExtResource("2_shw64")]
+position = Vector2(220, 233)
+
+[node name="Slot2" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 105)
+
+[node name="Slot3" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 225)
+
+[node name="Slot4" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 345)
+
+[node name="Slot5" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 465)
+
+[node name="Slot6" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 585)
+
+[node name="Cancel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1056, 720)
+scale = Vector2(5, 5)
+texture = ExtResource("4_dbhfa")
+hframes = 2
+script = ExtResource("6_umcrd")

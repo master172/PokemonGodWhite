@@ -25,14 +25,14 @@ func _unhandled_input(event):
 	match CurrentState:
 		current_state.Empty:
 			if event.is_action_pressed("Menu"):
-				var player = get_parent().get_parent().get_node("Current_scene").get_children().back().get_node("player")
+				var player = Utils.get_player()
 				if !player.is_moving:
 					player.set_physics_process(false)
 					self.visible = true
 					CurrentState = current_state.Normal
 		current_state.Normal:
 			if event.is_action_pressed("Menu") or event.is_action_pressed("No"):
-				var player = get_parent().get_parent().get_node("Current_scene").get_children().back().get_node("player")
+				var player = Utils.get_player()
 				self.visible = false
 				CurrentState = current_state.Empty
 				handle_closing()
@@ -41,7 +41,7 @@ func _unhandled_input(event):
 				handle_app()
 		current_state.Pokemon:
 			if event.is_action_pressed("No"):
-				get_parent().get_parent().transistion_exit_party_screen()
+				Utils.get_scene_manager().transistion_exit_party_screen()
 
 func handle_app():
 	max_selectable = 0
@@ -73,7 +73,7 @@ func handle_app():
 	
 	elif Input.is_action_just_pressed("Yes"):
 		if current_selected == 0:
-			get_parent().get_parent().transition_to_party_screen()
+			Utils.get_scene_manager().transition_to_party_screen()
 
 func handle_closing():
 	for i in grid_container.get_children():

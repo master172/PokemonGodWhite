@@ -46,7 +46,7 @@ func finished_fading():
 			current_scene.get_child(0).queue_free()
 			current_scene.add_child(load(next_scene).instantiate())
 			
-			var player = get_node("Current_scene").get_children().back().get_node("player")
+			var player = Utils.get_player()
 			player.set_spawn(player_location,player_direction)
 		
 		Transition_Type.MENU_ONLY:

@@ -5,11 +5,9 @@ var DialogBar = null
 var Player = null
 
 var DialogProcessing:bool = false
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+func get_player():
+	return get_node("/root/SceneManager/Current_scene").get_children().back().get_node("player")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func get_scene_manager():
+	return get_node("/root/SceneManager")

@@ -22,8 +22,8 @@ Global="*res://autoload/Global.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1200
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=3
 

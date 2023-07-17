@@ -20,11 +20,18 @@ grow_vertical = 2
 script = ExtResource("1_tvmvy")
 
 [node name="Screen" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 153.0
-offset_right = 1074.0
-offset_bottom = 567.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = -207.0
+offset_right = 407.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.00784314, 0.0352941, 0.219608, 0.486275)
 
 [node name="GridContainer" type="GridContainer" parent="Screen"]
@@ -34,13 +41,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -397.5
+offset_left = -390.0
 offset_top = -183.0
-offset_right = 397.5
+offset_right = 390.0
 offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 78
+theme_override_constants/h_separation = 68
 theme_override_constants/v_separation = 78
 columns = 4
 
@@ -84,10 +91,17 @@ disabled = true
 
 [node name="Base" type="TextureRect" parent="."]
 texture_filter = 1
+custom_minimum_size = Vector2(1200, 720)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -120.0
+offset_right = 208.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_js7b5")
