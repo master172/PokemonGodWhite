@@ -202,7 +202,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_cmgpq")
 states/Walk/position = Vector2(422, 115)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_08nmc")]
 
-[node name="PokemonManager" type="Node2D"]
+[node name="pokemon" type="Node2D"]
 position = Vector2(576, 296)
 script = ExtResource("1_yiy4t")
 pokemon = SubResource("Resource_ymkk0")

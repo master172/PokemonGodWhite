@@ -1,8 +1,10 @@
-[gd_scene load_steps=117 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=119 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
 [ext_resource type="Texture2D" uid="uid://bf3hlxiuvp4hm" path="res://assets/player/ash/player_shadow.png" id="2_hcuyf"]
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="4_l02ya"]
+[ext_resource type="Script" path="res://src/player/ash/PokemonManager.gd" id="5_ofemm"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1170,6 +1172,7 @@ graph_offset = Vector2(-260, -24)
 [node name="player" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_kcwe4")
+Pokemon_Manager = NodePath("PokemonManager")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -1246,5 +1249,17 @@ visible = false
 position = Vector2(0, 8)
 
 [node name="SurfTimer" type="Timer" parent="."]
+
+[node name="PokemonManager" type="Node2D" parent="."]
+top_level = true
+y_sort_enabled = true
+script = ExtResource("5_ofemm")
+temp_pokemon = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="PokemonManager"]
+top_level = true
+texture_filter = 1
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_l02ya")
 
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]

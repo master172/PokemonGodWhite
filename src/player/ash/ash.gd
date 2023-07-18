@@ -20,6 +20,8 @@ signal player_entered_door_signal
 @export var can_cycle : bool = true
 @export var can_move : bool = true
 
+@export_group("Misc")
+@export var Pokemon_Manager :NodePath
 const TILE_SIZE = 16
 
 const LandingDustEffect = preload("res://src/player/ash/landing_dust_effect.tscn")
@@ -38,7 +40,6 @@ var is_cycling:bool = false
 var jumping_over_ledge:bool = false
 
 var surf_timer_active:bool = false
-
 var speed :float= 4.0
 
 #import variables
@@ -52,6 +53,7 @@ var speed :float= 4.0
 @onready var skin = $Skin
 @onready var animation_player = $AnimationPlayer
 @onready var interaction_cast = $InteractionCast
+@onready var pokemon_manager = get_node(Pokemon_Manager)
 
 #player_states
 enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
@@ -139,12 +141,11 @@ func process_player_input():
 		animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 		
 		if need_to_turn() and is_running == false and is_cycling == false:
-			if playerState == PlayerState.SURFING :
-				
+			
+			if playerState == PlayerState.SURFING:
 				playerState = PlayerState.TURNING
 				anim_state.travel("SurfTurn")
 			else:
-				
 				playerState = PlayerState.TURNING
 				anim_state.travel("Turn")
 				
@@ -174,6 +175,7 @@ func need_to_turn():
 	
 	if facingDirection != new_facing_direction:
 		facingDirection = new_facing_direction
+		
 		return true
 	
 	facingDirection = new_facing_direction
@@ -275,16 +277,20 @@ func move(delta):
 		
 	else:
 		if percent_moved_to_next_tile == 0.0:
-			emit_signal("player_moving_signal")
+			ManageOverworldPokemon(get_current_facing_direction(),"turning")
+			if !collision_cast.is_colliding() and !ledge_cast.is_colliding():
+				emit_signal("player_moving_signal")
+			
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1:
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
 			emit_signal("player_stopped_signal")
+			
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
-
+			
 
 
 func get_current_facing_direction():
@@ -428,3 +434,9 @@ func check_interaction():
 			var interactable = interaction_cast.get_collider()
 			if Utils.DialogBar != null:
 				interactable._interact()
+
+func ManageOverworldPokemon(Direction:Vector2,case:String):
+	if case.to_lower() == "turning":
+		pokemon_manager.change_turning_position(Direction)
+
+
