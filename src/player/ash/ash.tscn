@@ -1170,7 +1170,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-260, -24)
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 0
+collision_mask = 6
 script = ExtResource("1_kcwe4")
 Pokemon_Manager = NodePath("PokemonManager")
 
@@ -1211,6 +1211,7 @@ parameters/cycleIdle/blend_position = Vector2(0, 0)
 parameters/cycleTurn/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
@@ -1222,11 +1223,9 @@ collision_mask = 22
 collide_with_areas = true
 
 [node name="LedgeCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 4
-hit_from_inside = true
 collide_with_areas = true
 
 [node name="DoorCast" type="RayCast2D" parent="."]
@@ -1238,6 +1237,7 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="InteractionCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 16
@@ -1259,6 +1259,7 @@ temp_pokemon = NodePath("Sprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="PokemonManager"]
 top_level = true
 texture_filter = 1
+position = Vector2(-16, -8)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_l02ya")
 

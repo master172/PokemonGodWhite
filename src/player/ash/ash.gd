@@ -141,16 +141,13 @@ func process_player_input():
 		animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 		
 		if need_to_turn() and is_running == false and is_cycling == false:
-			
+
 			if playerState == PlayerState.SURFING:
 				playerState = PlayerState.TURNING
 				anim_state.travel("SurfTurn")
 			else:
 				playerState = PlayerState.TURNING
 				anim_state.travel("Turn")
-				
-				
-				
 		else:
 			initial_position = position
 			is_moving = true
@@ -223,7 +220,6 @@ func speed_handler():
 
 func move(delta):
 	update_casts()
-	
 	#stopping or allowing movement based on collision
 	
 	if door_cast.is_colliding():
@@ -244,7 +240,8 @@ func move(delta):
 	elif (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
 		percent_moved_to_next_tile += jump_speed * delta
 		if percent_moved_to_next_tile >= 2.0:
-			position = initial_position + input_direction * TILE_SIZE * 2
+			position = initial_position + (input_direction * TILE_SIZE * 2)
+			
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
 			jumping_over_ledge = false
@@ -253,7 +250,7 @@ func move(delta):
 			var DustEffect = LandingDustEffect.instantiate()
 			DustEffect.position = position-Vector2(0,8)
 			get_tree().current_scene.add_child(DustEffect)
-			
+			ledge_direction = Vector2.ZERO
 			
 		else:
 			shadow.visible = true
@@ -376,12 +373,12 @@ func update_casts():
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
 	
 	#checking for collideable collision
-	collision_cast.set_target_position(desired_step)
-	collision_cast.force_raycast_update()
-	
 	
 	ledge_cast.set_target_position(desired_step)
 	ledge_cast.force_raycast_update()
+	
+	collision_cast.set_target_position(desired_step)
+	collision_cast.force_raycast_update()
 	
 	door_cast.set_target_position(desired_step)
 	door_cast.force_raycast_update()
