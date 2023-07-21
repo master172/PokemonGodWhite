@@ -1,21 +1,31 @@
 extends Node2D
 
-@export var temp_pokemon :NodePath
-var Temp_Pokemon
+@onready var following_pokemon = get_child(0)
 
+var direction = Vector2.ZERO
 var HashMap = {
 	Vector2(0,-1):Vector2(0,8),
 	Vector2(0,1):Vector2(0,-24),
 	Vector2(-1,0):Vector2(16,-8),
 	Vector2(1,0):Vector2(-16,-8)
 }
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	Temp_Pokemon = get_node(temp_pokemon)
+	visible = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
-func change_turning_position(Direction:Vector2):
+func set_seeable():
+	visible = true
+	
+func change_position(Position,Speed):
+	if direction != Vector2.ZERO:
+		update_direction(direction)
+		direction = Vector2.ZERO
 	var tween = get_tree().create_tween()
-	tween.tween_property(Temp_Pokemon,"global_position",Utils.Player.global_position - Vector2(0,8),0.2)
+	tween.tween_property(following_pokemon,"global_position",Position,Speed)
+
+func update_direction(Direction):
+	following_pokemon.set_direction(Direction)
+
+func jump_ledge(Position,Speed,Direction):
+	var tween = get_tree().create_tween()
+	tween.tween_property(following_pokemon,"global_position",Position,Speed)

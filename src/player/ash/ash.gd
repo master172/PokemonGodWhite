@@ -61,9 +61,10 @@ enum FacingDirection {LEFT,RIGHT,UP,DOWN}
 
 var playerState = PlayerState.IDLE
 var facingDirection = FacingDirection.DOWN
-
+var previous_facing_direction = FacingDirection.DOWN
 #ledge_jumping_variables
 var ledge_direction:Vector2 = Vector2.ZERO
+var just_ledge_jumped = false
 
 func _ready():
 	Utils.Player = self
@@ -171,6 +172,7 @@ func need_to_turn():
 		new_facing_direction = FacingDirection.DOWN
 	
 	if facingDirection != new_facing_direction:
+		previous_facing_direction = facingDirection
 		facingDirection = new_facing_direction
 		
 		return true
@@ -223,6 +225,8 @@ func move(delta):
 	#stopping or allowing movement based on collision
 	
 	if door_cast.is_colliding():
+		just_ledge_jumped = false
+		ledge_direction = Vector2.ZERO
 		
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_entering_door_signal")
@@ -233,12 +237,18 @@ func move(delta):
 			is_moving = false
 			can_move = false
 			animation_player.play("dissapear")
-			
+			ManageOverworldPokemon("turned")
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 			
 	elif (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
+		just_ledge_jumped = true
+		if percent_moved_to_next_tile == 0.0:
+			ManageOverworldPokemon("ledge")
+			
+			
 		percent_moved_to_next_tile += jump_speed * delta
+		
 		if percent_moved_to_next_tile >= 2.0:
 			position = initial_position + (input_direction * TILE_SIZE * 2)
 			
@@ -251,7 +261,7 @@ func move(delta):
 			DustEffect.position = position-Vector2(0,8)
 			get_tree().current_scene.add_child(DustEffect)
 			ledge_direction = Vector2.ZERO
-			
+			ManageOverworldPokemon("turned")
 		else:
 			shadow.visible = true
 			jumping_over_ledge = true
@@ -269,14 +279,20 @@ func move(delta):
 				position.x = initial_position.x + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
 		
 	elif collision_cast.is_colliding():
+		ledge_direction = Vector2.ZERO
+		just_ledge_jumped = false
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
+		ManageOverworldPokemon("turned")
 		
 	else:
+		just_ledge_jumped = false
+		ledge_direction = Vector2.ZERO
 		if percent_moved_to_next_tile == 0.0:
-			ManageOverworldPokemon(get_current_facing_direction(),"turning")
+			emit_signal("player_moving_signal")
+			
 			if !collision_cast.is_colliding() and !ledge_cast.is_colliding():
-				emit_signal("player_moving_signal")
+				ManageOverworldPokemon("turning")
 			
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1:
@@ -284,6 +300,7 @@ func move(delta):
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
 			emit_signal("player_stopped_signal")
+			ManageOverworldPokemon("turned")
 			
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
@@ -432,8 +449,20 @@ func check_interaction():
 			if Utils.DialogBar != null:
 				interactable._interact()
 
-func ManageOverworldPokemon(Direction:Vector2,case:String):
+func ManageOverworldPokemon(case:String):
 	if case.to_lower() == "turning":
-		pokemon_manager.change_turning_position(Direction)
-
-
+		
+		pokemon_manager.change_position(self.global_position,0.2)
+		
+	elif case.to_lower() == "ledge":
+		if facingDirection == previous_facing_direction:
+			
+			pokemon_manager.change_position(self.global_position,0.4)
+		else:
+			pokemon_manager.set_seeable()
+			pokemon_manager.jump_ledge(pokemon_manager.get_child(0).global_position 
+			+ (get_current_facing_direction() * 32),0.6,
+			(self.global_position - pokemon_manager.get_child(0).global_position).normalized())
+	elif case.to_lower() == "turned":
+		pokemon_manager.set_seeable()
+		pokemon_manager.update_direction(get_current_facing_direction())
