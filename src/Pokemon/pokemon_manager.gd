@@ -7,6 +7,7 @@ extends Node2D
 @export var pokemon :Pokemon
 
 var direction:Vector2 = Vector2.ZERO
+
 func _ready():
 	anim_state.travel("Walk")
 	poke_sprite.texture = pokemon.get_overworld_sprite()

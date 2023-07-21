@@ -456,13 +456,9 @@ func ManageOverworldPokemon(case:String):
 		
 	elif case.to_lower() == "ledge":
 		if facingDirection == previous_facing_direction:
-			
 			pokemon_manager.change_position(self.global_position,0.4)
 		else:
-			pokemon_manager.set_seeable()
-			pokemon_manager.jump_ledge(pokemon_manager.get_child(0).global_position 
-			+ (get_current_facing_direction() * 32),0.6,
-			(self.global_position - pokemon_manager.get_child(0).global_position).normalized())
+			pokemon_manager.jump_ledge((self.global_position - pokemon_manager.get_child(0).global_position).normalized())
 	elif case.to_lower() == "turned":
 		pokemon_manager.set_seeable()
 		pokemon_manager.update_direction(get_current_facing_direction())

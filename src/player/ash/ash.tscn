@@ -1248,10 +1248,10 @@ collide_with_areas = true
 
 [node name="PokemonManager" type="Node2D" parent="."]
 top_level = true
+z_index = -1
 z_as_relative = false
 script = ExtResource("5_ofemm")
 
 [node name="pokemon" parent="PokemonManager" instance=ExtResource("5_sykbc")]
-position = Vector2(0, -13)
 
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]

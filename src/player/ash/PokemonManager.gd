@@ -10,6 +10,7 @@ var HashMap = {
 	Vector2(1,0):Vector2(-16,-8)
 }
 
+var jumping_over_ledge:bool = false
 func _ready():
 	visible = false
 
@@ -21,11 +22,20 @@ func change_position(Position,Speed):
 		update_direction(direction)
 		direction = Vector2.ZERO
 	var tween = get_tree().create_tween()
-	tween.tween_property(following_pokemon,"global_position",Position,Speed)
+	tween.tween_property(self,"global_position",Position,Speed)
 
 func update_direction(Direction):
+	jumping_over_ledge = false
 	following_pokemon.set_direction(Direction)
 
-func jump_ledge(Position,Speed,Direction):
-	var tween = get_tree().create_tween()
-	tween.tween_property(following_pokemon,"global_position",Position,Speed)
+func jump_ledge(Direction):
+	jumping_over_ledge = true
+	direction = Direction
+	
+func _physics_process(delta):
+	if jumping_over_ledge == true:
+		if Utils.Player.get_current_facing_direction() == Vector2(0,-1) or Utils.Player.get_current_facing_direction() == Vector2(0,1):
+			self.global_position.y = Utils.Player.global_position.y
+		else:
+			self.global_position.x = Utils.Player.global_position.x
+	
