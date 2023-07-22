@@ -15,6 +15,7 @@ Overworld = ExtResource("2_sv3ig")
 
 [sub_resource type="Resource" id="Resource_wl7pb"]
 script = ExtResource("5_xbxcx")
+level = 0
 Base_Health = 0
 Base_Attack = 0
 Base_Defense = 0
@@ -60,8 +61,8 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_83svy"]
-resource_name = "WalkUp"
+[sub_resource type="Animation" id="Animation_eh8ns"]
+resource_name = "WalkRight"
 length = 0.80001
 loop_mode = 1
 step = 0.2
@@ -75,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [12, 13, 14, 15]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_scxd3"]
@@ -96,8 +97,8 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_eh8ns"]
-resource_name = "WalkRight"
+[sub_resource type="Animation" id="Animation_83svy"]
+resource_name = "WalkUp"
 length = 0.80001
 loop_mode = 1
 step = 0.2
@@ -111,7 +112,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11]
+"values": [12, 13, 14, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ej3bn"]

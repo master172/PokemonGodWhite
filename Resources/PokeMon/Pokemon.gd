@@ -12,3 +12,6 @@ func get_overworld_sprite():
 
 func get_icon():
 	return pokeInfo.get_icon_sprite()
+
+func calculate_stats():
+	statSheet.calculate_stats()

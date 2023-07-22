@@ -35,7 +35,7 @@ func _input(event):
 			selected_option = 0
 		else:
 			selected_option = (selected_option + 1) % options_selectable
-		print(selected_option, " ", options[selected_option])
+
 		set_active_option()
 	elif event.is_action_pressed("W"):
 		unset_active_option()
@@ -45,7 +45,7 @@ func _input(event):
 			selected_option -=  (1 + (7 - options_selectable))
 		else:
 			selected_option -= 1
-		print(selected_option, " ", options[selected_option])
+
 		set_active_option()
 	elif event.is_action_pressed("A"):
 		unset_active_option()

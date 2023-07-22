@@ -2,6 +2,9 @@ extends Node
 
 @export var PartyPokemon:Poke_list
 
+func _ready():
+	PartyPokemon.get_pokemon(0).calculate_stats()
+	
 func add_pokemon(Pokemon):
 	PartyPokemon.add_pokemon(Pokemon)
 

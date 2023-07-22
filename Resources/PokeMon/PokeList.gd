@@ -22,3 +22,7 @@ func get_pokemon(num:int):
 
 func pokemon_size():
 	return pokemons.size()
+
+func calculate_stats():
+	for i in pokemons:
+		i.calculate_stats()

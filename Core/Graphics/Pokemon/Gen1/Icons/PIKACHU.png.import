@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxttm58pdkqp6"
-path="res://.godot/imported/PIKACHU.png-37df45fd951359b1a5562d249a07ad5b.ctex"
+path="res://.godot/imported/Pikachu.png-8a253dc2a943dc76bba65127e5157c3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/Graphics/Pokemon/Gen1/Icons/PIKACHU.png"
-dest_files=["res://.godot/imported/PIKACHU.png-37df45fd951359b1a5562d249a07ad5b.ctex"]
+source_file="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png"
+dest_files=["res://.godot/imported/Pikachu.png-8a253dc2a943dc76bba65127e5157c3d.ctex"]
 
 [params]
 
