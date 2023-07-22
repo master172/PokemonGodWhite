@@ -105,12 +105,6 @@ func set_to_max_stats():
 	Special_Defense = Max_Special_Defense
 	Speed = Max_Speed
 	
-	print(Health)
-	print(Attack)
-	print(Defense)
-	print(Special_Attack)
-	print(Special_Defense)
-	print(Speed)
 	
 func get_nature_multiplier(stat:int):
 	if nature != null:
