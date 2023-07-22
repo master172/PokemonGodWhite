@@ -20,7 +20,8 @@ var transition_type = Transition_Type.NEW_SCENE
 func _ready():
 	pass # Replace with function body.
 
-
+func get_current_scene():
+	return current_scene.get_child(0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

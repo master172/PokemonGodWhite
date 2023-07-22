@@ -1,10 +1,8 @@
-[gd_scene load_steps=119 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=117 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
 [ext_resource type="Texture2D" uid="uid://bf3hlxiuvp4hm" path="res://assets/player/ash/player_shadow.png" id="2_hcuyf"]
-[ext_resource type="Script" path="res://src/player/ash/PokemonManager.gd" id="5_ofemm"]
-[ext_resource type="PackedScene" uid="uid://dax0yjivpul7x" path="res://src/Pokemon/pokemon_manager.tscn" id="5_sykbc"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1172,7 +1170,6 @@ graph_offset = Vector2(-260, -24)
 [node name="player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_kcwe4")
-Pokemon_Manager = NodePath("PokemonManager")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -1245,13 +1242,5 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="SurfTimer" type="Timer" parent="."]
-
-[node name="PokemonManager" type="Node2D" parent="."]
-top_level = true
-z_index = -1
-z_as_relative = false
-script = ExtResource("5_ofemm")
-
-[node name="pokemon" parent="PokemonManager" instance=ExtResource("5_sykbc")]
 
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]

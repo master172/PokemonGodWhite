@@ -1,8 +1,9 @@
 extends Node2D
 
-@onready var poke_sprite = $OverWorld/Anchor/PokeSprite
-@onready var animation_player = $OverWorld/Anchor/AnimationPlayer
-@onready var animation_tree = $OverWorld/Anchor/AnimationTree
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var poke_sprite = $PokeSprite
+
 @onready var anim_state  = animation_tree.get("parameters/playback")
 @export var pokemon :Pokemon
 

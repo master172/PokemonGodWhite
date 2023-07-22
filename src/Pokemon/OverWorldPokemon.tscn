@@ -1,20 +1,20 @@
 [gd_scene load_steps=26 format=3 uid="uid://dax0yjivpul7x"]
 
-[ext_resource type="Script" path="res://src/Pokemon/pokemon_manager.gd" id="1_yiy4t"]
-[ext_resource type="Script" path="res://Resources/PokeMon/PokeInfo.gd" id="2_1t4dh"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_r2k0l"]
-[ext_resource type="Script" path="res://Resources/PokeMon/StatSheet.gd" id="4_44m34"]
-[ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="6_8pljg"]
+[ext_resource type="Script" path="res://src/Pokemon/OverWorldPokemon.gd" id="1_1f7kr"]
+[ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sv3ig"]
+[ext_resource type="Script" path="res://Resources/PokeMon/PokeInfo.gd" id="3_wtawb"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="4_ju4v6"]
+[ext_resource type="Script" path="res://Resources/PokeMon/StatSheet.gd" id="5_xbxcx"]
 
 [sub_resource type="Resource" id="Resource_pcmpg"]
-script = ExtResource("2_1t4dh")
+script = ExtResource("3_wtawb")
 Name = "Pikachu"
 Id = 25
 Types = Array[int]([6])
-Overworld = ExtResource("6_8pljg")
+Overworld = ExtResource("2_sv3ig")
 
 [sub_resource type="Resource" id="Resource_wl7pb"]
-script = ExtResource("4_44m34")
+script = ExtResource("5_xbxcx")
 Base_Health = 0
 Base_Attack = 0
 Base_Defense = 0
@@ -23,7 +23,7 @@ Special_Base_Defense = 0
 Base_Speed = 0
 
 [sub_resource type="Resource" id="Resource_ymkk0"]
-script = ExtResource("2_r2k0l")
+script = ExtResource("4_ju4v6")
 pokeInfo = SubResource("Resource_pcmpg")
 statSheet = SubResource("Resource_wl7pb")
 
@@ -32,7 +32,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/PokeSprite:frame")
+tracks/0/path = NodePath("PokeSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +50,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/PokeSprite:frame")
+tracks/0/path = NodePath("PokeSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,42 +58,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_scxd3"]
-resource_name = "WalkLeft"
-length = 0.80001
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/PokeSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_eh8ns"]
-resource_name = "WalkRight"
-length = 0.80001
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/PokeSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_83svy"]
@@ -104,7 +68,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/PokeSprite:frame")
+tracks/0/path = NodePath("PokeSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -114,12 +78,48 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_scxd3"]
+resource_name = "WalkLeft"
+length = 0.80001
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PokeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_eh8ns"]
+resource_name = "WalkRight"
+length = 0.80001
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PokeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ej3bn"]
 _data = {
 "RESET": SubResource("Animation_6vfpa"),
 "WalkDown": SubResource("Animation_4wsya"),
-"WalkLeft": SubResource("Animation_scxd3"),
-"WalkRight": SubResource("Animation_eh8ns"),
+"WalkLeft": SubResource("Animation_eh8ns"),
+"WalkRight": SubResource("Animation_scxd3"),
 "WalkUp": SubResource("Animation_83svy")
 }
 
@@ -174,31 +174,24 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_cmgpq")
 states/Walk/position = Vector2(422, 115)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_08nmc")]
 
-[node name="pokemon" type="Node2D"]
-script = ExtResource("1_yiy4t")
+[node name="OverworldPokemon" type="Node2D"]
+script = ExtResource("1_1f7kr")
 pokemon = SubResource("Resource_ymkk0")
 
-[node name="OverWorld" type="Node2D" parent="."]
-
-[node name="Anchor" type="Node2D" parent="OverWorld"]
-position = Vector2(0, -16)
-rotation = 6.28319
-
-[node name="PokeSprite" type="Sprite2D" parent="OverWorld/Anchor"]
+[node name="PokeSprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -16)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_8pljg")
+texture = ExtResource("2_sv3ig")
 hframes = 4
 vframes = 4
-frame = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OverWorld/Anchor"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ej3bn")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="OverWorld/Anchor"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_vcnqk")
 anim_player = NodePath("../AnimationPlayer")
 active = true
