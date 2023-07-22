@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b1dk4uyoeno2a" path="res://assets/Ui/PartyScreen/main_pokemon_background.png" id="1_6h6p6"]
 [ext_resource type="Script" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
-[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/25.png" id="2_ytbvh"]
+[ext_resource type="Texture2D" uid="uid://tnwsdu8tx56e" path="res://Core/Graphics/Pokemon/Gen1/Icons/BULBASAUR.png" id="3_kvlep"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_oq0tl"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_dqdfx"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="5_lpud0"]
@@ -58,7 +58,7 @@ hframes = 2
 texture_filter = 1
 position = Vector2(-127, -47)
 scale = Vector2(3, 3)
-texture = ExtResource("2_ytbvh")
+texture = ExtResource("3_kvlep")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -36,3 +36,6 @@ enum TYPES {
 
 func get_overworld_sprite():
 	return Overworld
+
+func get_icon_sprite():
+	return Icon

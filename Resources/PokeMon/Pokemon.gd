@@ -9,3 +9,6 @@ class_name Pokemon
 
 func get_overworld_sprite():
 	return pokeInfo.get_overworld_sprite()
+
+func get_icon():
+	return pokeInfo.get_icon_sprite()

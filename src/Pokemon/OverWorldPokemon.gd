@@ -10,6 +10,9 @@ extends Node2D
 var direction:Vector2 = Vector2.ZERO
 
 func _ready():
+	var mainPokemon = AllyPokemon.get_main_pokemon()
+	if mainPokemon != null:
+		pokemon = mainPokemon
 	anim_state.travel("Walk")
 	poke_sprite.texture = pokemon.get_overworld_sprite()
 

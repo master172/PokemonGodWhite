@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxttm58pdkqp6"
-path="res://.godot/imported/25.png-0600ef84062f972662bd586115918c99.ctex"
+uid="uid://tnwsdu8tx56e"
+path="res://.godot/imported/BULBASAUR.png-ccb861c1918ef108b77ffd7777feff60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/Graphics/Pokemon/Gen1/Icons/25.png"
-dest_files=["res://.godot/imported/25.png-0600ef84062f972662bd586115918c99.ctex"]
+source_file="res://Core/Graphics/Pokemon/Gen1/Icons/BULBASAUR.png"
+dest_files=["res://.godot/imported/BULBASAUR.png-ccb861c1918ef108b77ffd7777feff60.ctex"]
 
 [params]
 

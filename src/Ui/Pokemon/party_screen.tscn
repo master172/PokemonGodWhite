@@ -31,18 +31,23 @@ position = Vector2(220, 233)
 
 [node name="Slot2" parent="." instance=ExtResource("3_7xald")]
 position = Vector2(815, 105)
+SlotNo = 1
 
 [node name="Slot3" parent="." instance=ExtResource("3_7xald")]
 position = Vector2(815, 225)
+SlotNo = 2
 
 [node name="Slot4" parent="." instance=ExtResource("3_7xald")]
 position = Vector2(815, 345)
+SlotNo = 3
 
 [node name="Slot5" parent="." instance=ExtResource("3_7xald")]
 position = Vector2(815, 465)
+SlotNo = 4
 
 [node name="Slot6" parent="." instance=ExtResource("3_7xald")]
 position = Vector2(815, 585)
+SlotNo = 5
 
 [node name="Cancel" type="Sprite2D" parent="."]
 texture_filter = 1
