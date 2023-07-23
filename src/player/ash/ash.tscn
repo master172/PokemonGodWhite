@@ -1,8 +1,9 @@
-[gd_scene load_steps=117 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=118 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
 [ext_resource type="Texture2D" uid="uid://bf3hlxiuvp4hm" path="res://assets/player/ash/player_shadow.png" id="2_hcuyf"]
+[ext_resource type="Script" path="res://src/player/ash/Saver.gd" id="4_ydgc5"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1242,5 +1243,8 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="SurfTimer" type="Timer" parent="."]
+
+[node name="Saver" type="Node2D" parent="."]
+script = ExtResource("4_ydgc5")
 
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]

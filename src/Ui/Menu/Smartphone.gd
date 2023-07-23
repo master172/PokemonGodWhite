@@ -6,11 +6,15 @@ var current_selected:int = 0
 @onready var grid_container = $Screen/GridContainer
 
 const Party_Screen = preload("res://src/Ui/Pokemon/party_screen.tscn")
+const Summary_scene = preload("res://src/Ui/Summary/Summary.tscn")
+
+var Summary_Scene
 
 enum current_state {
 	Empty,
 	Normal,
-	Pokemon
+	Pokemons,
+	Summary
 }
 
 var CurrentState = current_state.Empty
@@ -38,42 +42,46 @@ func _unhandled_input(event):
 				handle_closing()
 				player.set_physics_process(true)
 			else:
-				handle_app()
-		current_state.Pokemon:
+				max_selectable = 0
+				if CurrentState == current_state.Normal:
+					for i in grid_container.get_children():
+						if i.visible == true:
+							max_selectable += 1
+					grid_container.get_child(current_selected).change_selected(true)
+					
+				if event.is_action_pressed("A"):
+					grid_container.get_child(current_selected).change_selected(false)
+					current_selected  = (current_selected - 1) % max_selectable
+					grid_container.get_child(current_selected).change_selected(true)
+					
+				elif event.is_action_pressed("D"):
+					grid_container.get_child(current_selected).change_selected(false)
+					current_selected = (current_selected + 1) % max_selectable
+					grid_container.get_child(current_selected).change_selected(true)
+					
+				elif event.is_action_pressed("W"):
+					grid_container.get_child(current_selected).change_selected(false)
+					current_selected  = (current_selected + 4) % max_selectable
+					grid_container.get_child(current_selected).change_selected(true)
+				
+				elif event.is_action_pressed("S"):
+					grid_container.get_child(current_selected).change_selected(false)
+					current_selected  = (current_selected - 4) % max_selectable
+					grid_container.get_child(current_selected).change_selected(true)
+				
+				elif event.is_action_pressed("Yes"):
+					if current_selected == 0:
+						Utils.get_scene_manager().transition_to_party_screen()
+					elif current_selected == 4 or current_selected == -4:
+						Utils.save_data()
+					
+		current_state.Pokemons:
 			if event.is_action_pressed("No"):
 				Utils.get_scene_manager().transistion_exit_party_screen()
+		current_state.Summary:
+			if event.is_action_pressed("No"):
+				Utils.get_scene_manager().transistion_exit_summary_screen()
 
-func handle_app():
-	max_selectable = 0
-	if CurrentState == current_state.Normal:
-		for i in grid_container.get_children():
-			if i.visible == true:
-				max_selectable += 1
-		grid_container.get_child(current_selected).change_selected(true)
-		
-	if Input.is_action_just_pressed("A"):
-		grid_container.get_child(current_selected).change_selected(false)
-		current_selected  = (current_selected - 1) % max_selectable
-		grid_container.get_child(current_selected).change_selected(true)
-		
-	elif Input.is_action_just_pressed("D"):
-		grid_container.get_child(current_selected).change_selected(false)
-		current_selected = (current_selected + 1) % max_selectable
-		grid_container.get_child(current_selected).change_selected(true)
-		
-	elif Input.is_action_just_pressed("W"):
-		grid_container.get_child(current_selected).change_selected(false)
-		current_selected  = (current_selected + 4) % max_selectable
-		grid_container.get_child(current_selected).change_selected(true)
-	
-	elif Input.is_action_just_pressed("S"):
-		grid_container.get_child(current_selected).change_selected(false)
-		current_selected  = (current_selected - 4) % max_selectable
-		grid_container.get_child(current_selected).change_selected(true)
-	
-	elif Input.is_action_just_pressed("Yes"):
-		if current_selected == 0:
-			Utils.get_scene_manager().transition_to_party_screen()
 
 func handle_closing():
 	for i in grid_container.get_children():
@@ -81,7 +89,7 @@ func handle_closing():
 
 func load_party_screen():
 	visible = false
-	CurrentState = current_state.Pokemon
+	CurrentState = current_state.Pokemons
 	var scene = Party_Screen.instantiate()
 	get_parent().add_child(scene)
 
@@ -89,3 +97,16 @@ func unload_party_screen():
 	visible = true
 	get_parent().get_node("PartyScreen").queue_free()
 	CurrentState = current_state.Normal
+
+func load_summary_screen():
+	visible = false
+	CurrentState = current_state.Summary
+	Summary_Scene = Summary_scene.instantiate()
+	get_parent().add_child(Summary_Scene)
+
+func unload_summary_screen():
+	visible = false
+	if is_instance_valid(Summary_Scene):
+		get_parent().get_node("Summary").queue_free()
+	CurrentState = current_state.Pokemons
+

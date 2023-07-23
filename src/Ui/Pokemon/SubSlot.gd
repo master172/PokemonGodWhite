@@ -1,5 +1,5 @@
 extends Node2D
-@onready var background = $Background
+@onready var background = $BackGround
 @onready var sprite = $Sprite
 @onready var Name = $Name
 @onready var level = $Level
@@ -7,7 +7,7 @@ extends Node2D
 @onready var health_bar = $HealthBar
 
 @export var slot_no:int = 0
-var pokemon:Pokemon = null
+var pokemon:game_pokemon = null
 func change_selected(value:bool):
 	if value == true:
 		background.frame = 1
@@ -23,10 +23,10 @@ func _ready():
 		
 func update_items():
 	sprite.texture = pokemon.get_icon()
-	Name.text = pokemon.pokeInfo.Name
-	level.text = str(pokemon.statSheet.level)
-	health_bar.max_value = pokemon.statSheet.Max_Health
-	health_bar.value = pokemon.statSheet.Health
+	Name.text = pokemon.Base_Pokemon.Name
+	level.text = str(pokemon.level)
+	health_bar.max_value = pokemon.Max_Health
+	health_bar.value = pokemon.Health
 	
 func clear_items():
 	self.visible = false

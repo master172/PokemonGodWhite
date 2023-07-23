@@ -3,10 +3,10 @@ extends Resource
 class_name Poke_list
 
 @export var Name:String = ""
-@export var pokemons:Array[Pokemon]
+@export var pokemons:Array[game_pokemon]
 
-func add_pokemon(Pokemon):
-	pokemons.append(Pokemon)
+func add_pokemon(game_pokemon):
+	pokemons.append(game_pokemon)
 
 func get_pokemons():
 	if pokemons.size() >= 1:

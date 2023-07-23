@@ -11,3 +11,8 @@ func get_player():
 
 func get_scene_manager():
 	return get_node("/root/SceneManager")
+
+func save_data():
+	get_player().save_data()
+	get_scene_manager().save_data()
+	AllyPokemon.save_data()

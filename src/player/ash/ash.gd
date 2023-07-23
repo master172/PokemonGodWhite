@@ -52,7 +52,7 @@ var speed :float= 4.0
 @onready var skin = $Skin
 @onready var animation_player = $AnimationPlayer
 @onready var interaction_cast = $InteractionCast
-
+@onready var saver = $Saver
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -71,6 +71,9 @@ var jump_direction:Vector2 = Vector2.ZERO
 
 func _ready():
 	
+	saver.load_data()
+	load_data(saver.playerData)
+	
 	Utils.Player = self
 	initial_position = position
 	animation_tree.active = true
@@ -87,7 +90,9 @@ func _ready():
 	animation_tree.set("parameters/cycle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
-
+	
+	
+	
 func add_overworld_pokemon():
 	var scene_manager = Utils.get_scene_manager()
 	pokemon_manager = Pokemon_manager.instantiate() 
@@ -494,3 +499,28 @@ func ManageOverworldPokemon(case:String):
 				pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
 	if to_pokemon_follow == true and case.to_lower() == "turned":
 		add_overworld_pokemon()
+
+func save_data():
+	saver.playerData.change_pos(floor(position))
+	saver.playerData.change_input_dir(get_current_facing_direction())
+	saver.playerData.change_cycling(is_cycling)
+	saver.playerData.change_surfing(is_surfing)
+	saver.playerData.change_playerState(playerState)
+	saver.playerData.change_pokemon_following(pokemon_following)
+	saver.playerData.change_can_pokemon_follow(to_pokemon_follow)
+	saver.playerData.change_facing_direction(facingDirection)
+	saver.save_data()
+
+func load_data(playerDat):
+	saver.apply_data(self)
+	
+
+func check_to_add_overworld_pokemon():
+	if pokemon_following == true:
+
+		add_overworld_pokemon()
+
+func first_start():
+	var pikachu = preload("res://Core/Pokemon/MainPikachu.tres")
+	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5)
+	AllyPokemon.add_pokemon(MainPikachu)

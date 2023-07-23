@@ -60,3 +60,5 @@ func _input(event):
 		match selected_option:
 			Options.CANCEL:
 				Utils.get_scene_manager().transistion_exit_party_screen()
+			Options.FIRST_SLOT:
+				Utils.get_scene_manager().transistion_to_summary_scene()
