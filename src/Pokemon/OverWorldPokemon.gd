@@ -5,7 +5,7 @@ extends Node2D
 @onready var poke_sprite = $PokeSprite
 
 @onready var anim_state  = animation_tree.get("parameters/playback")
-@export var pokemon :game_pokemon
+@export var pokemon :Pokemon
 
 var direction:Vector2 = Vector2.ZERO
 

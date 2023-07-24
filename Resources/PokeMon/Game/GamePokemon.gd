@@ -3,6 +3,8 @@ class_name game_pokemon
 
 @export var Base_Pokemon:Pokemon
 
+@export_group("general_info")
+@export var Nick_name:String = ""
 @export_group("stats")
 @export var level:int = 0
 @export_subgroup("Max values")
@@ -40,9 +42,15 @@ class_name game_pokemon
 @export_group("misc")
 @export var stats_calculated:bool = false
 
-func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0):
+
+func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
 	level = lev
+	
+	if NickName != "":
+		Nick_name = NickName
+	else:
+		Nick_name = Base_Pokemon.Name
 	calculate_stats_init()
 
 func calculate_IVs():

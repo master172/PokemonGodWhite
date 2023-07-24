@@ -21,4 +21,3 @@ Base_Defense = 60
 Special_Base_Attack = 80
 Special_Base_Defense = 50
 Base_Speed = 100
-stats_calculated = false

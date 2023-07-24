@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=15 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_0rgf5"]
+[ext_resource type="Script" path="res://src/Ui/Summary/info.gd" id="3_4a30r"]
 [ext_resource type="Texture2D" uid="uid://c6vuk5wnqcujs" path="res://assets/Ui/Summary/POKEBALL.png" id="3_a8ai2"]
 [ext_resource type="Texture2D" uid="uid://bqw3xd0to5ien" path="res://assets/Ui/Summary/page_info.png" id="3_oogwt"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_16jd6"]
@@ -33,6 +34,7 @@ offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_h0y60")
+script = ExtResource("3_4a30r")
 
 [node name="Tag" type="Label" parent="info"]
 layout_mode = 2
@@ -123,7 +125,7 @@ offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
-text = "Pikachu"
+text = "Bulbasaur"
 
 [node name="DexNo" type="Label" parent="info/Info/Label"]
 layout_mode = 2
@@ -141,7 +143,7 @@ offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
-text = "25"
+text = "215"
 
 [node name="Ot" type="Label" parent="info/Info/Label"]
 layout_mode = 2
@@ -198,7 +200,7 @@ offset_bottom = 86.8839
 theme = ExtResource("2_0rgf5")
 text = "0"
 
-[node name="ExpPoints2" type="Label" parent="info/Info/Label"]
+[node name="ToNextLevel" type="Label" parent="info/Info/Label"]
 layout_mode = 2
 offset_left = 57.6923
 offset_top = 40.5769
@@ -208,7 +210,7 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "To next level:"
 
-[node name="ExpPoints" type="Label" parent="info/Info/Label/ExpPoints2"]
+[node name="ToNextLevel" type="Label" parent="info/Info/Label/ToNextLevel"]
 layout_mode = 2
 offset_left = 215.924
 offset_top = 45.8839

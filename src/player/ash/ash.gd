@@ -93,7 +93,7 @@ func _ready():
 	
 	
 	
-func add_overworld_pokemon():
+func add_overworld_pokemon(set_see:bool = true):
 	var scene_manager = Utils.get_scene_manager()
 	pokemon_manager = Pokemon_manager.instantiate() 
 	scene_manager.get_current_scene().add_child(pokemon_manager)
@@ -101,7 +101,9 @@ func add_overworld_pokemon():
 	to_pokemon_follow = false
 	pokemon_manager.global_position = self.global_position - (get_current_facing_direction() * 16)
 	pokemon_manager.update_direction(get_current_facing_direction())
-	pokemon_manager.set_seeable()
+	
+	if set_see == true:
+		pokemon_manager.set_seeable()
 
 func remove_overworld_pokemon():
 	if is_instance_valid(pokemon_manager):
@@ -461,7 +463,18 @@ func set_spawn(location:Vector2,direction:Vector2):
 		animation_tree.set("parameters/cycleTurn/blend_position",direction)
 		
 		position = location
+		facingDirection = facing_direction_to_enum(direction)
 
+func facing_direction_to_enum(direction:Vector2):
+	if direction == Vector2(0,-1):
+		return FacingDirection.UP
+	elif direction == Vector2(0,1):
+		return FacingDirection.DOWN
+	elif direction == Vector2(-1,0):
+		return FacingDirection.LEFT
+	elif direction == Vector2(1,0):
+		return FacingDirection.RIGHT
+		
 func check_ledge_direction():
 	if ledge_cast.is_colliding():
 		var body_rid = ledge_cast.get_collider_rid()
@@ -487,16 +500,19 @@ func ManageOverworldPokemon(case:String):
 			following_speed = 0.2
 		elif speed == Run_speed:
 			following_speed = 0.1
+		
 		if just_ledge_jumped == false:
 			if case.to_lower() == "moving":
 				pokemon_manager.change_position(self.global_position,following_speed,get_current_facing_direction())
 			elif case.to_lower() == "ledge":
 				pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
+			pokemon_manager.set_seeable()
 		else:
 			if case.to_lower() == "moving":
 				pokemon_manager.change_position(self.global_position,0.2,get_current_facing_direction())
 			elif case.to_lower() == "ledge":
 				pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
+			pokemon_manager.set_seeable()
 	if to_pokemon_follow == true and case.to_lower() == "turned":
 		add_overworld_pokemon()
 
@@ -515,12 +531,11 @@ func load_data(playerDat):
 	saver.apply_data(self)
 	
 
-func check_to_add_overworld_pokemon():
+func check_to_add_overworld_pokemon(set_see:bool = true):
 	if pokemon_following == true:
-
-		add_overworld_pokemon()
+		add_overworld_pokemon(set_see)
 
 func first_start():
 	var pikachu = preload("res://Core/Pokemon/MainPikachu.tres")
-	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5)
+	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha")
 	AllyPokemon.add_pokemon(MainPikachu)

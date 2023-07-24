@@ -98,12 +98,14 @@ func unload_party_screen():
 	get_parent().get_node("PartyScreen").queue_free()
 	CurrentState = current_state.Normal
 
-func load_summary_screen():
+func load_summary_screen(summary_id:int):
 	visible = false
 	CurrentState = current_state.Summary
 	Summary_Scene = Summary_scene.instantiate()
+	
 	get_parent().add_child(Summary_Scene)
-
+	get_parent().get_node("Summary").set_pokemon(AllyPokemon.get_party_pokemon(summary_id))
+	
 func unload_summary_screen():
 	visible = false
 	if is_instance_valid(Summary_Scene):

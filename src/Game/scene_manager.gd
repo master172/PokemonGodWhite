@@ -24,6 +24,8 @@ var transition_type = Transition_Type.NEW_SCENE
 
 var save_file_path = "user://save/Scene/"
 var save_file_name = "Scene.tres"
+
+var summary_pokemon:int 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -57,18 +59,20 @@ func first_time_load():
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
 		
-func set_player():
+func set_player(set_see:bool = true):
 	var player = Utils.get_player()
 	player.set_physics_process(false)
 	await get_tree().create_timer(0.1).timeout
-	player.check_to_add_overworld_pokemon()
+	player.check_to_add_overworld_pokemon(set_see)
 	player.set_physics_process(true)
 
 func get_current_scene():
 	return current_scene.get_child(0)
 
-func transistion_to_summary_scene():
+func transistion_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
+	summary_pokemon = poke_number
+
 	transition_type = Transition_Type.SUMMARY_SCENE
 	
 func transistion_exit_summary_screen():
@@ -99,13 +103,14 @@ func finished_fading():
 			
 			var player = Utils.get_player()
 			player.set_spawn(player_location,player_direction)
+			set_player(false)
 		
 		Transition_Type.MENU_ONLY:
 			menu.unload_party_screen()
 		Transition_Type.PARTY_SCREEN:
 			menu.load_party_screen()
 		Transition_Type.SUMMARY_SCENE:
-			menu.load_summary_screen()
+			menu.load_summary_screen(summary_pokemon)
 		Transition_Type.EXIT_SUMMARY_SCENE:
 			menu.unload_summary_screen()
 	transition_player.play("FadeToNormal")
