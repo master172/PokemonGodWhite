@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=19 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
 [ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="7_hhiqc"]
+[ext_resource type="Texture2D" uid="uid://df2t0ubvupo0m" path="res://assets/Ui/Summary/bg_memo.png" id="8_vv2m0"]
+[ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
+[ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
+[ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
 
 [node name="Summary" type="Control"]
 layout_mode = 3
@@ -25,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_tqhau")
 
 [node name="info" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -45,81 +50,20 @@ theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
 text = "Info"
 
-[node name="Level" type="Label" parent="info"]
-layout_mode = 2
-offset_left = 109.0
-offset_top = 196.0
-offset_right = 207.0
-offset_bottom = 261.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "24"
-
-[node name="Name" type="Label" parent="info"]
-layout_mode = 2
-offset_left = 88.0
-offset_top = 126.0
-offset_right = 186.0
-offset_bottom = 191.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Pikachu"
-
-[node name="Item" type="Label" parent="info"]
-layout_mode = 2
-offset_left = 144.0
-offset_top = 661.0
-offset_right = 329.0
-offset_bottom = 726.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Item"
-
-[node name="What" type="Label" parent="info"]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 736.0
-offset_right = 209.0
-offset_bottom = 801.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "None"
-
-[node name="BallCaught" type="Sprite2D" parent="info"]
-position = Vector2(40, 160)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_a8ai2")
-
-[node name="Gender" type="Sprite2D" parent="info"]
-position = Vector2(440, 160)
-scale = Vector2(7.15, 6.875)
-texture = ExtResource("4_16jd6")
-hframes = 2
-
-[node name="Pokemon" type="Sprite2D" parent="info"]
-position = Vector2(246, 429)
-scale = Vector2(5.2, 5.2)
-texture = ExtResource("5_uygc7")
-
 [node name="Info" type="Node2D" parent="info"]
 position = Vector2(246, 429)
 scale = Vector2(5.2, 5.2)
 
-[node name="Label" type="Label" parent="info/Info"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Species" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="Species" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = -50.1923
 offset_right = 174.692
-offset_bottom = -9.19234
+offset_bottom = -9.1923
 scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "Species:"
 
-[node name="Species" type="Label" parent="info/Info/Label/Species"]
+[node name="Species" type="Label" parent="info/Info/Species"]
 layout_mode = 2
 offset_left = 210.526
 offset_right = 334.526
@@ -127,17 +71,16 @@ offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
 text = "Bulbasaur"
 
-[node name="DexNo" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="DexNo" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = -37.5
 offset_right = 181.692
-offset_bottom = 3.49998
+offset_bottom = 3.5
 scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "Dex No:"
 
-[node name="DexNo" type="Label" parent="info/Info/Label/DexNo"]
+[node name="DexNo" type="Label" parent="info/Info/DexNo"]
 layout_mode = 2
 offset_left = 210.526
 offset_right = 334.526
@@ -145,8 +88,7 @@ offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
 text = "215"
 
-[node name="Ot" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="Ot" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = -24.4231
 offset_right = 181.692
@@ -155,7 +97,7 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "Ot:"
 
-[node name="Ot" type="Label" parent="info/Info/Label/Ot"]
+[node name="Ot" type="Label" parent="info/Info/Ot"]
 layout_mode = 2
 offset_left = 210.526
 offset_right = 334.526
@@ -163,8 +105,7 @@ offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
 text = "Ot"
 
-[node name="PokemonID" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="PokemonID" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = 1.15393
 offset_right = 181.692
@@ -173,7 +114,7 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "PokeID:"
 
-[node name="PokemonID" type="Label" parent="info/Info/Label/PokemonID"]
+[node name="PokemonID" type="Label" parent="info/Info/PokemonID"]
 layout_mode = 2
 offset_left = 210.526
 offset_right = 334.526
@@ -181,8 +122,7 @@ offset_bottom = 41.0
 theme = ExtResource("2_0rgf5")
 text = "53455"
 
-[node name="ExpPoints" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="ExpPoints" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = 13.6539
 offset_right = 218.692
@@ -191,7 +131,7 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "Exp Points:"
 
-[node name="ExpPoints" type="Label" parent="info/Info/Label/ExpPoints"]
+[node name="ExpPoints" type="Label" parent="info/Info/ExpPoints"]
 layout_mode = 2
 offset_left = 215.924
 offset_top = 45.8839
@@ -200,8 +140,7 @@ offset_bottom = 86.8839
 theme = ExtResource("2_0rgf5")
 text = "0"
 
-[node name="ToNextLevel" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="ToNextLevel" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = 40.5769
 offset_right = 259.692
@@ -210,7 +149,7 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "To next level:"
 
-[node name="ToNextLevel" type="Label" parent="info/Info/Label/ToNextLevel"]
+[node name="ToNextLevel" type="Label" parent="info/Info/ToNextLevel"]
 layout_mode = 2
 offset_left = 215.924
 offset_top = 45.8839
@@ -219,8 +158,7 @@ offset_bottom = 86.8839
 theme = ExtResource("2_0rgf5")
 text = "0"
 
-[node name="Type" type="Label" parent="info/Info/Label"]
-layout_mode = 2
+[node name="Type" type="Label" parent="info/Info"]
 offset_left = 57.6923
 offset_top = -11.5385
 offset_right = 181.692
@@ -229,13 +167,13 @@ scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 text = "Types:"
 
-[node name="Type1" type="Sprite2D" parent="info/Info/Label/Type"]
+[node name="Type1" type="Sprite2D" parent="info/Info/Type"]
 position = Vector2(254.652, 20.9496)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_ef2bl")
 vframes = 19
 
-[node name="Type2" type="Sprite2D" parent="info/Info/Label/Type"]
+[node name="Type2" type="Sprite2D" parent="info/Info/Type"]
 position = Vector2(352.395, 20.9496)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_ef2bl")
@@ -251,6 +189,86 @@ offset_bottom = 788.0
 theme = ExtResource("7_hhiqc")
 value = 62.51
 show_percentage = false
+
+[node name="moves" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_xk48v")
+
+[node name="Tag" type="Label" parent="moves"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Moves"
+
+[node name="memo" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_vv2m0")
+
+[node name="Tag" type="Label" parent="memo"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Memo"
+
+[node name="skills" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_e84sw")
+
+[node name="Tag" type="Label" parent="skills"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Skills"
+
+[node name="ribbons" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_erw2v")
+
+[node name="Tag" type="Label" parent="ribbons"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Ribbons"
 
 [node name="Info" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -286,3 +304,59 @@ position = Vector2(973, 69)
 scale = Vector2(2, 2)
 texture = ExtResource("7_ftuab")
 hframes = 2
+
+[node name="presisting" type="Node2D" parent="."]
+
+[node name="Level" type="Label" parent="presisting"]
+offset_left = 109.0
+offset_top = 196.0
+offset_right = 207.0
+offset_bottom = 261.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "24"
+
+[node name="Name" type="Label" parent="presisting"]
+offset_left = 88.0
+offset_top = 126.0
+offset_right = 273.0
+offset_bottom = 191.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Pikachu"
+
+[node name="Item" type="Label" parent="presisting"]
+offset_left = 144.0
+offset_top = 661.0
+offset_right = 329.0
+offset_bottom = 726.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Item"
+
+[node name="What" type="Label" parent="presisting"]
+offset_left = 24.0
+offset_top = 736.0
+offset_right = 209.0
+offset_bottom = 801.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "None"
+
+[node name="Gender" type="Sprite2D" parent="presisting"]
+position = Vector2(440, 160)
+scale = Vector2(7.15, 6.875)
+texture = ExtResource("4_16jd6")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="presisting"]
+texture_filter = 1
+position = Vector2(246, 429)
+scale = Vector2(5.2, 5.2)
+texture = ExtResource("5_uygc7")
+
+[node name="BallCaught" type="Sprite2D" parent="presisting"]
+texture_filter = 1
+position = Vector2(40, 160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_a8ai2")

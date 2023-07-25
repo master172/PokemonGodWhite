@@ -1,23 +1,22 @@
 extends TextureRect
 
-@onready var level = $Level
-@onready var Name = $Name
-@onready var item = $Item
-@onready var what = $What
-@onready var ball_caught = $BallCaught
-@onready var gender = $Gender
-@onready var poke = $Pokemon
+@onready var level = $"../presisting/Level"
+@onready var Name = $"../presisting/Name"
+@onready var item = $"../presisting/Item"
+@onready var what = $"../presisting/What"
+@onready var ball_caught = $"../presisting/BallCaught"
+@onready var gender = $"../presisting/Gender"
+@onready var poke = $"../presisting/Pokemon"
 @onready var info = $Info
-@onready var label = $Info/Label
-@onready var species = $Info/Label/Species/Species
-@onready var dex_no = $Info/Label/DexNo/DexNo
-@onready var ot = $Info/Label/Ot/Ot
-@onready var pokemon_id = $Info/Label/PokemonID/PokemonID
-@onready var exp_points = $Info/Label/ExpPoints/ExpPoints
-@onready var to_next_level = $Info/Label/ToNextLevel/ToNextLevel
-@onready var type = $Info/Label/Type
-@onready var type_1 = $Info/Label/Type/Type1
-@onready var type_2 = $Info/Label/Type/Type2
+@onready var species = $Info/Species/Species
+@onready var dex_no = $Info/DexNo/DexNo
+@onready var ot = $Info/Ot/Ot
+@onready var pokemon_id = $Info/PokemonID/PokemonID
+@onready var exp_points = $Info/ExpPoints/ExpPoints
+@onready var to_next_level = $Info/ToNextLevel/ToNextLevel
+@onready var type = $Info/Type
+@onready var type_1 = $Info/Type/Type1
+@onready var type_2 = $Info/Type/Type2
 @onready var exp_bar = $ExpBar
 
 # Called when the node enters the scene tree for the first time.
