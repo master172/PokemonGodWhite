@@ -84,6 +84,8 @@ script = ExtResource("1_iar6v")
 
 [node name="Menu" parent="Menu" instance=ExtResource("4_14eu5")]
 
+[node name="BattleLayer" type="CanvasLayer" parent="."]
+
 [node name="ScreenTranistion" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="ScreenTranistion"]

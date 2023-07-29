@@ -8,6 +8,7 @@ var grass_overlay : Sprite2D = null
 
 const grass_overlay_texture = preload("res://assets/tallgrass/stepped_tall_grass.png")
 
+@export var EncounterRate :int = 33
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var player = Utils.get_player()
@@ -27,6 +28,9 @@ func player_in_grass():
 		grass_overlay.position
 		grass_overlay.z_index = 1
 		self.add_child(grass_overlay)
+		
+		check_encounter()
+		
 
 func player_exiting_grass():
 	player_inside = false
@@ -36,3 +40,17 @@ func player_exiting_grass():
 func _on_area_2d_body_entered(body):
 	player_inside = true
 	animation_player.play("stepped")
+
+func check_encounter():
+	var Encounter = encounter()
+	if encounter() == true:
+		Utils.get_scene_manager().transistion_to_battle_scene()
+	
+func encounter():
+	var Rng = RandomNumberGenerator.new()
+	Rng.randomize()
+	var random_encounter = randi_range(0,100)
+	if random_encounter <= EncounterRate:
+		return true
+	
+	return false

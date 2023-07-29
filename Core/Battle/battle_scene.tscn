@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://csyacx8un7080"]
+
+[ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
+[ext_resource type="PackedScene" uid="uid://dac368r2gylw7" path="res://Core/Battle/battle_pokemon.tscn" id="2_3evhv"]
+
+[node name="BattleScene" type="Node2D"]
+
+[node name="Area0" parent="." instance=ExtResource("1_hg34g")]
+
+[node name="BattlePokemon" parent="." instance=ExtResource("2_3evhv")]
+position = Vector2(599, 796)
+scale = Vector2(2, 2)

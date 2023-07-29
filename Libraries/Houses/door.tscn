@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3ic7w7bji22c" path="res://assets/Serene_Village/Animated stuff/door_16x16.png" id="2_ny3iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oquvs"]
-size = Vector2(14, 14)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_32qfk"]
 resource_name = "CloseDoor"

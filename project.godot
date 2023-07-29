@@ -27,6 +27,7 @@ AllyPokemon="*res://Core/Pokemon/Managers/ally_pokemon.tscn"
 window/size/viewport_width=1200
 window/size/viewport_height=800
 window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
 window/vsync/vsync_mode=3
 
 [input]
@@ -98,7 +99,3 @@ Menu={
 2d_physics/layer_3="ledges"
 2d_physics/layer_4="Door"
 2d_physics/layer_5="Interactables"
-
-[physics]
-
-2d/run_on_separate_thread=true

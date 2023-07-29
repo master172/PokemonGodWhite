@@ -1,10 +1,12 @@
 extends Node2D
 
+var battle_scene = preload("res://Core/Battle/battle_scene.tscn")
 var next_scene = null
 
 @onready var transition_player = $ScreenTranistion/AnimationPlayer
 @onready var current_scene = $Current_scene
 @onready var menu = $Menu/Menu
+@onready var battle_layer = $BattleLayer
 
 var first_time_start:bool = true
 
@@ -18,7 +20,9 @@ enum Transition_Type {
 	PARTY_SCREEN,
 	SUMMARY_SCENE,
 	EXIT_SUMMARY_SCENE,
-	MENU_ONLY
+	MENU_ONLY,
+	BATTLE_SCENE,
+	EXIT_BATTLE_SCENE
 }
 var transition_type = Transition_Type.NEW_SCENE
 
@@ -68,7 +72,16 @@ func set_player(set_see:bool = true):
 
 func get_current_scene():
 	return current_scene.get_child(0)
+	
 
+func transistion_to_battle_scene():
+	Utils.get_player().set_physics_process(false)
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.BATTLE_SCENE
+
+func transistion_exit_battle_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EXIT_BATTLE_SCENE
 func transistion_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
 	summary_pokemon = poke_number
@@ -113,7 +126,17 @@ func finished_fading():
 			menu.load_summary_screen(summary_pokemon)
 		Transition_Type.EXIT_SUMMARY_SCENE:
 			menu.unload_summary_screen()
+		Transition_Type.BATTLE_SCENE:
+			load_battle_scene()
+		Transition_Type.EXIT_BATTLE_SCENE:
+			unload_battle_scene()
 	transition_player.play("FadeToNormal")
 
-
+func load_battle_scene():
 	
+	battle_layer.add_child(battle_scene.instantiate())
+
+func unload_battle_scene():
+	for i in battle_layer.get_children():
+		i.queue_free()
+	Utils.get_player().set_physics_process(true)

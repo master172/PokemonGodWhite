@@ -9,7 +9,7 @@ signal player_entered_door_signal
 
 @export_category("Movement")
 @export_group("MovementSpeed")
-@export var walk_speed :float = 4.0
+@export var walk_speed :float = 5.0
 @export var jump_speed :float= 4.0
 @export var Run_speed :float = 8.0
 @export var Cycle_speed :float= 12.0
@@ -68,6 +68,8 @@ var previous_facing_direction = FacingDirection.DOWN
 var ledge_direction:Vector2 = Vector2.ZERO
 var just_ledge_jumped = false
 var jump_direction:Vector2 = Vector2.ZERO
+
+var collided:bool = false
 
 func _ready():
 	
@@ -308,16 +310,12 @@ func move(delta):
 				position.x = initial_position.x + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
 			
 			jump_direction = ledge_direction
+
 		
-	elif collision_cast.is_colliding():
-		ledge_direction = Vector2.ZERO
-		just_ledge_jumped = false
-		is_moving = false
-		percent_moved_to_next_tile = 0.0
-		ManageOverworldPokemon("turned")
-	else:
+	elif !collision_cast.is_colliding():
 		just_ledge_jumped = false
 		ledge_direction = Vector2.ZERO
+		
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_moving_signal")
 			
@@ -325,7 +323,7 @@ func move(delta):
 				ManageOverworldPokemon("moving")
 			
 		percent_moved_to_next_tile += speed * delta
-		if percent_moved_to_next_tile >= 1:
+		if percent_moved_to_next_tile >= 1.0:
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
@@ -334,9 +332,12 @@ func move(delta):
 			
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
-			
-
-
+	else:
+		ledge_direction = Vector2.ZERO
+		just_ledge_jumped = false
+		is_moving = false
+		percent_moved_to_next_tile = 0.0
+		
 func get_current_facing_direction():
 	if facingDirection == FacingDirection.UP:
 		return Vector2(0,-1)
@@ -536,6 +537,6 @@ func check_to_add_overworld_pokemon(set_see:bool = true):
 		add_overworld_pokemon(set_see)
 
 func first_start():
-	var pikachu = preload("res://Core/Pokemon/MainPikachu.tres")
+	var pikachu = load("res://Core/Pokemon/MainPikachu.tres")
 	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha")
 	AllyPokemon.add_pokemon(MainPikachu)

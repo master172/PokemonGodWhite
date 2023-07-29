@@ -39,8 +39,12 @@ class_name game_pokemon
 @export var Special_Attack : int = 0
 @export var Speed : int = 0
 
+@export_group("personality")
+@export var nature :Nature
+
 @export_group("misc")
 @export var stats_calculated:bool = false
+
 
 
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
@@ -51,7 +55,10 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 		Nick_name = NickName
 	else:
 		Nick_name = Base_Pokemon.Name
+	
+	set_nature()
 	calculate_stats_init()
+	
 
 func calculate_IVs():
 	var rng = RandomNumberGenerator.new()
@@ -90,11 +97,18 @@ func print_stats():
 	print("Iv")
 	print(IV_Health," ",IV_Attack," ",IV_Defense," ",IV_Special_Attack," ",IV_Special_Defense," ",IV_Speed)
 
+func set_nature():
+	var rng = RandomNumberGenerator.new()
+	var index = rng.randi_range(0,natures.size() -1)
+	var NATURE = load(natures[index])
+	nature = NATURE
+	
 func get_nature_multiplier(stat:int):
-	if Base_Pokemon.nature != null:
-		if Base_Pokemon.nature.get_increased_stat() == stat:
+	if nature != null:
+		if nature.get_increased_stat() == stat:
 			return 1.1
-		if Base_Pokemon.nature.get_decreased_stat() == stat:
+			
+		if nature.get_decreased_stat() == stat:
 			return 0.9
 	
 	return 1

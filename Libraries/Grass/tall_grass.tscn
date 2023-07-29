@@ -72,6 +72,7 @@ _data = {
 }
 
 [node name="TallGrass" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_0d38s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

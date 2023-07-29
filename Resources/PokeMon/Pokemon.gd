@@ -36,8 +36,6 @@ enum TYPES {
 @export var Overworld:Texture2D
 
 
-
-
 @export_group("statSheet")
 @export_subgroup("Base")
 @export var Base_Health :int
@@ -47,7 +45,11 @@ enum TYPES {
 @export var Special_Base_Defense :int
 @export var Base_Speed :int
 
-@export var nature :Nature
+var natures :Array = [
+	"res://Resources/PokeMon/Natures/Hardy.tres",
+	"res://Resources/PokeMon/Natures/Lonely.tres"
+]
+
 
 func get_overworld_sprite():
 	return Overworld
