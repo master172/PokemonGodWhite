@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=4 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
-[ext_resource type="PackedScene" uid="uid://dac368r2gylw7" path="res://Core/Battle/battle_pokemon.tscn" id="2_3evhv"]
+[ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
+[ext_resource type="PackedScene" uid="uid://4oakufv7l1dw" path="res://Core/Battle/Ui/hud.tscn" id="3_r76kw"]
 
 [node name="BattleScene" type="Node2D"]
+script = ExtResource("1_lsbo8")
 
 [node name="Area0" parent="." instance=ExtResource("1_hg34g")]
 
-[node name="BattlePokemon" parent="." instance=ExtResource("2_3evhv")]
-position = Vector2(599, 796)
-scale = Vector2(2, 2)
+[node name="Hud" parent="." instance=ExtResource("3_r76kw")]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(609, 760)
+gizmo_extents = 67.1
+
+[connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]
