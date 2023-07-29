@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://dyye4noc6flfr"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_w8may"]
+
+[resource]
+script = ExtResource("1_w8may")
+name = "ThunderBolt"
+learned_level = 9

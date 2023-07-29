@@ -1,4 +1,4 @@
-extends Pokemon
+extends Resource
 class_name game_pokemon
 
 @export var Base_Pokemon:Pokemon
@@ -45,7 +45,8 @@ class_name game_pokemon
 @export_group("misc")
 @export var stats_calculated:bool = false
 
-
+@export_group("attacks")
+@export var learned_attacks:Array[GameAction]
 
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
@@ -99,8 +100,8 @@ func print_stats():
 
 func set_nature():
 	var rng = RandomNumberGenerator.new()
-	var index = rng.randi_range(0,natures.size() -1)
-	var NATURE = load(natures[index])
+	var index = rng.randi_range(0,Base_Pokemon.natures.size() -1)
+	var NATURE = load(Base_Pokemon.natures[index])
 	nature = NATURE
 	
 func get_nature_multiplier(stat:int):
@@ -118,9 +119,13 @@ func calculate_stats():
 	calculate_current_max_stats()
 	set_to_max_stats()
 
+func set_attacks():
+	inital_learn_moves()
+
 func calculate_stats_init():
 	if stats_calculated == false:
 		calculate_stats()
+		set_attacks()
 		stats_calculated = true
 
 func get_overworld_sprite():
@@ -128,3 +133,12 @@ func get_overworld_sprite():
 
 func get_icon():
 	return Base_Pokemon.get_icon_sprite()
+
+func inital_learn_moves():
+#	if learned_attacks.size() == 0:
+	print("what the fuck")
+	for i in Base_Pokemon.Actions:
+		if i.learned_level <= self.level and learned_attacks.size() <= 3:
+			var move_to_learn = GameAction.new(i)
+			learned_attacks.append(move_to_learn)
+				

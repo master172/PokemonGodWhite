@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_hud_pokemon_selected(pokemon):
-	print("what the fuck")
 	var BATTLE_POKEMON = battle_pokemon.instantiate()
 	BATTLE_POKEMON.pokemon = AllyPokemon.get_party_pokemon(pokemon)
 	BATTLE_POKEMON.position = marker_2d.position

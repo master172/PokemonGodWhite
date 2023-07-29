@@ -50,6 +50,8 @@ var natures :Array = [
 	"res://Resources/PokeMon/Natures/Lonely.tres"
 ]
 
+@export_group("attacks")
+@export var Actions:Array[BaseAction] = []
 
 func get_overworld_sprite():
 	return Overworld
