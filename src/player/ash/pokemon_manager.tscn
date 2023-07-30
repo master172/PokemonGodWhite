@@ -1,16 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5ikypqo1skdt"]
+[gd_scene load_steps=3 format=3 uid="uid://c5ikypqo1skdt"]
 
 [ext_resource type="Script" path="res://src/player/ash/PokemonManager.gd" id="1_w0ptj"]
 [ext_resource type="PackedScene" uid="uid://dax0yjivpul7x" path="res://src/Pokemon/OverWorldPokemon.tscn" id="2_xqc2i"]
 
-[sub_resource type="Curve" id="Curve_h1ywa"]
-min_value = -1.0
-_data = [Vector2(0, 0.0105263), 0.0, 1.4, 0, 0, Vector2(0.18315, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="PokemonManager" type="Node2D"]
+z_index = 1
 position = Vector2(0, -16)
 script = ExtResource("1_w0ptj")
-jump_curve = SubResource("Curve_h1ywa")
 
 [node name="pokemon" parent="." instance=ExtResource("2_xqc2i")]

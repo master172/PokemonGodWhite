@@ -135,8 +135,6 @@ func get_icon():
 	return Base_Pokemon.get_icon_sprite()
 
 func inital_learn_moves():
-#	if learned_attacks.size() == 0:
-	print("what the fuck")
 	for i in Base_Pokemon.Actions:
 		if i.learned_level <= self.level and learned_attacks.size() <= 3:
 			var move_to_learn = GameAction.new(i)

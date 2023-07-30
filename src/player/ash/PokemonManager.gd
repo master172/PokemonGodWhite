@@ -1,8 +1,7 @@
 extends Node2D
 
-@onready var following_pokemon = get_child(0)
+@onready var following_pokemon = $pokemon
 
-@export var jump_curve:Curve
 var HashMap = {
 	Vector2(0,-1):Vector2(0,8),
 	Vector2(0,1):Vector2(0,-24),
@@ -22,6 +21,10 @@ func change_position(Position,Speed,Direction):
 	await tween.finished
 	update_direction(Direction)
 
+func set_direction(Direction):
+	await self.ready
+	update_direction(Direction)
+	
 func update_direction(Direction):
 	following_pokemon.set_direction(Direction)
 

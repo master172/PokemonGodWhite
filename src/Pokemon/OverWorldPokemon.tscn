@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dax0yjivpul7x"]
+[gd_scene load_steps=20 format=3 uid="uid://dax0yjivpul7x"]
 
 [ext_resource type="Script" path="res://src/Pokemon/OverWorldPokemon.gd" id="1_1f7kr"]
-[ext_resource type="Resource" uid="uid://cuq2jbkvgjh57" path="res://Core/Pokemon/MainPikachu.tres" id="2_40e76"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sv3ig"]
 
 [sub_resource type="Animation" id="Animation_6vfpa"]
@@ -154,7 +153,6 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 [node name="OverworldPokemon" type="Node2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_1f7kr")
-pokemon = ExtResource("2_40e76")
 
 [node name="PokeSprite" type="Sprite2D" parent="."]
 texture_filter = 1

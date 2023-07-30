@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bmo5vwylgv02b" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
-[ext_resource type="PackedScene" uid="uid://diw3id2cyxe0k" path="res://src/DialogManager/dialog_layer.tscn" id="3_7stum"]
+[ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
@@ -71,14 +71,13 @@ _data = {
 "RESET": SubResource("Animation_aupg7")
 }
 
-[node name="SceneManager" type="Node2D"]
+[node name="SceneManager" type="Node2D" groups=["SceneManager"]]
 script = ExtResource("1_iar6v")
 
 [node name="Current_scene" type="Node2D" parent="."]
+script = ExtResource("2_tvhi0")
 
 [node name="Area0" parent="Current_scene" instance=ExtResource("1_7uays")]
-
-[node name="DialogLayer" parent="." instance=ExtResource("3_7stum")]
 
 [node name="Menu" type="CanvasLayer" parent="."]
 

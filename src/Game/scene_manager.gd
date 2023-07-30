@@ -30,6 +30,8 @@ var save_file_path = "user://save/Scene/"
 var save_file_name = "Scene.tres"
 
 var summary_pokemon:int 
+
+signal data_set_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -51,10 +53,13 @@ func load_data():
 	
 func apply_data():
 	if Scene_Saver.scene != "":
+		var scene = load(Scene_Saver.scene)
 		current_scene.get_child(0).queue_free()
-		current_scene.add_child(load(Scene_Saver.scene).instantiate())
+		current_scene.add_scene(scene)
+		emit_signal("data_set_finished")
 	first_time_start = Scene_Saver.first_time_start
-	set_player()
+	
+	
 	
 
 func first_time_load():
@@ -63,12 +68,7 @@ func first_time_load():
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
 		
-func set_player(set_see:bool = true):
-	var player = Utils.get_player()
-	player.set_physics_process(false)
-	await get_tree().create_timer(0.1).timeout
-	player.check_to_add_overworld_pokemon(set_see)
-	player.set_physics_process(true)
+
 
 func get_current_scene():
 	return current_scene.get_child(0)
@@ -116,8 +116,8 @@ func finished_fading():
 			
 			var player = Utils.get_player()
 			player.set_spawn(player_location,player_direction)
-			set_player(false)
-		
+			Utils.set_player(false)
+			emit_signal("data_set_finished")
 		Transition_Type.MENU_ONLY:
 			menu.unload_party_screen()
 		Transition_Type.PARTY_SCREEN:

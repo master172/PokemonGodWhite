@@ -12,8 +12,9 @@ const grass_overlay_texture = preload("res://assets/tallgrass/stepped_tall_grass
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var player = Utils.get_player()
-	player.connect("player_moving_signal",player_exiting_grass)
-	player.connect("player_stopped_signal",player_in_grass)
+	if player != null:
+		player.connect("player_moving_signal",player_exiting_grass)
+		player.connect("player_stopped_signal",player_in_grass)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -42,9 +43,10 @@ func _on_area_2d_body_entered(body):
 	animation_player.play("stepped")
 
 func check_encounter():
-	var Encounter = encounter()
-	if encounter() == true:
-		Utils.get_scene_manager().transistion_to_battle_scene()
+	if Utils.get_scene_manager() != null:
+		var Encounter = encounter()
+		if encounter() == true:
+			Utils.get_scene_manager().transistion_to_battle_scene()
 	
 func encounter():
 	var Rng = RandomNumberGenerator.new()

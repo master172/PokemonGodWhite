@@ -71,6 +71,8 @@ var jump_direction:Vector2 = Vector2.ZERO
 
 var collided:bool = false
 
+signal player_ready
+
 func _ready():
 	
 	saver.load_data()
@@ -93,18 +95,24 @@ func _ready():
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 	
+	emit_signal("player_ready")
+
 	
 	
-func add_overworld_pokemon(set_see:bool = true):
-	var scene_manager = Utils.get_scene_manager()
-	pokemon_manager = Pokemon_manager.instantiate() 
-	scene_manager.get_current_scene().add_child(pokemon_manager)
+func add_overworld_pokemon(set_see:bool = true,initial:bool = true):
+	if initial == true:
+		var scene_manager = Utils.get_scene_manager()
+		if scene_manager != null:
+			await scene_manager.data_set_finished
+	pokemon_manager = Pokemon_manager.instantiate()
+	get_parent().call_deferred("add_child",pokemon_manager)
 	pokemon_following = true
 	to_pokemon_follow = false
 	pokemon_manager.global_position = self.global_position - (get_current_facing_direction() * 16)
-	pokemon_manager.update_direction(get_current_facing_direction())
+	pokemon_manager.set_direction(get_current_facing_direction())
 	
 	if set_see == true:
+		await pokemon_manager.ready
 		pokemon_manager.set_seeable()
 
 func remove_overworld_pokemon():
@@ -262,6 +270,7 @@ func move(delta):
 		
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_entering_door_signal")
+			ManageOverworldPokemon("moving")
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1.0:
 			position = initial_position + input_direction * TILE_SIZE
@@ -502,20 +511,14 @@ func ManageOverworldPokemon(case:String):
 		elif speed == Run_speed:
 			following_speed = 0.1
 		
-		if just_ledge_jumped == false:
-			if case.to_lower() == "moving":
-				pokemon_manager.change_position(self.global_position,following_speed,get_current_facing_direction())
-			elif case.to_lower() == "ledge":
-				pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
-			pokemon_manager.set_seeable()
-		else:
-			if case.to_lower() == "moving":
-				pokemon_manager.change_position(self.global_position,0.2,get_current_facing_direction())
-			elif case.to_lower() == "ledge":
-				pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
-			pokemon_manager.set_seeable()
+		if case.to_lower() == "moving":
+			pokemon_manager.change_position(self.global_position,following_speed,get_current_facing_direction())
+		elif case.to_lower() == "ledge":
+			pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
+		pokemon_manager.set_seeable()
+	
 	if to_pokemon_follow == true and case.to_lower() == "turned":
-		add_overworld_pokemon()
+		add_overworld_pokemon(true,false)
 
 func save_data():
 	saver.playerData.change_pos(floor(position))
@@ -534,6 +537,7 @@ func load_data(playerDat):
 
 func check_to_add_overworld_pokemon(set_see:bool = true):
 	if pokemon_following == true:
+	
 		add_overworld_pokemon(set_see)
 
 func first_start():

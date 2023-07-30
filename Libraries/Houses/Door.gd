@@ -18,8 +18,9 @@ func _ready():
 		visible = false
 	sprite_2d.visible = false
 	var player = Utils.get_player()
-	player.connect("player_entering_door_signal",enter_door)
-	player.connect("player_entered_door_signal",close_door)
+	if player != null:
+		player.connect("player_entering_door_signal",enter_door)
+		player.connect("player_entered_door_signal",close_door)
 	
 
 func enter_door():
