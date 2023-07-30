@@ -139,4 +139,12 @@ func inital_learn_moves():
 		if i.learned_level <= self.level and learned_attacks.size() <= 3:
 			var move_to_learn = GameAction.new(i)
 			learned_attacks.append(move_to_learn)
-				
+
+func get_learned_attack_name(num:int):
+	if learned_attacks.size() >= num +1:
+		return learned_attacks[num].Name()
+	return ""
+
+func initiate_attack(num:int,user:CharacterBody2D):
+	if learned_attacks.size() >= num + 1:
+		learned_attacks[num].start_attack(user)

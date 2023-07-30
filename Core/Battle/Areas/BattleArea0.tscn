@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2uywh38qmnxh"]
+[gd_scene load_steps=18 format=3 uid="uid://b2uywh38qmnxh"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_6060q"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_68o2s"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_7swea"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_due33"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="8_to5mc"]
+[ext_resource type="PackedScene" uid="uid://ynr0nq4upd4" path="res://Core/Battle/Areas/test_dummy.tscn" id="9_q34ln"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8042,3 +8043,5 @@ position = Vector2(552, 400.8)
 scale = Vector2(2.07813, 2.1183)
 build_mode = 1
 polygon = PackedVector2Array(-300.271, -219.421, -265.624, -189.208, -265.624, 188.453, 311.82, 188.453, 311.82, -189.208, -265.624, -189.208, -300.271, -219.421, 350.316, -219.421, 350.316, 218.666, -296.421, 218.666)
+
+[node name="TestDummy" parent="." instance=ExtResource("9_q34ln")]

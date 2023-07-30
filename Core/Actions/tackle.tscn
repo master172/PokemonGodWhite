@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://biav4boxyl57c"]
+
+[ext_resource type="Script" path="res://Core/Actions/tackle.gd" id="1_dbv25"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq7dy"]
+radius = 40.7922
+
+[node name="Tackle" type="Node2D"]
+script = ExtResource("1_dbv25")
+
+[node name="TackleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.17
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hq7dy")
+
+[connection signal="timeout" from="TackleTimer" to="." method="_on_tackle_timer_timeout"]
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
