@@ -15,4 +15,10 @@ script = ExtResource("1_lsbo8")
 position = Vector2(609, 760)
 gizmo_extents = 67.1
 
+[node name="AllyPokemon" type="Node2D" parent="."]
+
+[node name="EnemyPokemon" type="Node2D" parent="."]
+
+[node name="PresistentAttacks" type="Node2D" parent="."]
+
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]

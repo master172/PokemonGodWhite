@@ -61,7 +61,7 @@ func input_to_facing_direction(input_dir):
 	elif input_dir == Vector2(-1,0):
 		current_facing_direction = facingDirection.LEFT
 	elif input_dir == Vector2(1,0):
-		current_facing_direction= facingDirection.DOWN
+		current_facing_direction= facingDirection.RIGHT
 
 func get_current_facing_direction():
 	if current_facing_direction == facingDirection.UP:

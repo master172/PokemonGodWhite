@@ -22,6 +22,7 @@ Utils="*res://autoload/Utils.gd"
 Global="*res://autoload/Global.gd"
 AllyPokemon="*res://Core/Pokemon/Managers/ally_pokemon.tscn"
 DialogLayer="*res://src/DialogManager/dialog_layer.tscn"
+BattleManager="*res://autoload/BattleManager.gd"
 
 [display]
 

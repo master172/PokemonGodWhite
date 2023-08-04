@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=10 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://bmo5vwylgv02b" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
 [ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
+[ext_resource type="PackedScene" uid="uid://srq4btryqe3j" path="res://autoload/audio_manager.tscn" id="5_p78iy"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
 resource_name = "FadeToBlack"
@@ -99,3 +100,5 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_5vqoy")
 }
+
+[node name="AudioManager" parent="." instance=ExtResource("5_p78iy")]

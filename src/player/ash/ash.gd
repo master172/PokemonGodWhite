@@ -53,6 +53,7 @@ var speed :float= 4.0
 @onready var animation_player = $AnimationPlayer
 @onready var interaction_cast = $InteractionCast
 @onready var saver = $Saver
+@onready var footstep = $AudioManager/Footstep
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -540,7 +541,13 @@ func check_to_add_overworld_pokemon(set_see:bool = true):
 	
 		add_overworld_pokemon(set_see)
 
+func change_animation(state:bool):
+	animation_tree.active = state
+	
 func first_start():
 	var pikachu = load("res://Core/Pokemon/MainPikachu.tres")
 	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha")
 	AllyPokemon.add_pokemon(MainPikachu)
+
+func play_footstep():
+	footstep.play()

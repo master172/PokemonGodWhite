@@ -47,6 +47,7 @@ func check_encounter():
 		var Encounter = encounter()
 		if encounter() == true:
 			Utils.get_scene_manager().transistion_to_battle_scene()
+			Utils.get_player().change_animation(false)
 	
 func encounter():
 	var Rng = RandomNumberGenerator.new()
