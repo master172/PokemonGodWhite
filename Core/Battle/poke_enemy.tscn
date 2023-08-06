@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=21 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
 [ext_resource type="Script" path="res://Resources/StateMachine/FiniteStateMachine.gd" id="3_82o3u"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyFollowState.gd" id="4_0bbir"]
+[ext_resource type="Script" path="res://Resources/StateMachine/MelleAttackState.gd" id="5_et2fj"]
+[ext_resource type="Script" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
 size = Vector2(64, 64)
@@ -162,6 +164,14 @@ script = ExtResource("4_0bbir")
 actor = NodePath("../..")
 NavigationAgent = NodePath("../../NavigationAgent2D")
 
+[node name="MelleAttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_et2fj")
+actor = NodePath("../..")
+
+[node name="RangeAttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_3w07w")
+actor = NodePath("../..")
+
 [node name="PokeCast" type="RayCast2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -176,3 +186,5 @@ active = true
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
+[connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
