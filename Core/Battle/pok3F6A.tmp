@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy76wy1prl8ih"]
+
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="1_hoymt"]
+[ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
+[ext_resource type="Script" path="res://Resources/StateMachine/FiniteStateMachine.gd" id="3_82o3u"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyWanderState.gd" id="4_w0q6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
+size = Vector2(64, 64)
+
+[node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
+script = ExtResource("1_ss21h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_hoymt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_t5qjp")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_82o3u")
+state = NodePath("EnemyWanderState")
+
+[node name="EnemyWanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "NavigationAgent")]
+script = ExtResource("4_w0q6c")
+actor = NodePath("../..")
+NavigationAgent = NodePath("../../NavigationAgent2D")
+
+[node name="PokeCast" type="RayCast2D" parent="."]

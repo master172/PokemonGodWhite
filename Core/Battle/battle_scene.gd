@@ -19,4 +19,5 @@ func _on_hud_pokemon_selected(pokemon):
 	BATTLE_POKEMON.pokemon = AllyPokemon.get_party_pokemon(pokemon)
 	BATTLE_POKEMON.position = marker_2d.position
 	ally_pokemon.add_child(BATTLE_POKEMON)
+	BattleManager.AllyHolders.append(BATTLE_POKEMON)
 	BattleManager.AllyPokemons.add_pokemon(AllyPokemon.get_party_pokemon(pokemon))

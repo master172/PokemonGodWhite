@@ -18,6 +18,7 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_hq7dy")
 
 [connection signal="timeout" from="TackleTimer" to="." method="_on_tackle_timer_timeout"]

@@ -36,7 +36,6 @@ func _input(event):
 		
 		elif event.is_action_pressed("Yes"):
 			pokemon_selected.emit(current_selected)
-			print( AllyPokemon.get_party_pokemon(current_selected))
 			visible = false
 			state = STATES.EMPTY
 		

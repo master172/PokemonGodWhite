@@ -133,7 +133,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_pngbj")
 states/Walk/position = Vector2(404, 107)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_whwvl")]
 
-[node name="BattlePokemon" type="CharacterBody2D"]
+[node name="BattlePokemon" type="CharacterBody2D" groups=["PlayerPokemon"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_o4sl4")
 

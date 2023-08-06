@@ -1,3 +1,4 @@
+class_name BattlePokemon
 extends CharacterBody2D
 
 @export var speed = 256
@@ -42,10 +43,7 @@ func get_input():
 				print(pokemon.get_learned_attack_name(1))
 		
 	else:
-		if input_direction.y == 0:
-			input_direction.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
-		if input_direction.x == 0:
-			input_direction.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
+		input_direction = Input.get_vector("A", "D", "W", "S")
 			
 		velocity = input_direction * speed
 			

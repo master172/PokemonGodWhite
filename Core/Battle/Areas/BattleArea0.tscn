@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_7swea"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_due33"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="8_to5mc"]
-[ext_resource type="PackedScene" uid="uid://ynr0nq4upd4" path="res://Core/Battle/Areas/test_dummy.tscn" id="9_q34ln"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8007,6 +8006,11 @@ sources/4 = SubResource("TileSetAtlasSource_l5qym")
 sources/5 = SubResource("TileSetScenesCollectionSource_fxy7e")
 sources/6 = SubResource("TileSetScenesCollectionSource_tr3qo")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yt46t"]
+vertices = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)])
+
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 
@@ -8044,4 +8048,10 @@ scale = Vector2(2.07813, 2.1183)
 build_mode = 1
 polygon = PackedVector2Array(-300.271, -219.421, -265.624, -189.208, -265.624, 188.453, 311.82, 188.453, 311.82, -189.208, -265.624, -189.208, -300.271, -219.421, 350.316, -219.421, 350.316, 218.666, -296.421, 218.666)
 
-[node name="TestDummy" parent="." instance=ExtResource("9_q34ln")]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_yt46t")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(465, 375)
+gizmo_extents = 139.4
