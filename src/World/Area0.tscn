@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=21 format=3 uid="uid://bmo5vwylgv02b"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_l5egc"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_gix2c"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="10_g640m"]
+[ext_resource type="Script" path="res://Resources/Misc/pokeSheet.gd" id="11_nk183"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -7999,6 +8001,11 @@ sources/4 = SubResource("TileSetAtlasSource_l5qym")
 sources/5 = SubResource("TileSetScenesCollectionSource_fxy7e")
 sources/6 = SubResource("TileSetScenesCollectionSource_tr3qo")
 
+[sub_resource type="Resource" id="Resource_a32na"]
+script = ExtResource("11_nk183")
+pokemon = ExtResource("10_g640m")
+rate = 100
+
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 
@@ -8039,75 +8046,150 @@ y_sort_enabled = true
 
 [node name="TallGrass" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass2" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass3" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-8, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass4" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, 8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass5" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, 8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass6" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, -8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass7" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, -24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass24" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, -40)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass8" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-8, -8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass9" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(8, 8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass10" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(8, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass11" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(24, 8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass12" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(40, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass13" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(56, 8)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass14" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(56, 24)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass15" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 152)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass16" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-440, 152)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass17" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-456, 120)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass18" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 136)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass19" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 120)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass20" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-408, 136)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass22" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-392, 120)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass25" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-376, 136)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass23" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-440, 136)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5
 
 [node name="TallGrass21" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-408, 120)
+pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
+min_level = 3
+max_level = 5

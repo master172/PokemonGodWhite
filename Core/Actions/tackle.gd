@@ -21,6 +21,7 @@ func _attack():
 	tackle_timer.start()
 	if User != null:
 		User.velocity = User.get_current_facing_direction() * dash_speed
+		
 func is_tackling():
 	return tackle_timer.is_stopped()
 
@@ -31,11 +32,12 @@ func _on_tackle_timer_timeout():
 
 func _on_attack_delay_timeout():
 	User.attacking = false
+	User.state = User.states.NORMAL
 	queue_free()
 
 
 func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon"):
-			body.health -= 100
+			holder.calculate_damage(body,User)
 

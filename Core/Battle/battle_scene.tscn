@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
 [ext_resource type="PackedScene" uid="uid://4oakufv7l1dw" path="res://Core/Battle/Ui/hud.tscn" id="3_r76kw"]
-[ext_resource type="PackedScene" uid="uid://cy76wy1prl8ih" path="res://Core/Battle/poke_enemy.tscn" id="4_54lav"]
+[ext_resource type="PackedScene" uid="uid://d4ckyncwga1be" path="res://Core/Battle/Ui/poke_data.tscn" id="4_asoq2"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_lsbo8")
@@ -20,9 +20,15 @@ gizmo_extents = 67.1
 
 [node name="EnemyPokemon" type="Node2D" parent="."]
 
-[node name="PokeEnemy" parent="EnemyPokemon" instance=ExtResource("4_54lav")]
-position = Vector2(603, 163)
-
 [node name="PresistentAttacks" type="Node2D" parent="."]
+
+[node name="PokeData" parent="." instance=ExtResource("4_asoq2")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1200.0
+offset_bottom = 800.0
 
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]

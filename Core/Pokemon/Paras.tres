@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://bbll1o6krkpec"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_ilf3o"]
+[ext_resource type="Texture2D" uid="uid://bsyj6i7jg16jy" path="res://Core/Graphics/Pokemon/Gen1/Back/46.png" id="1_tey8c"]
+[ext_resource type="Texture2D" uid="uid://cyumdv2kjf6ir" path="res://Core/Graphics/Pokemon/Gen1/Front/46.png" id="2_yd6u2"]
+[ext_resource type="Texture2D" uid="uid://del733fw3hrff" path="res://Core/Graphics/Pokemon/Gen1/Icons/PARAS.png" id="3_phxfc"]
+[ext_resource type="Texture2D" uid="uid://2amul04hssdo" path="res://Core/Graphics/Pokemon/Gen1/Followers/PARAS.png" id="4_ty731"]
+
+[resource]
+script = ExtResource("1_ilf3o")
+Name = "Paras"
+Id = 46
+Types = Array[int]([12, 2])
+Front = ExtResource("2_yd6u2")
+Back = ExtResource("1_tey8c")
+Icon = ExtResource("3_phxfc")
+Overworld = ExtResource("4_ty731")
+Base_Health = 35
+Base_Attack = 70
+Base_Defense = 55
+Special_Base_Attack = 45
+Special_Base_Defense = 55
+Base_Speed = 25
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])

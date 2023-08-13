@@ -15,8 +15,13 @@ func Name():
 	return base_action.name
 
 func start_attack(User:CharacterBody2D):
-	var attack = base_action.action.instantiate()
-	User.add_child(attack)
-	attack.set_user(User)
-	attack._attack()
+	if base_action.action != null:
+		var attack = base_action.action.instantiate()
+		User.add_child(attack)
+		attack.set_holder(self)
+		attack.set_user(User)
+		attack._attack()
 	
+func calculate_damage(body,User):
+	var damage = randi_range(5,7)
+	body.recive_damage(damage,User)

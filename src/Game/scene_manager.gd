@@ -31,6 +31,8 @@ var save_file_name = "Scene.tres"
 
 var summary_pokemon:int 
 
+var pocket_monster:Array
+
 signal data_set_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,11 +76,12 @@ func get_current_scene():
 	return current_scene.get_child(0)
 	
 
-func transistion_to_battle_scene():
+func transistion_to_battle_scene(pokemon):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BATTLE_SCENE
-
+	pocket_monster = pokemon
+	
 func transistion_exit_battle_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BATTLE_SCENE
@@ -127,15 +130,16 @@ func finished_fading():
 		Transition_Type.EXIT_SUMMARY_SCENE:
 			menu.unload_summary_screen()
 		Transition_Type.BATTLE_SCENE:
-			load_battle_scene()
+			load_battle_scene(pocket_monster)
+			pocket_monster =[]
 		Transition_Type.EXIT_BATTLE_SCENE:
 			unload_battle_scene()
 	transition_player.play("FadeToNormal")
 
-func load_battle_scene():
+func load_battle_scene(pokemon):
 	
 	battle_layer.add_child(battle_scene.instantiate())
-
+	battle_layer.get_child(0).set_enemy(pokemon)
 func unload_battle_scene():
 	for i in battle_layer.get_children():
 		i.queue_free()
