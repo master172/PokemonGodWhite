@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=23 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Resources/StateMachine/MelleAttackState.gd" id="5_et2fj"]
 [ext_resource type="Script" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
 size = Vector2(64, 64)
@@ -177,6 +178,11 @@ actor = NodePath("../..")
 script = ExtResource("7_rkv4e")
 User = NodePath("../..")
 
+[node name="EnemyIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("User", "timer")]
+script = ExtResource("8_8u74g")
+User = NodePath("../..")
+timer = NodePath("../../IdleTimer")
+
 [node name="PokeCast" type="RayCast2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -190,7 +196,12 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Walk/blend_position = Vector2(0, 0)
 
+[node name="IdleTimer" type="Timer" parent="."]
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
+[connection signal="attackFinished" from="FiniteStateMachine/MelleAttackState" to="." method="_on_melle_attack_state_attack_finished"]
+[connection signal="attackFinished" from="FiniteStateMachine/RangeAttackState" to="." method="_on_range_attack_state_attack_finished"]
 [connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
+[connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]

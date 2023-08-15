@@ -8,7 +8,7 @@ var knockback_vector :Vector2
 
 var knockback:Vector2 = Vector2.ZERO
 var damage_strenth:int = 0
-@export var knockback_modifier := 30
+@export var knockback_modifier := 300
 
 signal finished
 
@@ -26,7 +26,7 @@ func _exit_state():
 	damage_strenth = 0
 	
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO,200*delta)
+	knockback = knockback.move_toward(Vector2.ZERO,10000*delta)
 	User.velocity = knockback
 	
 	if knockback == Vector2.ZERO:

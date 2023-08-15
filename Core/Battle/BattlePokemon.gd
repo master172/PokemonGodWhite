@@ -88,3 +88,15 @@ func _on_attack_selector_attack_chosen(attack):
 
 func _on_timer_timeout():
 	init_delay = false
+
+
+func _on_attack_selector_cancel():
+	attacking = false
+	state = states.NORMAL
+
+func attack_prep():
+	attacking = true
+
+func attack_end():
+	attacking = false
+	state = states.NORMAL

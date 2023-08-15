@@ -8,3 +8,4 @@ script = ExtResource("1_jspu5")
 name = "Tackle"
 learned_level = 1
 action = ExtResource("1_d0684")
+range = 1

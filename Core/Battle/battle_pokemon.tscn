@@ -204,4 +204,5 @@ one_shot = true
 autostart = true
 
 [connection signal="attack_chosen" from="AttackSelector" to="." method="_on_attack_selector_attack_chosen"]
+[connection signal="cancel" from="AttackSelector" to="." method="_on_attack_selector_cancel"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -12,6 +12,8 @@ var current_selected:int = 0
 var max_selectable:int = 4
 
 signal attack_chosen(attack:int)
+signal cancel
+
 var pokemon:game_pokemon
 func change_selected():
 	frame = current_selected + 1
@@ -37,6 +39,10 @@ func _input(event):
 			emit_signal("attack_chosen",current_selected)
 			state = STATES.EMPTY
 			_set_radial()
+		elif event.is_action_pressed("No"):
+			state = STATES.EMPTY
+			_set_radial()
+			emit_signal("cancel")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _set_radial():
 	if state == STATES.RADIAL:

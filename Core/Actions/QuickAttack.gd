@@ -1,12 +1,12 @@
 extends Action
 
-@onready var tackle_timer = $TackleTimer
+@onready var quick_attack_timer = $QuickAttackTimer
 @onready var attack_delay = $AttackDelay
 
 var User:CharacterBody2D = null
 
-var duration:float = 0.1
-var dash_speed:float = 1500
+var duration:float = 0.5
+var dash_speed:float = 2000
 
 func _ready():#ready overrider
 	pass
@@ -18,16 +18,16 @@ func _attack():
 	attack_delay.start()
 	if User.has_method("attack_prep"):
 		User.attack_prep()
-	tackle_timer.wait_time = duration
-	tackle_timer.start()
+	quick_attack_timer.wait_time = duration
+	quick_attack_timer.start()
 	if User != null:
 		User.velocity = User.get_current_facing_direction() * dash_speed
 		
 func is_tackling():
-	return tackle_timer.is_stopped()
+	return quick_attack_timer.is_stopped()
 
 
-func _on_tackle_timer_timeout():
+func _on_quick_attack_timer_timeout():
 	User.velocity = Vector2.ZERO
 
 
@@ -35,7 +35,6 @@ func _on_attack_delay_timeout():
 	if User.has_method("attack_end"):
 		User.attack_end()
 	SignalBus.connect_attack_completed(self,User)
-	emit_signal("attack_finished")
 	queue_free()
 
 
