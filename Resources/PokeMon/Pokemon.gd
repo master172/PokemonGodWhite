@@ -3,32 +3,54 @@ extends Resource
 class_name Pokemon
 
 @export_group("general")
-enum TYPES {
-	Normal,
-	Fire,
-	Grass,
-	Water,
-	Rock,
-	Flying,
-	Electric,
-	Poison,
-	Steel,
-	Ghost,
-	Dark,
-	Fairy,
-	Bug,
-	Ice,
-	Dragon,
-	Fighting,
-	Ground,
-	Psychic
-}
+
 
 @export var Name:String = ""
 @export var Id :int = 0
 
-@export var Types:Array[TYPES]
+@export_enum(
+	"Normal",
+	"Fighting",
+	"Flying",
+	"Poison",
+	"Ground",
+	"Rock",
+	"Bug",
+	"Ghost",
+	"Steel",
+	"Fire",
+	"Water",
+	"Grass",
+	"Electric",
+	"Psychic",
+	"Ice",
+	"Dragon",
+	"Dark",
+	"Fairy",
+	) var Type1:String = "Normal"
 
+@export_enum(
+	"Normal",
+	"Fighting",
+	"Flying",
+	"Poison",
+	"Ground",
+	"Rock",
+	"Bug",
+	"Ghost",
+	"Steel",
+	"Fire",
+	"Water",
+	"Grass",
+	"Electric",
+	"Psychic",
+	"Ice",
+	"Dragon",
+	"Dark",
+	"Fairy",
+	"NONE"
+	) var Type2:String = "NONE"
+	
 @export_group("Sprites")
 @export var Front:Texture2D
 @export var Back:Texture2D

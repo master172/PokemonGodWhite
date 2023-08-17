@@ -12,7 +12,8 @@
 script = ExtResource("1_ilf3o")
 Name = "Paras"
 Id = 46
-Types = Array[int]([12, 2])
+Type1 = "Bug"
+Type2 = "Grass"
 Front = ExtResource("2_yd6u2")
 Back = ExtResource("1_tey8c")
 Icon = ExtResource("3_phxfc")

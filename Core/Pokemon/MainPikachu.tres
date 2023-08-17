@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://cuq2jbkvgjh57"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://bh4qpoqtq7sea"]
 
 [ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/25.png" id="1_h0jw8"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_it3xc"]
@@ -13,7 +13,8 @@
 script = ExtResource("6_my436")
 Name = "Pikachu"
 Id = 25
-Types = Array[int]([6])
+Type1 = "Electric"
+Type2 = "NONE"
 Front = ExtResource("2_mnree")
 Back = ExtResource("1_h0jw8")
 Icon = ExtResource("3_rmte6")
