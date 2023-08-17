@@ -25,6 +25,10 @@ func _on_hud_pokemon_selected(pokemon):
 	BattleManager.AllyHolders.append(BATTLE_POKEMON)
 	BattleManager.AllyPokemons.add_pokemon(AllyPokemon.get_party_pokemon(pokemon))
 	poke_data.set_player(BATTLE_POKEMON.pokemon)
+	BATTLE_POKEMON.connect("health_changed",update_poke_data_player)
 
 func update_poke_data_enemy(body):
 	poke_data.set_enemy(body.pokemon)
+
+func update_poke_data_player(body):
+	poke_data.set_player(body.pokemon)

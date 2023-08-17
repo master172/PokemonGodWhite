@@ -5,8 +5,7 @@ class_name Action
 var holder:GameAction
 
 signal attack_finished(attack)
-
-
+signal attack_landed(attack)
 
 func _ready():
 	_attack()

@@ -33,7 +33,6 @@ func _exit_state() -> void:
 	set_physics_process(false)
 	
 	actor.velocity = Vector2.ZERO
-	print(actor.velocity)
 	
 func _physics_process(delta) -> void:
 	if actor.targetPokemon != null:
@@ -61,4 +60,3 @@ func _physics_process(delta) -> void:
 			actor.velocity = new_velocity
 	else:
 		actor.velocity = Vector2.ZERO
-		print(actor.velocity)

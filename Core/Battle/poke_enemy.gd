@@ -21,7 +21,7 @@ var movement_speed: float = 128.0
 var targetPokemon = null
 
 var pokemon :game_pokemon
-
+var knockback_vector :Vector2 = Vector2.ZERO
 signal health_changed(body)
 
 enum attacks {
@@ -50,10 +50,10 @@ func choose_attack():
 		var at = rng.randi_range(0,pokemon.get_learned_attacks())
 		attack = at
 		attack_num = at
-		print(attack)
+		print(attack, " ", pokemon.get_learned_attack(attack_num).base_action.name)
 		
 func _physics_process(delta):
-	
+	knockback_vector = velocity.normalized()
 	#print(velocity)
 	if targetPokemon == null:
 		if BattleManager.AllyHolders != []:
@@ -71,12 +71,12 @@ func _on_navigation_agent_2d_navigation_finished():
 
 
 func _on_enemy_follow_state_close_to():
-	if pokemon.get_learned_attack(attack_num).base_action.range == 1:
+	if pokemon.get_learned_attack(attack_num).base_action.range == 0:
 		finite_state_machine.change_state(range_attack_state)
 
 
 func _on_enemy_follow_state_next_to():
-	if pokemon.get_learned_attack(attack_num).base_action.range == 0:
+	if pokemon.get_learned_attack(attack_num).base_action.range == 1:
 		finite_state_machine.change_state(melle_attack_state)
 
 func recive_damage(damage,body):
@@ -103,13 +103,25 @@ func get_current_facing_direction():
 	return velocity.normalized()
 
 
-func _on_range_attack_state_attack_finished():
-	finite_state_machine.change_state(enemy_idle_state)
+func _on_range_attack_state_attack_finished(attack,user):
+	if user == self:
+		finite_state_machine.change_state(enemy_idle_state)
 
 
-func _on_melle_attack_state_attack_finished():
-	finite_state_machine.change_state(enemy_idle_state)
+func _on_melle_attack_state_attack_finished(attack,user):
+	if user == self:
+		finite_state_machine.change_state(enemy_idle_state)
 
 
 func _on_enemy_idle_state_done():
 	finite_state_machine.change_state(enemy_follow_state)
+
+
+func _on_range_attack_state_attack_landed(attack,user):
+	if user == self:
+		finite_state_machine.change_state(enemy_idle_state)
+
+
+func _on_melle_attack_state_attack_landed(attack,user):
+	if user == self:
+		finite_state_machine.change_state(enemy_idle_state)

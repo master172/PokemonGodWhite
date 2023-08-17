@@ -40,6 +40,7 @@ func _on_attack_delay_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body != User:
-		if body.is_in_group("Pokemon"):
+		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
-
+			SignalBus.connect_attack_landed(self,User)
+			emit_signal("attack_landed")

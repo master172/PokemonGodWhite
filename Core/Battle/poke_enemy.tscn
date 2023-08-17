@@ -140,6 +140,8 @@ states/Walk/position = Vector2(396, 100)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_kld30")]
 
 [node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
+floor_snap_length = 2.0
+safe_margin = 0.1
 script = ExtResource("1_ss21h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -202,6 +204,8 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
 [connection signal="attackFinished" from="FiniteStateMachine/MelleAttackState" to="." method="_on_melle_attack_state_attack_finished"]
+[connection signal="attackLanded" from="FiniteStateMachine/MelleAttackState" to="." method="_on_melle_attack_state_attack_landed"]
 [connection signal="attackFinished" from="FiniteStateMachine/RangeAttackState" to="." method="_on_range_attack_state_attack_finished"]
+[connection signal="attackLanded" from="FiniteStateMachine/RangeAttackState" to="." method="_on_range_attack_state_attack_landed"]
 [connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
 [connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]

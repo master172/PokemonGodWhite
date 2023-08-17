@@ -5,9 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq7dy"]
 radius = 40.7922
 
-[node name="Tackle" type="Node2D"]
+[node name="QuickAttack" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_jxbeb")
-range = null
 
 [node name="QuickAttackTimer" type="Timer" parent="."]
 one_shot = true

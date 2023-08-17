@@ -20,7 +20,7 @@ func _enter_state():
 	calculate_knockback()
 	
 func _exit_state():
-	print("exiting state")
+	
 	set_physics_process(false)
 	knockback_vector = Vector2.ZERO
 	damage_strenth = 0

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Core/Battle/AttackSelector.gd" id="4_4xj23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8opaw"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
 [sub_resource type="Animation" id="Animation_e2eta"]
 resource_name = "Down"
@@ -136,18 +136,18 @@ states/Walk/position = Vector2(404, 107)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_whwvl")]
 
 [node name="BattlePokemon" type="CharacterBody2D" groups=["PlayerPokemon"]]
-scale = Vector2(2, 2)
 script = ExtResource("1_o4sl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -32)
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
 texture = ExtResource("2_sg6oc")
 hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_8opaw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -163,8 +163,7 @@ parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="AttackSelector" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -16)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -40)
 texture = ExtResource("3_juilw")
 vframes = 5
 frame = 1
