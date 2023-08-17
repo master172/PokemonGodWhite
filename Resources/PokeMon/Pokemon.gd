@@ -81,4 +81,9 @@ func get_overworld_sprite():
 func get_icon_sprite():
 	return Icon
 
+func get_Type1():
+	return Type1
+
+func get_Type2():
+	return Type2
 

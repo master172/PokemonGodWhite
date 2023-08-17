@@ -154,3 +154,9 @@ func get_learned_attacks():
 
 func get_learned_attack(num:int):
 	return learned_attacks[num]
+
+func get_Type1():
+	return Base_Pokemon.get_Type1()
+
+func get_Type2():
+	return Base_Pokemon.get_Type2()
