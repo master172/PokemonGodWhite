@@ -364,7 +364,23 @@ var fairy_type:Dictionary = {
 }
 @onready var Types :Dictionary = {
 	Normal = normal_type,
-	Fighting = fighting_type
+	Fighting = fighting_type,
+	Flying = flying_type,
+	Poison = poison_type,
+	Ground = ground_type,
+	Rock = rock_type,
+	Bug = bug_type,
+	Ghost = ghost_type,
+	Steel = steel_type,
+	Fire = fire_type,
+	Water = water_type,
+	Grass = grass_type,
+	Electric = electric_type,
+	Psychic = psychic_type,
+	Ice = ice_type,
+	Dragon = dragon_type,
+	Dark = dark_type,
+	Fairy = fairy_type
 }
 
 var AllyPokemons:Poke_list = Poke_list.new()
