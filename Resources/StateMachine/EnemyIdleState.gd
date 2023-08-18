@@ -10,7 +10,7 @@ func _ready():
 	timer.timeout.connect(idle_done)
 	
 func _enter_state():
-	User.velocity = Vector2(0,0)
+	User.velocity *= 0.0001
 	var rng = RandomNumberGenerator.new()
 	timer.start(rng.randi_range(1,2))
 	

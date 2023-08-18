@@ -50,7 +50,16 @@ class_name Pokemon
 	"Fairy",
 	"NONE"
 	) var Type2:String = "NONE"
-	
+
+@export_enum(
+	"Slow",
+	"MediumSlow",
+	"MediumFast",
+	"Fast",
+	"Erratic",
+	"Fluctuating"
+)var leveleing_type:int = 2
+
 @export_group("Sprites")
 @export var Front:Texture2D
 @export var Back:Texture2D

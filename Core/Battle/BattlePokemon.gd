@@ -34,7 +34,7 @@ var input_direction = Vector2.ZERO
 
 var knockback :bool = false
 var self_knockback_vector:Vector2 = Vector2.ZERO
-var knockback_modifier:int = 1000
+var knockback_modifier:int = 1500
 
 var stop:bool = false
 signal health_changed(body)

@@ -48,6 +48,11 @@ class_name game_pokemon
 @export_group("attacks")
 @export var learned_attacks:Array[GameAction]
 
+@export_group("nec")
+@export var exp:int = 0
+@export var exp_to_next_level:int = 0
+@export var exp_to_current_level:int = 0
+
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
 	level = lev
@@ -59,7 +64,7 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	
 	set_nature()
 	calculate_stats_init()
-	
+	set_exp_to_levels()
 
 func calculate_IVs():
 	var rng = RandomNumberGenerator.new()
@@ -160,3 +165,48 @@ func get_Type1():
 
 func get_Type2():
 	return Base_Pokemon.get_Type2()
+
+func add_exp(exper):
+	exp += exper
+	
+func check_level_up():
+	if exp >= exp_to_next_level:
+		level_up()
+	
+func level_up():
+	level +=1
+	set_exp_to_levels()
+	
+
+func set_exp_to_levels():
+	exp_to_current_level = calc_exp_to_level(level-1)
+	exp_to_next_level = calc_exp_to_level(level)
+	
+func calc_exp_to_level(lev):
+	var etl:int = 0
+	if Base_Pokemon.leveleing_type == 0:
+		etl = 5 * pow(lev,3)
+	elif Base_Pokemon.leveleing_type == 1:
+		etl = 6/5 * pow(lev,3) - 15*pow(lev,2) + 100*lev - 140
+	elif Base_Pokemon.leveleing_type == 2:
+		etl = pow(lev,3)
+	elif Base_Pokemon.leveleing_type == 3:
+		etl = 4*pow(lev,3)/5
+	elif Base_Pokemon.leveleing_type == 4:
+		if lev <= 50:
+			etl = pow(lev,3)*(100 - lev)/50
+		elif lev <= 68:
+			etl = pow(lev,3)*(100 - lev)/100
+		elif lev <= 98:
+			etl = pow(lev,3)*1911 - 10*lev/3
+		elif lev <= 100:
+			etl = pow(lev,3)*(160-lev)/100
+	elif Base_Pokemon.leveleing_type == 5:
+		if lev <= 15:
+			etl = pow(lev,3)*(((lev+1)/3)+24)/50
+		elif lev <= 36:
+			etl = pow(lev,3)*(lev+14)/50
+		elif lev <= 100:
+			etl = pow(lev,3)*((lev/2)+32)/50
+	
+	return etl

@@ -8,7 +8,7 @@ var knockback_vector :Vector2
 
 var knockback:Vector2 = Vector2.ZERO
 var damage_strenth:int = 0
-@export var knockback_modifier := 1000
+@export var knockback_modifier := 1500
 
 signal finished
 
