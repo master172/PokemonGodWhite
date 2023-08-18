@@ -36,6 +36,7 @@ var knockback :bool = false
 var self_knockback_vector:Vector2 = Vector2.ZERO
 var knockback_modifier:int = 200
 
+var stop:bool = false
 signal health_changed(body)
 
 func _ready():
@@ -47,7 +48,7 @@ func _ready():
 	
 func get_input():
 	
-	if knockback == false:
+	if knockback == false and stop == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
 			if attacking == false:
 				state = states.ATTACK_SELECTION
@@ -129,3 +130,6 @@ func recive_damage(damage,User):
 func receive_knockback(body,damage):
 	knockback = true
 	self_knockback_vector = body.knockback_vector * knockback_modifier * damage
+
+func _stop():
+	stop = true

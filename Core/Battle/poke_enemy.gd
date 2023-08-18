@@ -33,6 +33,9 @@ var attack = attacks.MELLE
 
 var attack_num:int = 0
 
+var Attack
+
+signal defeated(name)
 func _ready():
 	choose_attack()
 
@@ -43,14 +46,16 @@ func _ready():
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
 	
 func choose_attack():
+	
 	if pokemon != null:
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 	
 		var at = rng.randi_range(0,pokemon.get_learned_attacks())
-		attack = at
+		Attack = pokemon.get_learned_attack(at)
+		attack = Attack.base_action.range
 		attack_num = at
-		print(attack, " ", pokemon.get_learned_attack(attack_num).base_action.name)
+		print(pokemon.get_learned_attack(attack_num).base_action.name)
 		
 func _physics_process(delta):
 	knockback_vector = velocity.normalized()
@@ -72,17 +77,20 @@ func _on_navigation_agent_2d_navigation_finished():
 
 func _on_enemy_follow_state_close_to():
 	if pokemon.get_learned_attack(attack_num).base_action.range == 0:
+		range_attack_state.set_variables(attack_num)
 		finite_state_machine.change_state(range_attack_state)
 
 
 func _on_enemy_follow_state_next_to():
 	if pokemon.get_learned_attack(attack_num).base_action.range == 1:
+		range_attack_state.set_variables(attack_num)
 		finite_state_machine.change_state(melle_attack_state)
 
 func recive_damage(damage,body):
 	pokemon.Health -= damage
 	receive_knockback(body,damage)
 	if pokemon.Health <= 0:
+		emit_signal("defeated",pokemon.Nick_name)
 		queue_free()
 	emit_signal("health_changed",self)
 
@@ -104,18 +112,19 @@ func get_current_facing_direction():
 
 
 func _on_range_attack_state_attack_finished(attack,user):
-	if user == self:
+	if user == self and attack.User == self:
+		
 		finite_state_machine.change_state(enemy_idle_state)
-
+		
 
 func _on_melle_attack_state_attack_finished(attack,user):
-	if user == self:
-		finite_state_machine.change_state(enemy_idle_state)
+	if user == self and attack.User == self:
 
+		finite_state_machine.change_state(enemy_idle_state)
 
 func _on_enemy_idle_state_done():
 	finite_state_machine.change_state(enemy_follow_state)
-
+	choose_attack()
 
 func _on_range_attack_state_attack_landed(attack,user):
 	if user == self:

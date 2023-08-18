@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=7 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
 [ext_resource type="PackedScene" uid="uid://4oakufv7l1dw" path="res://Core/Battle/Ui/hud.tscn" id="3_r76kw"]
 [ext_resource type="PackedScene" uid="uid://d4ckyncwga1be" path="res://Core/Battle/Ui/poke_data.tscn" id="4_asoq2"]
+[ext_resource type="Script" path="res://Core/Battle/DialogHandler.gd" id="5_duj7c"]
+[ext_resource type="Resource" uid="uid://xdkt7cpvxvc6" path="res://Resources/Dialogs/Battles/Won.tres" id="6_nwkta"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_lsbo8")
@@ -30,5 +32,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_right = 1200.0
 offset_bottom = 800.0
+
+[node name="DialogHandler" type="Node" parent="."]
+script = ExtResource("5_duj7c")
+won_dialog = ExtResource("6_nwkta")
 
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]

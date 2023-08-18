@@ -12,7 +12,7 @@ func _ready():
 func _enter_state():
 	User.velocity = Vector2(0,0)
 	var rng = RandomNumberGenerator.new()
-	timer.start(rng.randi_range(5,7))
+	timer.start(rng.randi_range(1,2))
 	
 
 func idle_done():

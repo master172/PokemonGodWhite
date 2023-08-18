@@ -8,3 +8,4 @@ func add_scene(scene:PackedScene):
 	var Scene = scene.instantiate()
 	add_child(Scene)
 	Utils.set_player()
+

@@ -4,7 +4,6 @@ class_name RangeAttackState
 @export var actor:PokeEnemy
 
 var move_index:int = 0
-var pokemon:game_pokemon =null
 
 signal attackFinished(attack,user)
 signal attackLanded(attack,user)
@@ -22,7 +21,12 @@ func attack():
 	actor.pokemon.initiate_attack(move_index,actor)
 
 func _finished_attack(attack,user):
-	emit_signal("attackFinished",attack,user)
+	if attack.holder == actor.pokemon.get_learned_attack(move_index):
+		emit_signal("attackFinished",attack,user)
 
 func _attack_landed(attack,user):
-	emit_signal("attackLanded",attack,user)
+	if attack.holder == actor.pokemon.get_learned_attack(move_index):
+		emit_signal("attackLanded",attack,user)
+
+func set_variables(v1):
+	move_index = v1

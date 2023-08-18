@@ -69,7 +69,7 @@ func first_time_load():
 		Utils.get_player().first_start()
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
-		
+		Scene_Saver.change_scene("res://src/World/Area0.tscn")
 
 
 func get_current_scene():
