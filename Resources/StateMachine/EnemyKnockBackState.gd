@@ -8,7 +8,7 @@ var knockback_vector :Vector2
 
 var knockback:Vector2 = Vector2.ZERO
 var damage_strenth:int = 0
-@export var knockback_modifier := 150
+@export var knockback_modifier := 1000
 
 signal finished
 
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		emit_signal("finished")
 		
 func calculate_knockback():
-	knockback = knockback_vector * knockback_modifier * damage_strenth
+	knockback = knockback_vector * knockback_modifier + Vector2(damage_strenth,damage_strenth)
 
 func set_variables(v1,v2):
 	knockback_vector = v1

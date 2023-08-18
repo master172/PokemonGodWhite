@@ -34,7 +34,7 @@ var input_direction = Vector2.ZERO
 
 var knockback :bool = false
 var self_knockback_vector:Vector2 = Vector2.ZERO
-var knockback_modifier:int = 200
+var knockback_modifier:int = 1000
 
 var stop:bool = false
 signal health_changed(body)
@@ -129,7 +129,7 @@ func recive_damage(damage,User):
 	
 func receive_knockback(body,damage):
 	knockback = true
-	self_knockback_vector = body.knockback_vector * knockback_modifier * damage
+	self_knockback_vector = body.knockback_vector * knockback_modifier + Vector2(damage,damage)
 
 func _stop():
 	stop = true
