@@ -38,6 +38,7 @@ var knockback_modifier:int = 1500
 
 var stop:bool = false
 signal health_changed(body)
+signal defeated(pokemon)
 
 func _ready():
 	anim_state.travel("Walk")
@@ -123,13 +124,19 @@ func recive_damage(damage,User):
 	emit_signal("health_changed",self)
 	receive_knockback(User,damage)
 	if pokemon.Health <= 0:
+		pokemon.fainted = true
 		pokemon.Health = 0
-		print("fainted")
-	
-	
+		emit_signal("defeated",pokemon)
+		
+
+		
 func receive_knockback(body,damage):
 	knockback = true
 	self_knockback_vector = body.knockback_vector * knockback_modifier + Vector2(damage,damage)
 
 func _stop():
 	stop = true
+
+
+func _on_attack_selector_displayed():
+	velocity = Vector2.ZERO

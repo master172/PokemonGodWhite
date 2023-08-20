@@ -41,3 +41,9 @@ func get_party_pokemon(num:int):
 
 func get_Party_pokemon_size():
 	return PartyPokemon.pokemon_size()
+
+func all_fainted():
+	for i in PartyPokemon.pokemons:
+		if i.fainted == false:
+			return false
+	return true

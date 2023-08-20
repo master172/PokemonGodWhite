@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2uywh38qmnxh"]
+[gd_scene load_steps=17 format=3 uid="uid://b2uywh38qmnxh"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_6060q"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_68o2s"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_f2ukj"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_7swea"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_due33"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="8_to5mc"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8038,7 +8037,6 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("8_to5mc")
 
 [node name="Area" type="StaticBody2D" parent="."]
 

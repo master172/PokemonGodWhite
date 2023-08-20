@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=4 format=3 uid="uid://xdkt7cpvxvc6"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=5 format=3 uid="uid://xdkt7cpvxvc6"]
 
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_6ag3p"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="1_v56vg"]
@@ -7,6 +7,15 @@
 script = ExtResource("1_6ag3p")
 Dialog_type = 0
 text = "Ash defeated the opposing {Pokemon}"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+
+[sub_resource type="Resource" id="Resource_i3els"]
+script = ExtResource("1_6ag3p")
+Dialog_type = 0
+text = "{Winner} recived {points} exp points"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
@@ -14,5 +23,5 @@ Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
 
 [resource]
 script = ExtResource("1_v56vg")
-Dialogs = Array[ExtResource("1_6ag3p")]([SubResource("Resource_g5nlh")])
+Dialogs = Array[ExtResource("1_6ag3p")]([SubResource("Resource_g5nlh"), SubResource("Resource_i3els")])
 Format = {}

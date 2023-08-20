@@ -209,9 +209,6 @@ func clear():
 	await get_tree().create_timer(0.5).timeout
 	Utils.DialogProcessing = false
 	
-	if Utils.Player != null:
-		Utils.Player.set_physics_process(true)
-		
 	finsished.emit(current_dialog)
 	current_dialog = null
 
@@ -222,6 +219,7 @@ func call_functions():
 			if i.parameters.size() >= 1:
 				get_node(i.callable).call_deferred(i.function,i.parameters)
 			else:
+				print(i.callable)
 				get_node(i.callable).call_deferred(i.function)
 
 func call_option_function(index:Option):
@@ -268,3 +266,6 @@ func get_rid_of_actors():
 		i.queue_free()
 	for i in listners.get_children():
 		i.queue_free()
+
+func save():
+	Utils.save_data()

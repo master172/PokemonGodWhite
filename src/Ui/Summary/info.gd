@@ -29,7 +29,12 @@ func _display(pokemon:game_pokemon):
 	poke.texture = pokemon.Base_Pokemon.Front
 	species.text = pokemon.Base_Pokemon.Name
 	dex_no.text = str(pokemon.Base_Pokemon.Id)
-	
+	exp_points.text = str(pokemon.exp)
+	gender.frame = pokemon.gender
+	to_next_level.text = str(pokemon.exp_to_next_level)
+	exp_bar.min_value = pokemon.exp_to_current_level
+	exp_bar.max_value = pokemon.exp_to_next_level
+	exp_bar.value = pokemon.exp
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

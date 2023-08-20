@@ -84,6 +84,17 @@ var natures :Array = [
 @export_group("attacks")
 @export var Actions:Array[BaseAction] = []
 
+@export_group("battles")
+@export var base_experience:int = 64
+
+@export_subgroup("EV yields")
+@export var Yield_Health :int = 0
+@export var Yield_Attack :int = 0
+@export var Yield_Defense :int = 0
+@export var Yield_Special_Defense :int = 0
+@export var Yield_Special_Attack :int = 0
+@export var Yield_Speed :int = 0
+
 func get_overworld_sprite():
 	return Overworld
 

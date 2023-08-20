@@ -26,3 +26,6 @@ func pokemon_size():
 func calculate_stats():
 	for i in pokemons:
 		i.calculate_stats()
+
+func clear_pokemon():
+	pokemons = []

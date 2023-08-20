@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=20 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
 [ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="7_hhiqc"]
+[ext_resource type="Script" path="res://src/Ui/Summary/moves.gd" id="8_cr8m8"]
 [ext_resource type="Texture2D" uid="uid://df2t0ubvupo0m" path="res://assets/Ui/Summary/bg_memo.png" id="8_vv2m0"]
 [ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
 [ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
@@ -35,7 +36,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_h0y60")
@@ -43,8 +43,9 @@ script = ExtResource("3_4a30r")
 
 [node name="Tag" type="Label" parent="info"]
 layout_mode = 2
+offset_left = 47.0
 offset_top = 34.0
-offset_right = 98.0
+offset_right = 145.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
@@ -200,15 +201,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_xk48v")
+script = ExtResource("8_cr8m8")
 
 [node name="Tag" type="Label" parent="moves"]
 layout_mode = 2
+offset_left = 46.0
 offset_top = 34.0
-offset_right = 98.0
+offset_right = 197.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
 text = "Moves"
+
+[node name="Move1" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 208.0
+offset_right = 1136.0
+offset_bottom = 264.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move2" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 344.0
+offset_right = 1136.0
+offset_bottom = 400.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move3" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 476.0
+offset_right = 1136.0
+offset_bottom = 532.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move4" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 609.0
+offset_right = 1136.0
+offset_bottom = 665.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
 
 [node name="memo" type="TextureRect" parent="."]
 visible = false
@@ -223,8 +278,9 @@ texture = ExtResource("8_vv2m0")
 
 [node name="Tag" type="Label" parent="memo"]
 layout_mode = 2
+offset_left = 47.0
 offset_top = 34.0
-offset_right = 98.0
+offset_right = 191.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
@@ -243,8 +299,9 @@ texture = ExtResource("9_e84sw")
 
 [node name="Tag" type="Label" parent="skills"]
 layout_mode = 2
+offset_left = 48.0
 offset_top = 34.0
-offset_right = 98.0
+offset_right = 191.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
@@ -263,8 +320,9 @@ texture = ExtResource("10_erw2v")
 
 [node name="Tag" type="Label" parent="ribbons"]
 layout_mode = 2
+offset_left = 46.0
 offset_top = 34.0
-offset_right = 98.0
+offset_right = 234.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
@@ -317,9 +375,9 @@ theme_override_font_sizes/font_size = 52
 text = "24"
 
 [node name="Name" type="Label" parent="presisting"]
-offset_left = 88.0
+offset_left = 129.0
 offset_top = 126.0
-offset_right = 273.0
+offset_right = 314.0
 offset_bottom = 191.0
 theme = ExtResource("2_0rgf5")
 theme_override_font_sizes/font_size = 52
@@ -344,6 +402,7 @@ theme_override_font_sizes/font_size = 52
 text = "None"
 
 [node name="Gender" type="Sprite2D" parent="presisting"]
+texture_filter = 1
 position = Vector2(440, 160)
 scale = Vector2(7.15, 6.875)
 texture = ExtResource("4_16jd6")
@@ -357,6 +416,6 @@ texture = ExtResource("5_uygc7")
 
 [node name="BallCaught" type="Sprite2D" parent="presisting"]
 texture_filter = 1
-position = Vector2(40, 160)
+position = Vector2(81, 160)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_a8ai2")

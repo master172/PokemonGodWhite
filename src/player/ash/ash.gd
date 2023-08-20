@@ -551,3 +551,6 @@ func first_start():
 
 func play_footstep():
 	footstep.play()
+
+func finish_battle():
+	change_animation(true)

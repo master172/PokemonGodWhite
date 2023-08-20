@@ -11,13 +11,14 @@ var HashMap = {
 
 func _ready():
 	visible = false
-
+	global_position -= Vector2(0,16)
+	
 func set_seeable():
 	visible = true
 	
 func change_position(Position,Speed,Direction):
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"global_position",Position,Speed)
+	tween.tween_property(self,"global_position",Position - Vector2(0,16),Speed)
 	await tween.finished
 	update_direction(Direction)
 
@@ -30,6 +31,6 @@ func update_direction(Direction):
 
 func change_position_to_ledge(Position,Speed,Direction):
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"global_position",Position,Speed)
+	tween.tween_property(self,"global_position",Position - Vector2(0,16),Speed)
 	await tween.finished
 	update_direction(Direction)

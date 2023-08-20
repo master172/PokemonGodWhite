@@ -17,6 +17,7 @@ var movement_speed: float = 128.0
 @onready var range_attack_state:RangeAttackState = $FiniteStateMachine/RangeAttackState
 @onready var enemy_knock_back_state:EnemyKnockBackState = $FiniteStateMachine/EnemyKnockBackState
 @onready var enemy_idle_state = $FiniteStateMachine/EnemyIdleState
+@onready var stall_state = $FiniteStateMachine/StallState
 
 var targetPokemon = null
 
@@ -36,6 +37,9 @@ var attack_num:int = 0
 var Attack
 
 signal defeated(name)
+
+var stop:bool = false
+
 func _ready():
 	choose_attack()
 
@@ -90,16 +94,13 @@ func recive_damage(damage,body):
 	pokemon.Health -= damage
 	receive_knockback(body,damage)
 	if pokemon.Health <= 0:
-		emit_signal("defeated",pokemon.Nick_name)
+		pokemon.fainted = true
+		emit_signal("defeated",pokemon,body)
 		queue_free()
 	emit_signal("health_changed",self)
 
 func receive_knockback(body,damage):
-	
-#	var knockback_vector = body.knockback_vector
-#	knockback = knockback_vector * knockback_modifier
-#	reciving_knockback = true
-#	knock_back_timer.start()
+
 	enemy_knock_back_state.set_variables(body.knockback_vector,damage)
 	finite_state_machine.change_state(enemy_knock_back_state)
 
@@ -123,7 +124,8 @@ func _on_melle_attack_state_attack_finished(attack,user):
 		finite_state_machine.change_state(enemy_idle_state)
 
 func _on_enemy_idle_state_done():
-	finite_state_machine.change_state(enemy_follow_state)
+	if stop == false:
+		finite_state_machine.change_state(enemy_follow_state)
 	choose_attack()
 
 func _on_range_attack_state_attack_landed(attack,user):
@@ -134,3 +136,8 @@ func _on_range_attack_state_attack_landed(attack,user):
 func _on_melle_attack_state_attack_landed(attack,user):
 	if user == self:
 		finite_state_machine.change_state(enemy_idle_state)
+
+func _stop():
+	stop = true
+	print("what")
+	finite_state_machine.change_state(stall_state)

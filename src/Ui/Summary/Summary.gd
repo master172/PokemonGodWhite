@@ -50,10 +50,14 @@ func _unhandled_input(event):
 		unset_active_option()
 		selected_option  = (selected_option +options_selectable - 1) % options_selectable
 		set_active_option()
+		if panels[selected_option].has_method("_display"):
+			panels[selected_option]._display(showing_pokemon)
 	elif event.is_action_pressed("D"):
 		if options_selectable >= 3:
 			unset_active_option()
 			selected_option  = (selected_option + 1) % options_selectable
 			set_active_option()
+			if panels[selected_option].has_method("_display"):
+				panels[selected_option]._display(showing_pokemon)
 	elif event.is_action_pressed("Yes"):
 		pass

@@ -27,6 +27,7 @@ func update_items():
 	level.text = str(pokemon.level)
 	health_bar.max_value = pokemon.Max_Health
 	health_bar.value = pokemon.Health
+	gender.frame = pokemon.gender
 	
 func clear_items():
 	self.visible = false

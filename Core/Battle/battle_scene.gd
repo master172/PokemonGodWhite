@@ -10,6 +10,7 @@ const poke_enemy = preload("res://Core/Battle/poke_enemy.tscn")
 @onready var dialog_handler = $DialogHandler
 
 signal stop
+signal poke_enemy_stop
 
 func set_enemy(pokemon):
 	var Poke_enemy = poke_enemy.instantiate()
@@ -19,6 +20,7 @@ func set_enemy(pokemon):
 	poke_data.set_enemy(Poke_enemy.pokemon)
 	Poke_enemy.connect("health_changed",update_poke_data_enemy)
 	Poke_enemy.connect("defeated",defeating_dialog)
+	connect("poke_enemy_stop",Poke_enemy._stop)
 	
 func _on_hud_pokemon_selected(pokemon):
 	var BATTLE_POKEMON = battle_pokemon.instantiate()
@@ -32,7 +34,14 @@ func _on_hud_pokemon_selected(pokemon):
 	poke_data.set_player(BATTLE_POKEMON.pokemon)
 	
 	BATTLE_POKEMON.connect("health_changed",update_poke_data_player)
+	BATTLE_POKEMON.connect("defeated",battle_pokemon_defeated)
+	
 	connect("stop",BATTLE_POKEMON._stop)
+
+func battle_pokemon_defeated(pokemon):
+	emit_signal("stop")
+	emit_signal("poke_enemy_stop")
+	dialog_handler.battle_pokemon_defeated(pokemon)
 	
 func update_poke_data_enemy(body):
 	poke_data.set_enemy(body.pokemon)
@@ -40,6 +49,18 @@ func update_poke_data_enemy(body):
 func update_poke_data_player(body):
 	poke_data.set_player(body.pokemon)
 
-func defeating_dialog(name):
+func defeating_dialog(pokemon:game_pokemon,body:BattlePokemon):
+	
 	emit_signal("stop")
-	dialog_handler.add_won_dialog(name)
+	body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
+	body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
+	pokemon.give_experience_points(body.pokemon)
+	
+	
+func case_level_up(pokemon,body):
+	poke_data.set_player(body.pokemon)
+	dialog_handler.add_won_dialog_level_up(pokemon,body.pokemon)
+
+func case_experience_added(pokemon,body):
+	poke_data.set_player(body.pokemon)
+	dialog_handler.add_won_dialog(pokemon,body.pokemon)

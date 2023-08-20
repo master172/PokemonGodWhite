@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dax0yjivpul7x" path="res://src/Pokemon/OverWorldPokemon.tscn" id="2_xqc2i"]
 
 [node name="PokemonManager" type="Node2D"]
-z_index = 1
 position = Vector2(0, -16)
 script = ExtResource("1_w0ptj")
 
 [node name="pokemon" parent="." instance=ExtResource("2_xqc2i")]
+position = Vector2(0, 16)

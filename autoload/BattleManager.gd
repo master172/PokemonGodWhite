@@ -388,6 +388,9 @@ var EnemyPokemons:Poke_list = Poke_list.new()
 
 var AllyHolders:Array[BattlePokemon] = []
 var EnemyHolders:Array[PokeEnemy] = []
+
+var in_battle:bool = false
+
 func _ready():
 	AllyPokemons.Name = "AllyPokemons"
 	EnemyPokemons.Name = "EnemyPokemons"
@@ -397,3 +400,11 @@ func get_type_modifier(attacker:String,defender:String):
 	var a = Types[attacker]
 	var b = a[defender]
 	return b
+
+func finish_battle():
+	AllyHolders = []
+	EnemyHolders = []
+	AllyPokemons.clear_pokemon()
+	EnemyPokemons.clear_pokemon()
+	
+	in_battle = false

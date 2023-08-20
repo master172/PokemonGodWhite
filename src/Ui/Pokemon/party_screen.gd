@@ -14,6 +14,12 @@ var options_selectable:int = 7
 	Options.CANCEL: $Cancel,
 }
 
+enum states {
+	active,
+	blank
+}
+
+var state = states.active
 
 func unset_active_option():
 	options[selected_option].change_selected(false)
@@ -56,9 +62,15 @@ func _input(event):
 			unset_active_option()
 			selected_option = 1
 			set_active_option()
-	elif event.is_action_pressed("Yes"):
+	elif event.is_action_pressed("Yes") and state == states.active:
 		match selected_option:
 			Options.CANCEL:
 				Utils.get_scene_manager().transistion_exit_party_screen()
 			Options.FIRST_SLOT:
 				Utils.get_scene_manager().transistion_to_summary_scene(0)
+
+func set_active(s:bool):
+	if s == true:
+		state = states.active
+	else:
+		state = states.blank

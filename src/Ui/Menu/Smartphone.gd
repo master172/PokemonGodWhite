@@ -14,7 +14,8 @@ enum current_state {
 	Empty,
 	Normal,
 	Pokemons,
-	Summary
+	Summary,
+	Save
 }
 
 var CurrentState = current_state.Empty
@@ -22,13 +23,13 @@ var CurrentState = current_state.Empty
 func _ready():
 	self.visible = false
 	
-
+@export var Save_dialog:DialogueLine
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _unhandled_input(event):
 	match CurrentState:
 		current_state.Empty:
-			if event.is_action_pressed("Menu"):
+			if event.is_action_pressed("Menu") and BattleManager.in_battle == false:
 				var player = Utils.get_player()
 				if !player.is_moving:
 					player.set_physics_process(false)
@@ -73,8 +74,9 @@ func _unhandled_input(event):
 					if current_selected == 0:
 						Utils.get_scene_manager().transition_to_party_screen()
 					elif current_selected == 4 or current_selected == -4:
-						Utils.save_data()
-					
+						save_dialog()
+						CurrentState = current_state.Save
+						
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
 				Utils.get_scene_manager().transistion_exit_party_screen()
@@ -102,13 +104,25 @@ func load_summary_screen(summary_id:int):
 	visible = false
 	CurrentState = current_state.Summary
 	Summary_Scene = Summary_scene.instantiate()
-	
+	get_parent().get_node("PartyScreen").set_active(false)
 	get_parent().add_child(Summary_Scene)
 	get_parent().get_node("Summary").set_pokemon(AllyPokemon.get_party_pokemon(summary_id))
 	
 func unload_summary_screen():
 	visible = false
+	get_parent().get_node("PartyScreen").set_active(true)
 	if is_instance_valid(Summary_Scene):
 		get_parent().get_node("Summary").queue_free()
 	CurrentState = current_state.Pokemons
 
+func save_dialog():
+	DialogLayer.get_child(0)._start(Save_dialog)
+	DialogLayer.get_child(0).connect("finsished",save_dialog_finished)
+	
+func save():
+	Utils.save_data()
+
+func save_dialog_finished(Dialogline):
+	if Dialogline == Save_dialog:
+		CurrentState = current_state.Normal
+		DialogLayer.get_child(0).disconnect("finsished",save_dialog_finished)

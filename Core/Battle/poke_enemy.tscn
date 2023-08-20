@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=24 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
 size = Vector2(64, 64)
@@ -184,6 +185,10 @@ User = NodePath("../..")
 script = ExtResource("8_8u74g")
 User = NodePath("../..")
 timer = NodePath("../../IdleTimer")
+
+[node name="StallState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_jnrn1")
+actor = NodePath("../..")
 
 [node name="PokeCast" type="RayCast2D" parent="."]
 

@@ -53,6 +53,15 @@ class_name game_pokemon
 @export var exp_to_next_level:int = 0
 @export var exp_to_current_level:int = 0
 
+@export_subgroup("pokemon")
+@export var gender:int = 0
+
+@export_subgroup("battle")
+@export var fainted:bool = false
+
+signal Level_up
+signal experience_added
+
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
 	level = lev
@@ -65,6 +74,11 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	set_nature()
 	calculate_stats_init()
 	set_exp_to_levels()
+	calc_gender()
+	
+func calc_gender():
+	var gender_rng = RandomNumberGenerator.new()
+	gender = gender_rng.randi_range(0,1)
 
 func calculate_IVs():
 	var rng = RandomNumberGenerator.new()
@@ -124,6 +138,9 @@ func calculate_stats():
 	calculate_current_max_stats()
 	set_to_max_stats()
 
+func recalculate_stats():
+	calculate_current_max_stats()
+	
 func set_attacks():
 	inital_learn_moves()
 
@@ -168,12 +185,16 @@ func get_Type2():
 
 func add_exp(exper):
 	exp += exper
+	check_level_up()
 	
 func check_level_up():
 	if exp >= exp_to_next_level:
 		level_up()
-	
+		emit_signal("Level_up")
+	else:
+		emit_signal("experience_added")
 func level_up():
+	
 	level +=1
 	set_exp_to_levels()
 	
@@ -181,6 +202,7 @@ func level_up():
 func set_exp_to_levels():
 	exp_to_current_level = calc_exp_to_level(level-1)
 	exp_to_next_level = calc_exp_to_level(level)
+	calculate_current_max_stats()
 	
 func calc_exp_to_level(lev):
 	var etl:int = 0
@@ -210,3 +232,33 @@ func calc_exp_to_level(lev):
 			etl = pow(lev,3)*((lev/2)+32)/50
 	
 	return etl
+
+func give_experience_points(enemy):
+	var points_to_give = calculate_experience_points()
+	enemy.recive_experience_points(points_to_give)
+	give_iv_yield(enemy)
+	
+func recive_experience_points(expr):
+	add_exp(expr)
+	
+func calculate_experience_points():
+	var trainer = 1
+	var wild = 1
+	var exp = ((Base_Pokemon.base_experience * level)* trainer * wild)/7
+	return exp
+
+func give_iv_yield(pokemon:game_pokemon):
+	pokemon.EV_Health += Base_Pokemon.Yield_Health
+	pokemon.EV_Attack += Base_Pokemon.Yield_Attack
+	pokemon.EV_Defense += Base_Pokemon.Yield_Defense
+	pokemon.EV_Special_Defense += Base_Pokemon.Yield_Special_Defense
+	pokemon.EV_Special_Attack += Base_Pokemon.Yield_Special_Attack
+	pokemon.EV_Speed += Base_Pokemon.Yield_Speed
+	pokemon.recive_ev_yield()
+
+func recive_ev_yield():
+	calculate_current_max_stats()
+
+func heal():
+	fainted = false
+	set_to_max_stats()

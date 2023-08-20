@@ -13,6 +13,7 @@ var max_selectable:int = 4
 
 signal attack_chosen(attack:int)
 signal cancel
+signal displayed
 
 var pokemon:game_pokemon
 func change_selected():
@@ -47,6 +48,7 @@ func _input(event):
 func _set_radial():
 	if state == STATES.RADIAL:
 		visible = true
+		emit_signal("displayed")
 		for i in range(4) :
 			get_child(i).visible = true
 			get_child(i).text = pokemon.get_learned_attack_name(i)

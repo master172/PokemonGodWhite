@@ -13,4 +13,8 @@ func _process(delta):
 func _interact():
 	Current_dialog.add_symbols_to_replace({"NewfoundLand":"Godot"})
 	DialogLayer.get_child(0)._start(self.Current_dialog)
+	DialogLayer.get_child(0).connect("finsished",finish)
 	
+func finish(dial):
+	if dial == Current_dialog:
+		Utils.get_player().set_physics_process(true)

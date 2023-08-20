@@ -85,6 +85,7 @@ func transistion_to_battle_scene(pokemon):
 func transistion_exit_battle_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BATTLE_SCENE
+	
 func transistion_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
 	summary_pokemon = poke_number
@@ -140,7 +141,11 @@ func load_battle_scene(pokemon):
 	
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
+	BattleManager.in_battle = true
+	
 func unload_battle_scene():
 	for i in battle_layer.get_children():
 		i.queue_free()
+	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
+	Utils.get_player().finish_battle()
