@@ -192,7 +192,6 @@ value = 62.51
 show_percentage = false
 
 [node name="moves" type="TextureRect" parent="."]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15

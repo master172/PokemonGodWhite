@@ -12,16 +12,21 @@ const poke_enemy = preload("res://Core/Battle/poke_enemy.tscn")
 signal stop
 signal poke_enemy_stop
 
+signal player_attacked(player)
+
 func set_enemy(pokemon):
 	var Poke_enemy = poke_enemy.instantiate()
 	Poke_enemy.pokemon = game_pokemon.new(pokemon[0],pokemon[1])
 	Poke_enemy.position = Vector2(603,103)
+	
 	enemy_pokemon.add_child(Poke_enemy)
 	poke_data.set_enemy(Poke_enemy.pokemon)
+	
 	Poke_enemy.connect("health_changed",update_poke_data_enemy)
 	Poke_enemy.connect("defeated",defeating_dialog)
-	connect("poke_enemy_stop",Poke_enemy._stop)
 	
+	connect("poke_enemy_stop",Poke_enemy._stop)
+	connect("player_attacked",Poke_enemy.player_attacked)
 func _on_hud_pokemon_selected(pokemon):
 	var BATTLE_POKEMON = battle_pokemon.instantiate()
 	BATTLE_POKEMON.pokemon = AllyPokemon.get_party_pokemon(pokemon)
@@ -35,7 +40,7 @@ func _on_hud_pokemon_selected(pokemon):
 	
 	BATTLE_POKEMON.connect("health_changed",update_poke_data_player)
 	BATTLE_POKEMON.connect("defeated",battle_pokemon_defeated)
-	
+	BATTLE_POKEMON.connect("attacked",_player_attacked)
 	connect("stop",BATTLE_POKEMON._stop)
 
 func battle_pokemon_defeated(pokemon):
@@ -64,3 +69,6 @@ func case_level_up(pokemon,body):
 func case_experience_added(pokemon,body):
 	poke_data.set_player(body.pokemon)
 	dialog_handler.add_won_dialog(pokemon,body.pokemon)
+
+func _player_attacked(player):
+	emit_signal("player_attacked",player)

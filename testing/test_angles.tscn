@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://r1gp1ahdul2m"]
+
+[ext_resource type="Script" path="res://testing/test_angles.gd" id="1_tkfs3"]
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_m3tss"]
+
+[node name="test angles" type="Node2D"]
+script = ExtResource("1_tkfs3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.431373, 1, 1)
+position = Vector2(600, 384)
+texture = ExtResource("2_m3tss")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0823529, 0.262745, 1)
+position = Vector2(792, 184)
+texture = ExtResource("2_m3tss")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.00784314, 1, 0.0509804, 1)
+position = Vector2(576, 280)
+texture = ExtResource("2_m3tss")

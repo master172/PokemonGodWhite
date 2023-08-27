@@ -13,11 +13,13 @@ var movement_speed: float = 128.0
 
 @onready var enemy_follow_state:EnemyFollowState = $FiniteStateMachine/EnemyFollowState
 @onready var melle_attack_state:MelleAttackState = $FiniteStateMachine/MelleAttackState
-@onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 @onready var range_attack_state:RangeAttackState = $FiniteStateMachine/RangeAttackState
 @onready var enemy_knock_back_state:EnemyKnockBackState = $FiniteStateMachine/EnemyKnockBackState
-@onready var enemy_idle_state = $FiniteStateMachine/EnemyIdleState
-@onready var stall_state = $FiniteStateMachine/StallState
+@onready var enemy_dodge_state:EnemyDodgeState = $FiniteStateMachine/EnemyDodgeState
+@onready var stall_state:StallState = $FiniteStateMachine/StallState
+@onready var enemy_idle_state:EnemyIdleState = $FiniteStateMachine/EnemyIdleState
+
+@onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 
 var targetPokemon = null
 
@@ -141,3 +143,24 @@ func _stop():
 	stop = true
 	print("what")
 	finite_state_machine.change_state(stall_state)
+
+func player_attacked(player):
+	var rng = RandomNumberGenerator.new()
+	var dodge_chance = 7
+	var dodge_rng = rng.randi_range(0,dodge_chance)
+	if dodge_rng > 0:
+		if finite_state_machine.get_state() == enemy_follow_state or finite_state_machine.get_state() == enemy_idle_state:
+			enemy_dodge_state.player_set(player)
+			finite_state_machine.change_state(enemy_dodge_state)
+
+
+func _on_enemy_dodge_state_finished():
+	finite_state_machine.change_state(enemy_follow_state)
+
+
+func _on_knock_back_area_body_entered(body):
+	if body != self:
+		if body.is_in_group("PlayerPokemon"):
+			print_debug(body)
+			receive_knockback(body,10)
+			body.receive_knockback(self,10)

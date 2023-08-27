@@ -34,7 +34,7 @@ func _physics_process(delta):
 		
 func calculate_knockback():
 	knockback = knockback_vector * knockback_modifier + Vector2(damage_strenth,damage_strenth)
-
+	
 func set_variables(v1,v2):
 	knockback_vector = v1
 	damage_strenth = v2

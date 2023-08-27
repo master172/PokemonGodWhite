@@ -40,6 +40,8 @@ var stop:bool = false
 signal health_changed(body)
 signal defeated(pokemon)
 
+signal attacked(body)
+
 func _ready():
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,-1))
@@ -102,7 +104,7 @@ func _physics_process(delta):
 func _on_attack_selector_attack_chosen(attack):
 	print(pokemon.get_learned_attack_name(attack))
 	pokemon.initiate_attack(attack,self)
-
+	emit_signal("attacked",self)
 
 func _on_timer_timeout():
 	init_delay = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=26 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
 size = Vector2(64, 64)
@@ -140,6 +141,9 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_uqqu7")
 states/Walk/position = Vector2(396, 100)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_kld30")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3jky"]
+size = Vector2(80, 80)
+
 [node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
 floor_snap_length = 2.0
 safe_margin = 0.1
@@ -186,6 +190,10 @@ script = ExtResource("8_8u74g")
 User = NodePath("../..")
 timer = NodePath("../../IdleTimer")
 
+[node name="EnemyDodgeState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_kkcn1")
+actor = NodePath("../..")
+
 [node name="StallState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("9_jnrn1")
 actor = NodePath("../..")
@@ -205,6 +213,13 @@ parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="IdleTimer" type="Timer" parent="."]
 
+[node name="KnockBackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockBackArea"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_r3jky")
+debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
@@ -214,3 +229,5 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [connection signal="attackLanded" from="FiniteStateMachine/RangeAttackState" to="." method="_on_range_attack_state_attack_landed"]
 [connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
 [connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]
+[connection signal="finished" from="FiniteStateMachine/EnemyDodgeState" to="." method="_on_enemy_dodge_state_finished"]
+[connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]

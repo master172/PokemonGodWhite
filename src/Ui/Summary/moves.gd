@@ -10,3 +10,4 @@ extends TextureRect
 func _display(pokemon:game_pokemon):
 	for i in range(4):
 		moves[i].text = pokemon.get_learned_attack_name(i)
+

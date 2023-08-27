@@ -162,6 +162,17 @@ func inital_learn_moves():
 			var move_to_learn = GameAction.new(i)
 			learned_attacks.append(move_to_learn)
 
+func learn_moves():
+	for i in Base_Pokemon.Actions:
+		if i.learned_level <= self.level:
+			var move_to_learn = GameAction.new(i)
+			if learned_attacks.size() <= 3:
+				if !learned_attacks.has(move_to_learn):
+					learned_attacks.append(move_to_learn)
+			else:
+				if !learned_attacks.has(move_to_learn):
+					pass
+				
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
 		return learned_attacks[num].Name()
@@ -262,3 +273,7 @@ func recive_ev_yield():
 func heal():
 	fainted = false
 	set_to_max_stats()
+
+func replace_moves(index,move):
+	var move_to_learn = GameAction.new(move)
+	learned_attacks[index] = move_to_learn
