@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmd1jinx4qc3l"]
+[gd_scene load_steps=14 format=3 uid="uid://dmd1jinx4qc3l"]
 
 [ext_resource type="Texture2D" uid="uid://cmwsu7lwnixa8" path="res://assets/PokemonTilesets/Japanese.png" id="1_13y8c"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="2_45aa2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b06md4qown2mj" path="res://assets/PokemonTilesets/Interior general.png" id="4_ft86n"]
 [ext_resource type="Texture2D" uid="uid://damu586nwpxr4" path="res://assets/modular/stair1leftcover.png" id="4_n16ve"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="7_1y57g"]
+[ext_resource type="PackedScene" uid="uid://dplygodrneuc2" path="res://src/World/Npc/Bea.tscn" id="8_thbb7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rna3"]
 texture = ExtResource("4_ft86n")
@@ -7219,7 +7220,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 2
-layer_2/tile_data = PackedInt32Array(2, 262148, 13, 65538, 262148, 14, 131080, 131076, 14, 196616, 131076, 15, 65545, 196612, 13, 131081, 196612, 14, 196617, 196612, 15, 8, 3, 111, 9, 65539, 111, -65527, 65542, 0, -65528, 6, 0)
+layer_2/tile_data = PackedInt32Array(131080, 131076, 14, 196616, 131076, 15, 65545, 196612, 13, 131081, 196612, 14, 196617, 196612, 15, 8, 3, 111, 9, 65539, 111, -65527, 65542, 0, -65528, 6, 0)
 layer_3/name = "Mat"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
@@ -7246,6 +7247,12 @@ Spawn_direction = Vector2(1, 0)
 [node name="player" parent="." instance=ExtResource("2_45aa2")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(72, 48)
+position = Vector2(56, 48)
 can_surf = false
 can_cycle = false
+
+[node name="NPC_Character" parent="." instance=ExtResource("8_thbb7")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(40, 48)
+scale = Vector2(0.5, 0.5)

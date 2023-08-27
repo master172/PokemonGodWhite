@@ -76,6 +76,7 @@ texture_filter = 1
 script = ExtResource("1_0d38s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 texture = ExtResource("1_s3ykv")
 hframes = 2

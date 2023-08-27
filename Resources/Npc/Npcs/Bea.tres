@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=3 format=3 uid="uid://bt3k225ywygai"]
+
+[ext_resource type="Script" path="res://Resources/Npc/NPC.gd" id="1_hj1yr"]
+[ext_resource type="Texture2D" uid="uid://cqysqkdsc6fuw" path="res://assets/Npc/Trainers/Story/Bea/Bea.png" id="1_o7pdv"]
+
+[resource]
+script = ExtResource("1_hj1yr")
+Sprite = ExtResource("1_o7pdv")

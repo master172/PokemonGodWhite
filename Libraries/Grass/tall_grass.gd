@@ -31,7 +31,7 @@ func player_in_grass():
 		grass_overlay = Sprite2D.new()
 		grass_overlay.texture = grass_overlay_texture
 		grass_overlay.position
-		grass_overlay.z_index = 1
+		grass_overlay.z_index = 2
 		self.add_child(grass_overlay)
 		
 		check_encounter()
