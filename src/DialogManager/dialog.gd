@@ -5,6 +5,7 @@ extends Control
 @onready var actors = $Actors
 @onready var speakers = $Actors/Speakers
 @onready var listners = $Actors/Listners
+@onready var function_manager = $FunctionManager
 
 @export var current_dialog:DialogueLine
 
@@ -217,23 +218,19 @@ func call_functions():
 		for i in current_dialog.Dialogs[current_index].functions:
 			Functions.emit(i)
 			if i.parameters.size() >= 1:
-				get_node(i.callable).call_deferred(i.function,i.parameters)
+				function_manager.call_deferred(i.function,i.parameters)
 			else:
-				print(i.callable)
-				get_node(i.callable).call_deferred(i.function)
+				function_manager.call_deferred(i.function)
 
 func call_option_function(index:Option):
 	option.emit(index)
 	for i in index.functions:
 		Functions.emit(i)
 		if i.parameters.size() >= 1:
-			get_node(i.callable).call_deferred(i.function,i.parameters)
+			function_manager.call_deferred(i.function,i.parameters)
 		else:
-			get_node(i.callable).call_deferred(i.function)
+			function_manager.call_deferred(i.function)
 	
-
-func test_function():
-	print("test")
 
 func Change_Dialog(param,at_what:int = 0):
 	current_dialog = param[0]
@@ -242,6 +239,8 @@ func Change_Dialog(param,at_what:int = 0):
 	dialogLine_Changed.emit(current_dialog)
 	changing_dialog = false
 	process_dialog()
+
+
 
 func add_actors(dialog:Dialog):
 	if dialog.Actors.size() >= 1:
@@ -267,5 +266,4 @@ func get_rid_of_actors():
 	for i in listners.get_children():
 		i.queue_free()
 
-func save():
-	Utils.save_data()
+

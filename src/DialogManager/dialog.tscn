@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=24 format=3 uid="uid://qr11x4n8f2gi"]
 
 [ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
 [ext_resource type="Resource" uid="uid://c4vikkbymtjnl" path="res://Resources/Dialogs/NewLine.tres" id="5_ixvud"]
+[ext_resource type="Script" path="res://src/DialogManager/FunctionManager.gd" id="8_7aqj1"]
 
 [sub_resource type="Resource" id="Resource_lpre6"]
 script = ExtResource("2_bu7wt")
-callable = NodePath(".")
 function = "test_function"
 parameters = []
 
@@ -100,7 +100,6 @@ Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResou
 
 [sub_resource type="Resource" id="Resource_8helj"]
 script = ExtResource("2_bu7wt")
-callable = NodePath(".")
 function = "Change_Dialog"
 parameters = [ExtResource("5_ixvud")]
 
@@ -178,3 +177,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
+
+[node name="FunctionManager" type="Node" parent="."]
+script = ExtResource("8_7aqj1")
