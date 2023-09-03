@@ -29,3 +29,7 @@ func calculate_stats():
 
 func clear_pokemon():
 	pokemons = []
+
+func all_heal():
+	for i in pokemons:
+		i.heal()

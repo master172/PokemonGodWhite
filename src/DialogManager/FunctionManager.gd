@@ -8,3 +8,6 @@ func save():
 
 func Change_Dialog(param,at_what:int = 0):
 	get_parent().Change_Dialog(param,at_what)
+
+func heal():
+	AllyPokemon.all_heal()

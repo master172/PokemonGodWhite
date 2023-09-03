@@ -59,5 +59,3 @@ func _unhandled_input(event):
 			set_active_option()
 			if panels[selected_option].has_method("_display"):
 				panels[selected_option]._display(showing_pokemon)
-	elif event.is_action_pressed("Yes"):
-		pass

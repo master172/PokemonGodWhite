@@ -27,6 +27,7 @@ func set_enemy(pokemon):
 	
 	connect("poke_enemy_stop",Poke_enemy._stop)
 	connect("player_attacked",Poke_enemy.player_attacked)
+	
 func _on_hud_pokemon_selected(pokemon):
 	var BATTLE_POKEMON = battle_pokemon.instantiate()
 	BATTLE_POKEMON.pokemon = AllyPokemon.get_party_pokemon(pokemon)
@@ -41,8 +42,10 @@ func _on_hud_pokemon_selected(pokemon):
 	BATTLE_POKEMON.connect("health_changed",update_poke_data_player)
 	BATTLE_POKEMON.connect("defeated",battle_pokemon_defeated)
 	BATTLE_POKEMON.connect("attacked",_player_attacked)
+	BATTLE_POKEMON.connect("run",_run)
+	
 	connect("stop",BATTLE_POKEMON._stop)
-
+	
 func battle_pokemon_defeated(pokemon):
 	emit_signal("stop")
 	emit_signal("poke_enemy_stop")
@@ -72,3 +75,9 @@ func case_experience_added(pokemon,body):
 
 func _player_attacked(player):
 	emit_signal("player_attacked",player)
+
+func _run():
+	print_debug("run function")
+	emit_signal("stop")
+	emit_signal("poke_enemy_stop")
+	dialog_handler._run()

@@ -37,7 +37,6 @@ Options = Array[ExtResource("2_iakjl")]([SubResource("Resource_yu0gf"), SubResou
 
 [sub_resource type="Resource" id="Resource_14skd"]
 script = ExtResource("3_kyod8")
-callable = NodePath(".")
 function = "test_function"
 parameters = []
 

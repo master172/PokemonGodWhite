@@ -47,3 +47,6 @@ func all_fainted():
 		if i.fainted == false:
 			return false
 	return true
+
+func all_heal():
+	PartyPokemon.all_heal()

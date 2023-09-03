@@ -4,7 +4,7 @@ extends Node
 @export var won_dialog_level_up:DialogueLine
 @export var lost_match:DialogueLine
 @export var lost_battle:DialogueLine
-
+@export var run_dialog:DialogueLine
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -55,3 +55,10 @@ func Lost_match(pokemon):
 
 func on_lost_match_finished(dialog):
 	pass
+
+func _run():
+	DialogLayer.get_child(0)._start(run_dialog)
+	DialogLayer.get_child(0).connect("finsished",_run_finished)
+
+func _run_finished(dialog):
+	Utils.get_scene_manager().transistion_exit_battle_scene()

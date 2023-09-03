@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=20 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
@@ -78,6 +78,20 @@ script = ExtResource("8_geedj")
 Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_gn677"), SubResource("Resource_it387")])
 Format = {}
 
+[sub_resource type="Resource" id="Resource_uvott"]
+script = ExtResource("7_1shl8")
+Dialog_type = 0
+text = "Ash, ran away"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+
+[sub_resource type="Resource" id="Resource_gxptb"]
+script = ExtResource("8_geedj")
+Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_uvott")])
+Format = {}
+
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_lsbo8")
 
@@ -110,5 +124,6 @@ won_dialog = ExtResource("6_nwkta")
 won_dialog_level_up = SubResource("Resource_tcc5u")
 lost_match = SubResource("Resource_l15oa")
 lost_battle = SubResource("Resource_gr6tl")
+run_dialog = SubResource("Resource_gxptb")
 
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]

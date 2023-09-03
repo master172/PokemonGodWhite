@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sg6oc"]
-[ext_resource type="Texture2D" uid="uid://cin3ay3lp1s37" path="res://assets/Ui/BattleScene/AttackSelector.png" id="3_juilw"]
-[ext_resource type="Script" path="res://Core/Battle/AttackSelector.gd" id="4_4xj23"]
+[ext_resource type="PackedScene" uid="uid://cimfdob80nm44" path="res://Core/Battle/Ui/Action_Selector.tscn" id="4_xmkfa"]
+[ext_resource type="PackedScene" uid="uid://dslup8uf30gtc" path="res://Core/Battle/Ui/battle_selector.tscn" id="5_wxstk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8opaw"]
 size = Vector2(64, 64)
@@ -161,48 +161,21 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="AttackSelector" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -40)
-texture = ExtResource("3_juilw")
-vframes = 5
-frame = 1
-script = ExtResource("4_4xj23")
-
-[node name="Label" type="Label" parent="AttackSelector"]
-offset_left = 4.0
-offset_top = -73.0
-offset_right = 99.0
-offset_bottom = -47.0
-text = "quick attack"
-
-[node name="Label2" type="Label" parent="AttackSelector"]
-offset_left = 4.0
-offset_top = 49.0
-offset_right = 99.0
-offset_bottom = 75.0
-text = "quick attack"
-
-[node name="Label3" type="Label" parent="AttackSelector"]
-offset_left = -97.0
-offset_top = 49.0
-offset_right = -2.0
-offset_bottom = 75.0
-text = "quick attack"
-
-[node name="Label4" type="Label" parent="AttackSelector"]
-offset_left = -97.0
-offset_top = -73.0
-offset_right = -2.0
-offset_bottom = -47.0
-text = "quick attack"
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[connection signal="attack_chosen" from="AttackSelector" to="." method="_on_attack_selector_attack_chosen"]
-[connection signal="cancel" from="AttackSelector" to="." method="_on_attack_selector_cancel"]
-[connection signal="displayed" from="AttackSelector" to="." method="_on_attack_selector_displayed"]
+[node name="UiLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleSelector" parent="UiLayer" instance=ExtResource("5_wxstk")]
+
+[node name="ActionChosen" parent="UiLayer" instance=ExtResource("4_xmkfa")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="attack_chosen" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_attack_chosen"]
+[connection signal="cancel" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_cancel"]
+[connection signal="displayed" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_displayed"]
+[connection signal="action_chosen" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_action_chosen"]
+[connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
+[connection signal="displayed" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_displayed"]

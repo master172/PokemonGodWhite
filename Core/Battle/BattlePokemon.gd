@@ -1,12 +1,13 @@
 class_name BattlePokemon
 extends CharacterBody2D
 
-@export var speed = 256
+@export var speed := 256
 
-@onready var animation_tree = $AnimationTree
+@onready var animation_tree := $AnimationTree
 @onready var anim_state  = animation_tree.get("parameters/playback")
-@onready var sprite_2d = $Sprite2D
-@onready var attack_selector = $AttackSelector
+@onready var sprite_2d := $Sprite2D
+@onready var attack_selector := $UiLayer/BattleSelector
+@onready var action_chosen := $UiLayer/ActionChosen
 
 @export var pokemon :game_pokemon = null
 
@@ -20,27 +21,30 @@ enum facingDirection {
 
 enum states {
 	ATTACK_SELECTION,
-	NORMAL
+	NORMAL,
+	ACTION_SELECTION
 }
 
-var state = states.NORMAL
-var attacking = false
+var state := states.NORMAL
+var attacking := false
+var action := false
+var current_facing_direction := facingDirection.UP
 
-var current_facing_direction = facingDirection.UP
+var init_delay := true
 
-var init_delay = true
-
-var input_direction = Vector2.ZERO
+var input_direction := Vector2.ZERO
 
 var knockback :bool = false
 var self_knockback_vector:Vector2 = Vector2.ZERO
 var knockback_modifier:int = 1500
 
 var stop:bool = false
+
 signal health_changed(body)
 signal defeated(pokemon)
 
 signal attacked(body)
+signal run
 
 func _ready():
 	anim_state.travel("Walk")
@@ -53,10 +57,14 @@ func get_input():
 	
 	if knockback == false and stop == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
-			if attacking == false:
+			if attacking == false and action == false:
 				state = states.ATTACK_SELECTION
 				attack_selector.start_radial()
-			
+		elif Input.is_action_just_pressed("No") and init_delay == false:
+			if attacking == false and action == false:
+				action = true
+				state = states.ACTION_SELECTION
+				action_chosen.start_radial()
 		else:
 			if state == states.NORMAL:
 				input_direction = Input.get_vector("A", "D", "W", "S")
@@ -141,4 +149,29 @@ func _stop():
 
 
 func _on_attack_selector_displayed():
+	velocity = Vector2.ZERO
+
+
+func _on_action_chosen_action_chosen(act):
+	action = true
+	state = states.NORMAL
+	match act:
+		0:
+			print("pokemon")
+		1:
+			print("bag")
+		2:
+			print("action")
+		3:
+			print_debug("run")
+			emit_signal("run")
+
+
+func _on_action_chosen_cancel():
+	await get_tree().create_timer(0.1).timeout
+	action = false
+	state = states.NORMAL
+	attacking = false
+	
+func _on_action_chosen_displayed():
 	velocity = Vector2.ZERO

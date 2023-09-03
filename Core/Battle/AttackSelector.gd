@@ -16,6 +16,7 @@ signal cancel
 signal displayed
 
 var pokemon:game_pokemon
+
 func change_selected():
 	frame = current_selected + 1
 
