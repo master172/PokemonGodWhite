@@ -8037,7 +8037,7 @@ script = ExtResource("2_wyec4")
 [node name="player" parent="." instance=ExtResource("3_e07th")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-8, 0)
+position = Vector2(88, -48)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-296, -40)

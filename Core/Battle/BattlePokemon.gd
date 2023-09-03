@@ -158,12 +158,14 @@ func _on_action_chosen_action_chosen(act):
 	match act:
 		0:
 			print("pokemon")
+			action = false
 		1:
 			print("bag")
+			action = false
 		2:
 			print("action")
+			action = false
 		3:
-			print_debug("run")
 			emit_signal("run")
 
 

@@ -46,6 +46,7 @@ class_name game_pokemon
 @export var stats_calculated:bool = false
 
 @export_group("attacks")
+@export var move_pool :Array[MovePoolAction]
 @export var learned_attacks:Array[GameAction]
 
 @export_group("nec")
@@ -70,12 +71,18 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 		Nick_name = NickName
 	else:
 		Nick_name = Base_Pokemon.Name
-	
+		
+	set_movepool()
 	set_nature()
 	calculate_stats_init()
 	set_exp_to_levels()
 	calc_gender()
 	
+	
+func set_movepool():
+	for i in Base_Pokemon.Actions:
+		move_pool.append(MovePoolAction.new(i))
+		
 func calc_gender():
 	var gender_rng = RandomNumberGenerator.new()
 	gender = gender_rng.randi_range(0,1)
@@ -157,21 +164,21 @@ func get_icon():
 	return Base_Pokemon.get_icon_sprite()
 
 func inital_learn_moves():
-	for i in Base_Pokemon.Actions:
-		if i.learned_level <= self.level and learned_attacks.size() <= 3:
-			var move_to_learn = GameAction.new(i)
+	for i in move_pool:
+		if i.action.learned_level <= self.level and learned_attacks.size() <= 3:
+			var move_to_learn = GameAction.new(i.action)
 			learned_attacks.append(move_to_learn)
-
+			i.learned = true
+			
 func learn_moves():
-	for i in Base_Pokemon.Actions:
-		if i.learned_level <= self.level:
-			var move_to_learn = GameAction.new(i)
+	for i in move_pool:
+		if i.action.learned_level <= self.level and i.learned == false:
+			var move_to_learn = GameAction.new(i.action)
 			if learned_attacks.size() <= 3:
-				if !learned_attacks.has(move_to_learn):
-					learned_attacks.append(move_to_learn)
+				learned_attacks.append(move_to_learn)
+				i.learned = true
 			else:
-				if !learned_attacks.has(move_to_learn):
-					pass
+				pass
 				
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
@@ -208,7 +215,7 @@ func level_up():
 	
 	level +=1
 	set_exp_to_levels()
-	
+	learn_moves()
 
 func set_exp_to_levels():
 	exp_to_current_level = calc_exp_to_level(level-1)

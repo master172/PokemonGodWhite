@@ -298,6 +298,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(32, 32)
 
 [node name="NPC_Character" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 18
 collision_mask = 0
 script = ExtResource("1_l2tib")
