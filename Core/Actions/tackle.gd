@@ -34,8 +34,8 @@ func _on_tackle_timer_timeout():
 func _on_attack_delay_timeout():
 	if User.has_method("attack_end"):
 		User.attack_end()
-	SignalBus.connect_attack_completed(self,User)
-	emit_signal("attack_finished")
+	connect("attack_finished",SignalBus.attack_completed)
+	emit_signal("attack_finished",self,User)
 	queue_free()
 
 
@@ -43,5 +43,5 @@ func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
-			SignalBus.connect_attack_landed(self,User)
-			emit_signal("attack_landed")
+			connect("attack_landed",SignalBus.on_attack_landed)
+			emit_signal("attack_landed",self,User)
