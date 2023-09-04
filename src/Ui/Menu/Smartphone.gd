@@ -37,11 +37,8 @@ func _unhandled_input(event):
 					CurrentState = current_state.Normal
 		current_state.Normal:
 			if event.is_action_pressed("Menu") or event.is_action_pressed("No"):
-				var player = Utils.get_player()
-				self.visible = false
-				CurrentState = current_state.Empty
-				handle_closing()
-				player.set_physics_process(true)
+				quit()
+
 			else:
 				max_selectable = 0
 				if CurrentState == current_state.Normal:
@@ -76,6 +73,8 @@ func _unhandled_input(event):
 					elif current_selected == 4 or current_selected == -4:
 						save_dialog()
 						CurrentState = current_state.Save
+					elif current_selected == 6 or current_selected == -6:
+						get_tree().quit()
 						
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
@@ -126,3 +125,10 @@ func save_dialog_finished(Dialogline):
 	if Dialogline == Save_dialog:
 		CurrentState = current_state.Normal
 		DialogLayer.get_child(0).disconnect("finsished",save_dialog_finished)
+
+func quit():
+	var player = Utils.get_player()
+	self.visible = false
+	CurrentState = current_state.Empty
+	handle_closing()
+	player.set_physics_process(true)
