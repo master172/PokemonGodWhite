@@ -15,6 +15,7 @@ func _startMoveLearning():
 	emit_signal("StartLearningMoves",MovesToLearn[0])
 
 func Starting_dialog(pokemon,move):
+	Utils.get_player().set_physics_process(false)
 	starting_dialog.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	starting_dialog.add_symbols_to_replace({"Move":move.action.name})
 	DialogLayer.get_child(0)._start(starting_dialog)
@@ -37,10 +38,11 @@ func end_finish(dial):
 		recursive_move_check()
 		
 func recursive_move_check():
+	emit_signal("finishLearningMoves")
 	if MovesToLearn == []:
-		emit_signal("finishLearningMoves")
+		Utils.get_player().set_physics_process(true)
 	else:
-		pass
+		Starting_dialog(MovesToLearn[0].pokemon,MovesToLearn[0].move)
 		
 func finish(dial):
 	if dial == starting_dialog:

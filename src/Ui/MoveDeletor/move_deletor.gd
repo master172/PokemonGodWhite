@@ -27,7 +27,15 @@ var state = states.INACTIVE
 func _ready():
 	hide()
 	PokemonManager.connect("StartLearningMoves",_start)
+	PokemonManager.connect("finishLearningMoves",_end)
 
+func _end():
+	hide()
+	state = states.INACTIVE
+	pokemon = null
+	move = null
+	
+	
 func _start(Move:MoveToLearn):
 		
 	pokemon = Move.pokemon

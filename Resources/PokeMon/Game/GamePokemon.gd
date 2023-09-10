@@ -298,3 +298,6 @@ func replace_moves(index,move:MovePoolAction):
 	emit_signal("replaced_moves",self,learned_attacks[index],move_to_learn)
 	learned_attacks[index] = move_to_learn
 	print_debug("step 3")
+
+#func move_process():
+#
