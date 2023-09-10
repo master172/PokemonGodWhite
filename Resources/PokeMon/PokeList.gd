@@ -10,7 +10,7 @@ signal can_start_move_learner
 @export var learning_counter:int = 0
 
 func add_pokemon(Game_pokemon:game_pokemon):
-	Game_pokemon.connect("learning_process_complet",add_learned)
+	Game_pokemon.connect("learning_process_complete",add_learned)
 	pokemons.append(Game_pokemon)
 
 func remove_pokemon(index:int):
@@ -45,9 +45,9 @@ func all_heal():
 
 func add_learned():
 	learning_counter += 1
-	if learning_counter == pokemon_size():
-		all_learned()
+	
 		
 func all_learned():
-	emit_signal("can_start_move_learner")
-	learning_counter = 0
+	if learning_counter == pokemon_size():
+		emit_signal("can_start_move_learner")
+		learning_counter = 0

@@ -1,5 +1,6 @@
 extends Node
 
+var movesLearned:Array[MoveToLearn]
 var MovesToLearn:Array[MoveToLearn]
 var MoveDeletor = null
 

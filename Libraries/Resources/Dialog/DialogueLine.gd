@@ -11,3 +11,6 @@ func replace_symbols(index:int):
 
 func add_symbols_to_replace(format:Dictionary):
 	Format.merge(format)
+
+func remove_all_symbols():
+	Format = {}

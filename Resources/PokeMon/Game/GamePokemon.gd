@@ -63,6 +63,7 @@ class_name game_pokemon
 signal Level_up
 signal experience_added
 
+signal learn_move(pokemon,move)
 signal learn_extra_move(pokemon,move)
 signal replaced_moves(pokemon,prev_move,new_move)
 
@@ -189,6 +190,8 @@ func learn_moves():
 			if learned_attacks.size() <= 3:
 				learned_attacks.append(move_to_learn)
 				i.learned = true
+				PokemonManager.movesLearned.append(MoveToLearn.new(self,i))
+				emit_signal("learn_move",self,i)
 			else:
 				PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
 				emit_signal("learn_extra_move",self,i)
