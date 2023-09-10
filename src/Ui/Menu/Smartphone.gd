@@ -116,7 +116,7 @@ func unload_summary_screen():
 
 func save_dialog():
 	DialogLayer.get_child(0)._start(Save_dialog)
-	DialogLayer.get_child(0).connect("finsished",save_dialog_finished)
+	DialogLayer.get_child(0).connect("finished",save_dialog_finished)
 	
 func save():
 	Utils.save_data()
@@ -124,7 +124,7 @@ func save():
 func save_dialog_finished(Dialogline):
 	if Dialogline == Save_dialog:
 		CurrentState = current_state.Normal
-		DialogLayer.get_child(0).disconnect("finsished",save_dialog_finished)
+		DialogLayer.get_child(0).disconnect("finished",save_dialog_finished)
 
 func quit():
 	var player = Utils.get_player()

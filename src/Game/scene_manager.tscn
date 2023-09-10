@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=12 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://bmo5vwylgv02b" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
 [ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
 [ext_resource type="PackedScene" uid="uid://srq4btryqe3j" path="res://autoload/audio_manager.tscn" id="5_p78iy"]
+[ext_resource type="PackedScene" uid="uid://dw76gxraw6ywb" path="res://testing/pokemodebug.tscn" id="6_4sy0t"]
+[ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
 resource_name = "FadeToBlack"
@@ -102,3 +104,13 @@ libraries = {
 }
 
 [node name="AudioManager" parent="." instance=ExtResource("5_p78iy")]
+
+[node name="Debug" type="CanvasLayer" parent="."]
+
+[node name="PokeDebug" parent="Debug" instance=ExtResource("6_4sy0t")]
+visible = false
+
+[node name="MoveDeletor" type="CanvasLayer" parent="."]
+
+[node name="MoveDeletor" parent="MoveDeletor" instance=ExtResource("7_3jiyl")]
+visible = false

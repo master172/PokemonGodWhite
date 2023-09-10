@@ -101,6 +101,12 @@ func get_overworld_sprite():
 func get_icon_sprite():
 	return Icon
 
+func get_front_sprite():
+	return Front
+
+func get_back_sprite():
+	return Back
+	
 func get_Type1():
 	return Type1
 

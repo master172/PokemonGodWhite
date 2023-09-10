@@ -33,7 +33,7 @@ signal text_completed
 
 #signals for feature completeness
 signal started(DialogLine)
-signal finsished(DialogLine)
+signal finished(DialogLine)
 signal dialogLine_Changed(DialogLine)
 
 signal dialog_changed(DialogNo)
@@ -210,7 +210,7 @@ func clear():
 	await get_tree().create_timer(0.5).timeout
 	Utils.DialogProcessing = false
 	
-	finsished.emit(current_dialog)
+	finished.emit(current_dialog)
 	current_dialog = null
 
 func call_functions():

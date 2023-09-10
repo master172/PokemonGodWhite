@@ -13,7 +13,7 @@ func _process(delta):
 func _interact():
 	Current_dialog.add_symbols_to_replace({"NewfoundLand":"Godot"})
 	DialogLayer.get_child(0)._start(self.Current_dialog)
-	DialogLayer.get_child(0).connect("finsished",finish)
+	DialogLayer.get_child(0).connect("finished",finish)
 	
 func finish(dial):
 	if dial == Current_dialog:

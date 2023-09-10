@@ -18,7 +18,7 @@ func set_npc(value):
 
 func _interact():
 	DialogLayer.get_child(0)._start(current_dialog)
-	DialogLayer.get_child(0).connect("finsished",finish)
+	DialogLayer.get_child(0).connect("finished",finish)
 
 func finish(dial):
 	if dial == current_dialog:

@@ -11,3 +11,6 @@ func Change_Dialog(param,at_what:int = 0):
 
 func heal():
 	AllyPokemon.all_heal()
+
+func StartMoveLearning():
+	PokemonManager._startMoveLearning()

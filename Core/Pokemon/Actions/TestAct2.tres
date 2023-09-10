@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://cl36qrf5uhp0u"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_ddcwu"]
+
+[resource]
+script = ExtResource("1_ddcwu")
+name = "TestAct2"
+learned_level = 7
+Type = "Normal"
+range = 0

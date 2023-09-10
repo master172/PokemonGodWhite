@@ -50,7 +50,7 @@ theme = ExtResource("4_ekknv")
 theme_override_font_sizes/font_size = 48
 text = "Pikachu"
 
-[node name="Name2" type="Label" parent="PokeInfo"]
+[node name="Title" type="Label" parent="PokeInfo"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 46.0
@@ -95,3 +95,56 @@ texture_filter = 1
 position = Vector2(225, 435)
 scale = Vector2(5, 5)
 texture = ExtResource("5_gqeeu")
+
+[node name="Moves" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Move1" type="Label" parent="Moves"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 93.0
+offset_right = 1027.0
+offset_bottom = 151.0
+theme = ExtResource("4_ekknv")
+theme_override_font_sizes/font_size = 46
+
+[node name="Move2" type="Label" parent="Moves"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 225.0
+offset_right = 1027.0
+offset_bottom = 283.0
+theme = ExtResource("4_ekknv")
+theme_override_font_sizes/font_size = 46
+
+[node name="Move3" type="Label" parent="Moves"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 358.0
+offset_right = 1027.0
+offset_bottom = 416.0
+theme = ExtResource("4_ekknv")
+theme_override_font_sizes/font_size = 46
+
+[node name="Move4" type="Label" parent="Moves"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 492.0
+offset_right = 1027.0
+offset_bottom = 550.0
+theme = ExtResource("4_ekknv")
+theme_override_font_sizes/font_size = 46
+
+[node name="Move5" type="Label" parent="Moves"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 656.0
+offset_right = 1027.0
+offset_bottom = 714.0
+theme = ExtResource("4_ekknv")
+theme_override_font_sizes/font_size = 46

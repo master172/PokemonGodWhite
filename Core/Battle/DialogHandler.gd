@@ -19,7 +19,7 @@ func add_won_dialog(pokemon:game_pokemon,winner:game_pokemon):
 	won_dialog.add_symbols_to_replace({"Winner":winner.Nick_name})
 	won_dialog.add_symbols_to_replace({"points":str(pokemon.calculate_experience_points())})
 	DialogLayer.get_child(0)._start(won_dialog)
-	DialogLayer.get_child(0).connect("finsished",on_won_dialog_finished)
+	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 
 func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	won_dialog_level_up.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
@@ -27,7 +27,7 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	won_dialog_level_up.add_symbols_to_replace({"points":str(pokemon.calculate_experience_points())})
 	won_dialog_level_up.add_symbols_to_replace({"level":str(winner.level)})
 	DialogLayer.get_child(0)._start(won_dialog_level_up)
-	DialogLayer.get_child(0).connect("finsished",on_won_dialog_finished)
+	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 	
 func on_won_dialog_finished(dialog):
 	Utils.get_scene_manager().transistion_exit_battle_scene()
@@ -42,7 +42,7 @@ func Lost_battle(pokemon):
 	print(pokemon.Nick_name)
 	lost_battle.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	DialogLayer.get_child(0)._start(lost_battle)
-	DialogLayer.get_child(0).connect("finsished",on_lost_battle_finished)
+	DialogLayer.get_child(0).connect("finished",on_lost_battle_finished)
 
 func on_lost_battle_finished(dialog):
 	Utils.get_scene_manager().transistion_exit_battle_scene()
@@ -51,14 +51,14 @@ func Lost_match(pokemon):
 	print(pokemon.Nick_name)
 	lost_match.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	DialogLayer.get_child(0)._start(lost_match)
-	DialogLayer.get_child(0).connect("finsished",on_lost_match_finished)
+	DialogLayer.get_child(0).connect("finished",on_lost_match_finished)
 
 func on_lost_match_finished(dialog):
 	pass
 
 func _run():
 	DialogLayer.get_child(0)._start(run_dialog)
-	DialogLayer.get_child(0).connect("finsished",_run_finished)
+	DialogLayer.get_child(0).connect("finished",_run_finished)
 
 func _run_finished(dialog):
 	Utils.get_scene_manager().transistion_exit_battle_scene()

@@ -158,7 +158,7 @@ func _physics_process(delta):
 	Run()
 	cycle()
 	speed_handler()
-	get_clicked_tile_power()
+#	get_clicked_tile_power()
 	check_ledge_direction()
 	check_interaction()
 
@@ -450,14 +450,14 @@ func update_casts():
 
 
 
-func get_clicked_tile_power():
-	if Input.is_action_just_pressed("LeftClick"):
-		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
-		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
-		if data:
-			print(data.get_custom_data("surf"))
-		else:
-			print("null")
+#func get_clicked_tile_power():
+#	if Input.is_action_just_pressed("LeftClick"):
+#		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
+#		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
+#		if data:
+#			print(data.get_custom_data("surf"))
+#		else:
+#			print("null")
 
 func entered_door():
 	emit_signal("player_entered_door_signal")

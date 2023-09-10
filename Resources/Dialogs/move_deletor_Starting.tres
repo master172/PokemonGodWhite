@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=11 format=3 uid="uid://d2ukxefdfv4hm"]
+
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_lhwso"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="2_515cv"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="3_arxks"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="4_w7iol"]
+
+[sub_resource type="Resource" id="Resource_enygy"]
+script = ExtResource("1_lhwso")
+Dialog_type = 0
+text = "{Pokemon} wants to learn {Move}, but {Pokemon} can only learn 4 moves"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("3_arxks")]([])
+Options = Array[ExtResource("2_515cv")]([])
+
+[sub_resource type="Resource" id="Resource_docw3"]
+script = ExtResource("2_515cv")
+text = "Yes"
+functions = Array[ExtResource("3_arxks")]([])
+next = 2
+
+[sub_resource type="Resource" id="Resource_uap8t"]
+script = ExtResource("2_515cv")
+text = "No"
+functions = Array[ExtResource("3_arxks")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_ebm31"]
+script = ExtResource("1_lhwso")
+Dialog_type = 1
+text = "Delete a move to make space for {Move}"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("3_arxks")]([])
+Options = Array[ExtResource("2_515cv")]([SubResource("Resource_docw3"), SubResource("Resource_uap8t")])
+
+[sub_resource type="Resource" id="Resource_egbb6"]
+script = ExtResource("3_arxks")
+function = "StartMoveLearning"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_du7na"]
+script = ExtResource("1_lhwso")
+Dialog_type = 0
+text = "Which move should be forgotten"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("3_arxks")]([SubResource("Resource_egbb6")])
+Options = Array[ExtResource("2_515cv")]([])
+
+[resource]
+script = ExtResource("4_w7iol")
+Dialogs = Array[ExtResource("1_lhwso")]([SubResource("Resource_enygy"), SubResource("Resource_ebm31"), SubResource("Resource_du7na")])
+Format = {}

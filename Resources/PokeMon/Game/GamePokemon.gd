@@ -63,6 +63,8 @@ class_name game_pokemon
 signal Level_up
 signal experience_added
 
+signal learn_extra_move(pokemon,move)
+
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
 	level = lev
@@ -163,13 +165,20 @@ func get_overworld_sprite():
 func get_icon():
 	return Base_Pokemon.get_icon_sprite()
 
+func get_front_sprite():
+	return Base_Pokemon.get_front_sprite()
+
+func get_back_sprite():
+	return Base_Pokemon.get_back_sprite()
+
 func inital_learn_moves():
 	for i in move_pool:
-		if i.action.learned_level <= self.level and learned_attacks.size() <= 3:
-			var move_to_learn = GameAction.new(i.action)
-			learned_attacks.append(move_to_learn)
-			i.learned = true
-			
+		if i.action.learned_level <= self.level:
+			if learned_attacks.size() <= 4:
+				var move_to_learn = GameAction.new(i.action)
+				learned_attacks.append(move_to_learn)
+				i.learned = true
+				
 func learn_moves():
 	for i in move_pool:
 		if i.action.learned_level <= self.level and i.learned == false:
@@ -178,7 +187,8 @@ func learn_moves():
 				learned_attacks.append(move_to_learn)
 				i.learned = true
 			else:
-				pass
+				PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
+				emit_signal("learn_extra_move",self,i)
 				
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
@@ -281,6 +291,8 @@ func heal():
 	fainted = false
 	set_to_max_stats()
 
-func replace_moves(index,move):
-	var move_to_learn = GameAction.new(move)
+func replace_moves(index,move:MovePoolAction):
+	move.learned = true
+	var move_to_learn = GameAction.new(move.action)
 	learned_attacks[index] = move_to_learn
+	print_debug("step 3")
