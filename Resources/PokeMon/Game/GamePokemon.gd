@@ -66,6 +66,8 @@ signal experience_added
 signal learn_extra_move(pokemon,move)
 signal replaced_moves(pokemon,prev_move,new_move)
 
+signal learning_process_complete
+
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
 	level = lev
@@ -190,7 +192,8 @@ func learn_moves():
 			else:
 				PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
 				emit_signal("learn_extra_move",self,i)
-				
+	emit_signal("learning_process_complete")
+	
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
 		return learned_attacks[num].Name()

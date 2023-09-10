@@ -11,6 +11,10 @@ signal finishLearningMoves
 @onready var starting_dialog:DialogueLine = preload("res://Resources/Dialogs/move_deletor_Starting.tres")
 @onready var ending_dialog:DialogueLine = preload("res://Resources/Dialogs/move_deletor_ending.tres")
 
+func _start_move_learning():
+	if MovesToLearn.size() > 0:
+		Starting_dialog(MovesToLearn[0].pokemon,MovesToLearn[0].move)
+	
 func _startMoveLearning():
 	emit_signal("StartLearningMoves",MovesToLearn[0])
 
@@ -42,7 +46,7 @@ func recursive_move_check():
 	if MovesToLearn == []:
 		Utils.get_player().set_physics_process(true)
 	else:
-		Starting_dialog(MovesToLearn[0].pokemon,MovesToLearn[0].move)
+		_start_move_learning()
 		
 func finish(dial):
 	if dial == starting_dialog:
