@@ -47,7 +47,12 @@ func _update():
 
 func manage_connections():
 	current_pokemon.connect("learn_extra_move",learn_move)
+	current_pokemon.connect("replaced_moves",learned_move)
 
+func learned_move(pokemon:game_pokemon,prev_move:GameAction,new_move:GameAction):
+	print(pokemon.Nick_name, " ", prev_move.base_action.name, " ", new_move.base_action.name)
+	PokemonManager.finishing_dialog(pokemon,prev_move,new_move)
+	
 func learn_move(pokemon,move):
 	PokemonManager.Starting_dialog(pokemon,move)
 	

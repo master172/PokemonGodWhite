@@ -64,6 +64,7 @@ signal Level_up
 signal experience_added
 
 signal learn_extra_move(pokemon,move)
+signal replaced_moves(pokemon,prev_move,new_move)
 
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
 	Base_Pokemon = pokemon
@@ -294,5 +295,6 @@ func heal():
 func replace_moves(index,move:MovePoolAction):
 	move.learned = true
 	var move_to_learn = GameAction.new(move.action)
+	emit_signal("replaced_moves",self,learned_attacks[index],move_to_learn)
 	learned_attacks[index] = move_to_learn
 	print_debug("step 3")
