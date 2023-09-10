@@ -65,6 +65,7 @@ func _run_finished(dialog):
 	Utils.get_scene_manager().transistion_exit_battle_scene()
 
 func start_move_learning():
+	PokemonManager.connect("allfinished",check_move_learned)
 	PokemonManager._start_move_learning()
 
 func check_move_learned():

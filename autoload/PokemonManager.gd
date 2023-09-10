@@ -8,6 +8,7 @@ var can_learn_moves:bool = false
 signal StartLearningMoves(Moves)
 
 signal finishLearningMoves
+signal allfinished
 
 @onready var starting_dialog:DialogueLine = preload("res://Resources/Dialogs/move_deletor_Starting.tres")
 @onready var ending_dialog:DialogueLine = preload("res://Resources/Dialogs/move_deletor_ending.tres")
@@ -46,6 +47,7 @@ func recursive_move_check():
 	emit_signal("finishLearningMoves")
 	if MovesToLearn == []:
 		Utils.get_player().set_physics_process(true)
+		emit_signal("allfinished")
 	else:
 		_start_move_learning()
 		
