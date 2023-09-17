@@ -8,15 +8,15 @@ var current_selected:int = 0
 var max_selected:int = 9
 
 
-@onready var general_items = $VBoxContainer/HBox/Bag/Rows/GeneralItems
+@onready var general_items = $VBoxContainer/HBox/Bag/Rows/General_Items
 @onready var medicine = $VBoxContainer/HBox/Bag/Rows/Medicine
-@onready var battle_items = $VBoxContainer/HBox/Bag/Rows/BattleItems
-@onready var pokeballs = $VBoxContainer/HBox/Bag/Rows/Pokeballs
+@onready var battle_items = $VBoxContainer/HBox/Bag/Rows/Battle_Items
+@onready var pokeballs = $VBoxContainer/HBox/Bag/Rows/PokeBalls
 @onready var machines = $VBoxContainer/HBox/Bag/Rows/Machines
 @onready var berries = $VBoxContainer/HBox/Bag/Rows/Berries
 @onready var key_items = $VBoxContainer/HBox/Bag/Rows/KeyItems
 @onready var evolution = $VBoxContainer/HBox/Bag/Rows/Evolution
-@onready var texture_rect_9 = $VBoxContainer/HBox/Bag/Rows/TextureRect9
+@onready var trophys = $VBoxContainer/HBox/Bag/Rows/Trophys
 
 @onready var scroll_container = $VBoxContainer/HBox/Bag/ScrollContainer
 @onready var v_box_container = $VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer
@@ -49,7 +49,7 @@ var pokekey:int = 0
 	berries,
 	key_items,
 	evolution,
-	texture_rect_9,
+	trophys,
 ]
 
 @onready var Pokemons:Array = [
@@ -60,18 +60,34 @@ var pokekey:int = 0
 	icon_4,
 	icon_5,
 ]
+
+var hints:Dictionary = {
+	0:"general_items",
+	1:"Medicine",
+	2:"BattleItems",
+	3:"Pokeballs",
+	4:"Machines",
+	5:"Berries",
+	6:"KeyItems",
+	7:"Evolution",
+	8:"Trophys"
+}
 var itemScrollThreshold:int = 7
 
 func _ready():
 	set_pockets()
+	clear_items()
 	
 func set_pockets():
+	clear_items()
 	Pockets[current_selected].self_modulate = Color(0, 0.522, 1)
-
+	add_items()
+	
 func set_pockets_active():
 	Pockets[current_selected].self_modulate = Color(0, 1, 0.271)
 
 func unset_pockets():
+	clear_items()
 	Pockets[current_selected].self_modulate = Color(1, 1, 1)
 
 func unset_item():
@@ -98,7 +114,7 @@ func _input(event):
 			current_selected = (current_selected + 1) %max_selected
 			set_pockets()
 	elif event.is_action_pressed("S"):
-		if state == STATES.NORMAL:
+		if state == STATES.NORMAL and v_box_container.get_child_count() != 0:
 			state = STATES.ITEMS
 			max_selected = v_box_container.get_child_count()
 			bagkey = current_selected
@@ -167,3 +183,11 @@ func _input(event):
 func clear_items():
 	for i in v_box_container.get_children():
 		i.queue_free()
+
+func add_items():
+	for i in Inventory.pocket.pockets[hints[current_selected]].items:
+		print(i.Name)
+		var Bag_node = bag_node.instantiate()
+		
+		v_box_container.add_child(Bag_node)
+		Bag_node.set_item(i)

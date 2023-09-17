@@ -9,6 +9,7 @@ class_name Pockets
 @export var Berries:BagList = BagList.new("Berries")
 @export var KeyItems:BagList = BagList.new("KeyItems")
 @export var Evolution:BagList = BagList.new("Evolution")
+@export var Trophys:BagList = BagList.new("Trophys")
 
 @export var pockets :Dictionary = {
 	"general_items":general_items,
@@ -19,4 +20,5 @@ class_name Pockets
 	"Berries":Berries,
 	"KeyItems":KeyItems,
 	"Evolution":Evolution,
+	"Trophys":Trophys
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://douv45xfdt3yl"]
+[gd_scene load_steps=23 format=3 uid="uid://douv45xfdt3yl"]
 
 [ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_me812"]
 [ext_resource type="Script" path="res://src/Ui/Bag/bag.gd" id="1_xi61v"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8m4ccydyxfi4" path="res://assets/player/ash/Bag/Evolution.png" id="10_bumu7"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="10_p6ufo"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="11_n8avx"]
+[ext_resource type="Texture2D" uid="uid://d4c2vkgue1eo8" path="res://assets/player/ash/Bag/Trophys.png" id="12_dbhyn"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="13_1c7gn"]
 [ext_resource type="PackedScene" uid="uid://5i6a1gekskpd" path="res://src/Ui/Bag/bag_node.tscn" id="13_bu057"]
 
@@ -146,7 +147,7 @@ layout_mode = 2
 [node name="Rows" type="HBoxContainer" parent="VBoxContainer/HBox/Bag"]
 layout_mode = 2
 
-[node name="GeneralItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+[node name="General_Items" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
 layout_mode = 2
 texture = ExtResource("3_ttq0g")
 
@@ -154,11 +155,11 @@ texture = ExtResource("3_ttq0g")
 layout_mode = 2
 texture = ExtResource("4_55f7e")
 
-[node name="BattleItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+[node name="Battle_Items" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
 layout_mode = 2
 texture = ExtResource("5_qot58")
 
-[node name="Pokeballs" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+[node name="PokeBalls" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
 layout_mode = 2
 texture = ExtResource("6_hqtoi")
 
@@ -178,9 +179,9 @@ texture = ExtResource("9_o1r8k")
 layout_mode = 2
 texture = ExtResource("10_bumu7")
 
-[node name="TextureRect9" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+[node name="Trophys" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
 layout_mode = 2
-texture = ExtResource("3_ttq0g")
+texture = ExtResource("12_dbhyn")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBox/Bag"]
 layout_mode = 2
