@@ -14,3 +14,6 @@ func heal():
 
 func StartMoveLearning():
 	PokemonManager._startMoveLearning()
+
+func NoToMove():
+	PokemonManager.cancelMoveLearning()

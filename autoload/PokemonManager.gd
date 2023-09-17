@@ -6,6 +6,7 @@ var MoveDeletor = null
 
 var can_learn_moves:bool = false
 signal StartLearningMoves(Moves)
+signal CancelMoveLearning(Moves)
 
 signal finishLearningMoves
 signal allfinished
@@ -19,7 +20,12 @@ func _start_move_learning():
 	
 func _startMoveLearning():
 	emit_signal("StartLearningMoves",MovesToLearn[0])
+	_finish_move_learning()
+	recursive_move_check()
 
+func cancelMoveLearning():
+	MovesToLearn[0].move.skipped = true
+	
 func Starting_dialog(pokemon,move):
 	Utils.get_player().set_physics_process(false)
 	starting_dialog.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})

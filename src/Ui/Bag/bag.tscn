@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://douv45xfdt3yl"]
+[gd_scene load_steps=22 format=3 uid="uid://douv45xfdt3yl"]
 
 [ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_me812"]
 [ext_resource type="Script" path="res://src/Ui/Bag/bag.gd" id="1_xi61v"]
-[ext_resource type="Texture2D" uid="uid://8n3aub6vqiie" path="res://assets/player/ash/Bag/pokeselector1.png" id="2_7lnjy"]
 [ext_resource type="Texture2D" uid="uid://xsya1npyt2sj" path="res://assets/player/ash/Bag/GeneralItems.png" id="3_ttq0g"]
 [ext_resource type="Texture2D" uid="uid://bk5a7psxnxlqp" path="res://assets/player/ash/Bag/medcine.png" id="4_55f7e"]
 [ext_resource type="Texture2D" uid="uid://dx08o3darad3k" path="res://assets/player/ash/Bag/BattleItems.png" id="5_qot58"]
@@ -17,12 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://5i6a1gekskpd" path="res://src/Ui/Bag/bag_node.tscn" id="13_bu057"]
 
 [sub_resource type="Gradient" id="Gradient_hn1vw"]
-offsets = PackedFloat32Array(0, 0.448052, 0.675325, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.282468, 0.183115, 0.010532, 1, 0.680372, 0.441065, 0.0253681, 1, 1, 0.64827, 0.0372857, 1)
+offsets = PackedFloat32Array(0, 0.265263, 0.368421, 0.64, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.134051, 0.0869007, 0.00499816, 1, 0.282468, 0.183115, 0.010532, 1, 0.874105, 0.566656, 0.0325916, 1, 1, 0.64827, 0.0372857, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5p3ex"]
 gradient = SubResource("Gradient_hn1vw")
-fill_to = Vector2(0.662393, 0.538462)
+fill_to = Vector2(1, 0.995726)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h510i"]
 
@@ -99,6 +98,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x2yq7")
 
 [node name="PokeContainer" type="VBoxContainer" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -118,7 +118,7 @@ stretch_mode = 2
 [node name="Icon2" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
 texture_filter = 6
 layout_mode = 2
-texture = ExtResource("2_7lnjy")
+texture = ExtResource("1_me812")
 stretch_mode = 2
 
 [node name="Icon3" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
@@ -147,7 +147,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="GeneralItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
-modulate = Color(0, 0.521569, 1, 1)
 layout_mode = 2
 texture = ExtResource("3_ttq0g")
 
@@ -199,81 +198,73 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBox/Bag"]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBox/Bag/ScrollContainer"]
 custom_minimum_size = Vector2(590, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="BagNode" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
-active = true
+focus_mode = 2
 
 [node name="BagNode2" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode3" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode4" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode5" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode6" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode7" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode8" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode9" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode10" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode11" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode12" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode13" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode14" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="BagNode15" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
 layout_mode = 2
-
-[node name="BagNode16" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode17" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode18" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode19" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode20" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode21" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode22" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
-
-[node name="BagNode23" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
-layout_mode = 2
+focus_mode = 2
 
 [node name="Text" type="Control" parent="VBoxContainer/HBox/Bag"]
 custom_minimum_size = Vector2(0, 112)
