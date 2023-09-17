@@ -28,6 +28,11 @@ var max_selected:int = 9
 @onready var icon_4 = $VBoxContainer/HBox/PokeContainer/Icon4
 @onready var icon_5 = $VBoxContainer/HBox/PokeContainer/Icon5
 
+@onready var label = $VBoxContainer/HBox/Bag/Label
+
+@onready var item_name = $VBoxContainer/HBox/Bag/Text/HBoxContainer/ColorRect/Label
+@onready var rich_text_label = $VBoxContainer/HBox/Bag/Text/HBoxContainer/RichTextLabel
+
 enum STATES {
 	NORMAL,
 	POKEMON,
@@ -72,6 +77,8 @@ var hints:Dictionary = {
 	7:"Evolution",
 	8:"Trophys"
 }
+
+var current_pocket = null
 var itemScrollThreshold:int = 7
 
 func _ready():
@@ -91,11 +98,14 @@ func unset_pockets():
 	Pockets[current_selected].self_modulate = Color(1, 1, 1)
 
 func unset_item():
+	clear_data()
 	v_box_container.get_child(current_selected).active = false
 	
 func set_item():
+	clear_data()
 	v_box_container.get_child(current_selected).active = true
-
+	set_data(Inventory.pocket.pockets[current_pocket].items[current_selected])
+	
 func set_pokemon():
 	Pokemons[current_selected].texture = reg_poke_ac
 
@@ -183,11 +193,22 @@ func _input(event):
 func clear_items():
 	for i in v_box_container.get_children():
 		i.queue_free()
+		current_pocket = null
 
 func add_items():
+	current_pocket = Inventory.pocket.pockets[hints[current_selected]].type_Hint
+	label.text = Inventory.pocket.pockets[hints[current_selected]].type_Hint
 	for i in Inventory.pocket.pockets[hints[current_selected]].items:
-		print(i.Name)
+		
 		var Bag_node = bag_node.instantiate()
 		
 		v_box_container.add_child(Bag_node)
 		Bag_node.set_item(i)
+
+func set_data(item:BaseItem):
+	item_name.text = item.Name
+	rich_text_label.text = item.Description
+
+func clear_data():
+	item_name.text = ""
+	rich_text_label.text = ""
