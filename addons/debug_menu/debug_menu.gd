@@ -119,12 +119,21 @@ func _ready() -> void:
 	settings.text = "Loading project information..."
 	thread.start(
 		func():
+			# Disable thread safety checks as they interfere with this add-on.
+			# This only affects this particular thread, not other thread instances in the project.
+			# See <https://github.com/godotengine/godot/pull/78000> for details.
+			# Use a Callable so that this can be ignored on Godot 4.0 without causing a script error
+			# (thread safety checks were added in Godot 4.1).
+			if Engine.get_version_info()["hex"] >= 0x040100:
+				Callable(Thread, "set_thread_safety_checks_enabled").call(false)
+
 			# Enable required time measurements to display CPU/GPU frame time information.
 			# These lines are time-consuming operations, so run them in a separate thread.
 			RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
 			update_information_label()
 			update_settings_label()
 	)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cycle_debug_menu"):
@@ -177,7 +186,6 @@ func update_settings_label() -> void:
 		if viewport.screen_space_aa == Viewport.SCREEN_SPACE_AA_FXAA:
 			antialiasing_3d_string += (" + " if not antialiasing_3d_string.is_empty() else "") + "FXAA"
 
-		var environment := viewport.get_camera_3d().get_world_3d().environment
 		settings.text += "3D scale (%s): %d%% = %d×%d" % [
 				"Bilinear" if viewport.scaling_3d_mode == Viewport.SCALING_3D_MODE_BILINEAR else "FSR 1.0",
 				viewport.scaling_3d_scale * 100,
@@ -187,23 +195,25 @@ func update_settings_label() -> void:
 
 		if not antialiasing_3d_string.is_empty():
 			settings.text += "\n3D Antialiasing: %s" % antialiasing_3d_string
+		
+		var environment := viewport.get_camera_3d().get_world_3d().environment
+		if environment:
+			if environment.ssr_enabled:
+				settings.text += "\nSSR: %d Steps" % environment.ssr_max_steps
 
-		if environment.ssr_enabled:
-			settings.text += "\nSSR: %d Steps" % environment.ssr_max_steps
+			if environment.ssao_enabled:
+				settings.text += "\nSSAO: On"
+			if environment.ssil_enabled:
+				settings.text += "\nSSIL: On"
 
-		if environment.ssao_enabled:
-			settings.text += "\nSSAO: On"
-		if environment.ssil_enabled:
-			settings.text += "\nSSIL: On"
+			if environment.sdfgi_enabled:
+				settings.text += "\nSDFGI: %d Cascades" % environment.sdfgi_cascades
 
-		if environment.sdfgi_enabled:
-			settings.text += "\nSDFGI: %d Cascades" % environment.sdfgi_cascades
+			if environment.glow_enabled:
+				settings.text += "\nGlow: On"
 
-		if environment.glow_enabled:
-			settings.text += "\nGlow: On"
-
-		if environment.volumetric_fog_enabled:
-			settings.text += "\nVolumetric Fog: On"
+			if environment.volumetric_fog_enabled:
+				settings.text += "\nVolumetric Fog: On"
 	var antialiasing_2d_string := ""
 	if viewport.msaa_2d >= Viewport.MSAA_2X:
 		antialiasing_2d_string = "%d× MSAA" % pow(2, viewport.msaa_2d)

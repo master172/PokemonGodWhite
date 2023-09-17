@@ -8,4 +8,7 @@ func add_scene(scene:PackedScene):
 	var Scene = scene.instantiate()
 	add_child(Scene)
 	Utils.set_player()
+	
+	await get_tree().create_timer(0.1).timeout
+	Inventory.load_game()
 

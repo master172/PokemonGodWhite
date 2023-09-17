@@ -18,3 +18,4 @@ func _interact():
 func finish(dial):
 	if dial == Current_dialog:
 		Utils.get_player().set_physics_process(true)
+		DialogLayer.get_child(0).disconnect("finished",finish)

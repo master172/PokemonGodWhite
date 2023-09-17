@@ -124,8 +124,9 @@ func transition_to_scene(new_scene:String, spawn_location:Vector2, spawn_directi
 func finished_fading():
 	match transition_type:
 		Transition_Type.NEW_SCENE:
+			Inventory.save_overworld_items()
 			current_scene.get_child(0).queue_free()
-			current_scene.add_child(load(next_scene).instantiate())
+			current_scene.add_scene(load(next_scene))
 			
 			var player = Utils.get_player()
 			player.set_spawn(player_location,player_direction)
@@ -163,3 +164,5 @@ func unload_battle_scene():
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
 
+func get_current_scene_name():
+	return current_scene.get_child(0).name
