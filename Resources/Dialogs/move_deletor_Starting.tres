@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=11 format=3 uid="uid://d2ukxefdfv4hm"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=12 format=3 uid="uid://d2ukxefdfv4hm"]
 
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_lhwso"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="2_515cv"]
@@ -20,10 +20,15 @@ text = "Yes"
 functions = Array[ExtResource("3_arxks")]([])
 next = 2
 
+[sub_resource type="Resource" id="Resource_sk544"]
+script = ExtResource("3_arxks")
+function = "NoToMove"
+parameters = []
+
 [sub_resource type="Resource" id="Resource_uap8t"]
 script = ExtResource("2_515cv")
 text = "No"
-functions = Array[ExtResource("3_arxks")]([])
+functions = Array[ExtResource("3_arxks")]([SubResource("Resource_sk544")])
 next = -1
 
 [sub_resource type="Resource" id="Resource_ebm31"]

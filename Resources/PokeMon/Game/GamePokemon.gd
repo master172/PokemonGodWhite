@@ -185,7 +185,7 @@ func inital_learn_moves():
 				
 func learn_moves():
 	for i in move_pool:
-		if i.action.learned_level <= self.level and i.learned == false:
+		if i.action.learned_level <= self.level and i.learned == false and i.skipped == false:
 			var move_to_learn = GameAction.new(i.action)
 			if learned_attacks.size() <= 3:
 				learned_attacks.append(move_to_learn)
