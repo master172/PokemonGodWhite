@@ -1,8 +1,6 @@
 extends Control
 
 const bag_node = preload("res://src/Ui/Bag/bag_node.tscn")
-const reg_poke_sl = preload("res://assets/player/ash/Bag/pokeselector.png")
-const reg_poke_ac = preload("res://assets/player/ash/Bag/pokeselector1.png")
 
 var current_selected:int = 0
 var max_selected:int = 9
@@ -107,10 +105,10 @@ func set_item():
 	set_data(Inventory.pocket.pockets[current_pocket].items[current_selected])
 	
 func set_pokemon():
-	Pokemons[current_selected].texture = reg_poke_ac
+	Pokemons[current_selected].set_active(true)
 
 func unset_pokemon():
-	Pokemons[current_selected].texture = reg_poke_sl
+	Pokemons[current_selected].set_active(false)
 	
 func _input(event):
 	if event.is_action_pressed("A"):

@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://douv45xfdt3yl"]
+[gd_scene load_steps=22 format=3 uid="uid://douv45xfdt3yl"]
 
-[ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_me812"]
 [ext_resource type="Script" path="res://src/Ui/Bag/bag.gd" id="1_xi61v"]
 [ext_resource type="Texture2D" uid="uid://xsya1npyt2sj" path="res://assets/player/ash/Bag/GeneralItems.png" id="3_ttq0g"]
+[ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="3_xdqo4"]
 [ext_resource type="Texture2D" uid="uid://bk5a7psxnxlqp" path="res://assets/player/ash/Bag/medcine.png" id="4_55f7e"]
 [ext_resource type="Texture2D" uid="uid://dx08o3darad3k" path="res://assets/player/ash/Bag/BattleItems.png" id="5_qot58"]
 [ext_resource type="Texture2D" uid="uid://bavb0rdc711nu" path="res://assets/player/ash/Bag/pokeball.png" id="6_hqtoi"]
@@ -27,9 +27,6 @@ fill_to = Vector2(1, 0.995726)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h510i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2yq7"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w3ivi"]
-light_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_f4ma1"]
 offsets = PackedFloat32Array(0, 0.334416, 0.383117, 1)
@@ -103,42 +100,28 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x2yq7")
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Icon0" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 6
-material = SubResource("CanvasItemMaterial_w3ivi")
+[node name="Icon0" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
 
-[node name="Icon1" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 2
+[node name="Icon1" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
+pokemon_number = 1
 
-[node name="Icon2" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 6
+[node name="Icon2" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
+pokemon_number = 2
 
-[node name="Icon3" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 6
+[node name="Icon3" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
+pokemon_number = 3
 
-[node name="Icon4" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 6
+[node name="Icon4" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
+pokemon_number = 4
 
-[node name="Icon5" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
-texture_filter = 6
+[node name="Icon5" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
-texture = ExtResource("1_me812")
-stretch_mode = 2
+pokemon_number = 5
 
 [node name="Bag" type="VBoxContainer" parent="VBoxContainer/HBox"]
 custom_minimum_size = Vector2(0, 576)
