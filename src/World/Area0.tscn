@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=23 format=3 uid="uid://bmo5vwylgv02b"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="10_g640m"]
 [ext_resource type="Script" path="res://Resources/Misc/pokeSheet.gd" id="11_nk183"]
+[ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="12_yku7x"]
+[ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_xni1x"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8194,3 +8196,9 @@ position = Vector2(-408, 120)
 pokemons = Array[ExtResource("11_nk183")]([SubResource("Resource_a32na")])
 min_level = 3
 max_level = 5
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="OverWorldItem" parent="Items" instance=ExtResource("12_yku7x")]
+position = Vector2(56, -64)
+item = ExtResource("13_xni1x")

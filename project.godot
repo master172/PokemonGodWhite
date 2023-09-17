@@ -26,6 +26,7 @@ DialogLayer="*res://src/DialogManager/dialog_layer.tscn"
 BattleManager="*res://autoload/BattleManager.gd"
 SignalBus="*res://autoload/SignalBus.gd"
 PokemonManager="*res://autoload/PokemonManager.gd"
+Inventory="*res://autoload/Inventory.gd"
 
 [display]
 

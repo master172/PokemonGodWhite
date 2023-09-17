@@ -6,6 +6,8 @@ var Player = null
 
 var DialogProcessing:bool = false
 
+var current_picking_up = null
+
 func get_player():
 	if get_tree().get_current_scene().name == "SceneManager":
 		return get_node("/root/SceneManager/Current_scene").get_children().back().get_node("player")
@@ -30,3 +32,4 @@ func save_data():
 	get_player().save_data()
 	get_scene_manager().save_data()
 	AllyPokemon.save_data()
+	Inventory.save_data()

@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddh3gq4jr51h"]
+
+[ext_resource type="Script" path="res://src/Ui/Bag/OverWorldItem.gd" id="1_8gkw6"]
+[ext_resource type="Texture2D" uid="uid://b7n42kwxktyqr" path="res://assets/player/ash/Bag/OverworldItem.png" id="1_mda50"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_sxyao"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="3_ttta6"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_w1tyw"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="4_33l5c"]
+
+[sub_resource type="Resource" id="Resource_wlxwi"]
+script = ExtResource("2_sxyao")
+Dialog_type = 0
+text = "Ash found an {Item}"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("3_ttta6")]([])
+Options = Array[ExtResource("4_33l5c")]([])
+
+[sub_resource type="Resource" id="Resource_6tkvb"]
+script = ExtResource("3_ttta6")
+function = "PickUpItem"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_53e0n"]
+script = ExtResource("4_33l5c")
+text = "Yes"
+functions = Array[ExtResource("3_ttta6")]([SubResource("Resource_6tkvb")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_ympvx"]
+script = ExtResource("4_33l5c")
+text = "No"
+functions = Array[ExtResource("3_ttta6")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_hpobu"]
+script = ExtResource("2_sxyao")
+Dialog_type = 1
+text = "Do you want to pick the item up"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("3_ttta6")]([])
+Options = Array[ExtResource("4_33l5c")]([SubResource("Resource_53e0n"), SubResource("Resource_ympvx")])
+
+[sub_resource type="Resource" id="Resource_cvyf1"]
+script = ExtResource("3_w1tyw")
+Dialogs = Array[ExtResource("2_sxyao")]([SubResource("Resource_wlxwi"), SubResource("Resource_hpobu")])
+Format = {}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q0xc"]
+size = Vector2(16, 16)
+
+[node name="OverWorldItem" type="StaticBody2D"]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_8gkw6")
+pick_up_dialog = SubResource("Resource_cvyf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_mda50")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0q0xc")

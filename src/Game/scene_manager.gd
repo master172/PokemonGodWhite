@@ -22,7 +22,9 @@ enum Transition_Type {
 	EXIT_SUMMARY_SCENE,
 	MENU_ONLY,
 	BATTLE_SCENE,
-	EXIT_BATTLE_SCENE
+	EXIT_BATTLE_SCENE,
+	BAG_SCENE,
+	EXIT_BAG_SCENE
 }
 var transition_type = Transition_Type.NEW_SCENE
 
@@ -75,7 +77,14 @@ func first_time_load():
 func get_current_scene():
 	return current_scene.get_child(0)
 	
+func transition_to_bag_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.BAG_SCENE
 
+func transistion_exit_bag_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EXIT_BAG_SCENE
+	
 func transistion_to_battle_scene(pokemon):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
@@ -135,6 +144,10 @@ func finished_fading():
 			pocket_monster =[]
 		Transition_Type.EXIT_BATTLE_SCENE:
 			unload_battle_scene()
+		Transition_Type.BAG_SCENE:
+			menu.load_bag_scene()
+		Transition_Type.EXIT_BAG_SCENE:
+			menu.unload_bag_scene()
 	transition_player.play("FadeToNormal")
 
 func load_battle_scene(pokemon):
@@ -149,3 +162,4 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
+

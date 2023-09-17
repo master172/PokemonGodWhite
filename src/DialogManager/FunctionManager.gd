@@ -17,3 +17,8 @@ func StartMoveLearning():
 
 func NoToMove():
 	PokemonManager.cancelMoveLearning()
+
+func PickUpItem():
+	if Utils.current_picking_up != null:
+		Utils.current_picking_up.pick_up()
+		Utils.current_picking_up = null

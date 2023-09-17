@@ -161,8 +161,9 @@ func _input(event):
 			pokekey = current_selected
 			current_selected = itemkey
 			itemkey = 0
+		elif state == STATES.ITEMS or state == STATES.NORMAL:
+			Utils.get_scene_manager().transistion_exit_bag_scene()
 	
-			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func clear_items():
+	for i in v_box_container.get_children():
+		i.queue_free()

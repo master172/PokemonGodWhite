@@ -7,7 +7,7 @@ var current_selected:int = 0
 
 const Party_Screen = preload("res://src/Ui/Pokemon/party_screen.tscn")
 const Summary_scene = preload("res://src/Ui/Summary/Summary.tscn")
-
+const Bag_Scene = preload("res://src/Ui/Bag/bag.tscn")
 var Summary_Scene
 
 enum current_state {
@@ -15,6 +15,7 @@ enum current_state {
 	Normal,
 	Pokemons,
 	Summary,
+	Bag,
 	Save
 }
 
@@ -70,6 +71,8 @@ func _unhandled_input(event):
 				elif event.is_action_pressed("Yes"):
 					if current_selected == 0:
 						Utils.get_scene_manager().transition_to_party_screen()
+					elif current_selected == 2 or current_selected == -2:
+						Utils.get_scene_manager().transition_to_bag_scene()
 					elif current_selected == 4 or current_selected == -4:
 						save_dialog()
 						CurrentState = current_state.Save
@@ -88,6 +91,17 @@ func handle_closing():
 	for i in grid_container.get_children():
 		i.change_selected(false)
 
+func load_bag_scene():
+	hide()
+	CurrentState =current_state.Bag
+	var scene = Bag_Scene.instantiate()
+	get_parent().add_child(scene)
+
+func unload_bag_scene():
+	show()
+	get_parent().get_node("Bag").queue_free()
+	CurrentState = current_state.Normal
+	
 func load_party_screen():
 	visible = false
 	CurrentState = current_state.Pokemons
