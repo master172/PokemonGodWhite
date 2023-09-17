@@ -33,21 +33,23 @@ func _physics_process(delta):
 		visible = not visible
 		
 func _update():
-	current_pokemon = AllyPokemon.get_party_pokemon(0)
-	poke_sprite.texture = current_pokemon.get_front_sprite()
-	
-	for i in range(6):
-		if AllyPokemon.get_party_pokemon(i) != null:
-			buttons[i].icon = AllyPokemon.get_party_pokemon(i).get_front_sprite()
-	
-	for i in range(4):
-		moves[i].text = current_pokemon.get_learned_attack_name(i)
-	
-	level.text = "Levle: " + str(current_pokemon.level)
+	if current_pokemon != null:
+		current_pokemon = AllyPokemon.get_party_pokemon(0)
+		poke_sprite.texture = current_pokemon.get_front_sprite()
+		
+		for i in range(6):
+			if AllyPokemon.get_party_pokemon(i) != null:
+				buttons[i].icon = AllyPokemon.get_party_pokemon(i).get_front_sprite()
+		
+		for i in range(4):
+			moves[i].text = current_pokemon.get_learned_attack_name(i)
+		
+		level.text = "Levle: " + str(current_pokemon.level)
 
 func manage_connections():
-	current_pokemon.connect("learn_extra_move",learn_move)
-	current_pokemon.connect("replaced_moves",learned_move)
+	if current_pokemon != null:
+		current_pokemon.connect("learn_extra_move",learn_move)
+		current_pokemon.connect("replaced_moves",learned_move)
 
 func learned_move(pokemon:game_pokemon,prev_move:GameAction,new_move:GameAction):
 	print(pokemon.Nick_name, " ", prev_move.base_action.name, " ", new_move.base_action.name)

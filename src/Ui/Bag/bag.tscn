@@ -1,0 +1,330 @@
+[gd_scene load_steps=23 format=3 uid="uid://douv45xfdt3yl"]
+
+[ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_me812"]
+[ext_resource type="Script" path="res://src/Ui/Bag/bag.gd" id="1_xi61v"]
+[ext_resource type="Texture2D" uid="uid://8n3aub6vqiie" path="res://assets/player/ash/Bag/pokeselector1.png" id="2_7lnjy"]
+[ext_resource type="Texture2D" uid="uid://xsya1npyt2sj" path="res://assets/player/ash/Bag/GeneralItems.png" id="3_ttq0g"]
+[ext_resource type="Texture2D" uid="uid://bk5a7psxnxlqp" path="res://assets/player/ash/Bag/medcine.png" id="4_55f7e"]
+[ext_resource type="Texture2D" uid="uid://dx08o3darad3k" path="res://assets/player/ash/Bag/BattleItems.png" id="5_qot58"]
+[ext_resource type="Texture2D" uid="uid://bavb0rdc711nu" path="res://assets/player/ash/Bag/pokeball.png" id="6_hqtoi"]
+[ext_resource type="Texture2D" uid="uid://b5i1d8dd6k3ea" path="res://assets/player/ash/Bag/Machines.png" id="7_pjcnf"]
+[ext_resource type="Texture2D" uid="uid://bu3stnglaam0l" path="res://assets/player/ash/Bag/Berries.png" id="8_jsmaa"]
+[ext_resource type="Texture2D" uid="uid://c0vrolwijxv7g" path="res://assets/player/ash/Bag/keyItems.png" id="9_o1r8k"]
+[ext_resource type="Texture2D" uid="uid://8m4ccydyxfi4" path="res://assets/player/ash/Bag/Evolution.png" id="10_bumu7"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="10_p6ufo"]
+[ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="11_n8avx"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="13_1c7gn"]
+[ext_resource type="PackedScene" uid="uid://5i6a1gekskpd" path="res://src/Ui/Bag/bag_node.tscn" id="13_bu057"]
+
+[sub_resource type="Gradient" id="Gradient_hn1vw"]
+offsets = PackedFloat32Array(0, 0.448052, 0.675325, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.282468, 0.183115, 0.010532, 1, 0.680372, 0.441065, 0.0253681, 1, 1, 0.64827, 0.0372857, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5p3ex"]
+gradient = SubResource("Gradient_hn1vw")
+fill_to = Vector2(0.662393, 0.538462)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h510i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2yq7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w3ivi"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_f4ma1"]
+offsets = PackedFloat32Array(0, 0.334416, 0.383117, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.403922, 0.219608, 0.00392157, 0, 0.871094, 0.476563, 0.0078125, 1, 0.871094, 0.476563, 0.0078125, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rrp30"]
+gradient = SubResource("Gradient_f4ma1")
+fill_from = Vector2(0.188034, 0.247863)
+fill_to = Vector2(0.547009, 0.397436)
+
+[node name="Bag" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xi61v")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5p3ex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h510i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VSeparator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="Label" parent="VBoxContainer/VSeparator/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_1c7gn")
+text = "YOUR MONEY : $ 500,000,000"
+horizontal_alignment = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x2yq7")
+
+[node name="PokeContainer" type="VBoxContainer" parent="VBoxContainer/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Icon0" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 6
+material = SubResource("CanvasItemMaterial_w3ivi")
+layout_mode = 2
+texture = ExtResource("1_me812")
+stretch_mode = 2
+
+[node name="Icon1" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("1_me812")
+stretch_mode = 2
+
+[node name="Icon2" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 6
+layout_mode = 2
+texture = ExtResource("2_7lnjy")
+stretch_mode = 2
+
+[node name="Icon3" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 6
+layout_mode = 2
+texture = ExtResource("1_me812")
+stretch_mode = 2
+
+[node name="Icon4" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 6
+layout_mode = 2
+texture = ExtResource("1_me812")
+stretch_mode = 2
+
+[node name="Icon5" type="TextureRect" parent="VBoxContainer/HBox/PokeContainer"]
+texture_filter = 6
+layout_mode = 2
+texture = ExtResource("1_me812")
+stretch_mode = 2
+
+[node name="Bag" type="VBoxContainer" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(0, 576)
+layout_mode = 2
+
+[node name="Rows" type="HBoxContainer" parent="VBoxContainer/HBox/Bag"]
+layout_mode = 2
+
+[node name="GeneralItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+modulate = Color(0, 0.521569, 1, 1)
+layout_mode = 2
+texture = ExtResource("3_ttq0g")
+
+[node name="Medicine" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("4_55f7e")
+
+[node name="BattleItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("5_qot58")
+
+[node name="Pokeballs" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("6_hqtoi")
+
+[node name="Machines" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("7_pjcnf")
+
+[node name="Berries" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("8_jsmaa")
+
+[node name="KeyItems" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("9_o1r8k")
+
+[node name="Evolution" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("10_bumu7")
+
+[node name="TextureRect9" type="TextureRect" parent="VBoxContainer/HBox/Bag/Rows"]
+layout_mode = 2
+texture = ExtResource("3_ttq0g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBox/Bag"]
+layout_mode = 2
+theme = ExtResource("11_n8avx")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_p6ufo")
+theme_override_font_sizes/font_size = 32
+text = "General Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBox/Bag"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBox/Bag/ScrollContainer"]
+custom_minimum_size = Vector2(590, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BagNode" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+active = true
+
+[node name="BagNode2" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode3" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode4" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode5" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode6" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode7" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode8" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode9" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode10" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode11" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode12" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode13" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode14" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode15" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode16" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode17" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode18" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode19" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode20" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode21" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode22" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="BagNode23" parent="VBoxContainer/HBox/Bag/ScrollContainer/VBoxContainer" instance=ExtResource("13_bu057")]
+layout_mode = 2
+
+[node name="Text" type="Control" parent="VBoxContainer/HBox/Bag"]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBox/Bag/Text"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBox/Bag/Text/HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+color = Color(0.87451, 0.478431, 0.00784314, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBox/Bag/Text/HBoxContainer/ColorRect"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 608.0
+offset_bottom = 26.0
+theme = ExtResource("13_1c7gn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Potion"
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBox/Bag/Text/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("11_n8avx")
+text = "potions heal 20 hp of each pokemon"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 632.0
+offset_right = 1200.0
+offset_bottom = 664.0
+color = Color(0.871094, 0.476563, 0.0078125, 1)
+
+[node name="ColorRect2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 424.0
+offset_top = 632.0
+offset_right = 486.0
+offset_bottom = 664.0
+texture = SubResource("GradientTexture2D_rrp30")
+expand_mode = 1
