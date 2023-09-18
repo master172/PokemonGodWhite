@@ -95,6 +95,7 @@ func _on_enemy_follow_state_next_to():
 func recive_damage(damage,body):
 	pokemon.Health -= damage
 	receive_knockback(body,damage)
+	animate_hurt()
 	if pokemon.Health <= 0:
 		pokemon.fainted = true
 		emit_signal("defeated",pokemon,body)
@@ -164,3 +165,13 @@ func _on_knock_back_area_body_entered(body):
 			print_debug(body)
 			receive_knockback(body,10)
 			body.receive_knockback(self,10)
+
+func animate_hurt():
+	var tween = get_tree().create_tween()
+	sprite_2d.modulate = Color(1, 0, 0)
+	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
+
+func animate_wait():
+	var tween = get_tree().create_tween()
+	sprite_2d.modulate = Color(0,0,0)
+	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)

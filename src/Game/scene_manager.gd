@@ -126,7 +126,7 @@ func transition_to_scene(new_scene:String, spawn_location:Vector2, spawn_directi
 func finished_fading():
 	match transition_type:
 		Transition_Type.NEW_SCENE:
-			Utils.save_data()
+			Inventory.save_overworld_items()
 			
 			current_scene.get_child(0).queue_free()
 			current_scene.add_scene(load(next_scene))
