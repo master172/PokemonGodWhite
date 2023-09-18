@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var speed := 256
 
+@onready var wait_timer = $WaitTimer
+
 @onready var animation_tree := $AnimationTree
 @onready var anim_state  = animation_tree.get("parameters/playback")
 @onready var sprite_2d := $Sprite2D
@@ -38,6 +40,7 @@ var knockback :bool = false
 var self_knockback_vector:Vector2 = Vector2.ZERO
 var knockback_modifier:int = 1500
 
+var resting:bool = false
 var stop:bool = false
 
 signal health_changed(body)
@@ -55,7 +58,7 @@ func _ready():
 	
 func get_input():
 	
-	if knockback == false and stop == false:
+	if knockback == false and stop == false and resting == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
 			if attacking == false and action == false:
 				state = states.ATTACK_SELECTION
@@ -110,6 +113,7 @@ func _physics_process(delta):
 		velocity = self_knockback_vector
 		
 func _on_attack_selector_attack_chosen(attack):
+
 	print(pokemon.get_learned_attack_name(attack))
 	pokemon.initiate_attack(attack,self)
 	emit_signal("attacked",self)
@@ -128,9 +132,13 @@ func attack_prep():
 func attack_end():
 	attacking = false
 	state = states.NORMAL
+	resting = true
+	wait_timer.start()
+	animate_wait()
 
 func recive_damage(damage,User):
 	pokemon.Health -= damage
+	animate_hurt()
 	emit_signal("health_changed",self)
 	receive_knockback(User,damage)
 	if pokemon.Health <= 0:
@@ -177,3 +185,17 @@ func _on_action_chosen_cancel():
 	
 func _on_action_chosen_displayed():
 	velocity = Vector2.ZERO
+
+
+func _on_wait_timer_timeout():
+	resting = false
+
+func animate_hurt():
+	var tween = get_tree().create_tween()
+	sprite_2d.modulate = Color(1, 0, 0)
+	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
+
+func animate_wait():
+	var tween = get_tree().create_tween()
+	sprite_2d.modulate = Color(0,0,0)
+	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)

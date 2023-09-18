@@ -136,6 +136,7 @@ states/Walk/position = Vector2(404, 107)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_whwvl")]
 
 [node name="BattlePokemon" type="CharacterBody2D" groups=["PlayerPokemon"]]
+modulate = Color(1, 1, 0.988235, 1)
 script = ExtResource("1_o4sl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -172,6 +173,10 @@ autostart = true
 
 [node name="ActionChosen" parent="UiLayer" instance=ExtResource("4_xmkfa")]
 
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="attack_chosen" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_attack_chosen"]
 [connection signal="cancel" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_cancel"]
@@ -179,3 +184,4 @@ autostart = true
 [connection signal="action_chosen" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_action_chosen"]
 [connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
 [connection signal="displayed" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_displayed"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
