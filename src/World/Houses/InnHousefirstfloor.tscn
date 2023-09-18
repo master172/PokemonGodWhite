@@ -7185,7 +7185,7 @@ sources/3 = SubResource("TileSetAtlasSource_3rna3")
 sources/4 = SubResource("TileSetAtlasSource_q8aox")
 sources/5 = SubResource("TileSetAtlasSource_w8vxp")
 
-[node name="InnHouse" type="Node2D"]
+[node name="InnHousef1" type="Node2D"]
 y_sort_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

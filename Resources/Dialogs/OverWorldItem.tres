@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=10 format=3 uid="uid://ngglvf785r2k"]
+
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_0jmy2"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_wjfl0"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_hheqs"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="4_wp3ui"]
+
+[sub_resource type="Resource" id="Resource_wlxwi"]
+script = ExtResource("1_0jmy2")
+Dialog_type = 0
+text = "Ash found an {Item}"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_wjfl0")]([])
+Options = Array[ExtResource("3_hheqs")]([])
+
+[sub_resource type="Resource" id="Resource_6tkvb"]
+script = ExtResource("2_wjfl0")
+function = "PickUpItem"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_53e0n"]
+script = ExtResource("3_hheqs")
+text = "Yes"
+functions = Array[ExtResource("2_wjfl0")]([SubResource("Resource_6tkvb")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_ympvx"]
+script = ExtResource("3_hheqs")
+text = "No"
+functions = Array[ExtResource("2_wjfl0")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_hpobu"]
+script = ExtResource("1_0jmy2")
+Dialog_type = 1
+text = "Do you want to pick the item up"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_wjfl0")]([])
+Options = Array[ExtResource("3_hheqs")]([SubResource("Resource_53e0n"), SubResource("Resource_ympvx")])
+
+[resource]
+script = ExtResource("4_wp3ui")
+Dialogs = Array[ExtResource("1_0jmy2")]([SubResource("Resource_wlxwi"), SubResource("Resource_hpobu")])
+Format = {}

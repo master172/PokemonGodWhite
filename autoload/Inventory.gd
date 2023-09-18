@@ -61,7 +61,6 @@ func load_game():
 		
 		var node_data = json.get_data()
 		
-		var scene_to_load = node_data["scene"]
 
 		var object = get_node(node_data["node"])
 		print("set node '%s' in the current scene" % object.name)

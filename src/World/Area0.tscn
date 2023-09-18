@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=24 format=3 uid="uid://bmo5vwylgv02b"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
@@ -12,12 +12,8 @@
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="10_g640m"]
 [ext_resource type="Script" path="res://Resources/Misc/pokeSheet.gd" id="11_nk183"]
 [ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="12_yku7x"]
-[ext_resource type="Script" path="res://Resources/Bag/BaseItem.gd" id="13_15s01"]
-[ext_resource type="Texture2D" uid="uid://qgs527o5itk1" path="res://assets/items/POTION.png" id="14_irpep"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="15_t7bnq"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="16_vcy1k"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="17_yiddc"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="18_2rlvm"]
+[ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_x3ica"]
+[ext_resource type="Resource" uid="uid://ngglvf785r2k" path="res://Resources/Dialogs/OverWorldItem.tres" id="14_yqc7c"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8013,54 +8009,6 @@ script = ExtResource("11_nk183")
 pokemon = ExtResource("10_g640m")
 rate = 100
 
-[sub_resource type="Resource" id="Resource_pxqmm"]
-script = ExtResource("13_15s01")
-type_Hint = "Medicine"
-count = 1
-Name = "Potion"
-sprite = ExtResource("14_irpep")
-Description = "Potions heal 20 hp of a pokemon"
-
-[sub_resource type="Resource" id="Resource_wlxwi"]
-script = ExtResource("15_t7bnq")
-Dialog_type = 0
-text = "Ash found an {Item}"
-next = 1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("16_vcy1k")]([])
-Options = Array[ExtResource("17_yiddc")]([])
-
-[sub_resource type="Resource" id="Resource_6tkvb"]
-script = ExtResource("16_vcy1k")
-function = "PickUpItem"
-parameters = []
-
-[sub_resource type="Resource" id="Resource_53e0n"]
-script = ExtResource("17_yiddc")
-text = "Yes"
-functions = Array[ExtResource("16_vcy1k")]([SubResource("Resource_6tkvb")])
-next = -1
-
-[sub_resource type="Resource" id="Resource_ympvx"]
-script = ExtResource("17_yiddc")
-text = "No"
-functions = Array[ExtResource("16_vcy1k")]([])
-next = -1
-
-[sub_resource type="Resource" id="Resource_hpobu"]
-script = ExtResource("15_t7bnq")
-Dialog_type = 1
-text = "Do you want to pick the item up"
-next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("16_vcy1k")]([])
-Options = Array[ExtResource("17_yiddc")]([SubResource("Resource_53e0n"), SubResource("Resource_ympvx")])
-
-[sub_resource type="Resource" id="Resource_8vi5w"]
-script = ExtResource("18_2rlvm")
-Dialogs = Array[ExtResource("15_t7bnq")]([SubResource("Resource_wlxwi"), SubResource("Resource_hpobu")])
-Format = {}
-
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 
@@ -8254,5 +8202,5 @@ max_level = 5
 
 [node name="OverWorldItem" parent="Items" instance=ExtResource("12_yku7x")]
 position = Vector2(56, -64)
-item = SubResource("Resource_pxqmm")
-pick_up_dialog = SubResource("Resource_8vi5w")
+item = ExtResource("13_x3ica")
+pick_up_dialog = ExtResource("14_yqc7c")

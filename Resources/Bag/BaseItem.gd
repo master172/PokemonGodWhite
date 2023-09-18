@@ -10,3 +10,11 @@ class_name BaseItem
 
 func pick_up():
 	Inventory.pocket.pockets[type_Hint].add_item(self.duplicate())
+
+func use(pokenum:int = 0):
+	item.use(pokenum,self)
+
+func set_count(num:int):
+	count += num
+	if count == 0:
+		Inventory.pocket.pockets[type_Hint].erase(self)

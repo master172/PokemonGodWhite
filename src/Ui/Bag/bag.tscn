@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://douv45xfdt3yl"]
+[gd_scene load_steps=26 format=3 uid="uid://douv45xfdt3yl"]
 
 [ext_resource type="Script" path="res://src/Ui/Bag/bag.gd" id="1_xi61v"]
+[ext_resource type="Script" path="res://src/Ui/Bag/PokeContainer.gd" id="3_rir3l"]
 [ext_resource type="Texture2D" uid="uid://xsya1npyt2sj" path="res://assets/player/ash/Bag/GeneralItems.png" id="3_ttq0g"]
 [ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="3_xdqo4"]
 [ext_resource type="Texture2D" uid="uid://bk5a7psxnxlqp" path="res://assets/player/ash/Bag/medcine.png" id="4_55f7e"]
@@ -15,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://d4c2vkgue1eo8" path="res://assets/player/ash/Bag/Trophys.png" id="12_dbhyn"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="13_1c7gn"]
 [ext_resource type="PackedScene" uid="uid://5i6a1gekskpd" path="res://src/Ui/Bag/bag_node.tscn" id="13_bu057"]
+[ext_resource type="Texture2D" uid="uid://cf300m1nt0ltx" path="res://assets/player/ash/Bag/OptionsNinePatchRect.png" id="16_pysnd"]
+[ext_resource type="PackedScene" uid="uid://d4n4sfwyu5hkx" path="res://src/Ui/Bag/OptionsSelector.tscn" id="17_f2f13"]
+[ext_resource type="Script" path="res://src/Ui/Bag/OptionsContainer.gd" id="17_msmil"]
 
 [sub_resource type="Gradient" id="Gradient_hn1vw"]
 offsets = PackedFloat32Array(0, 0.265263, 0.368421, 0.64, 1)
@@ -99,6 +103,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x2yq7")
 [node name="PokeContainer" type="VBoxContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
 theme_override_constants/separation = 20
+script = ExtResource("3_rir3l")
 
 [node name="Icon0" parent="VBoxContainer/HBox/PokeContainer" instance=ExtResource("3_xdqo4")]
 layout_mode = 2
@@ -299,3 +304,40 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("11_n8avx")
+
+[node name="OptionsContainer" type="NinePatchRect" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 749.0
+offset_top = 412.0
+offset_right = 1179.0
+offset_bottom = 633.0
+texture = ExtResource("16_pysnd")
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+script = ExtResource("17_msmil")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 11.0
+offset_right = -18.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Use" parent="OptionsContainer/VBoxContainer" instance=ExtResource("17_f2f13")]
+layout_mode = 2
+NameAddition = "on a Pokémon"
+
+[node name="Give" parent="OptionsContainer/VBoxContainer" instance=ExtResource("17_f2f13")]
+layout_mode = 2
+NameAddition = "to a Pokémon"
+
+[node name="Throw" parent="OptionsContainer/VBoxContainer" instance=ExtResource("17_f2f13")]
+layout_mode = 2

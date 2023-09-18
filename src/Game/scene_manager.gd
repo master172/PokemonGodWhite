@@ -56,12 +56,14 @@ func load_data():
 	
 	
 func apply_data():
+	first_time_start = Scene_Saver.first_time_start
 	if Scene_Saver.scene != "":
 		var scene = load(Scene_Saver.scene)
 		current_scene.get_child(0).queue_free()
+		await get_tree().create_timer(0.01).timeout
 		current_scene.add_scene(scene)
 		emit_signal("data_set_finished")
-	first_time_start = Scene_Saver.first_time_start
+	
 	
 	
 	
@@ -124,7 +126,8 @@ func transition_to_scene(new_scene:String, spawn_location:Vector2, spawn_directi
 func finished_fading():
 	match transition_type:
 		Transition_Type.NEW_SCENE:
-			Inventory.save_overworld_items()
+			Utils.save_data()
+			
 			current_scene.get_child(0).queue_free()
 			current_scene.add_scene(load(next_scene))
 			

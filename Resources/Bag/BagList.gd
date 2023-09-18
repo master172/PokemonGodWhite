@@ -13,3 +13,6 @@ func add_item(item:BaseItem):
 			i.count += 1
 			return
 	items.append(item)
+
+func erase(item:BaseItem):
+	items.erase(item)

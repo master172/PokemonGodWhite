@@ -5,6 +5,7 @@ const bag_node = preload("res://src/Ui/Bag/bag_node.tscn")
 var current_selected:int = 0
 var max_selected:int = 9
 
+@onready var poke_container = $VBoxContainer/HBox/PokeContainer
 
 @onready var general_items = $VBoxContainer/HBox/Bag/Rows/General_Items
 @onready var medicine = $VBoxContainer/HBox/Bag/Rows/Medicine
@@ -30,6 +31,8 @@ var max_selected:int = 9
 
 @onready var item_name = $VBoxContainer/HBox/Bag/Text/HBoxContainer/ColorRect/Label
 @onready var rich_text_label = $VBoxContainer/HBox/Bag/Text/HBoxContainer/RichTextLabel
+
+@onready var options_container = $OptionsContainer
 
 enum STATES {
 	NORMAL,
@@ -79,7 +82,10 @@ var hints:Dictionary = {
 var current_pocket = null
 var itemScrollThreshold:int = 7
 
+var current_item:int = 0
+
 func _ready():
+	_unset_selection()
 	set_pockets()
 	clear_items()
 	
@@ -97,7 +103,8 @@ func unset_pockets():
 
 func unset_item():
 	clear_data()
-	v_box_container.get_child(current_selected).active = false
+	if v_box_container.get_child_count() >0:
+		v_box_container.get_child(current_selected).active = false
 	
 func set_item():
 	clear_data()
@@ -122,7 +129,7 @@ func _input(event):
 			current_selected = (current_selected + 1) %max_selected
 			set_pockets()
 	elif event.is_action_pressed("S"):
-		if state == STATES.NORMAL and v_box_container.get_child_count() != 0:
+		if state == STATES.NORMAL and v_box_container.get_child_count() > 0:
 			state = STATES.ITEMS
 			max_selected = v_box_container.get_child_count()
 			bagkey = current_selected
@@ -139,6 +146,10 @@ func _input(event):
 			else:
 				scroll_container.scroll_vertical = 0
 			set_item()
+		elif state == STATES.SELECTION:
+			options_container._unset_selected(current_selected)
+			current_selected = (current_selected + 1) % max_selected
+			options_container._set_selected(current_selected)
 		
 		elif state == STATES.POKEMON:
 			unset_pokemon()
@@ -163,6 +174,10 @@ func _input(event):
 				else:
 					scroll_container.scroll_vertical = 0
 				set_item()
+		elif state == STATES.SELECTION:
+			options_container._unset_selected(current_selected)
+			current_selected  = (current_selected +max_selected - 1) % max_selected
+			options_container._set_selected(current_selected)
 		
 		elif state == STATES.POKEMON:
 			unset_pokemon()
@@ -170,23 +185,68 @@ func _input(event):
 			set_pokemon()
 	elif event.is_action_pressed("Yes"):
 		if state == STATES.ITEMS:
+			current_item = current_selected
 			itemkey = current_selected
-			state = STATES.POKEMON
-			max_selected = 6
-			current_selected = pokekey
-			pokekey = 0
-			set_pokemon()
-			
+			state = STATES.SELECTION
+			max_selected = 3
+			current_selected = 0
+			_set_selection()
+		elif state == STATES.SELECTION:
+			match current_selected:
+				0:
+					var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
+
+					if ci.item != null:
+						if ci.item.get_function() == 0 or ci.item.get_function() == 1:
+							max_selected = 6
+							_unset_selection()
+							state = STATES.POKEMON
+							current_selected = pokekey
+							set_pokemon()
+
+				1:
+					pass
+				2:
+					pass
+		elif state == STATES.POKEMON:
+			var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
+			if ci.item.get_function() == 0:
+				if AllyPokemon.get_party_pokemon(current_selected) != null:
+					ci.use(current_selected)
+					poke_container._all_display()
+					clear_items()
+					var temp = current_selected
+					
+					current_selected = bagkey
+					add_items()
+					current_selected = temp
+					clear_data()
+					
 	elif event.is_action_pressed("No"):
 		if state == STATES.POKEMON:
-			state = STATES.ITEMS
-			max_selected = v_box_container.get_child_count()
-			unset_pokemon()
-			pokekey = current_selected
-			current_selected = itemkey
-			itemkey = 0
+			if v_box_container.get_child_count() > 0:
+				state = STATES.ITEMS
+				max_selected = v_box_container.get_child_count()
+				unset_pokemon()
+				pokekey = current_selected
+				current_selected = itemkey
+				itemkey = 0
+			else:
+				state = STATES.NORMAL
+				max_selected = 9
+				unset_pokemon()
+				
+				current_selected = bagkey
+				set_pockets()
+				bagkey = 0
 		elif state == STATES.ITEMS or state == STATES.NORMAL:
 			Utils.get_scene_manager().transistion_exit_bag_scene()
+		elif state == STATES.SELECTION:
+			_unset_selection()
+			state = STATES.ITEMS
+			current_selected = itemkey
+			itemkey = 0
+			
 	
 func clear_items():
 	for i in v_box_container.get_children():
@@ -210,3 +270,11 @@ func set_data(item:BaseItem):
 func clear_data():
 	item_name.text = ""
 	rich_text_label.text = ""
+
+func _set_selection():
+	options_container.show()
+	options_container._set_selected(current_selected)
+
+func _unset_selection():
+	options_container.hide()
+	options_container._unset_selected(current_selected)
