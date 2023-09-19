@@ -29,6 +29,7 @@ func set_direction(Direction):
 func update_direction(Direction):
 	following_pokemon.set_direction(Direction)
 	Utils.get_player().poke_pos = self.global_position
+	Utils.get_player().pokeDirection = Direction
 
 func change_position_to_ledge(Position,Speed,Direction):
 	var tween = get_tree().create_tween()

@@ -73,7 +73,7 @@ var jump_direction:Vector2 = Vector2.ZERO
 var collided:bool = false
 
 var poke_pos:Vector2 = Vector2.ZERO
-
+var pokeDirection:Vector2 = Vector2(0,0)
 signal player_ready
 
 func _ready():
@@ -86,7 +86,8 @@ func _ready():
 	
 	#set looking direction
 	if Utils.get_scene_manager().first_time_start == true:
-		poke_pos = self.global_position - (get_current_facing_direction() * 16)
+		poke_pos = self.global_position - (get_current_facing_direction())
+		pokeDirection = Vector2(0,1)
 	if Utils.get_scene_manager().first_time_start == false:
 		await saver.applying_done
 	
@@ -117,7 +118,7 @@ func add_overworld_pokemon(set_see:bool = true,initial:bool = true):
 	pokemon_following = true
 	to_pokemon_follow = false
 	pokemon_manager.global_position = poke_pos
-	pokemon_manager.set_direction(get_current_facing_direction())
+	pokemon_manager.set_direction(pokeDirection)
 	
 	if set_see == true:
 		await pokemon_manager.ready
@@ -538,6 +539,7 @@ func save_data():
 	saver.playerData.change_can_pokemon_follow(to_pokemon_follow)
 	saver.playerData.change_facing_direction(facingDirection)
 	saver.playerData.change_poke_pos(poke_pos + Vector2(0,16))
+	saver.playerData.change_poke_dir(pokeDirection)
 	saver.save_data()
 
 func load_data(playerDat):

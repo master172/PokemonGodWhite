@@ -10,7 +10,11 @@ class_name player_data
 @export var can_pokemon_follow:bool = true
 @export var facingDirection:int = 0
 @export var pokemonPos:Vector2 = Vector2(0,0)
+@export var pokeDirection:Vector2 = Vector2(0,0)
 
+func change_poke_dir(value:Vector2):
+	pokeDirection = value
+	
 func change_poke_pos(value:Vector2):
 	pokemonPos = value
 	
