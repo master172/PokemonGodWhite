@@ -74,6 +74,9 @@ var collided:bool = false
 
 var poke_pos:Vector2 = Vector2.ZERO
 var pokeDirection:Vector2 = Vector2(0,0)
+
+var player_start:bool = false
+
 signal player_ready
 
 func _ready():
@@ -86,7 +89,7 @@ func _ready():
 	
 	#set looking direction
 	if Utils.get_scene_manager().first_time_start == true:
-		poke_pos = self.global_position - (get_current_facing_direction())
+		poke_pos = self.global_position
 		pokeDirection = Vector2(0,1)
 	if Utils.get_scene_manager().first_time_start == false:
 		await saver.applying_done
@@ -103,6 +106,9 @@ func _ready():
 	
 	emit_signal("player_ready")
 
+func set_poke_pos_dir(val1:Vector2,val2):
+	poke_pos = val1
+	pokeDirection = val2
 func load_process():
 	saver.load_data()
 	load_data(saver.playerData)

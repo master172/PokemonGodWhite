@@ -134,6 +134,7 @@ func finished_fading():
 			var player = Utils.get_player()
 			Utils.set_player()
 			player.set_spawn(player_location,player_direction)
+			player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
 			Utils.set_player(false)
 			emit_signal("data_set_finished")
 		Transition_Type.MENU_ONLY:
