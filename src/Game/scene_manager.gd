@@ -41,7 +41,8 @@ func _ready():
 	verify_save_directory(save_file_path)
 	load_data()
 	first_time_load()
-
+	
+	
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,11 +63,10 @@ func apply_data():
 		current_scene.get_child(0).queue_free()
 		await get_tree().create_timer(0.01).timeout
 		current_scene.add_scene(scene)
+		Utils.get_player().load_process()
+		Utils.set_player()
 		emit_signal("data_set_finished")
-	
-	
-	
-	
+		
 
 func first_time_load():
 	if first_time_start == true:
@@ -74,7 +74,7 @@ func first_time_load():
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
 		Scene_Saver.change_scene("res://src/World/Area0.tscn")
-
+	
 
 func get_current_scene():
 	return current_scene.get_child(0)
@@ -132,6 +132,7 @@ func finished_fading():
 			current_scene.add_scene(load(next_scene))
 			
 			var player = Utils.get_player()
+			Utils.set_player()
 			player.set_spawn(player_location,player_direction)
 			Utils.set_player(false)
 			emit_signal("data_set_finished")

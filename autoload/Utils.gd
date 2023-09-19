@@ -8,6 +8,8 @@ var DialogProcessing:bool = false
 
 var current_picking_up = null
 
+var player_set:bool = false
+
 func get_player():
 	if get_tree().get_current_scene().name == "SceneManager":
 		return get_node("/root/SceneManager/Current_scene").get_children().back().get_node("player")
@@ -23,10 +25,11 @@ func get_scene_manager():
 	return null
 
 func set_player(set_see:bool = true):
-	
 	var player = get_player()
 	if player != null:
 		player.check_to_add_overworld_pokemon(set_see)
+	else:
+		pass
 
 func save_data():
 	get_player().save_data()

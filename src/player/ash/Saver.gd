@@ -4,6 +4,8 @@ var playerData :player_data = player_data.new()
 
 var save_file_path = "user://save/Player/"
 var save_file_name = "PlayerSave.tres"
+
+signal applying_done
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -29,3 +31,4 @@ func apply_data(player):
 		player.pokemon_following = playerData.pokemon_following
 		player.to_pokemon_follow = playerData.can_pokemon_follow
 		player.facingDirection = playerData.facingDirection
+		emit_signal("applying_done")

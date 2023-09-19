@@ -75,10 +75,7 @@ var collided:bool = false
 signal player_ready
 
 func _ready():
-	
-	saver.load_data()
-	load_data(saver.playerData)
-	
+
 	Utils.Player = self
 	initial_position = position
 	animation_tree.active = true
@@ -86,6 +83,8 @@ func _ready():
 	skin.visible = true
 	
 	#set looking direction
+	if Utils.get_scene_manager().first_time_start == false:
+		await saver.applying_done
 	animation_tree.set("parameters/Idle/blend_position",input_direction)
 	animation_tree.set("parameters/Walk/blend_position",input_direction)
 	animation_tree.set("parameters/Turn/blend_position",input_direction)
@@ -98,7 +97,9 @@ func _ready():
 	
 	emit_signal("player_ready")
 
-	
+func load_process():
+	saver.load_data()
+	load_data(saver.playerData)
 	
 func add_overworld_pokemon(set_see:bool = true,initial:bool = true):
 	if initial == true:
