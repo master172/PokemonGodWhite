@@ -31,4 +31,5 @@ func apply_data(player):
 		player.pokemon_following = playerData.pokemon_following
 		player.to_pokemon_follow = playerData.can_pokemon_follow
 		player.facingDirection = playerData.facingDirection
+		player.poke_pos = playerData.pokemonPos
 		emit_signal("applying_done")
