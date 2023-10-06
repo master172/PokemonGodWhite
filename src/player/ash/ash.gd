@@ -88,11 +88,12 @@ func _ready():
 	skin.visible = true
 	
 	#set looking direction
-	if Utils.get_scene_manager().first_time_start == true:
-		poke_pos = self.global_position
-		pokeDirection = Vector2(0,1)
-	if Utils.get_scene_manager().first_time_start == false:
-		await saver.applying_done
+	if Utils.get_scene_manager() != null:
+		if Utils.get_scene_manager().first_time_start == true:
+			poke_pos = self.global_position
+			pokeDirection = Vector2(0,1)
+		if Utils.get_scene_manager().first_time_start == false:
+			await saver.applying_done
 	
 	animation_tree.set("parameters/Idle/blend_position",input_direction)
 	animation_tree.set("parameters/Walk/blend_position",input_direction)
@@ -265,6 +266,8 @@ func cycle():
 				to_pokemon_follow = true
 				is_cycling = false
 				playerState = PlayerState.IDLE
+				poke_pos = self.position
+				pokeDirection = self.get_current_facing_direction()
 				
 
 func speed_handler():
@@ -438,6 +441,8 @@ func player_surfing(data,check):
 				playerState = PlayerState.IDLE
 				global_position = data[1]+Vector2(0,8)
 				to_pokemon_follow = true
+				poke_pos = self.position
+				pokeDirection = self.get_current_facing_direction()
 
 
 func _on_surf_timer_timeout():
