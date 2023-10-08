@@ -10,7 +10,7 @@ func _init(type:String = "None"):
 func add_item(item:BaseItem):
 	for i in items:
 		if i.Name == item.Name:
-			i.count += 1
+			i.count += item.count
 			return
 	items.append(item)
 

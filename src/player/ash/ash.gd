@@ -73,7 +73,7 @@ var jump_direction:Vector2 = Vector2.ZERO
 var collided:bool = false
 
 var poke_pos:Vector2 = Vector2.ZERO
-var pokeDirection:Vector2 = Vector2(0,0)
+var pokeDirection:Vector2 = Vector2.ZERO
 
 var player_start:bool = false
 
@@ -91,7 +91,7 @@ func _ready():
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:
 			poke_pos = self.global_position
-			pokeDirection = Vector2(0,1)
+			
 		if Utils.get_scene_manager().first_time_start == false:
 			await saver.applying_done
 	
@@ -354,6 +354,9 @@ func move(delta):
 			position = initial_position +(TILE_SIZE * input_direction)
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
+			if pokeDirection ==Vector2.ZERO:
+				pokeDirection = get_current_facing_direction()
+				
 			emit_signal("player_stopped_signal")
 			ManageOverworldPokemon("turned")
 			

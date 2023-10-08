@@ -8042,7 +8042,7 @@ script = ExtResource("2_wyec4")
 [node name="player" parent="." instance=ExtResource("3_e07th")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(184, 192)
+position = Vector2(88, -48)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-296, -40)
@@ -8204,5 +8204,11 @@ max_level = 5
 
 [node name="OverWorldItem" parent="Items" instance=ExtResource("12_yku7x")]
 position = Vector2(56, -64)
+item = ExtResource("13_x3ica")
+pick_up_dialog = ExtResource("14_yqc7c")
+
+[node name="OverWorldItem2" parent="Items" instance=ExtResource("12_yku7x")]
+z_index = 1
+position = Vector2(-360, -16)
 item = ExtResource("13_x3ica")
 pick_up_dialog = ExtResource("14_yqc7c")

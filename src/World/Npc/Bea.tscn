@@ -307,7 +307,8 @@ current_dialog = SubResource("Resource_lirys")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -32)
+position = Vector2(0, -24)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_dmkun")
 hframes = 4
 vframes = 4

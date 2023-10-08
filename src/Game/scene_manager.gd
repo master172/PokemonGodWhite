@@ -7,6 +7,7 @@ var next_scene = null
 @onready var current_scene = $Current_scene
 @onready var menu = $Menu/Menu
 @onready var battle_layer = $BattleLayer
+@onready var mart_view = $Mart_View
 
 var first_time_start:bool = true
 

@@ -7,6 +7,7 @@ class_name BaseItem
 @export var item:Item = null
 @export var sprite:Texture2D = null
 @export_multiline var Description = "None"
+@export var price:int = 200
 
 func pick_up():
 	Inventory.pocket.pockets[type_Hint].add_item(self.duplicate())

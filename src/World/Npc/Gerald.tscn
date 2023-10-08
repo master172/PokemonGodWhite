@@ -1,0 +1,159 @@
+[gd_scene load_steps=24 format=3 uid="uid://belic6mm2s76a"]
+
+[ext_resource type="Script" path="res://src/World/Npc/Gerald.gd" id="1_uqtji"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_udil0"]
+[ext_resource type="Texture2D" uid="uid://bgpb0n050pg4d" path="res://assets/Npc/Shopkeepers/NPC_18.png" id="2_v0sgf"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_q1e7f"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="4_0cfnv"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="4_5kntu"]
+[ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="6_6vyd6"]
+
+[sub_resource type="Resource" id="Resource_v31do"]
+script = ExtResource("2_udil0")
+Dialog_type = 0
+text = "Ah, a new face it has been a long time since anyone came here"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("4_0cfnv")]([])
+Options = Array[ExtResource("4_5kntu")]([])
+
+[sub_resource type="Resource" id="Resource_xqul2"]
+script = ExtResource("2_udil0")
+Dialog_type = 0
+text = "Hi, i am gerald the local shopkeeper well atleast i was, but hey i still have a lot of goods"
+next = 2
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("4_0cfnv")]([])
+Options = Array[ExtResource("4_5kntu")]([])
+
+[sub_resource type="Resource" id="Resource_466pk"]
+script = ExtResource("2_udil0")
+Dialog_type = 0
+text = "after retirement i came here and my grand daughter came here to take care of me"
+next = 3
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("4_0cfnv")]([])
+Options = Array[ExtResource("4_5kntu")]([])
+
+[sub_resource type="Resource" id="Resource_rn4ju"]
+script = ExtResource("2_udil0")
+Dialog_type = 0
+text = "You might have already met her. anyways feel free to come to me if you want to buy or sell anything"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("4_0cfnv")]([])
+Options = Array[ExtResource("4_5kntu")]([])
+
+[sub_resource type="Resource" id="Resource_vgbtc"]
+script = ExtResource("3_q1e7f")
+Dialogs = Array[ExtResource("2_udil0")]([SubResource("Resource_v31do"), SubResource("Resource_xqul2"), SubResource("Resource_466pk"), SubResource("Resource_rn4ju")])
+Format = {}
+
+[sub_resource type="Resource" id="Resource_b4lsf"]
+script = ExtResource("4_0cfnv")
+function = "buy"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_1lmn8"]
+script = ExtResource("4_5kntu")
+text = "buy"
+functions = Array[ExtResource("4_0cfnv")]([SubResource("Resource_b4lsf")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_xmg4q"]
+script = ExtResource("4_0cfnv")
+function = "sell"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_3m2jv"]
+script = ExtResource("4_5kntu")
+text = "sell"
+functions = Array[ExtResource("4_0cfnv")]([SubResource("Resource_xmg4q")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_sw7pt"]
+script = ExtResource("4_5kntu")
+text = "cancel"
+functions = Array[ExtResource("4_0cfnv")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_3g0nc"]
+script = ExtResource("2_udil0")
+Dialog_type = 1
+text = "How may i help you today son"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("4_0cfnv")]([])
+Options = Array[ExtResource("4_5kntu")]([SubResource("Resource_1lmn8"), SubResource("Resource_3m2jv"), SubResource("Resource_sw7pt")])
+
+[sub_resource type="Resource" id="Resource_escbe"]
+script = ExtResource("3_q1e7f")
+Dialogs = Array[ExtResource("2_udil0")]([SubResource("Resource_3g0nc")])
+Format = {}
+
+[sub_resource type="Animation" id="Animation_ndu0r"]
+resource_name = "Default"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cpwl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dluck"]
+_data = {
+"Default": SubResource("Animation_ndu0r"),
+"RESET": SubResource("Animation_cpwl0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctyb7"]
+size = Vector2(16, 16)
+
+[node name="Gerald" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 18
+collision_mask = 0
+script = ExtResource("1_uqtji")
+first_dialog = SubResource("Resource_vgbtc")
+normal_dialog = SubResource("Resource_escbe")
+items_to_sell = Array[Resource("res://Resources/Bag/BaseItem.gd")]([ExtResource("6_6vyd6")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_v0sgf")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+libraries = {
+"": SubResource("AnimationLibrary_dluck")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ctyb7")

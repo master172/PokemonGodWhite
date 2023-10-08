@@ -114,3 +114,5 @@ visible = false
 
 [node name="MoveDeletor" parent="MoveDeletor" instance=ExtResource("7_3jiyl")]
 visible = false
+
+[node name="Mart_View" type="CanvasLayer" parent="."]

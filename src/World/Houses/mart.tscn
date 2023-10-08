@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jefqob5rdmsh"]
+[gd_scene load_steps=12 format=3 uid="uid://jefqob5rdmsh"]
 
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="1_sn1by"]
 [ext_resource type="Texture2D" uid="uid://b06md4qown2mj" path="res://assets/PokemonTilesets/Interior general.png" id="1_vhlmo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://o7da33vc4oip" path="res://assets/PokemonTilesets/LogCabin.png" id="3_qri6m"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="5_r6rns"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="6_78y7a"]
+[ext_resource type="PackedScene" uid="uid://belic6mm2s76a" path="res://src/World/Npc/Gerald.tscn" id="7_o6dno"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rna3"]
 texture = ExtResource("1_vhlmo")
@@ -7354,3 +7355,6 @@ next_scene_path = "res://src/World/Area0.tscn"
 invisible = true
 Spawn_location = Vector2(184, 192)
 Spawn_direction = Vector2(0, 1)
+
+[node name="Gerald" parent="." instance=ExtResource("7_o6dno")]
+position = Vector2(40, 16)

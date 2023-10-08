@@ -1,5 +1,8 @@
 extends Node
 
+signal Buy
+signal Sell
+
 func test_function():
 	print("test")
 
@@ -22,3 +25,9 @@ func PickUpItem():
 	if Utils.current_picking_up != null:
 		Utils.current_picking_up.pick_up()
 		Utils.current_picking_up = null
+
+func buy():
+	emit_signal("Buy")
+
+func sell():
+	emit_signal("Sell")
