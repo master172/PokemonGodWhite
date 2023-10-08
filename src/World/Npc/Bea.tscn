@@ -1,69 +1,50 @@
-[gd_scene load_steps=41 format=3 uid="uid://dplygodrneuc2"]
+[gd_scene load_steps=38 format=3 uid="uid://dplygodrneuc2"]
 
-[ext_resource type="Script" path="res://Resources/Npc/NPC_Character.gd" id="1_l2tib"]
-[ext_resource type="Resource" uid="uid://bt3k225ywygai" path="res://Resources/Npc/Npcs/Bea.tres" id="2_iyeki"]
+[ext_resource type="Script" path="res://src/World/Npc/Bea.gd" id="1_6d5el"]
 [ext_resource type="Texture2D" uid="uid://cqysqkdsc6fuw" path="res://assets/Npc/Trainers/Story/Bea/Bea.png" id="3_dmkun"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_egugd"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_d445e"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="5_yl3vp"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="6_14ysk"]
 
-[sub_resource type="Resource" id="Resource_oqb67"]
-script = ExtResource("3_egugd")
-text = "yes"
-functions = Array[ExtResource("5_yl3vp")]([])
-next = 1
-
-[sub_resource type="Resource" id="Resource_1rnf4"]
-script = ExtResource("3_egugd")
-text = "no"
-functions = Array[ExtResource("5_yl3vp")]([])
-next = 2
-
-[sub_resource type="Resource" id="Resource_1tgr8"]
-script = ExtResource("4_d445e")
-Dialog_type = 1
-text = "Hello Ash, would you like me to heal your pokemon"
-next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("5_yl3vp")]([])
-Options = Array[ExtResource("3_egugd")]([SubResource("Resource_oqb67"), SubResource("Resource_1rnf4")])
-
-[sub_resource type="Resource" id="Resource_b57cj"]
+[sub_resource type="Resource" id="Resource_d1ior"]
 script = ExtResource("5_yl3vp")
 function = "heal"
 parameters = []
 
-[sub_resource type="Resource" id="Resource_shiox"]
-script = ExtResource("4_d445e")
-Dialog_type = 0
-text = "Ok give me your pokemon for a second"
-next = 3
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("5_yl3vp")]([SubResource("Resource_b57cj")])
-Options = Array[ExtResource("3_egugd")]([])
+[sub_resource type="Resource" id="Resource_4qjy4"]
+script = ExtResource("3_egugd")
+text = "yes"
+functions = Array[ExtResource("5_yl3vp")]([SubResource("Resource_d1ior")])
+next = 1
 
-[sub_resource type="Resource" id="Resource_35nrl"]
+[sub_resource type="Resource" id="Resource_ti22i"]
+script = ExtResource("3_egugd")
+text = "no"
+functions = Array[ExtResource("5_yl3vp")]([])
+next = 1
+
+[sub_resource type="Resource" id="Resource_cbk8t"]
+script = ExtResource("4_d445e")
+Dialog_type = 1
+text = "Hi, ash do you want me to heal your pokemon"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("5_yl3vp")]([])
+Options = Array[ExtResource("3_egugd")]([SubResource("Resource_4qjy4"), SubResource("Resource_ti22i")])
+
+[sub_resource type="Resource" id="Resource_1ciy8"]
 script = ExtResource("4_d445e")
 Dialog_type = 0
-text = "Take Care Honey"
+text = "ok done, Take care darling"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("5_yl3vp")]([])
 Options = Array[ExtResource("3_egugd")]([])
 
-[sub_resource type="Resource" id="Resource_bts1s"]
-script = ExtResource("4_d445e")
-Dialog_type = 0
-text = "Your Pokemon are all healed, Take Care Honey"
-next = -1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("5_yl3vp")]([])
-Options = Array[ExtResource("3_egugd")]([])
-
-[sub_resource type="Resource" id="Resource_lirys"]
+[sub_resource type="Resource" id="Resource_haebx"]
 script = ExtResource("6_14ysk")
-Dialogs = Array[ExtResource("4_d445e")]([SubResource("Resource_1tgr8"), SubResource("Resource_shiox"), SubResource("Resource_35nrl"), SubResource("Resource_bts1s")])
+Dialogs = Array[ExtResource("4_d445e")]([SubResource("Resource_cbk8t"), SubResource("Resource_1ciy8")])
 Format = {}
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
@@ -297,13 +278,12 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
 size = Vector2(32, 32)
 
-[node name="NPC_Character" type="CharacterBody2D"]
+[node name="Bea" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_l2tib")
-Npc = ExtResource("2_iyeki")
-current_dialog = SubResource("Resource_lirys")
+script = ExtResource("1_6d5el")
+current_dialog = SubResource("Resource_haebx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

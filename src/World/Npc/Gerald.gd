@@ -7,6 +7,7 @@ var current_dialog:DialogueLine
 var first_dialog_finished:bool = false
 
 @export var items_to_sell:Array[BaseItem]
+@onready var sprite_2d = $Sprite2D
 
 
 func _ready():
@@ -14,7 +15,17 @@ func _ready():
 	dialogLayer.connect("finished",finish)
 	dialogLayer.function_manager.connect("Buy",buy)
 	dialogLayer.function_manager.connect("Sell",sell)
-	
+
+func look(facDir:Vector2):
+	if facDir == Vector2(0,1):
+		sprite_2d.frame = 0
+	elif facDir == Vector2(0,-1):
+		sprite_2d.frame = 12
+	elif facDir == Vector2(1,0):
+		sprite_2d.frame = 8
+	elif facDir == Vector2(-1,0):
+		sprite_2d.frame = 4
+		
 func _interact():
 	if first_dialog_finished == false:
 		current_dialog = first_dialog

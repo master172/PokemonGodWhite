@@ -525,6 +525,8 @@ func check_interaction():
 			var interactable = interaction_cast.get_collider()
 			if Utils.DialogBar != null:
 				interactable._interact()
+				if interactable.has_method("look"):
+					interactable.look(get_current_facing_direction() * -1)
 
 func ManageOverworldPokemon(case:String):
 	if pokemon_following == true:

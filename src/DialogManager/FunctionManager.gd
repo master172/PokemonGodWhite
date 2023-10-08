@@ -31,3 +31,7 @@ func buy():
 
 func sell():
 	emit_signal("Sell")
+
+func cancel():
+	await get_tree().create_timer(0.1).timeout
+	Utils.get_player().set_physics_process(true)
