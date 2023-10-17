@@ -28,6 +28,7 @@ SignalBus="*res://autoload/SignalBus.gd"
 PokemonManager="*res://autoload/PokemonManager.gd"
 Inventory="*res://autoload/Inventory.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+PauseScene="*res://src/Utility/PauseScene.tscn"
 
 [display]
 

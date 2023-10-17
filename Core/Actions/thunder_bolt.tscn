@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://esuovq8i863f"]
 
-[ext_resource type="Script" path="res://ThunderBolt.gd" id="1_ydvrl"]
+[ext_resource type="Script" path="res://Core/Actions/ThunderBolt.gd" id="1_s27n4"]
 [ext_resource type="Shader" path="res://Resources/shaders/thunder_bolt.gdshader" id="2_otl78"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="3_25nwo"]
 [ext_resource type="Texture2D" uid="uid://dyyhne8f8ihl0" path="res://assets/BattleEffects/electric1.png" id="4_oqbe5"]
@@ -87,7 +87,7 @@ _data = {
 }
 
 [node name="ThunderBolt" type="Node2D"]
-script = ExtResource("1_ydvrl")
+script = ExtResource("1_s27n4")
 
 [node name="Beam" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -119,3 +119,15 @@ autoplay = "Playing"
 libraries = {
 "": SubResource("AnimationLibrary_q6q2s")
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

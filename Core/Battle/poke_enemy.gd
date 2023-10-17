@@ -21,6 +21,8 @@ var movement_speed: float = 128.0
 
 @onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 
+@onready var stun_timer = $StunTimer
+
 var targetPokemon = null
 
 var pokemon :game_pokemon
@@ -41,6 +43,9 @@ var Attack
 signal defeated(name)
 
 var stop:bool = false
+var Stun:bool = false
+
+var opposing_pokemons :Array[BattlePokemon] = []
 
 func _ready():
 	choose_attack()
@@ -64,6 +69,10 @@ func choose_attack():
 		print(pokemon.get_learned_attack(attack_num).base_action.name)
 		
 func _physics_process(delta):
+	
+	if Stun == true:
+		velocity = Vector2.ZERO
+		
 	knockback_vector = velocity.normalized()
 	#print(velocity)
 	if targetPokemon == null:
@@ -92,13 +101,13 @@ func _on_enemy_follow_state_next_to():
 		range_attack_state.set_variables(attack_num)
 		finite_state_machine.change_state(melle_attack_state)
 
-func recive_damage(damage,body):
+func recive_damage(damage,body,Attacker):
 	pokemon.Health -= damage
 	receive_knockback(body,damage)
 	animate_hurt()
 	if pokemon.Health <= 0:
 		pokemon.fainted = true
-		emit_signal("defeated",pokemon,body)
+		emit_signal("defeated",pokemon,Attacker,self)
 		queue_free()
 	emit_signal("health_changed",self)
 
@@ -175,3 +184,10 @@ func animate_wait():
 	var tween = get_tree().create_tween()
 	sprite_2d.modulate = Color(0,0,0)
 	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
+
+func stun(duration:int = 2):
+	stun_timer.start(duration)
+	Stun = true
+
+func _on_stun_timer_timeout():
+	Stun = false

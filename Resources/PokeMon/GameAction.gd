@@ -4,7 +4,7 @@ class_name GameAction
 
 @export var base_action:BaseAction = null
 
-@export var power = 35
+
 
 
 
@@ -17,10 +17,14 @@ func Name():
 func start_attack(User:CharacterBody2D):
 	if base_action.action != null:
 		var attack = base_action.action.instantiate()
-		User.add_child(attack)
 		attack.set_holder(self)
 		attack.set_user(User)
-		attack._attack()
+		if attack.has_method("set_target"):
+			attack.set_target(User.opposing_pokemons)
+		User.add_child(attack)
+		
+		if attack.has_method("_attack"):
+			attack._attack()
 	
 func calculate_damage(body,User):
 	var attack_rng = RandomNumberGenerator.new()
@@ -56,8 +60,8 @@ func calculate_damage(body,User):
 			type = type
 		elif mod >1:
 			type += mod
-	var damage:int = ((((2*pokemon.level/5)+2)*power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
-	body.recive_damage(damage,User)
+	var damage:int = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+	body.recive_damage(damage,User,User)
 	
 	print(" ")
 	print("pokemon: ",pokemon.Nick_name)

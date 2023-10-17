@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var sprite_2d := $Sprite2D
 @onready var attack_selector := $UiLayer/BattleSelector
 @onready var action_chosen := $UiLayer/ActionChosen
+@onready var stun_timer = $StunTimer
 
 @export var pokemon :game_pokemon = null
 
@@ -48,6 +49,8 @@ signal defeated(pokemon)
 
 signal attacked(body)
 signal run
+
+var opposing_pokemons :Array[PokeEnemy] = []
 
 func _ready():
 	anim_state.travel("Walk")
@@ -136,7 +139,7 @@ func attack_end():
 	wait_timer.start()
 	animate_wait()
 
-func recive_damage(damage,User):
+func recive_damage(damage,User,Attacker):
 	pokemon.Health -= damage
 	animate_hurt()
 	emit_signal("health_changed",self)
@@ -144,7 +147,7 @@ func recive_damage(damage,User):
 	if pokemon.Health <= 0:
 		pokemon.fainted = true
 		pokemon.Health = 0
-		emit_signal("defeated",pokemon)
+		emit_signal("defeated",pokemon,self)
 		
 
 		
@@ -199,3 +202,10 @@ func animate_wait():
 	var tween = get_tree().create_tween()
 	sprite_2d.modulate = Color(0,0,0)
 	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
+
+func stun(duration:int = 2):
+	stun_timer.start(duration)
+	stop = true
+
+func _on_stun_timer_timeout():
+	stop = false

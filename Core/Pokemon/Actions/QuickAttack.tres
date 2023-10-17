@@ -8,4 +8,6 @@ script = ExtResource("1_cfwtk")
 name = "QuickAttack"
 learned_level = 3
 action = ExtResource("1_fvoie")
+Type = "Normal"
+power = 35.0
 range = 0

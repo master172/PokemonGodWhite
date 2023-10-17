@@ -8,6 +8,8 @@ var User:CharacterBody2D = null
 var duration:float = 0.1
 var dash_speed:float = 1500
 
+var oneshot:bool = false
+
 func _ready():#ready overrider
 	pass
 
@@ -43,5 +45,7 @@ func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
-			connect("attack_landed",SignalBus.on_attack_landed)
+			if oneshot == false:
+				connect("attack_landed",SignalBus.on_attack_landed)
+				oneshot = true
 			emit_signal("attack_landed",self,User)

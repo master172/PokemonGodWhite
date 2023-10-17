@@ -32,5 +32,6 @@ enum attacks {
 	MELLE
 }
 
+@export var power := 35.0
 
 @export var range :attacks

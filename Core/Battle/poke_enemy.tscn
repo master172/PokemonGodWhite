@@ -220,6 +220,8 @@ position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_r3jky")
 debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
 
+[node name="StunTimer" type="Timer" parent="."]
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
@@ -231,3 +233,4 @@ debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
 [connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]
 [connection signal="finished" from="FiniteStateMachine/EnemyDodgeState" to="." method="_on_enemy_dodge_state_finished"]
 [connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

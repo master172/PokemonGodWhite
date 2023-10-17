@@ -5,9 +5,10 @@ extends Action
 
 var User:CharacterBody2D = null
 
-var duration:float = 0.5
-var dash_speed:float = 2000
+var duration:float = 0.2
+var dash_speed:float = 1700
 
+var oneshot:bool = false
 func _ready():#ready overrider
 	pass
 
@@ -28,6 +29,7 @@ func is_tackling():
 
 
 func _on_quick_attack_timer_timeout():
+	await get_tree().create_timer(0.1).timeout
 	User.velocity = Vector2.ZERO
 
 
@@ -43,5 +45,10 @@ func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
-			connect("attack_landed",SignalBus.on_attack_landed)
+			if oneshot == false:
+				connect("attack_landed",SignalBus.on_attack_landed)
+				oneshot = true
+			
 			emit_signal("attack_landed",self,User)
+			await get_tree().create_timer(0.1).timeout
+			User.velocity = Vector2.ZERO

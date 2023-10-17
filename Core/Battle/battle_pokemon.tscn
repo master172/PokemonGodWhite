@@ -177,6 +177,8 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="attack_chosen" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_attack_chosen"]
 [connection signal="cancel" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_cancel"]
@@ -185,3 +187,4 @@ one_shot = true
 [connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
 [connection signal="displayed" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_displayed"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
