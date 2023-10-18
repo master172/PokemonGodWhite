@@ -51,6 +51,7 @@ signal attacked(body)
 signal run
 
 var opposing_pokemons :Array[PokeEnemy] = []
+var Stun:bool = false
 
 func _ready():
 	anim_state.travel("Walk")
@@ -61,7 +62,7 @@ func _ready():
 	
 func get_input():
 	
-	if knockback == false and stop == false and resting == false:
+	if knockback == false and stop == false and resting == false and Stun == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
 			if attacking == false and action == false:
 				state = states.ATTACK_SELECTION
@@ -174,7 +175,7 @@ func _on_action_chosen_action_chosen(act):
 			print("bag")
 			action = false
 		2:
-			print("action")
+			print("pokeball")
 			action = false
 		3:
 			emit_signal("run")
@@ -205,7 +206,7 @@ func animate_wait():
 
 func stun(duration:int = 2):
 	stun_timer.start(duration)
-	stop = true
+	Stun = true
 
 func _on_stun_timer_timeout():
-	stop = false
+	Stun = false

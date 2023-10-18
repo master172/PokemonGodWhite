@@ -59,6 +59,7 @@ class_name game_pokemon
 
 @export_subgroup("battle")
 @export var fainted:bool = false
+@export_range(1,100) var catch_chance := 20
 
 signal Level_up
 signal experience_added
@@ -305,5 +306,7 @@ func replace_moves(index,move:MovePoolAction):
 	learned_attacks[index] = move_to_learn
 	print_debug("step 3")
 
+func get_catch_rate():
+	return catch_chance
 #func move_process():
 #

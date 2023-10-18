@@ -17,7 +17,7 @@ var knockback_vector = Vector2.ZERO
 var oneshot:bool = false
 
 func _ready():
-	if target != null:
+	if target != []:
 		target[0].stun()
 		User.stun()
 		attack_timer.start()
