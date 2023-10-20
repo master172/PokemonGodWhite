@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=3 uid="uid://8k5c2rkhwjre"]
+
+[ext_resource type="Script" path="res://src/Ui/Pc/pc.gd" id="1_5kbpe"]
+[ext_resource type="Texture2D" uid="uid://v04pfdgtbd1v" path="res://assets/Ui/Pc/Background.png" id="1_k05v5"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="2_wx0fi"]
+[ext_resource type="Texture2D" uid="uid://d2o75u1vkbw4c" path="res://assets/Ui/Pc/Visiblity1.png" id="3_fnlon"]
+[ext_resource type="Texture2D" uid="uid://c71iaeolqke6q" path="res://assets/Ui/Pc/Visiblity2.png" id="4_5bed6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w74gp"]
+bg_color = Color(1, 1, 1, 0.517647)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id="Theme_twgbh"]
+default_font = ExtResource("2_wx0fi")
+default_font_size = 64
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bj0fw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sl4un"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selbl"]
+bg_color = Color(0.341176, 0.670588, 0.960784, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou037"]
+bg_color = Color(0.105882, 0.568627, 0.94902, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xicax"]
+bg_color = Color(0.109804, 0.87451, 0.862745, 1)
+border_color = Color(0.152941, 0.729412, 0.8, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+anti_aliasing = false
+
+[node name="Pc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5kbpe")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k05v5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 96.0
+offset_right = 895.0
+offset_bottom = 765.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w74gp")
+
+[node name="LoginContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -23.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Login" type="HBoxContainer" parent="Panel/LoginContainer"]
+layout_mode = 2
+
+[node name="Login" type="Label" parent="Panel/LoginContainer/Login"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_twgbh")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="HSeparator" parent="Panel/LoginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bj0fw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/LoginContainer"]
+layout_mode = 2
+
+[node name="Username" type="LineEdit" parent="Panel/LoginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Username"
+max_length = 32
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/LoginContainer"]
+layout_mode = 2
+
+[node name="Password" type="LineEdit" parent="Panel/LoginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Password"
+max_length = 32
+secret = true
+
+[node name="Visibility" type="TextureButton" parent="Panel/LoginContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_fnlon")
+texture_pressed = ExtResource("4_5bed6")
+
+[node name="VSeparator2" type="HSeparator" parent="Panel/LoginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sl4un")
+
+[node name="Error" type="Label" parent="Panel/LoginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.866667, 0.223529, 0.231373, 1)
+text = "Error:Invalid cresidentials"
+
+[node name="confirmContainer" type="HBoxContainer" parent="Panel/LoginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="Panel/LoginContainer/confirmContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_wx0fi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_selbl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ou037")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xicax")
+text = "Confirm"
+
+[connection signal="toggled" from="Panel/LoginContainer/HBoxContainer2/Visibility" to="." method="_on_visibility_toggled"]
+[connection signal="pressed" from="Panel/LoginContainer/confirmContainer/Button" to="." method="_on_button_pressed"]

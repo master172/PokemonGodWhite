@@ -469,9 +469,6 @@ func update_casts():
 	interaction_cast.set_target_position(desired_step)
 	interaction_cast.force_raycast_update()
 
-
-
-
 #func get_clicked_tile_power():
 #	if Input.is_action_just_pressed("LeftClick"):
 #		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())

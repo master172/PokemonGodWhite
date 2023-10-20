@@ -9,8 +9,8 @@ func _physics_process(delta):
 	visible = paused
 
 func _on_continue_pressed():
-	paused = false
-
+	paused = not paused
+	get_tree().paused = paused
 
 func _on_exit_pressed():
 	get_tree().quit()
