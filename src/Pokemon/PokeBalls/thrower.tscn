@@ -1,36 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0xx2xkpqlmlr"]
 
+[ext_resource type="Script" path="res://src/Pokemon/PokeBalls/thrower.gd" id="1_x7eip"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_o4api"]
 
-[sub_resource type="GDScript" id="GDScript_cbyie"]
-script/source = "extends Node2D
-const pokeBall = preload(\"res://src/Pokemon/PokeBalls/poke_ball.tscn\")
-@onready var marker_2d = $Marker2D
+[node name="thrower" type="Node2D"]
+script = ExtResource("1_x7eip")
 
-var bullet_speed = 1000
-func _physics_process(delta):
-	look_at(get_global_mouse_position())
-	
-	if Input.is_action_just_pressed(\"Yes\"):
-		var Pokeball = pokeBall.instantiate()
-		Pokeball.rotation_degrees = self.rotation_degrees
-		Pokeball.position = marker_2d.get_global_position()
-		Pokeball.velocity = ((get_global_mouse_position() - Pokeball.position) * bullet_speed)/Pokeball.position.distance_to(get_global_mouse_position())
-		
-
-		add_child(Pokeball)
-"
-
-[node name="TestEnv" type="Node2D"]
-
-[node name="thrower" type="Node2D" parent="."]
-position = Vector2(600, 800)
-script = SubResource("GDScript_cbyie")
-
-[node name="Marker2D" type="Marker2D" parent="thrower"]
-position = Vector2(100, 0)
+[node name="Marker2D" type="Marker2D" parent="."]
 gizmo_extents = 70.4
 
-[node name="Sprite2D" type="Sprite2D" parent="thrower/Marker2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_o4api")

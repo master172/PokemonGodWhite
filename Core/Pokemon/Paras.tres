@@ -33,3 +33,4 @@ Yield_Defense = 0
 Yield_Special_Defense = 0
 Yield_Special_Attack = 0
 Yield_Speed = 0
+catch_chance = 35

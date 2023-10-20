@@ -50,3 +50,10 @@ func all_fainted():
 
 func all_heal():
 	PartyPokemon.all_heal()
+
+func switch_party_pokemon(index1: int, index2: int):
+	var temp = PartyPokemon.pokemons[index1]
+	
+	PartyPokemon.pokemons[index1] = PartyPokemon.pokemons[index2]
+	
+	PartyPokemon.pokemons[index2] = temp

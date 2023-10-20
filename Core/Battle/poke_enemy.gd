@@ -191,3 +191,6 @@ func stun(duration:int = 2):
 
 func _on_stun_timer_timeout():
 	Stun = false
+
+func get_pokemon():
+	return pokemon

@@ -95,6 +95,13 @@ var natures :Array = [
 @export var Yield_Special_Attack :int = 0
 @export var Yield_Speed :int = 0
 
+@export_subgroup("catching")
+
+@export_range(1,100) var catch_chance := 20
+
+func get_catch_rate():
+	return catch_chance
+	
 func get_overworld_sprite():
 	return Overworld
 

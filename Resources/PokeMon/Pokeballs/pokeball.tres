@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1_481m6")
 Name = "Pokeball"
-CatchRate = 20
+CatchRate = 8
 roll_sprite = ExtResource("2_68tve")
 open_sprite = ExtResource("1_8x7bk")

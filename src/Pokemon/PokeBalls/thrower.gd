@@ -3,14 +3,24 @@ const pokeBall = preload("res://src/Pokemon/PokeBalls/poke_ball.tscn")
 @onready var marker_2d = $Marker2D
 
 var bullet_speed = 1000
-func _physics_process(delta):
-	look_at(get_global_mouse_position())
-	
-	if Input.is_action_just_pressed("Yes"):
-		var Pokeball = pokeBall.instantiate()
-		Pokeball.rotation_degrees = self.rotation_degrees
-		Pokeball.position = marker_2d.get_global_position()
-		Pokeball.velocity = ((get_global_mouse_position() - Pokeball.position) * bullet_speed)/Pokeball.position.distance_to(get_global_mouse_position())
-		
 
-		add_child(Pokeball)
+signal success
+signal faliure
+
+func _throw(at_node):
+	look_at(at_node.get_global_position())
+	var PokeBall = pokeBall.instantiate()
+	PokeBall.rotation_degrees = self.rotation_degrees
+	PokeBall.position = marker_2d.get_global_position()
+	PokeBall.velocity = ((at_node.get_global_position() - PokeBall.get_global_position()) * bullet_speed)/PokeBall.get_global_position().distance_to(at_node.get_global_position())
+	
+	PokeBall.connect("catch_sucess",catch_success)
+	PokeBall.connect("catch_faliure",catch_faliure)
+	
+	add_child(PokeBall)
+
+func catch_success():
+	emit_signal("success")
+
+func catch_faliure():
+	emit_signal("faliure")

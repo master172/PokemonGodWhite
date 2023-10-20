@@ -96,7 +96,7 @@ offset_top = 88.0
 offset_right = 78.0
 offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("3_oq0tl")
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 32
 text = "520"
 vertical_alignment = 1
 
@@ -107,7 +107,7 @@ offset_top = 88.0
 offset_right = 167.0
 offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("3_oq0tl")
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 32
 text = "520"
 vertical_alignment = 1
 

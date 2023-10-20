@@ -36,3 +36,6 @@ func change_position_to_ledge(Position,Speed,Direction):
 	tween.tween_property(self,"global_position",Position - Vector2(0,16),Speed)
 	await tween.finished
 	update_direction(Direction)
+
+func update_pokemon():
+	following_pokemon.update()

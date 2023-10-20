@@ -580,3 +580,7 @@ func play_footstep():
 
 func finish_battle():
 	change_animation(true)
+
+func update_following_pokemon():
+	if pokemon_manager != null:
+		pokemon_manager.update_pokemon()

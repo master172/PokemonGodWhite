@@ -6,6 +6,8 @@ extends Node
 @export var lost_battle:DialogueLine
 @export var run_dialog:DialogueLine
 @export var moveLearned_dialog:DialogueLine
+@export var PokemonCaught:DialogueLine
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	AllyPokemon.PartyPokemon.connect("can_start_move_learner",start_move_learning)
@@ -87,3 +89,12 @@ func _move_learned_finished():
 	PokemonManager.movesLearned.remove_at(0)
 	moveLearned_dialog.remove_all_symbols()
 	check_move_learned()
+
+func pokemon_caught(pokemon:game_pokemon):
+	PokemonCaught.add_symbols_to_replace({"pokemon":pokemon.Nick_name})
+	DialogLayer.get_child(0)._start(PokemonCaught)
+	DialogLayer.get_child(0).connect("finished",_pokemon_caught_finished)
+
+func _pokemon_caught_finished(dialog):
+	if dialog == PokemonCaught:
+		Utils.get_scene_manager().transistion_exit_battle_scene()

@@ -145,6 +145,7 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(80, 80)
 
 [node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
+collision_layer = 33
 floor_snap_length = 2.0
 safe_margin = 0.1
 script = ExtResource("1_ss21h")

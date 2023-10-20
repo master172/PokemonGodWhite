@@ -3,6 +3,7 @@ extends Node2D
 const battle_pokemon = preload("res://Core/Battle/battle_pokemon.tscn")
 const poke_enemy = preload("res://Core/Battle/poke_enemy.tscn")
 
+@onready var thrower = $thrower
 @onready var marker_2d = $Marker2D
 @onready var ally_pokemon = $AllyPokemon
 @onready var enemy_pokemon = $EnemyPokemon
@@ -49,12 +50,16 @@ func _on_hud_pokemon_selected(pokemon):
 	BATTLE_POKEMON.connect("defeated",battle_pokemon_defeated)
 	BATTLE_POKEMON.connect("attacked",_player_attacked)
 	BATTLE_POKEMON.connect("run",_run)
-	
+	BATTLE_POKEMON.connect("throw",_throw)
 	connect("stop",BATTLE_POKEMON._stop)
 	
 	allys.append(BATTLE_POKEMON)
 	set_opposers()
-	
+
+func _throw():
+	if opponents != []:
+		thrower._throw(opponents[0])
+
 func set_opposers():
 	for i in allys:
 		i.opposing_pokemons = opponents
@@ -102,3 +107,17 @@ func _run():
 	emit_signal("stop")
 	emit_signal("poke_enemy_stop")
 	dialog_handler._run()
+
+
+func _on_thrower_faliure():
+	allys[0].action = false
+
+
+func _on_thrower_success():
+	emit_signal("stop")
+	emit_signal("poke_enemy_stop")
+	var poke = opponents[0].pokemon
+	opponents[0].queue_free()
+	AllyPokemon.add_pokemon(poke)
+	
+	dialog_handler.pokemon_caught(poke)

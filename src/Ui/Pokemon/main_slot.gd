@@ -23,6 +23,13 @@ func _ready():
 		update_items()
 	else:
 		clear_items()
+
+func update():
+	if AllyPokemon.get_party_pokemon(slot_no) != null:
+		pokemon = AllyPokemon.get_party_pokemon(slot_no)
+		update_items()
+	else:
+		clear_items()
 		
 func update_items():
 	sprite.texture = pokemon.get_icon()

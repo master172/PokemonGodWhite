@@ -16,6 +16,12 @@ func _ready():
 	anim_state.travel("Walk")
 	poke_sprite.texture = pokemon.get_overworld_sprite()
 
+func update():
+	var mainPokemon = AllyPokemon.get_main_pokemon()
+	if mainPokemon != null:
+		pokemon = mainPokemon
+	poke_sprite.texture = pokemon.get_overworld_sprite()
+	
 func set_direction(Direction):
 	direction = Direction
 	animation_tree.set("parameters/Walk/blend_position",direction)

@@ -7,6 +7,7 @@
 script = ExtResource("2_qvvgx")
 Name = "PartyPokemon"
 pokemons = Array[Resource("res://Resources/PokeMon/Game/GamePokemon.gd")]([])
+learning_counter = 0
 
 [node name="AllyPokemon" type="Node"]
 script = ExtResource("1_bam7a")
