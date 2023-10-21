@@ -51,3 +51,6 @@ func all_learned():
 	if learning_counter == pokemon_size():
 		emit_signal("can_start_move_learner")
 		learning_counter = 0
+
+func erase_pokemon(num:int):
+	pokemons.remove_at(num)

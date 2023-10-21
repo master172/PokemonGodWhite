@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhoey1dbbtoc2"]
+[gd_scene load_steps=13 format=3 uid="uid://dhoey1dbbtoc2"]
 
 [ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_faugp"]
 [ext_resource type="Script" path="res://src/Ui/Bag/PokeSelector.gd" id="2_06fha"]
@@ -14,6 +14,44 @@ light_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3waa4"]
 bg_color = Color(0.0156863, 0.933333, 0.203922, 1)
+
+[sub_resource type="Animation" id="Animation_ra0pw"]
+resource_name = "Breathe"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_cg7jj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvx5w"]
+_data = {
+"Breathe": SubResource("Animation_ra0pw"),
+"RESET": SubResource("Animation_cg7jj")
+}
 
 [node name="Icon0" type="TextureRect"]
 texture_filter = 6
@@ -84,3 +122,9 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_hgleg")
 hframes = 2
 frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Breathe"
+libraries = {
+"": SubResource("AnimationLibrary_rvx5w")
+}

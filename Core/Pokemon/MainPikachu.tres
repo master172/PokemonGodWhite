@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://bh4qpoqtq7sea"]
 
-[ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/25.png" id="1_h0jw8"]
+[ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/PIKACHU.png" id="1_h0jw8"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_it3xc"]
-[ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/25.png" id="2_mnree"]
+[ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/PIKACHU.png" id="2_mnree"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="2_qici2"]
 [ext_resource type="Resource" uid="uid://dyye4noc6flfr" path="res://Core/Pokemon/Actions/ThunderBolt.tres" id="3_2e55o"]
 [ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_rmte6"]
@@ -34,3 +34,4 @@ Yield_Defense = 0
 Yield_Special_Defense = 0
 Yield_Special_Attack = 0
 Yield_Speed = 2
+catch_chance = 20

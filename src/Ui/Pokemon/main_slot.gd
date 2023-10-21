@@ -33,7 +33,7 @@ func update():
 		
 func update_items():
 	sprite.texture = pokemon.get_icon()
-	Name.text = pokemon.Base_Pokemon.Name
+	Name.text = pokemon.Nick_name
 	level.text = str(pokemon.level)
 	max_health.text = str(pokemon.Max_Health)
 	current_health.text = str(pokemon.Health)

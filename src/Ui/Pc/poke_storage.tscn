@@ -1,0 +1,215 @@
+[gd_scene load_steps=11 format=3 uid="uid://s2dm6q8x6rs8"]
+
+[ext_resource type="Script" path="res://src/Ui/Pc/poke_storage.gd" id="1_f6l52"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="1_ou26x"]
+[ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="3_43lnd"]
+[ext_resource type="Texture2D" uid="uid://vk4el5upy1sn" path="res://assets/Ui/Pc/apps/Storage/searchIcon.png" id="4_xl14t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vabpo"]
+bg_color = Color(0.121569, 0.156863, 0.482353, 0.729412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1t1e"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.643137)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ulsq"]
+bg_color = Color(0.509804, 1, 0.933333, 0.603922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pctw2"]
+bg_color = Color(1, 0.831373, 0.298039, 0.603922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7d0h"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gos1"]
+border_width_left = 64
+border_width_top = 32
+border_width_right = 64
+border_width_bottom = 32
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[node name="PokeStorage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f6l52")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vabpo")
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d1t1e")
+
+[node name="NameContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Party" type="Label" parent="VBoxContainer/Panel/NameContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ou26x")
+theme_override_font_sizes/font_size = 32
+text = "Party"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Box" type="Label" parent="VBoxContainer/Panel/NameContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(736, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ou26x")
+theme_override_font_sizes/font_size = 32
+text = "Storage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Party" type="Panel" parent="VBoxContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ulsq")
+
+[node name="PartyContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/Party"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 458.0
+offset_bottom = 714.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="Icon0" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+
+[node name="Icon1" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+pokemon_number = 1
+
+[node name="Icon2" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+pokemon_number = 2
+
+[node name="Icon3" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+pokemon_number = 3
+
+[node name="Icon4" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+pokemon_number = 4
+
+[node name="Icon5" parent="VBoxContainer/MainContainer/Party/PartyContainer" instance=ExtResource("3_43lnd")]
+layout_mode = 2
+pokemon_number = 5
+
+[node name="Box" type="Panel" parent="VBoxContainer/MainContainer"]
+custom_minimum_size = Vector2(736, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_pctw2")
+
+[node name="BoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/Box"]
+custom_minimum_size = Vector2(736, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Search" type="Panel" parent="VBoxContainer/MainContainer/Box/BoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="SearchBar" type="LineEdit" parent="VBoxContainer/MainContainer/Box/BoxContainer/Search"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -24.0
+offset_right = 256.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_x7d0h")
+placeholder_text = "Search"
+alignment = 1
+right_icon = ExtResource("4_xl14t")
+
+[node name="List" type="Panel" parent="VBoxContainer/MainContainer/Box/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gos1")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainContainer/Box/BoxContainer/List"]
+custom_minimum_size = Vector2(576, 544)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -272.0
+offset_right = 300.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ListContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/Box/BoxContainer/List/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="text_changed" from="VBoxContainer/MainContainer/Box/BoxContainer/Search/SearchBar" to="." method="_on_search_bar_text_changed"]

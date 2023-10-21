@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj1jts7ijsikk"]
+[gd_scene load_steps=5 format=3 uid="uid://bj1jts7ijsikk"]
 
 [ext_resource type="Script" path="res://src/Ui/MoveDeletor/move_deletor.gd" id="1_3ac5p"]
 [ext_resource type="Texture2D" uid="uid://ccrhcbfm8f4sv" path="res://assets/Ui/Summary/bg_moves_deletor.png" id="2_skafw"]
 [ext_resource type="Texture2D" uid="uid://clw4kyer5skue" path="res://assets/Ui/Summary/attack_selector.png" id="3_1xf06"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="4_ekknv"]
-[ext_resource type="Texture2D" uid="uid://vr03wi4bc14s" path="res://Core/Graphics/Pokemon/Gen1/Front/123.png" id="5_gqeeu"]
 
 [node name="MoveDeletor" type="Control"]
 texture_filter = 1
@@ -94,7 +93,6 @@ text = "None"
 texture_filter = 1
 position = Vector2(225, 435)
 scale = Vector2(5, 5)
-texture = ExtResource("5_gqeeu")
 
 [node name="Moves" type="Control" parent="."]
 layout_mode = 1

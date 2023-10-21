@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
 [ext_resource type="PackedScene" uid="uid://srq4btryqe3j" path="res://autoload/audio_manager.tscn" id="5_p78iy"]
-[ext_resource type="PackedScene" uid="uid://dw76gxraw6ywb" path="res://testing/pokemodebug.tscn" id="6_4sy0t"]
+[ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
 
 [sub_resource type="Animation" id="Animation_t24b6"]
@@ -107,7 +107,7 @@ libraries = {
 
 [node name="Debug" type="CanvasLayer" parent="."]
 
-[node name="PokeDebug" parent="Debug" instance=ExtResource("6_4sy0t")]
+[node name="PokemonDebug" parent="Debug" instance=ExtResource("6_71aaj")]
 visible = false
 
 [node name="MoveDeletor" type="CanvasLayer" parent="."]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_4ktq7"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_ilf3o"]
-[ext_resource type="Texture2D" uid="uid://bsyj6i7jg16jy" path="res://Core/Graphics/Pokemon/Gen1/Back/46.png" id="1_tey8c"]
+[ext_resource type="Texture2D" uid="uid://bsyj6i7jg16jy" path="res://Core/Graphics/Pokemon/Gen1/Back/PARAS.png" id="1_tey8c"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="2_phx56"]
-[ext_resource type="Texture2D" uid="uid://cyumdv2kjf6ir" path="res://Core/Graphics/Pokemon/Gen1/Front/46.png" id="2_yd6u2"]
+[ext_resource type="Texture2D" uid="uid://cyumdv2kjf6ir" path="res://Core/Graphics/Pokemon/Gen1/Front/PARAS.png" id="2_yd6u2"]
 [ext_resource type="Texture2D" uid="uid://del733fw3hrff" path="res://Core/Graphics/Pokemon/Gen1/Icons/PARAS.png" id="3_phxfc"]
 [ext_resource type="Texture2D" uid="uid://2amul04hssdo" path="res://Core/Graphics/Pokemon/Gen1/Followers/PARAS.png" id="4_ty731"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=19 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_16jd6"]
 [ext_resource type="Texture2D" uid="uid://cqi0e0r16pkhy" path="res://assets/Ui/Summary/page_moves.png" id="4_rppev"]
 [ext_resource type="Texture2D" uid="uid://bmejnkh1nhnhx" path="res://assets/Ui/Summary/page_memo.png" id="5_jsjwq"]
-[ext_resource type="Texture2D" uid="uid://cagtsr4ud6vme" path="res://Core/Graphics/Pokemon/Gen1/Front/6.png" id="5_uygc7"]
 [ext_resource type="Texture2D" uid="uid://dt15mempfrgog" path="res://assets/Ui/Summary/types.png" id="6_ef2bl"]
 [ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
 [ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
@@ -429,7 +428,6 @@ hframes = 2
 texture_filter = 1
 position = Vector2(246, 429)
 scale = Vector2(5.2, 5.2)
-texture = ExtResource("5_uygc7")
 
 [node name="BallCaught" type="Sprite2D" parent="presisting"]
 texture_filter = 1

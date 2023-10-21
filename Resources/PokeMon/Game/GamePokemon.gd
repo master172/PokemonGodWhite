@@ -70,20 +70,26 @@ signal replaced_moves(pokemon,prev_move,new_move)
 
 signal learning_process_complete
 
-func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = ""):
+func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gender:int = -1):
 	Base_Pokemon = pokemon
 	level = lev
+	
 	
 	if NickName != "":
 		Nick_name = NickName
 	else:
 		Nick_name = Base_Pokemon.Name
-		
+	
+	
 	set_movepool()
 	set_nature()
 	calculate_stats_init()
 	set_exp_to_levels()
-	calc_gender()
+	
+	if Gender == -1:
+		calc_gender()
+	else:
+		gender = Gender
 	
 	
 func set_movepool():

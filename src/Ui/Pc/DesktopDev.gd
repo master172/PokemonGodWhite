@@ -110,7 +110,7 @@ func get_month():
 
 
 func _on_main_pressed():
-	start_menu.show()
+	start_menu.visible = not start_menu.visible
 	panel.hide()
 	panel.release_focus()
 

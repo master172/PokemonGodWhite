@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://daud4wv4suun6"]
+
+[ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_ncm1i"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_r7vpy"]
+[ext_resource type="Texture2D" uid="uid://f51sjyagdtsn" path="res://Core/Graphics/Pokemon/Gen1/Back/VAPOREON.png" id="2_ayc4a"]
+[ext_resource type="Texture2D" uid="uid://b8n2460n8ewv6" path="res://Core/Graphics/Pokemon/Gen1/Front/VAPOREON.png" id="3_ag7ic"]
+[ext_resource type="Texture2D" uid="uid://c143fec8l3fm4" path="res://Core/Graphics/Pokemon/Gen1/Icons/VAPOREON.png" id="4_8spr1"]
+[ext_resource type="Texture2D" uid="uid://d1vrwj5whxvdk" path="res://Core/Graphics/Pokemon/Gen1/Followers/VAPOREON.png" id="5_eyxqw"]
+
+[resource]
+script = ExtResource("1_r7vpy")
+Name = "Vaporeon"
+Id = 134
+Type1 = "Water"
+Type2 = "NONE"
+leveleing_type = 2
+Front = ExtResource("3_ag7ic")
+Back = ExtResource("2_ayc4a")
+Icon = ExtResource("4_8spr1")
+Overworld = ExtResource("5_eyxqw")
+Base_Health = 130
+Base_Attack = 65
+Base_Defense = 60
+Special_Base_Attack = 110
+Special_Base_Defense = 95
+Base_Speed = 65
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_ncm1i")])
+base_experience = 196
+Yield_Health = 2
+Yield_Attack = 0
+Yield_Defense = 0
+Yield_Special_Defense = 0
+Yield_Special_Attack = 0
+Yield_Speed = 0
+catch_chance = 12

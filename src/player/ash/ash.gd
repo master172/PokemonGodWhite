@@ -569,7 +569,7 @@ func change_animation(state:bool):
 	
 func first_start():
 	var pikachu = load("res://Core/Pokemon/MainPikachu.tres")
-	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha")
+	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha",1)
 	AllyPokemon.add_pokemon(MainPikachu)
 
 func play_footstep():
