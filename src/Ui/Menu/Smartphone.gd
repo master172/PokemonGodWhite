@@ -50,7 +50,7 @@ func _unhandled_input(event):
 					
 				if event.is_action_pressed("A"):
 					grid_container.get_child(current_selected).change_selected(false)
-					current_selected  = (current_selected - 1) % max_selectable
+					current_selected  = (current_selected +max_selectable - 1) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 					
 				elif event.is_action_pressed("D"):
@@ -65,7 +65,7 @@ func _unhandled_input(event):
 				
 				elif event.is_action_pressed("S"):
 					grid_container.get_child(current_selected).change_selected(false)
-					current_selected  = (current_selected - 4) % max_selectable
+					current_selected  = (current_selected +max_selectable - 4) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 				
 				elif event.is_action_pressed("Yes"):

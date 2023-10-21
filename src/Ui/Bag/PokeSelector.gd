@@ -3,6 +3,8 @@ extends TextureRect
 const normal = preload("res://assets/player/ash/Bag/pokeselector.png")
 const active = preload("res://assets/player/ash/Bag/pokeselector1.png")
 
+signal clicked(num:int)
+
 @onready var container = $Container
 
 @onready var icon = $Container/Icon
@@ -32,6 +34,7 @@ func _display():
 		level.text = "lv. "+str(pokemon.level)
 	else:
 		container.visible = false
+		
 func set_active(val:bool):
 	Active = val
 	set_sprites()
@@ -43,3 +46,9 @@ func set_sprites():
 	else:
 		texture = normal
 		container.position = Vector2(0,0)
+
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			emit_signal("clicked",pokemon_number)

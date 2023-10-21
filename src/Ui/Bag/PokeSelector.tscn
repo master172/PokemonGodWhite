@@ -67,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Icon" type="Sprite2D" parent="Container"]
 texture_filter = 1
@@ -80,6 +81,7 @@ layout_mode = 0
 offset_left = 99.0
 offset_right = 355.0
 offset_bottom = 41.0
+mouse_filter = 1
 theme = ExtResource("3_5ouv3")
 text = "Abra"
 
@@ -89,6 +91,7 @@ offset_left = 100.0
 offset_top = 42.0
 offset_right = 350.0
 offset_bottom = 53.0
+mouse_filter = 1
 theme = ExtResource("4_heqst")
 theme_override_styles/background = SubResource("StyleBoxEmpty_qm3lj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3waa4")
@@ -101,6 +104,7 @@ offset_left = 102.0
 offset_top = 54.0
 offset_right = 186.0
 offset_bottom = 86.0
+mouse_filter = 1
 theme = ExtResource("3_5ouv3")
 theme_override_font_sizes/font_size = 24
 text = "175/175"
@@ -111,6 +115,7 @@ offset_left = 289.0
 offset_top = 57.0
 offset_right = 373.0
 offset_bottom = 89.0
+mouse_filter = 1
 theme = ExtResource("3_5ouv3")
 theme_override_font_sizes/font_size = 24
 text = "lv. 50"
@@ -128,3 +133,5 @@ autoplay = "Breathe"
 libraries = {
 "": SubResource("AnimationLibrary_rvx5w")
 }
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

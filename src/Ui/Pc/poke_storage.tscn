@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s2dm6q8x6rs8"]
+[gd_scene load_steps=15 format=3 uid="uid://s2dm6q8x6rs8"]
 
 [ext_resource type="Script" path="res://src/Ui/Pc/poke_storage.gd" id="1_f6l52"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="1_ou26x"]
@@ -17,12 +17,32 @@ bg_color = Color(0.509804, 1, 0.933333, 0.603922)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pctw2"]
 bg_color = Color(1, 0.831373, 0.298039, 0.603922)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7d0h"]
-bg_color = Color(0.184314, 0.184314, 0.184314, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+[sub_resource type="Theme" id="Theme_4h4hn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8hxs"]
+bg_color = Color(0.0823529, 0.6, 0.235294, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ou6e"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccx2k"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_hw3t3"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_0ou6e")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_ccx2k")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gos1"]
 border_width_left = 64
@@ -166,6 +186,22 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
+[node name="Cursor" type="Panel" parent="VBoxContainer/MainContainer/Box/BoxContainer/Search"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -27.0
+offset_right = 259.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4h4hn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8hxs")
+
 [node name="SearchBar" type="LineEdit" parent="VBoxContainer/MainContainer/Box/BoxContainer/Search"]
 custom_minimum_size = Vector2(512, 48)
 layout_mode = 1
@@ -182,7 +218,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_x7d0h")
+theme = SubResource("Theme_hw3t3")
 placeholder_text = "Search"
 alignment = 1
 right_icon = ExtResource("4_xl14t")
@@ -211,5 +247,12 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 4
 
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon0" to="." method="party_pokemon_clicked"]
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon1" to="." method="party_pokemon_clicked"]
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon2" to="." method="party_pokemon_clicked"]
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon3" to="." method="party_pokemon_clicked"]
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon4" to="." method="party_pokemon_clicked"]
+[connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon5" to="." method="party_pokemon_clicked"]
 [connection signal="text_changed" from="VBoxContainer/MainContainer/Box/BoxContainer/Search/SearchBar" to="." method="_on_search_bar_text_changed"]

@@ -17,6 +17,7 @@ func _ready():
 	
 func change_selected(a:bool):
 	active = a
+	change_sprite()
 
 func change_sprite():
 	if active == true:
