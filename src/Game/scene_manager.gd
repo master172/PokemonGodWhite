@@ -244,6 +244,7 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
+	AllyPokemon.check_evolution_all()
 	
 func get_current_scene_name():
 	return current_scene.get_child(0).name
