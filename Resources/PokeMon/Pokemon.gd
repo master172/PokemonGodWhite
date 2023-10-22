@@ -99,6 +99,9 @@ var natures :Array = [
 
 @export_range(1,100) var catch_chance := 20
 
+
+@export_group("evolution")
+@export var evolutor:Evolutor = Evolutor.new()
 func get_catch_rate():
 	return catch_chance
 	

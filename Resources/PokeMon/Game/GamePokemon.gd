@@ -61,6 +61,7 @@ class_name game_pokemon
 @export var fainted:bool = false
 
 
+
 signal Level_up
 signal experience_added
 
@@ -315,4 +316,14 @@ func replace_moves(index,move:MovePoolAction):
 func get_catch_rate():
 	return Base_Pokemon.get_catch_rate()
 #func move_process():
-#
+
+func check_evolution():
+	if Base_Pokemon.evolutor != null:
+		Base_Pokemon.evolutor.check_evolution(self)
+
+func evolve(pokemon):
+	Base_Pokemon = pokemon
+	set_movepool()
+	learn_moves()
+	recalculate_stats()
+	set_to_max_stats()

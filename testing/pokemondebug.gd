@@ -31,7 +31,6 @@ func _ready():
 		
 func _update():
 	if current_pokemon != null:
-		current_pokemon = AllyPokemon.get_party_pokemon(0)
 		poke_sprite.texture = current_pokemon.get_front_sprite()
 		
 		for i in range(6):
@@ -56,10 +55,11 @@ func learn_move(pokemon,move):
 	PokemonManager.Starting_dialog(pokemon,move)
 	
 func change(num:int):
-	if AllyPokemon.get_party_pokemon(num) != null:
+
+	if AllyPokemon.get_Party_pokemon_size() >= num+1:
 		current_pokemon = AllyPokemon.get_party_pokemon(num)
 		_update()
-		
+
 func _on_button_pressed():
 	change(0)
 
@@ -86,4 +86,7 @@ func _on_button_6_pressed():
 
 func _on_level_up_pressed():
 	current_pokemon.recive_experience_points(current_pokemon.exp_to_next_level-current_pokemon.exp)
+	current_pokemon.check_evolution()
+	
 	_update()
+	Utils.get_scene_manager().check_evolution()

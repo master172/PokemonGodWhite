@@ -3,6 +3,9 @@ extends Node
 signal Buy
 signal Sell
 
+signal evolve
+signal Cancel
+
 func test_function():
 	print("test")
 
@@ -35,3 +38,10 @@ func sell():
 func cancel():
 	await get_tree().create_timer(0.1).timeout
 	Utils.get_player().set_physics_process(true)
+
+func time_to_evolve():
+	emit_signal("evolve")
+
+func cancel_evolution():
+	emit_signal("Cancel")
+	

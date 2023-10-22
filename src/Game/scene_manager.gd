@@ -1,6 +1,9 @@
 extends Node2D
 
 var battle_scene = preload("res://Core/Battle/battle_scene.tscn")
+const evolution_scene = preload("res://Core/Evolutions/evolution_screen.tscn")
+const evolution_environment = preload("res://src/Environment/world_environment.tscn")
+
 var next_scene = null
 
 @onready var transition_player = $ScreenTranistion/AnimationPlayer
@@ -8,6 +11,9 @@ var next_scene = null
 @onready var menu = $Menu/Menu
 @onready var battle_layer = $BattleLayer
 @onready var mart_view = $Mart_View
+@onready var evolution_layer = $EvolutionLayer
+
+@export var evolution_dialog:DialogueLine = DialogueLine.new()
 
 var first_time_start:bool = true
 
@@ -25,7 +31,9 @@ enum Transition_Type {
 	BATTLE_SCENE,
 	EXIT_BATTLE_SCENE,
 	BAG_SCENE,
-	EXIT_BAG_SCENE
+	EXIT_BAG_SCENE,
+	EVOLUTION,
+	EXIT_EVOLUTION
 }
 var transition_type = Transition_Type.NEW_SCENE
 
@@ -35,6 +43,8 @@ var save_file_name = "Scene.tres"
 var summary_pokemon:int 
 
 var pocket_monster:Array
+
+var WorldEnv:WorldEnvironment = null
 
 signal data_set_finished
 # Called when the node enters the scene tree for the first time.
@@ -79,15 +89,33 @@ func first_time_load():
 
 func get_current_scene():
 	return current_scene.get_child(0)
+
+func check_evolution():
+	if EvolutionManager.pokemon_to_evolve == []:
+		return
+	if EvolutionManager.evolving_pokemon == []:
+		return
+	if EvolutionManager.pokemon_to_evolve.size() != EvolutionManager.evolving_pokemon.size():
+		return
+	
+	ask_evolution()
+	
+func transition_to_evolution():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EVOLUTION
+
+func transistion_exit_evolution():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EXIT_EVOLUTION
+	
+func transistion_exit_bag_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EXIT_BAG_SCENE
 	
 func transition_to_bag_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BAG_SCENE
 
-func transistion_exit_bag_scene():
-	transition_player.play("FadeToBlack")
-	transition_type = Transition_Type.EXIT_BAG_SCENE
-	
 func transistion_to_battle_scene(pokemon):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
@@ -155,8 +183,44 @@ func finished_fading():
 			menu.load_bag_scene()
 		Transition_Type.EXIT_BAG_SCENE:
 			menu.unload_bag_scene()
+		Transition_Type.EVOLUTION:
+			load_evolution()
+		Transition_Type.EXIT_EVOLUTION:
+			re_check_evolution()
 	transition_player.play("FadeToNormal")
 
+func re_check_evolution():
+	if WorldEnv != null:
+		WorldEnv.queue_free()
+		WorldEnv = null
+		
+	if EvolutionManager.pokemon_to_evolve.size() > 0:
+		ask_evolution()
+	else:
+		unlaod_evolution()
+
+func unlaod_evolution():
+	Utils.get_player().set_physics_process(true)
+	
+func ask_evolution():
+	Utils.get_player().set_physics_process(false)
+	evolution_dialog.add_symbols_to_replace({"P1":EvolutionManager.pokemon_to_evolve[0].Nick_name})
+	DialogLayer.get_child(0).function_manager.connect("evolve",transition_to_evolution)
+	DialogLayer.get_child(0).function_manager.connect("Cancel",cancel_evolution)
+	DialogLayer.get_child(0)._start(evolution_dialog)
+
+func cancel_evolution():
+	EvolutionManager.remove_evolution_zero()
+
+func load_evolution():
+	WorldEnv = evolution_environment.instantiate()
+	add_child(WorldEnv)
+	
+	var EvolutionScreen = evolution_scene.instantiate()
+	EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
+	evolution_layer.add_child(EvolutionScreen)
+	EvolutionManager.evolve()
+	
 func load_battle_scene(pokemon):
 	
 	battle_layer.add_child(battle_scene.instantiate())

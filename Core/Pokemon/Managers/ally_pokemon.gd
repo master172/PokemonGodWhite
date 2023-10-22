@@ -108,3 +108,8 @@ func Pc2Party_pokemon_switch(index1: int, index2: int):
 	PartyPokemon.pokemons[index1] = PcPokemon.pokemons[index2]
 	
 	PcPokemon.pokemons[index2] = temp
+
+func check_evolution_all():
+	for i in PartyPokemon.get_pokemons():
+		i.check_evolution()
+	Utils.get_scene_manager().check_evolution()
