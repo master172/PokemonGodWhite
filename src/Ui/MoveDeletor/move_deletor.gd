@@ -37,7 +37,7 @@ func _end():
 	
 	
 func _start(Move:MoveToLearn):
-		
+	Utils.get_player().set_physics_process(false)
 	pokemon = Move.pokemon
 	move = Move.move
 	_startMoveLearning()
@@ -45,6 +45,8 @@ func _start(Move:MoveToLearn):
 func _startMoveLearning():
 	display()
 	show()
+	manage_connections()
+	visible = true
 	state = states.ACTIVE
 
 func display():
@@ -66,6 +68,7 @@ func _input(event):
 		elif event.is_action_pressed("Yes") and PokemonManager.can_learn_moves == true:
 			delete_move(current_selected,move)
 			print_debug("step 1")
+
 func change_position():
 	attack_selector.position.y = 152 + current_selected * 135
 
@@ -74,3 +77,13 @@ func delete_move(index,move):
 	pokemon.replace_moves(index,move)
 	print_debug("step 2")
 	display()
+
+
+func manage_connections():
+	if pokemon != null:
+		pokemon.connect("replaced_moves",learned_move)
+
+func learned_move(pokemon:game_pokemon,prev_move:GameAction,new_move:GameAction):
+	print(pokemon.Nick_name, " ", prev_move.base_action.name, " ", new_move.base_action.name)
+	PokemonManager.finishing_dialog(pokemon,prev_move,new_move)
+	

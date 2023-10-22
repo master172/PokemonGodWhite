@@ -87,6 +87,11 @@ func _on_button_6_pressed():
 func _on_level_up_pressed():
 	current_pokemon.recive_experience_points(current_pokemon.exp_to_next_level-current_pokemon.exp)
 	current_pokemon.check_evolution()
+
 	
 	_update()
 	Utils.get_scene_manager().check_evolution()
+
+
+func _on_full_exp_pressed():
+	current_pokemon.recive_experience_points((current_pokemon.exp_to_next_level-current_pokemon.exp) - 1 )

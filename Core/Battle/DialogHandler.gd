@@ -9,10 +9,6 @@ extends Node
 @export var PokemonCaught:DialogueLine
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	AllyPokemon.PartyPokemon.connect("can_start_move_learner",start_move_learning)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -33,7 +29,8 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 	
 func on_won_dialog_finished(dialog):
-	check_move_learned()
+	if dialog == won_dialog or dialog == won_dialog_level_up:
+		check_move_learned()
 
 func battle_pokemon_defeated(pokemon):
 	if AllyPokemon.all_fainted() == true:
@@ -81,7 +78,7 @@ func check_move_learned():
 		
 func move_learned():
 	moveLearned_dialog.add_symbols_to_replace({"Pokemon":PokemonManager.movesLearned[0].pokemon.Nick_name})
-	moveLearned_dialog.add_symbols_to_replace({"Move":PokemonManager.movesLearned[0].move.name})
+	moveLearned_dialog.add_symbols_to_replace({"Move":PokemonManager.movesLearned[0].move.action.name})
 	DialogLayer.get_child(0)._start(moveLearned_dialog)
 	DialogLayer.get_child(0).connect("finished",_move_learned_finished)
 

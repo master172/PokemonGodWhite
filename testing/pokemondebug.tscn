@@ -123,9 +123,17 @@ size_flags_horizontal = 3
 layout_mode = 2
 offset_left = 24.0
 offset_top = 36.0
-offset_right = 176.0
-offset_bottom = 116.0
+offset_right = 248.0
+offset_bottom = 140.0
 text = "Level Up"
+
+[node name="FullExp" type="Button" parent="VBoxContainer/Actions/Panel"]
+layout_mode = 2
+offset_left = 272.0
+offset_top = 36.0
+offset_right = 496.0
+offset_bottom = 140.0
+text = "Full exp"
 
 [connection signal="pressed" from="VBoxContainer/PokeData/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/PokeData/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
@@ -134,3 +142,4 @@ text = "Level Up"
 [connection signal="pressed" from="VBoxContainer/PokeData/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="VBoxContainer/PokeData/VBoxContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="VBoxContainer/Actions/Panel/LevelUp" to="." method="_on_level_up_pressed"]
+[connection signal="pressed" from="VBoxContainer/Actions/Panel/FullExp" to="." method="_on_full_exp_pressed"]

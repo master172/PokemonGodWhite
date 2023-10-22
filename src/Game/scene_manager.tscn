@@ -151,8 +151,8 @@ libraries = {
 [node name="PokemonDebug" parent="Debug" instance=ExtResource("6_71aaj")]
 
 [node name="MoveDeletor" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MoveDeletor" parent="MoveDeletor" instance=ExtResource("7_3jiyl")]
+visible = false
 
 [node name="Mart_View" type="CanvasLayer" parent="."]

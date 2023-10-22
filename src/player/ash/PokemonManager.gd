@@ -39,3 +39,5 @@ func change_position_to_ledge(Position,Speed,Direction):
 
 func update_pokemon():
 	following_pokemon.update()
+
+

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://bh4qpoqtq7sea"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://bh4qpoqtq7sea"]
 
 [ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/PIKACHU.png" id="1_h0jw8"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_it3xc"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://dyye4noc6flfr" path="res://Core/Pokemon/Actions/ThunderBolt.tres" id="3_2e55o"]
 [ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_rmte6"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="4_4kf0j"]
+[ext_resource type="Resource" uid="uid://ym04lp5fbb4m" path="res://Core/Pokemon/Actions/TestAct1.tres" id="4_52nw5"]
+[ext_resource type="Resource" uid="uid://cl36qrf5uhp0u" path="res://Core/Pokemon/Actions/TestAct2.tres" id="5_5ui0p"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="6_my436"]
 
 [resource]
@@ -26,7 +28,7 @@ Base_Defense = 60
 Special_Base_Attack = 80
 Special_Base_Defense = 50
 Base_Speed = 100
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_it3xc"), ExtResource("2_qici2"), ExtResource("3_2e55o")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_it3xc"), ExtResource("2_qici2"), ExtResource("3_2e55o"), ExtResource("4_52nw5"), ExtResource("5_5ui0p")])
 base_experience = 112
 Yield_Health = 0
 Yield_Attack = 0
