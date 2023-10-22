@@ -9,6 +9,8 @@ const Party_Screen = preload("res://src/Ui/Pokemon/party_screen.tscn")
 const Summary_scene = preload("res://src/Ui/Summary/Summary.tscn")
 const Bag_Scene = preload("res://src/Ui/Bag/bag.tscn")
 const Switch_Scene = preload("res://src/Ui/Pc/poke_storage.tscn")
+const Trainer_card = preload("res://src/Ui/TrainerCard/trainer_card.tscn")
+
 var Summary_Scene
 
 enum current_state {
@@ -18,7 +20,8 @@ enum current_state {
 	Summary,
 	Bag,
 	Save,
-	Switching
+	Switching,
+	Card
 }
 
 var CurrentState = current_state.Empty
@@ -82,6 +85,8 @@ func _unhandled_input(event):
 						get_tree().quit()
 					elif current_selected == 6 or current_selected == -6:
 						load_switching_scene()
+					elif current_selected == 3 or current_selected == -3:
+						load_trainer_card()
 						
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
@@ -89,12 +94,27 @@ func _unhandled_input(event):
 		current_state.Summary:
 			if event.is_action_pressed("No"):
 				Utils.get_scene_manager().transistion_exit_summary_screen()
+		current_state.Card:
+			if event.is_action_pressed("No"):
+				unload_trainer_card()
+			
 
 
 func handle_closing():
 	for i in grid_container.get_children():
 		i.change_selected(false)
 
+func load_trainer_card():
+	hide()
+	CurrentState = current_state.Card
+	var scene = Trainer_card.instantiate()
+	get_parent().add_child(scene)
+
+func unload_trainer_card():
+	show()
+	CurrentState = current_state.Normal
+	get_parent().get_node("TrainerCard").queue_free()
+	
 func load_switching_scene():
 	hide()
 	CurrentState = current_state.Switching

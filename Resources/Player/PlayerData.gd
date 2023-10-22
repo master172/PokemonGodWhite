@@ -11,6 +11,10 @@ class_name player_data
 @export var facingDirection:int = 0
 @export var pokemonPos:Vector2 = Vector2(0,0)
 @export var pokeDirection:Vector2 = Vector2(0,0)
+@export var uniqueId:String = ""
+
+func change_unique_id(value:String):
+	uniqueId = value
 
 func change_poke_dir(value:Vector2):
 	pokeDirection = value

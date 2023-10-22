@@ -45,9 +45,8 @@ func all_heal():
 
 func add_learned():
 	learning_counter += 1
+	all_learned()
 	
-func remove_learned():
-	learning_counter -= 1
 	
 func all_learned():
 	if learning_counter == pokemon_size():
