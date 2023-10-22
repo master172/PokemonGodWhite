@@ -1269,7 +1269,6 @@ parameters/cycleIdle/blend_position = Vector2(0, 0)
 parameters/cycleTurn/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 

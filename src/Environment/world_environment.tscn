@@ -1,12 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://oahn1flucj6k"]
 
-[sub_resource type="Environment" id="Environment_fwot7"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 5.47
-glow_strength = 1.57
-glow_bloom = 0.02
-glow_blend_mode = 0
+[ext_resource type="Environment" uid="uid://co5ke1rxd3epw" path="res://src/Environment/world_environment.tres" id="1_joech"]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
-environment = SubResource("Environment_fwot7")
+environment = ExtResource("1_joech")

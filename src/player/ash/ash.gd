@@ -54,6 +54,7 @@ var speed :float= 4.0
 @onready var interaction_cast = $InteractionCast
 @onready var saver = $Saver
 @onready var footstep = $AudioManager/Footstep
+@onready var camera_2d = $Camera2D
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -590,3 +591,6 @@ func finish_battle():
 func update_following_pokemon():
 	if pokemon_manager != null:
 		pokemon_manager.update_pokemon()
+
+func set_camera_zoom(num:int):
+	camera_2d.zoom = Vector2(num,num)

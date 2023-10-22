@@ -11,7 +11,6 @@ var next_scene = null
 @onready var menu = $Menu/Menu
 @onready var battle_layer = $BattleLayer
 @onready var mart_view = $Mart_View
-@onready var evolution_layer = $EvolutionLayer
 
 @export var evolution_dialog:DialogueLine = DialogueLine.new()
 
@@ -107,6 +106,7 @@ func transition_to_evolution():
 func transistion_exit_evolution():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_EVOLUTION
+	Utils.get_player().set_camera_zoom(4)
 	
 func transistion_exit_bag_scene():
 	transition_player.play("FadeToBlack")
@@ -202,6 +202,7 @@ func re_check_evolution():
 func unlaod_evolution():
 	Utils.get_player().set_physics_process(true)
 	
+	
 func ask_evolution():
 	Utils.get_player().set_physics_process(false)
 	evolution_dialog.add_symbols_to_replace({"P1":EvolutionManager.pokemon_to_evolve[0].Nick_name})
@@ -213,12 +214,13 @@ func cancel_evolution():
 	EvolutionManager.remove_evolution_zero()
 
 func load_evolution():
-	WorldEnv = evolution_environment.instantiate()
-	add_child(WorldEnv)
+	
 	
 	var EvolutionScreen = evolution_scene.instantiate()
 	EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
-	evolution_layer.add_child(EvolutionScreen)
+	Utils.get_player().add_child(EvolutionScreen)
+	Utils.get_player().set_camera_zoom(1)
+	
 	EvolutionManager.evolve()
 	
 func load_battle_scene(pokemon):
@@ -233,6 +235,6 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
-
+	
 func get_current_scene_name():
 	return current_scene.get_child(0).name

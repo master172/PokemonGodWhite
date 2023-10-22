@@ -123,3 +123,8 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="Door"
 2d_physics/layer_5="Interactables"
 2d_physics/layer_6="pokeEnemy"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_environment="res://src/Environment/world_environment.tres"
