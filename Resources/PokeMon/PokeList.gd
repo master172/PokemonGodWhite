@@ -46,7 +46,9 @@ func all_heal():
 func add_learned():
 	learning_counter += 1
 	
-		
+func remove_learned():
+	learning_counter -= 1
+	
 func all_learned():
 	if learning_counter == pokemon_size():
 		emit_signal("can_start_move_learner")
