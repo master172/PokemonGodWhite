@@ -8,6 +8,7 @@ extends Control
 
 @export var congratulation_dialog:DialogueLine = DialogueLine.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if previous_pokemon != null and current_pokemon != null:

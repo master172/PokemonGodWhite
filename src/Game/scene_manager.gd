@@ -46,6 +46,7 @@ var pocket_monster:Array
 var WorldEnv:WorldEnvironment = null
 
 signal data_set_finished
+signal evolution_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -189,7 +190,15 @@ func finished_fading():
 			re_check_evolution()
 	transition_player.play("FadeToNormal")
 
+func check_moves():
+	emit_signal("evolution_finished")
+	await EvolutionManager.evolution_done
+	continue_check_evolution()
+	
 func re_check_evolution():
+	check_moves()
+
+func continue_check_evolution():
 	if WorldEnv != null:
 		WorldEnv.queue_free()
 		WorldEnv = null
