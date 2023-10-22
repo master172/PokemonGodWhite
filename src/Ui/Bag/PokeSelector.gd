@@ -20,11 +20,15 @@ var Active:bool = false
 var pokemon:game_pokemon = null
 
 func _ready():
+	update()
+
+func update():
 	pokemon = AllyPokemon.get_party_pokemon(pokemon_number)
 	_display()
 	
 func _display():
 	if pokemon != null:
+		container.visible = true
 		icon.texture = pokemon.get_icon()
 		Name.text = pokemon.Nick_name
 		health_bar.max_value = pokemon.Max_Health

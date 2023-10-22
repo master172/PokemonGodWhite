@@ -1,21 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://s2dm6q8x6rs8"]
+[gd_scene load_steps=22 format=3 uid="uid://s2dm6q8x6rs8"]
 
 [ext_resource type="Script" path="res://src/Ui/Pc/poke_storage.gd" id="1_f6l52"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="1_ou26x"]
 [ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="3_43lnd"]
 [ext_resource type="Texture2D" uid="uid://vk4el5upy1sn" path="res://assets/Ui/Pc/apps/Storage/searchIcon.png" id="4_xl14t"]
+[ext_resource type="Script" path="res://src/Ui/Pc/QuitPanel.gd" id="5_c43kt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vabpo"]
-bg_color = Color(0.121569, 0.156863, 0.482353, 0.729412)
+[sub_resource type="Gradient" id="Gradient_3vemh"]
+offsets = PackedFloat32Array(0, 0.707071, 1)
+colors = PackedColorArray(0.298435, 0.692239, 0.742188, 1, 0.0452173, 0.104885, 0.112453, 1, 0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1t1e"]
-bg_color = Color(0.101961, 0.101961, 0.101961, 0.643137)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f1plu"]
+gradient = SubResource("Gradient_3vemh")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0.65812)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ulsq"]
-bg_color = Color(0.509804, 1, 0.933333, 0.603922)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lpqy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lh64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5rbr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pctw2"]
-bg_color = Color(1, 0.831373, 0.298039, 0.603922)
+bg_color = Color(1, 0.831373, 0.298039, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vu5gn"]
 
 [sub_resource type="Theme" id="Theme_4h4hn"]
 
@@ -45,6 +54,7 @@ LineEdit/styles/focus = SubResource("StyleBoxFlat_0ou6e")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_ccx2k")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gos1"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.878431)
 border_width_left = 64
 border_width_top = 32
 border_width_right = 64
@@ -55,6 +65,27 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp2j3"]
+bg_color = Color(1, 1, 1, 0.635294)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7ogx"]
+bg_color = Color(0.921569, 0.921569, 0.921569, 0.803922)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okfwh"]
+bg_color = Color(0, 1, 0.180392, 0.509804)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [node name="PokeStorage" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -63,6 +94,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f6l52")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_f1plu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -80,12 +120,12 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="VBoxContainer/TopContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vabpo")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8lpqy")
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d1t1e")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0lh64")
 
 [node name="NameContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
 layout_mode = 1
@@ -107,7 +147,6 @@ theme_override_fonts/font = ExtResource("1_ou26x")
 theme_override_font_sizes/font_size = 32
 text = "Party"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Box" type="Label" parent="VBoxContainer/Panel/NameContainer"]
 texture_filter = 1
@@ -122,7 +161,6 @@ theme_override_fonts/font = ExtResource("1_ou26x")
 theme_override_font_sizes/font_size = 32
 text = "Storage"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MainContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -132,7 +170,7 @@ theme_override_constants/separation = 0
 [node name="Party" type="Panel" parent="VBoxContainer/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_2ulsq")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g5rbr")
 
 [node name="PartyContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/Party"]
 layout_mode = 1
@@ -185,6 +223,7 @@ size_flags_horizontal = 3
 [node name="Search" type="Panel" parent="VBoxContainer/MainContainer/Box/BoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vu5gn")
 
 [node name="Cursor" type="Panel" parent="VBoxContainer/MainContainer/Box/BoxContainer/Search"]
 layout_mode = 1
@@ -249,6 +288,113 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
+[node name="QuitPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tp2j3")
+script = ExtResource("5_c43kt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 17.0
+offset_right = -40.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Quit" type="Label" parent="QuitPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("1_ou26x")
+theme_override_font_sizes/font_size = 48
+text = "Quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="Yes" type="Panel" parent="QuitPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7ogx")
+
+[node name="Cursor" type="Panel" parent="QuitPanel/VBoxContainer/HBoxContainer/Yes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_okfwh")
+
+[node name="Label" type="Label" parent="QuitPanel/VBoxContainer/HBoxContainer/Yes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_ou26x")
+theme_override_font_sizes/font_size = 48
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="No" type="Panel" parent="QuitPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7ogx")
+
+[node name="Cursor" type="Panel" parent="QuitPanel/VBoxContainer/HBoxContainer/No"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_okfwh")
+
+[node name="Label" type="Label" parent="QuitPanel/VBoxContainer/HBoxContainer/No"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_ou26x")
+theme_override_font_sizes/font_size = 48
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="quit_active" from="." to="QuitPanel" method="_on_poke_storage_quit_active"]
+[connection signal="quit_cancel" from="." to="QuitPanel" method="_on_poke_storage_quit_cancel"]
 [connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon0" to="." method="party_pokemon_clicked"]
 [connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon1" to="." method="party_pokemon_clicked"]
 [connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon2" to="." method="party_pokemon_clicked"]
@@ -256,3 +402,4 @@ theme_override_constants/separation = 4
 [connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon4" to="." method="party_pokemon_clicked"]
 [connection signal="clicked" from="VBoxContainer/MainContainer/Party/PartyContainer/Icon5" to="." method="party_pokemon_clicked"]
 [connection signal="text_changed" from="VBoxContainer/MainContainer/Box/BoxContainer/Search/SearchBar" to="." method="_on_search_bar_text_changed"]
+[connection signal="Quit" from="QuitPanel" to="." method="_on_quit_panel_quit"]

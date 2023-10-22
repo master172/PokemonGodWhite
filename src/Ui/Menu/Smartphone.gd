@@ -8,6 +8,7 @@ var current_selected:int = 0
 const Party_Screen = preload("res://src/Ui/Pokemon/party_screen.tscn")
 const Summary_scene = preload("res://src/Ui/Summary/Summary.tscn")
 const Bag_Scene = preload("res://src/Ui/Bag/bag.tscn")
+const Switch_Scene = preload("res://src/Ui/Pc/poke_storage.tscn")
 var Summary_Scene
 
 enum current_state {
@@ -16,7 +17,8 @@ enum current_state {
 	Pokemons,
 	Summary,
 	Bag,
-	Save
+	Save,
+	Switching
 }
 
 var CurrentState = current_state.Empty
@@ -76,8 +78,10 @@ func _unhandled_input(event):
 					elif current_selected == 4 or current_selected == -4:
 						save_dialog()
 						CurrentState = current_state.Save
-					elif current_selected == 6 or current_selected == -6:
+					elif current_selected == 7 or current_selected == -7:
 						get_tree().quit()
+					elif current_selected == 6 or current_selected == -6:
+						load_switching_scene()
 						
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
@@ -91,6 +95,19 @@ func handle_closing():
 	for i in grid_container.get_children():
 		i.change_selected(false)
 
+func load_switching_scene():
+	hide()
+	CurrentState = current_state.Switching
+	var scene = Switch_Scene.instantiate()
+	scene.connect("Quit",unload_switching_scene)
+	get_parent().add_child(scene)
+
+func unload_switching_scene():
+	show()
+	get_parent().get_node("PokeStorage").queue_free()
+	await get_tree().create_timer(0.1).timeout
+	CurrentState = current_state.Normal
+	
 func load_bag_scene():
 	hide()
 	CurrentState =current_state.Bag

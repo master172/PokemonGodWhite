@@ -14,7 +14,7 @@ func add_pokemon(Game_pokemon:game_pokemon):
 	pokemons.append(Game_pokemon)
 
 func remove_pokemon(index:int):
-	pokemons[index].disconnect("learning_process_complet",add_learned)
+	pokemons[index].disconnect("learning_process_complete",add_learned)
 	pokemons.remove_at(index)
 	
 func get_pokemons():

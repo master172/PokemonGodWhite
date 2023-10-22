@@ -56,6 +56,9 @@ func get_party_pokemon(num:int):
 func get_Party_pokemon_size():
 	return PartyPokemon.pokemon_size()
 
+func get_party_pokemons():
+	return PartyPokemon.pokemons
+	
 func all_fainted():
 	for i in PartyPokemon.pokemons:
 		if i.fainted == false:
@@ -80,15 +83,22 @@ func get_pcPokemonSize():
 		return PcPokemon.pokemon_size()
 	return 0
 
+func get_pcPokemon(num:int):
+	var pokemon = PcPokemon.get_pokemon(num)
+	return pokemon
+	
 func deposit(poke_number:int):
 	if get_Party_pokemon_size() > 1:
+		
 		var temp = PartyPokemon.get_pokemon(poke_number)
-		PartyPokemon.erase_pokemon(poke_number)
+		
 		PcPokemon.add_pokemon(temp)
-	
+		
+		PartyPokemon.erase_pokemon(poke_number)
+		
 func withdraw(num:int):
 	if get_Party_pokemon_size() < 6:
-		var temp = PartyPokemon.get_pokemon(num)
+		var temp = PcPokemon.get_pokemon(num)
 		PcPokemon.erase_pokemon(num)
 		PartyPokemon.add_pokemon(temp)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5rtlmuoteprh"]
+[gd_scene load_steps=22 format=3 uid="uid://b5rtlmuoteprh"]
 
 [ext_resource type="PackedScene" uid="uid://bp3pvr52m44pv" path="res://src/Ui/Menu/app.tscn" id="1_g61nd"]
 [ext_resource type="Texture2D" uid="uid://d3emvp7hw0j6j" path="res://assets/player/ash/Smartphones/SmartphoneUltra.png" id="1_js7b5"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://g74an7u6yq8q" path="res://assets/player/ash/Smartphones/Apps/icons/saveIcon.png" id="6_ilx1m"]
 [ext_resource type="Texture2D" uid="uid://gm2rcstwastj" path="res://assets/player/ash/Smartphones/Apps/icons/Wrench.png" id="7_y5w2m"]
 [ext_resource type="Texture2D" uid="uid://bydonxx0ffdjm" path="res://assets/player/ash/Smartphones/Apps/icons/Close.png" id="13_kg3cy"]
+[ext_resource type="Texture2D" uid="uid://cf7wk15uyep7g" path="res://assets/player/ash/Smartphones/Apps/icons/Switch.png" id="13_ml4v4"]
 
 [sub_resource type="Resource" id="Resource_5yf03"]
 script = ExtResource("2_awic8")
@@ -129,11 +130,11 @@ icon = ExtResource("7_y5w2m")
 
 [node name="App7" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
 layout_mode = 2
-icon = ExtResource("13_kg3cy")
+icon = ExtResource("13_ml4v4")
 
 [node name="App8" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
 layout_mode = 2
-disabled = true
+icon = ExtResource("13_kg3cy")
 
 [node name="Base" type="TextureRect" parent="."]
 texture_filter = 1
