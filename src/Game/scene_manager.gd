@@ -209,6 +209,7 @@ func load_battle_trainer(pokemon):
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
 	BattleManager.in_battle = true
+	BattleManager.Trainer_Battle = true
 	
 func unload_bag_scene():
 	if battle_layer.get_child_count() >0:
@@ -286,6 +287,7 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
+	BattleManager.Trainer_Battle = false
 	
 	if Global.auto_evolve == true:
 		AllyPokemon.check_evolution_all()

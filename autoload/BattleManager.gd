@@ -393,6 +393,8 @@ var EnemyHolders:Array[PokeEnemy] = []
 
 var in_battle:bool = false
 
+var Trainer_Battle:bool = false
+
 func _ready():
 	AllyPokemons.Name = "AllyPokemons"
 

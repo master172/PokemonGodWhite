@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=33 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
@@ -10,6 +10,29 @@
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="8_hgm4v"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="9_77t2k"]
 [ext_resource type="PackedScene" uid="uid://c0xx2xkpqlmlr" path="res://src/Pokemon/PokeBalls/thrower.tscn" id="9_ksmjk"]
+
+[sub_resource type="Resource" id="Resource_tifw2"]
+script = ExtResource("7_1shl8")
+Dialog_type = 0
+text = "Ash defeated the opposing {Pokemon}"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
+
+[sub_resource type="Resource" id="Resource_h8xl5"]
+script = ExtResource("7_1shl8")
+Dialog_type = 0
+text = "{Winner} recived {points} exp points"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
+
+[sub_resource type="Resource" id="Resource_qaniu"]
+script = ExtResource("8_geedj")
+Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_tifw2"), SubResource("Resource_h8xl5")])
+Format = {}
 
 [sub_resource type="Resource" id="Resource_ust6q"]
 script = ExtResource("7_1shl8")
@@ -172,6 +195,7 @@ offset_bottom = 800.0
 
 [node name="DialogHandler" type="Node" parent="."]
 script = ExtResource("5_duj7c")
+won_dialog = SubResource("Resource_qaniu")
 won_dialog_level_up = SubResource("Resource_tcc5u")
 lost_match = SubResource("Resource_l15oa")
 lost_battle = SubResource("Resource_gr6tl")

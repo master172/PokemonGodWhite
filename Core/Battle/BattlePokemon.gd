@@ -175,7 +175,10 @@ func _on_action_chosen_action_chosen(act):
 	state = states.NORMAL
 	match act:
 		0:
-			emit_signal("switch")
+			if BattleManager.Trainer_Battle == false:
+				emit_signal("switch")
+			else:
+				action = false
 		1:
 			emit_signal("bag")
 		2:
