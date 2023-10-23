@@ -17,6 +17,7 @@ signal poke_enemy_stop
 signal player_attacked(player)
 
 signal start
+signal poke_start
 
 var allys :Array[BattlePokemon] = []
 var opponents :Array[PokeEnemy] = []
@@ -60,12 +61,23 @@ func _on_hud_pokemon_selected(pokemon):
 	BATTLE_POKEMON.connect("run",_run)
 	BATTLE_POKEMON.connect("throw",_throw)
 	BATTLE_POKEMON.connect("switch",_switch)
+	BATTLE_POKEMON.connect("bag",_bag)
 	connect("stop",BATTLE_POKEMON._stop)
+	connect("poke_start",BATTLE_POKEMON._start)
 	
 	allys.append(BATTLE_POKEMON)
 	set_opposers()
 	
 	emit_signal("start")
+
+func _bag():
+	emit_signal("stop")
+	emit_signal("poke_enemy_stop")
+	Utils.get_scene_manager().transition_to_bag_scene()
+
+func exit_bag():
+	emit_signal("start")
+	emit_signal("poke_start")
 	
 func _switch():
 	emit_signal("stop")

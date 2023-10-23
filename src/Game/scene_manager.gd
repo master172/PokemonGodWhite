@@ -184,12 +184,17 @@ func finished_fading():
 			menu.load_bag_scene()
 		Transition_Type.EXIT_BAG_SCENE:
 			menu.unload_bag_scene()
+			unload_bag_scene()
 		Transition_Type.EVOLUTION:
 			load_evolution()
 		Transition_Type.EXIT_EVOLUTION:
 			re_check_evolution()
 	transition_player.play("FadeToNormal")
 
+func unload_bag_scene():
+	if battle_layer.get_child_count() >0:
+		battle_layer.get_child(0).exit_bag()
+		menu.visible = false
 func check_moves():
 	emit_signal("evolution_finished")
 	await EvolutionManager.evolution_done

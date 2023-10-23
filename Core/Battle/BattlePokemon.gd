@@ -51,6 +51,7 @@ signal attacked(body)
 signal run
 signal throw
 signal switch
+signal bag
 
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
@@ -161,7 +162,10 @@ func receive_knockback(body,damage):
 func _stop():
 	stop = true
 
-
+func _start():
+	stop = false
+	action = false
+	
 func _on_attack_selector_displayed():
 	velocity = Vector2.ZERO
 
@@ -173,8 +177,7 @@ func _on_action_chosen_action_chosen(act):
 		0:
 			emit_signal("switch")
 		1:
-			print("bag")
-			action = false
+			emit_signal("bag")
 		2:
 			emit_signal("throw")
 		3:
