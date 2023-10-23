@@ -155,6 +155,7 @@ func _stop():
 	finite_state_machine.change_state(stall_state)
 
 func _start():
+	stop = false
 	finite_state_machine.change_state(enemy_follow_state)
 	
 func player_attacked(player):
