@@ -127,6 +127,7 @@ func transistion_exit_battle_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BATTLE_SCENE
 	
+	
 func transistion_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
 	summary_pokemon = poke_number

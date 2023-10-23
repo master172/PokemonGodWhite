@@ -57,6 +57,7 @@ func Lost_battle(pokemon):
 
 func on_lost_battle_finished(dialog):
 	Utils.get_scene_manager().transistion_exit_battle_scene()
+	AllyPokemon.all_heal()
 	
 func Lost_match(pokemon):
 	print(pokemon.Nick_name)
