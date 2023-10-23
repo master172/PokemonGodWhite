@@ -39,9 +39,12 @@ func _input(event):
 			change_selected()
 		
 		elif event.is_action_pressed("Yes"):
-			pokemon_selected.emit(current_selected)
-			visible = false
-			state = STATES.EMPTY
+			if AllyPokemon.get_party_pokemon(current_selected).Health > 0:
+				pokemon_selected.emit(current_selected)
+				visible = false
+				state = STATES.EMPTY
+			else:
+				pass
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

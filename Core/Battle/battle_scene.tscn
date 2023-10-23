@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=30 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Core/Battle/DialogHandler.gd" id="5_duj7c"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="7_1shl8"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="8_geedj"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="8_hgm4v"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="9_77t2k"]
 [ext_resource type="PackedScene" uid="uid://c0xx2xkpqlmlr" path="res://src/Pokemon/PokeBalls/thrower.tscn" id="9_ksmjk"]
 
 [sub_resource type="Resource" id="Resource_ust6q"]
@@ -15,8 +17,8 @@ Dialog_type = 0
 text = "Ash defeated the opposing {Pokemon}"
 next = 1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_i1sr4"]
 script = ExtResource("7_1shl8")
@@ -24,8 +26,8 @@ Dialog_type = 0
 text = "{Winner} recived {points} exp points"
 next = 2
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_4ual5"]
 script = ExtResource("7_1shl8")
@@ -33,22 +35,44 @@ Dialog_type = 0
 text = "{Winner} levelled up to level {level}"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_tcc5u"]
 script = ExtResource("8_geedj")
 Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_ust6q"), SubResource("Resource_i1sr4"), SubResource("Resource_4ual5")])
 Format = {}
 
+[sub_resource type="Resource" id="Resource_l0uhl"]
+script = ExtResource("8_hgm4v")
+function = "switch"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_uh7si"]
+script = ExtResource("9_77t2k")
+text = "Yes"
+functions = Array[ExtResource("8_hgm4v")]([SubResource("Resource_l0uhl")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_s0fo6"]
+script = ExtResource("8_hgm4v")
+function = "no"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_cqtee"]
+script = ExtResource("9_77t2k")
+text = "No"
+functions = Array[ExtResource("8_hgm4v")]([SubResource("Resource_s0fo6")])
+next = -1
+
 [sub_resource type="Resource" id="Resource_d3sre"]
 script = ExtResource("7_1shl8")
-Dialog_type = 0
+Dialog_type = 1
 text = "{Pokemon} fainted, will ash send a new pokemon"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([SubResource("Resource_uh7si"), SubResource("Resource_cqtee")])
 
 [sub_resource type="Resource" id="Resource_l15oa"]
 script = ExtResource("8_geedj")
@@ -61,8 +85,8 @@ Dialog_type = 0
 text = "{Pokemon} fainted, ash is out of pokemon"
 next = 1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_it387"]
 script = ExtResource("7_1shl8")
@@ -70,8 +94,8 @@ Dialog_type = 0
 text = "Ash whited out"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_gr6tl"]
 script = ExtResource("8_geedj")
@@ -84,8 +108,8 @@ Dialog_type = 0
 text = "Ash, ran away"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_gxptb"]
 script = ExtResource("8_geedj")
@@ -98,8 +122,8 @@ Dialog_type = 0
 text = "{Pokemon} learned {Move}"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_omf7m"]
 script = ExtResource("8_geedj")
@@ -112,8 +136,8 @@ Dialog_type = 0
 text = "The opposing {pokemon} was caught"
 next = -1
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+functions = Array[ExtResource("8_hgm4v")]([])
+Options = Array[ExtResource("9_77t2k")]([])
 
 [sub_resource type="Resource" id="Resource_kh0ti"]
 script = ExtResource("8_geedj")

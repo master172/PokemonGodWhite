@@ -22,10 +22,13 @@ signal poke_start
 var allys :Array[BattlePokemon] = []
 var opponents :Array[PokeEnemy] = []
 
-var switching:bool = false
 
 var BATTLE_POKEMON
 
+func _ready():
+	DialogLayer.get_child(0).function_manager.connect("Switch",_switch)
+	DialogLayer.get_child(0).function_manager.connect("No",_run)
+	
 func set_enemy(pokemon):
 	var Poke_enemy = poke_enemy.instantiate()
 	Poke_enemy.pokemon = game_pokemon.new(pokemon[0],pokemon[1])
@@ -87,7 +90,6 @@ func _switch():
 	
 	await get_tree().create_timer(0.1).timeout
 	hud._start()
-	switching = true
 	
 func _remove():
 	BattleManager.AllyHolders.erase(BATTLE_POKEMON)

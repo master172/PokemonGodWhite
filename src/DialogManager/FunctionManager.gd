@@ -6,6 +6,9 @@ signal Sell
 signal evolve
 signal Cancel
 
+signal Switch
+signal No
+
 func test_function():
 	print("test")
 
@@ -44,4 +47,9 @@ func time_to_evolve():
 
 func cancel_evolution():
 	emit_signal("Cancel")
-	
+
+func switch():
+	emit_signal("Switch")
+
+func no():
+	emit_signal("No")
