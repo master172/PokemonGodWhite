@@ -1,5 +1,7 @@
 extends Node
 
+const WonDialog = preload("res://Core/Battle/Dialogs/won.tres")
+
 @export var won_dialog:DialogueLine
 @export var won_dialog_level_up:DialogueLine
 @export var lost_match:DialogueLine
@@ -15,7 +17,8 @@ func _process(delta):
 
 func add_won_dialog(pokemon:game_pokemon,winner:game_pokemon):
 	
-	won_dialog = won_dialog.duplicate()
+	won_dialog = null
+	won_dialog = WonDialog.duplicate()
 	
 	won_dialog.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	won_dialog.add_symbols_to_replace({"Winner":winner.Nick_name})
@@ -34,11 +37,10 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 	
 func on_won_dialog_finished(dialog):
-#	if dialog == won_dialog or dialog == won_dialog_level_up:
-	won_dialog.remove_all_symbols()
-	won_dialog = null
-	won_dialog_level_up = null
-	check_move_learned()
+	if dialog == won_dialog or dialog == won_dialog_level_up:
+		won_dialog = null
+		won_dialog_level_up = null
+		check_move_learned()
 
 func battle_pokemon_defeated(pokemon):
 	if AllyPokemon.all_fainted() == true:

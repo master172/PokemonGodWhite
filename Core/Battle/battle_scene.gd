@@ -9,14 +9,21 @@ const poke_enemy = preload("res://Core/Battle/poke_enemy.tscn")
 @onready var enemy_pokemon = $EnemyPokemon
 @onready var poke_data = $PokeData
 @onready var dialog_handler = $DialogHandler
+@onready var hud = $Hud
 
 signal stop
 signal poke_enemy_stop
 
 signal player_attacked(player)
 
+signal start
+
 var allys :Array[BattlePokemon] = []
 var opponents :Array[PokeEnemy] = []
+
+var switching:bool = false
+
+var BATTLE_POKEMON
 
 func set_enemy(pokemon):
 	var Poke_enemy = poke_enemy.instantiate()
@@ -31,12 +38,13 @@ func set_enemy(pokemon):
 	
 	connect("poke_enemy_stop",Poke_enemy._stop)
 	connect("player_attacked",Poke_enemy.player_attacked)
-	
+	connect("start",Poke_enemy._start)
 	opponents.append(Poke_enemy)
 	set_opposers()
 	
 func _on_hud_pokemon_selected(pokemon):
-	var BATTLE_POKEMON = battle_pokemon.instantiate()
+	
+	BATTLE_POKEMON = battle_pokemon.instantiate()
 	BATTLE_POKEMON.pokemon = AllyPokemon.get_party_pokemon(pokemon)
 	BATTLE_POKEMON.position = marker_2d.position
 	ally_pokemon.add_child(BATTLE_POKEMON)
@@ -51,11 +59,32 @@ func _on_hud_pokemon_selected(pokemon):
 	BATTLE_POKEMON.connect("attacked",_player_attacked)
 	BATTLE_POKEMON.connect("run",_run)
 	BATTLE_POKEMON.connect("throw",_throw)
+	BATTLE_POKEMON.connect("switch",_switch)
 	connect("stop",BATTLE_POKEMON._stop)
 	
 	allys.append(BATTLE_POKEMON)
 	set_opposers()
-
+	
+	emit_signal("start")
+	
+func _switch():
+	emit_signal("stop")
+	emit_signal("poke_enemy_stop")
+	
+	_remove()
+	
+	await get_tree().create_timer(0.1).timeout
+	hud._start()
+	switching = true
+	
+func _remove():
+	BattleManager.AllyHolders.erase(BATTLE_POKEMON)
+	BattleManager.AllyPokemons.Erase_pokemon(BATTLE_POKEMON.pokemon)
+	allys.erase(BATTLE_POKEMON)
+	set_opposers()
+	
+	BATTLE_POKEMON.queue_free()
+	
 func _throw():
 	if opponents != []:
 		thrower._throw(opponents[0])

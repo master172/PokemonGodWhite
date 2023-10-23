@@ -50,6 +50,7 @@ signal defeated(pokemon)
 signal attacked(body)
 signal run
 signal throw
+signal switch
 
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
@@ -170,8 +171,7 @@ func _on_action_chosen_action_chosen(act):
 	state = states.NORMAL
 	match act:
 		0:
-			print("pokemon")
-			action = false
+			emit_signal("switch")
 		1:
 			print("bag")
 			action = false

@@ -12,6 +12,9 @@ func add_pokemon(Game_pokemon:game_pokemon):
 
 func remove_pokemon(index:int):
 	pokemons.remove_at(index)
+
+func Erase_pokemon(pokemon:game_pokemon):
+	pokemons.erase(pokemon)
 	
 func get_pokemons():
 	if pokemons.size() >= 1:

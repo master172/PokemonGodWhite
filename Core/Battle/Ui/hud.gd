@@ -19,6 +19,10 @@ func change_selected():
 	radial.frame = current_selected + 1
 
 func _ready():
+	_start()
+
+func _start():
+	state = STATES.RADIAL
 	change_selected()
 	_set_radial()
 	

@@ -154,6 +154,9 @@ func _stop():
 	print("what")
 	finite_state_machine.change_state(stall_state)
 
+func _start():
+	finite_state_machine.change_state(enemy_follow_state)
+	
 func player_attacked(player):
 	var rng = RandomNumberGenerator.new()
 	var dodge_chance = 7
