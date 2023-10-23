@@ -384,7 +384,9 @@ var fairy_type:Dictionary = {
 }
 
 var AllyPokemons:Poke_list = Poke_list.new()
-var EnemyPokemons:Poke_list = Poke_list.new()
+var EnemyPokemons: Array[Pokemon]
+
+var EnemyLevels: Array[int]
 
 var AllyHolders:Array[BattlePokemon] = []
 var EnemyHolders:Array[PokeEnemy] = []
@@ -393,7 +395,6 @@ var in_battle:bool = false
 
 func _ready():
 	AllyPokemons.Name = "AllyPokemons"
-	EnemyPokemons.Name = "EnemyPokemons"
 
 
 func get_type_modifier(attacker:String,defender:String):
@@ -405,6 +406,6 @@ func finish_battle():
 	AllyHolders = []
 	EnemyHolders = []
 	AllyPokemons.clear_pokemon()
-	EnemyPokemons.clear_pokemon()
+	EnemyPokemons = []
 	
 	in_battle = false

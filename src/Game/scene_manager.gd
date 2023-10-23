@@ -32,7 +32,9 @@ enum Transition_Type {
 	BAG_SCENE,
 	EXIT_BAG_SCENE,
 	EVOLUTION,
-	EXIT_EVOLUTION
+	EXIT_EVOLUTION,
+	TRAINER_BATTLE,
+	EXIT_TRAINER_BATTLE
 }
 var transition_type = Transition_Type.NEW_SCENE
 
@@ -99,6 +101,14 @@ func check_evolution():
 		return
 	
 	ask_evolution()
+
+func transistion_trainer_battle_scene(pokemon,pokemons,levels):
+	Utils.get_player().set_physics_process(false)
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.TRAINER_BATTLE
+	pocket_monster = pokemon
+	BattleManager.EnemyPokemons = pokemons
+	BattleManager.EnemyLevels = levels
 	
 func transition_to_evolution():
 	transition_player.play("FadeToBlack")
@@ -190,12 +200,21 @@ func finished_fading():
 			load_evolution()
 		Transition_Type.EXIT_EVOLUTION:
 			re_check_evolution()
+		Transition_Type.TRAINER_BATTLE:
+			load_battle_trainer(pocket_monster)
+			pocket_monster = []
 	transition_player.play("FadeToNormal")
 
+func load_battle_trainer(pokemon):
+	battle_layer.add_child(battle_scene.instantiate())
+	battle_layer.get_child(0).set_enemy(pokemon)
+	BattleManager.in_battle = true
+	
 func unload_bag_scene():
 	if battle_layer.get_child_count() >0:
 		battle_layer.get_child(0).exit_bag()
 		menu.visible = false
+	
 func check_moves():
 	emit_signal("evolution_finished")
 	await EvolutionManager.evolution_done
@@ -271,6 +290,8 @@ func unload_battle_scene():
 	if Global.auto_evolve == true:
 		AllyPokemon.check_evolution_all()
 		print_debug("what the fuck")
-		
+	
+	BattleManager.EnemyLevels = []
+	BattleManager.EnemyPokemons = []
 func get_current_scene_name():
 	return current_scene.get_child(0).name

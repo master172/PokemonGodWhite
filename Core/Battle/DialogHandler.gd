@@ -10,6 +10,7 @@ const WonDialog = preload("res://Core/Battle/Dialogs/won.tres")
 @export var moveLearned_dialog:DialogueLine
 @export var PokemonCaught:DialogueLine
 
+signal next_pokemon
 # Called when the node enters the scene tree for the first time.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,9 +38,10 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 	
 func on_won_dialog_finished(dialog):
+	
 	if dialog == won_dialog or dialog == won_dialog_level_up:
-		won_dialog = null
-		won_dialog_level_up = null
+		BattleManager.EnemyPokemons.remove_at(0)
+		BattleManager.EnemyLevels.remove_at(0)
 		check_move_learned()
 
 func battle_pokemon_defeated(pokemon):
@@ -86,8 +88,12 @@ func check_move_learned():
 		if PokemonManager.MovesToLearn.size() > 0:
 			start_move_learning()
 		else:
-			Utils.get_scene_manager().transistion_exit_battle_scene()
-		
+
+			if BattleManager.EnemyPokemons.size() == 0:
+				Utils.get_scene_manager().transistion_exit_battle_scene()
+			else:
+
+				emit_signal("next_pokemon")
 func move_learned():
 	moveLearned_dialog.add_symbols_to_replace({"Pokemon":PokemonManager.movesLearned[0].pokemon.Nick_name})
 	moveLearned_dialog.add_symbols_to_replace({"Move":PokemonManager.movesLearned[0].move.action.name})

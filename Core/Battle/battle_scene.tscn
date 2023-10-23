@@ -183,5 +183,6 @@ PokemonCaught = SubResource("Resource_kh0ti")
 position = Vector2(600, 800)
 
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]
+[connection signal="next_pokemon" from="DialogHandler" to="." method="_on_dialog_handler_next_pokemon"]
 [connection signal="faliure" from="thrower" to="." method="_on_thrower_faliure"]
 [connection signal="success" from="thrower" to="." method="_on_thrower_success"]

@@ -24,13 +24,14 @@ var opponents :Array[PokeEnemy] = []
 
 
 var BATTLE_POKEMON
+var Poke_enemy
 
 func _ready():
 	DialogLayer.get_child(0).function_manager.connect("Switch",_switch)
 	DialogLayer.get_child(0).function_manager.connect("No",_run)
 	
 func set_enemy(pokemon):
-	var Poke_enemy = poke_enemy.instantiate()
+	Poke_enemy = poke_enemy.instantiate()
 	Poke_enemy.pokemon = game_pokemon.new(pokemon[0],pokemon[1])
 	Poke_enemy.position = Vector2(603,103)
 	
@@ -43,6 +44,7 @@ func set_enemy(pokemon):
 	connect("poke_enemy_stop",Poke_enemy._stop)
 	connect("player_attacked",Poke_enemy.player_attacked)
 	connect("start",Poke_enemy._start)
+	
 	opponents.append(Poke_enemy)
 	set_opposers()
 	
@@ -129,8 +131,10 @@ func defeating_dialog(pokemon:game_pokemon,body:BattlePokemon,loser:PokeEnemy):
 	set_opposers()
 	emit_signal("stop")
 	
-	body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
-	body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
+	if not body.pokemon.Level_up.is_connected(case_level_up.bind(pokemon,body)):
+		body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
+	if not body.pokemon.experience_added.is_connected(case_experience_added.bind(pokemon,body)):
+		body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
 	pokemon.give_experience_points(body.pokemon)
 	
 	
@@ -164,3 +168,9 @@ func _on_thrower_success():
 	AllyPokemon.add_pokemon(poke)
 	
 	dialog_handler.pokemon_caught(poke)
+
+
+func _on_dialog_handler_next_pokemon():
+	emit_signal("poke_start")
+
+	set_enemy([BattleManager.EnemyPokemons[0],BattleManager.EnemyLevels[0]])

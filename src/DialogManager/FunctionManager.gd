@@ -9,6 +9,8 @@ signal Cancel
 signal Switch
 signal No
 
+signal battle
+
 func test_function():
 	print("test")
 
@@ -53,3 +55,6 @@ func switch():
 
 func no():
 	emit_signal("No")
+
+func Battle():
+	emit_signal("battle")
