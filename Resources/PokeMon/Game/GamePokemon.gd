@@ -48,6 +48,7 @@ class_name game_pokemon
 @export_group("attacks")
 @export var move_pool :Array[MovePoolAction]
 @export var learned_attacks:Array[GameAction]
+@export var learnable_attacks:Array[MovePoolAction]
 
 @export_group("nec")
 @export var exp:int = 0
@@ -192,18 +193,51 @@ func inital_learn_moves():
 				i.learned = true
 				
 func learn_moves():
+	learnable_attacks = []
 	for i in move_pool:
-		if i.action.learned_level <= self.level and i.learned == false and i.skipped == false:
-			var move_to_learn = GameAction.new(i.action)
-			if learned_attacks.size() <= 3:
-				learned_attacks.append(move_to_learn)
-				i.learned = true
-				PokemonManager.movesLearned.append(MoveToLearn.new(self,i))
-				emit_signal("learn_move",self,i)
-			else:
-				PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
-				emit_signal("learn_extra_move",self,i)
-	emit_signal("learning_process_complete")
+		if Global.auto_moves == true:
+			if i.action.learned_level <= self.level and i.learned == false and i.skipped == false:
+				var move_to_learn = GameAction.new(i.action)
+				if learned_attacks.size() <= 3:
+					learned_attacks.append(move_to_learn)
+					i.learned = true
+					PokemonManager.movesLearned.append(MoveToLearn.new(self,i))
+					emit_signal("learn_move",self,i)
+				else:
+					PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
+					emit_signal("learn_extra_move",self,i)
+			emit_signal("learning_process_complete")
+		else:
+			if i.action.learned_level <= self.level and i.learned == false:	
+				learnable_attacks.append(i)
+
+func learn_move_manual(move:int):
+	var move_to_learn = GameAction.new(learnable_attacks[move].action)
+	learned_attacks.append(move_to_learn)
+	learnable_attacks.remove_at(move)	
+	
+
+func forget_move_manual(move:int):
+	var move_to_forget = learned_attacks[move]
+	learned_attacks.remove_at(move)
+
+	learnable_attacks.append(MovePoolAction.new(move_to_forget.base_action))
+	
+
+func replace_moves_manual(move1:int,move2:int):
+	var move_to_forget = learned_attacks[move1]
+	
+	var move_to_learn = GameAction.new(learnable_attacks[move2].action)
+	
+	learned_attacks[move1] = move_to_learn
+	
+	learnable_attacks[move2] = MovePoolAction.new(move_to_forget.base_action)
+
+func get_learnable_attack_name(num:int):
+	if learnable_attacks.size() >= num + 1:
+		return learnable_attacks[num].action.name
+	return ""
+	
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
 		return learned_attacks[num].Name()
