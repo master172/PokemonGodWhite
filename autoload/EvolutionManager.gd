@@ -3,6 +3,9 @@ extends Node
 @export var pokemon_to_evolve:Array[game_pokemon] = []
 @export var evolving_pokemon :Array[Pokemon] = []
 
+@export var Evolving_pokemon:Pokemon
+@export var Pokemon_to_evolve:game_pokemon
+
 signal evolution_done
 
 func remove_evolution_zero():
@@ -24,10 +27,18 @@ func manage_connections(pokemon):
 func done_one_evolution():
 	if PokemonManager.MovesToLearn.size() == 0:
 		emit_signal("evolution_done")
+		Evolving_pokemon = null
+		Pokemon_to_evolve = null
 	else:
 		await PokemonManager.allfinished
 		emit_signal("evolution_done")
-		
+		Evolving_pokemon = null
+		Pokemon_to_evolve = null
+
+func done_evolving():
+	Evolving_pokemon = null
+	Pokemon_to_evolve = null
+	
 func learn_move(pokemon,move):
 	PokemonManager.Starting_dialog(pokemon,move)
 	

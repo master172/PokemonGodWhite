@@ -61,6 +61,8 @@ class_name game_pokemon
 @export_subgroup("battle")
 @export var fainted:bool = false
 
+@export_subgroup("evolution")
+@export var evolutor:Evolutor
 
 
 signal Level_up
@@ -93,6 +95,7 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gen
 	else:
 		gender = Gender
 	
+	evolutor = Base_Pokemon.evolutor.duplicate()
 	
 func set_movepool():
 	for i in Base_Pokemon.Actions:
@@ -281,6 +284,7 @@ func level_up():
 	level +=1
 	set_exp_to_levels()
 	learn_moves()
+	check_evolution()
 
 func set_exp_to_levels():
 	exp_to_current_level = calc_exp_to_level(level-1)
@@ -358,12 +362,27 @@ func get_catch_rate():
 #func move_process():
 
 func check_evolution():
-	if Base_Pokemon.evolutor != null:
-		Base_Pokemon.evolutor.check_evolution(self)
+	if evolutor != null:
+		evolutor.check_evolution(self)
+		print("checking evolution")
 
+func evolve_with_evolutor(num:int):
+	var active_trigger = evolutor.get_active_trigger(num)
+	var poke = active_trigger.get_next_pokemon()
+	evolve(poke)
+
+func get_current_evolution_pokemon(num:int):
+	var active_trigger = evolutor.get_active_trigger(num)
+	var poke = active_trigger.get_next_pokemon()
+	return poke
+	
 func evolve(pokemon):
 	Base_Pokemon = pokemon
 	set_movepool()
 	learn_moves()
 	recalculate_stats()
 	set_to_max_stats()
+	evolutor = Base_Pokemon.evolutor.duplicate()
+	
+func get_current_evolution_triggers():
+	return evolutor.get_active_triggers()

@@ -158,6 +158,9 @@ func load_summary_screen(summary_id:int):
 	get_parent().get_node("PartyScreen").set_active(false)
 	get_parent().add_child(Summary_Scene)
 	get_parent().get_node("Summary").set_pokemon(AllyPokemon.get_party_pokemon(summary_id))
+
+func set_summary_active():
+	get_parent().get_node("Summary").set_active()
 	
 func unload_summary_screen():
 	visible = false

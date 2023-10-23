@@ -14,13 +14,18 @@ func _process(delta):
 	pass
 
 func add_won_dialog(pokemon:game_pokemon,winner:game_pokemon):
+	
+	won_dialog = won_dialog.duplicate()
+	
 	won_dialog.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	won_dialog.add_symbols_to_replace({"Winner":winner.Nick_name})
 	won_dialog.add_symbols_to_replace({"points":str(pokemon.calculate_experience_points())})
+	
 	DialogLayer.get_child(0)._start(won_dialog)
 	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 
 func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
+	won_dialog_level_up = won_dialog_level_up.duplicate()
 	won_dialog_level_up.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	won_dialog_level_up.add_symbols_to_replace({"Winner":winner.Nick_name})
 	won_dialog_level_up.add_symbols_to_replace({"points":str(pokemon.calculate_experience_points())})
@@ -29,8 +34,11 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	DialogLayer.get_child(0).connect("finished",on_won_dialog_finished)
 	
 func on_won_dialog_finished(dialog):
-	if dialog == won_dialog or dialog == won_dialog_level_up:
-		check_move_learned()
+#	if dialog == won_dialog or dialog == won_dialog_level_up:
+	won_dialog.remove_all_symbols()
+	won_dialog = null
+	won_dialog_level_up = null
+	check_move_learned()
 
 func battle_pokemon_defeated(pokemon):
 	if AllyPokemon.all_fainted() == true:
@@ -40,6 +48,7 @@ func battle_pokemon_defeated(pokemon):
 
 func Lost_battle(pokemon):
 	print(pokemon.Nick_name)
+	lost_battle = lost_battle.duplicate()
 	lost_battle.add_symbols_to_replace({"Pokemon":pokemon.Nick_name})
 	DialogLayer.get_child(0)._start(lost_battle)
 	DialogLayer.get_child(0).connect("finished",on_lost_battle_finished)

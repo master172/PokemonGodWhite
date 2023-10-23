@@ -33,3 +33,4 @@ func finish(dial):
 	if dial == congratulation_dialog:
 		queue_free()
 		Utils.get_scene_manager().transistion_exit_evolution()
+		

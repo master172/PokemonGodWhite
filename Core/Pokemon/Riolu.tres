@@ -15,10 +15,12 @@ script = ExtResource("7_rspit")
 evolution_type = 0
 evolving_level = 16
 NextPokemon = ExtResource("6_gxxxq")
+can_evolve = false
 
 [sub_resource type="Resource" id="Resource_okdd3"]
 script = ExtResource("8_i1lxn")
 Triggers = Array[ExtResource("7_rspit")]([SubResource("Resource_ochal")])
+TriggersActive = Array[ExtResource("7_rspit")]([])
 
 [resource]
 script = ExtResource("1_wpna1")

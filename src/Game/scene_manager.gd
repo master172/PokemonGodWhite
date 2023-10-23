@@ -105,8 +105,8 @@ func transition_to_evolution():
 	transition_type = Transition_Type.EVOLUTION
 
 func transistion_exit_evolution():
-	transition_player.play("FadeToBlack")
-	transition_type = Transition_Type.EXIT_EVOLUTION
+	menu.get_parent().show()
+	re_check_evolution()
 	Utils.get_player().set_camera_zoom(4)
 	
 func transistion_exit_bag_scene():
@@ -196,8 +196,20 @@ func check_moves():
 	continue_check_evolution()
 	
 func re_check_evolution():
-	check_moves()
-
+	if Global.auto_evolve == true:
+		check_moves()
+	else:
+		done_with_evolution()
+		
+func done_with_evolution():
+	if WorldEnv != null:
+		WorldEnv.queue_free()
+		WorldEnv = null
+	
+	EvolutionManager.done_evolving()
+	
+	menu.set_summary_active()
+	
 func continue_check_evolution():
 	if WorldEnv != null:
 		WorldEnv.queue_free()
@@ -224,13 +236,18 @@ func cancel_evolution():
 
 func load_evolution():
 	
-	
-	var EvolutionScreen = evolution_scene.instantiate()
-	EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
-	Utils.get_player().add_child(EvolutionScreen)
-	Utils.get_player().set_camera_zoom(1)
-	
-	EvolutionManager.evolve()
+	if Global.auto_evolve == true:
+		var EvolutionScreen = evolution_scene.instantiate()
+		EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
+		Utils.get_player().add_child(EvolutionScreen)
+		Utils.get_player().set_camera_zoom(1)
+		EvolutionManager.evolve()
+	else:
+		var EvolutionScreen = evolution_scene.instantiate()
+		EvolutionScreen.set_pokemons(EvolutionManager.Pokemon_to_evolve,EvolutionManager.Evolving_pokemon)
+		Utils.get_player().add_child(EvolutionScreen)
+		Utils.get_player().set_camera_zoom(1)
+		menu.get_parent().hide()
 	
 func load_battle_scene(pokemon):
 	
@@ -244,7 +261,10 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
-	AllyPokemon.check_evolution_all()
 	
+	if Global.auto_evolve == true:
+		AllyPokemon.check_evolution_all()
+		print_debug("what the fuck")
+		
 func get_current_scene_name():
 	return current_scene.get_child(0).name
