@@ -204,12 +204,19 @@ func learn_moves():
 					PokemonManager.movesLearned.append(MoveToLearn.new(self,i))
 					emit_signal("learn_move",self,i)
 				else:
+					
 					PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
 					emit_signal("learn_extra_move",self,i)
 			emit_signal("learning_process_complete")
 		else:
+			var to_learn_move:bool = true
 			if i.action.learned_level <= self.level and i.learned == false:	
-				learnable_attacks.append(i)
+				for j in learned_attacks:
+						if j.Name().to_lower() == i.action.name.to_lower():
+							to_learn_move = false
+				
+				if to_learn_move == true:
+					learnable_attacks.append(i)
 
 func learn_move_manual(move:int):
 	var move_to_learn = GameAction.new(learnable_attacks[move].action)

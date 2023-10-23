@@ -93,7 +93,8 @@ func _unhandled_input(event):
 				Utils.get_scene_manager().transistion_exit_party_screen()
 		current_state.Summary:
 			if event.is_action_pressed("No"):
-				Utils.get_scene_manager().transistion_exit_summary_screen()
+				if Global.move_management == false:
+					Utils.get_scene_manager().transistion_exit_summary_screen()
 		current_state.Card:
 			if event.is_action_pressed("No"):
 				unload_trainer_card()
@@ -161,6 +162,7 @@ func load_summary_screen(summary_id:int):
 func unload_summary_screen():
 	visible = false
 	get_parent().get_node("PartyScreen").set_active(true)
+	get_parent().get_node("PartyScreen").summary = false
 	if is_instance_valid(Summary_Scene):
 		get_parent().get_node("Summary").queue_free()
 	CurrentState = current_state.Pokemons

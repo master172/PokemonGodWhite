@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=20 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
 [ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
 [ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
+[ext_resource type="PackedScene" uid="uid://bhg0w3hc6j2dh" path="res://src/Ui/MoveManager/MoveManager.tscn" id="19_qo35f"]
 
 [node name="Summary" type="Control"]
 layout_mode = 3
@@ -434,3 +435,9 @@ texture_filter = 1
 position = Vector2(81, 160)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_a8ai2")
+
+[node name="MoveManager" parent="." instance=ExtResource("19_qo35f")]
+visible = false
+layout_mode = 1
+
+[connection signal="quit" from="MoveManager" to="." method="_on_move_manager_quit"]

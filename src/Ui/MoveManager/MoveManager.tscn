@@ -15,14 +15,12 @@ fill_to = Vector2(1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j2sh"]
 bg_color = Color(0.6, 0, 0.0313726, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2kuh"]
-bg_color = Color(0, 0.72549, 0.145098, 1)
-corner_radius_top_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ijm"]
+bg_color = Color(0, 0.784314, 0.172549, 1)
 
-[sub_resource type="Theme" id="Theme_kn12o"]
+[sub_resource type="Theme" id="Theme_iqlt2"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_6j2sh")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_j2kuh")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_80ijm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl66m"]
 bg_color = Color(0, 0.647059, 0.576471, 1)
@@ -94,7 +92,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
-theme = SubResource("Theme_kn12o")
+theme = SubResource("Theme_iqlt2")
 value = 100.0
 
 [node name="Level" type="Label" parent="VBoxContainer/PokeInfo/HBoxContainer/VBoxContainer"]

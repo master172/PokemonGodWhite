@@ -11,6 +11,9 @@ var selected_option: int = Options.FIRST_SLOT
 
 
 var options_selectable:int = 7
+
+var summary:bool = false
+
 @onready var options: Dictionary = {
 	Options.FIRST_SLOT: $MainSlot,
 	Options.SECOND_SLOT: $Slot2,
@@ -88,6 +91,7 @@ func _input(event):
 					Utils.get_scene_manager().transistion_exit_party_screen()
 				else:
 					Utils.get_scene_manager().transistion_to_summary_scene(selected_option)
+					summary = true
 		elif state == states.switching:
 			if selected_option != switch_a:
 				switch_b = selected_option
@@ -110,7 +114,7 @@ func set_active(s:bool):
 
 func _physics_process(delta):
 	
-	if state != states.switching:
+	if state != states.switching and summary == false:
 		if button_press_timer.is_stopped() == false and waiting == true:
 			if button_press_timer.time_left < 0.9:
 				hold_button.visible = true
