@@ -20,6 +20,9 @@ signal player_entered_door_signal
 @export var can_cycle : bool = true
 @export var can_move : bool = true
 
+@export_group("vfx")
+@export var can_leaf:bool = false
+
 const TILE_SIZE = 16
 
 const LandingDustEffect = preload("res://src/player/ash/landing_dust_effect.tscn")
@@ -55,6 +58,7 @@ var speed :float= 4.0
 @onready var saver = $Saver
 @onready var footstep = $AudioManager/Footstep
 @onready var camera_2d = $Camera2D
+@onready var leaves = $HudEffects/Leaves
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -82,7 +86,7 @@ var player_uid = ""
 signal player_ready
 
 func _ready():
-
+	
 	Utils.Player = self
 	initial_position = position
 	animation_tree.active = true
@@ -107,8 +111,10 @@ func _ready():
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 	
+	if can_leaf == true:
+		leaves.emit()
 	emit_signal("player_ready")
-
+	
 func set_poke_pos_dir(val1:Vector2,val2):
 	poke_pos = val1
 	pokeDirection = val2

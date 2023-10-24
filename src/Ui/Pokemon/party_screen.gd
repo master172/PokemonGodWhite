@@ -55,34 +55,38 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("S"):
-		unset_active_option()
-		if selected_option == options_selectable - 2:
-			selected_option = 6
-		elif selected_option == 6:
-			selected_option = 0
-		else:
-			selected_option = (selected_option + 1) % options_selectable
+		if state == states.active and summary == false:
+			unset_active_option()
+			if selected_option == options_selectable - 2:
+				selected_option = 6
+			elif selected_option == 6:
+				selected_option = 0
+			else:
+				selected_option = (selected_option + 1) % options_selectable
 
 		set_active_option()
 	elif event.is_action_pressed("W"):
-		unset_active_option()
-		if selected_option == 0:
-			selected_option = Options.CANCEL
-		elif selected_option == Options.CANCEL:
-			selected_option -=  (1 + (7 - options_selectable))
-		else:
-			selected_option -= 1
-
-		set_active_option()
-	elif event.is_action_pressed("A"):
-		unset_active_option()
-		selected_option = 0
-		set_active_option()
-	elif event.is_action_pressed("D") and selected_option == Options.FIRST_SLOT:
-		if options_selectable >= 3:
+		if state == states.active and summary == false:
 			unset_active_option()
-			selected_option = 1
+			if selected_option == 0:
+				selected_option = Options.CANCEL
+			elif selected_option == Options.CANCEL:
+				selected_option -=  (1 + (7 - options_selectable))
+			else:
+				selected_option -= 1
+
 			set_active_option()
+	elif event.is_action_pressed("A"):
+		if state == states.active and summary == false:
+			unset_active_option()
+			selected_option = 0
+			set_active_option()
+	elif event.is_action_pressed("D") and selected_option == Options.FIRST_SLOT:
+		if state == states.active and summary == false:
+			if options_selectable >= 3:
+				unset_active_option()
+				selected_option = 1
+				set_active_option()
 	elif event.is_action_pressed("Yes"):
 		if state == states.active:
 			await get_tree().create_timer(0.1).timeout

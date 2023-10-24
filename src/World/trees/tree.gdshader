@@ -1,9 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxd3fxljtidla"]
-
-[ext_resource type="Texture2D" uid="uid://b3ktyru4t3vem" path="res://assets/trees/tree1.png" id="1_6msj0"]
-
-[sub_resource type="Shader" id="Shader_sinkl"]
-code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
 //
 // speed - The speed of the wind movement.
@@ -45,34 +40,4 @@ void vertex() {
     float time = TIME * speed + offset;
     //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
     VERTEX.x += getWind(VERTEX.xy, UV, time);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hp64p"]
-shader = SubResource("Shader_sinkl")
-shader_parameter/speed = 1.0
-shader_parameter/minStrength = 0.07
-shader_parameter/maxStrength = 0.02
-shader_parameter/strengthScale = 100.0
-shader_parameter/interval = 3.5
-shader_parameter/detail = 1.0
-shader_parameter/distortion = 0.1
-shader_parameter/heightOffset = 0.3
-shader_parameter/offset = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkc67"]
-size = Vector2(32, 32)
-
-[node name="Tree" type="StaticBody2D"]
-z_index = 1
-collision_layer = 2
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_hp64p")
-position = Vector2(8, -16)
-texture = ExtResource("1_6msj0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -8)
-shape = SubResource("RectangleShape2D_mkc67")
+}

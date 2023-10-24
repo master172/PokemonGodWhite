@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_w8may")
 name = "ThunderBolt"
-learned_level = 6
+learned_level = 7
 action = ExtResource("1_xwexr")
 Type = "Normal"
 power = 1.0

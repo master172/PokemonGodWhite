@@ -1,7 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6h1kkkqjrqw1"]
+[gd_scene load_steps=10 format=3 uid="uid://c6h1kkkqjrqw1"]
 
 [ext_resource type="Script" path="res://Libraries/Grass/tall_grass.gd" id="1_0d38s"]
 [ext_resource type="Texture2D" uid="uid://u5trsui58q1i" path="res://assets/tallgrass/tall_grass.png" id="1_s3ykv"]
+[ext_resource type="Shader" path="res://src/World/trees/tree.gdshader" id="2_mk5gm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmdpe"]
+shader = ExtResource("2_mk5gm")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4cml"]
 size = Vector2(12, 12)
@@ -78,6 +91,7 @@ script = ExtResource("1_0d38s")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_lmdpe")
 texture = ExtResource("1_s3ykv")
 hframes = 2
 frame = 1

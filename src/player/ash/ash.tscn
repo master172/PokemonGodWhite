@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=127 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://t7c461afe72l" path="res://assets/Audio/SFX/Footstep/Concrete/1.wav" id="6_8g0lc"]
 [ext_resource type="AudioStream" uid="uid://bp8jnt3rhb4d3" path="res://assets/Audio/SFX/Footstep/Concrete/2.wav" id="7_p1phv"]
 [ext_resource type="AudioStream" uid="uid://ckvq8luru7214" path="res://assets/Audio/SFX/Footstep/Concrete/3.wav" id="8_eeyw1"]
+[ext_resource type="Script" path="res://src/player/ash/Leaves.gd" id="9_dqx2l"]
+[ext_resource type="Texture2D" uid="uid://bc3ojlmrkopii" path="res://assets/Effects/FallingLeaves/Leaf3.png" id="9_m0d4k"]
+[ext_resource type="Texture2D" uid="uid://bp0egh8oy12po" path="res://assets/Effects/FallingLeaves/Leaf1.png" id="10_cfayg"]
+[ext_resource type="Texture2D" uid="uid://bn8hqppd45tsa" path="res://assets/Effects/FallingLeaves/Leaf2.png" id="11_3m2yk"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1228,6 +1232,22 @@ states/cycleTurn/position = Vector2(255, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwm2l"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_rwh7e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_brjux"), "Idle", "Turn", SubResource("AnimationNodeStateMachineTransition_1ce3x"), "Turn", "Idle", SubResource("AnimationNodeStateMachineTransition_87t22"), "Turn", "Walk", SubResource("AnimationNodeStateMachineTransition_n0vnf"), "Walk", "Turn", SubResource("AnimationNodeStateMachineTransition_ft56w"), "Idle", "Surf", SubResource("AnimationNodeStateMachineTransition_fx44w"), "Surf", "Idle", SubResource("AnimationNodeStateMachineTransition_jmi2e"), "Surf", "Walk", SubResource("AnimationNodeStateMachineTransition_e1j1w"), "Walk", "Surf", SubResource("AnimationNodeStateMachineTransition_dovaj"), "SurfTurn", "Surf", SubResource("AnimationNodeStateMachineTransition_14g3v"), "Surf", "SurfTurn", SubResource("AnimationNodeStateMachineTransition_yhtxt"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_rsckp"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4kv4"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_kdt2x"), "Run", "Turn", SubResource("AnimationNodeStateMachineTransition_4a4xp"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_ipoe7"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_w1vx0"), "Idle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_vbc8t"), "cycleIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_ugir4"), "cycleIdle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_cdd6x"), "cycleTurn", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_7c0bt"), "cycleIdle", "cycle", SubResource("AnimationNodeStateMachineTransition_ay2gp"), "cycle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_o72fi"), "cycle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_ai0dp"), "cycleTurn", "cycle", SubResource("AnimationNodeStateMachineTransition_8rjqp")]
 graph_offset = Vector2(-122, 55)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f6evh"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 10, 1)
+particle_flag_disable_z = true
+direction = Vector3(0.7, 0.5, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angular_velocity_min = 58.0
+angular_velocity_max = 62.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 45.0
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_kcwe4")
@@ -1311,5 +1331,40 @@ script = ExtResource("4_ydgc5")
 [node name="Footstep" type="AudioStreamPlayer2D" parent="AudioManager"]
 script = ExtResource("5_0pi4e")
 Audios = Array[AudioStream]([ExtResource("6_8g0lc"), ExtResource("7_p1phv"), ExtResource("8_eeyw1")])
+
+[node name="HudEffects" type="Node2D" parent="."]
+
+[node name="Leaves" type="Node2D" parent="HudEffects"]
+script = ExtResource("9_dqx2l")
+
+[node name="Leafs" type="GPUParticles2D" parent="HudEffects/Leaves"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-160, -160)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_f6evh")
+texture = ExtResource("9_m0d4k")
+lifetime = 10.0
+
+[node name="Leafs2" type="GPUParticles2D" parent="HudEffects/Leaves"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-160, -160)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_f6evh")
+texture = ExtResource("10_cfayg")
+lifetime = 10.0
+
+[node name="Leafs3" type="GPUParticles2D" parent="HudEffects/Leaves"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-160, -160)
+emitting = false
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_f6evh")
+texture = ExtResource("11_3m2yk")
+lifetime = 10.0
 
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]
