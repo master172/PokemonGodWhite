@@ -123,6 +123,7 @@ func _input(event):
 		elif state == states.LIST:
 			set_list_inactive()
 			current_selected = 0
+			max_selectable = 6
 			state = states.PARTY
 			set_party_active() 
 			
