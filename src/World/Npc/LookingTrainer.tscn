@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://riyto8ufmaoj"]
+[gd_scene load_steps=30 format=3 uid="uid://c1l5inso4oeik"]
 
-[ext_resource type="Script" path="res://src/World/Npc/Aiden.gd" id="1_m0kjm"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_qte7a"]
-[ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_bd7x8"]
-[ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_3jn46"]
+[ext_resource type="Script" path="res://src/World/Npc/LookingTrainer.gd" id="1_ah8sr"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_1yfx6"]
+[ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_pukci"]
+[ext_resource type="Texture2D" uid="uid://cag55ot7oy6oo" path="res://assets/Npc/Trainers/General/NPC 07.png" id="4_xek52"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -240,8 +240,8 @@ size = Vector2(16, 16)
 z_index = 1
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_m0kjm")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_qte7a"), ExtResource("3_bd7x8")])
+script = ExtResource("1_ah8sr")
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_1yfx6"), ExtResource("3_pukci")])
 levels = Array[int]([6, 7])
 current_dialog = "AidenInteraction"
 animation_player = NodePath("AnimationPlayer")
@@ -252,7 +252,7 @@ sprite_2d = NodePath("Sprite2D")
 texture_filter = 1
 position = Vector2(0, -12)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_3jn46")
+texture = ExtResource("4_xek52")
 hframes = 4
 vframes = 4
 frame = 12
@@ -272,6 +272,3 @@ parameters/Walk/blend_position = Vector2(0.0561798, -0.0957447)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_art2r")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 64)

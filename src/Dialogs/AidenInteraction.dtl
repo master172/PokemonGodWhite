@@ -7,6 +7,8 @@ Would You like a battle with Aiden
 - Yes
 	Really Thank You Ash
 	[signal arg="Battle"]
+	[signal arg="end"]
 - No
 	Well Thats a shame
 	[signal arg="No"]
+	[signal arg="end"]

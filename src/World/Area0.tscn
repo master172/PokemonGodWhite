@@ -8213,6 +8213,7 @@ script = ExtResource("2_wyec4")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(88, -48)
+can_leaf = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-296, -40)
