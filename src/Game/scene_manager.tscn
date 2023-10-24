@@ -149,9 +149,11 @@ libraries = {
 [node name="AudioManager" parent="." instance=ExtResource("5_p78iy")]
 
 [node name="Debug" type="CanvasLayer" parent="."]
+layer = 20
 
 [node name="PokemonDebug" parent="Debug" instance=ExtResource("6_71aaj")]
 visible = false
+z_index = 20
 
 [node name="MoveDeletor" type="CanvasLayer" parent="."]
 

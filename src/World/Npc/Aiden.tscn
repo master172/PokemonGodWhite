@@ -1,44 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://riyto8ufmaoj"]
+[gd_scene load_steps=30 format=3 uid="uid://riyto8ufmaoj"]
 
 [ext_resource type="Script" path="res://src/World/Npc/Aiden.gd" id="1_m0kjm"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_qte7a"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_qyuxr"]
 [ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_bd7x8"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_ompnl"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_dv5uu"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_4mjlu"]
 [ext_resource type="Texture2D" uid="uid://cag55ot7oy6oo" path="res://assets/Npc/Trainers/General/NPC 07.png" id="6_n8qjj"]
-
-[sub_resource type="Resource" id="Resource_m61je"]
-script = ExtResource("2_qyuxr")
-function = "Battle"
-parameters = []
-
-[sub_resource type="Resource" id="Resource_42uk2"]
-script = ExtResource("3_ompnl")
-text = "Yes"
-functions = Array[ExtResource("2_qyuxr")]([SubResource("Resource_m61je")])
-next = -1
-
-[sub_resource type="Resource" id="Resource_euol1"]
-script = ExtResource("3_ompnl")
-text = "No"
-functions = Array[ExtResource("2_qyuxr")]([])
-next = -1
-
-[sub_resource type="Resource" id="Resource_dydgy"]
-script = ExtResource("4_dv5uu")
-Dialog_type = 1
-text = "Yo, ash want a batlle"
-next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[ExtResource("2_qyuxr")]([])
-Options = Array[ExtResource("3_ompnl")]([SubResource("Resource_42uk2"), SubResource("Resource_euol1")])
-
-[sub_resource type="Resource" id="Resource_dqh62"]
-script = ExtResource("5_4mjlu")
-Dialogs = Array[ExtResource("4_dv5uu")]([SubResource("Resource_dydgy")])
-Format = {}
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -278,7 +243,6 @@ collision_mask = 0
 script = ExtResource("1_m0kjm")
 pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_qte7a"), ExtResource("3_bd7x8")])
 levels = Array[int]([5, 6])
-current_dialog = SubResource("Resource_dqh62")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

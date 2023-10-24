@@ -27,8 +27,8 @@ var BATTLE_POKEMON
 var Poke_enemy
 
 func _ready():
-	DialogLayer.get_child(0).function_manager.connect("Switch",_switch)
-	DialogLayer.get_child(0).function_manager.connect("No",_run)
+	Dialogic.connect("signal_event",_switch)
+	Dialogic.connect("signal_event",_run)
 	
 func set_enemy(pokemon):
 	Poke_enemy = poke_enemy.instantiate()
@@ -84,14 +84,16 @@ func exit_bag():
 	emit_signal("start")
 	emit_signal("poke_start")
 	
-func _switch():
-	emit_signal("stop")
-	emit_signal("poke_enemy_stop")
+func _switch(Sign):
+	if Sign == "SwitchPokemon":
+		emit_signal("stop")
+		emit_signal("poke_enemy_stop")
 	
-	_remove()
+		_remove()
 	
-	await get_tree().create_timer(0.1).timeout
-	hud._start()
+		get_viewport().set_input_as_handled()
+		
+		hud._start()
 	
 func _remove():
 	BattleManager.AllyHolders.erase(BATTLE_POKEMON)
@@ -149,11 +151,12 @@ func case_experience_added(pokemon,body):
 func _player_attacked(player):
 	emit_signal("player_attacked",player)
 
-func _run():
-	print_debug("run function")
-	emit_signal("stop")
-	emit_signal("poke_enemy_stop")
-	dialog_handler._run()
+func _run(Sign):
+	if Sign == "Run":
+		print_debug("run function")
+		emit_signal("stop")
+		emit_signal("poke_enemy_stop")
+		dialog_handler._run()
 
 
 func _on_thrower_faliure():

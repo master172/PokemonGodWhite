@@ -1,0 +1,4 @@
+{Battle.Winner} has emerged victorious in the battle against {Battle.Loser}
+{Battle.Winner} has gained {Battle.Points} exp points
+{Battle.Winner} has levelled up to Level {Battle.Level}
+[signal arg="Win"]

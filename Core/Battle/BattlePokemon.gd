@@ -51,9 +51,9 @@ signal health_changed(body)
 signal defeated(pokemon)
 
 signal attacked(body)
-signal run
+signal run(Value:String)
 signal throw
-signal switch
+signal switch(Value:String)
 signal bag
 
 var opposing_pokemons :Array[PokeEnemy] = []
@@ -180,7 +180,7 @@ func _on_action_chosen_action_chosen(act):
 	state = states.NORMAL
 	match act:
 		0:
-			emit_signal("switch")
+			emit_signal("switch","SwitchPokemon")
 		1:
 			emit_signal("bag")
 		2:
@@ -189,7 +189,7 @@ func _on_action_chosen_action_chosen(act):
 			else:
 				action = false
 		3:
-			emit_signal("run")
+			emit_signal("run","Run")
 
 
 func _on_action_chosen_cancel():

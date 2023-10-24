@@ -525,7 +525,7 @@ func check_ledge_direction():
 func check_interaction():
 	if interaction_cast.is_colliding():
 		
-		if Input.is_action_just_pressed("Yes") and Utils.DialogProcessing == false:
+		if Input.is_action_just_pressed("Yes") and Utils.DialogProcessing == false and Dialogic.current_timeline == null:
 	
 			var interactable = interaction_cast.get_collider()
 			if Utils.DialogBar != null:

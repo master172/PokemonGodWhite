@@ -1,13 +1,12 @@
 Aiden: Hey friend, whats your name?
 ......................................
-Aiden: Hmmmmmn Ash, I see, Hello Ash my name is Aiden, Its a surprise to see you\
-Since many people don't actually come over these parts of the region
+Aiden: Hmmmmmn Ash, I see, Hello Ash my name is Aiden, Its a surprise to see you Since many people don't actually come over these parts of the region
 Aiden: Anyways would you care for a battle?\
 its been long since i had a battle with anyone
 Would You like a battle with Aiden
 - Yes
+	Really Thank You Ash
 	[signal arg="Battle"]
-	Aiden current relationship is {Aiden.Relationship}
 - No
+	Well Thats a shame
 	[signal arg="No"]
-	Aiden current relationship is {Aiden.Relationship}

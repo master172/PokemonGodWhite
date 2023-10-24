@@ -37,6 +37,13 @@ Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
 variables={
 "Aiden": {
 "Relationship": "0"
+},
+"Battle": {
+"Caught": "DefaultCaught",
+"Level": "DefaultLevels",
+"Loser": "DefaultLoser",
+"Points": "DefaultPoints",
+"Winner": "DefaultWinner"
 }
 }
 text/letter_speed=0.01
