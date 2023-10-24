@@ -57,6 +57,7 @@ func handle_moving():
 	player.stop()
 	player.stop_animation()
 	
+	
 func _physics_process(delta):
 	if can_move == true:
 		move(delta)
@@ -85,6 +86,7 @@ func move(delta):
 	if check_distance_to_player() > 0:
 		global_position = global_position.move_toward(position_to_move,delta*move_speed)
 	else:
+		exclamation.visible = false
 		can_move = false
 		look(looking_direction)
 		start_battle()
@@ -92,5 +94,6 @@ func check_distance_to_player():
 	return self.global_position.distance_to(to_move_pos)/16
 
 func start_battle():
-	can_battle = false
+	
 	_interact()
+	can_battle = false

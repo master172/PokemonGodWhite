@@ -39,7 +39,7 @@ func walk_at(facDir:Vector2):
 	animation_tree.set("parameters/Walk/blend_position",facDir)
 	
 func _interact():
-	if current_dialog != "":
+	if current_dialog != "" and can_battle == true:
 		if Utils.Player != null:
 			Utils.Player.set_physics_process(false)
 		
@@ -51,8 +51,8 @@ func battle(Sign):
 	if Sign == "Battle" and taliking == true:
 		var pokemon = get_main_pokemon()
 		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemon,pokemons,levels)
+		can_battle = false
 	
-
 func no(Sign):
 	if Sign == "No" and taliking == true:
 		Utils.get_player().set_physics_process(true)
