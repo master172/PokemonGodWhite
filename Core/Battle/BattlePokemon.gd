@@ -11,6 +11,9 @@ extends CharacterBody2D
 @onready var attack_selector := $UiLayer/BattleSelector
 @onready var action_chosen := $UiLayer/ActionChosen
 @onready var stun_timer = $StunTimer
+@onready var hurt = $Node/Hurt
+@onready var die = $Node/Die
+@onready var knock_back = $Node/KnockBack
 
 @export var pokemon :game_pokemon = null
 
@@ -149,6 +152,8 @@ func recive_damage(damage,User,Attacker):
 	emit_signal("health_changed",self)
 	receive_knockback(User,damage)
 	if pokemon.Health <= 0:
+		die.play()
+		await die.finished
 		pokemon.fainted = true
 		pokemon.Health = 0
 		emit_signal("defeated",pokemon,self)
@@ -158,7 +163,7 @@ func recive_damage(damage,User,Attacker):
 func receive_knockback(body,damage):
 	knockback = true
 	self_knockback_vector = body.knockback_vector * knockback_modifier + Vector2(damage,damage)
-
+	knock_back.play()
 func _stop():
 	stop = true
 
@@ -175,14 +180,14 @@ func _on_action_chosen_action_chosen(act):
 	state = states.NORMAL
 	match act:
 		0:
-			if BattleManager.Trainer_Battle == false:
-				emit_signal("switch")
-			else:
-				action = false
+			emit_signal("switch")
 		1:
 			emit_signal("bag")
 		2:
-			emit_signal("throw")
+			if BattleManager.Trainer_Battle == false:
+				emit_signal("throw")
+			else:
+				action = false
 		3:
 			emit_signal("run")
 
@@ -201,6 +206,7 @@ func _on_wait_timer_timeout():
 	resting = false
 
 func animate_hurt():
+	hurt.play()
 	var tween = get_tree().create_tween()
 	sprite_2d.modulate = Color(1, 0, 0)
 	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)

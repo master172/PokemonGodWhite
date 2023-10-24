@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=32 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
 [ext_resource type="Script" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
+[ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="11_co6j0"]
+[ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="12_m5l6s"]
+[ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="13_vcj04"]
+[ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="14_ablgi"]
+[ext_resource type="AudioStream" uid="uid://crwmjhnyx8kea" path="res://assets/Audio/SFX/Bfxr/Dodge.wav" id="15_pkr0q"]
+[ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
 size = Vector2(64, 64)
@@ -142,7 +148,7 @@ states/Walk/position = Vector2(396, 100)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_kld30")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3jky"]
-size = Vector2(80, 80)
+size = Vector2(128, 128)
 
 [node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
 collision_layer = 33
@@ -217,11 +223,33 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [node name="KnockBackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockBackArea"]
-position = Vector2(0, -32)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_r3jky")
 debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
 
 [node name="StunTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_co6j0")
+volume_db = -2.0
+autoplay = true
+script = ExtResource("12_m5l6s")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("13_vcj04")
+
+[node name="Die" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("14_ablgi")
+volume_db = -6.0
+
+[node name="Dodge" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("15_pkr0q")
+volume_db = 2.0
+
+[node name="KnockBack" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("16_fsbvv")
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]

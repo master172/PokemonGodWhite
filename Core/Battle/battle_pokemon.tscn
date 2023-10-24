@@ -1,9 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://dac368r2gylw7"]
+[gd_scene load_steps=24 format=3 uid="uid://dac368r2gylw7"]
 
 [ext_resource type="Script" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sg6oc"]
 [ext_resource type="PackedScene" uid="uid://cimfdob80nm44" path="res://Core/Battle/Ui/Action_Selector.tscn" id="4_xmkfa"]
 [ext_resource type="PackedScene" uid="uid://dslup8uf30gtc" path="res://Core/Battle/Ui/battle_selector.tscn" id="5_wxstk"]
+[ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="5_xwcbp"]
+[ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="6_gu72b"]
+[ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="7_x237b"]
+[ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="8_p4ks2"]
+[ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="9_gj670"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8opaw"]
 size = Vector2(64, 64)
@@ -178,6 +183,24 @@ wait_time = 0.5
 one_shot = true
 
 [node name="StunTimer" type="Timer" parent="."]
+
+[node name="LoopAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xwcbp")
+volume_db = -2.0
+script = ExtResource("6_gu72b")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("7_x237b")
+volume_db = -4.0
+
+[node name="Die" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("8_p4ks2")
+volume_db = -6.0
+
+[node name="KnockBack" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("9_gj670")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="attack_chosen" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_attack_chosen"]

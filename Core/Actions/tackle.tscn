@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://biav4boxyl57c"]
+[gd_scene load_steps=4 format=3 uid="uid://biav4boxyl57c"]
 
 [ext_resource type="Script" path="res://Core/Actions/tackle.gd" id="1_dbv25"]
+[ext_resource type="AudioStream" uid="uid://cemsf32at537i" path="res://assets/Audio/SFX/Battle/GeneralTackle.wav" id="2_tapjr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq7dy"]
 radius = 40.7922
@@ -21,6 +22,10 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_hq7dy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tapjr")
+autoplay = true
 
 [connection signal="timeout" from="TackleTimer" to="." method="_on_tackle_timer_timeout"]
 [connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

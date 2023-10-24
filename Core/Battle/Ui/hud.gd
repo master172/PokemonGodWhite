@@ -12,6 +12,7 @@ var current_selected = 0
 var max_selectable = 6
 @onready var radial = $Radial
 @onready var pokemon_sprites = $PokemonSprites
+@onready var pokeball = $Pokeball
 
 
 
@@ -43,6 +44,7 @@ func _input(event):
 				pokemon_selected.emit(current_selected)
 				visible = false
 				state = STATES.EMPTY
+				pokeball.play()
 			else:
 				pass
 		

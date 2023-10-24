@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://4oakufv7l1dw"]
+[gd_scene load_steps=9 format=3 uid="uid://4oakufv7l1dw"]
 
 [ext_resource type="Texture2D" uid="uid://cv2axym1rrm66" path="res://assets/Ui/BattleScene/RadialSelector.png" id="1_evap7"]
 [ext_resource type="Script" path="res://Core/Battle/Ui/hud.gd" id="1_ubc87"]
 [ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_s6f3o"]
 [ext_resource type="Texture2D" uid="uid://7uxrskklwy87" path="res://Core/Graphics/Pokemon/Gen1/Icons/ABRA.png" id="3_vgkxg"]
+[ext_resource type="AudioStream" uid="uid://b0co7pfofcav" path="res://assets/Audio/SFX/Pokeball/Pokeball.wav" id="5_1mrvp"]
 
 [sub_resource type="Animation" id="Animation_p1603"]
 resource_name = "Breath"
@@ -232,3 +233,7 @@ position = Vector2(557, 304)
 scale = Vector2(2, 2)
 texture = ExtResource("3_s6f3o")
 hframes = 2
+
+[node name="Pokeball" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(601, 397)
+stream = ExtResource("5_1mrvp")

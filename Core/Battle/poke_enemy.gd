@@ -18,6 +18,10 @@ var movement_speed: float = 128.0
 @onready var enemy_dodge_state:EnemyDodgeState = $FiniteStateMachine/EnemyDodgeState
 @onready var stall_state:StallState = $FiniteStateMachine/StallState
 @onready var enemy_idle_state:EnemyIdleState = $FiniteStateMachine/EnemyIdleState
+@onready var hurt = $Node/Hurt
+@onready var die = $Node/Die
+@onready var dodge = $Node/Dodge
+@onready var knock_back = $Node/KnockBack
 
 @onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 
@@ -106,14 +110,18 @@ func recive_damage(damage,body,Attacker):
 	receive_knockback(body,damage)
 	animate_hurt()
 	if pokemon.Health <= 0:
-		pokemon.fainted = true
+		die.play()
 		emit_signal("defeated",pokemon,Attacker,self)
+		await die.finished
+		pokemon.fainted = true
+		
 		queue_free()
 	emit_signal("health_changed",self)
 
 func receive_knockback(body,damage):
 
 	enemy_knock_back_state.set_variables(body.knockback_vector,damage)
+	knock_back.play()
 	finite_state_machine.change_state(enemy_knock_back_state)
 
 
@@ -165,6 +173,7 @@ func player_attacked(player):
 	if dodge_rng > 0:
 		if finite_state_machine.get_state() == enemy_follow_state or finite_state_machine.get_state() == enemy_idle_state:
 			enemy_dodge_state.player_set(player)
+			dodge.play()
 			finite_state_machine.change_state(enemy_dodge_state)
 
 
@@ -177,9 +186,10 @@ func _on_knock_back_area_body_entered(body):
 		if body.is_in_group("PlayerPokemon"):
 			print_debug(body)
 			receive_knockback(body,10)
-			body.receive_knockback(self,10)
+			body.receive_knockback(self,20)
 
 func animate_hurt():
+	hurt.play()
 	var tween = get_tree().create_tween()
 	sprite_2d.modulate = Color(1, 0, 0)
 	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
