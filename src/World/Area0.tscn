@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=27 format=3 uid="uid://bmo5vwylgv02b"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_x3ica"]
 [ext_resource type="Resource" uid="uid://ngglvf785r2k" path="res://Resources/Dialogs/OverWorldItem.tres" id="14_yqc7c"]
 [ext_resource type="PackedScene" uid="uid://riyto8ufmaoj" path="res://src/World/Npc/Aiden.tscn" id="16_47g7f"]
+[ext_resource type="PackedScene" uid="uid://c1l5inso4oeik" path="res://Resources/Npc/Npcs/Jenney.tscn" id="17_c5xei"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8386,3 +8387,9 @@ pick_up_dialog = ExtResource("14_yqc7c")
 
 [node name="Aiden" parent="." instance=ExtResource("16_47g7f")]
 position = Vector2(-328, -128)
+looking_direction = Vector2(1, 0)
+
+[node name="Jenney" parent="." instance=ExtResource("17_c5xei")]
+position = Vector2(-360, -144)
+look_distance = 3
+looking_direction = Vector2(1, 0)

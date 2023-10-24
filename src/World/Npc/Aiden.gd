@@ -1,29 +1,43 @@
 extends CharacterBody2D
 class_name trainer
 
+@export_group("Pokemons")
 @export var pokemons:Array[Pokemon]
 @export var levels :Array[int]
 @export var current_dialog := ''
 
-var rng = RandomNumberGenerator.new()
-var taliking = false
 
+@export_group("Animations")
 @export var animation_player :AnimationPlayer
 @export var animation_tree :AnimationTree
 @export var sprite_2d :Sprite2D
 
+@export_subgroup("FaceAt")
+@export var looking_direction:Vector2 = Vector2(0,1)
+
+
 @onready var anim_state = animation_tree.get("parameters/playback")
 
+var rng = RandomNumberGenerator.new()
+var taliking = false
+
+var can_battle:bool = true
 
 func _ready():
 	Dialogic.connect("signal_event",battle)
 	Dialogic.connect("signal_event",no)
 	Dialogic.connect("signal_event",end)
+	
+	look(looking_direction)
 
 func look(facDir:Vector2):
 	anim_state.travel("Idle")
 	animation_tree.set("parameters/Idle/blend_position",facDir)
 
+func walk_at(facDir:Vector2):
+	anim_state.travel("Walk")
+	animation_tree.set("parameters/Walk/blend_position",facDir)
+	
 func _interact():
 	if current_dialog != "":
 		if Utils.Player != null:
@@ -56,3 +70,5 @@ func get_pokemon(num:int):
 func end(Sign):
 	if Sign == "end":
 		taliking = false
+
+

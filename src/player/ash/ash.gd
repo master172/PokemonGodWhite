@@ -575,6 +575,12 @@ func check_to_add_overworld_pokemon(set_see:bool = true):
 
 func change_animation(state:bool):
 	animation_tree.active = state
+
+func stop():
+	set_physics_process(false)
+
+func stop_animation():
+	anim_state.travel("Idle")
 	
 func first_start():
 	player_uid = create_uid()

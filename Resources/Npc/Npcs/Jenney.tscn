@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://c1l5inso4oeik"]
 
-[ext_resource type="Script" path="res://src/World/Npc/LookingTrainer.gd" id="1_ah8sr"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_1yfx6"]
-[ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_pukci"]
-[ext_resource type="Texture2D" uid="uid://cag55ot7oy6oo" path="res://assets/Npc/Trainers/General/NPC 07.png" id="4_xek52"]
+[ext_resource type="Script" path="res://Resources/Npc/Npcs/Jenney.gd" id="1_1xfgu"]
+[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="2_nx614"]
+[ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_1an6n"]
+[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="5_hs3ny"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -236,23 +236,26 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
 size = Vector2(16, 16)
 
-[node name="Aiden" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "animation_tree", "sprite_2d")]
+[node name="Jenney" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
 z_index = 1
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_ah8sr")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_1yfx6"), ExtResource("3_pukci")])
-levels = Array[int]([6, 7])
-current_dialog = "AidenInteraction"
+script = ExtResource("1_1xfgu")
+LineOfSight = NodePath("RayCast2D")
+exclamation = NodePath("exclamation")
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_nx614")])
+levels = Array[int]([5])
+current_dialog = "Jenney"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
 sprite_2d = NodePath("Sprite2D")
+looking_direction = Vector2(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -12)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_xek52")
+texture = ExtResource("4_1an6n")
 hframes = 4
 vframes = 4
 frame = 12
@@ -267,8 +270,19 @@ tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)
-parameters/Walk/blend_position = Vector2(0.0561798, -0.0957447)
+parameters/Walk/blend_position = Vector2(-0.00183821, 0.00436687)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_art2r")
+
+[node name="exclamation" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_hs3ny")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 56)
+collide_with_areas = true

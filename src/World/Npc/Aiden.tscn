@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/World/Npc/Aiden.gd" id="1_m0kjm"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_qte7a"]
 [ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_bd7x8"]
-[ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_3jn46"]
+[ext_resource type="Texture2D" uid="uid://cag55ot7oy6oo" path="res://assets/Npc/Trainers/General/NPC 07.png" id="4_lbnm1"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -252,7 +252,7 @@ sprite_2d = NodePath("Sprite2D")
 texture_filter = 1
 position = Vector2(0, -12)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_3jn46")
+texture = ExtResource("4_lbnm1")
 hframes = 4
 vframes = 4
 frame = 12
@@ -266,12 +266,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)
-parameters/Walk/blend_position = Vector2(0.0561798, -0.0957447)
+parameters/Idle/blend_position = Vector2(0, -0.00436676)
+parameters/Walk/blend_position = Vector2(-0.00367647, -0.00436676)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_art2r")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 64)
