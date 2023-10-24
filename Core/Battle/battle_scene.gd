@@ -145,8 +145,9 @@ func case_level_up(pokemon,body):
 	dialog_handler.add_won_dialog_level_up(pokemon,body.pokemon)
 
 func case_experience_added(pokemon,body):
-	poke_data.set_player(body.pokemon)
-	dialog_handler.add_won_dialog(pokemon,body.pokemon)
+	if is_instance_valid(body):
+		poke_data.set_player(body.pokemon)
+		dialog_handler.add_won_dialog(pokemon,body.pokemon)
 
 func _player_attacked(player):
 	emit_signal("player_attacked",player)

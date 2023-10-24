@@ -57,6 +57,7 @@ func no(Sign):
 	if Sign == "No" and taliking == true:
 		Utils.get_player().set_physics_process(true)
 		
+		
 func get_main_pokemon():
 	var pokemon = pokemons[0]
 	var poke_data = [pokemon,levels[0]]
@@ -70,5 +71,5 @@ func get_pokemon(num:int):
 func end(Sign):
 	if Sign == "end":
 		taliking = false
-
+		get_viewport().set_input_as_handled()
 
