@@ -148,7 +148,8 @@ func case_experience_added(pokemon,body):
 	if is_instance_valid(body):
 		poke_data.set_player(body.pokemon)
 		dialog_handler.add_won_dialog(pokemon,body.pokemon)
-
+	else:
+		Utils.get_scene_manager().transistion_exit_battle_scene()
 func _player_attacked(player):
 	emit_signal("player_attacked",player)
 
