@@ -129,27 +129,33 @@ func update_poke_data_player(body):
 	poke_data.set_player(body.pokemon)
 
 func defeating_dialog(pokemon:game_pokemon,body:BattlePokemon,loser:PokeEnemy):
+	print(pokemon.Nick_name," ",body.name," ",loser.name)
 	opponents.erase(loser)
 	set_opposers()
 	emit_signal("stop")
 	
-	if not body.pokemon.Level_up.is_connected(case_level_up.bind(pokemon,body)):
-		body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
-	if not body.pokemon.experience_added.is_connected(case_experience_added.bind(pokemon,body)):
-		body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
+	
+	body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
+
+	body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
+	
 	pokemon.give_experience_points(body.pokemon)
-	
-	
+
 func case_level_up(pokemon,body):
+	print_debug(pokemon.Nick_name," ",body.name," ",body.pokemon.Nick_name)
 	poke_data.set_player(body.pokemon)
 	dialog_handler.add_won_dialog_level_up(pokemon,body.pokemon)
-
+	body.pokemon.Level_up.disconnect(case_level_up)
+	body.pokemon.experience_added.disconnect(case_experience_added)
+	
 func case_experience_added(pokemon,body):
-	if is_instance_valid(body):
-		poke_data.set_player(body.pokemon)
-		dialog_handler.add_won_dialog(pokemon,body.pokemon)
-	else:
-		Utils.get_scene_manager().transistion_exit_battle_scene()
+	
+	print_debug(pokemon.Nick_name," ",body.name," ",body.pokemon.Nick_name)
+	poke_data.set_player(body.pokemon)
+	dialog_handler.add_won_dialog(pokemon,body.pokemon)
+	body.pokemon.Level_up.disconnect(case_level_up)
+	body.pokemon.experience_added.disconnect(case_experience_added)
+		
 func _player_attacked(player):
 	emit_signal("player_attacked",player)
 

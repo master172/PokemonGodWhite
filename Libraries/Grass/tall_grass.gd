@@ -10,7 +10,7 @@ const grass_overlay_texture = preload("res://assets/tallgrass/stepped_tall_grass
 
 @export var EncounterRate :int = 33
 
-@export var pokemons :Array[pokeSheet] = []
+@export var pokemons :Array[Pokemon] = []
 @export var min_level :int
 @export var max_level :int
 # Called when the node enters the scene tree for the first time.
@@ -55,13 +55,10 @@ func check_encounter():
 
 func get_encounter_pokemon():
 	var Rng = RandomNumberGenerator.new()
-	var encounter_num = Rng.randi_range(0,100)
-	for i in pokemons:
-		if i.get_rate() >= encounter_num:
-			var pokemon = i.get_pokemon()
-			var poke_data = [pokemon,Rng.randi_range(min_level,max_level)]
-			return poke_data
-			
+	var encounter_pokemon = pokemons[Rng.randi() % pokemons.size()]
+	var poke_data = [encounter_pokemon,Rng.randi_range(min_level,max_level)]
+	return poke_data
+	
 func encounter():
 	var Rng = RandomNumberGenerator.new()
 	Rng.randomize()

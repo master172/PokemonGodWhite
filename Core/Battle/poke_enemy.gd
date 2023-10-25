@@ -44,7 +44,7 @@ var attack_num:int = 0
 
 var Attack
 
-signal defeated(name)
+signal defeated(pokemon,attacker,body)
 
 var stop:bool = false
 var Stun:bool = false

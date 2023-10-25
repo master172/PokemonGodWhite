@@ -21,6 +21,7 @@ func add_won_dialog(pokemon:game_pokemon,winner:game_pokemon):
 	Dialogic.VAR.Battle.Loser = pokemon.Nick_name
 	Dialogic.VAR.Battle.Points = str(pokemon.calculate_experience_points())
 	
+	print_debug(winner.Nick_name, " ", pokemon.Nick_name, " ", str(pokemon.calculate_experience_points()))
 	Dialogic.start('WinNormal')
 
 
@@ -29,7 +30,9 @@ func add_won_dialog_level_up(pokemon:game_pokemon,winner:game_pokemon):
 	Dialogic.VAR.Battle.Loser = pokemon.Nick_name
 	Dialogic.VAR.Battle.Points = str(pokemon.calculate_experience_points())
 	Dialogic.VAR.Battle.Level = str(winner.level)
-
+	
+	print_debug(winner.Nick_name, " ", pokemon.Nick_name, " ", str(pokemon.calculate_experience_points()))
+	
 	Dialogic.start('WinLevelUp')
 	
 	

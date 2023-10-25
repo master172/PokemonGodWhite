@@ -49,19 +49,13 @@ func _interact():
 
 func battle(Sign):
 	if Sign == "Battle" and taliking == true:
-		var pokemon = get_main_pokemon()
-		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemon,pokemons,levels)
+		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemons,levels)
 		can_battle = false
 	
 func no(Sign):
 	if Sign == "No" and taliking == true:
 		Utils.get_player().set_physics_process(true)
 		
-		
-func get_main_pokemon():
-	var pokemon = pokemons[0]
-	var poke_data = [pokemon,levels[0]]
-	return poke_data
 
 func get_pokemon(num:int):
 	var pokemon = pokemons[num]

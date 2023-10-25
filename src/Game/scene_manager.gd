@@ -102,11 +102,11 @@ func check_evolution():
 	
 	ask_evolution()
 
-func transistion_trainer_battle_scene(pokemon,pokemons,levels):
+func transistion_trainer_battle_scene(pokemons,levels):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.TRAINER_BATTLE
-	pocket_monster = pokemon
+	pocket_monster = [pokemons[0],levels[0]]
 	BattleManager.EnemyPokemons = pokemons
 	BattleManager.EnemyLevels = levels
 	
@@ -287,6 +287,7 @@ func unload_battle_scene():
 	BattleManager.finish_battle()
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
+	BattleManager.in_battle = false
 	BattleManager.Trainer_Battle = false
 	
 	if Global.auto_evolve == true:
