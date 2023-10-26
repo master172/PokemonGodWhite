@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var current_dialog:DialogueLine
 
 func _ready():
+	Dialogic.connect("signal_event",healing_done)
 	DialogLayer.get_child(0).connect("finished",finish)
 	
 func look(facDir:Vector2):
@@ -22,4 +23,12 @@ func _interact():
 func finish(dial):
 	if dial == current_dialog:
 		Utils.get_player().set_physics_process(true)
-		
+
+func heal():
+	look(Vector2(-1,0))
+	Utils.get_player().set_physics_process(false)
+	Dialogic.start('BeaHeal')
+
+func healing_done(Sign):
+	if Sign == "Done":
+		Utils.get_player().set_physics_process(true)

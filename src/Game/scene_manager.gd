@@ -4,6 +4,10 @@ var battle_scene = preload("res://Core/Battle/battle_scene.tscn")
 const evolution_scene = preload("res://Core/Evolutions/evolution_screen.tscn")
 const evolution_environment = preload("res://src/Environment/world_environment.tscn")
 
+const default_healing_place = preload("res://src/World/Houses/InnHouse.tscn")
+
+var current_healing_place = null
+
 var next_scene = null
 
 @onready var transition_player = $ScreenTranistion/AnimationPlayer
@@ -34,7 +38,8 @@ enum Transition_Type {
 	EVOLUTION,
 	EXIT_EVOLUTION,
 	TRAINER_BATTLE,
-	EXIT_TRAINER_BATTLE
+	EXIT_TRAINER_BATTLE,
+	BATTLE_LOST
 }
 var transition_type = Transition_Type.NEW_SCENE
 
@@ -138,7 +143,10 @@ func transistion_to_battle_scene(pokemon):
 func transistion_exit_battle_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BATTLE_SCENE
-	
+
+func transistion_exit_battle_loast():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.BATTLE_LOST
 	
 func transistion_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
@@ -205,8 +213,35 @@ func finished_fading():
 		Transition_Type.TRAINER_BATTLE:
 			load_battle_trainer(pocket_monster)
 			pocket_monster = []
+		Transition_Type.BATTLE_LOST:
+			load_healing_place()
 	transition_player.play("FadeToNormal")
 
+func load_healing_place():
+	unload_battle_scene()
+	
+	Inventory.save_overworld_items()
+	
+	current_scene.get_child(0).queue_free()
+	
+	var Current_healing_place
+	
+	if current_healing_place == null:
+		Current_healing_place = default_healing_place.instantiate()
+	else:
+		Current_healing_place = current_healing_place.instantiate()
+		
+	current_scene.add_child(Current_healing_place)
+	
+	var player = Utils.get_player()
+	Utils.set_player()
+	player.set_spawn(Current_healing_place.get_heal_pos(),Current_healing_place.get_heal_dir())
+	player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
+	
+	Current_healing_place.heal()
+	
+	Inventory.load_game()
+	
 func load_battle_trainer(pokemon):
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)

@@ -180,9 +180,10 @@ func _input(event):
 			state = states.SEARCH
 
 		elif state == states.PARTY:
-			AllyPokemon.deposit(current_selected)
+			if AllyPokemon.get_Party_pokemon_size() > 1:
+				AllyPokemon.deposit(current_selected)
 
-			update_deposit()
+				update_deposit()
 			
 		elif state == states.LIST:
 			if AllyPokemon.get_Party_pokemon_size() < 6:
