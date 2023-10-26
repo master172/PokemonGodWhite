@@ -3,3 +3,4 @@
 	[signal arg="SwitchPokemon"]
 - No
 	[signal arg="Run"]
+[end_timeline]

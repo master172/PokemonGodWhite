@@ -1,3 +1,4 @@
 {Battle.Winner} has emerged victorious in the battle against {Battle.Loser}
 {Battle.Winner} has gained {Battle.Points} exp points
 [signal arg="Win"]
+[end_timeline]

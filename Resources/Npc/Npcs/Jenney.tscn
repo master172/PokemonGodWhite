@@ -246,6 +246,7 @@ exclamation = NodePath("exclamation")
 pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_nx614")])
 levels = Array[int]([5])
 current_dialog = "Jenney"
+ending_dialog = "JenneyEnd"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
 sprite_2d = NodePath("Sprite2D")

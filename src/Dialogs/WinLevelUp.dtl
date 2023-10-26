@@ -2,3 +2,4 @@
 {Battle.Winner} has gained {Battle.Points} exp points
 {Battle.Winner} has levelled up to Level {Battle.Level}
 [signal arg="Win"]
+[end_timeline]

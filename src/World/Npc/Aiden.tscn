@@ -244,6 +244,7 @@ script = ExtResource("1_m0kjm")
 pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_qte7a"), ExtResource("3_bd7x8")])
 levels = Array[int]([6, 7])
 current_dialog = "AidenInteraction"
+ending_dialog = "AidenEnd"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
 sprite_2d = NodePath("Sprite2D")

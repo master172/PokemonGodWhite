@@ -18,9 +18,13 @@ var can_move = false
 var position_to_move
 
 func _ready():
+	if Utils.get_scene_manager() != null:
+		Utils.get_scene_manager().connect("trainer_battle_finished",my_battle_finished)
+		
 	Dialogic.connect("signal_event",battle)
 	Dialogic.connect("signal_event",no)
 	Dialogic.connect("signal_event",end)
+	Dialogic.connect("signal_event",finish)
 	
 	if exclamation != null:
 		exclamation.visible = false
@@ -97,3 +101,4 @@ func start_battle():
 	
 	_interact()
 	can_battle = false
+	

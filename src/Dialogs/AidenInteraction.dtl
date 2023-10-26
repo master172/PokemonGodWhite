@@ -12,3 +12,4 @@ Would You like a battle with Aiden
 	Well Thats a shame
 	[signal arg="No"]
 	[signal arg="end"]
+[end_timeline]

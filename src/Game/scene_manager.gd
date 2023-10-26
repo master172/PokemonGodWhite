@@ -49,6 +49,8 @@ var WorldEnv:WorldEnvironment = null
 
 signal data_set_finished
 signal evolution_finished
+
+signal trainer_battle_finished
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -209,6 +211,7 @@ func load_battle_trainer(pokemon):
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
 	BattleManager.in_battle = true
+	
 	BattleManager.Trainer_Battle = true
 	
 func unload_bag_scene():
@@ -288,8 +291,10 @@ func unload_battle_scene():
 	Utils.get_player().set_physics_process(true)
 	Utils.get_player().finish_battle()
 	BattleManager.in_battle = false
-	BattleManager.Trainer_Battle = false
 	
+	if BattleManager.Trainer_Battle == true:
+		BattleManager.Trainer_Battle = false
+		emit_signal("trainer_battle_finished")
 	if Global.auto_evolve == true:
 		AllyPokemon.check_evolution_all()
 		print_debug("what the fuck")

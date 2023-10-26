@@ -1,3 +1,4 @@
 Jenney: you cant get any further without a battle
 [signal arg="Battle"]
 [signal arg="end"]
+[end_timeline]
