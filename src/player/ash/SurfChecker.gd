@@ -15,30 +15,8 @@ func process_tilemap_collision(player:Node2D,check:String):
 	var current_tilemap = Utils.Tilemap
 	
 	if current_tilemap != null:
-	
 		
-		var node_global_position = global_position
-
-		var tilemap_global_position = current_tilemap.global_position
-
-		
-		var offset = node_global_position - tilemap_global_position
-
-		
-		var tilemap_offset = current_tilemap.position
-
-		
-		var tilemap_coord = offset - tilemap_offset
-
-		
-		var tile_size = Vector2(16, 16)
-
-	
-		var tile_cords = offset / tile_size
-
-		print(tile_cords)
-		tile_cords = tile_cords.round()
-		print(tile_cords)
+		var tile_cords = current_tilemap.local_to_map(position)
 		
 		var sucess =  [true,position,tile_cords]
 		var faliure = [false,position,tile_cords]
@@ -78,6 +56,4 @@ func process_tilemap_collision(player:Node2D,check:String):
 			return sucess
 	else:
 			return [false]
-
-
 

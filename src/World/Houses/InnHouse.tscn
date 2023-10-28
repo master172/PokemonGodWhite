@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmd1jinx4qc3l"]
+[gd_scene load_steps=17 format=3 uid="uid://dmd1jinx4qc3l"]
 
 [ext_resource type="Texture2D" uid="uid://cmwsu7lwnixa8" path="res://assets/PokemonTilesets/Japanese.png" id="1_13y8c"]
 [ext_resource type="Script" path="res://src/World/Houses/InnHouse.gd" id="1_k0y6f"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://damu586nwpxr4" path="res://assets/modular/stair1leftcover.png" id="4_n16ve"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="7_1y57g"]
 [ext_resource type="PackedScene" uid="uid://dplygodrneuc2" path="res://src/World/Npc/Bea.tscn" id="8_thbb7"]
+[ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="10_2cc35"]
+[ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="11_smgys"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rna3"]
 texture = ExtResource("4_ft86n")
@@ -7257,3 +7259,7 @@ can_cycle = false
 y_sort_enabled = true
 position = Vector2(40, 48)
 scale = Vector2(0.5, 0.5)
+
+[node name="OverWorldItem" parent="." instance=ExtResource("10_2cc35")]
+position = Vector2(40, 32)
+item = ExtResource("11_smgys")
