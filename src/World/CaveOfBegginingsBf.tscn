@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://btc06udca3qus"]
+[gd_scene load_steps=28 format=3 uid="uid://btc06udca3qus"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_c7u6u"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_tildt"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="14_rolfg"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="15_bjkna"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="16_a0cx3"]
+[ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_qi0e2"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47787,3 +47788,5 @@ next_scene_path = "res://src/World/CaveOfBegginings.tscn"
 invisible = true
 Spawn_location = Vector2(312, 192)
 Spawn_direction = Vector2(0, -1)
+
+[node name="EncounterManager" parent="." instance=ExtResource("17_qi0e2")]

@@ -19,7 +19,8 @@ func update():
 	if Utils.get_player() != null:
 		uid.text = Utils.get_player().player_uid
 	for i in range(6):
-		sprites[i].texture = AllyPokemon.get_party_pokemon(i).get_front_sprite()
+		if AllyPokemon.get_Party_pokemon_size() > i:
+			sprites[i].texture = AllyPokemon.get_party_pokemon(i).get_front_sprite()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
