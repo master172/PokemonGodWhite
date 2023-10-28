@@ -1,6 +1,8 @@
 extends Node2D
 
-
+@export var pokemons :Array[Pokemon] = []
+@export var min_level :int
+@export var max_level :int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://bmo5vwylgv02b"]
+[gd_scene load_steps=27 format=3 uid="uid://i3rtwnl4su6j"]
 
+[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="2_wyec4"]
@@ -8179,6 +8180,10 @@ sources/6 = SubResource("TileSetScenesCollectionSource_tr3qo")
 
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_2ofmc")
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
+min_level = 2
+max_level = 5
 
 [node name="mainTilemap" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -8219,153 +8224,78 @@ y_sort_enabled = true
 
 [node name="TallGrass" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass2" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass3" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-8, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass4" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, 8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass5" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, 8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass6" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-24, -8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass7" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, -24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass24" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-40, -40)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass8" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-8, -8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass9" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(8, 8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass10" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(8, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass11" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(24, 8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass12" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(40, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass13" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(56, 8)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass14" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(56, 24)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass15" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 152)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass16" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-440, 152)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass17" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-456, 120)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass18" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 136)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass19" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-424, 120)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass20" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-408, 136)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass22" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-392, 120)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass25" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-376, 136)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass23" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-440, 136)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="TallGrass21" parent="Grass" instance=ExtResource("3_5tg8m")]
 position = Vector2(-408, 120)
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
-min_level = 3
-max_level = 5
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -8386,4 +8316,9 @@ looking_direction = Vector2(1, 0)
 
 [node name="Jenney" parent="." instance=ExtResource("17_c5xei")]
 position = Vector2(-360, -144)
+LineOfSight = null
+exclamation = null
+animation_player = null
+animation_tree = null
+sprite_2d = null
 look_distance = 3
