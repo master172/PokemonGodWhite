@@ -1,5 +1,5 @@
 extends trainer
-class_name  looking_trainer
+class_name looking_trainer
 
 @export var LineOfSight :RayCast2D
 @export var exclamation :Sprite2D
@@ -17,9 +17,15 @@ var can_move = false
 
 var position_to_move
 
-var can_battle:bool = true
-
 func _ready():
+	if Utils.get_scene_manager() != null:
+		Utils.get_scene_manager().connect("trainer_battle_finished",my_battle_finished)
+		
+	Dialogic.connect("signal_event",battle)
+	Dialogic.connect("signal_event",no)
+	Dialogic.connect("signal_event",end)
+	Dialogic.connect("signal_event",finish)
+	
 	if exclamation != null:
 		exclamation.visible = false
 	
@@ -51,6 +57,11 @@ func handle_moving():
 	position_to_move = position + (distance_to_move*(looking_direction * 16))
 	print(distance_to_move)
 	print((distance_to_move*(looking_direction * 16)))
+	
+	player.stop()
+	player.stop_animation()
+	
+	
 func _physics_process(delta):
 	if can_move == true:
 		move(delta)
@@ -79,7 +90,15 @@ func move(delta):
 	if check_distance_to_player() > 0:
 		global_position = global_position.move_toward(position_to_move,delta*move_speed)
 	else:
+		exclamation.visible = false
 		can_move = false
 		look(looking_direction)
+		start_battle()
 func check_distance_to_player():
 	return self.global_position.distance_to(to_move_pos)/16
+
+func start_battle():
+	
+	_interact()
+	can_battle = false
+	

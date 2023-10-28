@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://c1l5inso4oeik"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/Jenney.gd" id="1_1xfgu"]
-[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="2_nx614"]
+[ext_resource type="Script" path="res://Resources/Npc/Npcs/LookingTrainer.gd" id="1_t5iem"]
+[ext_resource type="Resource" uid="uid://cdhbxe8oemx0h" path="res://Core/Pokemon/Gible.tres" id="2_wbwx7"]
 [ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_1an6n"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="5_hs3ny"]
 
@@ -237,14 +237,14 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(16, 16)
 
 [node name="Jenney" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
-z_index = 1
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_1xfgu")
+script = ExtResource("1_t5iem")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_nx614")])
-levels = Array[int]([5])
+look_distance = 3
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_wbwx7")])
+levels = Array[int]([7])
 current_dialog = "Jenney"
 ending_dialog = "JenneyEnd"
 animation_player = NodePath("AnimationPlayer")

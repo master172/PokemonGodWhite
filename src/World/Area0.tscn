@@ -8315,10 +8315,5 @@ position = Vector2(-328, -128)
 looking_direction = Vector2(1, 0)
 
 [node name="Jenney" parent="." instance=ExtResource("17_c5xei")]
+z_index = 1
 position = Vector2(-360, -144)
-LineOfSight = null
-exclamation = null
-animation_player = null
-animation_tree = null
-sprite_2d = null
-look_distance = 3
