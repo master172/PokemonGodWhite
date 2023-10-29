@@ -12,6 +12,8 @@ extends Control
 @onready var d2_level = $HBoxContainer/Databox2/Level
 @onready var d2_health_bar = $HBoxContainer/Databox2/HealthBar
 @onready var d2_exp_bar = $HBoxContainer/Databox2/ExpBar
+@onready var pokemons = $HBoxContainer/Databox2/Pokemons
+
 
 func set_player(pokemon:game_pokemon,num:int = 0):
 	if num == 0:
@@ -37,3 +39,8 @@ func set_exp_bar(pokemon:game_pokemon,exp_bar):
 	exp_bar.max_value = pokemon.exp_to_next_level
 	exp_bar.value = pokemon.exp
 	exp_bar.min_value = pokemon.exp_to_current_level
+
+func _physics_process(delta):
+	pokemons.visible = BattleManager.Trainer_Battle
+	if BattleManager.Trainer_Battle == true:
+		pokemons.frame = BattleManager.EnemyPokemons.size()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4ckyncwga1be"]
+[gd_scene load_steps=9 format=3 uid="uid://d4ckyncwga1be"]
 
 [ext_resource type="Script" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
 [ext_resource type="Texture2D" uid="uid://bgwlfovxeby4y" path="res://assets/Ui/BattleScene/databox_normal.png" id="1_v6x5b"]
 [ext_resource type="Texture2D" uid="uid://del733fw3hrff" path="res://Core/Graphics/Pokemon/Gen1/Icons/PARAS.png" id="2_56n7x"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="3_i3dif"]
+[ext_resource type="Texture2D" uid="uid://cx8mifns2hvmr" path="res://assets/Ui/BattleScene/Pokemons.png" id="5_lnb54"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g15p5"]
 bg_color = Color(0.72549, 0.72549, 0.72549, 1)
@@ -90,11 +91,20 @@ value = 16.56
 show_percentage = false
 
 [node name="Databox2" type="TextureRect" parent="HBoxContainer"]
+z_index = 2
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v6x5b")
 stretch_mode = 2
 flip_h = true
+
+[node name="Pokemons" type="Sprite2D" parent="HBoxContainer/Databox2"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(148, 131)
+texture = ExtResource("5_lnb54")
+vframes = 7
 
 [node name="Icon" type="Sprite2D" parent="HBoxContainer/Databox2"]
 texture_filter = 1
