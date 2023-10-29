@@ -185,3 +185,11 @@ func _on_dialog_handler_next_pokemon():
 	emit_signal("poke_start")
 
 	set_enemy([BattleManager.EnemyPokemons[0],BattleManager.EnemyLevels[0]])
+
+func set_map(map :int = 0):
+	var Map
+	if map == 0:
+		Map = load("res://Core/Battle/Areas/BattleArea0.tscn")
+	elif map == 1:
+		Map = load("res://Core/Battle/Areas/BattleArea1.tscn")
+	add_child(Map.instantiate())

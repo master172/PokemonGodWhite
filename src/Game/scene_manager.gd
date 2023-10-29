@@ -50,7 +50,7 @@ var save_file_name = "Scene.tres"
 var summary_pokemon:int 
 
 var pocket_monster:Array
-
+var Map:int = 0
 var WorldEnv:WorldEnvironment = null
 
 signal data_set_finished
@@ -110,13 +110,14 @@ func check_evolution():
 	
 	ask_evolution()
 
-func transistion_trainer_battle_scene(pokemons,levels):
+func transistion_trainer_battle_scene(pokemons,levels,map):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.TRAINER_BATTLE
 	pocket_monster = [pokemons[0],levels[0]]
 	BattleManager.EnemyPokemons = pokemons
 	BattleManager.EnemyLevels = levels
+	Map = map
 	
 func transition_to_evolution():
 	transition_player.play("FadeToBlack")
@@ -135,11 +136,12 @@ func transition_to_bag_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BAG_SCENE
 
-func transistion_to_battle_scene(pokemon):
+func transistion_to_battle_scene(pokemon,map = 0):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BATTLE_SCENE
 	pocket_monster = pokemon
+	Map = map
 	
 func transistion_exit_battle_scene():
 	transition_player.play("FadeToBlack")
@@ -188,8 +190,9 @@ func finished_fading():
 		Transition_Type.EXIT_SUMMARY_SCENE:
 			menu.unload_summary_screen()
 		Transition_Type.BATTLE_SCENE:
-			load_battle_scene(pocket_monster)
+			load_battle_scene(pocket_monster,Map)
 			pocket_monster =[]
+			Map = 0
 		Transition_Type.EXIT_BATTLE_SCENE:
 			unload_battle_scene()
 		Transition_Type.BAG_SCENE:
@@ -202,8 +205,9 @@ func finished_fading():
 		Transition_Type.EXIT_EVOLUTION:
 			re_check_evolution()
 		Transition_Type.TRAINER_BATTLE:
-			load_battle_trainer(pocket_monster)
+			load_battle_trainer(pocket_monster,Map)
 			pocket_monster = []
+			Map = 0
 		Transition_Type.BATTLE_LOST:
 			load_healing_place()
 	transition_player.play("FadeToNormal")
@@ -211,6 +215,9 @@ func finished_fading():
 func change_scene():
 	Inventory.save_overworld_items()
 	
+	if current_scene.get_child(0).has_method("get_modulater"):
+		current_scene.get_child(0).get_modulater().visible = false
+		
 	current_scene.get_child(0).queue_free()
 	current_scene.add_scene(load(next_scene))
 	
@@ -246,9 +253,10 @@ func load_healing_place():
 	
 	Inventory.load_game()
 	
-func load_battle_trainer(pokemon):
+func load_battle_trainer(pokemon,map):
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
+	battle_layer.get_child(0).set_map(map)
 	BattleManager.in_battle = true
 	
 	BattleManager.Trainer_Battle = true
@@ -317,10 +325,11 @@ func load_evolution():
 		Utils.get_player().set_camera_zoom(1)
 		menu.get_parent().hide()
 	
-func load_battle_scene(pokemon):
+func load_battle_scene(pokemon,map):
 	
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
+	battle_layer.get_child(0).set_map(map)
 	BattleManager.in_battle = true
 	
 func unload_battle_scene():

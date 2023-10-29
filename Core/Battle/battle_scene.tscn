@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=12 format=3 uid="uid://csyacx8un7080"]
 
-[ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="1_hg34g"]
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
 [ext_resource type="PackedScene" uid="uid://4oakufv7l1dw" path="res://Core/Battle/Ui/hud.tscn" id="3_r76kw"]
 [ext_resource type="PackedScene" uid="uid://d4ckyncwga1be" path="res://Core/Battle/Ui/poke_data.tscn" id="4_asoq2"]
@@ -39,8 +38,6 @@ Format = {}
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_lsbo8")
-
-[node name="Area0" parent="." instance=ExtResource("1_hg34g")]
 
 [node name="Hud" parent="." instance=ExtResource("3_r76kw")]
 

@@ -17,7 +17,7 @@ class_name trainer
 
 @export_subgroup("Events")
 @export var EventManager:Node2D
-
+@export var map:int = 0
 @onready var anim_state = animation_tree.get("parameters/playback")
 
 var rng = RandomNumberGenerator.new()
@@ -64,7 +64,7 @@ func _interact():
 
 func battle(Sign):
 	if Sign == "Battle" and taliking == true:
-		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemons,levels)
+		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemons,levels,map)
 		can_battle = false
 		
 func no(Sign):

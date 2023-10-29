@@ -15,6 +15,9 @@ extends Node2D
 
 @export_subgroup("encounter_rate")
 @export var EncounterRate:int = 7
+
+@export var map:int =1
+
 @onready var rarity :Dictionary = {
 	"rare":rare_relative,
 	"common":common_relative,
@@ -36,8 +39,9 @@ func _ready():
 func check_encounter():
 	if Utils.get_scene_manager() != null:
 		if encounter() == true:
-			var pokemon = get_encounter_pokemon()
-			Utils.get_scene_manager().transistion_to_battle_scene(pokemon)
+			var Rng = RandomNumberGenerator.new()
+			var pokemon = [get_encounter_pokemon(),Rng.randi_range(min_level,max_level),]
+			Utils.get_scene_manager().transistion_to_battle_scene(pokemon,map)
 			Utils.get_player().change_animation(false)
 	
 func encounter():

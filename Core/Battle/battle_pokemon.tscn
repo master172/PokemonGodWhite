@@ -10,8 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="8_p4ks2"]
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="9_gj670"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8opaw"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ksekj"]
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_e2eta"]
 resource_name = "Down"
@@ -154,7 +154,7 @@ vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_8opaw")
+shape = SubResource("CircleShape2D_ksekj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

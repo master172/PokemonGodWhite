@@ -47896,7 +47896,7 @@ min_level = 3
 max_level = 6
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_f1501")]
-color = Color(0.215686, 0.215686, 0.215686, 1)
+color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(312, 192)

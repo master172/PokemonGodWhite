@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://btc06udca3qus"]
+[gd_scene load_steps=30 format=3 uid="uid://btc06udca3qus"]
 
-[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_c7u6u"]
+[ext_resource type="Script" path="res://src/World/CaveOfBegginingsBf.gd" id="1_sgirk"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_tildt"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="4_kpxhk"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="5_pd1pb"]
 [ext_resource type="PackedScene" uid="uid://c6h1kkkqjrqw1" path="res://Libraries/Grass/tall_grass.tscn" id="6_r57ky"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cfxwkx6vinesj" path="res://src/World/cave_modulate.tscn" id="16_tnimf"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="17_8307e"]
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_qi0e2"]
+[ext_resource type="Resource" uid="uid://dsngqylbc0x3o" path="res://Core/Pokemon/Riolu.tres" id="17_xb0xp"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47737,9 +47739,7 @@ sources/8 = SubResource("TileSetAtlasSource_fjhd4")
 
 [node name="CaveOfBegginings" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_c7u6u")
-min_level = 2
-max_level = 5
+script = ExtResource("1_sgirk")
 metadata/Modulate = true
 
 [node name="mainTilemap" type="TileMap" parent="."]
@@ -47792,6 +47792,10 @@ Spawn_location = Vector2(312, 192)
 Spawn_direction = Vector2(0, -1)
 
 [node name="EncounterManager" parent="." instance=ExtResource("17_qi0e2")]
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_tildt")])
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_xb0xp")])
+min_level = 2
+max_level = 5
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_tnimf")]
 color = Color(0.121569, 0.121569, 0.121569, 1)

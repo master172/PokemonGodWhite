@@ -17,8 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://crwmjhnyx8kea" path="res://assets/Audio/SFX/Bfxr/Dodge.wav" id="15_pkr0q"]
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qjp"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuxi6"]
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_yb5mb"]
 resource_name = "Down"
@@ -166,7 +166,7 @@ vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_t5qjp")
+shape = SubResource("CircleShape2D_iuxi6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
