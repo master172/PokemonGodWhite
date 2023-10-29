@@ -209,19 +209,20 @@ func _input(event):
 				2:
 					pass
 		elif state == STATES.POKEMON:
-			var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
-			if ci.item.get_function() == 0:
-				if AllyPokemon.get_party_pokemon(current_selected) != null:
-					ci.use(current_selected)
-					poke_container._all_display()
-					clear_items()
-					var temp = current_selected
-					
-					current_selected = bagkey
-					add_items()
-					current_selected = temp
-					clear_data()
-					
+			if Inventory.pocket.pockets[current_pocket].items.size() > current_item:
+				var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
+				if ci.item.get_function() == 0:
+					if AllyPokemon.get_party_pokemon(current_selected) != null:
+						ci.use(current_selected)
+						poke_container._all_display()
+						clear_items()
+						var temp = current_selected
+						
+						current_selected = bagkey
+						add_items()
+						current_selected = temp
+						clear_data()
+						
 	elif event.is_action_pressed("No"):
 		if state == STATES.POKEMON:
 			if v_box_container.get_child_count() > 0:
