@@ -15,6 +15,7 @@ var next_scene = null
 @onready var menu = $Menu/Menu
 @onready var battle_layer = $BattleLayer
 @onready var mart_view = $Mart_View
+@onready var day_and_night = $DayAndNight
 
 @export var evolution_dialog:DialogueLine = DialogueLine.new()
 
@@ -177,17 +178,7 @@ func transition_to_scene(new_scene:String, spawn_location:Vector2, spawn_directi
 func finished_fading():
 	match transition_type:
 		Transition_Type.NEW_SCENE:
-			Inventory.save_overworld_items()
-			
-			current_scene.get_child(0).queue_free()
-			current_scene.add_scene(load(next_scene))
-			
-			var player = Utils.get_player()
-			Utils.set_player()
-			player.set_spawn(player_location,player_direction)
-			player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
-			Utils.set_player(false)
-			emit_signal("data_set_finished")
+			change_scene()
 		Transition_Type.MENU_ONLY:
 			menu.unload_party_screen()
 		Transition_Type.PARTY_SCREEN:
@@ -217,6 +208,19 @@ func finished_fading():
 			load_healing_place()
 	transition_player.play("FadeToNormal")
 
+func change_scene():
+	Inventory.save_overworld_items()
+	
+	current_scene.get_child(0).queue_free()
+	current_scene.add_scene(load(next_scene))
+	
+	var player = Utils.get_player()
+	Utils.set_player()
+	player.set_spawn(player_location,player_direction)
+	player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
+	Utils.set_player(false)
+	emit_signal("data_set_finished")
+	
 func load_healing_place():
 	unload_battle_scene()
 	
@@ -338,3 +342,11 @@ func unload_battle_scene():
 	BattleManager.EnemyPokemons = []
 func get_current_scene_name():
 	return current_scene.get_child(0).name
+
+
+func _on_current_scene_has_modulate():
+	day_and_night.visible = false
+
+
+func _on_current_scene_no_modulate():
+	day_and_night.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=26 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://srq4btryqe3j" path="res://autoload/audio_manager.tscn" id="5_p78iy"]
 [ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
+[ext_resource type="Script" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
 
 [sub_resource type="Resource" id="Resource_v2f5h"]
 script = ExtResource("2_spcle")
@@ -114,6 +115,32 @@ _data = {
 "RESET": SubResource("Animation_aupg7")
 }
 
+[sub_resource type="Animation" id="Animation_k5dtd"]
+resource_name = "Default"
+length = 24.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 4, 5.5, 6.5, 8, 12, 16, 17.5, 18.5, 20, 21.5, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.169088, 0.18037, 0.333017, 1), Color(0.215204, 0.199866, 0.394424, 1), Color(0.428431, 0.193332, 0.564388, 1), Color(0.953258, 0.459474, 0.668641, 1), Color(1, 0.594559, 0.609267, 1), Color(1.00198, 0.870214, 0.866891, 1), Color(1, 1, 1, 1), Color(1.00198, 0.870214, 0.866891, 1), Color(1, 0.594559, 0.609267, 1), Color(0.953258, 0.459474, 0.668641, 1), Color(0.428431, 0.193332, 0.564388, 1), Color(0.215204, 0.199866, 0.394424, 1), Color(0.169088, 0.18037, 0.333017, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lhjtr"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi3fv"]
+_data = {
+"Default": SubResource("Animation_k5dtd"),
+"RESET": SubResource("Animation_lhjtr")
+}
+
 [node name="SceneManager" type="Node2D" groups=["SceneManager"]]
 script = ExtResource("1_iar6v")
 evolution_dialog = SubResource("Resource_c8k5d")
@@ -161,3 +188,14 @@ z_index = 20
 visible = false
 
 [node name="Mart_View" type="CanvasLayer" parent="."]
+
+[node name="DayAndNight" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayAndNight"]
+libraries = {
+"": SubResource("AnimationLibrary_pi3fv")
+}
+script = ExtResource("12_bndex")
+
+[connection signal="has_modulate" from="Current_scene" to="." method="_on_current_scene_has_modulate"]
+[connection signal="no_modulate" from="Current_scene" to="." method="_on_current_scene_no_modulate"]
