@@ -93,6 +93,8 @@ func _ready():
 	shadow.visible = false
 	skin.visible = true
 	
+	leaves.emit(can_leaf)
+	
 	#set looking direction
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:
@@ -111,8 +113,7 @@ func _ready():
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 	
-	if can_leaf == true:
-		leaves.emit()
+	
 	emit_signal("player_ready")
 	
 func set_poke_pos_dir(val1:Vector2,val2):

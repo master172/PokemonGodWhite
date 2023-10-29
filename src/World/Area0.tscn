@@ -36312,7 +36312,8 @@ sources/7 = SubResource("TileSetAtlasSource_0c2yq")
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2ofmc")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("12_tsf5n")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m")])
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("12_tsf5n")])
 min_level = 2
 max_level = 5
 

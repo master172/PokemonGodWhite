@@ -1,8 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://ycsu01lbqjeh"]
+[gd_scene load_steps=26 format=3 uid="uid://ycsu01lbqjeh"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_kbqrq"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_oe4ly"]
-[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="3_nposp"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="4_dpa2u"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="5_te3np"]
 [ext_resource type="PackedScene" uid="uid://c6h1kkkqjrqw1" path="res://Libraries/Grass/tall_grass.tscn" id="6_v8j87"]
@@ -47740,7 +47738,6 @@ sources/8 = SubResource("TileSetAtlasSource_fjhd4")
 [node name="CaveOfBegginings" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_kbqrq")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_oe4ly"), ExtResource("3_nposp")])
 min_level = 2
 max_level = 5
 
@@ -47773,7 +47770,6 @@ script = ExtResource("13_wcx5f")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(312, 192)
-can_leaf = true
 
 [node name="Door" parent="." instance=ExtResource("16_ykrnb")]
 z_index = -1
