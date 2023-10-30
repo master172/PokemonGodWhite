@@ -31,6 +31,7 @@ DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 PauseScene="*res://src/Utility/PauseScene.tscn"
 EvolutionManager="*res://autoload/EvolutionManager.gd"
 Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
+AudioManager="*res://autoload/audio_manager.tscn"
 
 [dialogic]
 

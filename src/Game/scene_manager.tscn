@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=25 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_c16ga"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_cax24"]
-[ext_resource type="PackedScene" uid="uid://srq4btryqe3j" path="res://autoload/audio_manager.tscn" id="5_p78iy"]
 [ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
 [ext_resource type="Script" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
@@ -172,8 +171,6 @@ color = Color(0, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_5vqoy")
 }
-
-[node name="AudioManager" parent="." instance=ExtResource("5_p78iy")]
 
 [node name="Debug" type="CanvasLayer" parent="."]
 layer = 20

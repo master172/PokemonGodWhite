@@ -54,26 +54,31 @@ func _unhandled_input(event):
 					grid_container.get_child(current_selected).change_selected(true)
 					
 				if event.is_action_pressed("A"):
+					AudioManager.input()
 					grid_container.get_child(current_selected).change_selected(false)
 					current_selected  = (current_selected +max_selectable - 1) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 					
 				elif event.is_action_pressed("D"):
+					AudioManager.input()
 					grid_container.get_child(current_selected).change_selected(false)
 					current_selected = (current_selected + 1) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 					
 				elif event.is_action_pressed("W"):
+					AudioManager.input()
 					grid_container.get_child(current_selected).change_selected(false)
 					current_selected  = (current_selected + 4) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 				
 				elif event.is_action_pressed("S"):
+					AudioManager.input()
 					grid_container.get_child(current_selected).change_selected(false)
 					current_selected  = (current_selected +max_selectable - 4) % max_selectable
 					grid_container.get_child(current_selected).change_selected(true)
 				
 				elif event.is_action_pressed("Yes"):
+					AudioManager.select()
 					if current_selected == 0:
 						Utils.get_scene_manager().transition_to_party_screen()
 					elif current_selected == 2 or current_selected == -2:
@@ -90,13 +95,16 @@ func _unhandled_input(event):
 						
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
+				AudioManager.cancel()
 				Utils.get_scene_manager().transistion_exit_party_screen()
 		current_state.Summary:
 			if event.is_action_pressed("No"):
+				AudioManager.cancel()
 				if Global.move_management == false:
 					Utils.get_scene_manager().transistion_exit_summary_screen()
 		current_state.Card:
 			if event.is_action_pressed("No"):
+				AudioManager.cancel()
 				unload_trainer_card()
 			
 

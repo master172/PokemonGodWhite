@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://srq4btryqe3j"]
+[gd_scene load_steps=6 format=3 uid="uid://srq4btryqe3j"]
 
 [ext_resource type="Script" path="res://autoload/audio_manager.gd" id="1_0pu4h"]
 [ext_resource type="AudioStream" uid="uid://h6ocdmrx8cs5" path="res://assets/Audio/Ambient/AmbientExploration.wav" id="1_ptn4r"]
+[ext_resource type="AudioStream" uid="uid://cjy6v3vpr08d2" path="res://assets/Audio/SFX/Ui/UiInput.wav" id="3_bhcni"]
+[ext_resource type="AudioStream" uid="uid://cubkeat2emjh2" path="res://assets/Audio/SFX/Ui/UiSelect.wav" id="4_k6mw4"]
+[ext_resource type="AudioStream" uid="uid://ce2m8cuywgqhg" path="res://assets/Audio/SFX/Ui/UiCancel.wav" id="5_ebcd4"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_0pu4h")
@@ -9,5 +12,18 @@ script = ExtResource("1_0pu4h")
 [node name="AmbientExploration" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ptn4r")
 autoplay = true
+
+[node name="Ui" type="Node" parent="."]
+
+[node name="Input" type="AudioStreamPlayer2D" parent="Ui"]
+stream = ExtResource("3_bhcni")
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Ui"]
+stream = ExtResource("4_k6mw4")
+volume_db = -10.0
+
+[node name="Cancel" type="AudioStreamPlayer2D" parent="Ui"]
+stream = ExtResource("5_ebcd4")
+volume_db = -5.0
 
 [connection signal="finished" from="AmbientExploration" to="." method="_on_audio_stream_player_finished"]
