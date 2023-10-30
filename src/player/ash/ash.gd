@@ -607,3 +607,4 @@ func update_following_pokemon():
 
 func set_camera_zoom(num:int):
 	camera_2d.zoom = Vector2(num,num)
+

@@ -151,7 +151,7 @@ script = ExtResource("2_tvhi0")
 [node name="Area0" parent="Current_scene" instance=ExtResource("1_7uays")]
 
 [node name="Menu" type="CanvasLayer" parent="."]
-layer = 2
+layer = 3
 
 [node name="Menu" parent="Menu" instance=ExtResource("4_14eu5")]
 
@@ -188,6 +188,7 @@ z_index = 20
 visible = false
 
 [node name="Mart_View" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="DayAndNight" type="CanvasModulate" parent="."]
 

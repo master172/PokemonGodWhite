@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=128 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bc3ojlmrkopii" path="res://assets/Effects/FallingLeaves/Leaf3.png" id="9_m0d4k"]
 [ext_resource type="Texture2D" uid="uid://bp0egh8oy12po" path="res://assets/Effects/FallingLeaves/Leaf1.png" id="10_cfayg"]
 [ext_resource type="Texture2D" uid="uid://bn8hqppd45tsa" path="res://assets/Effects/FallingLeaves/Leaf2.png" id="11_3m2yk"]
+[ext_resource type="Script" path="res://src/player/ash/WindGust.gd" id="13_xq3te"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -1367,4 +1368,10 @@ process_material = SubResource("ParticleProcessMaterial_f6evh")
 texture = ExtResource("11_3m2yk")
 lifetime = 10.0
 
+[node name="WindGust" type="CanvasLayer" parent="HudEffects"]
+script = ExtResource("13_xq3te")
+
+[node name="Timer" type="Timer" parent="HudEffects/WindGust"]
+
 [connection signal="timeout" from="SurfTimer" to="." method="_on_surf_timer_timeout"]
+[connection signal="timeout" from="HudEffects/WindGust/Timer" to="HudEffects/WindGust" method="_on_timer_timeout"]

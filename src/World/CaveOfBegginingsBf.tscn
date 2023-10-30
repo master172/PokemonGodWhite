@@ -47783,6 +47783,9 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="WindGust" parent="player/HudEffects" index="1"]
+can_fire = false
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../PointLight2D")
 
@@ -47809,6 +47812,7 @@ min_level = 2
 max_level = 5
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_tnimf")]
+z_index = 2
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

@@ -47867,11 +47867,13 @@ limit_left = -400
 limit_top = -288
 limit_right = 432
 limit_bottom = 336
-limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="WindGust" parent="player/HudEffects" index="1"]
+can_fire = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../PointLight2D")
@@ -47907,6 +47909,7 @@ min_level = 3
 max_level = 6
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_f1501")]
+z_index = 2
 color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
