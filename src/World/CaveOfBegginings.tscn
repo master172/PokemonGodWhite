@@ -47862,6 +47862,17 @@ unique_name_in_owner = true
 z_index = 1
 position = Vector2(312, 192)
 
+[node name="Camera2D" parent="player" index="5"]
+limit_left = -400
+limit_top = -288
+limit_right = 432
+limit_bottom = 336
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../PointLight2D")
 
@@ -47916,9 +47927,4 @@ energy = 0.7
 texture = ExtResource("17_12cxl")
 texture_scale = 0.7
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -672.0
-offset_top = -472.0
-offset_right = 736.0
-offset_bottom = 560.0
-color = Color(0, 0, 0, 1)
+[editable path="player"]
