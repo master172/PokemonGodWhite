@@ -84,7 +84,9 @@ func _input(event):
 			itemkey = 0
 			noi.hide()
 	elif event.is_action_pressed("No"):
+		AudioManager.cancel()
 		if state == STATES.NORMAL:
+	
 			queue_free()
 			if Utils.get_player() != null:
 				Utils.get_player().set_physics_process(true)

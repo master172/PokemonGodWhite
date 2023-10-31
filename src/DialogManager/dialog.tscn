@@ -118,6 +118,7 @@ Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_gefcc"), SubResou
 Format = {}
 
 [node name="DialogBar" type="Control"]
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

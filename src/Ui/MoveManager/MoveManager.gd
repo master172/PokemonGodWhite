@@ -203,6 +203,7 @@ func _input(event):
 				switch_update()
 				
 		elif event.is_action_pressed("No"):
+			AudioManager.cancel()
 			if state == states.LEARNED:
 				active = false
 				emit_signal("quit")
