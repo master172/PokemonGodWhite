@@ -3,6 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://qr11x4n8f2gi" path="res://src/DialogManager/dialog.tscn" id="1_y3p5b"]
 
 [node name="DialogLayer" type="CanvasLayer"]
-layer = 2
+layer = 4
 
 [node name="Dialog" parent="." instance=ExtResource("1_y3p5b")]
