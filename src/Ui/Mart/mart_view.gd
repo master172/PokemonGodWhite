@@ -68,6 +68,7 @@ func _input(event):
 			
 			item_selected.count = current_selected
 	elif event.is_action_pressed("Yes"):
+		AudioManager.select()
 		if state == STATES.NORMAL:
 			state = STATES.ITEMS
 			item_selected = item_list.get_child(current_selected).item

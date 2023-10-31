@@ -43,21 +43,25 @@ func _input(event):
 	if state == STATES.RADIAL:
 		_set_radial()
 		if event.is_action_pressed("A"):
+			AudioManager.input()
 			unset_active_option()
 			selected_option  = (selected_option +options_selectable - 1) % options_selectable
 			set_active_option()
 			
 		elif event.is_action_pressed("D"):
+			AudioManager.input()
 			unset_active_option()
 			selected_option  = (selected_option + 1) % options_selectable
 			set_active_option()
 			
 		elif event.is_action_pressed("Yes"):
+			AudioManager.select()
 			emit_signal("action_chosen",selected_option)
 			state = STATES.EMPTY
 			_set_radial()
 			
 		elif event.is_action_pressed("No"):
+			AudioManager.cancel()
 			state = STATES.EMPTY
 			_set_radial()
 			emit_signal("cancel")

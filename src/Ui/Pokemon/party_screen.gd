@@ -54,8 +54,9 @@ func _ready():
 	
 
 func _input(event):
-	if event.is_action_pressed("S"):
-		if state == states.active and summary == false:
+	if summary == false:
+		if event.is_action_pressed("S"):
+			AudioManager.input()
 			unset_active_option()
 			if selected_option == options_selectable - 2:
 				selected_option = 6
@@ -64,9 +65,9 @@ func _input(event):
 			else:
 				selected_option = (selected_option + 1) % options_selectable
 
-		set_active_option()
-	elif event.is_action_pressed("W"):
-		if state == states.active and summary == false:
+			set_active_option()
+		elif event.is_action_pressed("W"):
+			AudioManager.input()
 			unset_active_option()
 			if selected_option == 0:
 				selected_option = Options.CANCEL
@@ -76,18 +77,19 @@ func _input(event):
 				selected_option -= 1
 
 			set_active_option()
-	elif event.is_action_pressed("A"):
-		if state == states.active and summary == false:
+		elif event.is_action_pressed("A"):
+			AudioManager.input()
 			unset_active_option()
 			selected_option = 0
 			set_active_option()
-	elif event.is_action_pressed("D") and selected_option == Options.FIRST_SLOT:
-		if state == states.active and summary == false:
+		elif event.is_action_pressed("D") and selected_option == Options.FIRST_SLOT:
+			AudioManager.input()
 			if options_selectable >= 3:
 				unset_active_option()
 				selected_option = 1
 				set_active_option()
-	elif event.is_action_pressed("Yes"):
+	if event.is_action_pressed("Yes"):
+		AudioManager.select()
 		if state == states.active:
 			await get_tree().create_timer(0.1).timeout
 			if waiting == false:
@@ -147,6 +149,7 @@ func switch():
 	state = states.switching
 	switch_a = selected_option
 	print(switch_a)
+	
 func _on_button_press_timer_timeout():
 	print("sucessfull")
 	buttonHoldSucessful = true

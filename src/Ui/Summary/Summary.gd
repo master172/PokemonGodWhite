@@ -59,6 +59,8 @@ func set_pokemon(poke:game_pokemon):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("A"):
+		AudioManager.input()
+		AudioManager.input()
 		if state == States.Normal:
 			unset_active_option()
 			selected_option  = (selected_option +options_selectable - 1) % options_selectable
@@ -66,6 +68,7 @@ func _unhandled_input(event):
 			if panels[selected_option].has_method("_display"):
 				panels[selected_option]._display(showing_pokemon)
 	elif event.is_action_pressed("D"):
+		AudioManager.input()
 		if state == States.Normal:
 			if options_selectable >= 3:
 				unset_active_option()
@@ -74,6 +77,7 @@ func _unhandled_input(event):
 				if panels[selected_option].has_method("_display"):
 					panels[selected_option]._display(showing_pokemon)
 	elif event.is_action_pressed("S"):
+		AudioManager.input()
 		if state == States.Normal:
 			if selected_option == 5:
 				temp_panel = selected_option
@@ -94,6 +98,7 @@ func _unhandled_input(event):
 				evolution.scroll_down()
 			
 	elif event.is_action_pressed("W"):
+		AudioManager.input()
 		if state ==States.Evolution:
 			if selected_option == 0:
 				evolution.update_display(selected_option,false)
@@ -112,6 +117,7 @@ func _unhandled_input(event):
 					evolution.scroll_up()
 				
 	elif event.is_action_pressed("Yes"):
+		AudioManager.select()
 		if  state == States.Normal:
 			if selected_option == 1:
 				state = States.MoveManagement

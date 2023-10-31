@@ -82,7 +82,7 @@ func set_search_inactive():
 	
 func _input(event):
 	if event.is_action_pressed("W"):
-		
+		AudioManager.input()
 		if state == states.LIST:
 			if current_selected == 0:
 				state = states.SEARCH
@@ -108,6 +108,7 @@ func _input(event):
 			set_party_active()
 			
 	elif event.is_action_pressed("A"):
+		AudioManager.input()
 		if state == states.SEARCH:
 			state = states.PARTY
 			search_bar.release_focus()
@@ -128,6 +129,7 @@ func _input(event):
 			set_party_active() 
 			
 	elif event.is_action_pressed("S"):
+		AudioManager.input()
 		if state == states.PARTY:
 			set_party_inactive()
 			current_selected  = (current_selected +1) % max_selectable
@@ -157,6 +159,7 @@ func _input(event):
 				scroll_container.scroll_vertical = 0
 				
 	elif event.is_action_pressed("D"):
+		AudioManager.input()
 		if state == states.PARTY:
 			state = states.SEARCH
 			set_party_inactive()
@@ -170,6 +173,7 @@ func _input(event):
 			quit_panel.set_active(current_selected)
 			
 	elif event.is_action_pressed("Yes"):
+		AudioManager.select()
 		if state == states.SEARCH:
 			if not search_bar.has_focus():
 				search_bar.grab_focus()
@@ -228,6 +232,7 @@ func _input(event):
 				
 				
 	elif event.is_action_pressed("No"):
+		AudioManager.cancel()
 		if state == states.SWITCHING:
 			set_party_inactive()
 			current_selected = pc_switch_index

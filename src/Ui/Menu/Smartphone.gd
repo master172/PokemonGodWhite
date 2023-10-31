@@ -36,6 +36,7 @@ func _unhandled_input(event):
 	match CurrentState:
 		current_state.Empty:
 			if event.is_action_pressed("Menu") and BattleManager.in_battle == false:
+				AudioManager.select()
 				var player = Utils.get_player()
 				if !player.is_moving:
 					player.set_physics_process(false)
@@ -43,6 +44,7 @@ func _unhandled_input(event):
 					CurrentState = current_state.Normal
 		current_state.Normal:
 			if event.is_action_pressed("Menu") or event.is_action_pressed("No"):
+				AudioManager.cancel()
 				quit()
 
 			else:

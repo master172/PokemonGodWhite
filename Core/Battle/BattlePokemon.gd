@@ -71,10 +71,12 @@ func get_input():
 	if knockback == false and stop == false and resting == false and Stun == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
 			if attacking == false and action == false:
+				AudioManager.select()
 				state = states.ATTACK_SELECTION
 				attack_selector.start_radial()
 		elif Input.is_action_just_pressed("No") and init_delay == false:
 			if attacking == false and action == false:
+				AudioManager.select()
 				action = true
 				state = states.ACTION_SELECTION
 				action_chosen.start_radial()

@@ -29,19 +29,22 @@ func _input(event):
 	if state == STATES.RADIAL:
 		_set_radial()
 		if event.is_action_pressed("A"):
-
+			AudioManager.input()
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			change_selected()
 			
 		elif event.is_action_pressed("D"):
+			AudioManager.input()
 			current_selected = (current_selected + 1) % max_selectable
 			change_selected()
 		
 		elif event.is_action_pressed("Yes"):
+			AudioManager.select()
 			emit_signal("attack_chosen",current_selected)
 			state = STATES.EMPTY
 			_set_radial()
 		elif event.is_action_pressed("No"):
+			AudioManager.cancel()
 			state = STATES.EMPTY
 			_set_radial()
 			emit_signal("cancel")

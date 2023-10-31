@@ -119,16 +119,19 @@ func unset_pokemon():
 	
 func _input(event):
 	if event.is_action_pressed("A"):
+		AudioManager.input()
 		if state == STATES.NORMAL:
 			unset_pockets()
 			current_selected  = (current_selected +max_selected - 1) % max_selected
 			set_pockets()
 	elif event.is_action_pressed("D"):
+		AudioManager.input()
 		if state == STATES.NORMAL:
 			unset_pockets()
 			current_selected = (current_selected + 1) %max_selected
 			set_pockets()
 	elif event.is_action_pressed("S"):
+		AudioManager.input()
 		if state == STATES.NORMAL and v_box_container.get_child_count() > 0:
 			state = STATES.ITEMS
 			max_selected = v_box_container.get_child_count()
@@ -157,6 +160,7 @@ func _input(event):
 			set_pokemon()
 			
 	elif event.is_action_pressed("W"):
+		AudioManager.input()
 		if state == STATES.ITEMS:
 			if current_selected == 0:
 				state = STATES.NORMAL
@@ -184,6 +188,7 @@ func _input(event):
 			current_selected  = (current_selected +max_selected - 1) % max_selected
 			set_pokemon()
 	elif event.is_action_pressed("Yes"):
+		AudioManager.select()
 		if state == STATES.ITEMS:
 			current_item = current_selected
 			itemkey = current_selected
@@ -224,6 +229,7 @@ func _input(event):
 						clear_data()
 						
 	elif event.is_action_pressed("No"):
+		AudioManager.cancel()
 		if state == STATES.POKEMON:
 			if v_box_container.get_child_count() > 0:
 				state = STATES.ITEMS

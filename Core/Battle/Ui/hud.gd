@@ -31,22 +31,24 @@ func _input(event):
 	if state == STATES.RADIAL:
 		_set_radial()
 		if event.is_action_pressed("A"):
-
+			AudioManager.input()
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			change_selected()
 			
 		elif event.is_action_pressed("D"):
+			AudioManager.input()
 			current_selected = (current_selected + 1) % max_selectable
 			change_selected()
 		
 		elif event.is_action_pressed("Yes"):
 			if AllyPokemon.get_party_pokemon(current_selected).Health > 0:
+				AudioManager.select()
 				pokemon_selected.emit(current_selected)
 				visible = false
 				state = STATES.EMPTY
 				pokeball.play()
 			else:
-				pass
+				AudioManager.cancel()
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

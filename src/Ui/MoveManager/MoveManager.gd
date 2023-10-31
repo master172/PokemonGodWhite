@@ -101,6 +101,7 @@ func set_learnable_inactive():
 func _input(event):
 	if active == true:
 		if event.is_action_pressed("W"):
+			AudioManager.input()
 			if state == states.LEARNED:
 				set_learned_inactive()
 				if max_selectable > 0:
@@ -124,6 +125,7 @@ func _input(event):
 					scroll_container.scroll_vertical = (learnable.get_child_count() -1) * 79
 				
 		elif event.is_action_pressed("A"):
+			AudioManager.input()
 			if state == states.LEARNABLE:
 				set_learnable_inactive()
 				current_selected = 0
@@ -132,6 +134,7 @@ func _input(event):
 				set_learned_active()
 				
 		elif event.is_action_pressed("S"):
+			AudioManager.input()
 			if state == states.LEARNED:
 				set_learned_inactive()
 				if max_selectable > 0:
@@ -155,6 +158,7 @@ func _input(event):
 					scroll_container.scroll_vertical = 0
 				
 		elif event.is_action_pressed("D"):
+			AudioManager.input()
 			if state == states.LEARNED:
 				set_learned_inactive()
 				current_selected = 0
@@ -164,6 +168,7 @@ func _input(event):
 
 				
 		elif event.is_action_pressed("Yes"):
+			AudioManager.select()
 			if state == states.LEARNED:
 				if pokemon.get_learned_attacks() >= 1:
 					pokemon.forget_move_manual(current_selected)
