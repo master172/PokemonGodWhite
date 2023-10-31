@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=25 format=3 uid="uid://qr11x4n8f2gi"]
 
 [ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
@@ -117,6 +117,13 @@ script = ExtResource("3_pnle8")
 Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_gefcc"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue"), SubResource("Resource_7142w")])
 Format = {}
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcicc"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.694118)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [node name="DialogBar" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -127,7 +134,7 @@ grow_vertical = 2
 script = ExtResource("1_klog6")
 current_dialog = SubResource("Resource_3udj0")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 232)
 layout_mode = 1
 anchors_preset = 12
@@ -137,7 +144,7 @@ anchor_bottom = 1.0
 offset_top = -232.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.152941, 0.152941, 0.152941, 0.603922)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcicc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background"]
 custom_minimum_size = Vector2(0, 200)
