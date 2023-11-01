@@ -14,7 +14,8 @@ var max_selectable = 6
 @onready var pokemon_sprites = $PokemonSprites
 @onready var pokeball = $Pokeball
 
-
+signal run
+var running:bool = false
 
 func change_selected():
 	radial.frame = current_selected + 1
@@ -41,14 +42,19 @@ func _input(event):
 			change_selected()
 		
 		elif event.is_action_pressed("Yes"):
-			if AllyPokemon.get_party_pokemon(current_selected).Health > 0:
-				AudioManager.select()
-				pokemon_selected.emit(current_selected)
-				visible = false
-				state = STATES.EMPTY
-				pokeball.play()
-			else:
-				AudioManager.cancel()
+			if running == false:
+				if AllyPokemon.get_party_pokemon(current_selected).Health > 0:
+					AudioManager.select()
+					pokemon_selected.emit(current_selected)
+					visible = false
+					state = STATES.EMPTY
+					pokeball.play()
+				else:
+					AudioManager.cancel()
+		elif event.is_action_pressed("No"):
+			if BattleManager.Trainer_Battle == false:
+				emit_signal("run")
+				running = true
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

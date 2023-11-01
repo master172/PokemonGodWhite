@@ -54,6 +54,7 @@ animations = [{
 size = Vector2(80, 98.2858)
 
 [node name="Action" type="Node2D"]
+rotation = -1.5708
 script = ExtResource("1_td6vd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -67,7 +68,7 @@ frame_progress = 1.0
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-position = Vector2(7.03895e-07, 14.8572)
+position = Vector2(-1.90735e-06, 17)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_fhhti")
 

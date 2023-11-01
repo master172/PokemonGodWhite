@@ -22,13 +22,13 @@ func _attack():
 			
 		
 			if direction == Vector2(0,-1):
-				self.rotation_degrees = 180
-			elif direction == Vector2(0,1):
-				self.rotation_degrees = 0
-			elif direction  == Vector2(-1,0):
-				self.rotation_degrees = 90
-			elif direction == Vector2(1,0):
 				self.rotation_degrees = -90
+			elif direction == Vector2(0,1):
+				self.rotation_degrees = 90
+			elif direction  == Vector2(-1,0):
+				self.rotation_degrees = -180
+			elif direction == Vector2(1,0):
+				self.rotation_degrees =0
 		User.velocity = User.velocity * 0.001
 		
 func _on_animated_sprite_2d_animation_finished():

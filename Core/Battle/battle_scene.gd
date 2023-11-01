@@ -193,3 +193,7 @@ func set_map(map :int = 0):
 	elif map == 1:
 		Map = load("res://Core/Battle/Areas/BattleArea1.tscn")
 	add_child(Map.instantiate())
+
+
+func _on_hud_run():
+	_run("Run")
