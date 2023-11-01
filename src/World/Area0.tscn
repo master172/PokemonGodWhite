@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=42 format=3 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="3_e07th"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="3_p24ug"]
 [ext_resource type="Texture2D" uid="uid://d1pkglneoxq4a" path="res://assets/PokemonTilesets/ledge.png" id="4_3hqum"]
+[ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Wurmple.tres" id="4_hdyfe"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_l5egc"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_gix2c"]
 [ext_resource type="PackedScene" uid="uid://bbyhnn6340w0c" path="res://Libraries/Houses/martHouse.tscn" id="7_3088l"]
@@ -36506,7 +36507,7 @@ sources/7 = SubResource("TileSetAtlasSource_0c2yq")
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2ofmc")
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("3_p24ug")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("3_p24ug"), ExtResource("4_hdyfe")])
 rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("12_tsf5n")])
 min_level = 2
 max_level = 5
