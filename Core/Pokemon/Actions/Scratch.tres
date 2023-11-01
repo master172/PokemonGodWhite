@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://c5mwanc7qogiy"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_1ufn6"]
+[ext_resource type="PackedScene" uid="uid://dmndgntrn1nfe" path="res://Core/Actions/Scracth.tscn" id="1_dm3en"]
+
+[resource]
+script = ExtResource("1_1ufn6")
+name = "Scratch"
+learned_level = 1
+action = ExtResource("1_dm3en")
+Type = "Normal"
+power = 40.0
+range = 1
