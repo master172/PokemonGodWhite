@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://7mrepf8gcgct"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_l1s3u"]
+[ext_resource type="Texture2D" uid="uid://de1ly2vw6jsd6" path="res://Core/Graphics/Pokemon/Gen3/Back/NOSEPASS.png" id="1_nhbms"]
+[ext_resource type="Texture2D" uid="uid://bk04xafqpx85r" path="res://Core/Graphics/Pokemon/Gen3/Front/NOSEPASS.png" id="2_sp0ck"]
+[ext_resource type="Texture2D" uid="uid://d4mdjx1llhoem" path="res://Core/Graphics/Pokemon/Gen3/Icons/NOSEPASS.png" id="3_crcvm"]
+[ext_resource type="Texture2D" uid="uid://b6vkmfyydac1d" path="res://Core/Graphics/Pokemon/Gen3/Followers/NOSEPASS.png" id="4_8lift"]
+
+[resource]
+script = ExtResource("1_l1s3u")
+Name = "Nosepass"
+Id = 299
+Type1 = "Rock"
+Type2 = "NONE"
+leveleing_type = 2
+Front = ExtResource("2_sp0ck")
+Back = ExtResource("1_nhbms")
+Icon = ExtResource("3_crcvm")
+Overworld = ExtResource("4_8lift")
+Base_Health = 30
+Base_Attack = 45
+Base_Defense = 135
+Special_Base_Attack = 45
+Special_Base_Defense = 90
+Base_Speed = 30
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+base_experience = 108
+Yield_Health = 0
+Yield_Attack = 0
+Yield_Defense = 1
+Yield_Special_Defense = 0
+Yield_Special_Attack = 0
+Yield_Speed = 0
+catch_chance = 44

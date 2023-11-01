@@ -22,6 +22,7 @@ signal player_entered_door_signal
 
 @export_group("vfx")
 @export var can_leaf:bool = false
+@export var can_wind:bool = false
 
 const TILE_SIZE = 16
 
@@ -59,6 +60,7 @@ var speed :float= 4.0
 @onready var footstep = $AudioManager/Footstep
 @onready var camera_2d = $Camera2D
 @onready var leaves = $HudEffects/Leaves
+@onready var Wind_gust = $HudEffects/WindGust
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -94,7 +96,7 @@ func _ready():
 	skin.visible = true
 	
 	leaves.emit(can_leaf)
-	
+	Wind_gust.start(can_wind)
 	#set looking direction
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:

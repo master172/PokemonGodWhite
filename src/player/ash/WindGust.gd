@@ -3,7 +3,6 @@ extends CanvasLayer
 @export var min_time :int = 0
 @export var max_time :int = 10
 
-@export var can_fire:bool = true
 
 var Rng = RandomNumberGenerator.new()
 
@@ -16,9 +15,8 @@ const windGust3 = preload("res://src/Environment/Effects/WindGusts/WindGust3.tsc
 
 var wind_gusts :Array = [windGust,windGust1,windGust2,windGust3]
 
-func _ready():
-	if can_fire == true:
-
+func start(value:bool):
+	if value == true:
 		start_gusts()
 
 func start_gusts():

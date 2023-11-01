@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://d0b5xmdpi30"]
+
+[ext_resource type="Texture2D" uid="uid://drv27kipl8ot7" path="res://Core/Graphics/Pokemon/Gen6/Back/TYRUNT.png" id="1_cfgvo"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_sipyn"]
+[ext_resource type="Texture2D" uid="uid://bxatlfgo8m1ni" path="res://Core/Graphics/Pokemon/Gen6/Front/TYRUNT.png" id="2_vtrg8"]
+[ext_resource type="Texture2D" uid="uid://314c1u7f6jmc" path="res://Core/Graphics/Pokemon/Gen6/Icons/TYRUNT.png" id="3_2aavt"]
+[ext_resource type="Texture2D" uid="uid://cgm2wmkivopou" path="res://Core/Graphics/Pokemon/Gen6/Followers/TYRUNT.png" id="4_hcjoq"]
+
+[resource]
+script = ExtResource("1_sipyn")
+Name = "Tyrunt"
+Id = 696
+Type1 = "Rock"
+Type2 = "Dragon"
+leveleing_type = 2
+Front = ExtResource("2_vtrg8")
+Back = ExtResource("1_cfgvo")
+Icon = ExtResource("3_2aavt")
+Overworld = ExtResource("4_hcjoq")
+Base_Health = 58
+Base_Attack = 89
+Base_Defense = 77
+Special_Base_Attack = 45
+Special_Base_Defense = 45
+Base_Speed = 48
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+base_experience = 72
+Yield_Health = 0
+Yield_Attack = 1
+Yield_Defense = 0
+Yield_Special_Defense = 0
+Yield_Special_Attack = 0
+Yield_Speed = 0
+catch_chance = 12

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://c6kva5a3lgpr8"]
+
+[ext_resource type="Texture2D" uid="uid://b7vs3dnorhamu" path="res://Core/Graphics/Pokemon/Gen3/Back/WURMPLE.png" id="1_vwb6u"]
+[ext_resource type="Texture2D" uid="uid://depm726dl553b" path="res://Core/Graphics/Pokemon/Gen3/Front/WURMPLE.png" id="2_cem62"]
+[ext_resource type="Texture2D" uid="uid://b7ri7i8l1k4fy" path="res://Core/Graphics/Pokemon/Gen3/Icons/WURMPLE.png" id="3_4t4gj"]
+[ext_resource type="Texture2D" uid="uid://pyvv8o8hscsu" path="res://Core/Graphics/Pokemon/Gen3/Followers/WURMPLE.png" id="4_wso1i"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="5_fkgxx"]
+
+[resource]
+script = ExtResource("5_fkgxx")
+Name = "Wurmple"
+Id = 265
+Type1 = "Bug"
+Type2 = "NONE"
+leveleing_type = 2
+Front = ExtResource("2_cem62")
+Back = ExtResource("1_vwb6u")
+Icon = ExtResource("3_4t4gj")
+Overworld = ExtResource("4_wso1i")
+Base_Health = 45
+Base_Attack = 45
+Base_Defense = 35
+Special_Base_Attack = 20
+Special_Base_Defense = 30
+Base_Speed = 20
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+base_experience = 64
+Yield_Health = 1
+Yield_Attack = 0
+Yield_Defense = 0
+Yield_Special_Defense = 0
+Yield_Special_Attack = 0
+Yield_Speed = 0
+catch_chance = 44
