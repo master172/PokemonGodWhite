@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://pjyya3lsymtu"]
+
+[ext_resource type="Script" path="res://Core/Actions/Peck.gd" id="1_td6vd"]
+[ext_resource type="Texture2D" uid="uid://vcb6onm5ib15" path="res://assets/BattleEffects/Peck.png" id="2_geq4l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb6s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_geq4l")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhhti"]
+size = Vector2(80, 98.2858)
+
+[node name="Action" type="Node2D"]
+script = ExtResource("1_td6vd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_nb6s8")
+animation = &"Attack"
+frame = 12
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(7.03895e-07, 14.8572)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_fhhti")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

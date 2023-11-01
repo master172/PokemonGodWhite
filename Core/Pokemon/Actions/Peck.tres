@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://xw3qldx2o4n1"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_eroc3"]
+[ext_resource type="PackedScene" uid="uid://pjyya3lsymtu" path="res://Core/Actions/Peck.tscn" id="1_ni7m1"]
+
+[resource]
+script = ExtResource("1_eroc3")
+name = "Peck"
+learned_level = 1
+action = ExtResource("1_ni7m1")
+Type = "Flying"
+power = 35.0
+range = 1

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://21eu2xl2vdgh"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://21eu2xl2vdgh"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_dluns"]
+[ext_resource type="Resource" uid="uid://xw3qldx2o4n1" path="res://Core/Pokemon/Actions/Peck.tres" id="1_dofy2"]
 [ext_resource type="Texture2D" uid="uid://bqcdqh7hylwxe" path="res://Core/Graphics/Pokemon/Gen6/Back/FLETCHLING.png" id="1_gc2ch"]
 [ext_resource type="Texture2D" uid="uid://duixtxfb7dvc3" path="res://Core/Graphics/Pokemon/Gen6/Front/FLETCHLING.png" id="2_603y0"]
 [ext_resource type="Texture2D" uid="uid://bp1eqmtbchjx8" path="res://Core/Graphics/Pokemon/Gen6/Icons/FLETCHLING.png" id="3_88y4y"]
@@ -23,7 +24,7 @@ Base_Defense = 43
 Special_Base_Attack = 40
 Special_Base_Defense = 38
 Base_Speed = 62
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_dofy2")])
 base_experience = 64
 Yield_Health = 0
 Yield_Attack = 0
