@@ -75,7 +75,7 @@ func choose_attack():
 func _physics_process(delta):
 	
 	if Stun == true:
-		velocity = Vector2.ZERO
+		velocity = velocity * 0.001
 		
 	knockback_vector = velocity.normalized()
 	#print(velocity)

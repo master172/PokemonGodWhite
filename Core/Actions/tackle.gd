@@ -30,7 +30,7 @@ func is_tackling():
 
 
 func _on_tackle_timer_timeout():
-	User.velocity = Vector2.ZERO
+	User.velocity = User.velocity * 0.001
 
 
 func _on_attack_delay_timeout():

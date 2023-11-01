@@ -28,11 +28,12 @@ func _enter_state() -> void:
 	
 	call_deferred("actor_setup")
 	chasing = true
+	
 func _exit_state() -> void:
 	chasing = false
 	set_physics_process(false)
 	
-	actor.velocity = Vector2.ZERO
+	actor.velocity = actor.velocity * 0.001
 	
 func _physics_process(delta) -> void:
 	if actor.targetPokemon != null:
@@ -59,4 +60,4 @@ func _physics_process(delta) -> void:
 			
 			actor.velocity = new_velocity
 	else:
-		actor.velocity = Vector2.ZERO
+		actor.velocity = actor.velocity * 0.001

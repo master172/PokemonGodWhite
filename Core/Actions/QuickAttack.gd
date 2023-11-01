@@ -30,7 +30,7 @@ func is_tackling():
 
 func _on_quick_attack_timer_timeout():
 	await get_tree().create_timer(0.1).timeout
-	User.velocity = Vector2.ZERO
+	User.velocity = User.velocity * 0.001
 
 
 func _on_attack_delay_timeout():
@@ -51,4 +51,4 @@ func _on_area_2d_body_entered(body):
 			
 			emit_signal("attack_landed",self,User)
 			await get_tree().create_timer(0.1).timeout
-			User.velocity = Vector2.ZERO
+			User.velocity = User.velocity * 0.001
