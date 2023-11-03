@@ -31,7 +31,11 @@ var my_battle_done:bool = false
 signal battle_done
 signal finished
 
+var my_pokemons:Array[game_pokemon]
+
 func _ready():
+	for i in range(pokemons.size()):
+		my_pokemons.append(game_pokemon.new(pokemons[i],levels[i]))
 	if EventManager != null:
 		EventManager.manage_events(self)
 	if Utils.get_scene_manager() != null:
@@ -64,7 +68,7 @@ func _interact():
 
 func battle(Sign):
 	if Sign == "Battle" and taliking == true:
-		Utils.get_scene_manager().transistion_trainer_battle_scene(pokemons,levels,map)
+		Utils.get_scene_manager().transistion_trainer_battle_scene(my_pokemons,map)
 		can_battle = false
 		
 func no(Sign):
@@ -73,9 +77,8 @@ func no(Sign):
 		
 
 func get_pokemon(num:int):
-	var pokemon = pokemons[num]
-	var poke_data = [pokemon,levels[num]]
-	return poke_data
+	var pokemon = my_pokemons[num]
+	return pokemon
 
 func end(Sign):
 	if Sign == "end":

@@ -384,9 +384,7 @@ var fairy_type:Dictionary = {
 }
 
 var AllyPokemons:Poke_list = Poke_list.new()
-var EnemyPokemons: Array[Pokemon]
-
-var EnemyLevels: Array[int]
+var EnemyPokemons: Array[game_pokemon]
 
 var AllyHolders:Array[BattlePokemon] = []
 var EnemyHolders:Array[PokeEnemy] = []

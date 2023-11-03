@@ -18,6 +18,9 @@ var can_move = false
 var position_to_move
 
 func _ready():
+	for i in range(pokemons.size()):
+		Pokemons.append(game_pokemon.new(pokemons[i],levels[i]))
+		
 	if Utils.get_scene_manager() != null:
 		Utils.get_scene_manager().connect("trainer_battle_finished",my_battle_finished)
 		

@@ -56,7 +56,8 @@ func get_encounter_pokemon():
 	var scene = Utils.get_scene_manager().get_current_scene()
 	var encounter_pokemon = scene.get_encounter_pokemon()
 	var poke_data = [encounter_pokemon,Rng.randi_range(scene.min_level,scene.max_level)]
-	return poke_data
+	var pokemon = game_pokemon.new(poke_data[0],poke_data[1])
+	return pokemon
 	
 func encounter():
 	var Rng = RandomNumberGenerator.new()

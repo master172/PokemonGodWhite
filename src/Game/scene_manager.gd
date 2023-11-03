@@ -49,7 +49,7 @@ var save_file_name = "Scene.tres"
 
 var summary_pokemon:int 
 
-var pocket_monster:Array
+var pocket_monster:game_pokemon
 var Map:int = 0
 var WorldEnv:WorldEnvironment = null
 
@@ -110,13 +110,12 @@ func check_evolution():
 	
 	ask_evolution()
 
-func transistion_trainer_battle_scene(pokemons,levels,map):
+func transistion_trainer_battle_scene(pokemons,map):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.TRAINER_BATTLE
-	pocket_monster = [pokemons[0],levels[0]]
+	pocket_monster = pokemons[0]
 	BattleManager.EnemyPokemons = pokemons
-	BattleManager.EnemyLevels = levels
 	Map = map
 	
 func transition_to_evolution():
@@ -191,7 +190,7 @@ func finished_fading():
 			menu.unload_summary_screen()
 		Transition_Type.BATTLE_SCENE:
 			load_battle_scene(pocket_monster,Map)
-			pocket_monster =[]
+			pocket_monster = null
 			Map = 0
 		Transition_Type.EXIT_BATTLE_SCENE:
 			unload_battle_scene()
@@ -206,7 +205,7 @@ func finished_fading():
 			re_check_evolution()
 		Transition_Type.TRAINER_BATTLE:
 			load_battle_trainer(pocket_monster,Map)
-			pocket_monster = []
+			pocket_monster = null
 			Map = 0
 		Transition_Type.BATTLE_LOST:
 			load_healing_place()
@@ -347,7 +346,6 @@ func unload_battle_scene():
 		AllyPokemon.check_evolution_all()
 		print_debug("what the fuck")
 	
-	BattleManager.EnemyLevels = []
 	BattleManager.EnemyPokemons = []
 func get_current_scene_name():
 	return current_scene.get_child(0).name

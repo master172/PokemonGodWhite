@@ -32,7 +32,7 @@ func _ready():
 	
 func set_enemy(pokemon):
 	Poke_enemy = poke_enemy.instantiate()
-	Poke_enemy.pokemon = game_pokemon.new(pokemon[0],pokemon[1])
+	Poke_enemy.pokemon = pokemon
 	Poke_enemy.position = Vector2(603,103)
 	
 	enemy_pokemon.add_child(Poke_enemy)
@@ -184,7 +184,7 @@ func _on_thrower_success():
 func _on_dialog_handler_next_pokemon():
 	emit_signal("poke_start")
 
-	set_enemy([BattleManager.EnemyPokemons[0],BattleManager.EnemyLevels[0]])
+	set_enemy(BattleManager.EnemyPokemons[0])
 
 func set_map(map :int = 0):
 	var Map

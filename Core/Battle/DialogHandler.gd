@@ -40,8 +40,6 @@ func on_won_dialog_finished(dialog):
 	if dialog == "Win":
 		if BattleManager.EnemyPokemons.size() > 0:
 			BattleManager.EnemyPokemons.remove_at(0)
-		if BattleManager.EnemyLevels.size() > 0:
-			BattleManager.EnemyLevels.remove_at(0)
 		check_move_learned()
 
 func battle_pokemon_defeated(pokemon):
