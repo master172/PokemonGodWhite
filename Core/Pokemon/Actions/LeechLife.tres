@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://stoes3mvj7wy"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_aeq6a"]
+[ext_resource type="PackedScene" uid="uid://dhvtsukji64ch" path="res://Core/Actions/LeechLife.tscn" id="1_verdm"]
+
+[resource]
+script = ExtResource("1_aeq6a")
+name = "LeechLife"
+learned_level = 1
+action = ExtResource("1_verdm")
+Type = "Normal"
+power = 17.0
+range = 1

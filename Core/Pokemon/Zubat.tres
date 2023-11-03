@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://dcx24t2o0gm4"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://dcx24t2o0gm4"]
 
 [ext_resource type="Texture2D" uid="uid://c0r22u448lslf" path="res://Core/Graphics/Pokemon/Gen1/Back/ZUBAT.png" id="1_3hi6d"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_efh7v"]
+[ext_resource type="Resource" uid="uid://stoes3mvj7wy" path="res://Core/Pokemon/Actions/LeechLife.tres" id="1_pl3pf"]
 [ext_resource type="Texture2D" uid="uid://ccvow85vvxb32" path="res://Core/Graphics/Pokemon/Gen1/Front/ZUBAT.png" id="2_j1ljj"]
 [ext_resource type="Texture2D" uid="uid://4k1f08hp6bsi" path="res://Core/Graphics/Pokemon/Gen1/Icons/ZUBAT.png" id="3_foexb"]
 [ext_resource type="Texture2D" uid="uid://x05b10h5m50t" path="res://Core/Graphics/Pokemon/Gen1/Followers/ZUBAT.png" id="4_n0xly"]
@@ -23,7 +24,7 @@ Base_Defense = 35
 Special_Base_Attack = 30
 Special_Base_Defense = 40
 Base_Speed = 55
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_pl3pf")])
 base_experience = 54
 Yield_Health = 0
 Yield_Attack = 0

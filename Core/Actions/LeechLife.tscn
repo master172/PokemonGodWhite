@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhvtsukji64ch"]
+
+[ext_resource type="Script" path="res://Core/Actions/LeechLife.gd" id="1_s0jts"]
+[ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="2_gug7i"]
+
+[node name="Action" type="Node2D"]
+script = ExtResource("1_s0jts")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Heal" type="Sprite2D" parent="."]
+self_modulate = Color(0, 100, 0, 1)
+texture = ExtResource("2_gug7i")
+
+[node name="Take" type="Sprite2D" parent="."]
+modulate = Color(100, 0, 0, 1)
+texture = ExtResource("2_gug7i")
+
+[node name="LeechTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LeechTimer" to="." method="_on_leech_timer_timeout"]

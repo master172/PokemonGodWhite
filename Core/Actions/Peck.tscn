@@ -58,7 +58,7 @@ rotation = -1.5708
 script = ExtResource("1_td6vd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 0)
+position = Vector2(32, 0.000116348)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_nb6s8")
 animation = &"Attack"

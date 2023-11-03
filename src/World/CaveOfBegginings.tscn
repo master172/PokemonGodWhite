@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ycsu01lbqjeh"]
+[gd_scene load_steps=48 format=3 uid="uid://ycsu01lbqjeh"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginings.gd" id="1_rk1oj"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_oe4ly"]
@@ -16,10 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="14_5hnuk"]
 [ext_resource type="PackedScene" uid="uid://cfxwkx6vinesj" path="res://src/World/cave_modulate.tscn" id="16_f1501"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="16_ykrnb"]
+[ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="17_8n0qy"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="17_12cxl"]
-[ext_resource type="Resource" uid="uid://cdhbxe8oemx0h" path="res://Core/Pokemon/Gible.tres" id="17_55v3j"]
+[ext_resource type="Resource" uid="uid://d0b5xmdpi30" path="res://Core/Pokemon/Tyrunt.tres" id="17_gmsi3"]
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_vujiw"]
-[ext_resource type="Resource" uid="uid://dsngqylbc0x3o" path="res://Core/Pokemon/Riolu.tres" id="18_esjkk"]
+[ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="18_vxdaa"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47872,9 +47873,6 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="WindGust" parent="player/HudEffects" index="1"]
-can_fire = false
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../PointLight2D")
 
@@ -47903,8 +47901,8 @@ Spawn_location = Vector2(328, 256)
 Spawn_direction = Vector2(-1, 0)
 
 [node name="EncounterManager" parent="." instance=ExtResource("17_vujiw")]
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_oe4ly")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_55v3j"), ExtResource("18_esjkk")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("18_vxdaa"), ExtResource("2_oe4ly"), ExtResource("17_8n0qy")])
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_gmsi3")])
 min_level = 3
 max_level = 6
 
