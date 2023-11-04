@@ -192,8 +192,10 @@ func finished_fading():
 			load_battle_scene(pocket_monster,Map)
 			pocket_monster = null
 			Map = 0
+			AudioManager.switch_to_battle()
 		Transition_Type.EXIT_BATTLE_SCENE:
 			unload_battle_scene()
+			AudioManager.switch_to_exploration()
 		Transition_Type.BAG_SCENE:
 			menu.load_bag_scene()
 		Transition_Type.EXIT_BAG_SCENE:
@@ -207,8 +209,10 @@ func finished_fading():
 			load_battle_trainer(pocket_monster,Map)
 			pocket_monster = null
 			Map = 0
+			AudioManager.switch_to_battle()
 		Transition_Type.BATTLE_LOST:
 			load_healing_place()
+			AudioManager.switch_to_exploration()
 	transition_player.play("FadeToNormal")
 
 func change_scene():
