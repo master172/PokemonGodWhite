@@ -528,14 +528,16 @@ func check_ledge_direction():
 func check_interaction():
 	if interaction_cast.is_colliding():
 		
-		if Input.is_action_just_pressed("Yes") and Utils.DialogProcessing == false and Dialogic.current_timeline == null:
+		if Input.is_action_just_pressed("Yes"):
+			if Utils.DialogProcessing == false and Dialogic.current_timeline == null:
 	
-			var interactable = interaction_cast.get_collider()
-			if Utils.DialogBar != null:
-				interactable._interact()
-				if interactable.has_method("look"):
-					interactable.look(get_current_facing_direction() * -1)
+				var interactable = interaction_cast.get_collider()
+				if Utils.DialogBar != null:
+					interactable._interact()
+					if interactable.has_method("look"):
 
+						interactable.look(get_current_facing_direction() * -1)
+						
 func ManageOverworldPokemon(case:String):
 	if pokemon_following == true:
 		var following_speed:float = 0.2

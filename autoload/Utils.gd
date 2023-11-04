@@ -9,15 +9,25 @@ var DialogProcessing:bool = false
 var current_picking_up = null
 
 var player_set:bool = false
+var can_encounter:bool = true
 
 #story variables
 var aiden_defeated:bool = false
+var Bea_met:bool = false
+var William_met:bool = false
 
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
 
+func player_dialog_end(sign):
+	if sign == "DialogicDone":
+		get_viewport().set_input_as_handled()
+		await get_tree().create_timer(0.1).timeout
+		get_player().set_physics_process(true)
+		
 func _ready():
+	Dialogic.connect("signal_event",player_dialog_end)
 	verify_save_directory(save_file_path)
 	load_data()
 	
@@ -55,9 +65,12 @@ func save_data():
 	get_scene_manager().save_data()
 	AllyPokemon.save_data()
 	Inventory.save_data()
+	save_self_data()
 
 func update_self_data():
 	storyData.aiden_defeated = aiden_defeated
+	storyData.Bea_met = Bea_met
+	storyData.William_met = William_met
 
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -66,3 +79,5 @@ func load_data():
 		
 func apply_self_data():
 	aiden_defeated = storyData.aiden_defeated
+	Bea_met = storyData.Bea_met
+	William_met = storyData.William_met

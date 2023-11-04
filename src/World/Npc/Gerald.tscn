@@ -20,7 +20,7 @@ Options = Array[ExtResource("4_5kntu")]([])
 [sub_resource type="Resource" id="Resource_xqul2"]
 script = ExtResource("2_udil0")
 Dialog_type = 0
-text = "Hi, i am gerald the local shopkeeper well atleast i was, but hey i still have a lot of goods"
+text = "Hi, i am william the local shopkeeper well atleast i was, but hey i still have a lot of goods"
 next = 2
 Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
 functions = Array[ExtResource("4_0cfnv")]([])
@@ -99,7 +99,7 @@ Format = {}
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctyb7"]
 size = Vector2(16, 16)
 
-[node name="Gerald" type="CharacterBody2D"]
+[node name="William" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 18
 collision_mask = 0

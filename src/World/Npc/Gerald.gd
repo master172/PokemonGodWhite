@@ -27,12 +27,11 @@ func look(facDir:Vector2):
 		sprite_2d.frame = 4
 		
 func _interact():
-	if first_dialog_finished == false:
-		current_dialog = first_dialog
-		DialogLayer.get_child(0)._start(current_dialog)
-		
-		first_dialog_finished = true
-		
+	if Utils.William_met == false:
+		Utils.William_met = true
+		Utils.get_player().set_physics_process(false)
+		Dialogic.start('WilliamFirst')
+		get_viewport().set_input_as_handled()
 	else:
 		current_dialog = normal_dialog
 		DialogLayer.get_child(0)._start(current_dialog)

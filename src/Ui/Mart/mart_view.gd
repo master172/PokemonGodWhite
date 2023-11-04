@@ -90,6 +90,8 @@ func _input(event):
 			queue_free()
 			if Utils.get_player() != null:
 				Utils.get_player().set_physics_process(true)
+		elif state == STATES.ITEMS:
+			state = STATES.NORMAL
 
 func buy():
 	item_selected.pick_up()

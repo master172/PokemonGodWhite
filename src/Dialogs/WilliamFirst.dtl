@@ -1,0 +1,11 @@
+William: Ah, a new face it has been a long time since anyone came here
+William: Hi, i am william the local shopkeeper well atleast i was, but hey i still have a lot
+William: after retirement i came here and my grand daughter came here to take care of me
+William: You might have already met her.
+William: Anyways what brings you here today
+................................................................
+William: Hmm i see, well there is only one thing i can say to you reach the grand summit of this island it is located right in the centre of the island, here take this map with you as well
+William: when you reach there ask the village elders for help they will surely help you
+William: anyways feel free to come to me if you want to buy or sell anything
+[signal arg="DialogicDone"]
+[end_timeline]

@@ -36576,7 +36576,6 @@ pick_up_dialog = ExtResource("14_yqc7c")
 
 [node name="Aiden" parent="." instance=ExtResource("16_47g7f")]
 position = Vector2(-328, -128)
-looking_direction = Vector2(1, 0)
 
 [node name="Door" parent="." instance=ExtResource("19_uecm5")]
 position = Vector2(-328, -152)

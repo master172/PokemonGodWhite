@@ -18,16 +18,7 @@ var can_move = false
 var position_to_move
 
 func _ready():
-	for i in range(pokemons.size()):
-		Pokemons.append(game_pokemon.new(pokemons[i],levels[i]))
-		
-	if Utils.get_scene_manager() != null:
-		Utils.get_scene_manager().connect("trainer_battle_finished",my_battle_finished)
-		
-	Dialogic.connect("signal_event",battle)
-	Dialogic.connect("signal_event",no)
-	Dialogic.connect("signal_event",end)
-	Dialogic.connect("signal_event",finish)
+	basic_set()
 	
 	if exclamation != null:
 		exclamation.visible = false
@@ -39,8 +30,6 @@ func _ready():
 	
 	if player != null:
 		player.connect("player_stopped_signal",check)
-	
-	look(looking_direction)
 	
 func check():
 	if exclamation != null and can_battle == true:

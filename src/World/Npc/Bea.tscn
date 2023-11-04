@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dplygodrneuc2"]
+[gd_scene load_steps=41 format=3 uid="uid://dplygodrneuc2"]
 
 [ext_resource type="Script" path="res://src/World/Npc/Bea.gd" id="1_6d5el"]
 [ext_resource type="Texture2D" uid="uid://cqysqkdsc6fuw" path="res://assets/Npc/Trainers/Story/Bea/Bea.png" id="3_dmkun"]
@@ -278,6 +278,43 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
 size = Vector2(32, 32)
 
+[sub_resource type="Animation" id="Animation_opfru"]
+resource_name = "Heal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l2gf0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1drh"]
+_data = {
+"Heal": SubResource("Animation_opfru"),
+"RESET": SubResource("Animation_l2gf0")
+}
+
 [node name="Bea" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 18
@@ -309,3 +346,19 @@ parameters/Walk/blend_position = Vector2(0.0561798, -0.0957447)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_art2r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CanvasPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e1drh")
+}

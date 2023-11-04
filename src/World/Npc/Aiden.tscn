@@ -358,3 +358,4 @@ script = ExtResource("5_5akwr")
 script = ExtResource("6_unk34")
 
 [connection signal="finished" from="." to="CutScenePlayer" method="_on_aiden_finished"]
+[connection signal="talk" from="." to="EventManager" method="_on_aiden_talk"]

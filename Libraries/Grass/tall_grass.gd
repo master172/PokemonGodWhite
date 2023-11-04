@@ -32,7 +32,8 @@ func player_in_grass():
 		grass_overlay.z_index = 2
 		self.add_child(grass_overlay)
 		
-		check_encounter()
+		if Utils.can_encounter == true:
+			check_encounter()
 		
 
 func player_exiting_grass():
