@@ -11,11 +11,20 @@ signal No
 
 signal battle
 
+signal Save
+
 func test_function():
 	print("test")
 
 func save():
-	Utils.save_data()
+	Utils.connect("saving_done",show_after_save)
+	get_parent().visible = false
+	emit_signal("Save")
+	
+
+func show_after_save():
+	get_parent().visible = true
+	Utils.disconnect("saving_done",show_after_save)
 
 func Change_Dialog(param,at_what:int = 0):
 	get_parent().Change_Dialog(param,at_what)

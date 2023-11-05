@@ -27,6 +27,8 @@ enum current_state {
 var CurrentState = current_state.Empty
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Utils.connect("saving_done",show)
+	DialogLayer.get_child(0).function_manager.connect("Save",save)
 	self.visible = false
 
 
@@ -37,7 +39,7 @@ func _input(event):
 	match CurrentState:
 		current_state.Empty:
 			if event.is_action_pressed("Menu") and BattleManager.in_battle == false:
-				Utils.get_scene_manager().shoot_screen()
+				
 				AudioManager.select()
 				var player = Utils.get_player()
 				if !player.is_moving:
@@ -187,8 +189,12 @@ func save_dialog():
 	DialogLayer.get_child(0).connect("finished",save_dialog_finished)
 	
 func save():
+	visible = false
+	await get_tree().create_timer(0.05).timeout
+	Utils.get_scene_manager().shoot_screen()
 	Utils.save_data()
-
+	
+	
 func save_dialog_finished(Dialogline):
 	if Dialogline == Save_dialog:
 		CurrentState = current_state.Normal
