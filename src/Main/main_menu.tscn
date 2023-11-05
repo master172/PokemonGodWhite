@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=19 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -43,6 +43,56 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13ykp"]
 bg_color = Color(0.227451, 0.376471, 0.384314, 1)
 
+[sub_resource type="Animation" id="Animation_nl4fe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen/ColorRect/Panel/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_onbdu"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen/ColorRect/Panel/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_tip"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmfqm"]
+_data = {
+"Fade": SubResource("Animation_onbdu"),
+"RESET": SubResource("Animation_nl4fe")
+}
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -61,7 +111,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackgroundContinue" type="TextureRect" parent="Backgrounds"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +268,7 @@ texture = ExtResource("2_lmdbi")
 stretch_mode = 5
 
 [node name="LoadingScreen" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,5 +334,11 @@ value = 100.0
 [node name="TipTimer" type="Timer" parent="LoadingScreen"]
 wait_time = 2.0
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_gmfqm")
+}
 
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]

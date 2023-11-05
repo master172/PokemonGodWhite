@@ -6,6 +6,7 @@ var scene_load_status = 0
 
 @onready var progress_bar = $ProgressBar
 @onready var rich_text_label = $ColorRect/Panel/RichTextLabel
+@onready var animation_player = $AnimationPlayer
 
 var tips = ["Don't forget to breathe very important",
 "defeating opposing pokemon defeats them",
@@ -22,6 +23,7 @@ func _process(delta):
 	progress_bar.value = floor(progress[0] * 100)
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 		var new_scene = ResourceLoader.load_threaded_get(sceneName)
+		AudioManager.switch_to_exploration()
 		get_tree().change_scene_to_packed(new_scene)
 
 
@@ -30,5 +32,5 @@ func change_tip():
 	rich_text_label.text = item
 	
 func _on_tip_timer_timeout():
-	change_tip()
+	animation_player.play("Fade")
 	

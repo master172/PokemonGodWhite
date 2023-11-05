@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://srq4btryqe3j"]
+[gd_scene load_steps=8 format=3 uid="uid://srq4btryqe3j"]
 
 [ext_resource type="Script" path="res://autoload/audio_manager.gd" id="1_0pu4h"]
 [ext_resource type="AudioStream" uid="uid://8c1n657aunwx" path="res://assets/Audio/Ambient/AmbientExploration.mp3" id="2_u5hqx"]
 [ext_resource type="AudioStream" uid="uid://cjy6v3vpr08d2" path="res://assets/Audio/SFX/Ui/UiInput.wav" id="3_bhcni"]
 [ext_resource type="AudioStream" uid="uid://dh3hqgcwc5ujb" path="res://assets/Audio/Ambient/Battle.mp3" id="3_cgmyu"]
+[ext_resource type="AudioStream" uid="uid://ck4ydkvoab8xq" path="res://assets/Audio/Ambient/MainMenu.mp3" id="4_eeih8"]
 [ext_resource type="AudioStream" uid="uid://cubkeat2emjh2" path="res://assets/Audio/SFX/Ui/UiSelect.wav" id="4_k6mw4"]
 [ext_resource type="AudioStream" uid="uid://ce2m8cuywgqhg" path="res://assets/Audio/SFX/Ui/UiCancel.wav" id="5_ebcd4"]
 
@@ -12,10 +13,12 @@ script = ExtResource("1_0pu4h")
 
 [node name="AmbientExploration" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_u5hqx")
-autoplay = true
 
 [node name="Battle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cgmyu")
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eeih8")
 
 [node name="Ui" type="Node" parent="."]
 
