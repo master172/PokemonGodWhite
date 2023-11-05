@@ -11,6 +11,7 @@ var current_picking_up = null
 var player_set:bool = false
 var can_encounter:bool = true
 
+signal saving_done
 #story variables
 var aiden_defeated:bool = false
 var Bea_met:bool = false
@@ -66,6 +67,7 @@ func save_data():
 	AllyPokemon.save_data()
 	Inventory.save_data()
 	save_self_data()
+	emit_signal("saving_done")
 
 func update_self_data():
 	storyData.aiden_defeated = aiden_defeated

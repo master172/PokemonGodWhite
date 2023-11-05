@@ -361,3 +361,9 @@ func _on_current_scene_has_modulate():
 
 func _on_current_scene_no_modulate():
 	day_and_night.visible = true
+
+func shoot_screen():
+	var vpt :Viewport = get_viewport()
+	var tex :Texture = vpt.get_texture()
+	var img :Image = tex.get_image()
+	img.save_png("user://save/Scene/"+"screenshot.png")

@@ -1,0 +1,288 @@
+[gd_scene load_steps=16 format=3 uid="uid://ijdcbs023311"]
+
+[ext_resource type="Script" path="res://src/Main/main_menu.gd" id="1_ptet1"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
+[ext_resource type="Texture2D" uid="uid://culvmbg453do3" path="res://assets/Ui/MainMenu/Text.png" id="2_lmdbi"]
+[ext_resource type="Texture2D" uid="uid://bvyd0dcmpfv6i" path="res://assets/Ui/MainMenu/Background.png" id="2_t1dvj"]
+[ext_resource type="Texture2D" uid="uid://dyokl68i04iqc" path="res://assets/Ui/MainMenu/CogWheel.png" id="3_70heo"]
+[ext_resource type="Texture2D" uid="uid://bp2hmk2gtlmui" path="res://assets/Ui/MainMenu/QuitGame.png" id="4_qx406"]
+[ext_resource type="Script" path="res://src/Main/LoadingScreen.gd" id="7_cucda"]
+[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
+
+[sub_resource type="Gradient" id="Gradient_twt4i"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.927336, 1)
+colors = PackedColorArray(0.027451, 0.894118, 0.847059, 0.701961, 0.92549, 0.576471, 0, 0.745098, 0, 0.72549, 0.839216, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3pedn"]
+gradient = SubResource("Gradient_twt4i")
+width = 1200
+height = 800
+use_hdr = true
+fill_to = Vector2(0.482906, 0.111111)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsvha"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.768627)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7scv"]
+bg_color = Color(0.0980392, 0.0627451, 0.00392157, 0.807843)
+corner_radius_top_left = 64
+corner_radius_top_right = 54
+corner_radius_bottom_right = 43
+corner_radius_bottom_left = 64
+
+[sub_resource type="SystemFont" id="SystemFont_8p1aa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iymqw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13ykp"]
+bg_color = Color(0.227451, 0.376471, 0.384314, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptet1")
+
+[node name="Backgrounds" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundContinue" type="TextureRect" parent="Backgrounds"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t1dvj")
+
+[node name="BackgroundNew" type="TextureRect" parent="Backgrounds"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t1dvj")
+
+[node name="BackgroundSettings" type="ColorRect" parent="Backgrounds"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25098, 0.141176, 0.109804, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Backgrounds/BackgroundSettings"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -16.5
+offset_right = 15.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_70heo")
+stretch_mode = 5
+
+[node name="BackgroundQuitGame" type="TextureRect" parent="Backgrounds"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qx406")
+
+[node name="ForeGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3pedn")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="ForeGround"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = 336.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Continue" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/NewGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Exit
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 223.0
+grow_horizontal = 2
+texture = ExtResource("2_lmdbi")
+stretch_mode = 5
+
+[node name="LoadingScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cucda")
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="Panel" type="Panel" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 144.0
+offset_right = 1072.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7scv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadingScreen/ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_8p1aa")
+theme_override_font_sizes/normal_font_size = 32
+text = "hello mother"
+
+[node name="IconBall" type="TextureRect" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 192.0
+texture = ExtResource("8_err2f")
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_iymqw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_13ykp")
+value = 100.0
+
+[node name="TipTimer" type="Timer" parent="LoadingScreen"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]

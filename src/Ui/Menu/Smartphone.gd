@@ -28,14 +28,16 @@ var CurrentState = current_state.Empty
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = false
-	
+
+
 @export var Save_dialog:DialogueLine
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _unhandled_input(event):
+func _input(event):
 	match CurrentState:
 		current_state.Empty:
 			if event.is_action_pressed("Menu") and BattleManager.in_battle == false:
+				Utils.get_scene_manager().shoot_screen()
 				AudioManager.select()
 				var player = Utils.get_player()
 				if !player.is_moving:

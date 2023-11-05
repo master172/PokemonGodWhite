@@ -79,7 +79,7 @@ offset_right = 407.0
 offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00784314, 0.0352941, 0.219608, 0.486275)
+color = Color(0.137255, 0.137255, 0.137255, 0.705882)
 
 [node name="GridContainer" type="GridContainer" parent="Screen"]
 layout_mode = 1
