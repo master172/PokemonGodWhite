@@ -93,7 +93,7 @@ func _input(event):
 						save_dialog()
 						CurrentState = current_state.Save
 					elif current_selected == 7 or current_selected == -7:
-						get_tree().quit()
+						get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
 					elif current_selected == 6 or current_selected == -6:
 						load_switching_scene()
 					elif current_selected == 3 or current_selected == -3:
