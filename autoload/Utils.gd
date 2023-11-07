@@ -83,3 +83,43 @@ func apply_self_data():
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
+
+func remove_save_files():
+	
+	##deleting the player save files
+	if DirAccess.dir_exists_absolute("user://save/Player/"):
+		var dir = DirAccess.open("user://save/Player/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
+	
+	##deleting scene save files
+	if DirAccess.dir_exists_absolute("user://save/Scene/"):
+		var dir = DirAccess.open("user://save/Scene/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
+	
+	##Deleting the pokemon save files
+	AllyPokemon.remove_data()
+	
+	##Deleting the inventory save files
+	
+	Inventory.remove_data()
+	
+	##Deleting story data
+	remove_self_data()
+
+func remove_self_data():
+	if DirAccess.dir_exists_absolute("user://save/Utils/"):
+		var dir = DirAccess.open("user://save/Utils/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
+	
+	aiden_defeated = false
+	Bea_met = false
+	William_met = false

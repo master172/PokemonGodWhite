@@ -113,3 +113,14 @@ func check_evolution_all():
 	for i in PartyPokemon.get_pokemons():
 		i.check_evolution()
 	Utils.get_scene_manager().check_evolution()
+
+func remove_data():
+	if DirAccess.dir_exists_absolute("user://save/Pokemon/"):
+		var dir = DirAccess.open("user://save/Pokemon/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
+		
+	PartyPokemon = Poke_list.new()
+	PcPokemon = Poke_list.new()

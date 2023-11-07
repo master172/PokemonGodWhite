@@ -71,3 +71,20 @@ func load_game():
 		if object.has_method("set_load"):
 			object.set_load()
 		
+
+func remove_data():
+	if DirAccess.dir_exists_absolute("user://save/Bag/"):
+		var dir = DirAccess.open("user://save/Bag/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
+		
+	pocket = Pockets.new()
+	
+	if DirAccess.dir_exists_absolute("user://Save/OverWorld/"):
+		var dir = DirAccess.open("user://Save/OverWorld/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
