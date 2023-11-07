@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://bh4qpoqtq7sea"]
 
 [ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/PIKACHU.png" id="1_h0jw8"]
-[ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_it3xc"]
+[ext_resource type="Resource" uid="uid://b2y7ur6xwsrk" path="res://Core/Pokemon/Actions/ThunderShock.tres" id="1_qwc0o"]
 [ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/PIKACHU.png" id="2_mnree"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="2_qici2"]
 [ext_resource type="Resource" uid="uid://dyye4noc6flfr" path="res://Core/Pokemon/Actions/ThunderBolt.tres" id="3_2e55o"]
@@ -26,7 +26,7 @@ Base_Defense = 50
 Special_Base_Attack = 60
 Special_Base_Defense = 60
 Base_Speed = 100
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_it3xc"), ExtResource("2_qici2"), ExtResource("3_2e55o")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qwc0o"), ExtResource("2_qici2"), ExtResource("3_2e55o")])
 base_experience = 112
 Yield_Health = 0
 Yield_Attack = 0

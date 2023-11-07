@@ -59,5 +59,13 @@ func _input(event):
 		if current_selected == 0:
 			loading_screen.show()
 			loading_screen.load_game()
+		elif current_selected == 1:
+			if DirAccess.dir_exists_absolute("user://save/"):
+				var dir_to_remove = "user://save/"
+				OS.move_to_trash(ProjectSettings.globalize_path(dir_to_remove))
+				print("exists")
+			
+			loading_screen.show()
+			loading_screen.load_game()
 		elif current_selected == 3:
 			get_tree().quit()
