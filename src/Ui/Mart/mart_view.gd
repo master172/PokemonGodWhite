@@ -83,6 +83,7 @@ func _input(event):
 			current_selected = itemkey
 			itemkey = 0
 			noi.hide()
+			max_selected = item_list.get_child_count()
 	elif event.is_action_pressed("No"):
 		AudioManager.cancel()
 		if state == STATES.NORMAL:
@@ -92,6 +93,10 @@ func _input(event):
 				Utils.get_player().set_physics_process(true)
 		elif state == STATES.ITEMS:
 			state = STATES.NORMAL
+			current_selected = itemkey
+			itemkey = 0
+			noi.hide()
+			max_selected = item_list.get_child_count()
 
 func buy():
 	item_selected.pick_up()
