@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://uoifqgix2sbk"]
+
+[ext_resource type="Script" path="res://Core/Actions/TailWhip.gd" id="1_xal1q"]
+
+[node name="TailWhip" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_xal1q")
+stages = -1

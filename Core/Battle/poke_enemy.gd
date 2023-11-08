@@ -208,3 +208,10 @@ func _on_stun_timer_timeout():
 
 func get_pokemon():
 	return pokemon
+
+
+func animate_stat_reduction():
+	var tween = get_tree().create_tween()
+	self.modulate = Color(0, 0.129, 1)
+		
+	tween.tween_property(self, "modulate", Color(1,1,1), 1).as_relative().from_current().set_trans(Tween.TRANS_EXPO)

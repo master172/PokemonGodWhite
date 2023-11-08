@@ -4,18 +4,16 @@ extends Action
 @onready var attack_delay = $AttackDelay
 
 var User:CharacterBody2D = null
-
 var duration:float = 0.1
 var dash_speed:float = 1500
-
 var oneshot:bool = false
 
 func _ready():#ready overrider
 	pass
-
+	
 func set_user(user):
 	User = user
-
+	
 func _attack():
 	attack_delay.start()
 	if User.has_method("attack_prep"):
@@ -27,20 +25,17 @@ func _attack():
 		
 func is_tackling():
 	return tackle_timer.is_stopped()
-
-
+	
 func _on_tackle_timer_timeout():
 	User.velocity = User.velocity * 0.001
-
-
+	
 func _on_attack_delay_timeout():
 	if User.has_method("attack_end"):
 		User.attack_end()
 	connect("attack_finished",SignalBus.attack_completed)
 	emit_signal("attack_finished",self,User)
 	queue_free()
-
-
+	
 func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):

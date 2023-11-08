@@ -65,7 +65,6 @@ func _on_attack_timer_timeout():
 
 func _end():
 
-		
 	if User.has_method("attack_end"):
 		User.attack_end()
 	connect("attack_finished",SignalBus.attack_completed)
