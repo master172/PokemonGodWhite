@@ -8,15 +8,19 @@ var max_selectable:int = 4
 @onready var background_continue = $Backgrounds/BackgroundContinue
 @onready var background_new = $Backgrounds/BackgroundNew
 @onready var loading_screen = $LoadingScreen
+@onready var confirm_panel = $ConfirmPanel
+@onready var h_box_container = $ConfirmPanel/VBoxContainer/HBoxContainer
 
 
 enum STATES {
 	NORMAL,
-	EMPTY
+	EMPTY,
+	CONFIRM
 }
 var state = STATES.NORMAL
 
 func _ready():
+	confirm_panel.hide()
 	AudioManager.switch_to_mainMenu()
 	set_selected(current_selected)
 	loading_screen.hide()
@@ -40,29 +44,68 @@ func unset_selected(num:int):
 	
 func _input(event):
 	if event.is_action_pressed("W"):
-
-		AudioManager.input()
-		unset_selected(current_selected)
-		current_selected  = (current_selected +max_selectable - 1) % max_selectable
-		set_selected(current_selected)
+		if state == STATES.NORMAL:
+			AudioManager.input()
+			unset_selected(current_selected)
+			current_selected  = (current_selected +max_selectable - 1) % max_selectable
+			set_selected(current_selected)
+		elif state == STATES.CONFIRM:
+			AudioManager.input()
+			unset_confirm(current_selected)
+			current_selected  = (current_selected +max_selectable - 1) % max_selectable
+			set_confirm(current_selected)
 		
 	elif event.is_action_pressed("S"):
-
-		AudioManager.input()
-		unset_selected(current_selected)
-		current_selected = (current_selected + 1) % max_selectable
-		set_selected(current_selected)
+		if state == STATES.NORMAL:
+			AudioManager.input()
+			unset_selected(current_selected)
+			current_selected = (current_selected + 1) % max_selectable
+			set_selected(current_selected)
+		elif state == STATES.CONFIRM:
+			AudioManager.input()
+			unset_confirm(current_selected)
+			current_selected  = (current_selected +max_selectable - 1) % max_selectable
+			set_confirm(current_selected)
 	
 	elif Input.is_action_just_pressed("Yes"):
-		
+		AudioManager.select()
+		if state == STATES.NORMAL:
 
-		if current_selected == 0:
-			loading_screen.show()
-			loading_screen.load_game()
-		elif current_selected == 1:
-			Utils.remove_save_files()
+			if current_selected == 0:
+				state = STATES.EMPTY
+				loading_screen.show()
+				loading_screen.load_game()
+			elif current_selected == 1:
+				current_selected = 1
+				max_selectable = 2
+				state = STATES.CONFIRM
+				confirm_panel.show()
+				unset_confirm(0)
+				unset_confirm(1)
+				set_confirm(current_selected)
+			elif current_selected == 3:
+				get_tree().quit()
+		elif state == STATES.CONFIRM:
+			if current_selected == 0:
+				new_game()
+				confirm_panel.hide()
+				
+			elif current_selected == 1:
+				current_selected = 1
+				max_selectable = 4
+				confirm_panel.hide()
+				state = STATES.NORMAL
+				
+
+func new_game():
+	state = STATES.EMPTY
+	Utils.remove_save_files()
 			
-			loading_screen.show()
-			loading_screen.load_game()
-		elif current_selected == 3:
-			get_tree().quit()
+	loading_screen.show()
+	loading_screen.load_game()
+
+func unset_confirm(num:int = 0):
+	h_box_container.get_child(num).modulate = Color(1,1,1)
+
+func set_confirm(num:int = 0):
+	h_box_container.get_child(num).modulate = Color(0, 1, 0.275)
