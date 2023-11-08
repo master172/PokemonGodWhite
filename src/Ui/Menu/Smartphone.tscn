@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_7aj6p"]
 [ext_resource type="Texture2D" uid="uid://cd1hf2vlky3ms" path="res://assets/player/ash/Smartphones/Apps/icons/Player.png" id="5_8t6ye"]
 [ext_resource type="Texture2D" uid="uid://g74an7u6yq8q" path="res://assets/player/ash/Smartphones/Apps/icons/saveIcon.png" id="6_ilx1m"]
-[ext_resource type="Texture2D" uid="uid://gm2rcstwastj" path="res://assets/player/ash/Smartphones/Apps/icons/Wrench.png" id="7_y5w2m"]
+[ext_resource type="Texture2D" uid="uid://chqhs2dqgk6dg" path="res://assets/player/ash/Smartphones/Apps/icons/Gps.png" id="12_tiju6"]
 [ext_resource type="Texture2D" uid="uid://bydonxx0ffdjm" path="res://assets/player/ash/Smartphones/Apps/icons/Close.png" id="13_kg3cy"]
 [ext_resource type="Texture2D" uid="uid://cf7wk15uyep7g" path="res://assets/player/ash/Smartphones/Apps/icons/Switch.png" id="13_ml4v4"]
 
@@ -126,7 +126,7 @@ icon = ExtResource("6_ilx1m")
 
 [node name="App6" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
 layout_mode = 2
-icon = ExtResource("7_y5w2m")
+icon = ExtResource("12_tiju6")
 
 [node name="App7" parent="Screen/GridContainer" instance=ExtResource("1_g61nd")]
 layout_mode = 2
