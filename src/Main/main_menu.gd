@@ -49,7 +49,8 @@ func _input(event):
 			unset_selected(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_selected(current_selected)
-		elif state == STATES.CONFIRM:
+	elif event.is_action_pressed("A"):
+		if state == STATES.CONFIRM:
 			AudioManager.input()
 			unset_confirm(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
@@ -61,7 +62,9 @@ func _input(event):
 			unset_selected(current_selected)
 			current_selected = (current_selected + 1) % max_selectable
 			set_selected(current_selected)
-		elif state == STATES.CONFIRM:
+			
+	elif event.is_action_pressed("D"):
+		if state == STATES.CONFIRM:
 			AudioManager.input()
 			unset_confirm(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
