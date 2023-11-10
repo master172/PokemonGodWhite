@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=24 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
 [ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
 [ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
+[ext_resource type="Script" path="res://src/Ui/Summary/skills.gd" id="11_g8v2c"]
 [ext_resource type="Texture2D" uid="uid://b4oii4yq02iaj" path="res://assets/Ui/Summary/bg_evolution.png" id="12_x1t8v"]
 [ext_resource type="Script" path="res://src/Ui/Summary/evolution.gd" id="13_aw7q6"]
 [ext_resource type="Texture2D" uid="uid://bfr5cxpqegvce" path="res://assets/Ui/Summary/page_evolution.png" id="18_76lr1"]
@@ -50,7 +51,7 @@ offset_top = 34.0
 offset_right = 145.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.968627, 0.341176, 0.341176, 1)
+theme_override_colors/font_outline_color = Color(0.0509804, 0.215686, 0.490196, 1)
 theme_override_font_sizes/font_size = 52
 text = "Info"
 
@@ -312,6 +313,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_e84sw")
+script = ExtResource("11_g8v2c")
 
 [node name="Tag" type="Label" parent="skills"]
 layout_mode = 2
@@ -320,8 +322,161 @@ offset_top = 34.0
 offset_right = 191.0
 offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 52
 text = "Skills"
+
+[node name="Ability" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 157.0
+offset_right = 815.0
+offset_bottom = 217.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Ability:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AblTag" type="Label" parent="skills/Ability"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 2.0
+offset_right = 542.0
+offset_bottom = 62.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="Attack" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 252.0
+offset_right = 815.0
+offset_bottom = 312.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Attack:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AtTag" type="Label" parent="skills/Attack"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = -1.0
+offset_right = 543.0
+offset_bottom = 59.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="SpAttack" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 318.0
+offset_right = 815.0
+offset_bottom = 378.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Sp.Attack:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpAtTag" type="Label" parent="skills/SpAttack"]
+layout_mode = 0
+offset_left = 284.0
+offset_right = 542.0
+offset_bottom = 60.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="Defense" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 385.0
+offset_right = 818.0
+offset_bottom = 445.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Defense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefTag" type="Label" parent="skills/Defense"]
+layout_mode = 0
+offset_left = 281.0
+offset_right = 539.0
+offset_bottom = 60.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="SpDefense" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 451.0
+offset_right = 825.0
+offset_bottom = 511.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Sp.Defense:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpDefTag" type="Label" parent="skills/SpDefense"]
+layout_mode = 0
+offset_left = 288.0
+offset_right = 546.0
+offset_bottom = 60.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="Speed" type="Label" parent="skills"]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 519.0
+offset_right = 814.0
+offset_bottom = 579.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpdTag" type="Label" parent="skills/Speed"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = -1.0
+offset_right = 544.0
+offset_bottom = 59.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="HealthBar" type="ProgressBar" parent="skills"]
+modulate = Color(0.308594, 0.796875, 0.394531, 1)
+layout_mode = 0
+offset_left = 843.0
+offset_top = 229.0
+offset_right = 1069.0
+offset_bottom = 242.0
+theme = ExtResource("7_hhiqc")
+value = 100.0
+show_percentage = false
 
 [node name="ribbons" type="TextureRect" parent="."]
 visible = false

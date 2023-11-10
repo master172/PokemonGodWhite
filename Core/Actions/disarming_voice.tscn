@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl28433m8ogvx"]
+
+[ext_resource type="Script" path="res://DisarmingVoice.gd" id="1_gfq1e"]
+
+[node name="DisarmingVoice" type="Node2D"]
+script = ExtResource("1_gfq1e")
