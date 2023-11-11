@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://c6kva5a3lgpr8"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://c6kva5a3lgpr8"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_qtirc"]
 [ext_resource type="Texture2D" uid="uid://b7vs3dnorhamu" path="res://Core/Graphics/Pokemon/Gen3/Back/WURMPLE.png" id="1_vwb6u"]
 [ext_resource type="Texture2D" uid="uid://depm726dl553b" path="res://Core/Graphics/Pokemon/Gen3/Front/WURMPLE.png" id="2_cem62"]
+[ext_resource type="Resource" uid="uid://cpo8n8bjupkw3" path="res://Core/Pokemon/Actions/StringShot.tres" id="2_mvq7o"]
 [ext_resource type="Texture2D" uid="uid://b7ri7i8l1k4fy" path="res://Core/Graphics/Pokemon/Gen3/Icons/WURMPLE.png" id="3_4t4gj"]
 [ext_resource type="Texture2D" uid="uid://pyvv8o8hscsu" path="res://Core/Graphics/Pokemon/Gen3/Followers/WURMPLE.png" id="4_wso1i"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="5_fkgxx"]
@@ -24,7 +25,7 @@ Base_Defense = 35
 Special_Base_Attack = 20
 Special_Base_Defense = 30
 Base_Speed = 20
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qtirc")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qtirc"), ExtResource("2_mvq7o")])
 base_experience = 64
 Yield_Health = 1
 Yield_Attack = 0
