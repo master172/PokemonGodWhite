@@ -219,6 +219,7 @@ active = true
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="IdleTimer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="KnockBackArea" type="Area2D" parent="."]
 
@@ -228,6 +229,7 @@ shape = SubResource("RectangleShape2D_r3jky")
 debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
 
 [node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_co6j0")

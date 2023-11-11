@@ -210,8 +210,8 @@ func get_pokemon():
 	return pokemon
 
 
-func animate_modulation_change(color:Color = Color(0, 0.129, 1)):
+func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 	var tween = get_tree().create_tween()
 	self.modulate = color
 		
-	tween.tween_property(self, "modulate", Color(1,1,1), 1).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)

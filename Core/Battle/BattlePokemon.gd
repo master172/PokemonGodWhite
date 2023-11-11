@@ -225,8 +225,8 @@ func stun(duration:int = 2):
 func _on_stun_timer_timeout():
 	Stun = false
 
-func animate_modulation_change(color:Color = Color(0, 0.129, 1)):
+func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 	var tween = get_tree().create_tween()
 	self.modulate = color
 		
-	tween.tween_property(self, "modulate", Color(1,1,1), 1).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)

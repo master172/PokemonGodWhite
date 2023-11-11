@@ -3,7 +3,7 @@ extends "res://Core/Actions/ThunderBolt.gd"
 
 func _end():
 	if target != []:
-		
+		target[0].animate_modulation_change(Color.YELLOW,5)
 		target[0].stun(5)
 		
 	if User.has_method("attack_end"):
