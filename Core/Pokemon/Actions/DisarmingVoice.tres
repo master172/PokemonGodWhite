@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://hg3i8pmsjq6l"]
+
+[ext_resource type="PackedScene" uid="uid://bl28433m8ogvx" path="res://Core/Actions/disarming_voice.tscn" id="1_tdcce"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_bnqn8"]
+
+[resource]
+script = ExtResource("2_bnqn8")
+name = "DisarmingVoice"
+learned_level = 1
+action = ExtResource("1_tdcce")
+Type = "Fairy"
+power = 40.0
+range = 0

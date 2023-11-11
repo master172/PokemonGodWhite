@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://xqnf3jkcoya3"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_65loy"]
-[ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_jv6sy"]
+[ext_resource type="Resource" uid="uid://hg3i8pmsjq6l" path="res://Core/Pokemon/Actions/DisarmingVoice.tres" id="1_qnhxs"]
 [ext_resource type="Texture2D" uid="uid://cwb4i5c6lnypx" path="res://Core/Graphics/Pokemon/Gen3/Back/RALTS.png" id="2_fg1mc"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_slslq"]
 [ext_resource type="Texture2D" uid="uid://nidnuatdxo8v" path="res://Core/Graphics/Pokemon/Gen3/Front/RALTS.png" id="3_d2pb2"]
@@ -25,7 +25,7 @@ Base_Defense = 25
 Special_Base_Attack = 45
 Special_Base_Defense = 35
 Base_Speed = 40
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_jv6sy"), ExtResource("2_slslq")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qnhxs"), ExtResource("2_slslq")])
 base_experience = 70
 Yield_Health = 0
 Yield_Attack = 0

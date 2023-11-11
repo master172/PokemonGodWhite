@@ -19,7 +19,7 @@ func _attack():
 	if target != []:
 		var Target = target[0].pokemon
 		Target.Attack = clamp(Target.Attack + stages,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
-		target[0].animate_stat_reduction()
+		target[0].animate_modulation_change()
 		_end()
 		
 func _end():
