@@ -29,8 +29,10 @@ func _attack():
 		if User.opposing_pokemons != []:
 			if User.opposing_pokemons[0] == target[0]:
 				print("attack")
-				target[0].animate_modulation_change(Color.YELLOW,5)
-				target[0].stun(5)
+				var rng = randi_range(0,100)
+				if rng <75:
+					target[0].animate_modulation_change(Color.YELLOW,5)
+					target[0].stun(5)
 				if oneshot == false:
 					connect("attack_landed",SignalBus.on_attack_landed)
 					oneshot = true
