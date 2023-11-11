@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://bbll1o6krkpec"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://bbll1o6krkpec"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_ilf3o"]
 [ext_resource type="Texture2D" uid="uid://bsyj6i7jg16jy" path="res://Core/Graphics/Pokemon/Gen1/Back/PARAS.png" id="1_tey8c"]
+[ext_resource type="Resource" uid="uid://y4shqkantpfw" path="res://Core/Pokemon/Actions/StunSpore.tres" id="2_61epd"]
 [ext_resource type="Resource" uid="uid://c5mwanc7qogiy" path="res://Core/Pokemon/Actions/Scratch.tres" id="2_woco3"]
 [ext_resource type="Texture2D" uid="uid://cyumdv2kjf6ir" path="res://Core/Graphics/Pokemon/Gen1/Front/PARAS.png" id="2_yd6u2"]
 [ext_resource type="Texture2D" uid="uid://del733fw3hrff" path="res://Core/Graphics/Pokemon/Gen1/Icons/PARAS.png" id="3_phxfc"]
@@ -24,7 +25,7 @@ Base_Defense = 55
 Special_Base_Attack = 45
 Special_Base_Defense = 55
 Base_Speed = 25
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("2_woco3")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("2_woco3"), ExtResource("2_61epd")])
 base_experience = 70
 Yield_Health = 0
 Yield_Attack = 1
