@@ -23,9 +23,6 @@ extends Node2D
 	"common":common_pokemons
 }
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	Utils.Tilemap = get_node("%mainTilemap")
-
 func get_encounter_pokemon():
 	var index = get_group_from_rarity()
 	var Rng = RandomNumberGenerator.new()

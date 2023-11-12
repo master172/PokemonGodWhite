@@ -179,6 +179,7 @@ func transition_to_scene(new_scene:String, spawn_location:Vector2, spawn_directi
 func finished_fading():
 	match transition_type:
 		Transition_Type.NEW_SCENE:
+			Utils.Tilemaps = []
 			change_scene()
 		Transition_Type.MENU_ONLY:
 			menu.unload_party_screen()

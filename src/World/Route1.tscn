@@ -34,7 +34,7 @@ can_leaf = true
 can_wind = true
 
 [node name="Camera2D" parent="player" index="5"]
-limit_left = -96
+limit_left = -752
 limit_top = -192
 limit_right = 832
 limit_bottom = 816
