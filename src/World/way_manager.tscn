@@ -1,14 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc5mvap1frk4n"]
+[gd_scene load_steps=3 format=3 uid="uid://cc5mvap1frk4n"]
 
 [ext_resource type="Script" path="res://src/World/WayManager.gd" id="1_psom3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhotf"]
+size = Vector2(18.843, 18.961)
 
 [node name="WayManager" type="Node2D"]
 script = ExtResource("1_psom3")
 my_scene = "res://src/World/Route1/Part2Tilemap.tscn"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="Area" type="Area2D" parent="."]
 position = Vector2(340, 116)
 scale = Vector2(48.4, 30.8)
+collision_layer = 0
 
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="load_scene"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="unload_scene"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_jhotf")
+debug_color = Color(0.619608, 0, 0.701961, 0.054902)
+
+[connection signal="body_entered" from="Area" to="." method="load_scene"]
+[connection signal="body_exited" from="Area" to="." method="unload_scene"]

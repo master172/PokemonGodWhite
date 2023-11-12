@@ -1,13 +1,227 @@
-[gd_scene load_steps=9 format=3 uid="uid://basjxyddsb2x2"]
+[gd_scene load_steps=23 format=3 uid="uid://basjxyddsb2x2"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_lu6ha"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="3_egdx3"]
 [ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Wurmple.tres" id="4_dn1bh"]
 [ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="5_0kibo"]
+[ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="9_110l4"]
+[ext_resource type="Script" path="res://src/World/Helpers/CameraManager.gd" id="10_4lxdh"]
 [ext_resource type="PackedScene" uid="uid://cc5mvap1frk4n" path="res://src/World/way_manager.tscn" id="10_20xwa"]
+[ext_resource type="Script" path="res://src/World/Helpers/EntryPlayer.gd" id="11_lh71d"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="16_0htb7"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="22_cd3uj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly0ns"]
+size = Vector2(22.4793, 22.3377)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa2eq"]
+size = Vector2(18.0165, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqxir"]
+size = Vector2(904, 1008)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aai7u"]
+size = Vector2(672, 304)
+
+[sub_resource type="Animation" id="Animation_dt3kp"]
+resource_name = "Area1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-256]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-192]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [832]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [816]
+}
+
+[sub_resource type="Animation" id="Animation_o5id4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1000]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1000]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1000]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1000]
+}
+
+[sub_resource type="Animation" id="Animation_ubkx1"]
+resource_name = "Area2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-752]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-192]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [112]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7ewv"]
+_data = {
+"Area1": SubResource("Animation_dt3kp"),
+"Area2": SubResource("Animation_ubkx1"),
+"RESET": SubResource("Animation_o5id4")
+}
+
+[sub_resource type="Animation" id="Animation_wc4u1"]
+resource_name = "Default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 2),
+"transitions": PackedFloat32Array(1, 0.329878, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p80ae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jw45j"]
+_data = {
+"Default": SubResource("Animation_wc4u1"),
+"RESET": SubResource("Animation_p80ae")
+}
 
 [node name="Route1" type="Node2D"]
 y_sort_enabled = true
@@ -20,15 +234,15 @@ max_level = 5
 [node name="player" parent="." instance=ExtResource("16_0htb7")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(472, 800)
+position = Vector2(472, 816)
 can_leaf = true
 can_wind = true
 
 [node name="Camera2D" parent="player" index="5"]
-limit_left = -752
-limit_top = -192
-limit_right = 832
-limit_bottom = 816
+limit_left = -1000
+limit_top = -1000
+limit_right = 1000
+limit_bottom = 1000
 limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -41,33 +255,97 @@ remote_path = NodePath("../../PointLight2D")
 [node name="Items" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(472, 800)
+position = Vector2(472, 816)
 energy = 0.15
 texture = ExtResource("22_cd3uj")
 texture_scale = 0.5
 
 [node name="WayManager" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
-to_add_parent = NodePath("..")
-
-[node name="VisibleOnScreenNotifier2D" parent="WayManager" index="0"]
-position = Vector2(284, 152)
-scale = Vector2(54, 34.4)
-
-[node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
 to_add_parent = NodePath("..")
 
-[node name="VisibleOnScreenNotifier2D" parent="WayManager2" index="0"]
-position = Vector2(341, 532)
-scale = Vector2(48.4, 28.4)
+[node name="CollisionShape2D" parent="WayManager/Area" index="0"]
+position = Vector2(0.743802, 13.2468)
+
+[node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
+to_add_parent = NodePath("..")
+
+[node name="CollisionShape2D" parent="WayManager2/Area" index="0"]
+position = Vector2(-1.07438, 1.16883)
+shape = SubResource("RectangleShape2D_ly0ns")
 
 [node name="WayManager3" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 my_scene = "res://src/World/Route1/Part3Tilemap.tscn"
 to_add_parent = NodePath("..")
 
-[node name="VisibleOnScreenNotifier2D" parent="WayManager3" index="0"]
-position = Vector2(-316, -40)
-scale = Vector2(43.6, 15.2)
+[node name="CollisionShape2D" parent="WayManager3/Area" index="0"]
+position = Vector2(-13.5537, -5.12987)
+shape = SubResource("RectangleShape2D_wa2eq")
+
+[node name="Door" parent="." instance=ExtResource("9_110l4")]
+position = Vector2(472, 824)
+next_scene_path = "res://src/World/CaveOfBegginings.tscn"
+invisible = true
+Spawn_location = Vector2(152, -272)
+Spawn_direction = Vector2(0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(464, 816, 464, 832, -96, 832, -96, 800, -80, 800, -80, 816)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(480, 816, 832, 816, 832, 832, 480, 832)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-80, 112, -80, 128, -768, 128, -768, -48, -752, -48, -752, 112)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-752, -72, -768, -72, -768, -192, -752, -192)
+
+[node name="CameraManager" type="Node2D" parent="."]
+script = ExtResource("10_4lxdh")
+
+[node name="Area1" type="Area2D" parent="CameraManager"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Area1"]
+position = Vector2(372, 312)
+shape = SubResource("RectangleShape2D_lqxir")
+
+[node name="Area2" type="Area2D" parent="CameraManager"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Area2"]
+position = Vector2(-416, -40)
+shape = SubResource("RectangleShape2D_aai7u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraManager"]
+libraries = {
+"": SubResource("AnimationLibrary_l7ewv")
+}
+
+[node name="EntryPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("color_rect")]
+libraries = {
+"": SubResource("AnimationLibrary_jw45j")
+}
+script = ExtResource("11_lh71d")
+color_rect = NodePath("../CanvasLayer/ColorRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="body_entered" from="CameraManager/Area1" to="CameraManager" method="_on_area_1_body_entered"]
+[connection signal="body_entered" from="CameraManager/Area2" to="CameraManager" method="_on_area_2_body_entered"]
 
 [editable path="player"]
 [editable path="WayManager"]

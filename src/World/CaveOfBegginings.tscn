@@ -47861,7 +47861,7 @@ script = ExtResource("13_wcx5f")
 [node name="player" parent="." instance=ExtResource("14_5hnuk")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(312, 192)
+position = Vector2(136, -224)
 
 [node name="Camera2D" parent="player" index="5"]
 limit_left = -400
@@ -47900,6 +47900,13 @@ invisible = true
 Spawn_location = Vector2(328, 256)
 Spawn_direction = Vector2(-1, 0)
 
+[node name="Exit" parent="." instance=ExtResource("16_ykrnb")]
+position = Vector2(152, -280)
+next_scene_path = "res://src/World/Route1.tscn"
+invisible = true
+Spawn_location = Vector2(472, 816)
+Spawn_direction = Vector2(0, -1)
+
 [node name="EncounterManager" parent="." instance=ExtResource("17_vujiw")]
 common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("18_vxdaa"), ExtResource("2_oe4ly"), ExtResource("17_8n0qy")])
 rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_gmsi3")])
@@ -47911,7 +47918,7 @@ z_index = 2
 color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(312, 192)
+position = Vector2(136, -224)
 energy = 0.7
 texture = ExtResource("17_12cxl")
 texture_scale = 0.5
