@@ -1,11 +1,6 @@
 extends Action
 
-@onready var heal = $Heal
-@onready var take = $Take
-
 var User:CharacterBody2D = null
-
-var duration:float = 2
 
 func _ready():#ready overrider
 	pass
@@ -20,37 +15,31 @@ func _attack():
 		User.velocity = User.velocity * 0.001
 	
 	User.stun(1)
-	heal.global_position = User.global_position
+	User.animate_modulation_change(Color.RED,1)
 	if User.is_in_group("Pokemon"):
-		take.global_position = User.targetPokemon.global_position
+		User.targetPokemon.animate_modulation_change(Color.BLACK,1)
 		User.targetPokemon.stun(1)
 		User.targetPokemon.velocity = User.targetPokemon.velocity * 0.001
 	elif User.is_in_group("PlayerPokemon"):
-		take.global_position = User.opposing_pokemons[0].global_position
+		User.opposing_pokemons[0].animate_modulation_change(Color.BLACK,1)
 		User.opoosing_pokemons.stun(1)
 		User.opoosing_pokemons.velocity = User.opoosing_pokemons.velocity * 0.001
-
+	
+	leech_life()
+	
 func _on_timer_timeout():
 	if User.has_method("attack_end"):
 		User.attack_end()
 
-	emit_signal("attack_landed",self,User)
 	connect("attack_finished",SignalBus.attack_completed)
 	emit_signal("attack_finished",self,User)
 	queue_free()
 
 
-func _on_leech_timer_timeout():
-	heal.global_position = User.global_position
+func leech_life():
 	if User.is_in_group("Pokemon"):
-		User.stun(1)
-		User.targetPokemon.stun(1)
 		holder.calculate_damage(User.targetPokemon,User)
-		take.global_position = User.targetPokemon.global_position
-		
+
 	elif User.is_in_group("PlayerPokemon"):
-		User.stun(1)
-		User.opoosing_pokemons.stun(1)
 		holder.calculate_damage(User.opposing_pokemons[0],User)
-		take.global_position = User.opposing_pokemons[0].global_position
-	
+

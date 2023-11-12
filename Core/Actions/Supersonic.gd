@@ -33,7 +33,7 @@ func _on_area_2d_body_entered(body):
 			Target.Attack = clamp(Target.Attack + -1,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
 			body.animate_modulation_change()
 			
-			holder.Attack = clamp(Target.Attack + 1,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
+			User.pokemon.Attack = clamp(User.pokemon.Attack + 1,(User.pokemon.Max_Attack - 6),(User.pokemon.Max_Attack + 6))
 			User.animate_modulation_change(Color.RED)
 			if oneshot == false:
 				connect("attack_landed",SignalBus.on_attack_landed)

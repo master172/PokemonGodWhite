@@ -9,5 +9,5 @@ name = "LeechLife"
 learned_level = 1
 action = ExtResource("1_verdm")
 Type = "Grass"
-power = 17.0
+power = 40.0
 range = 1
