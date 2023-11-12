@@ -1,30 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://basjxyddsb2x2"]
+[gd_scene load_steps=9 format=3 uid="uid://basjxyddsb2x2"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_lu6ha"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="3_egdx3"]
 [ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Wurmple.tres" id="4_dn1bh"]
 [ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="5_0kibo"]
-[ext_resource type="PackedScene" uid="uid://dw3pn663pyks2" path="res://src/World/Route1/Part1Tilemap.tscn" id="6_a11ug"]
-[ext_resource type="PackedScene" uid="uid://xcoiiskfierd" path="res://src/World/Route1/Part2Tilemap.tscn" id="7_g4x87"]
-[ext_resource type="PackedScene" uid="uid://cprwp7s4cljp1" path="res://src/World/Route1/Part3Tilemap.tscn" id="8_8nur1"]
+[ext_resource type="PackedScene" uid="uid://cc5mvap1frk4n" path="res://src/World/way_manager.tscn" id="10_20xwa"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="16_0htb7"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="22_cd3uj"]
 
-[node name="Area0" type="Node2D"]
+[node name="Route1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_chr7b")
 common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_lu6ha"), ExtResource("3_egdx3"), ExtResource("4_dn1bh")])
 rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("5_0kibo")])
 min_level = 2
 max_level = 5
-
-[node name="Part1" parent="." instance=ExtResource("6_a11ug")]
-
-[node name="Part2" parent="." instance=ExtResource("7_g4x87")]
-
-[node name="Part3" parent="." instance=ExtResource("8_8nur1")]
-unique_name_in_owner = true
 
 [node name="player" parent="." instance=ExtResource("16_0htb7")]
 unique_name_in_owner = true
@@ -55,4 +46,26 @@ energy = 0.15
 texture = ExtResource("22_cd3uj")
 texture_scale = 0.5
 
+[node name="WayManager" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
+to_add_parent = NodePath("..")
+
+[node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
+my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
+to_add_parent = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" parent="WayManager2" index="0"]
+position = Vector2(341, 560)
+scale = Vector2(48.4, 25.6)
+
+[node name="WayManager3" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
+my_scene = "res://src/World/Route1/Part3Tilemap.tscn"
+to_add_parent = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" parent="WayManager3" index="0"]
+position = Vector2(-380, -40)
+scale = Vector2(37.2, 15.2)
+
 [editable path="player"]
+[editable path="WayManager"]
+[editable path="WayManager2"]
+[editable path="WayManager3"]

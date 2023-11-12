@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc5mvap1frk4n"]
+
+[ext_resource type="Script" path="res://src/World/WayManager.gd" id="1_psom3"]
+
+[node name="WayManager" type="Node2D"]
+script = ExtResource("1_psom3")
+my_scene = "res://src/World/Route1/Part2Tilemap.tscn"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(340, 116)
+scale = Vector2(48.4, 30.8)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="load_scene"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="unload_scene"]
