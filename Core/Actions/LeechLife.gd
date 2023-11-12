@@ -7,8 +7,6 @@ var User:CharacterBody2D = null
 
 var duration:float = 2
 
-var oneshot:bool = false
-
 func _ready():#ready overrider
 	pass
 
@@ -55,7 +53,4 @@ func _on_leech_timer_timeout():
 		User.opoosing_pokemons.stun(1)
 		holder.calculate_damage(User.opposing_pokemons[0],User)
 		take.global_position = User.opposing_pokemons[0].global_position
-			
-	if oneshot == false:
-		connect("attack_landed",SignalBus.on_attack_landed)
-	oneshot = true
+	

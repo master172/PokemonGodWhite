@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://1n36tv4yu2cu"]
+
+[ext_resource type="PackedScene" uid="uid://by58558l7umui" path="res://Core/Actions/Harden.tscn" id="1_wasoj"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_rch7l"]
+
+[resource]
+script = ExtResource("2_rch7l")
+name = "Harden"
+learned_level = 1
+action = ExtResource("1_wasoj")
+Type = "Normal"
+power = 0.0
+range = 0

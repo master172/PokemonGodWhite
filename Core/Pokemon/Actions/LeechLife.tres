@@ -8,6 +8,6 @@ script = ExtResource("1_aeq6a")
 name = "LeechLife"
 learned_level = 1
 action = ExtResource("1_verdm")
-Type = "Normal"
+Type = "Grass"
 power = 17.0
 range = 1

@@ -43,7 +43,7 @@ var attack = attacks.MELLE
 var attack_num:int = 0
 
 var Attack
-
+var attack_chosen:bool = false
 signal defeated(pokemon,attacker,body)
 
 var stop:bool = false
@@ -61,17 +61,18 @@ func _ready():
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
 	
 func choose_attack():
-	
-	if pokemon != null:
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-	
-		var at = rng.randi_range(0,pokemon.get_learned_attacks())
-		Attack = pokemon.get_learned_attack(at)
-		attack = Attack.base_action.range
-		attack_num = at
-		print(pokemon.get_learned_attack(attack_num).base_action.name)
+	if attack_chosen == false:
+		if pokemon != null:
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
 		
+			var at = rng.randi_range(0,pokemon.get_learned_attacks())
+			Attack = pokemon.get_learned_attack(at)
+			attack = Attack.base_action.range
+			attack_num = at
+			attack_chosen = true
+			print(pokemon.get_learned_attack(attack_num).base_action.name)
+			
 func _physics_process(delta):
 	
 	if Stun == true:
@@ -136,13 +137,14 @@ func _on_range_attack_state_attack_finished(attack,user):
 	if user == self and attack.User == self:
 		
 		finite_state_machine.change_state(enemy_idle_state)
-		
+		attack_chosen = false
 
 func _on_melle_attack_state_attack_finished(attack,user):
 	if user == self and attack.User == self:
 
 		finite_state_machine.change_state(enemy_idle_state)
-
+		attack_chosen = false
+		
 func _on_enemy_idle_state_done():
 	if stop == false:
 		finite_state_machine.change_state(enemy_follow_state)
@@ -159,7 +161,6 @@ func _on_melle_attack_state_attack_landed(attack,user):
 
 func _stop():
 	stop = true
-	print("what")
 	finite_state_machine.change_state(stall_state)
 
 func _start():
