@@ -29,6 +29,12 @@ func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
+			var Target = body.pokemon
+			Target.Attack = clamp(Target.Attack + -1,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
+			body.animate_modulation_change()
+			
+			holder.Attack = clamp(Target.Attack + 1,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
+			User.animate_modulation_change(Color.RED)
 			if oneshot == false:
 				connect("attack_landed",SignalBus.on_attack_landed)
 				oneshot = true
