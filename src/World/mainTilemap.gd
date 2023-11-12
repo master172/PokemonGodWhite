@@ -7,6 +7,5 @@ func _ready():
 	Utils.Tilemaps.append(self)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func remove_tilemap():
+	Utils.Tilemaps.erase(self)

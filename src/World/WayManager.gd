@@ -25,6 +25,8 @@ func _process(delta):
 
 	
 func unload_scene():
+	if scene_loaded.has_method("remove_tilemap"):
+		scene_loaded.remove_tilemap()
 	scene_loaded.call_deferred("queue_free")
 	print("freed_scene")
 	loaded_scene = false

@@ -49,21 +49,25 @@ texture_scale = 0.5
 [node name="WayManager" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 to_add_parent = NodePath("..")
 
+[node name="VisibleOnScreenNotifier2D" parent="WayManager" index="0"]
+position = Vector2(284, 152)
+scale = Vector2(54, 34.4)
+
 [node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" parent="WayManager2" index="0"]
-position = Vector2(341, 560)
-scale = Vector2(48.4, 25.6)
+position = Vector2(341, 532)
+scale = Vector2(48.4, 28.4)
 
 [node name="WayManager3" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 my_scene = "res://src/World/Route1/Part3Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" parent="WayManager3" index="0"]
-position = Vector2(-380, -40)
-scale = Vector2(37.2, 15.2)
+position = Vector2(-316, -40)
+scale = Vector2(43.6, 15.2)
 
 [editable path="player"]
 [editable path="WayManager"]

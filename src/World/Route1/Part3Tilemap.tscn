@@ -25,6 +25,7 @@ texture = ExtResource("2_v6shv")
 0:0/0/physics_layer_1/angular_velocity = 0.0
 0:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_2/angular_velocity = 0.0
+0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -32,6 +33,7 @@ texture = ExtResource("2_v6shv")
 1:0/0/physics_layer_1/angular_velocity = 0.0
 1:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_2/angular_velocity = 0.0
+1:0/0/custom_data_1 = true
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -39,6 +41,7 @@ texture = ExtResource("2_v6shv")
 2:0/0/physics_layer_1/angular_velocity = 0.0
 2:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_2/angular_velocity = 0.0
+2:0/0/custom_data_1 = true
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -60,6 +63,7 @@ texture = ExtResource("2_v6shv")
 5:0/0/physics_layer_1/angular_velocity = 0.0
 5:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 5:0/0/physics_layer_2/angular_velocity = 0.0
+5:0/0/custom_data_1 = true
 6:0/0 = 0
 6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_0/angular_velocity = 0.0
@@ -67,6 +71,7 @@ texture = ExtResource("2_v6shv")
 6:0/0/physics_layer_1/angular_velocity = 0.0
 6:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_2/angular_velocity = 0.0
+6:0/0/custom_data_1 = true
 10:0/0 = 0
 10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:0/0/physics_layer_0/angular_velocity = 0.0
@@ -193,6 +198,7 @@ texture = ExtResource("2_v6shv")
 0:1/0/physics_layer_1/angular_velocity = 0.0
 0:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_2/angular_velocity = 0.0
+0:1/0/custom_data_1 = true
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
@@ -200,6 +206,7 @@ texture = ExtResource("2_v6shv")
 2:1/0/physics_layer_1/angular_velocity = 0.0
 2:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_2/angular_velocity = 0.0
+2:1/0/custom_data_1 = true
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
@@ -221,6 +228,7 @@ texture = ExtResource("2_v6shv")
 5:1/0/physics_layer_1/angular_velocity = 0.0
 5:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_2/angular_velocity = 0.0
+5:1/0/custom_data_1 = true
 6:1/0 = 0
 6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_0/angular_velocity = 0.0
@@ -228,6 +236,7 @@ texture = ExtResource("2_v6shv")
 6:1/0/physics_layer_1/angular_velocity = 0.0
 6:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_2/angular_velocity = 0.0
+6:1/0/custom_data_1 = true
 10:1/0 = 0
 10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:1/0/physics_layer_0/angular_velocity = 0.0
@@ -340,6 +349,7 @@ texture = ExtResource("2_v6shv")
 0:2/0/physics_layer_1/angular_velocity = 0.0
 0:2/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_2/angular_velocity = 0.0
+0:2/0/custom_data_1 = true
 1:2/0 = 0
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
@@ -347,6 +357,7 @@ texture = ExtResource("2_v6shv")
 1:2/0/physics_layer_1/angular_velocity = 0.0
 1:2/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_2/angular_velocity = 0.0
+1:2/0/custom_data_1 = true
 2:2/0 = 0
 2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_0/angular_velocity = 0.0
@@ -354,6 +365,7 @@ texture = ExtResource("2_v6shv")
 2:2/0/physics_layer_1/angular_velocity = 0.0
 2:2/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_2/angular_velocity = 0.0
+2:2/0/custom_data_1 = true
 3:2/0 = 0
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
@@ -36942,393 +36954,3 @@ layer_4/y_sort_origin = 0
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array()
 script = ExtResource("10_5h7li")
-
-[node name="TallGrass" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-248, 24)
-
-[node name="_Node2D_220771" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-248, 40)
-
-[node name="_Node2D_220772" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-248, 72)
-
-[node name="_Node2D_220773" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-232, 24)
-
-[node name="_Node2D_220774" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-232, 56)
-
-[node name="_Node2D_220775" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-232, 72)
-
-[node name="_Node2D_220776" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-216, 24)
-
-[node name="_Node2D_220777" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-216, 40)
-
-[node name="_Node2D_220778" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-216, 56)
-
-[node name="_Node2D_220779" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-200, 40)
-
-[node name="_Node2D_220780" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-200, 56)
-
-[node name="_Node2D_220781" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-200, 72)
-
-[node name="_Node2D_220782" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-200, 88)
-
-[node name="_Node2D_220783" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-184, 24)
-
-[node name="_Node2D_220784" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-184, 40)
-
-[node name="_Node2D_220785" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-184, 72)
-
-[node name="_Node2D_220786" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-184, 88)
-
-[node name="_Node2D_220787" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-168, 56)
-
-[node name="_Node2D_220788" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-168, 88)
-
-[node name="_Node2D_220789" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-152, 24)
-
-[node name="_Node2D_220790" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-152, 40)
-
-[node name="_Node2D_220791" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-152, 56)
-
-[node name="_Node2D_220792" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-152, 72)
-
-[node name="_Node2D_220793" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-136, 24)
-
-[node name="_Node2D_220794" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-136, 40)
-
-[node name="_Node2D_220795" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-136, 72)
-
-[node name="_Node2D_220796" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-136, 88)
-
-[node name="_Node2D_220797" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-120, 40)
-
-[node name="_Node2D_220798" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-120, 56)
-
-[node name="_Node2D_220799" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-120, 72)
-
-[node name="_Node2D_220800" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-104, 40)
-
-[node name="_Node2D_220801" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-104, 72)
-
-[node name="_Node2D_220802" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-104, 88)
-
-[node name="_Node2D_220803" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-408, 24)
-
-[node name="_Node2D_220804" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-408, 40)
-
-[node name="_Node2D_220805" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-408, 56)
-
-[node name="_Node2D_220806" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-408, 72)
-
-[node name="_Node2D_220807" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-408, 88)
-
-[node name="_Node2D_220808" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-392, 56)
-
-[node name="_Node2D_220809" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-376, 72)
-
-[node name="_Node2D_220810" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-376, 88)
-
-[node name="_Node2D_220811" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-360, 56)
-
-[node name="_Node2D_220812" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-360, 72)
-
-[node name="_Node2D_220813" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-344, 72)
-
-[node name="_Node2D_220814" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-328, 24)
-
-[node name="_Node2D_220815" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-328, 40)
-
-[node name="_Node2D_220816" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-328, 72)
-
-[node name="_Node2D_220817" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-328, 88)
-
-[node name="_Node2D_220818" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-312, 24)
-
-[node name="_Node2D_220819" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-312, 40)
-
-[node name="_Node2D_220820" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-312, 56)
-
-[node name="_Node2D_220821" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-312, 72)
-
-[node name="_Node2D_220822" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-312, 88)
-
-[node name="_Node2D_220823" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-296, 24)
-
-[node name="_Node2D_220824" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-296, 40)
-
-[node name="_Node2D_220825" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-296, 56)
-
-[node name="_Node2D_220826" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-296, 72)
-
-[node name="_Node2D_220827" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-280, 24)
-
-[node name="_Node2D_220828" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-280, 40)
-
-[node name="_Node2D_220829" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-280, 56)
-
-[node name="_Node2D_220830" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-280, 72)
-
-[node name="_Node2D_220831" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-280, 88)
-
-[node name="_Node2D_220832" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-264, 24)
-
-[node name="_Node2D_220833" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-264, 40)
-
-[node name="_Node2D_220834" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-264, 56)
-
-[node name="_Node2D_220835" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-264, 72)
-
-[node name="_Node2D_220836" parent="." instance=ExtResource("3_swx65")]
-position = Vector2(-264, 88)
-
-[node name="Tree" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-744, -168)
-
-[node name="_StaticBody2D_220837" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-744, -136)
-
-[node name="_StaticBody2D_220838" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-744, -104)
-
-[node name="_StaticBody2D_220839" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-712, -168)
-
-[node name="_StaticBody2D_220840" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-712, -136)
-
-[node name="_StaticBody2D_220841" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-712, -104)
-
-[node name="_StaticBody2D_220842" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-680, -168)
-
-[node name="_StaticBody2D_220843" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-680, -136)
-
-[node name="_StaticBody2D_220844" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-680, -104)
-
-[node name="_StaticBody2D_220845" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-648, -168)
-
-[node name="_StaticBody2D_220846" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-648, -136)
-
-[node name="_StaticBody2D_220847" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-648, -104)
-
-[node name="_StaticBody2D_220848" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-616, -168)
-
-[node name="_StaticBody2D_220849" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-616, -136)
-
-[node name="_StaticBody2D_220850" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-616, -104)
-
-[node name="_StaticBody2D_220851" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-584, -168)
-
-[node name="_StaticBody2D_220852" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-584, -136)
-
-[node name="_StaticBody2D_220853" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-584, -104)
-
-[node name="_StaticBody2D_220854" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-552, -168)
-
-[node name="_StaticBody2D_220855" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-552, -136)
-
-[node name="_StaticBody2D_220856" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-552, -104)
-
-[node name="_StaticBody2D_220857" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-520, -168)
-
-[node name="_StaticBody2D_220858" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-520, -136)
-
-[node name="_StaticBody2D_220859" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-520, -104)
-
-[node name="_StaticBody2D_220860" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-488, -168)
-
-[node name="_StaticBody2D_220861" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-488, -136)
-
-[node name="_StaticBody2D_220862" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-488, -104)
-
-[node name="_StaticBody2D_220863" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-456, -168)
-
-[node name="_StaticBody2D_220864" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-456, -136)
-
-[node name="_StaticBody2D_220865" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-456, -104)
-
-[node name="_StaticBody2D_220866" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-424, -168)
-
-[node name="_StaticBody2D_220867" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-424, -136)
-
-[node name="_StaticBody2D_220868" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-424, -104)
-
-[node name="_StaticBody2D_220869" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-392, -168)
-
-[node name="_StaticBody2D_220870" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-392, -136)
-
-[node name="_StaticBody2D_220871" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-392, -104)
-
-[node name="_StaticBody2D_220872" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-360, -168)
-
-[node name="_StaticBody2D_220873" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-360, -136)
-
-[node name="_StaticBody2D_220874" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-360, -104)
-
-[node name="_StaticBody2D_220875" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-328, -168)
-
-[node name="_StaticBody2D_220876" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-328, -136)
-
-[node name="_StaticBody2D_220877" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-328, -104)
-
-[node name="_StaticBody2D_220878" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-296, -168)
-
-[node name="_StaticBody2D_220879" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-296, -136)
-
-[node name="_StaticBody2D_220880" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-296, -104)
-
-[node name="_StaticBody2D_220881" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-264, -168)
-
-[node name="_StaticBody2D_220882" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-264, -136)
-
-[node name="_StaticBody2D_220883" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-264, -104)
-
-[node name="_StaticBody2D_220884" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-232, -168)
-
-[node name="_StaticBody2D_220885" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-232, -136)
-
-[node name="_StaticBody2D_220886" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-232, -104)
-
-[node name="_StaticBody2D_220887" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-200, -168)
-
-[node name="_StaticBody2D_220888" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-200, -136)
-
-[node name="_StaticBody2D_220889" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-200, -104)
-
-[node name="_StaticBody2D_220890" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-168, -168)
-
-[node name="_StaticBody2D_220891" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-168, -136)
-
-[node name="_StaticBody2D_220892" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-168, -104)
-
-[node name="_StaticBody2D_220893" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-136, -168)
-
-[node name="_StaticBody2D_220894" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-136, -136)
-
-[node name="_StaticBody2D_220895" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-136, -104)
-
-[node name="_StaticBody2D_220896" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-104, -168)
-
-[node name="_StaticBody2D_220897" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-104, -136)
-
-[node name="_StaticBody2D_220898" parent="." instance=ExtResource("1_3s18r")]
-position = Vector2(-104, -104)
