@@ -33,7 +33,8 @@ func close_door():
 
 func door_closed():
 	if player_entered == true:
-		Utils.get_scene_manager().transition_to_scene(next_scene_path,Spawn_location,Spawn_direction)
+		if Utils.get_scene_manager() != null:
+			Utils.get_scene_manager().transition_to_scene(next_scene_path,Spawn_location,Spawn_direction)
 	
 
 
