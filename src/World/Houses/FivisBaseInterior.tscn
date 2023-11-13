@@ -7186,12 +7186,12 @@ texture = ExtResource("5_k5k13")
 [sub_resource type="TileSet" id="TileSet_yemnp"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
-sources/3 = SubResource("TileSetAtlasSource_3rna3")
-sources/4 = SubResource("TileSetAtlasSource_q8aox")
-sources/5 = SubResource("TileSetAtlasSource_w8vxp")
 sources/6 = SubResource("TileSetAtlasSource_ky8f0")
+sources/5 = SubResource("TileSetAtlasSource_w8vxp")
+sources/4 = SubResource("TileSetAtlasSource_q8aox")
+sources/3 = SubResource("TileSetAtlasSource_3rna3")
 
-[node name="BaseHouse1" type="Node2D"]
+[node name="FBaseHouse" type="Node2D"]
 y_sort_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
