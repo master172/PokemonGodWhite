@@ -8,6 +8,7 @@ extends Node2D
 @onready var nurse_joy = $NurseJoy
 
 @export_file var place
+@onready var player = %player
 
 func _ready():
 	healing_balls.visible = false
@@ -18,6 +19,8 @@ func _on_nurse_joy_start_healing():
 		Utils.get_scene_manager().set_current_healing_place(place) 
 	healing_balls.visible = true
 	var to_heal = AllyPokemon.get_Party_pokemon_size()
+	if player.pokemon_manager != null:
+		player.pokemon_manager.visible = false
 	match  to_heal:
 		1:
 			animation_player.play("One")
@@ -31,13 +34,15 @@ func _on_nurse_joy_start_healing():
 			animation_player.play("Five")
 		6:
 			animation_player.play("Six")
+	
 	healing_timer.start()
 
 func _on_healing_timer_timeout():
 	animation_player.stop()
 	healing_balls.visible = false
-
-
+	if player.pokemon_manager != null:
+		player.pokemon_manager.visible = true
+		
 func heal():
 	nurse_joy.heal()
 

@@ -29591,7 +29591,6 @@ texture = ExtResource("17_s5eox")
 texture_scale = 0.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 z_index = 2
 collision_layer = 2
 collision_mask = 0
