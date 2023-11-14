@@ -7225,7 +7225,7 @@ sources/5 = SubResource("TileSetAtlasSource_w8vxp")
 pattern_0 = SubResource("TileMapPattern_uwdih")
 pattern_1 = SubResource("TileMapPattern_yy56x")
 
-[node name="InnHousef1" type="Node2D"]
+[node name="TransitionPoint1" type="Node2D"]
 y_sort_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

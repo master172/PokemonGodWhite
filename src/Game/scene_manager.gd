@@ -79,7 +79,9 @@ func load_data():
 	
 func apply_data():
 	first_time_start = Scene_Saver.first_time_start
+	current_healing_place = Scene_Saver.current_healing_place
 	if Scene_Saver.scene != "":
+		
 		var scene = load(Scene_Saver.scene)
 		current_scene.get_child(0).queue_free()
 		await get_tree().create_timer(0.01).timeout
@@ -244,7 +246,7 @@ func load_healing_place():
 	if current_healing_place == null:
 		Current_healing_place = default_healing_place.instantiate()
 	else:
-		Current_healing_place = current_healing_place.instantiate()
+		Current_healing_place = load(current_healing_place).instantiate()
 		
 	current_scene.add_child(Current_healing_place)
 	
@@ -368,3 +370,7 @@ func shoot_screen():
 	var tex :Texture = vpt.get_texture()
 	var img :Image = tex.get_image()
 	img.save_png("user://save/Scene/"+"screenshot.png")
+
+func set_current_healing_place(place):
+	current_healing_place = place
+	Scene_Saver.change_healing_place(current_healing_place)

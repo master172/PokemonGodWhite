@@ -22,8 +22,8 @@ polygon = PackedVector2Array(-56, -36, 56, -36, 56, 20, 8, 20, 8, 4, -8, 4, -8, 
 
 [node name="Door" parent="." instance=ExtResource("2_c4ro3")]
 position = Vector2(0, 16)
-next_scene_path = "res://src/World/Houses/InnHouse.tscn"
-Spawn_location = Vector2(24, 64)
+next_scene_path = "res://src/World/Houses/FivisUnique/FivisGym.tscn"
+Spawn_location = Vector2(8, 224)
 Spawn_direction = Vector2(0, -1)
 
 [node name="Sprite2D" parent="Door" index="0"]

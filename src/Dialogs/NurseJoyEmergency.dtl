@@ -1,0 +1,8 @@
+NurseJoy: First we have to heal your pokemon
+[signal arg="PokeCenterYes"]
+[wait time="3.0"]
+[signal arg="TurnBack"]
+NurseJoy: Remeber to take good care of your pokemon
+NurseJoy: We hope to see you again
+[signal arg="HealingDone"]
+[end_timeline]

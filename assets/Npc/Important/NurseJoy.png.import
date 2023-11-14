@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxci0mrl4bbnw"
-path="res://.godot/imported/Gyms interior.png-cfd4855f09b28fc541b9cf3cf606034d.ctex"
+uid="uid://cn2fp0u114hc7"
+path="res://.godot/imported/NurseJoy.png-694a439068c6df7ff7f59d72be66b3c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PokemonTilesets/Gyms interior.png"
-dest_files=["res://.godot/imported/Gyms interior.png-cfd4855f09b28fc541b9cf3cf606034d.ctex"]
+source_file="res://assets/Npc/Important/NurseJoy.png"
+dest_files=["res://.godot/imported/NurseJoy.png-694a439068c6df7ff7f59d72be66b3c1.ctex"]
 
 [params]
 
