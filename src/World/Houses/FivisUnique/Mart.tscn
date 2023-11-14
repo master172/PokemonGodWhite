@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8l8c2hch18ui"]
+[gd_scene load_steps=8 format=3 uid="uid://c8l8c2hch18ui"]
 
 [ext_resource type="Texture2D" uid="uid://xrh5m1p823kj" path="res://assets/PokemonTilesets/Martinterior.PNG" id="1_bgejo"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="2_su562"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="3_vt2sh"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="4_2pin6"]
+[ext_resource type="PackedScene" uid="uid://wwrelinblkhs" path="res://src/World/Npc/MartMan.tscn" id="5_edxd3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1qcj"]
 resource_name = "Mart"
@@ -527,3 +528,7 @@ z_index = 1
 position = Vector2(24, 64)
 can_surf = false
 can_cycle = false
+
+[node name="MartMan" parent="." instance=ExtResource("5_edxd3")]
+z_index = 1
+position = Vector2(-72, -16)

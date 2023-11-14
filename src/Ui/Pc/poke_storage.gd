@@ -41,7 +41,7 @@ func _ready():
 			var S = storage_item.instantiate()
 			S.set_pokemon(i)
 			list_container.add_child(S)
-	#
+	max_selectable = get_max_list()
 
 func _on_search_bar_text_changed(new_text):
 		
@@ -150,13 +150,14 @@ func _input(event):
 			set_list_active()
 		
 		elif state == states.LIST:
-			set_list_inactive()
-			current_selected  = (current_selected +1) % max_selectable
-			set_list_active()
-			if current_selected > 7:
-				scroll_container.scroll_vertical += 68
-			if current_selected == 0:
-				scroll_container.scroll_vertical = 0
+			if max_selectable > 0:
+				set_list_inactive()
+				current_selected  = (current_selected +1) % max_selectable
+				set_list_active()
+				if current_selected > 7:
+					scroll_container.scroll_vertical += 68
+				if current_selected == 0:
+					scroll_container.scroll_vertical = 0
 				
 	elif event.is_action_pressed("D"):
 		AudioManager.input()
@@ -200,8 +201,9 @@ func _input(event):
 			
 			
 				print(current_selected)
-				max_selectable = get_max_list()
+				
 				await get_tree().create_timer(0.1).timeout
+				max_selectable = get_max_list()
 				set_list_active()
 			else:
 				pc_switch_index = current_selected
@@ -249,10 +251,12 @@ func _input(event):
 			
 
 func set_list_active():
-	get_item_by_index(current_selected).change_selected(true)
+	if max_selectable - 1 >= current_selected:
+		get_item_by_index(current_selected).change_selected(true)
 
 func set_list_inactive():
-	get_item_by_index(current_selected).change_selected(false)
+	if max_selectable - 1 >= current_selected:
+		get_item_by_index(current_selected).change_selected(false)
 	
 func get_max_list():
 	var num: int =0

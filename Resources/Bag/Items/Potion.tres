@@ -12,3 +12,4 @@ Name = "Potion"
 item = ExtResource("1_sali4")
 sprite = ExtResource("2_7ot3n")
 Description = "Potions heal 20 hp of a pokemon"
+price = 200

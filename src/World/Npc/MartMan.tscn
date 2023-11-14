@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://wwrelinblkhs"]
+
+[ext_resource type="Script" path="res://src/World/Npc/MartMan.gd" id="1_1y87b"]
+[ext_resource type="Texture2D" uid="uid://bby70umoblxag" path="res://assets/Npc/Important/MartMan.png" id="2_v3tcw"]
+[ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="6_to57q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctyb7"]
+size = Vector2(16, 32)
+
+[node name="MartMan" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 18
+collision_mask = 0
+script = ExtResource("1_1y87b")
+items_to_sell = Array[Resource("res://Resources/Bag/BaseItem.gd")]([ExtResource("6_to57q")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("2_v3tcw")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ctyb7")
