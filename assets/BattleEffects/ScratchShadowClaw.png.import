@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bndgfssxmbs1"
-path="res://.godot/imported/Scratch + Shadow Claw.png-edab83133a39a2583e6743e3b3cfb692.ctex"
+path="res://.godot/imported/ScratchShadowClaw.png-cd93f9968f93c928be7ba23ed44cf559.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BattleEffects/Scratch + Shadow Claw.png"
-dest_files=["res://.godot/imported/Scratch + Shadow Claw.png-edab83133a39a2583e6743e3b3cfb692.ctex"]
+source_file="res://assets/BattleEffects/ScratchShadowClaw.png"
+dest_files=["res://.godot/imported/ScratchShadowClaw.png-cd93f9968f93c928be7ba23ed44cf559.ctex"]
 
 [params]
 

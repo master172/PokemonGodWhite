@@ -190,7 +190,7 @@ func get_back_sprite():
 func inital_learn_moves():
 	for i in move_pool:
 		if i.action.learned_level <= self.level:
-			if learned_attacks.size() <= 4:
+			if learned_attacks.size() <= 3:
 				var move_to_learn = GameAction.new(i.action)
 				learned_attacks.append(move_to_learn)
 				i.learned = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmndgntrn1nfe"]
 
 [ext_resource type="Script" path="res://Core/Actions/Scracth.gd" id="1_li7ep"]
-[ext_resource type="Texture2D" uid="uid://bndgfssxmbs1" path="res://assets/BattleEffects/Scratch + Shadow Claw.png" id="2_g02iq"]
+[ext_resource type="Texture2D" uid="uid://bndgfssxmbs1" path="res://assets/BattleEffects/ScratchShadowClaw.png" id="2_g02iq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kv87m"]
 atlas = ExtResource("2_g02iq")

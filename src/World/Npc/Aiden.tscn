@@ -1,7 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://riyto8ufmaoj"]
+[gd_scene load_steps=33 format=3 uid="uid://riyto8ufmaoj"]
 
 [ext_resource type="Script" path="res://src/World/Npc/Aiden.gd" id="1_m0kjm"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_qte7a"]
 [ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Vaporeon.tres" id="3_bd7x8"]
 [ext_resource type="Texture2D" uid="uid://cag55ot7oy6oo" path="res://assets/Npc/Trainers/General/NPC 07.png" id="4_lbnm1"]
 [ext_resource type="Script" path="res://src/World/Npc/Helpers/CutScenePlayer.gd" id="5_5akwr"]
@@ -314,8 +313,8 @@ z_index = 1
 collision_layer = 18
 collision_mask = 0
 script = ExtResource("1_m0kjm")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_qte7a"), ExtResource("3_bd7x8")])
-levels = Array[int]([6, 7])
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("3_bd7x8")])
+levels = Array[int]([5])
 current_dialog = "AidenInteraction"
 ending_dialog = "AidenEnd"
 animation_player = NodePath("AnimationPlayer")

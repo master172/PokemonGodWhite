@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=41 format=3 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bbyhnn6340w0c" path="res://Libraries/Houses/martHouse.tscn" id="7_3088l"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="10_g640m"]
-[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="12_tsf5n"]
 [ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="12_yku7x"]
 [ext_resource type="Texture2D" uid="uid://dneqeda65gg0y" path="res://assets/PokemonTilesets/Outside.png" id="12_yl3wm"]
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_x3ica"]
@@ -36507,8 +36506,10 @@ sources/7 = SubResource("TileSetAtlasSource_0c2yq")
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2ofmc")
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("3_p24ug"), ExtResource("4_hdyfe")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("12_tsf5n")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("10_g640m"), ExtResource("4_hdyfe")])
+common_relative = 7
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("3_p24ug")])
+rare_relative = 3
 min_level = 2
 max_level = 5
 

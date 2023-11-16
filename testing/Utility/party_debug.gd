@@ -38,3 +38,7 @@ func add_debug_party():
 	AllyPokemon.add_pokemon(Riolu)
 func _on_button_pressed():
 	add_debug_party()
+
+
+func _on_button_2_pressed():
+	AllyPokemon.all_heal()

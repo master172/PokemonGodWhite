@@ -19,4 +19,13 @@ offset_right = 155.0
 offset_bottom = 63.0
 text = "add debug party"
 
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 72.0
+offset_right = 159.0
+offset_bottom = 103.0
+text = "heal party"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

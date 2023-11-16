@@ -86,6 +86,7 @@ var player_start:bool = false
 
 var player_uid = ""
 signal player_ready
+var Player_ready:bool = false
 
 func _ready():
 	
@@ -117,6 +118,7 @@ func _ready():
 	
 	
 	emit_signal("player_ready")
+	Player_ready = true
 	
 func set_poke_pos_dir(val1:Vector2,val2):
 	poke_pos = val1
@@ -183,9 +185,11 @@ func _physics_process(delta):
 	check_shore()
 	Run()
 	cycle()
+	
 	speed_handler()
 #	get_clicked_tile_power()
-	check_ledge_direction()
+	if Player_ready == true:
+		check_ledge_direction()
 	check_interaction()
 
 func process_player_input():
@@ -522,12 +526,13 @@ func check_ledge_direction():
 	if ledge_cast.is_colliding():
 		var body_rid = ledge_cast.get_collider_rid()
 		for i in Utils.Tilemaps:
-			collided_tile_cords = i.get_coords_for_body_rid(body_rid)
-				
-			tile_data = i.get_cell_tile_data(1,collided_tile_cords)
-			if tile_data:
-				ledge_direction = tile_data.get_custom_data("ledgeDirection")
-				return
+			if is_instance_valid(i):
+				collided_tile_cords = i.get_coords_for_body_rid(body_rid)
+						
+				tile_data = i.get_cell_tile_data(1,collided_tile_cords)
+				if tile_data:
+					ledge_direction = tile_data.get_custom_data("ledgeDirection")
+					return
 	return
 func check_interaction():
 	if interaction_cast.is_colliding():

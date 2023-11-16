@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btc06udca3qus"]
+[gd_scene load_steps=31 format=3 uid="uid://btc06udca3qus"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginingsBf.gd" id="1_sgirk"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_tildt"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="17_8307e"]
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_qi0e2"]
 [ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="18_b48jh"]
-[ext_resource type="Resource" uid="uid://d0b5xmdpi30" path="res://Core/Pokemon/Tyrunt.tres" id="19_35ap5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47805,10 +47804,13 @@ Spawn_location = Vector2(312, 192)
 Spawn_direction = Vector2(0, -1)
 
 [node name="EncounterManager" parent="." instance=ExtResource("17_qi0e2")]
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_tildt"), ExtResource("17_2t25w"), ExtResource("18_b48jh")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("19_35ap5")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_2t25w")])
+common_relative = 8
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("18_b48jh"), ExtResource("2_tildt")])
+rare_relative = 3
 min_level = 2
 max_level = 5
+EncounterRate = 12
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_tnimf")]
 z_index = 2

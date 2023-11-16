@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ycsu01lbqjeh"]
+[gd_scene load_steps=47 format=3 uid="uid://ycsu01lbqjeh"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginings.gd" id="1_rk1oj"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_oe4ly"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="16_ykrnb"]
 [ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="17_8n0qy"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="17_12cxl"]
-[ext_resource type="Resource" uid="uid://d0b5xmdpi30" path="res://Core/Pokemon/Tyrunt.tres" id="17_gmsi3"]
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_vujiw"]
 [ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="18_vxdaa"]
 
@@ -47908,10 +47907,13 @@ Spawn_location = Vector2(472, 816)
 Spawn_direction = Vector2(0, -1)
 
 [node name="EncounterManager" parent="." instance=ExtResource("17_vujiw")]
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("18_vxdaa"), ExtResource("2_oe4ly"), ExtResource("17_8n0qy")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_gmsi3")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("18_vxdaa")])
+common_relative = 7
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("17_8n0qy"), ExtResource("2_oe4ly")])
+rare_relative = 3
 min_level = 3
 max_level = 6
+EncounterRate = 16
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_f1501")]
 z_index = 2
