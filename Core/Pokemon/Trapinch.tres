@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://bj22iqgv73rue"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://bj22iqgv73rue"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_4r1xm"]
 [ext_resource type="Texture2D" uid="uid://dhujw4uc42cbm" path="res://Core/Graphics/Pokemon/Gen3/Back/TRAPINCH.png" id="1_uddg5"]
+[ext_resource type="Resource" uid="uid://d16lcqp5040yi" path="res://Core/Pokemon/Actions/SandAttack.tres" id="1_uproh"]
+[ext_resource type="Resource" uid="uid://copmsnki7ep0k" path="res://Core/Pokemon/Actions/Astonish.tres" id="2_jtxja"]
 [ext_resource type="Texture2D" uid="uid://cye3hf6s546wh" path="res://Core/Graphics/Pokemon/Gen3/Front/TRAPINCH.png" id="2_vpcmy"]
 [ext_resource type="Texture2D" uid="uid://dg13amgk3fmsc" path="res://Core/Graphics/Pokemon/Gen3/Icons/TRAPINCH.png" id="3_3mv5f"]
 [ext_resource type="Texture2D" uid="uid://dg4vj4xc1c128" path="res://Core/Graphics/Pokemon/Gen3/Followers/TRAPINCH.png" id="4_pfhl3"]
@@ -23,7 +25,7 @@ Base_Defense = 45
 Special_Base_Attack = 45
 Special_Base_Defense = 45
 Base_Speed = 10
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_uproh"), ExtResource("2_jtxja")])
 base_experience = 73
 Yield_Health = 0
 Yield_Attack = 1
