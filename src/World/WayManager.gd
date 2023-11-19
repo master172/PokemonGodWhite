@@ -23,9 +23,10 @@ func set_loadable():
 	can_load_scene = true
 	area.monitoring = true
 	
-func load_scene(_body):
-	if my_scene != "" and loaded_scene == false and can_load_scene == true:
-		ResourceLoader.load_threaded_request(my_scene)
+func load_scene(body):
+	if body.is_in_group("Player"):
+		if my_scene != "" and loaded_scene == false and can_load_scene == true:
+			ResourceLoader.load_threaded_request(my_scene)
 
 func _process(delta):
 	scene_load_status = ResourceLoader.load_threaded_get_status(my_scene)
@@ -38,10 +39,11 @@ func _process(delta):
 
 
 	
-func unload_scene(_body):
-	if scene_loaded != null:
-		if scene_loaded.has_method("remove_tilemap"):
-			scene_loaded.remove_tilemap()
-		scene_loaded.call_deferred("queue_free")
-		print("freed_scene")
-		loaded_scene = false
+func unload_scene(body):
+	if body.is_in_group("Player"):
+		if scene_loaded != null:
+			if scene_loaded.has_method("remove_tilemap"):
+				scene_loaded.remove_tilemap()
+			scene_loaded.call_deferred("queue_free")
+			print("freed_scene")
+			loaded_scene = false

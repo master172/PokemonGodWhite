@@ -1,0 +1,4 @@
+Law: you need to battle me to get any further
+[signal arg="Battle"]
+[signal arg="end"]
+[end_timeline]

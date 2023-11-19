@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ycsu01lbqjeh"]
+[gd_scene load_steps=49 format=3 uid="uid://ycsu01lbqjeh"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginings.gd" id="1_rk1oj"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_oe4ly"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_vujiw"]
 [ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="18_vxdaa"]
 [ext_resource type="PackedScene" uid="uid://dswfxeiushvln" path="res://Resources/Npc/Npcs/Kyle.tscn" id="21_1lvyh"]
+[ext_resource type="PackedScene" uid="uid://dpbsupsdtbmbg" path="res://Resources/Npc/Npcs/Law.tscn" id="22_n372y"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47942,6 +47943,9 @@ texture_scale = 0.7
 [node name="Kyle" parent="Trainers" instance=ExtResource("21_1lvyh")]
 z_index = 1
 position = Vector2(-184, 160)
-look_distance = 1
+
+[node name="Law" parent="Trainers" instance=ExtResource("22_n372y")]
+z_index = 1
+position = Vector2(136, -80)
 
 [editable path="player"]

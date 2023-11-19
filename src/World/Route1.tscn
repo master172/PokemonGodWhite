@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://basjxyddsb2x2"]
+[gd_scene load_steps=22 format=3 uid="uid://basjxyddsb2x2"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_lu6ha"]
-[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="3_egdx3"]
-[ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Wurmple.tres" id="4_dn1bh"]
-[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="5_0kibo"]
+[ext_resource type="Resource" uid="uid://dgf17pnpsvtsr" path="res://Core/Pokemon/Caterpie.tres" id="2_ysqt8"]
+[ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="3_pa3ru"]
+[ext_resource type="Resource" uid="uid://bj22iqgv73rue" path="res://Core/Pokemon/Trapinch.tres" id="4_1oje1"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="9_110l4"]
 [ext_resource type="Script" path="res://src/World/Helpers/CameraManager.gd" id="10_4lxdh"]
 [ext_resource type="PackedScene" uid="uid://cc5mvap1frk4n" path="res://src/World/way_manager.tscn" id="10_20xwa"]
@@ -19,7 +18,7 @@ size = Vector2(23.8016, 23.8961)
 size = Vector2(19.3388, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqxir"]
-size = Vector2(880, 1008)
+size = Vector2(880, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aai7u"]
 size = Vector2(680, 304)
@@ -226,8 +225,8 @@ _data = {
 [node name="Route1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_chr7b")
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_lu6ha"), ExtResource("3_egdx3"), ExtResource("4_dn1bh")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("5_0kibo")])
+common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_ysqt8"), ExtResource("3_pa3ru")])
+rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("4_1oje1")])
 min_level = 2
 max_level = 5
 
@@ -265,7 +264,7 @@ my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="CollisionShape2D" parent="WayManager/Area" index="0"]
-position = Vector2(0.743803, 11.9481)
+position = Vector2(0.743803, 12.8572)
 
 [node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 to_add_parent = NodePath("..")
@@ -316,13 +315,14 @@ polygon = PackedVector2Array(-80, 112, -80, 128, -768, 128, -768, -48, -752, -48
 polygon = PackedVector2Array(-752, -48, -768, -48, -768, -192, -752, -192)
 
 [node name="CameraManager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("10_4lxdh")
 
 [node name="Area1" type="Area2D" parent="CameraManager"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Area1"]
-position = Vector2(384, 312)
+position = Vector2(384, 320)
 shape = SubResource("RectangleShape2D_lqxir")
 
 [node name="Area2" type="Area2D" parent="CameraManager"]

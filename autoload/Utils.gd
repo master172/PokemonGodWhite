@@ -18,6 +18,8 @@ var Bea_met:bool = false
 var William_met:bool = false
 var kyle_defeated:bool = false
 var Lisa_defeated:bool = false
+var Law_defeated:bool = false
+
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
@@ -77,6 +79,7 @@ func update_self_data():
 	storyData.William_met = William_met
 	storyData.kyle_defeated = kyle_defeated
 	storyData.Lisa_defeated = Lisa_defeated
+	storyData.Law_defeated = Law_defeated
 	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -89,6 +92,7 @@ func apply_self_data():
 	William_met = storyData.William_met
 	kyle_defeated = storyData.kyle_defeated
 	Lisa_defeated = storyData.Lisa_defeated
+	Law_defeated = storyData.Law_defeated
 	
 func remove_save_files():
 	
@@ -131,3 +135,4 @@ func remove_self_data():
 	William_met = false
 	kyle_defeated = false
 	Lisa_defeated = false
+	Law_defeated = false

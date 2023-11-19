@@ -88,9 +88,11 @@ func move(delta):
 		can_move = false
 		look(looking_direction)
 		start_battle()
+		
 func check_distance_to_player():
-	return self.global_position.distance_to(to_move_pos)/16
-
+	if looking_direction != Vector2(0,1):
+		return self.global_position.distance_to(to_move_pos)/16
+	return (self.global_position.distance_to(to_move_pos-Vector2(0,8))/16)
 func start_battle():
 	
 	_interact()
