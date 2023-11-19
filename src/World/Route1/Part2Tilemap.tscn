@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://xcoiiskfierd"]
+[gd_scene load_steps=31 format=3 uid="uid://xcoiiskfierd"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_h5qia"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_sexk5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="8_ueedx"]
 [ext_resource type="Texture2D" uid="uid://dneqeda65gg0y" path="res://assets/PokemonTilesets/Outside.png" id="9_4d4a3"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="10_ipxrb"]
+[ext_resource type="PackedScene" uid="uid://bwhffc1xmgfnx" path="res://Resources/Npc/Npcs/Jodi.tscn" id="11_0xhv5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -36942,3 +36943,8 @@ layer_4/y_sort_origin = 0
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(1245219, 262151, 152, 1245216, 7, 152, 1245217, 65543, 97, 1245218, 131079, 97, 1179681, 65543, 152, 1179682, 196615, 152, 1114145, 65543, 152, 1114146, 196615, 152, 1048610, 196615, 152, 1048609, 65543, 152, 1179683, 262151, 152, 1179680, 7, 152, 1114144, 7, 152, 1048608, 7, 152, 983074, 196615, 152, 917538, 196615, 152, 852002, 196615, 152, 786466, 196615, 152, 720930, 196615, 152, 655394, 196615, 152, 589858, 196615, 152, 524322, 196615, 152, 458786, 196615, 152, 393250, 196615, 152, 327714, 196615, 152, 983073, 65543, 152, 917537, 65543, 152, 852001, 65543, 152, 786465, 65543, 152, 720929, 65543, 152, 655393, 65543, 152, 589857, 65543, 152, 524321, 65543, 152, 458785, 65543, 152, 393249, 65543, 152, 327713, 65543, 152, 983072, 7, 151, 917536, 7, 152, 852000, 7, 152, 786464, 7, 151, 720928, 7, 152, 655392, 7, 152, 589856, 7, 151, 524320, 7, 152, 458784, 7, 152, 393248, 7, 151, 327712, 7, 152, 1048611, 262151, 152, 1114147, 262151, 152, 983075, 262151, 151, 917539, 262151, 152, 852003, 262151, 152, 786467, 262151, 151, 720931, 262151, 152, 655395, 262151, 152, 589859, 262151, 151, 524323, 262151, 152, 458787, 262151, 152, 393251, 262151, 151, 327715, 262151, 152, 196640, 7, 150, 196641, 65543, 150, 196642, 196615, 150, 196643, 262151, 150, 262176, 7, 152, 262177, 65543, 152, 262178, 196615, 152, 262179, 262151, 152, 1310752, 7, 153, 1310755, 262151, 153, 1310753, 65543, 153, 1310754, 196615, 153)
 script = ExtResource("10_ipxrb")
+
+[node name="Jodi" parent="." instance=ExtResource("11_0xhv5")]
+z_index = 1
+position = Vector2(200, -80)
+look_distance = 2
