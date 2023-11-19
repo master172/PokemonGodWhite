@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dw3pn663pyks2"]
+[gd_scene load_steps=31 format=3 uid="uid://dw3pn663pyks2"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_eqt4d"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_33s5n"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="8_s81la"]
 [ext_resource type="Texture2D" uid="uid://dneqeda65gg0y" path="res://assets/PokemonTilesets/Outside.png" id="9_ap8x2"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="10_7tfhw"]
+[ext_resource type="PackedScene" uid="uid://c1l5inso4oeik" path="res://Resources/Npc/Npcs/Jenney.tscn" id="11_vtlcc"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -36942,3 +36943,8 @@ layer_4/y_sort_origin = 0
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array()
 script = ExtResource("10_7tfhw")
+
+[node name="Jenney" parent="." instance=ExtResource("11_vtlcc")]
+z_index = 1
+position = Vector2(184, 464)
+looking_direction = Vector2(-1, 0)

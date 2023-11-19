@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1l5inso4oeik"]
+[gd_scene load_steps=30 format=3 uid="uid://bwhffc1xmgfnx"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/Jenney.gd" id="1_0ew76"]
-[ext_resource type="Resource" uid="uid://bj22iqgv73rue" path="res://Core/Pokemon/Trapinch.tres" id="2_wk02s"]
-[ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_1an6n"]
-[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="5_hs3ny"]
+[ext_resource type="Script" path="res://Resources/Npc/Npcs/Jodi.gd" id="1_pjhcc"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_merb7"]
+[ext_resource type="Texture2D" uid="uid://cq8cmb61s58us" path="res://assets/Npc/Trainers/General/Jodi.png" id="3_0ch10"]
+[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_r1ept"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -236,27 +236,24 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
 size = Vector2(16, 16)
 
-[node name="Jenney" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
+[node name="Jodi" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_0ew76")
+script = ExtResource("1_pjhcc")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
-look_distance = 3
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_wk02s")])
-levels = Array[int]([7])
-current_dialog = "Jenney"
-ending_dialog = "JenneyEnd"
+pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_merb7")])
+levels = Array[int]([6])
+current_dialog = "Jodi"
+ending_dialog = "JodiEnd"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
 sprite_2d = NodePath("Sprite2D")
-looking_direction = Vector2(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -12)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_1an6n")
+texture = ExtResource("3_0ch10")
 hframes = 4
 vframes = 4
 frame = 12
@@ -281,7 +278,7 @@ shape = SubResource("RectangleShape2D_art2r")
 show_behind_parent = true
 position = Vector2(0, -24)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_hs3ny")
+texture = ExtResource("4_r1ept")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -8)

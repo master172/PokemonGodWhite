@@ -7,3 +7,5 @@ class_name story_saver
 @export var kyle_defeated:bool = false
 @export var Lisa_defeated:bool = false
 @export var Law_defeated:bool = false
+@export var Jenney_defeated:bool = false
+@export var Jodi_defeated:bool = false

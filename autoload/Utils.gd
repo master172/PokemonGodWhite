@@ -19,6 +19,8 @@ var William_met:bool = false
 var kyle_defeated:bool = false
 var Lisa_defeated:bool = false
 var Law_defeated:bool = false
+var Jenney_defeated:bool = false
+var Jodi_defeated:bool = false
 
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
@@ -80,6 +82,8 @@ func update_self_data():
 	storyData.kyle_defeated = kyle_defeated
 	storyData.Lisa_defeated = Lisa_defeated
 	storyData.Law_defeated = Law_defeated
+	storyData.Jenney_defeated = Jenney_defeated
+	storyData.Jodi_defeated = Jodi_defeated
 	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -93,6 +97,8 @@ func apply_self_data():
 	kyle_defeated = storyData.kyle_defeated
 	Lisa_defeated = storyData.Lisa_defeated
 	Law_defeated = storyData.Law_defeated
+	Jenney_defeated = storyData.Jenney_defeated
+	Jodi_defeated = storyData.Jodi_defeated
 	
 func remove_save_files():
 	
@@ -136,3 +142,5 @@ func remove_self_data():
 	kyle_defeated = false
 	Lisa_defeated = false
 	Law_defeated = false
+	Jenney_defeated = false
+	Jodi_defeated = false

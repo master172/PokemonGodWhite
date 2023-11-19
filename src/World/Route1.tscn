@@ -264,7 +264,7 @@ my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="CollisionShape2D" parent="WayManager/Area" index="0"]
-position = Vector2(0.743803, 12.8572)
+position = Vector2(0.743803, 13.052)
 
 [node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 to_add_parent = NodePath("..")
