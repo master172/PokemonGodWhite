@@ -31,8 +31,8 @@ func _attack():
 				print("attack")
 				var rng = randi_range(0,100)
 				if rng <75:
-					target[0].animate_modulation_change(Color.YELLOW,5)
-					target[0].stun(5)
+					target[0].animate_modulation_change(Color.YELLOW,3)
+					target[0].stun(3)
 				if oneshot == false:
 					connect("attack_landed",SignalBus.on_attack_landed)
 					oneshot = true

@@ -16,7 +16,8 @@ signal saving_done
 var aiden_defeated:bool = false
 var Bea_met:bool = false
 var William_met:bool = false
-
+var kyle_defeated:bool = false
+var Lisa_defeated:bool = false
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
@@ -61,19 +62,22 @@ func set_player(set_see:bool = true):
 	else:
 		pass
 
-func save_data():
+func save_data(sign:bool = true):
 	get_player().save_data()
 	get_scene_manager().save_data()
 	AllyPokemon.save_data()
 	Inventory.save_data()
 	save_self_data()
-	emit_signal("saving_done")
+	if sign == true:
+		emit_signal("saving_done")
 
 func update_self_data():
 	storyData.aiden_defeated = aiden_defeated
 	storyData.Bea_met = Bea_met
 	storyData.William_met = William_met
-
+	storyData.kyle_defeated = kyle_defeated
+	storyData.Lisa_defeated = Lisa_defeated
+	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
 		storyData = ResourceLoader.load(save_file_path + save_file_name).duplicate(true)
@@ -83,7 +87,9 @@ func apply_self_data():
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
-
+	kyle_defeated = storyData.kyle_defeated
+	Lisa_defeated = storyData.Lisa_defeated
+	
 func remove_save_files():
 	
 	##deleting the player save files
@@ -123,3 +129,5 @@ func remove_self_data():
 	aiden_defeated = false
 	Bea_met = false
 	William_met = false
+	kyle_defeated = false
+	Lisa_defeated = false

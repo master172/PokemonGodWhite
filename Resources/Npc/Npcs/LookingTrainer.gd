@@ -19,7 +19,9 @@ var position_to_move
 
 func _ready():
 	basic_set()
-	
+	looking_set()
+
+func looking_set():
 	if exclamation != null:
 		exclamation.visible = false
 	

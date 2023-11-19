@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://daud4wv4suun6"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://daud4wv4suun6"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_ncm1i"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_r7vpy"]
 [ext_resource type="Texture2D" uid="uid://f51sjyagdtsn" path="res://Core/Graphics/Pokemon/Gen1/Back/VAPOREON.png" id="2_ayc4a"]
+[ext_resource type="Resource" uid="uid://dal1jyhtfa528" path="res://Core/Pokemon/Actions/TailWhip.tres" id="2_rtdwk"]
 [ext_resource type="Texture2D" uid="uid://b8n2460n8ewv6" path="res://Core/Graphics/Pokemon/Gen1/Front/VAPOREON.png" id="3_ag7ic"]
+[ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_yob4q"]
 [ext_resource type="Texture2D" uid="uid://c143fec8l3fm4" path="res://Core/Graphics/Pokemon/Gen1/Icons/VAPOREON.png" id="4_8spr1"]
 [ext_resource type="Texture2D" uid="uid://d1vrwj5whxvdk" path="res://Core/Graphics/Pokemon/Gen1/Followers/VAPOREON.png" id="5_eyxqw"]
 
@@ -24,7 +26,7 @@ Base_Defense = 60
 Special_Base_Attack = 110
 Special_Base_Defense = 95
 Base_Speed = 65
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_ncm1i")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_ncm1i"), ExtResource("2_rtdwk"), ExtResource("3_yob4q")])
 base_experience = 196
 Yield_Health = 2
 Yield_Attack = 0

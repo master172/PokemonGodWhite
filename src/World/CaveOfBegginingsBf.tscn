@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btc06udca3qus"]
+[gd_scene load_steps=32 format=3 uid="uid://btc06udca3qus"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginingsBf.gd" id="1_sgirk"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_tildt"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="17_8307e"]
 [ext_resource type="PackedScene" uid="uid://bupo65vvcq7fg" path="res://src/World/Helpers/encounter_manager.tscn" id="17_qi0e2"]
 [ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="18_b48jh"]
+[ext_resource type="PackedScene" uid="uid://coi8qqjtpwbdc" path="res://Resources/Npc/Npcs/Lisa.tscn" id="21_35n0f"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -47738,7 +47739,7 @@ sources/6 = SubResource("TileSetScenesCollectionSource_tr3qo")
 sources/7 = SubResource("TileSetAtlasSource_0c2yq")
 sources/8 = SubResource("TileSetAtlasSource_fjhd4")
 
-[node name="CaveOfBegginings" type="Node2D"]
+[node name="CaveOfBegginingsBF" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_sgirk")
 metadata/Modulate = true
@@ -47810,7 +47811,6 @@ rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResour
 rare_relative = 3
 min_level = 2
 max_level = 5
-EncounterRate = 12
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_tnimf")]
 z_index = 2
@@ -47821,5 +47821,11 @@ position = Vector2(304, 256)
 energy = 0.7
 texture = ExtResource("17_8307e")
 texture_scale = 0.5
+
+[node name="Lisa" parent="." instance=ExtResource("21_35n0f")]
+z_index = 1
+position = Vector2(8, 128)
+look_distance = 2
+looking_direction = Vector2(1, 0)
 
 [editable path="player"]
