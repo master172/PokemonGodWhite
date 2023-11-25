@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6a8n65ge5i2y"]
+[gd_scene load_steps=11 format=3 uid="uid://b6a8n65ge5i2y"]
 
 [ext_resource type="Texture2D" uid="uid://bs536jrp5vrpy" path="res://assets/player/ash/AshTrainer.png" id="1_34sjl"]
 [ext_resource type="Script" path="res://src/Ui/TrainerCard/trainer_card.gd" id="1_yeui6"]
+[ext_resource type="Texture2D" uid="uid://c6cnb0er5jct4" path="res://assets/items/Badges/Badge1.png" id="2_3smsu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvgkq"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.898039)
@@ -96,40 +97,108 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
 
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3smsu")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Badge2" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
+
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Badge3" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
 
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Badge4" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
+
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Badge5" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
 
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Badge6" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
+
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Badge7" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
 
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Badge8" type="Panel" parent="GreyStripe/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kyc26")
+
+[node name="TextureRect" type="TextureRect" parent="GreyStripe/HBoxContainer/Badge8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MainOverlay" type="Panel" parent="."]
 layout_mode = 1

@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1qul1a4f833b"]
+[gd_scene load_steps=11 format=3 uid="uid://d1qul1a4f833b"]
 
 [ext_resource type="Texture2D" uid="uid://dxci0mrl4bbnw" path="res://assets/PokemonTilesets/Gymsinterior.png" id="1_k40r4"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="2_h448t"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="3_7qvly"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="4_8jafr"]
+[ext_resource type="PackedScene" uid="uid://cf1o4m0ij4o0k" path="res://Resources/Npc/Npcs/FN1.tscn" id="5_abddd"]
+[ext_resource type="PackedScene" uid="uid://bhlly8gnhkywh" path="res://Resources/Npc/Npcs/FN2.tscn" id="6_08q0l"]
+[ext_resource type="PackedScene" uid="uid://bnerixltwubti" path="res://src/World/Npc/Carter.tscn" id="7_r5jle"]
+[ext_resource type="Script" path="res://src/Utility/BadgeHandler.gd" id="8_emg6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyfiv"]
 resource_name = "Gym"
@@ -3860,3 +3864,20 @@ next_scene_path = "res://src/World/Fivis.tscn"
 invisible = true
 Spawn_location = Vector2(88, 320)
 Spawn_direction = Vector2(0, 1)
+
+[node name="FN1" parent="." instance=ExtResource("5_abddd")]
+position = Vector2(-56, 48)
+look_distance = 4
+
+[node name="FN2" parent="." instance=ExtResource("6_08q0l")]
+position = Vector2(88, 80)
+look_distance = 5
+looking_direction = Vector2(-1, 0)
+
+[node name="Carter" parent="." instance=ExtResource("7_r5jle")]
+position = Vector2(8, -96)
+
+[node name="BadgeHandler" type="Node2D" parent="."]
+script = ExtResource("8_emg6d")
+BadgeSignal = "BadgeAvin"
+badge_count = 1

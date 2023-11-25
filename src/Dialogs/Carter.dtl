@@ -1,0 +1,12 @@
+Carter: Welcome Challenger you have done good to make it this far
+Carter: may i know your name?
+.............................................
+Carter: hmm ash I, see tell me ash what drives you to battle
+Carter: for me it's a way to bring my hearts closer to my pokemons' heart
+Carter: you might have felt it too, the feeling of being one in battle
+Carter: when your soul and heart become one with that of your pokemons.
+Carter: if you belive the same i wish that you give me a good battle
+Carter: get ready ash.
+[signal arg="Battle"]
+[signal arg="end"]
+[end_timeline]

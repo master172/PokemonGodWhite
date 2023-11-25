@@ -13,6 +13,7 @@ var can_encounter:bool = true
 
 signal saving_done
 #story variables
+var Badge_count:int = 0
 var aiden_defeated:bool = false
 var Bea_met:bool = false
 var William_met:bool = false
@@ -21,6 +22,11 @@ var Lisa_defeated:bool = false
 var Law_defeated:bool = false
 var Jenney_defeated:bool = false
 var Jodi_defeated:bool = false
+var FN1_defeated:bool = false
+var FN2_defeated:bool = false
+var Carter_defeated:bool = false
+var Abilene_defeated:bool = false
+var Adelle_defeated:bool = false
 
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
@@ -84,6 +90,12 @@ func update_self_data():
 	storyData.Law_defeated = Law_defeated
 	storyData.Jenney_defeated = Jenney_defeated
 	storyData.Jodi_defeated = Jodi_defeated
+	storyData.FN1_defeated = FN1_defeated
+	storyData.FN2_defeated = FN2_defeated
+	storyData.Carter_defeated = Carter_defeated
+	storyData.Abilene_defeated = Abilene_defeated
+	storyData.Adelle_defeated = Adelle_defeated
+	storyData.Badge_count = Badge_count
 	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -91,6 +103,7 @@ func load_data():
 		apply_self_data()
 		
 func apply_self_data():
+	Badge_count = storyData.Badge_count
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
@@ -99,6 +112,11 @@ func apply_self_data():
 	Law_defeated = storyData.Law_defeated
 	Jenney_defeated = storyData.Jenney_defeated
 	Jodi_defeated = storyData.Jodi_defeated
+	FN1_defeated = storyData.FN1_defeated
+	FN2_defeated = storyData.FN2_defeated
+	Carter_defeated = storyData.Carter_defeated
+	Abilene_defeated = storyData.Abilene_defeated
+	Adelle_defeated = storyData.Adelle_defeated
 	
 func remove_save_files():
 	
@@ -136,6 +154,7 @@ func remove_self_data():
 		for file in files:
 			dir.remove(file)
 	
+	Badge_count = 0
 	aiden_defeated = false
 	Bea_met = false
 	William_met = false
@@ -144,3 +163,8 @@ func remove_self_data():
 	Law_defeated = false
 	Jenney_defeated = false
 	Jodi_defeated = false
+	FN1_defeated = false
+	FN2_defeated = false
+	Carter_defeated = false
+	Abilene_defeated = false
+	Adelle_defeated = false
