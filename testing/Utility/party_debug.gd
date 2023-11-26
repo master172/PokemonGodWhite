@@ -29,6 +29,12 @@ func add_debug_party():
 	var riolu = load("res://Core/Pokemon/Riolu.tres")
 	var Riolu:game_pokemon = game_pokemon.new(riolu,5,"Epsilon",1)
 	
+	var pidgey = load("res://Core/Pokemon/Pidgey.tres")
+	var Pidgey:game_pokemon = game_pokemon.new(pidgey,17,"Nu",1)
+	
+	var pidgeotto = load("res://Core/Pokemon/Pidgeotto.tres")
+	var Pidgeotto:game_pokemon = game_pokemon.new(pidgeotto,5,"Theta",1)
+	
 	
 	AllyPokemon.add_pokemon(Ralts)
 	AllyPokemon.add_pokemon(Buneary)
@@ -36,6 +42,9 @@ func add_debug_party():
 	AllyPokemon.add_pokemon(Fennekin)
 	AllyPokemon.add_pokemon(Gible)
 	AllyPokemon.add_pokemon(Riolu)
+	AllyPokemon.add_pokemon(Pidgeotto)
+	AllyPokemon.add_pokemon(Pidgey)
+	
 func _on_button_pressed():
 	add_debug_party()
 

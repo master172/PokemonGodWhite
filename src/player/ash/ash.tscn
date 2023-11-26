@@ -1293,6 +1293,10 @@ parameters/cycleTurn/blend_position = Vector2(0, 0)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
+[node name="EvolutionCamera" type="Camera2D" parent="."]
+enabled = false
+position_smoothing_enabled = true
+
 [node name="CollisionCast" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)

@@ -127,7 +127,7 @@ func transition_to_evolution():
 func transistion_exit_evolution():
 	menu.get_parent().show()
 	re_check_evolution()
-	Utils.get_player().set_camera_zoom(4)
+	Utils.get_player().switch_default_camera()
 	
 func transistion_exit_bag_scene():
 	transition_player.play("FadeToBlack")
@@ -324,13 +324,13 @@ func load_evolution():
 		var EvolutionScreen = evolution_scene.instantiate()
 		EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
 		Utils.get_player().add_child(EvolutionScreen)
-		Utils.get_player().set_camera_zoom(1)
+		Utils.get_player().switch_evolution_camera()
 		EvolutionManager.evolve()
 	else:
 		var EvolutionScreen = evolution_scene.instantiate()
 		EvolutionScreen.set_pokemons(EvolutionManager.Pokemon_to_evolve,EvolutionManager.Evolving_pokemon)
 		Utils.get_player().add_child(EvolutionScreen)
-		Utils.get_player().set_camera_zoom(1)
+		Utils.get_player().switch_evolution_camera()
 		menu.get_parent().hide()
 	
 func load_battle_scene(pokemon,map):

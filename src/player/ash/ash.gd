@@ -61,6 +61,7 @@ var speed :float= 4.0
 @onready var camera_2d = $Camera2D
 @onready var leaves = $HudEffects/Leaves
 @onready var Wind_gust = $HudEffects/WindGust
+@onready var evolution_camera = $EvolutionCamera
 
 var pokemon_manager
 var pokemon_following:bool = false
@@ -621,3 +622,10 @@ func update_following_pokemon():
 func set_camera_zoom(num:int):
 	camera_2d.zoom = Vector2(num,num)
 
+func switch_evolution_camera():
+	camera_2d.enabled = false
+	evolution_camera.enabled = true
+	
+func switch_default_camera():
+	evolution_camera.enabled = false
+	camera_2d.enabled = true
