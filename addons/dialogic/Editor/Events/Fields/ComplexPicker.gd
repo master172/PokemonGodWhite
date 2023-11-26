@@ -210,16 +210,20 @@ func _on_focus_entered():
 
 
 func _on_search_gui_input(event):
-	if event is InputEventKey and (event.keycode == KEY_DOWN or event.keycode == KEY_UP) and event.pressed:
-		if !%Suggestions.visible:
-			_on_Search_text_changed('', true)
-			current_selected = -1
-		if event.keycode == KEY_DOWN:
-			current_selected = wrapi(current_selected+1, 0, %Suggestions.item_count)
-		if event.keycode == KEY_UP:
-			current_selected = wrapi(current_selected-1, 0, %Suggestions.item_count)
-		%Suggestions.select(current_selected)
-		%Suggestions.ensure_current_is_visible()
+	if event is InputEventAction:
+		if event.action == "ui_down" or event.action == "ui_up" and event.pressed:
+			if !%Suggestions.visible:
+				_on_Search_text_changed('', true)
+				current_selected = -1
+
+			if event.action == "ui_down":
+				current_selected = wrapi(current_selected + 1, 0, %Suggestions.item_count)
+			elif event.action == "ui_up":
+				current_selected = wrapi(current_selected - 1, 0, %Suggestions.item_count)
+
+			%Suggestions.select(current_selected)
+			%Suggestions.ensure_current_is_visible()
+
 
 
 func _on_search_focus_entered():

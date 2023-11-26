@@ -36591,4 +36591,6 @@ energy = 0.15
 texture = ExtResource("20_lkfsn")
 texture_scale = 0.5
 
+[connection signal="tree_exiting" from="." to="mainTilemap" method="_on_area_0_tree_exiting"]
+
 [editable path="player"]

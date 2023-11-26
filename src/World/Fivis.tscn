@@ -29659,4 +29659,6 @@ invisible = true
 Spawn_location = Vector2(24, -96)
 Spawn_direction = Vector2(0, 1)
 
+[connection signal="tree_exiting" from="." to="mainTilemap" method="_on_fivis_town_tree_exiting"]
+
 [editable path="player"]

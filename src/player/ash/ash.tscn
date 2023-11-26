@@ -1370,6 +1370,8 @@ lifetime = 10.0
 
 [node name="WindGust" type="CanvasLayer" parent="HudEffects"]
 script = ExtResource("13_xq3te")
+min_time = 10
+max_time = 30
 
 [node name="Timer" type="Timer" parent="HudEffects/WindGust"]
 

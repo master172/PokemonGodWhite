@@ -225,6 +225,8 @@ func change_scene():
 		current_scene.get_child(0).get_modulater().visible = false
 		
 	current_scene.get_child(0).queue_free()
+#	for i in current_scene.get_child(0).get_children():
+#		if i.has_method("remove_tilemap")
 	current_scene.add_scene(load(next_scene))
 	
 	var player = Utils.get_player()

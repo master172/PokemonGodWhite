@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dw3pn663pyks2"]
+[gd_scene load_steps=33 format=3 uid="uid://dw3pn663pyks2"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_eqt4d"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_33s5n"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dneqeda65gg0y" path="res://assets/PokemonTilesets/Outside.png" id="9_ap8x2"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="10_7tfhw"]
 [ext_resource type="PackedScene" uid="uid://c1l5inso4oeik" path="res://Resources/Npc/Npcs/Jenney.tscn" id="11_vtlcc"]
+[ext_resource type="PackedScene" uid="uid://ttqxyworpxap" path="res://Resources/Npc/Npcs/Adelle.tscn" id="12_5lxvd"]
+[ext_resource type="PackedScene" uid="uid://3i1284hgn71p" path="res://Resources/Npc/Npcs/Abilene.tscn" id="13_pbf3v"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -36948,3 +36950,13 @@ script = ExtResource("10_7tfhw")
 z_index = 1
 position = Vector2(184, 464)
 looking_direction = Vector2(-1, 0)
+
+[node name="Adelle" parent="." instance=ExtResource("12_5lxvd")]
+z_index = 1
+position = Vector2(136, 704)
+look_distance = 9
+
+[node name="Abilene" parent="." instance=ExtResource("13_pbf3v")]
+z_index = 1
+position = Vector2(648, 560)
+look_distance = 4

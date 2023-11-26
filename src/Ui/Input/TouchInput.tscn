@@ -1,0 +1,120 @@
+[gd_scene load_steps=24 format=3 uid="uid://cl71l5xotypmf"]
+
+[ext_resource type="Script" path="res://src/Ui/Input/TouchInput.gd" id="1_c8ig2"]
+[ext_resource type="Texture2D" uid="uid://x7v3evu3ojwm" path="res://assets/Ui/Input/Button - PS Directional Arrow Down 2.svg" id="1_i2k6i"]
+[ext_resource type="Texture2D" uid="uid://cj0kt3ox2f03q" path="res://assets/Ui/Input/Button - PS Directional Arrow Down.svg" id="2_o3vj2"]
+[ext_resource type="Texture2D" uid="uid://doe3qsxn27g0j" path="res://assets/Ui/Input/Button - PS Directional Arrow Left 2.svg" id="3_4ex3q"]
+[ext_resource type="Texture2D" uid="uid://byqapk3teie6h" path="res://assets/Ui/Input/Button - PS Directional Arrow Left.svg" id="4_t01xd"]
+[ext_resource type="Texture2D" uid="uid://fbaapoqss682" path="res://assets/Ui/Input/Button - PS Directional Arrow Right 2.svg" id="5_trcgv"]
+[ext_resource type="Texture2D" uid="uid://buorud3oyulpe" path="res://assets/Ui/Input/Button - PS Directional Arrow Right.svg" id="6_6oe4j"]
+[ext_resource type="Texture2D" uid="uid://c4kfdc8up1eou" path="res://assets/Ui/Input/Button - PS Directional Arrow Up 2.svg" id="7_kf1vn"]
+[ext_resource type="Texture2D" uid="uid://hu5smh6tjrgl" path="res://assets/Ui/Input/Button - PS Directional Arrow Up.svg" id="8_2tsag"]
+[ext_resource type="Texture2D" uid="uid://nx4rvp1e84la" path="res://assets/Ui/Input/Button - PS Circle 1.svg" id="9_7b3yt"]
+[ext_resource type="Texture2D" uid="uid://qniddr4235fy" path="res://assets/Ui/Input/Button - PS Circle 2.svg" id="10_f2mry"]
+[ext_resource type="Texture2D" uid="uid://dak0xajd62a7x" path="res://assets/Ui/Input/Button - PS Square 1.svg" id="11_ift5e"]
+[ext_resource type="Texture2D" uid="uid://cedfm32jknbj0" path="res://assets/Ui/Input/Button - PS Square 2.svg" id="12_opmj2"]
+[ext_resource type="Texture2D" uid="uid://cldtsmqtmrfnb" path="res://assets/Ui/Input/Button - PS Triangle 1.svg" id="13_jb6ta"]
+[ext_resource type="Texture2D" uid="uid://do8r6d5ymxxfo" path="res://assets/Ui/Input/Button - PS Triangle 2.svg" id="14_dm8io"]
+[ext_resource type="Texture2D" uid="uid://fpw28r0cvdrr" path="res://assets/Ui/Input/Button - PS Cross 1.svg" id="15_xpbgu"]
+[ext_resource type="Texture2D" uid="uid://c2ss1x5lxfggy" path="res://assets/Ui/Input/Button - PS Cross 2.svg" id="16_cqova"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtlh5"]
+size = Vector2(64, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_567y2"]
+size = Vector2(114, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_url30"]
+radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0d16x"]
+radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twoeo"]
+radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_am44n"]
+radius = 53.0
+
+[node name="TiuchInput" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_c8ig2")
+
+[node name="Up" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(112, 560)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("1_i2k6i")
+texture_pressed = ExtResource("2_o3vj2")
+shape = SubResource("RectangleShape2D_mtlh5")
+action = "W"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(176, 624)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("3_4ex3q")
+texture_pressed = ExtResource("4_t01xd")
+shape = SubResource("RectangleShape2D_567y2")
+action = "D"
+
+[node name="Left" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(48, 624)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_trcgv")
+texture_pressed = ExtResource("6_6oe4j")
+shape = SubResource("RectangleShape2D_567y2")
+action = "A"
+
+[node name="Down" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(112, 688)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("7_kf1vn")
+texture_pressed = ExtResource("8_2tsag")
+shape = SubResource("RectangleShape2D_mtlh5")
+action = "S"
+
+[node name="Circle" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1032, 560)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("9_7b3yt")
+texture_pressed = ExtResource("10_f2mry")
+shape = SubResource("CircleShape2D_url30")
+action = "Yes"
+
+[node name="Square" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1104, 632)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("11_ift5e")
+texture_pressed = ExtResource("12_opmj2")
+shape = SubResource("CircleShape2D_0d16x")
+action = "Menu"
+
+[node name="Triangle" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(960, 632)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("13_jb6ta")
+texture_pressed = ExtResource("14_dm8io")
+shape = SubResource("CircleShape2D_twoeo")
+
+[node name="Cross" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1032, 696)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("15_xpbgu")
+texture_pressed = ExtResource("16_cqova")
+shape = SubResource("CircleShape2D_am44n")
+action = "No"
+
+[connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
+[connection signal="released" from="Up" to="." method="_on_up_released"]
+[connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
+[connection signal="released" from="Down" to="." method="_on_down_released"]
+[connection signal="pressed" from="Circle" to="." method="_on_circle_pressed"]
+[connection signal="released" from="Circle" to="." method="_on_circle_released"]
+[connection signal="pressed" from="Cross" to="." method="_on_cross_pressed"]

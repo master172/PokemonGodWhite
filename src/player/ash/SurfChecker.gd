@@ -14,6 +14,8 @@ func process_tile(player:Node2D,check:String):
 func process_tilemap_collision(player:Node2D,check:String):
 	
 	var returning_value = []
+	
+			
 	var tilemaps = Utils.Tilemaps
 	
 	if tilemaps != []:

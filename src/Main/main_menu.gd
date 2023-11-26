@@ -70,7 +70,7 @@ func _input(event):
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_confirm(current_selected)
 	
-	elif Input.is_action_just_pressed("Yes"):
+	elif event.is_action_pressed("Yes"):
 		AudioManager.select()
 		if state == STATES.NORMAL:
 

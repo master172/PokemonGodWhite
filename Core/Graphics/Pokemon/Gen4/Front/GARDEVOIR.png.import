@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dq8yigvg5j12b"
 path.s3tc="res://.godot/imported/GARDEVOIR.png-b0d4eaeccdc9f62fab987f554dbf1d98.s3tc.ctex"
+path.etc2="res://.godot/imported/GARDEVOIR.png-b0d4eaeccdc9f62fab987f554dbf1d98.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Core/Graphics/Pokemon/Gen4/Front/GARDEVOIR.png"
-dest_files=["res://.godot/imported/GARDEVOIR.png-b0d4eaeccdc9f62fab987f554dbf1d98.s3tc.ctex"]
+dest_files=["res://.godot/imported/GARDEVOIR.png-b0d4eaeccdc9f62fab987f554dbf1d98.s3tc.ctex", "res://.godot/imported/GARDEVOIR.png-b0d4eaeccdc9f62fab987f554dbf1d98.etc2.ctex"]
 
 [params]
 

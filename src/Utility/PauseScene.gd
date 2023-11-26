@@ -3,7 +3,7 @@ extends CanvasLayer
 var paused:bool = false
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("pause"):
 		paused = not paused
 		get_tree().paused = paused
 	visible = paused

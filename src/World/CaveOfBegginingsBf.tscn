@@ -47826,4 +47826,6 @@ texture_scale = 0.5
 z_index = 1
 position = Vector2(8, 128)
 
+[connection signal="tree_exiting" from="." to="mainTilemap" method="_on_cave_of_begginings_bf_tree_exiting"]
+
 [editable path="player"]

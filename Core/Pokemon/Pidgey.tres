@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://l227mwiloa0d"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=15 format=3 uid="uid://l227mwiloa0d"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_1dw5r"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_438bf"]
@@ -7,6 +7,23 @@
 [ext_resource type="Resource" uid="uid://d16lcqp5040yi" path="res://Core/Pokemon/Actions/SandAttack.tres" id="2_vg4r7"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_geo2v"]
 [ext_resource type="Texture2D" uid="uid://c2hsuxylhwfig" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIDGEY.png" id="3_jg1iy"]
+[ext_resource type="Texture2D" uid="uid://dp4a626ro1xqm" path="res://Core/Graphics/Pokemon/Gen1/Back/PIDGEY.png" id="4_1o02a"]
+[ext_resource type="Resource" uid="uid://bnsfegc4ufkec" path="res://Core/Pokemon/Actions/Gust.tres" id="4_nxisp"]
+[ext_resource type="Resource" uid="uid://3kfofee5j3vv" path="res://Core/Pokemon/Pidgeotto.tres" id="8_bj05p"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Trigger.gd" id="9_jy30c"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Evolutor.gd" id="10_j5lfm"]
+
+[sub_resource type="Resource" id="Resource_hwbsi"]
+script = ExtResource("9_jy30c")
+evolution_type = 0
+evolving_level = 18
+NextPokemon = ExtResource("8_bj05p")
+can_evolve = false
+
+[sub_resource type="Resource" id="Resource_fqgx3"]
+script = ExtResource("10_j5lfm")
+Triggers = Array[ExtResource("9_jy30c")]([SubResource("Resource_hwbsi")])
+TriggersActive = Array[ExtResource("9_jy30c")]([])
 
 [resource]
 script = ExtResource("1_1dw5r")
@@ -16,7 +33,7 @@ Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
 Front = ExtResource("1_mtgkp")
-Back = ExtResource("1_mtgkp")
+Back = ExtResource("4_1o02a")
 Icon = ExtResource("2_p0kla")
 Overworld = ExtResource("3_jg1iy")
 Base_Health = 40
@@ -25,7 +42,7 @@ Base_Defense = 40
 Special_Base_Attack = 35
 Special_Base_Defense = 35
 Base_Speed = 56
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_438bf"), ExtResource("2_vg4r7"), ExtResource("3_geo2v")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_438bf"), ExtResource("2_vg4r7"), ExtResource("3_geo2v"), ExtResource("4_nxisp")])
 base_experience = 55
 Yield_Health = 0
 Yield_Attack = 0
@@ -34,3 +51,4 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 0
 Yield_Speed = 1
 catch_chance = 43
+evolutor = SubResource("Resource_fqgx3")

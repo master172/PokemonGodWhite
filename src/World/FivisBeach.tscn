@@ -30127,7 +30127,7 @@ sources/9 = SubResource("TileSetAtlasSource_6bo35")
 sources/10 = SubResource("TileSetScenesCollectionSource_1yug4")
 pattern_0 = SubResource("TileMapPattern_axal5")
 
-[node name="FivisTown" type="Node2D"]
+[node name="FivisBeach" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_6usaq")
@@ -30200,5 +30200,7 @@ texture_scale = 0.5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-304, -240, 192, -240, 192, 176, -288, 176, -288, -240, -304, -240, -304, 192, 208, 192, 208, -256, -304, -256)
+
+[connection signal="tree_exiting" from="." to="mainTilemap" method="_on_fivis_beach_tree_exiting"]
 
 [editable path="player"]
