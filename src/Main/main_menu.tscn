@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=24 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
 [ext_resource type="PackedScene" uid="uid://dgcdwbhra4jvb" path="res://src/Ui/Settings/settings.tscn" id="9_yovio"]
 [ext_resource type="PackedScene" uid="uid://4u3erx4omnc8" path="res://src/Main/Intro/IntroScreen.tscn" id="10_2yk6m"]
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="11_xxnl1"]
 
 [sub_resource type="Gradient" id="Gradient_twt4i"]
 interpolation_mode = 1
@@ -443,6 +444,25 @@ layout_mode = 1
 [node name="Intro" parent="." instance=ExtResource("10_2yk6m")]
 visible = false
 layout_mode = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_xxnl1")
+theme_override_font_sizes/font_size = 16
+text = "version:0.0.1
+built from commit:
+SwirtezStudios:Youtube
+Master172:Github
+PokemonGodWhite"
 
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]
 [connection signal="visibility_changed" from="Settings" to="." method="_on_settings_visibility_changed"]
