@@ -21,6 +21,7 @@ func load_game():
 	ResourceLoader.load_threaded_request(sceneName)
 
 func load_intro():
+	AudioManager.switch_to_intro()
 	can_load = false
 	Intro.start()
 	Intro.connect("done",_intro_done)
