@@ -1,0 +1,267 @@
+[gd_scene load_steps=16 format=3 uid="uid://dgcdwbhra4jvb"]
+
+[ext_resource type="Script" path="res://src/Ui/Settings/settings.gd" id="1_u0ied"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="1_wso78"]
+[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_fox5j"]
+[ext_resource type="StyleBox" uid="uid://dg0f4humubvjo" path="res://src/Ui/Settings/FsOptionMenu.tres" id="4_xbq58"]
+[ext_resource type="StyleBox" uid="uid://cli7b8echohhy" path="res://src/Ui/Settings/DefOptionMenu.tres" id="5_dwaxo"]
+[ext_resource type="StyleBox" uid="uid://bplox48dnn0v2" path="res://src/Ui/Settings/HrOptionMenu.tres" id="6_3kptk"]
+[ext_resource type="StyleBox" uid="uid://brsb4oxq2kcqr" path="res://src/Ui/Settings/PrOptionMenu.tres" id="7_ygj7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d63nv"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
+border_width_left = 8
+border_width_right = 4
+border_color = Color(0.117647, 0.117647, 0.117647, 0.639216)
+border_blend = true
+corner_radius_top_left = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pksfy"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.945098)
+border_width_left = 8
+border_width_right = 4
+border_color = Color(0.054902, 0.054902, 0.054902, 0.784314)
+border_blend = true
+corner_radius_top_left = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxqpj"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 0.45098)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea6d8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sffj"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 0.105882)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ktcm"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 0.803922)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kys7"]
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6udgu"]
+bg_color = Color(0.329412, 0.329412, 0.329412, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u0ied")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.184314, 0.184314, 0.184314, 0.0470588)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wso78")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_d63nv")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pksfy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxqpj")
+
+[node name="Engine" type="Panel" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ea6d8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Engine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = -24.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Engine/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Engine/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_fox5j")
+
+[node name="Label" type="Label" parent="TabContainer/Engine/ScrollContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.5
+offset_right = 90.0
+offset_bottom = 20.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wso78")
+theme_override_font_sizes/font_size = 32
+text = "Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedButton" type="OptionButton" parent="TabContainer/Engine/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("4_xbq58")
+theme_override_styles/normal = ExtResource("5_dwaxo")
+theme_override_styles/hover = ExtResource("6_3kptk")
+theme_override_styles/pressed = ExtResource("7_ygj7m")
+item_count = 4
+selected = 0
+popup/item_0/text = "1.0 (Default)"
+popup/item_0/id = 0
+popup/item_1/text = "2.0x"
+popup/item_1/id = 2
+popup/item_2/text = "3.0x"
+popup/item_2/id = 3
+popup/item_3/text = "4x (warning not recommended)"
+popup/item_3/id = 4
+
+[node name="Display" type="Panel" parent="TabContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0sffj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = -24.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Display/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Display/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_fox5j")
+
+[node name="Label" type="Label" parent="TabContainer/Display/ScrollContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.5
+offset_right = 90.0
+offset_bottom = 20.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wso78")
+theme_override_font_sizes/font_size = 32
+text = "V-sync"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VsyncButton" type="OptionButton" parent="TabContainer/Display/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("4_xbq58")
+theme_override_styles/normal = ExtResource("5_dwaxo")
+theme_override_styles/hover = ExtResource("6_3kptk")
+theme_override_styles/pressed = ExtResource("7_ygj7m")
+item_count = 4
+selected = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 2
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 3
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 4
+
+[node name="Apply" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 704.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Apply"]
+custom_minimum_size = Vector2(272, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wso78")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7ktcm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7kys7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6udgu")
+text = "Apply and close"
+
+[connection signal="item_selected" from="TabContainer/Engine/ScrollContainer/VBoxContainer/Panel/SpeedButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="TabContainer/Display/ScrollContainer/VBoxContainer/Panel/VsyncButton" to="." method="_on_vsync_button_item_selected"]
+[connection signal="pressed" from="Apply/Button" to="." method="_on_button_pressed"]

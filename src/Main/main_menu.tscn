@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=22 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bp2hmk2gtlmui" path="res://assets/Ui/MainMenu/QuitGame.png" id="4_qx406"]
 [ext_resource type="Script" path="res://src/Main/LoadingScreen.gd" id="7_cucda"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
+[ext_resource type="PackedScene" uid="uid://dgcdwbhra4jvb" path="res://src/Ui/Settings/settings.tscn" id="9_yovio"]
 
 [sub_resource type="Gradient" id="Gradient_twt4i"]
 interpolation_mode = 1
@@ -433,4 +434,9 @@ text = "No"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" parent="." instance=ExtResource("9_yovio")]
+visible = false
+layout_mode = 1
+
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]
+[connection signal="visibility_changed" from="Settings" to="." method="_on_settings_visibility_changed"]

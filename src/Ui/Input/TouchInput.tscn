@@ -101,6 +101,7 @@ scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("13_jb6ta")
 texture_pressed = ExtResource("14_dm8io")
 shape = SubResource("CircleShape2D_twoeo")
+action = "cycleQuick"
 
 [node name="Cross" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0.662745)

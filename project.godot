@@ -73,6 +73,10 @@ window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 window/vsync/vsync_mode=3
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/dialogic/plugin.cfg")

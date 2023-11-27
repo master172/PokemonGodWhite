@@ -10,16 +10,19 @@ var max_selectable:int = 4
 @onready var loading_screen = $LoadingScreen
 @onready var confirm_panel = $ConfirmPanel
 @onready var h_box_container = $ConfirmPanel/VBoxContainer/HBoxContainer
+@onready var settings = $Settings
 
 
 enum STATES {
 	NORMAL,
 	EMPTY,
-	CONFIRM
+	CONFIRM,
+	OPTIONS
 }
 var state = STATES.NORMAL
 
 func _ready():
+	settings.visible = false
 	confirm_panel.hide()
 	AudioManager.switch_to_mainMenu()
 	set_selected(current_selected)
@@ -86,8 +89,12 @@ func _input(event):
 				unset_confirm(0)
 				unset_confirm(1)
 				set_confirm(current_selected)
+			elif current_selected == 2:
+				settings.visible = true
+				state = STATES.OPTIONS
 			elif current_selected == 3:
 				get_tree().quit()
+			
 		elif state == STATES.CONFIRM:
 			if current_selected == 0:
 				new_game()
@@ -98,6 +105,7 @@ func _input(event):
 				max_selectable = 4
 				confirm_panel.hide()
 				state = STATES.NORMAL
+		
 				
 
 func new_game():
@@ -112,3 +120,8 @@ func unset_confirm(num:int = 0):
 
 func set_confirm(num:int = 0):
 	h_box_container.get_child(num).modulate = Color(0, 1, 0.275)
+
+
+func _on_settings_visibility_changed():
+	if settings.visible == false:
+		state = STATES.NORMAL
