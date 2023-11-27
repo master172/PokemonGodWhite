@@ -4,7 +4,11 @@ extends Control
 
 signal done
 
+func _ready():
+	visible = false
+	
 func start():
+	visible = true
 	animation_player.play("Intro")
 	
 func _emit_done():

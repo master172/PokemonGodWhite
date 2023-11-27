@@ -113,7 +113,7 @@ func new_game():
 	Utils.remove_save_files()
 			
 	loading_screen.show()
-	loading_screen.load_game()
+	loading_screen.load_intro()
 
 func unset_confirm(num:int = 0):
 	h_box_container.get_child(num).modulate = Color(1,1,1)

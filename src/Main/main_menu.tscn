@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=23 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/Main/LoadingScreen.gd" id="7_cucda"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
 [ext_resource type="PackedScene" uid="uid://dgcdwbhra4jvb" path="res://src/Ui/Settings/settings.tscn" id="9_yovio"]
+[ext_resource type="PackedScene" uid="uid://4u3erx4omnc8" path="res://src/Main/Intro/IntroScreen.tscn" id="10_2yk6m"]
 
 [sub_resource type="Gradient" id="Gradient_twt4i"]
 interpolation_mode = 1
@@ -283,7 +284,7 @@ grow_horizontal = 2
 texture = ExtResource("2_lmdbi")
 stretch_mode = 5
 
-[node name="LoadingScreen" type="Control" parent="."]
+[node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("Intro")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -292,6 +293,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_cucda")
+Intro = NodePath("../Intro")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
 layout_mode = 1
@@ -435,6 +437,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" parent="." instance=ExtResource("9_yovio")]
+visible = false
+layout_mode = 1
+
+[node name="Intro" parent="." instance=ExtResource("10_2yk6m")]
 visible = false
 layout_mode = 1
 

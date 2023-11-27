@@ -8,23 +8,35 @@ var scene_load_status = 0
 @onready var rich_text_label = $ColorRect/Panel/RichTextLabel
 @onready var animation_player = $AnimationPlayer
 
+@export var Intro:Control
 var tips = ["Don't forget to breathe very important",
 "defeating opposing pokemon defeats them",
 "currently no good tips avialable"]
 
+var can_load:bool = true
 func _ready():
 	change_tip()
 
 func load_game():
 	ResourceLoader.load_threaded_request(sceneName)
 
+func load_intro():
+	can_load = false
+	Intro.start()
+	Intro.connect("done",_intro_done)
+	load_game()
+
+func _intro_done():
+	can_load = true
+	
 func _process(delta):
 	scene_load_status = ResourceLoader.load_threaded_get_status(sceneName,progress)
 	progress_bar.value = floor(progress[0] * 100)
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
-		var new_scene = ResourceLoader.load_threaded_get(sceneName)
-		AudioManager.switch_to_exploration()
-		get_tree().change_scene_to_packed(new_scene)
+		if can_load == true:
+			var new_scene = ResourceLoader.load_threaded_get(sceneName)
+			AudioManager.switch_to_exploration()
+			get_tree().change_scene_to_packed(new_scene)
 
 
 func change_tip():
