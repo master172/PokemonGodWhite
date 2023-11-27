@@ -445,7 +445,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="About" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -459,7 +459,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_xxnl1")
 theme_override_font_sizes/font_size = 16
 text = "version:0.0.1
-built from commit:
+built from commit:d4ccce9
 SwirtezStudios:Youtube
 Master172:Github
 PokemonGodWhite"
