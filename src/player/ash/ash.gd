@@ -105,7 +105,9 @@ func _ready():
 			poke_pos = self.global_position
 			
 		if Utils.get_scene_manager().first_time_start == false:
-			await saver.applying_done
+			if Utils.get_scene_manager().just_loaded == true:
+				await saver.applying_done
+				Utils.get_scene_manager().just_loaded = false
 	
 	animation_tree.set("parameters/Idle/blend_position",input_direction)
 	animation_tree.set("parameters/Walk/blend_position",input_direction)
@@ -260,7 +262,7 @@ func exit_turning_state():
 func Run():
 	if can_run == true:
 		if not is_cycling and not is_surfing:
-			if Input.is_action_pressed("Run"):
+			if Input.is_action_pressed("No"):
 				is_running = true
 				
 			else:
@@ -298,25 +300,8 @@ func move(delta):
 	update_casts()
 	#stopping or allowing movement based on collision
 	
-	if door_cast.is_colliding():
-		just_ledge_jumped = false
-		ledge_direction = Vector2.ZERO
-		
-		if percent_moved_to_next_tile == 0.0:
-			emit_signal("player_entering_door_signal")
-			ManageOverworldPokemon("moving")
-		percent_moved_to_next_tile += speed * delta
-		if percent_moved_to_next_tile >= 1.0:
-			position = initial_position + input_direction * TILE_SIZE
-			percent_moved_to_next_tile = 0.0
-			is_moving = false
-			can_move = false
-			animation_player.play("dissapear")
-			ManageOverworldPokemon("turned")
-		else:
-			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
-			
-	elif (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
+	
+	if (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
 		just_ledge_jumped = true
 		if percent_moved_to_next_tile == 0.0:
 			ManageOverworldPokemon("ledge")
@@ -353,7 +338,22 @@ func move(delta):
 				position.x = initial_position.x + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
 			
 			jump_direction = ledge_direction
-
+	elif door_cast.is_colliding():
+		
+		if percent_moved_to_next_tile == 0.0:
+			emit_signal("player_entering_door_signal")
+			ManageOverworldPokemon("moving")
+		percent_moved_to_next_tile += speed * delta
+		if percent_moved_to_next_tile >= 1.0:
+			position = initial_position + input_direction * TILE_SIZE
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			can_move = false
+			animation_player.play("dissapear")
+			ManageOverworldPokemon("turned")
+		else:
+			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
+			
 		
 	elif !collision_cast.is_colliding():
 		just_ledge_jumped = false
@@ -533,7 +533,9 @@ func check_ledge_direction():
 				tile_data = i.get_cell_tile_data(1,collided_tile_cords)
 				if tile_data:
 					ledge_direction = tile_data.get_custom_data("ledgeDirection")
-					return
+				
+				return
+				
 	return
 func check_interaction():
 	if interaction_cast.is_colliding():

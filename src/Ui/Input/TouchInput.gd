@@ -25,16 +25,15 @@ func _on_circle_released():
 
 func _on_cross_pressed():
 	no.pressed = true
-	run.pressed = true
 	Input.parse_input_event(no)
-	Input.parse_input_event(run)
+
 
 
 func _on_cross_released():
 	no.pressed = false
-	run.pressed = false
+
 	Input.parse_input_event(no)
-	Input.parse_input_event(run)
+
 
 
 func _on_up_pressed():

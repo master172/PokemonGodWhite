@@ -26,6 +26,7 @@ var opponents :Array[PokeEnemy] = []
 var BATTLE_POKEMON
 var Poke_enemy
 
+
 func _ready():
 	Dialogic.connect("signal_event",_switch)
 	Dialogic.connect("signal_event",_run)

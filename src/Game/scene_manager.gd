@@ -57,6 +57,8 @@ signal data_set_finished
 signal evolution_finished
 
 signal trainer_battle_finished
+
+var just_loaded:bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
@@ -219,7 +221,6 @@ func finished_fading():
 	transition_player.play("FadeToNormal")
 
 func change_scene():
-	Inventory.save_overworld_items()
 	
 	if current_scene.get_child(0).has_method("get_modulater"):
 		current_scene.get_child(0).get_modulater().visible = false
@@ -239,7 +240,6 @@ func change_scene():
 func load_healing_place():
 	unload_battle_scene()
 	
-	Inventory.save_overworld_items()
 	
 	current_scene.get_child(0).queue_free()
 	
@@ -259,7 +259,6 @@ func load_healing_place():
 	
 	Current_healing_place.heal()
 	
-	Inventory.load_game()
 	
 func load_battle_trainer(pokemon,map):
 	battle_layer.add_child(battle_scene.instantiate())

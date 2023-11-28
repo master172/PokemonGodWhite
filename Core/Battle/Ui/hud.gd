@@ -52,7 +52,7 @@ func _input(event):
 				else:
 					AudioManager.cancel()
 		elif event.is_action_pressed("No"):
-			if BattleManager.Trainer_Battle == false:
+			if BattleManager.Trainer_Battle == false and running == false:
 				emit_signal("run")
 				running = true
 		

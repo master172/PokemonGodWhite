@@ -11,6 +11,8 @@ var max_selectable:int = 4
 @onready var confirm_panel = $ConfirmPanel
 @onready var h_box_container = $ConfirmPanel/VBoxContainer/HBoxContainer
 @onready var settings = $Settings
+@onready var label = $ForeGround/ButtonContainer/NewGame/Label
+@onready var Continue = $ForeGround/ButtonContainer/Continue
 
 
 enum STATES {
@@ -20,6 +22,9 @@ enum STATES {
 	OPTIONS
 }
 var state = STATES.NORMAL
+
+var disabled_color = Color(0.345, 0.361, 0.353)
+var continue_disabled:bool = false
 
 func _ready():
 	settings.visible = false
@@ -31,9 +36,14 @@ func _ready():
 		var img = Image.load_from_file("user://save/Scene/screenshot.png")
 		var level_pic_tex = ImageTexture.create_from_image(img)
 		background_continue.texture = level_pic_tex
+		continue_disabled = false
+		Continue.self_modulate = Color(1, 1, 1)
 	else:
 		background_continue.texture = load("res://assets/Ui/MainMenu/Background.png")
-
+		continue_disabled = true
+		
+		Continue.self_modulate = disabled_color
+		
 func set_selected(num:int):
 	button_container.get_child(num).modulate = Color(0, 1, 0.247)
 	backgrounds.get_child(num).visible = true
@@ -78,9 +88,10 @@ func _input(event):
 		if state == STATES.NORMAL:
 
 			if current_selected == 0:
-				state = STATES.EMPTY
-				loading_screen.show()
-				loading_screen.load_game()
+				if continue_disabled == false:
+					state = STATES.EMPTY
+					loading_screen.show()
+					loading_screen.load_game()
 			elif current_selected == 1:
 				current_selected = 1
 				max_selectable = 2

@@ -59,6 +59,8 @@ signal bag
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
 
+
+
 func _ready():
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,-1))

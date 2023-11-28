@@ -21,4 +21,3 @@ func add_scene(scene:PackedScene):
 	
 	await get_tree().create_timer(0.1).timeout
 
-	Inventory.load_game()
