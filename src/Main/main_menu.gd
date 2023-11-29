@@ -26,6 +26,8 @@ var state = STATES.NORMAL
 var disabled_color = Color(0.345, 0.361, 0.353)
 var continue_disabled:bool = false
 
+var loading:bool = false
+
 func _ready():
 	settings.visible = false
 	confirm_panel.hide()
@@ -88,7 +90,8 @@ func _input(event):
 		if state == STATES.NORMAL:
 
 			if current_selected == 0:
-				if continue_disabled == false:
+				if continue_disabled == false and loading == false:
+					loading = true
 					state = STATES.EMPTY
 					loading_screen.show()
 					loading_screen.load_game()
@@ -108,9 +111,10 @@ func _input(event):
 			
 		elif state == STATES.CONFIRM:
 			if current_selected == 0:
-				new_game()
-				confirm_panel.hide()
-				
+				if loading == false:
+					new_game()
+					confirm_panel.hide()
+					loading = true
 			elif current_selected == 1:
 				current_selected = 1
 				max_selectable = 4
@@ -122,7 +126,7 @@ func _input(event):
 func new_game():
 	state = STATES.EMPTY
 	Utils.remove_save_files()
-			
+	
 	loading_screen.show()
 	loading_screen.load_intro()
 

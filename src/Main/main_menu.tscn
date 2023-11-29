@@ -458,7 +458,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_xxnl1")
 theme_override_font_sizes/font_size = 16
-text = "version:0.0.11
+text = "version:0.0.12
 built from commit:7f28647
 SwirtezStudios:Youtube
 Master172:Github
