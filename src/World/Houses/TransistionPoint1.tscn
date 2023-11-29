@@ -7227,6 +7227,7 @@ pattern_1 = SubResource("TileMapPattern_yy56x")
 
 [node name="TransitionPoint1" type="Node2D"]
 y_sort_enabled = true
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -288.0

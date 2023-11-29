@@ -7193,6 +7193,7 @@ sources/3 = SubResource("TileSetAtlasSource_3rna3")
 
 [node name="FBaseHouse" type="Node2D"]
 y_sort_enabled = true
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -256.0

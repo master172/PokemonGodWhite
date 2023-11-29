@@ -7203,6 +7203,7 @@ sources/6 = SubResource("TileSetAtlasSource_ky8f0")
 
 [node name="Fhouse3" type="Node2D"]
 y_sort_enabled = true
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -312.0

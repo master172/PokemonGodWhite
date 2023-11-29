@@ -1151,6 +1151,7 @@ _data = {
 y_sort_enabled = true
 script = ExtResource("1_nguti")
 place = "res://src/World/Houses/FivisUnique/PokeCenter.tscn"
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -320.0

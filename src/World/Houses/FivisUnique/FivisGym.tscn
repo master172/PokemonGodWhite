@@ -3821,6 +3821,7 @@ sources/1 = SubResource("TileSetAtlasSource_pyfiv")
 
 [node name="FGym" type="Node2D"]
 y_sort_enabled = true
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -320.0

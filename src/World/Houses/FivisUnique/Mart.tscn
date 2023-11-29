@@ -478,6 +478,7 @@ sources/1 = SubResource("TileSetAtlasSource_d1qcj")
 
 [node name="FPokeCenter" type="Node2D"]
 y_sort_enabled = true
+metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -320.0

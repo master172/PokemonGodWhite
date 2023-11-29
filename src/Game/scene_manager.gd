@@ -240,6 +240,8 @@ func change_scene():
 func load_healing_place():
 	unload_battle_scene()
 	
+	if current_scene.get_child(0).has_method("get_modulater"):
+		current_scene.get_child(0).get_modulater().visible = false
 	
 	current_scene.get_child(0).queue_free()
 	
