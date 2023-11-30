@@ -57,7 +57,12 @@ func _physics_process(delta) -> void:
 			var new_velocity: Vector2 = next_path_position - current_agent_position
 			new_velocity = new_velocity.normalized()
 			new_velocity = new_velocity * actor.movement_speed
+			NavigationAgent.set_velocity_forced(new_velocity)
 			
 			actor.velocity = new_velocity
 	else:
 		actor.velocity = actor.velocity * 0.001
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	pass

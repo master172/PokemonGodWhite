@@ -217,3 +217,4 @@ func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 	self.modulate = color
 		
 	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)
+

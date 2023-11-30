@@ -29,8 +29,7 @@ signal displayed
 var pokemon:game_pokemon
 
 func _ready():
-	start_radial()
-	#pokemon = get_parent().get_parent().pokemon
+	pokemon = get_parent().get_parent().pokemon
 	_set_radial()
 	set_active_option()
 	

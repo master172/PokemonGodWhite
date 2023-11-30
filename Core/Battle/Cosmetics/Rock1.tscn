@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://i1sa14dndwbs"]
+
+[ext_resource type="Texture2D" uid="uid://de6txs7uqd6i4" path="res://assets/Stones/Rocks_source_texture_shadow_dark.png" id="1_mseup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dh3n"]
+radius = 40.0
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(3, 3)
+texture = ExtResource("1_mseup")
+region_enabled = true
+region_rect = Rect2(224, 240, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_3dh3n")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -40)
+vertices = PackedVector2Array(0, -40, 24, -32, 40, -8, 40, 16, 16, 40, -16, 40, -40, 16, -40, -16, -24, -32)

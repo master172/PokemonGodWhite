@@ -170,6 +170,12 @@ shape = SubResource("CircleShape2D_iuxi6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 60.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 1, 0.290196, 1)
+debug_path_custom_point_size = 7.57
+debug_path_custom_line_width = 2.36
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("3_82o3u")
@@ -254,6 +260,7 @@ volume_db = 2.0
 stream = ExtResource("16_fsbvv")
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/EnemyFollowState" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
 [connection signal="attackFinished" from="FiniteStateMachine/MelleAttackState" to="." method="_on_melle_attack_state_attack_finished"]
