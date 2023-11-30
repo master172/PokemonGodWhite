@@ -24,6 +24,7 @@ enum STATES {
 var state = STATES.NORMAL
 
 var disabled_color = Color(0.345, 0.361, 0.353)
+var not_selectable = Color.RED
 var continue_disabled:bool = false
 
 var loading:bool = false
@@ -32,7 +33,7 @@ func _ready():
 	settings.visible = false
 	confirm_panel.hide()
 	AudioManager.switch_to_mainMenu()
-	set_selected(current_selected)
+	
 	loading_screen.hide()
 	if FileAccess.file_exists("user://save/Scene/screenshot.png"):
 		var img = Image.load_from_file("user://save/Scene/screenshot.png")
@@ -45,9 +46,15 @@ func _ready():
 		continue_disabled = true
 		
 		Continue.self_modulate = disabled_color
-		
+	set_selected(current_selected)
 func set_selected(num:int):
-	button_container.get_child(num).modulate = Color(0, 1, 0.247)
+	if num != 0:
+		button_container.get_child(num).modulate = Color(0, 1, 0.247)
+	else:
+		if continue_disabled == false:
+			button_container.get_child(num).modulate = Color(0, 1, 0.247)
+		else:
+			button_container.get_child(num).modulate = not_selectable
 	backgrounds.get_child(num).visible = true
 	
 	

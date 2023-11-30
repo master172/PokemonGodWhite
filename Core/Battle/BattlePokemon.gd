@@ -152,9 +152,9 @@ func _on_attack_selector_attack_chosen(attack):
 func manage_stamina(atk):
 	var new_Stamina:int = Stamina
 	if previous_moves.has(atk):
-		new_Stamina -= pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level * 0.5
+		new_Stamina -= pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level * 0.7
 	else:
-		new_Stamina -= (pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level  * 0.5) / 3
+		new_Stamina -= (pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level  * 0.7) / 2
 	previous_moves.append(atk)
 	
 	if new_Stamina <= 0:
