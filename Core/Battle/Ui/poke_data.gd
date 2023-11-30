@@ -1,5 +1,7 @@
 extends Control
 
+var player_pokemon:BattlePokemon = null
+
 @onready var databox = $HBoxContainer/Databox
 @onready var d_icon = $HBoxContainer/Databox/Icon
 @onready var d_name = $HBoxContainer/Databox/Name
@@ -13,6 +15,7 @@ extends Control
 @onready var d2_health_bar = $HBoxContainer/Databox2/HealthBar
 @onready var d2_exp_bar = $HBoxContainer/Databox2/ExpBar
 @onready var pokemons = $HBoxContainer/Databox2/Pokemons
+@onready var stamina_bar = $StaminaBar
 
 
 func set_player(pokemon:game_pokemon,num:int = 0):
@@ -22,7 +25,8 @@ func set_player(pokemon:game_pokemon,num:int = 0):
 		d_level.text = str(pokemon.level)
 		set_health_bar(pokemon,d_health_bar)
 		set_exp_bar(pokemon,d_exp_bar)
-		
+
+	
 func set_enemy(pokemon:game_pokemon,num:int = 0):
 	if num == 0:
 		d2_icon.texture = pokemon.get_icon()
@@ -44,3 +48,6 @@ func _physics_process(delta):
 	pokemons.visible = BattleManager.Trainer_Battle
 	if BattleManager.Trainer_Battle == true:
 		pokemons.frame = BattleManager.EnemyPokemons.size()
+	if player_pokemon != null:
+		stamina_bar.max_value = player_pokemon.MaxStamina
+		stamina_bar.value = player_pokemon.Stamina

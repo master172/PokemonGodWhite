@@ -73,7 +73,7 @@ func _on_hud_pokemon_selected(pokemon):
 	
 	allys.append(BATTLE_POKEMON)
 	set_opposers()
-	
+	poke_data.player_pokemon = BATTLE_POKEMON
 	emit_signal("start")
 
 func _bag():
@@ -101,7 +101,7 @@ func _remove():
 	BattleManager.AllyPokemons.Erase_pokemon(BATTLE_POKEMON.pokemon)
 	allys.erase(BATTLE_POKEMON)
 	set_opposers()
-	
+	poke_data.player_pokemon = null
 	BATTLE_POKEMON.queue_free()
 	
 func _throw():

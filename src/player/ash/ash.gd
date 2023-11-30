@@ -602,7 +602,7 @@ func stop_animation():
 func first_start():
 	player_uid = create_uid()
 	var pikachu = load("res://Core/Pokemon/MainPikachu.tres")
-	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5,"Alpha",1)
+	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5)
 	AllyPokemon.add_pokemon(MainPikachu)
 
 func create_uid():

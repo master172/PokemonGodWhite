@@ -54,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.4, 5.7, 7.8, 10, 12.1, 14.4, 19.2, 24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["after the events of indigo Ash yearned for a new adventure", "fate had it that ash saw the promotional material for a new region on a box of cereals that promised new adventures", "being ash he decided to go to there with his friends and burning enthusiasm", "but fate had a different idea", "the hall was grand and the cruise filled with joy but it didn't last for long", "for the ship sand due to a whirpool near a island, no one knew what caused it at that time", "the trio tried to hold on together", "but they failed", "and ash woke up all alone"]
+"values": ["after the events of indigo Ash yearned for a new adventure", "fate had it that ash saw the promotional material for a new region on a box of cereals that promised new adventures", "being ash he decided to go to there with his friends and burning enthusiasm", "but fate had a different idea", "the hall was grand and the cruise filled with joy but it didn't last for long", "for the ship sank due to a whirpool near a island, no one knew what caused it at that time", "the trio tried to hold on together", "but they failed", "and ash woke up all alone"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false

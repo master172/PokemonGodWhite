@@ -18,6 +18,13 @@ extends CharacterBody2D
 @export var pokemon :game_pokemon = null
 
 var knockback_vector :Vector2 = Vector2.ZERO
+
+var previous_moves:Array = []
+
+var Stamina:int = 0
+var MaxStamina:int = 0
+var RegenRate:int = 1
+
 enum facingDirection {
 	UP,
 	DOWN,
@@ -60,13 +67,22 @@ var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
 
 
-
 func _ready():
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,-1))
 	current_facing_direction = facingDirection.UP
 	if pokemon != null:
 		sprite_2d.texture = pokemon.get_overworld_sprite()
+		RegenRate *= pokemon.level
+		calc_max_stamina()
+		speed = pokemon.Base_Pokemon.Base_Speed * 1.5
+		
+func calc_max_stamina():
+	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
+	Stamina = MaxStamina
+	
+func regen_stamina():
+	Stamina = min(Stamina + RegenRate , MaxStamina)
 	
 func get_input():
 	
@@ -116,7 +132,6 @@ func get_current_facing_direction():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	
 	self_knockback_vector = self_knockback_vector.move_toward(Vector2.ZERO,10000*delta)
 	
 
@@ -127,11 +142,33 @@ func _physics_process(delta):
 		velocity = self_knockback_vector
 		
 func _on_attack_selector_attack_chosen(attack):
+	if Stamina > 0:
+		print(pokemon.get_learned_attack_name(attack))
+		var can_attack = manage_stamina(attack)
+		if can_attack == true:
+			pokemon.initiate_attack(attack,self)
+			emit_signal("attacked",self)
 
-	print(pokemon.get_learned_attack_name(attack))
-	pokemon.initiate_attack(attack,self)
-	emit_signal("attacked",self)
-
+func manage_stamina(atk):
+	var new_Stamina:int = Stamina
+	if previous_moves.has(atk):
+		new_Stamina -= pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level * 0.5
+	else:
+		new_Stamina -= (pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level  * 0.5) / 3
+	previous_moves.append(atk)
+	
+	if new_Stamina <= 0:
+		return false
+	else:
+		Stamina = new_Stamina
+		return true
+	manage_move_list()
+	
+func manage_move_list():
+	if previous_moves.size() > 4:
+		previous_moves.remove_at(0)
+		
+	
 func _on_timer_timeout():
 	init_delay = false
 
@@ -232,3 +269,7 @@ func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 	self.modulate = color
 		
 	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)
+
+
+func _on_regen_timer_timeout():
+	regen_stamina()
