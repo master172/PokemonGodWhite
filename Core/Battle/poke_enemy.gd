@@ -59,7 +59,7 @@ func _ready():
 	
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
-	movement_speed = pokemon.Base_Pokemon.Base_Speed * 0.75
+	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 0.75) + 50
 	
 func choose_attack():
 	if attack_chosen == false:

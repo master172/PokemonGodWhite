@@ -75,7 +75,7 @@ func _ready():
 		sprite_2d.texture = pokemon.get_overworld_sprite()
 		RegenRate *= pokemon.level
 		calc_max_stamina()
-		speed = pokemon.Base_Pokemon.Base_Speed * 1.5
+		speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
 		
 func calc_max_stamina():
 	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
