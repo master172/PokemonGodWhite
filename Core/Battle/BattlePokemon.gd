@@ -1,7 +1,7 @@
 class_name BattlePokemon
 extends CharacterBody2D
 
-@export var speed := 256
+@export var movement_speed := 256
 
 @onready var wait_timer = $WaitTimer
 
@@ -75,7 +75,7 @@ func _ready():
 		sprite_2d.texture = pokemon.get_overworld_sprite()
 		RegenRate *= pokemon.level
 		calc_max_stamina()
-		speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+		movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
 		
 func calc_max_stamina():
 	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
@@ -102,7 +102,7 @@ func get_input():
 			if state == states.NORMAL:
 				input_direction = Input.get_vector("A", "D", "W", "S")
 					
-				velocity = input_direction * speed
+				velocity = input_direction * movement_speed
 					
 				if input_direction != Vector2.ZERO:
 					knockback_vector = input_direction

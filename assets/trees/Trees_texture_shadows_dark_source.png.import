@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w0tn0skab7gh"
-path="res://.godot/imported/Cactus1_1.png-e3beba713d7f413b32889fabb36ad574.ctex"
+uid="uid://82d60hhwmefa"
+path="res://.godot/imported/Trees_texture_shadows_dark_source.png-2c3cf3b88484848f8dce5cef9aa1e0d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bushes/Cactus1_1.png"
-dest_files=["res://.godot/imported/Cactus1_1.png-e3beba713d7f413b32889fabb36ad574.ctex"]
+source_file="res://assets/trees/Trees_texture_shadows_dark_source.png"
+dest_files=["res://.godot/imported/Trees_texture_shadows_dark_source.png-2c3cf3b88484848f8dce5cef9aa1e0d5.ctex"]
 
 [params]
 

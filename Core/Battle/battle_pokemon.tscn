@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="9_gj670"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksekj"]
-radius = 32.0
+radius = 30.0
 
 [sub_resource type="Animation" id="Animation_e2eta"]
 resource_name = "Down"
@@ -142,6 +142,7 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 
 [node name="BattlePokemon" type="CharacterBody2D" groups=["PlayerPokemon"]]
 modulate = Color(1, 1, 0.988235, 1)
+motion_mode = 1
 script = ExtResource("1_o4sl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

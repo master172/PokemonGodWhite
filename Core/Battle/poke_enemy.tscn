@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iuxi6"]
-radius = 32.0
+radius = 30.0
 
 [sub_resource type="Animation" id="Animation_yb5mb"]
 resource_name = "Down"
@@ -147,11 +147,12 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_uqqu7")
 states/Walk/position = Vector2(396, 100)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_kld30")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3jky"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lyun"]
+radius = 72.9931
 
 [node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
 collision_layer = 33
+motion_mode = 1
 floor_snap_length = 2.0
 safe_margin = 0.1
 script = ExtResource("1_ss21h")
@@ -230,8 +231,8 @@ wait_time = 0.2
 [node name="KnockBackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockBackArea"]
-position = Vector2(0, -28)
-shape = SubResource("RectangleShape2D_r3jky")
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_5lyun")
 debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
 
 [node name="StunTimer" type="Timer" parent="."]

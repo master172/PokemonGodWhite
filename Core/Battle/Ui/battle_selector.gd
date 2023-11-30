@@ -38,8 +38,8 @@ func _ready():
 func set_active_option():
 	Main_label.text = options[selected_option]
 	main.self_modulate = SelectedColor
-	var right_num = (selected_option +options_selectable - 1) % options_selectable
-	var left_num = (selected_option + 1) % options_selectable
+	var left_num = (selected_option +options_selectable - 1) % options_selectable
+	var right_num = (selected_option + 1) % options_selectable
 	Left_label.text = options[left_num]
 	Right_label.text = options[right_num]
 	
