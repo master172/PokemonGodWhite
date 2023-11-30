@@ -17,6 +17,7 @@ var player_pokemon:BattlePokemon = null
 @onready var pokemons = $HBoxContainer/Databox2/Pokemons
 @onready var stamina_bar = $StaminaBar
 
+var previous_stamina
 
 func set_player(pokemon:game_pokemon,num:int = 0):
 	if num == 0:
@@ -37,11 +38,13 @@ func set_enemy(pokemon:game_pokemon,num:int = 0):
 
 func set_health_bar(pokemon:game_pokemon,health_bar):
 	health_bar.max_value = pokemon.Max_Health
-	health_bar.value = pokemon.Health
+	var tween = get_tree().create_tween()
+	tween.tween_property(health_bar,"value",pokemon.Health,0.5)
 
 func set_exp_bar(pokemon:game_pokemon,exp_bar):
 	exp_bar.max_value = pokemon.exp_to_next_level
-	exp_bar.value = pokemon.exp
+	var tween = get_tree().create_tween()
+	tween.tween_property(exp_bar,"value",pokemon.exp,0.5)
 	exp_bar.min_value = pokemon.exp_to_current_level
 
 func _physics_process(delta):
@@ -49,5 +52,12 @@ func _physics_process(delta):
 	if BattleManager.Trainer_Battle == true:
 		pokemons.frame = BattleManager.EnemyPokemons.size()
 	if player_pokemon != null:
-		stamina_bar.max_value = player_pokemon.MaxStamina
-		stamina_bar.value = player_pokemon.Stamina
+		if player_pokemon.Stamina != previous_stamina:
+			set_stamina_bar()
+			
+func set_stamina_bar():
+	stamina_bar.max_value = player_pokemon.MaxStamina
+	var tween = get_tree().create_tween()
+	tween.tween_property(stamina_bar,"value",player_pokemon.Stamina,0.2)
+	await tween.finished
+	previous_stamina = player_pokemon.Stamina
