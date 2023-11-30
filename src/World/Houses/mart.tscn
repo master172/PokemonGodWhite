@@ -7308,10 +7308,10 @@ y_sort_enabled = true
 metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -328.0
-offset_top = -208.0
-offset_right = 336.0
-offset_bottom = 240.0
+offset_left = -344.0
+offset_top = -224.0
+offset_right = 376.0
+offset_bottom = 272.0
 color = Color(0, 0, 0, 1)
 
 [node name="mainTilemap" type="TileMap" parent="."]
@@ -7346,7 +7346,7 @@ script = ExtResource("1_sn1by")
 [node name="player" parent="." instance=ExtResource("5_r6rns")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(8, 80)
+position = Vector2(216, 32)
 can_surf = false
 can_cycle = false
 

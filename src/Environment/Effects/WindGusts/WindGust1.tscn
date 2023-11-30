@@ -8,7 +8,7 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_dfwmp"]
 offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.596078, 0, 0, 0, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_imbqc"]
 _data = {
