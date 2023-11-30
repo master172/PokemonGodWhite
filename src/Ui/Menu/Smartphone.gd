@@ -150,7 +150,8 @@ func load_bag_scene():
 	get_parent().add_child(scene)
 
 func unload_bag_scene():
-	show()
+	if BattleManager.in_battle == false:
+		show()
 	get_parent().get_node("Bag").queue_free()
 	CurrentState = current_state.Normal
 	
@@ -201,8 +202,9 @@ func save_dialog_finished(Dialogline):
 		DialogLayer.get_child(0).disconnect("finished",save_dialog_finished)
 
 func quit():
-	var player = Utils.get_player()
-	self.visible = false
-	CurrentState = current_state.Empty
-	handle_closing()
-	player.set_physics_process(true)
+	if BattleManager.in_battle == false:
+		var player = Utils.get_player()
+		self.visible = false
+		CurrentState = current_state.Empty
+		handle_closing()
+		player.set_physics_process(true)

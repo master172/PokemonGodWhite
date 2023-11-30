@@ -22,6 +22,8 @@ var movement_speed: float = 128.0
 @onready var die = $Node/Die
 @onready var dodge = $Node/Dodge
 @onready var knock_back = $Node/KnockBack
+@onready var attack_delay = $AttackDelay
+@onready var paralysis_timer = $ParalysisTimer
 
 @onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 
@@ -64,6 +66,7 @@ func _ready():
 func choose_attack():
 	if attack_chosen == false:
 		if pokemon != null:
+			
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 		
@@ -97,15 +100,17 @@ func _on_navigation_agent_2d_navigation_finished():
 
 
 func _on_enemy_follow_state_close_to():
-	if pokemon.get_learned_attack(attack_num).base_action.range == 0:
-		range_attack_state.set_variables(attack_num)
-		finite_state_machine.change_state(range_attack_state)
+	if attack_chosen == true:
+		if pokemon.get_learned_attack(attack_num).base_action.range == 0:
+			range_attack_state.set_variables(attack_num)
+			finite_state_machine.change_state(range_attack_state)
 
 
 func _on_enemy_follow_state_next_to():
-	if pokemon.get_learned_attack(attack_num).base_action.range == 1:
-		range_attack_state.set_variables(attack_num)
-		finite_state_machine.change_state(melle_attack_state)
+	if attack_chosen == true:
+		if pokemon.get_learned_attack(attack_num).base_action.range == 1:
+			range_attack_state.set_variables(attack_num)
+			finite_state_machine.change_state(melle_attack_state)
 
 func recive_damage(damage,body,Attacker):
 	pokemon.Health -= damage
@@ -128,7 +133,7 @@ func receive_knockback(body,damage):
 
 
 func _on_enemy_knock_back_state_finished():
-	finite_state_machine.change_state(enemy_idle_state)
+	finite_state_machine.change_state(enemy_follow_state)
 
 func get_current_facing_direction():
 	return velocity.normalized()
@@ -149,17 +154,9 @@ func _on_melle_attack_state_attack_finished(attack,user):
 func _on_enemy_idle_state_done():
 	if stop == false:
 		finite_state_machine.change_state(enemy_follow_state)
-	choose_attack()
-
-func _on_range_attack_state_attack_landed(attack,user):
-	if user == self:
-		finite_state_machine.change_state(enemy_idle_state)
-
-
-func _on_melle_attack_state_attack_landed(attack,user):
-	if user == self:
-		finite_state_machine.change_state(enemy_idle_state)
-
+	attack_delay.start()
+	print("this should work")
+	
 func _stop():
 	stop = true
 	finite_state_machine.change_state(stall_state)
@@ -201,7 +198,7 @@ func animate_wait():
 	sprite_2d.modulate = Color(0,0,0)
 	tween.tween_property(sprite_2d,"modulate",Color(1,1,1),0.5)
 
-func stun(duration:int = 2):
+func stun(duration:int = 1):
 	stun_timer.start(duration)
 	Stun = true
 
@@ -218,3 +215,15 @@ func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 		
 	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)
 
+
+
+func _on_attack_delay_timeout():
+	choose_attack()
+
+func paralyze(time:int=1,modifier:float=0.2):
+	movement_speed *= modifier
+	paralysis_timer.start(time)
+
+func _on_paralysis_timer_timeout():
+	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 0.75) + 50
+	

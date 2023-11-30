@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var hurt = $Node/Hurt
 @onready var die = $Node/Die
 @onready var knock_back = $Node/KnockBack
+@onready var paralysis_timer = $ParalysisTimer
 
 @export var pokemon :game_pokemon = null
 
@@ -273,3 +274,10 @@ func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 
 func _on_regen_timer_timeout():
 	regen_stamina()
+
+func paralyze(time:int=1,modifier:float=0.2):
+	movement_speed *= modifier
+	paralysis_timer.start(time)
+
+func _on_paralysis_timer_timeout():
+	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50

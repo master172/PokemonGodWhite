@@ -42,6 +42,7 @@ func _on_timer_timeout():
 
 
 func _attack():
+	User.velocity = User.velocity * 0.0001
 	if target != null:
 		if User.opposing_pokemons != []:
 			if User.opposing_pokemons[0] == target[0]:
