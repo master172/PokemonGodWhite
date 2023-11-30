@@ -153,8 +153,11 @@ func unload_bag_scene():
 	if BattleManager.in_battle == false:
 		show()
 	get_parent().get_node("Bag").queue_free()
-	CurrentState = current_state.Normal
-	
+	if BattleManager.in_battle == false:
+		CurrentState = current_state.Normal
+	else:
+		CurrentState = current_state.Empty
+		
 func load_party_screen():
 	visible = false
 	CurrentState = current_state.Pokemons
@@ -202,9 +205,10 @@ func save_dialog_finished(Dialogline):
 		DialogLayer.get_child(0).disconnect("finished",save_dialog_finished)
 
 func quit():
+	
+	var player = Utils.get_player()
+	self.visible = false
+	CurrentState = current_state.Empty
+	handle_closing()
 	if BattleManager.in_battle == false:
-		var player = Utils.get_player()
-		self.visible = false
-		CurrentState = current_state.Empty
-		handle_closing()
 		player.set_physics_process(true)

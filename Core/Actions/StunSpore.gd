@@ -27,6 +27,7 @@ func _on_timer_timeout():
 
 func _attack():
 	User.velocity = User.velocity *0.0001
+	prev_speed = target[0].movement_speed
 	if target != null:
 		if User.opposing_pokemons != []:
 			if User.opposing_pokemons[0] == target[0]:
@@ -35,7 +36,7 @@ func _attack():
 				if rng <75:
 					target[0].animate_modulation_change(Color.YELLOW,3)
 					
-					prev_speed = target[0].movement_speed
+					
 					target[0].movement_speed = clamp(target[0].movement_speed*0.2,
 					30,
 					target[0].movement_speed)
