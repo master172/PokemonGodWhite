@@ -260,6 +260,9 @@ func initiate_attack(num:int,user:CharacterBody2D):
 func get_learned_attacks():
 	return learned_attacks.size() -1
 
+func get_all_learned_attacks():
+	return learnable_attacks
+	
 func get_learned_attack(num:int):
 	return learned_attacks[num]
 

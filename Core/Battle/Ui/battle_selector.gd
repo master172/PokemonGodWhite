@@ -1,19 +1,19 @@
 extends Control
 
-@export var DeselectedColor:Color = Color(0.063, 0.443, 0.11, 0.212)
-@export var SelectedColor:Color = Color(0.629, 0.028, 0.045)
+@export var DeselectedColor:Color = Color.WHITE
+@export var SelectedColor:Color = Color.GREEN
 
 var options_selectable:int = 4
 var selected_option:int = 0
 
-enum Options {FIRST_SLOT,SECOND_SLOT,THIRD_SLOT,FOURTH_SLOT}
+var options:Array = []
 
-@onready var options: Dictionary = {
-	Options.FIRST_SLOT: get_node("ColorRect/HBoxContainer/1"),
-	Options.SECOND_SLOT: get_node("ColorRect/HBoxContainer/2"),
-	Options.THIRD_SLOT: get_node("ColorRect/HBoxContainer/3"),
-	Options.FOURTH_SLOT: get_node("ColorRect/HBoxContainer/4"),
-}
+@onready var main = $Main
+@onready var left = $Main/Left
+@onready var Left_label = $Main/Left/Label
+@onready var right = $Main/Right
+@onready var Right_label = $Main/Right/Label
+@onready var Main_label = $Main/Label
 
 enum STATES {
 	EMPTY,
@@ -31,26 +31,28 @@ var pokemon:game_pokemon
 func _ready():
 	pokemon = get_parent().get_parent().pokemon
 	_set_radial()
+	for i in range(4) :
+		options.append(pokemon.get_learned_attack_name(i))
 	set_active_option()
 	
-func unset_active_option():
-	options[selected_option].self_modulate = DeselectedColor
-	
 func set_active_option():
-	options[selected_option].self_modulate = SelectedColor
-
+	Main_label.text = options[selected_option]
+	main.self_modulate = SelectedColor
+	var right_num = (selected_option +options_selectable - 1) % options_selectable
+	var left_num = (selected_option + 1) % options_selectable
+	Left_label.text = options[left_num]
+	Right_label.text = options[right_num]
+	
 func _input(event):
 	if state == STATES.RADIAL:
 		_set_radial()
 		if event.is_action_pressed("A"):
 			AudioManager.input()
-			unset_active_option()
 			selected_option  = (selected_option +options_selectable - 1) % options_selectable
 			set_active_option()
 			
 		elif event.is_action_pressed("D"):
 			AudioManager.input()
-			unset_active_option()
 			selected_option  = (selected_option + 1) % options_selectable
 			set_active_option()
 			
@@ -71,8 +73,7 @@ func _set_radial():
 		visible = true
 		emit_signal("displayed")
 		for i in range(4) :
-			options[i].get_child(0).visible = true
-			options[i].get_child(0).text = pokemon.get_learned_attack_name(i)
+			options.append(pokemon.get_learned_attack_name(i))
 			
 	else:
 		visible = false
