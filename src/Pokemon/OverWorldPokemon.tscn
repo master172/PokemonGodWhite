@@ -158,7 +158,6 @@ script = ExtResource("1_1f7kr")
 [node name="PokeSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_sv3ig")
 hframes = 4
 vframes = 4
@@ -169,7 +168,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ej3bn")
+}
 tree_root = SubResource("AnimationNodeStateMachine_vcnqk")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Walk/blend_position = Vector2(0.54491, 0.240175)
