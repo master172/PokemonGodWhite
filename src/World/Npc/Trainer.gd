@@ -66,6 +66,7 @@ func walk_at(facDir:Vector2):
 	
 func _interact():
 	emit_signal("talk",self)
+	
 	if current_dialog != "" and taliking == false:
 		if Utils.Player != null:
 			Utils.Player.set_physics_process(false)
@@ -73,6 +74,7 @@ func _interact():
 			taliking = true
 			
 			Dialogic.start(current_dialog)
+			print(current_dialog)
 			get_viewport().set_input_as_handled()
 	
 

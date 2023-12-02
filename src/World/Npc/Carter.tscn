@@ -243,7 +243,7 @@ collision_mask = 0
 script = ExtResource("1_2aetq")
 pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_bwg4e"), ExtResource("3_mdxar")])
 levels = Array[int]([6, 7])
-current_dialog = "Carter"
+current_dialog = "CarterStart"
 ending_dialog = "CarterEnd"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
@@ -264,9 +264,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nxxnt")
+}
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Idle/blend_position = Vector2(-0.00919116, 0.973799)
 parameters/Walk/blend_position = Vector2(0, -1)
 

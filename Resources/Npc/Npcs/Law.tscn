@@ -245,7 +245,7 @@ exclamation = NodePath("exclamation")
 look_distance = 4
 pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_1fncm")])
 levels = Array[int]([7])
-current_dialog = "Law"
+current_dialog = "LawStart"
 ending_dialog = "LawEnd"
 animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
@@ -266,9 +266,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nxxnt")
+}
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)
 parameters/Walk/blend_position = Vector2(-0.00183821, 0.00436687)
 

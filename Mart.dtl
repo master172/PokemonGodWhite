@@ -1,13 +1,13 @@
-SalesPerson: How may i help you today sir
+How may i help you today sir
 - Buy
-	SalesPerson: What would you like to buy
+	What would you like to buy
 	[signal arg="Buy"]
 	[end_timeline]
 - Sell
-	SalesPerson: Sorry selling is not yet available
+	Sorry selling is not yet available
 	[signal arg="Sell"]
 	[end_timeline]
 - Cancel
-	SalesPerson: We hope to see you again
+	We hope to see you again
 	[signal arg="MartCancel"]
 	[end_timeline]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl8mp8silq646"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayouts/ExampleHistoryScene.gd" id="1_o5tfq"]
 
