@@ -22,8 +22,8 @@ func _attack():
 		User.targetPokemon.velocity = User.targetPokemon.velocity * 0.001
 	elif User.is_in_group("PlayerPokemon"):
 		User.opposing_pokemons[0].animate_modulation_change(Color.BLACK,1)
-		User.opoosing_pokemons.stun(1)
-		User.opoosing_pokemons.velocity = User.opoosing_pokemons.velocity * 0.001
+		User.opposing_pokemons[0].stun(1)
+		User.opposing_pokemons[0].velocity = User.opposing_pokemons[0].velocity * 0.001
 	
 	leech_life()
 	

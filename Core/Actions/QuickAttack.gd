@@ -22,10 +22,15 @@ func _attack():
 	quick_attack_timer.wait_time = duration
 	quick_attack_timer.start()
 	if User != null:
-		User.velocity = User.get_current_facing_direction() * dash_speed
+		User.velocity = get_direction() * dash_speed
 		
 func is_tackling():
 	return quick_attack_timer.is_stopped()
+
+func get_direction():
+	if User != null:
+		if User.opposing_pokemons != []:
+			return User.global_position.direction_to(User.opposing_pokemons[0].global_position)
 
 
 func _on_quick_attack_timer_timeout():

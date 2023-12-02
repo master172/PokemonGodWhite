@@ -191,10 +191,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_jxalu")
 }
+speed_scale = 0.5
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

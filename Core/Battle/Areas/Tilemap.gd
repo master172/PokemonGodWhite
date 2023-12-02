@@ -7,8 +7,8 @@ var desiredTileIndex : int = 1  # Change this to the index of your desired tile
 var numberOfTiles : int = 10
 @export var tile_cords := Vector2(0,0)
 @export var source_id:int = 7
-func _ready():
-	randomize_tiles()
+#func _ready():
+	#randomize_tiles()
 
 func randomize_tiles():
 	for i in range(numberOfTiles):

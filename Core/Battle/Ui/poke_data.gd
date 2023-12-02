@@ -56,8 +56,10 @@ func _physics_process(delta):
 			set_stamina_bar()
 			
 func set_stamina_bar():
-	stamina_bar.max_value = player_pokemon.MaxStamina
-	var tween = get_tree().create_tween()
-	tween.tween_property(stamina_bar,"value",player_pokemon.Stamina,1)
-	await tween.finished
-	previous_stamina = player_pokemon.Stamina
+	if player_pokemon != null:
+		stamina_bar.max_value = player_pokemon.MaxStamina
+		var tween = get_tree().create_tween()
+		tween.tween_property(stamina_bar,"value",player_pokemon.Stamina,1)
+		await tween.finished
+	if player_pokemon != null:
+		previous_stamina = player_pokemon.Stamina

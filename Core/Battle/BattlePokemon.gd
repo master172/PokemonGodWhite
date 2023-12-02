@@ -67,7 +67,6 @@ signal bag
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
 
-
 func _ready():
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,-1))
@@ -86,13 +85,15 @@ func regen_stamina():
 	Stamina = min(Stamina + RegenRate , MaxStamina)
 	
 func get_input():
-	
-	if knockback == false and stop == false and resting == false and Stun == false:
+				
+			
+	if knockback == false:
 		if Input.is_action_just_pressed("Yes") and init_delay == false:
 			if attacking == false and action == false:
-				AudioManager.select()
-				state = states.ATTACK_SELECTION
-				attack_selector.start_radial()
+				if stop == false and resting == false and Stun == false:
+					AudioManager.select()
+					state = states.ATTACK_SELECTION
+					attack_selector.start_radial()
 		elif Input.is_action_just_pressed("No") and init_delay == false:
 			if attacking == false and action == false:
 				AudioManager.select()
@@ -100,15 +101,16 @@ func get_input():
 				state = states.ACTION_SELECTION
 				action_chosen.start_radial()
 		else:
-			if state == states.NORMAL:
-				input_direction = Input.get_vector("A", "D", "W", "S")
-					
-				velocity = input_direction * movement_speed
-					
-				if input_direction != Vector2.ZERO:
-					knockback_vector = input_direction
-					animation_tree.set("parameters/Walk/blend_position",input_direction)
-					input_to_facing_direction(input_direction)
+			if stop == false and resting == false and Stun == false:
+				if state == states.NORMAL:
+					input_direction = Input.get_vector("A", "D", "W", "S")
+						
+					velocity = input_direction * movement_speed
+						
+					if input_direction != Vector2.ZERO:
+						knockback_vector = input_direction
+						animation_tree.set("parameters/Walk/blend_position",input_direction)
+						input_to_facing_direction(input_direction)
 
 func input_to_facing_direction(input_dir):
 	if input_dir == Vector2(0,-1):
