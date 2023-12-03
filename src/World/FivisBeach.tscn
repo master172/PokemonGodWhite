@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cod833wnv5mhd"]
+[gd_scene load_steps=73 format=3 uid="uid://cod833wnv5mhd"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_6usaq"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_ketbf"]
@@ -30127,6 +30127,938 @@ sources/9 = SubResource("TileSetAtlasSource_6bo35")
 sources/10 = SubResource("TileSetScenesCollectionSource_1yug4")
 pattern_0 = SubResource("TileMapPattern_axal5")
 
+[sub_resource type="Animation" id="Animation_48a5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kgrl3"]
+resource_name = "RunDown"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(23, 40, 16, 18), Rect2(6, 41, 16, 17), Rect2(42, 40, 16, 18), Rect2(6, 41, 16, 17)]
+}
+
+[sub_resource type="Animation" id="Animation_bgxb5"]
+resource_name = "RunLeft"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(78, 40, 16, 18), Rect2(60, 40, 16, 18), Rect2(96, 40, 16, 17), Rect2(60, 40, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_ids25"]
+resource_name = "RunRight"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(185, 40, 16, 17), Rect2(167, 40, 16, 18), Rect2(203, 40, 16, 18), Rect2(167, 40, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_p6f76"]
+resource_name = "RunUp"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(131, 39, 16, 19), Rect2(113, 39, 16, 18), Rect2(149, 39, 16, 19), Rect2(113, 39, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_yhfbn"]
+resource_name = "cycleDown"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(22, 97, 16, 22), Rect2(4, 97, 16, 21), Rect2(41, 97, 16, 22), Rect2(4, 97, 16, 21)]
+}
+
+[sub_resource type="Animation" id="Animation_hcf3g"]
+resource_name = "cycleIdleDown"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(4, 97, 16, 21)]
+}
+
+[sub_resource type="Animation" id="Animation_cko1q"]
+resource_name = "cycleIdleLeft"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(118, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_4ntdl"]
+resource_name = "cycleIdleRight"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(189, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_dbk23"]
+resource_name = "cycleIdleUp"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(61, 97, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_yu0lv"]
+resource_name = "cycleLeft"
+length = 1.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(118, 97, 20, 22), Rect2(142, 97, 20, 22), Rect2(166, 97, 20, 22), Rect2(142, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_hcfy1"]
+resource_name = "cycleRight"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(189, 97, 20, 22), Rect2(213, 97, 20, 22), Rect2(237, 97, 20, 22), Rect2(213, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_ff4qv"]
+resource_name = "cycleTurnDown"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(22, 97, 16, 22), Rect2(4, 97, 16, 21)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_75iv6"]
+resource_name = "cycleTurnLeft"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(142, 97, 20, 22), Rect2(118, 97, 20, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g7fcw"]
+resource_name = "cycleTurnRight"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(213, 97, 20, 22), Rect2(189, 97, 20, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gc1sl"]
+resource_name = "cycleTurnUp"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(80, 97, 16, 22), Rect2(61, 97, 16, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3tm6"]
+resource_name = "cycleUp"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(80, 97, 16, 22), Rect2(61, 97, 16, 22), Rect2(99, 97, 16, 22), Rect2(61, 97, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_yea41"]
+resource_name = "dissapear"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"entered_door"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a4dbl"]
+resource_name = "idleDown"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(6, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_j2ks2"]
+resource_name = "idleLeft"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(60, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_5gfbc"]
+resource_name = "idleRight"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(170, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_jk3q5"]
+resource_name = "idleUp"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(115, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_tfn0u"]
+resource_name = "surfDown"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(137, 139, 20, 24), Rect2(168, 140, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_rqpx4"]
+resource_name = "surfLeft"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(138, 203, 21, 24), Rect2(169, 204, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_b3rjv"]
+resource_name = "surfRight"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(136, 234, 21, 24), Rect2(168, 235, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_sj4v0"]
+resource_name = "surfTurnDown"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 140, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wtxcd"]
+resource_name = "surfTurnLeft"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(169, 204, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r0gvp"]
+resource_name = "surfTurnRight"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 235, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r66yl"]
+resource_name = "surfTurnUp"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 172, 22, 25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4esqw"]
+resource_name = "surfUp"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(137, 171, 20, 26), Rect2(168, 172, 22, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_mqp00"]
+resource_name = "turnDown"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(24, 9, 16, 19), Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_37u6i"]
+resource_name = "turnLeft"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(78, 10, 16, 18), Rect2(60, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_075pv"]
+resource_name = "turnRight"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(188, 10, 16, 18), Rect2(170, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ff5b0"]
+resource_name = "turnUp"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ny5o2"]
+resource_name = "walkDown"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(24, 9, 16, 19), Rect2(6, 9, 16, 19), Rect2(42, 9, 16, 19), Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5e37v"]
+resource_name = "walkLeft"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(78, 10, 16, 18), Rect2(60, 9, 16, 19), Rect2(96, 10, 16, 18), Rect2(60, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cju83"]
+resource_name = "walkRight"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(188, 10, 16, 18), Rect2(170, 9, 16, 19), Rect2(206, 10, 16, 18), Rect2(170, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lqwt0"]
+resource_name = "walkUp"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19), Rect2(152, 9, 16, 19), Rect2(115, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qbwx"]
+_data = {
+"RESET": SubResource("Animation_48a5r"),
+"RunDown": SubResource("Animation_kgrl3"),
+"RunLeft": SubResource("Animation_bgxb5"),
+"RunRight": SubResource("Animation_ids25"),
+"RunUp": SubResource("Animation_p6f76"),
+"cycleDown": SubResource("Animation_yhfbn"),
+"cycleIdleDown": SubResource("Animation_hcf3g"),
+"cycleIdleLeft": SubResource("Animation_cko1q"),
+"cycleIdleRight": SubResource("Animation_4ntdl"),
+"cycleIdleUp": SubResource("Animation_dbk23"),
+"cycleLeft": SubResource("Animation_yu0lv"),
+"cycleRight": SubResource("Animation_hcfy1"),
+"cycleTurnDown": SubResource("Animation_ff4qv"),
+"cycleTurnLeft": SubResource("Animation_75iv6"),
+"cycleTurnRight": SubResource("Animation_g7fcw"),
+"cycleTurnUp": SubResource("Animation_gc1sl"),
+"cycleUp": SubResource("Animation_t3tm6"),
+"dissapear": SubResource("Animation_yea41"),
+"idleDown": SubResource("Animation_a4dbl"),
+"idleLeft": SubResource("Animation_j2ks2"),
+"idleRight": SubResource("Animation_5gfbc"),
+"idleUp": SubResource("Animation_jk3q5"),
+"surfDown": SubResource("Animation_tfn0u"),
+"surfLeft": SubResource("Animation_rqpx4"),
+"surfRight": SubResource("Animation_b3rjv"),
+"surfTurnDown": SubResource("Animation_sj4v0"),
+"surfTurnLeft": SubResource("Animation_wtxcd"),
+"surfTurnRight": SubResource("Animation_r0gvp"),
+"surfTurnUp": SubResource("Animation_r66yl"),
+"surfUp": SubResource("Animation_4esqw"),
+"turnDown": SubResource("Animation_mqp00"),
+"turnLeft": SubResource("Animation_37u6i"),
+"turnRight": SubResource("Animation_075pv"),
+"turnUp": SubResource("Animation_ff5b0"),
+"walkDown": SubResource("Animation_ny5o2"),
+"walkLeft": SubResource("Animation_5e37v"),
+"walkRight": SubResource("Animation_cju83"),
+"walkUp": SubResource("Animation_lqwt0")
+}
+
 [node name="FivisBeach" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
@@ -30145,17 +31077,11 @@ layer_0/name = "ground"
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(458758, 65545, 2, 393222, 65545, 2, 327686, 65545, 2, 262150, 65545, 2, 196614, 65544, 3, 131078, 131079, 20, 65542, 131079, 20, 6, 131079, 20, -65530, 131079, 20, -131066, 131079, 20, -196602, 131079, 20, -262138, 131079, 20, -327674, 131079, 20, -393210, 131079, 20, 458757, 65545, 2, 393221, 65545, 2, 327685, 65545, 2, 262149, 65545, 2, 196613, 65544, 3, 131077, 131079, 20, 65541, 131079, 20, 5, 131079, 20, -65531, 131079, 20, -131067, 131079, 20, -196603, 131079, 20, -262139, 131079, 20, -327675, 131079, 20, -393211, 393223, 21, 458756, 65545, 2, 393220, 65545, 2, 327684, 65545, 2, 262148, 65545, 2, 196612, 65544, 3, 131076, 131079, 20, 65540, 131079, 20, 4, 131079, 20, -65532, 131079, 20, -131068, 131079, 20, -196604, 131079, 20, -262140, 131079, 20, -327676, 131079, 20, -393212, 131079, 19, 458755, 65545, 2, 393219, 65545, 2, 327683, 65545, 2, 262147, 65545, 2, 196611, 65544, 3, 131075, 131079, 20, 65539, 131079, 20, 3, 131079, 20, -65533, 131079, 20, -131069, 131079, 20, -196605, 131079, 20, -262141, 131079, 20, -327677, 131079, 20, -393213, 131079, 19, 458754, 65545, 2, 393218, 65545, 2, 327682, 65545, 2, 262146, 65545, 2, 196610, 65544, 3, 131074, 131079, 20, 65538, 131079, 20, 2, 131079, 20, -65534, 131079, 20, -131070, 131079, 20, -196606, 131079, 20, -262142, 131079, 20, -327678, 131079, 20, -393214, 131079, 19, 458753, 65545, 2, 393217, 65545, 2, 327681, 65545, 2, 262145, 65545, 2, 196609, 65544, 3, 131073, 131079, 20, 65537, 131079, 20, 1, 131079, 20, -65535, 131079, 20, -131071, 131079, 20, -196607, 131079, 20, -262143, 131079, 20, -327679, 131079, 20, -393215, 131079, 19, 458752, 65545, 2, 393216, 65545, 2, 327680, 65545, 2, 262144, 65545, 2, 196608, 65544, 3, 131072, 131079, 20, 65536, 131079, 20, 0, 131079, 20, -65536, 131079, 20, -131072, 131079, 20, -196608, 131079, 20, -262144, 131079, 20, -327680, 393223, 21, -393216, 65543, 19, 524287, 65545, 2, 458751, 65545, 2, 393215, 65545, 2, 327679, 65545, 2, 262143, 65544, 3, 196607, 131079, 20, 131071, 131079, 20, 65535, 131079, 20, -1, 131079, 20, -65537, 131079, 20, -131073, 131079, 20, -196609, 131079, 20, -262145, 131079, 19, -327681, 458759, 2, 524286, 65545, 2, 458750, 65545, 2, 393214, 65545, 2, 327678, 65545, 2, 262142, 65544, 3, 196606, 131079, 20, 131070, 131079, 20, 65534, 131079, 20, -2, 131079, 20, -65538, 131079, 20, -131074, 131079, 20, -196610, 131079, 20, -262146, 131079, 19, -327682, 327687, 0, 524285, 65545, 2, 458749, 65545, 2, 393213, 65545, 2, 327677, 65545, 2, 262141, 65544, 3, 196605, 131079, 20, 131069, 131079, 20, 65533, 131079, 20, -3, 131079, 20, -65539, 131079, 20, -131075, 131079, 20, -196611, 131079, 20, -262147, 262151, 21, -327683, 196615, 19, 524284, 65545, 2, 458748, 65545, 2, 393212, 65545, 2, 327676, 65545, 2, 262140, 65544, 3, 196604, 131079, 20, 131068, 131079, 20, 65532, 131079, 20, -4, 131079, 20, -65540, 131079, 20, -131076, 131079, 20, -196612, 131079, 20, -262148, 131079, 20, -327684, 262151, 21, 524283, 65545, 2, 458747, 65545, 2, 393211, 65545, 2, 327675, 65545, 2, 262139, 65544, 3, 196603, 131079, 20, 131067, 131079, 20, 65531, 131079, 20, -5, 131079, 20, -65541, 131079, 20, -131077, 131079, 20, -196613, 131079, 20, -262149, 131079, 20, -327685, 131079, 20, 524282, 65545, 2, 458746, 65545, 2, 393210, 65545, 2, 327674, 65545, 2, 262138, 65544, 3, 196602, 131079, 20, 131066, 131079, 20, 65530, 131079, 20, -6, 131079, 20, -65542, 131079, 20, -131078, 131079, 20, -196614, 131079, 20, -262150, 131079, 20, -327686, 131079, 20, 524281, 65545, 2, 458745, 65545, 2, 393209, 65545, 2, 327673, 65545, 2, 262137, 65544, 3, 196601, 131079, 20, 131065, 131079, 20, 65529, 131079, 20, -7, 131079, 20, -65543, 131079, 20, -131079, 131079, 20, -196615, 131079, 20, -262151, 131079, 20, -327687, 131079, 20, 524280, 65545, 2, 458744, 65545, 2, 393208, 65545, 2, 327672, 65545, 2, 262136, 65544, 3, 196600, 131079, 20, 131064, 131079, 20, 65528, 131079, 20, -8, 131079, 20, -65544, 131079, 20, -131080, 131079, 20, -196616, 131079, 20, -262152, 131079, 20, -327688, 393223, 21, 524279, 65545, 2, 458743, 65545, 2, 393207, 65545, 2, 327671, 65545, 2, 262135, 65544, 3, 196599, 131079, 20, 131063, 131079, 20, 65527, 131079, 20, -9, 131079, 20, -65545, 131079, 20, -131081, 131079, 20, -196617, 131079, 20, -262153, 131079, 20, -327689, 131079, 19, 524278, 65545, 2, 458742, 65545, 2, 393206, 65545, 2, 327670, 65545, 2, 262134, 65544, 3, 196598, 131079, 20, 131062, 131079, 20, 65526, 131079, 20, -10, 131079, 20, -65546, 131079, 20, -131082, 131079, 20, -196618, 131079, 20, -262154, 131079, 20, -327690, 131079, 19, 524277, 65545, 2, 458741, 65545, 2, 393205, 65545, 2, 327669, 65545, 2, 262133, 65544, 3, 196597, 131079, 20, 131061, 131079, 20, 65525, 131079, 20, -11, 131079, 20, -65547, 131079, 20, -131083, 131079, 20, -196619, 131079, 20, -262155, 131079, 20, -327691, 131079, 19, 524276, 65545, 2, 458740, 65545, 2, 393204, 65545, 2, 327668, 65545, 2, 262132, 65544, 3, 196596, 131079, 20, 131060, 131079, 20, 65524, 131079, 20, -12, 131079, 20, -65548, 131079, 20, -131084, 131079, 20, -196620, 131079, 20, -262156, 131079, 20, -327692, 131079, 19, 524275, 65545, 2, 458739, 65545, 2, 393203, 65545, 2, 327667, 65545, 2, 262131, 65544, 3, 196595, 131079, 20, 131059, 131079, 20, 65523, 131079, 20, -13, 131079, 20, -65549, 131079, 20, -131085, 131079, 20, -196621, 131079, 20, -262157, 131079, 20, -327693, 131079, 19, 524274, 65545, 2, 458738, 65545, 2, 393202, 65545, 2, 327666, 65545, 2, 262130, 65544, 3, 196594, 131079, 20, 131058, 131079, 20, 65522, 131079, 20, -14, 131079, 20, -65550, 131079, 20, -131086, 131079, 20, -196622, 131079, 20, -262158, 393223, 21, -327694, 65543, 19, 655371, 131081, 3, 589835, 131081, 2, 524299, 131081, 2, 458763, 131081, 2, 393227, 131081, 2, 327691, 131081, 2, 262155, 131081, 2, 196619, 65544, 3, 131083, 131079, 20, 65547, 131079, 20, 11, 131079, 20, -65525, 131079, 20, -131061, 131079, 20, -196597, 131079, 20, -262133, 131079, 20, -327669, 131079, 20, -393205, 131079, 19, -458741, 458759, 2, 655370, 65545, 3, 589834, 65545, 2, 524298, 65545, 2, 458762, 65545, 2, 393226, 65545, 2, 327690, 65545, 2, 262154, 65545, 2, 196618, 65544, 3, 131082, 131079, 20, 65546, 131079, 20, 10, 131079, 20, -65526, 131079, 20, -131062, 131079, 20, -196598, 131079, 20, -262134, 131079, 20, -327670, 131079, 20, -393206, 131079, 19, -458742, 65543, 0, 655369, 65545, 3, 589833, 65545, 2, 524297, 65545, 2, 458761, 65545, 2, 393225, 65545, 2, 327689, 65545, 2, 262153, 65545, 2, 196617, 65544, 3, 131081, 131079, 20, 65545, 131079, 20, 9, 131079, 20, -65527, 131079, 20, -131063, 131079, 20, -196599, 131079, 20, -262135, 131079, 20, -327671, 131079, 20, -393207, 131079, 19, -458743, 327687, 0, 655368, 65545, 3, 589832, 65545, 2, 524296, 65545, 2, 458760, 65545, 2, 393224, 65545, 2, 327688, 65545, 2, 262152, 65545, 2, 196616, 65544, 3, 131080, 131079, 20, 65544, 131079, 20, 8, 131079, 20, -65528, 131079, 20, -131064, 131079, 20, -196600, 131079, 20, -262136, 131079, 20, -327672, 131079, 20, -393208, 131079, 19, -458744, 131079, 0, 655367, 65545, 3, 589831, 65545, 2, 524295, 65545, 2, 458759, 65545, 2, 393223, 65545, 2, 327687, 65545, 2, 262151, 65545, 2, 196615, 65544, 3, 131079, 131079, 20, 65543, 131079, 20, 7, 131079, 20, -65529, 131079, 20, -131065, 131079, 20, -196601, 131079, 20, -262137, 131079, 20, -327673, 131079, 20, -393209, 262151, 21, -458745, 393223, 25, 655366, 65545, 3, 589830, 65545, 2, 524294, 65545, 2, -458746, 131079, 19, 655365, 65545, 3, 589829, 65545, 2, 524293, 65545, 2, -458747, 65543, 19, 655364, 65545, 3, 589828, 65545, 2, 524292, 65545, 2, -458748, 327687, 0, 655363, 65545, 3, 589827, 65545, 2, 524291, 65545, 2, -458749, 262151, 0, 655362, 65545, 3, 589826, 65545, 2, 524290, 65545, 2, -458750, 458759, 3, 655361, 65545, 3, 589825, 65545, 2, 524289, 65545, 2, -458751, 327687, 0, 655360, 65545, 3, 589824, 65545, 2, 524288, 65545, 2, -458752, 327687, 0, 720895, 65545, 3, 655359, 65545, 2, 589823, 65545, 2, -393217, 458759, 2, 720894, 65545, 3, 655358, 65545, 2, 589822, 65545, 2, -393218, 262151, 0, 720893, 65545, 3, 655357, 65545, 2, 589821, 65545, 2, -393219, 458759, 3, 720892, 65545, 3, 655356, 65545, 2, 589820, 65545, 2, -393220, 196615, 19, 720891, 65545, 3, 655355, 65545, 2, 589819, 65545, 2, -393221, 327687, 21, 720890, 65545, 3, 655354, 65545, 2, 589818, 65545, 2, -393222, 131079, 19, 720889, 65545, 3, 655353, 65545, 2, 589817, 65545, 2, -393223, 131079, 19, 720888, 65545, 3, 655352, 65545, 2, 589816, 65545, 2, -393224, 65543, 19, 720887, 65545, 3, 655351, 65545, 2, 589815, 65545, 2, -393225, 458759, 2, 720886, 65545, 3, 655350, 65545, 2, 589814, 65545, 2, -393226, 262151, 0, 720885, 65545, 3, 655349, 65545, 2, 589813, 65545, 2, -393227, 196615, 0, 720884, 65545, 3, 655348, 65545, 2, 589812, 65545, 2, -393228, 458759, 3, 720883, 65545, 3, 655347, 65545, 2, 589811, 65545, 2, -393229, 65543, 0, 720882, 65545, 3, 655346, 65545, 2, 589810, 65545, 2, -393230, 458759, 3, 720881, 65545, 3, 655345, 65545, 2, 589809, 65545, 2, 524273, 65545, 2, 458737, 65545, 2, 393201, 65545, 2, 327665, 65545, 2, 262129, 65544, 3, 196593, 131079, 20, 131057, 131079, 20, 65521, 131079, 20, -15, 131079, 20, -65551, 131079, 20, -131087, 131079, 20, -196623, 131079, 20, -262159, 131079, 19, -327695, 458759, 3, -393231, 458759, 3, 720880, 65545, 3, 655344, 65545, 2, 589808, 65545, 2, 524272, 65545, 2, 458736, 65545, 2, 393200, 65545, 2, 327664, 65545, 2, 262128, 65544, 3, 196592, 131079, 20, 131056, 131079, 20, 65520, 131079, 20, -16, 131079, 20, -65552, 131079, 20, -131088, 131079, 20, -196624, 131079, 20, -262160, 262151, 21, -327696, 196615, 19, -393232, 327687, 0, 720879, 65545, 3, 655343, 65545, 2, 589807, 65545, 2, 524271, 65545, 2, 458735, 65545, 2, 393199, 65545, 2, 327663, 65545, 2, 262127, 65544, 3, 196591, 131079, 20, 131055, 131079, 20, 65519, 131079, 20, -17, 131079, 20, -65553, 131079, 20, -131089, 131079, 20, -196625, 131079, 20, -262161, 131079, 20, -327697, 131079, 20, -393233, 196615, 19, 720878, 9, 3, 655342, 9, 2, 589806, 9, 2, 524270, 9, 2, 458734, 9, 2, 393198, 9, 2, 327662, 9, 2, 262126, 65544, 3, 196590, 131079, 20, 131054, 131079, 20, 65518, 131079, 20, -18, 131079, 20, -65554, 131079, 20, -131090, 393223, 21, -196626, 131079, 20, -262162, 131079, 20, -327698, 131079, 20, -393234, 131079, 19, -458757, 7, 19, -524281, 7, 19, -458758, 65543, 0, -524294, 458759, 2, -589830, 327687, 0, -458759, 65543, 0, -524295, 196615, 0, -589831, 458759, 3, -458760, 131079, 0, -524296, 262151, 0, -589832, 65543, 0, -458761, 196615, 0, -524297, 131079, 0, -589833, 458759, 3, -458762, 262151, 0, -524298, 458759, 3, -589834, 327687, 0, -458763, 262151, 0, -524299, 327687, 0, -589835, 327687, 0, -458764, 65543, 0, -524300, 458759, 2, -589836, 327687, 0, -458765, 327687, 0, -524301, 327687, 0, -589837, 131079, 0, -458766, 196615, 0, -524302, 65543, 0, -589838, 196615, 0, -458767, 327687, 0, -524303, 458759, 3, -589839, 65543, 0, -458768, 65543, 0, -524304, 65543, 0, -589840, 458759, 3, -458769, 458759, 2, -524305, 327687, 0, -589841, 458759, 2, -458770, 458759, 2, -524306, 65543, 0, -589842, 458759, 3, -589813, 65543, 0, -655349, 196615, 0, -589814, 327687, 0, -655350, 65543, 0, -589815, 196615, 0, -655351, 196615, 0, -589816, 262151, 0, -655352, 196615, 0, -589817, 131079, 0, -655353, 458759, 3, -589818, 327687, 0, -655354, 327687, 0, -589819, 262151, 0, -655355, 327687, 0, -589820, 458759, 3, -655356, 327687, 0, -589821, 262151, 0, -655357, 458759, 2, -589822, 131079, 0, -655358, 458759, 3, -589823, 196615, 0, -655359, 327687, 0, -589824, 327687, 0, -655360, 458759, 2, -524289, 327687, 0, -589825, 196615, 0, -524290, 196615, 0, -589826, 458759, 2, -524291, 327687, 0, -589827, 458759, 3, -524292, 327687, 0, -589828, 131079, 0, -524293, 262151, 0, -589829, 65543, 0, -524282, 458759, 3, -524283, 131079, 0, -524284, 196615, 0, -524285, 131079, 0, -524286, 327687, 0, -524287, 131079, 0, -524288, 327687, 0, -458753, 458759, 2, -458754, 65543, 0, -458755, 327687, 0, -458756, 262151, 0, -524277, 458759, 3, -524278, 262151, 0, -524279, 458759, 2, -524280, 131079, 0, -720885, 131079, 0, -786421, 196615, 0, -851957, 196615, 0, -917493, 131079, 0, -983029, 65543, 0, -720886, 65543, 0, -786422, 458759, 3, -851958, 262151, 0, -917494, 196615, 0, -983030, 65543, 0, -720887, 458759, 2, -786423, 458759, 2, -851959, 262151, 0, -917495, 458759, 2, -983031, 458759, 3, -720888, 458759, 3, -786424, 131079, 0, -851960, 458759, 3, -917496, 458759, 2, -983032, 131079, 0, -720889, 327687, 0, -786425, 458759, 2, -851961, 196615, 0, -917497, 458759, 3, -983033, 196615, 0, -720890, 65543, 0, -786426, 458759, 2, -851962, 262151, 0, -917498, 458759, 2, -983034, 458759, 3, -720891, 196615, 0, -786427, 262151, 0, -851963, 65543, 0, -917499, 327687, 0, -983035, 327687, 0, -720892, 65543, 0, -786428, 131079, 0, -851964, 196615, 0, -917500, 458759, 2, -983036, 196615, 0, -720893, 196615, 0, -786429, 327687, 0, -851965, 458759, 3, -917501, 196615, 0, -983037, 131079, 0, -720894, 131079, 0, -786430, 65543, 0, -851966, 458759, 2, -917502, 196615, 0, -983038, 262151, 0, -720895, 458759, 3, -786431, 458759, 2, -851967, 262151, 0, -917503, 196615, 0, -983039, 65543, 0, -720896, 196615, 0, -786432, 131079, 0, -851968, 196615, 0, -917504, 65543, 0, -983040, 262151, 0, -655361, 196615, 0, -720897, 458759, 3, -786433, 131079, 0, -851969, 196615, 0, -917505, 458759, 2, -655362, 458759, 3, -720898, 65543, 0, -786434, 327687, 0, -851970, 262151, 0, -917506, 458759, 2, -655363, 327687, 0, -720899, 262151, 0, -786435, 196615, 0, -851971, 458759, 3, -917507, 458759, 3, -655364, 262151, 0, -720900, 131079, 0, -786436, 327687, 0, -851972, 131079, 0, -917508, 131079, 0, -655365, 196615, 0, -720901, 327687, 0, -786437, 131079, 0, -851973, 131079, 0, -917509, 131079, 0, -655366, 458759, 3, -720902, 196615, 0, -786438, 196615, 0, -851974, 262151, 0, -917510, 262151, 0, -655367, 458759, 3, -720903, 327687, 0, -786439, 196615, 0, -851975, 196615, 0, -917511, 327687, 0, -655368, 262151, 0, -720904, 131079, 0, -786440, 131079, 0, -851976, 196615, 0, -917512, 327687, 0, -655369, 196615, 0, -720905, 196615, 0, -786441, 196615, 0, -851977, 131079, 0, -917513, 327687, 0, -655370, 327687, 0, -720906, 131079, 0, -786442, 327687, 0, -851978, 458759, 2, -917514, 458759, 2, -655371, 458759, 3, -720907, 458759, 2, -786443, 458759, 2, -851979, 327687, 0, -917515, 196615, 0, -655372, 65543, 0, -720908, 131079, 0, -786444, 327687, 0, -851980, 458759, 3, -917516, 458759, 3, -655373, 65543, 0, -720909, 131079, 0, -786445, 131079, 0, -851981, 327687, 0, -917517, 458759, 3, -655374, 196615, 0, -720910, 458759, 3, -786446, 458759, 3, -851982, 327687, 0, -917518, 262151, 0, -655375, 196615, 0, -720911, 458759, 2, -786447, 458759, 2, -851983, 458759, 2, -917519, 196615, 0, -655376, 262151, 0, -720912, 458759, 2, -786448, 458759, 3, -851984, 262151, 0, -917520, 327687, 0, -655377, 262151, 0, -720913, 65543, 0, -786449, 196615, 0, -851985, 131079, 0, -917521, 262151, 0, -655378, 327687, 0, -720914, 196615, 0, -786450, 65543, 0, -851986, 196615, 0, -917522, 262151, 0)
 layer_1/name = "GroundObjects"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
-layer_1/y_sort_origin = 0
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(-983045, 65543, 363, -917509, 65543, 364, -851973, 65543, 365, -786437, 65543, 366, -720901, 65543, 367, -983044, 131079, 363, -917508, 131079, 364, -851972, 131079, 365, -786436, 131079, 366, -720900, 131079, 367, -655364, 131079, 368, -983043, 196615, 363, -917507, 196615, 364, -851971, 196615, 365, -786435, 196615, 366, -720899, 196615, 367, -655363, 196615, 368, -983042, 262151, 363, -917506, 262151, 364, -851970, 262151, 365, -786434, 262151, 366, -720898, 262151, 367, -655362, 262151, 368, -983041, 327687, 363, -917505, 327687, 364, -851969, 327687, 365, -786433, 327687, 366, -720897, 327687, 367, -720903, 10, 65536, -851975, 10, 65536, -720905, 10, 65536, -851977, 10, 65536, -655371, 10, 65536, -786443, 10, 65536, -917515, 10, 65536, -589837, 10, 65536, -720909, 10, 65536, -851981, 10, 65536, -786447, 10, 65536, -917519, 10, 65536, -655375, 10, 65536, -720913, 10, 65536, -655379, 10, 65536, -786451, 10, 65536, -851985, 10, 65536, -917523, 10, 65536, -720896, 10, 65536, -851968, 10, 65536, -983040, 10, 65536, -589822, 10, 65536, -720894, 10, 65536, -655356, 10, 65536, -720890, 10, 65536, -589816, 10, 65536, -524278, 10, 65536, -655350, 10, 65536, -720888, 10, 65536, -786422, 10, 65536, -851960, 10, 65536, -917494, 10, 65536, -983032, 10, 65536, -851962, 10, 65536, -983034, 10, 65536, -786428, 10, 65536, -917500, 10, 65536, -851966, 10, 65536, -983038, 10, 65536)
 layer_2/name = "airObjects"
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = true
-layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("22_wlvvo")
@@ -30166,6 +31092,12 @@ z_index = 1
 position = Vector2(-40, -152)
 can_leaf = true
 can_wind = true
+
+[node name="AnimationTree" parent="player" index="4"]
+root_node = NodePath("../Skin")
+libraries = {
+"": SubResource("AnimationLibrary_1qbwx")
+}
 
 [node name="Camera2D" parent="player" index="5"]
 limit_left = -288
@@ -30187,7 +31119,7 @@ z_index = 1
 position = Vector2(-40, -176)
 next_scene_path = "res://src/World/Houses/TransistionPoint2.tscn"
 invisible = true
-Spawn_location = Vector2(24, 112)
+Spawn_location = Vector2(66, 16)
 Spawn_direction = Vector2(0, -1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

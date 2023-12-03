@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddxpyqinkua4j"]
 
-[ext_resource type="Texture2D" uid="uid://dneqeda65gg0y" path="res://assets/PokemonTilesets/Outside.png" id="1_4i0b2"]
+[ext_resource type="Texture2D" uid="uid://brfu8kio0imw5" path="res://assets/PokemonTilesets/Houses/FivisGym.png" id="1_m5k52"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_c4ro3"]
 [ext_resource type="Texture2D" uid="uid://ndkd0mm6smh" path="res://assets/PokemonTilesets/Doors/Gym1.png" id="3_2tdv8"]
 
@@ -12,13 +12,12 @@ collision_mask = 0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
-texture = ExtResource("1_4i0b2")
-region_enabled = true
+texture = ExtResource("1_m5k52")
 region_rect = Rect2(0, 5600, 112, 80)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 4)
-polygon = PackedVector2Array(-56, -36, 56, -36, 56, 20, 8, 20, 8, 4, -8, 4, -8, 20, -56, 20)
+polygon = PackedVector2Array(-40, -36, 40, -36, 40, 20, 8, 20, 8, 4, -8, 4, -8, 20, -40, 20)
 
 [node name="Door" parent="." instance=ExtResource("2_c4ro3")]
 position = Vector2(0, 16)

@@ -1234,18 +1234,16 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-122, 55)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f6evh"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(100, 10, 1)
-particle_flag_disable_z = true
+angle_max = 45.0
 direction = Vector3(0.7, 0.5, 0)
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
 angular_velocity_min = 58.0
 angular_velocity_max = 62.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-angle_max = 45.0
+gravity = Vector3(0, 0, 0)
 hue_variation_min = -0.02
 hue_variation_max = 0.02
 
@@ -1277,6 +1275,10 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_uf1tr")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Skin")
+libraries = {
+"": SubResource("AnimationLibrary_1qbwx")
+}
 tree_root = SubResource("AnimationNodeStateMachine_xv4xc")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.000801921, 0.0131004)
