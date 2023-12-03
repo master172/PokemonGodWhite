@@ -116,10 +116,10 @@ hframes = 5
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Playing"
 libraries = {
 "": SubResource("AnimationLibrary_q6q2s")
 }
+autoplay = "Playing"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0

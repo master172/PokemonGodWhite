@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://basjxyddsb2x2"]
+[gd_scene load_steps=61 format=3 uid="uid://basjxyddsb2x2"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
 [ext_resource type="Resource" uid="uid://dgf17pnpsvtsr" path="res://Core/Pokemon/Caterpie.tres" id="2_ysqt8"]
@@ -10,6 +10,938 @@
 [ext_resource type="Script" path="res://src/World/Helpers/EntryPlayer.gd" id="11_lh71d"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="16_0htb7"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="22_cd3uj"]
+
+[sub_resource type="Animation" id="Animation_48a5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kgrl3"]
+resource_name = "RunDown"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(23, 40, 16, 18), Rect2(6, 41, 16, 17), Rect2(42, 40, 16, 18), Rect2(6, 41, 16, 17)]
+}
+
+[sub_resource type="Animation" id="Animation_bgxb5"]
+resource_name = "RunLeft"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(78, 40, 16, 18), Rect2(60, 40, 16, 18), Rect2(96, 40, 16, 17), Rect2(60, 40, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_ids25"]
+resource_name = "RunRight"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(185, 40, 16, 17), Rect2(167, 40, 16, 18), Rect2(203, 40, 16, 18), Rect2(167, 40, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_p6f76"]
+resource_name = "RunUp"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(131, 39, 16, 19), Rect2(113, 39, 16, 18), Rect2(149, 39, 16, 19), Rect2(113, 39, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_yhfbn"]
+resource_name = "cycleDown"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(22, 97, 16, 22), Rect2(4, 97, 16, 21), Rect2(41, 97, 16, 22), Rect2(4, 97, 16, 21)]
+}
+
+[sub_resource type="Animation" id="Animation_hcf3g"]
+resource_name = "cycleIdleDown"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(4, 97, 16, 21)]
+}
+
+[sub_resource type="Animation" id="Animation_cko1q"]
+resource_name = "cycleIdleLeft"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(118, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_4ntdl"]
+resource_name = "cycleIdleRight"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(189, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_dbk23"]
+resource_name = "cycleIdleUp"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(61, 97, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_yu0lv"]
+resource_name = "cycleLeft"
+length = 1.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(118, 97, 20, 22), Rect2(142, 97, 20, 22), Rect2(166, 97, 20, 22), Rect2(142, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_hcfy1"]
+resource_name = "cycleRight"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(189, 97, 20, 22), Rect2(213, 97, 20, 22), Rect2(237, 97, 20, 22), Rect2(213, 97, 20, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_ff4qv"]
+resource_name = "cycleTurnDown"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(22, 97, 16, 22), Rect2(4, 97, 16, 21)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_75iv6"]
+resource_name = "cycleTurnLeft"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(142, 97, 20, 22), Rect2(118, 97, 20, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g7fcw"]
+resource_name = "cycleTurnRight"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(213, 97, 20, 22), Rect2(189, 97, 20, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gc1sl"]
+resource_name = "cycleTurnUp"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(80, 97, 16, 22), Rect2(61, 97, 16, 22)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3tm6"]
+resource_name = "cycleUp"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(80, 97, 16, 22), Rect2(61, 97, 16, 22), Rect2(99, 97, 16, 22), Rect2(61, 97, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_yea41"]
+resource_name = "dissapear"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"entered_door"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a4dbl"]
+resource_name = "idleDown"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(6, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_j2ks2"]
+resource_name = "idleLeft"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(60, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_5gfbc"]
+resource_name = "idleRight"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(170, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_jk3q5"]
+resource_name = "idleUp"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(115, 9, 16, 19)]
+}
+
+[sub_resource type="Animation" id="Animation_tfn0u"]
+resource_name = "surfDown"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(137, 139, 20, 24), Rect2(168, 140, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_rqpx4"]
+resource_name = "surfLeft"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(138, 203, 21, 24), Rect2(169, 204, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_b3rjv"]
+resource_name = "surfRight"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(136, 234, 21, 24), Rect2(168, 235, 22, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_sj4v0"]
+resource_name = "surfTurnDown"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 140, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wtxcd"]
+resource_name = "surfTurnLeft"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(169, 204, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r0gvp"]
+resource_name = "surfTurnRight"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 235, 22, 23)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r66yl"]
+resource_name = "surfTurnUp"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(168, 172, 22, 25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4esqw"]
+resource_name = "surfUp"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(137, 171, 20, 26), Rect2(168, 172, 22, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_mqp00"]
+resource_name = "turnDown"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(24, 9, 16, 19), Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_37u6i"]
+resource_name = "turnLeft"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(78, 10, 16, 18), Rect2(60, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_075pv"]
+resource_name = "turnRight"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(188, 10, 16, 18), Rect2(170, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ff5b0"]
+resource_name = "turnUp"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_turning_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ny5o2"]
+resource_name = "walkDown"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(24, 9, 16, 19), Rect2(6, 9, 16, 19), Rect2(42, 9, 16, 19), Rect2(6, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5e37v"]
+resource_name = "walkLeft"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(78, 10, 16, 18), Rect2(60, 9, 16, 19), Rect2(96, 10, 16, 18), Rect2(60, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cju83"]
+resource_name = "walkRight"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(188, 10, 16, 18), Rect2(170, 9, 16, 19), Rect2(206, 10, 16, 18), Rect2(170, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lqwt0"]
+resource_name = "walkUp"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(134, 9, 16, 19), Rect2(115, 9, 16, 19), Rect2(152, 9, 16, 19), Rect2(115, 9, 16, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qbwx"]
+_data = {
+"RESET": SubResource("Animation_48a5r"),
+"RunDown": SubResource("Animation_kgrl3"),
+"RunLeft": SubResource("Animation_bgxb5"),
+"RunRight": SubResource("Animation_ids25"),
+"RunUp": SubResource("Animation_p6f76"),
+"cycleDown": SubResource("Animation_yhfbn"),
+"cycleIdleDown": SubResource("Animation_hcf3g"),
+"cycleIdleLeft": SubResource("Animation_cko1q"),
+"cycleIdleRight": SubResource("Animation_4ntdl"),
+"cycleIdleUp": SubResource("Animation_dbk23"),
+"cycleLeft": SubResource("Animation_yu0lv"),
+"cycleRight": SubResource("Animation_hcfy1"),
+"cycleTurnDown": SubResource("Animation_ff4qv"),
+"cycleTurnLeft": SubResource("Animation_75iv6"),
+"cycleTurnRight": SubResource("Animation_g7fcw"),
+"cycleTurnUp": SubResource("Animation_gc1sl"),
+"cycleUp": SubResource("Animation_t3tm6"),
+"dissapear": SubResource("Animation_yea41"),
+"idleDown": SubResource("Animation_a4dbl"),
+"idleLeft": SubResource("Animation_j2ks2"),
+"idleRight": SubResource("Animation_5gfbc"),
+"idleUp": SubResource("Animation_jk3q5"),
+"surfDown": SubResource("Animation_tfn0u"),
+"surfLeft": SubResource("Animation_rqpx4"),
+"surfRight": SubResource("Animation_b3rjv"),
+"surfTurnDown": SubResource("Animation_sj4v0"),
+"surfTurnLeft": SubResource("Animation_wtxcd"),
+"surfTurnRight": SubResource("Animation_r0gvp"),
+"surfTurnUp": SubResource("Animation_r66yl"),
+"surfUp": SubResource("Animation_4esqw"),
+"turnDown": SubResource("Animation_mqp00"),
+"turnLeft": SubResource("Animation_37u6i"),
+"turnRight": SubResource("Animation_075pv"),
+"turnUp": SubResource("Animation_ff5b0"),
+"walkDown": SubResource("Animation_ny5o2"),
+"walkLeft": SubResource("Animation_5e37v"),
+"walkRight": SubResource("Animation_cju83"),
+"walkUp": SubResource("Animation_lqwt0")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly0ns"]
 size = Vector2(23.8016, 23.8961)
@@ -237,6 +1169,12 @@ position = Vector2(-392, 696)
 can_leaf = true
 can_wind = true
 
+[node name="AnimationTree" parent="player" index="4"]
+root_node = NodePath("../Skin")
+libraries = {
+"": SubResource("AnimationLibrary_1qbwx")
+}
+
 [node name="Camera2D" parent="player" index="5"]
 limit_left = -1000
 limit_top = -1000
@@ -264,7 +1202,7 @@ my_scene = "res://src/World/Route1/Part1Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="CollisionShape2D" parent="WayManager/Area" index="0"]
-position = Vector2(0.743803, 13.052)
+position = Vector2(0.743803, 13.1494)
 
 [node name="WayManager2" parent="." node_paths=PackedStringArray("to_add_parent") instance=ExtResource("10_20xwa")]
 to_add_parent = NodePath("..")

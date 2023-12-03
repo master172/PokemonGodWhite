@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csyacx8un7080"]
+[gd_scene load_steps=12 format=3 uid="uid://csyacx8un7080"]
 
 [ext_resource type="Script" path="res://Core/Battle/battle_scene.gd" id="1_lsbo8"]
 [ext_resource type="PackedScene" uid="uid://4oakufv7l1dw" path="res://Core/Battle/Ui/hud.tscn" id="3_r76kw"]
@@ -6,9 +6,7 @@
 [ext_resource type="Script" path="res://Core/Battle/DialogHandler.gd" id="5_duj7c"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="7_1shl8"]
 [ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="8_geedj"]
-[ext_resource type="PackedScene" uid="uid://b2uywh38qmnxh" path="res://Core/Battle/Areas/BattleArea0.tscn" id="8_kpahu"]
 [ext_resource type="PackedScene" uid="uid://c0xx2xkpqlmlr" path="res://src/Pokemon/PokeBalls/thrower.tscn" id="9_ksmjk"]
-[ext_resource type="PackedScene" uid="uid://i1sa14dndwbs" path="res://Core/Battle/Cosmetics/Rock1.tscn" id="9_ku12e"]
 
 [sub_resource type="Resource" id="Resource_i0e1r"]
 script = ExtResource("7_1shl8")
@@ -49,12 +47,16 @@ position = Vector2(609, 760)
 gizmo_extents = 67.1
 
 [node name="AllyPokemon" type="Node2D" parent="."]
+z_index = 1
 
 [node name="EnemyPokemon" type="Node2D" parent="."]
+z_index = 1
 
 [node name="PresistentAttacks" type="Node2D" parent="."]
+z_index = 1
 
 [node name="PokeData" parent="." instance=ExtResource("4_asoq2")]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -70,11 +72,6 @@ PokemonCaught = SubResource("Resource_kh0ti")
 
 [node name="thrower" parent="." instance=ExtResource("9_ksmjk")]
 position = Vector2(600, 800)
-
-[node name="Area0" parent="." instance=ExtResource("8_kpahu")]
-
-[node name="Rock" parent="Area0" instance=ExtResource("9_ku12e")]
-position = Vector2(481, 443)
 
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]
 [connection signal="run" from="Hud" to="." method="_on_hud_run"]

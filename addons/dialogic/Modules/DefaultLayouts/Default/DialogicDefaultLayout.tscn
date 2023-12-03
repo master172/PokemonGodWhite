@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayouts/Default/DialogicDefaultLayout.gd" id="1"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="2"]
-[ext_resource type="Material" uid="uid://0wc7bedn7ee8" path="res://addons/dialogic/Modules/Background/default_background_transition.tres" id="2_f6bas"]
+[ext_resource type="Material" uid="uid://b3b6jlp5s5d0t" path="res://addons/dialogic/Modules/Background/default_background_transition.tres" id="2_f6bas"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="3"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="3_dbhei"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="4"]
@@ -387,9 +387,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -294.0
-offset_top = -154.0
-offset_right = 294.0
+offset_left = -536.0
+offset_top = -248.0
+offset_right = 536.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -403,10 +403,10 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 15
-theme_override_font_sizes/bold_font_size = 15
-theme_override_font_sizes/italics_font_size = 15
-theme_override_font_sizes/bold_italics_font_size = 15
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
 bbcode_enabled = true
 text = "Some default text"
 visible_characters_behavior = 1
@@ -475,6 +475,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("14_d2258")
+metadata/_edit_lock_ = true
 
 [node name="Choices" type="VBoxContainer" parent="DefaultStyle"]
 layout_mode = 1

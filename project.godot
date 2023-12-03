@@ -81,6 +81,18 @@ export/convert_text_resources_to_binary=false
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/dialogic/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Core/": "yellow",
+"res://Libraries/": "purple",
+"res://Resources/": "gray",
+"res://android/": "green",
+"res://assets/": "red",
+"res://autoload/": "teal",
+"res://src/": "blue"
+}
+
 [input]
 
 W={

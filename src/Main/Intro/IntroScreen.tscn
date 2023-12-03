@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://c57rfqn8acfsr" path="res://assets/Intro/8.png" id="8_wxoa0"]
 [ext_resource type="Texture2D" uid="uid://7d4sryadscs8" path="res://assets/Intro/9.png" id="9_lk7ci"]
 [ext_resource type="Texture2D" uid="uid://ci3l71h7hci2s" path="res://assets/Intro/10.png" id="10_137c1"]
-[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="12_uj6r3"]
 [ext_resource type="Theme" uid="uid://d3g4i4dshtdpu" path="res://addons/dialogic/Editor/Events/styles/InputFieldsStyle.tres" id="13_0gprs"]
 [ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="14_ifhxl"]
 [ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="15_ws26d"]
@@ -140,6 +139,13 @@ _data = {
 "RESET": SubResource("Animation_uamav")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mjot"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.45098)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okv3q"]
 bg_color = Color(0.113725, 0.113725, 0.113725, 0.509804)
 corner_radius_top_left = 32
@@ -205,7 +211,7 @@ anchor_bottom = 1.0
 offset_top = -240.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = ExtResource("12_uj6r3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mjot")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1

@@ -1,2 +1,0 @@
-Prevents this directory from getting auto-deleted.
-Feel free to delete this file after adding at least one setting.
