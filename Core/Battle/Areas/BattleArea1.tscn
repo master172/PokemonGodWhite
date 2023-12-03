@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dglf08q21ojbl"]
+[gd_scene load_steps=11 format=3 uid="uid://dglf08q21ojbl"]
 
+[ext_resource type="Script" path="res://Core/Battle/Areas/BattleArea.gd" id="1_4iglo"]
 [ext_resource type="Texture2D" uid="uid://de6txs7uqd6i4" path="res://assets/Stones/Rocks_source_texture_shadow_dark.png" id="1_nd3t2"]
 [ext_resource type="Script" path="res://Core/Battle/Areas/Tilemap.gd" id="3_xiqw8"]
 [ext_resource type="Texture2D" uid="uid://qb2u5r6fh8hm" path="res://assets/PokemonTilesets/Caves.png" id="8_4pcn2"]
@@ -14053,8 +14054,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="Area0" type="Node2D"]
+[node name="Area0" type="Node2D" node_paths=PackedStringArray("NavMesh", "Tilemap")]
 y_sort_enabled = true
+script = ExtResource("1_4iglo")
+NavMesh = NodePath("NavigationRegion2D")
+Tilemap = NodePath("mainTilemap")
 
 [node name="mainTilemap" type="TileMap" parent="."]
 unique_name_in_owner = true

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2uywh38qmnxh"]
+[gd_scene load_steps=11 format=3 uid="uid://b2uywh38qmnxh"]
 
+[ext_resource type="Script" path="res://Core/Battle/Areas/BattleArea.gd" id="1_xxs3t"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_68o2s"]
 [ext_resource type="Texture2D" uid="uid://l75d0tgrh4li" path="res://assets/Bushes/Assets_texture_shadow_dark_source.png" id="2_waepr"]
 [ext_resource type="Script" path="res://Core/Battle/Areas/Tilemap.gd" id="3_i4rw8"]
@@ -4019,8 +4020,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1208, 0, 1200, 800, 0, 800)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="Area0" type="Node2D"]
+[node name="Area0" type="Node2D" node_paths=PackedStringArray("NavMesh", "Tilemap")]
 y_sort_enabled = true
+script = ExtResource("1_xxs3t")
+NavMesh = NodePath("NavigationRegion2D")
+Tilemap = NodePath("mainTilemap")
 
 [node name="mainTilemap" type="TileMap" parent="."]
 unique_name_in_owner = true
