@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cddiyqrhvwfhy"
-path="res://.godot/imported/WaterWithoutShore.png-b62f9619226ab096c1f9cbddbdc4c447.ctex"
+uid="uid://b4hder4dm0ked"
+path="res://.godot/imported/Outdoors2.png-99d5013591d4e58ebd5b60bba5f3c45d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PokemonTilesets/WaterWithoutShore.png"
-dest_files=["res://.godot/imported/WaterWithoutShore.png-b62f9619226ab096c1f9cbddbdc4c447.ctex"]
+source_file="res://assets/PokemonTilesets/Outdoors2.png"
+dest_files=["res://.godot/imported/Outdoors2.png-99d5013591d4e58ebd5b60bba5f3c45d.ctex"]
 
 [params]
 
