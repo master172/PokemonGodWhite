@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qb2u5r6fh8hm"
-path="res://.godot/imported/Caves.png-a38f8e70b493311c037802de499c3257.ctex"
+uid="uid://fa87xrp3v1re"
+path="res://.godot/imported/CavesInterior.png-6326d9840313a1d87d1196e3c2769fe0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PokemonTilesets/Caves.png"
-dest_files=["res://.godot/imported/Caves.png-a38f8e70b493311c037802de499c3257.ctex"]
+source_file="res://assets/PokemonTilesets/CavesInterior.png"
+dest_files=["res://.godot/imported/CavesInterior.png-6326d9840313a1d87d1196e3c2769fe0.ctex"]
 
 [params]
 

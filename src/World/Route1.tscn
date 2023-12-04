@@ -285,7 +285,7 @@ shape = SubResource("RectangleShape2D_wa2eq")
 position = Vector2(472, 824)
 next_scene_path = "res://src/World/CaveOfBegginings.tscn"
 invisible = true
-Spawn_location = Vector2(152, -272)
+Spawn_location = Vector2(152, -224)
 Spawn_direction = Vector2(0, 1)
 
 [node name="Door2" parent="." instance=ExtResource("9_110l4")]
