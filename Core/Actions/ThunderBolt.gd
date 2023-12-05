@@ -57,7 +57,7 @@ func _on_attack_timer_timeout():
 		if User.opposing_pokemons != []:
 			if User.opposing_pokemons[0] == target[0]:
 				print("attack")
-				holder.calculate_damage(target[0],User)
+				holder.calculate_damage(target[0],User,1)
 				if oneshot == false:
 					connect("attack_landed",SignalBus.on_attack_landed)
 					oneshot = true

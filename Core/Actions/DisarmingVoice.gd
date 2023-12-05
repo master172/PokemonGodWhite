@@ -29,7 +29,7 @@ func _attack():
 			if User.opposing_pokemons[0] == target[0]:
 				print("attack")
 				target[0].animate_modulation_change(Color(0.749, 0.169, 1))
-				holder.calculate_damage(target[0],User)
+				holder.calculate_damage(target[0],User,1)
 				if oneshot == false:
 					connect("attack_landed",SignalBus.on_attack_landed)
 					oneshot = true

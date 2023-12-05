@@ -26,7 +26,7 @@ func start_attack(User:CharacterBody2D):
 		if attack.has_method("_attack"):
 			attack._attack()
 	
-func calculate_damage(body,User):
+func calculate_damage(body,User,AttackType:int = 0):
 	var attack_rng = RandomNumberGenerator.new()
 	var critical = 1
 	var pokemon:game_pokemon = User.pokemon
@@ -60,7 +60,12 @@ func calculate_damage(body,User):
 			type = type
 		elif mod >1:
 			type += mod
-	var damage:int = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+			
+	var damage:int = 0
+	if AttackType == 0:
+		damage = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+	elif AttackType == 1:
+		damage = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
 	body.recive_damage(damage,User,User)
 	
 	print(" ")

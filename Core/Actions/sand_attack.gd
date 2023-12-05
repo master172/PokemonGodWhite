@@ -41,7 +41,7 @@ func _on_timer_timeout():
 func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
-			holder.calculate_damage(body,User)
+			holder.calculate_damage(body,User,1)
 			if oneshot == false:
 				connect("attack_landed",SignalBus.on_attack_landed)
 				oneshot = true
