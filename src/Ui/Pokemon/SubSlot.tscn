@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bomnjll0jderl"]
+[gd_scene load_steps=13 format=3 uid="uid://bomnjll0jderl"]
 
 [ext_resource type="Script" path="res://src/Ui/Pokemon/SubSlot.gd" id="1_dk3ed"]
-[ext_resource type="Texture2D" uid="uid://dud5cpceuam5r" path="res://assets/Ui/PartyScreen/standby_pokemon_background.png" id="1_s6x57"]
+[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_gj7o8"]
 [ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_oi8t3"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_vkix7"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_ykvxn"]
-[ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="5_x0n5g"]
 
 [sub_resource type="Animation" id="Animation_gunc0"]
 resource_name = "Idle"
@@ -44,14 +43,40 @@ _data = {
 "RESET": SubResource("Animation_tm6bs")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bweq"]
+bg_color = Color(0, 0, 0, 0.572549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j2sh"]
+bg_color = Color(0.6, 0, 0.0313726, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2kuh"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_c0asg"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6j2sh")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_j2kuh")
+
 [node name="SubSlot" type="Node2D"]
 script = ExtResource("1_dk3ed")
 
-[node name="BackGround" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(5, 5)
-texture = ExtResource("1_s6x57")
-hframes = 2
+[node name="BackGround" type="Panel" parent="."]
+offset_left = -376.0
+offset_top = -56.0
+offset_right = 376.0
+offset_bottom = 56.0
+theme_override_styles/panel = ExtResource("2_gj7o8")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -66,6 +91,8 @@ offset_left = -248.0
 offset_top = -40.0
 offset_right = -141.0
 offset_bottom = -1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_vkix7")
 theme_override_font_sizes/font_size = 30
 text = "Pikachu"
@@ -73,9 +100,11 @@ text = "Pikachu"
 [node name="Level" type="Label" parent="."]
 texture_filter = 1
 offset_left = -136.0
-offset_top = 24.0
+offset_top = 16.0
 offset_right = -29.0
-offset_bottom = 63.0
+offset_bottom = 55.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_vkix7")
 theme_override_font_sizes/font_size = 30
 text = "100"
@@ -86,6 +115,8 @@ offset_left = 193.0
 offset_top = 7.0
 offset_right = 250.0
 offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_vkix7")
 theme_override_font_sizes/font_size = 32
 text = "999"
@@ -93,20 +124,22 @@ vertical_alignment = 2
 
 [node name="MaxHealth" type="Label" parent="."]
 texture_filter = 1
-offset_left = 274.0
+offset_left = 264.0
 offset_top = 8.0
-offset_right = 331.0
+offset_right = 348.0
 offset_bottom = 49.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_vkix7")
 theme_override_font_sizes/font_size = 32
-text = "999"
+text = "/  999"
 vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_1e72i")
 }
+autoplay = "Idle"
 
 [node name="Gender" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -115,11 +148,18 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_ykvxn")
 hframes = 2
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 96.0
+offset_top = -24.0
+offset_right = 352.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bweq")
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.0823529, 1, 0.352941, 1)
 offset_left = 105.0
 offset_top = -15.0
 offset_right = 345.0
-theme = ExtResource("5_x0n5g")
+theme = SubResource("Theme_c0asg")
 value = 100.0
 show_percentage = false

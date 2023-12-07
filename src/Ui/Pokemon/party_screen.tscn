@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxf5ewkbq7wsk"]
+[gd_scene load_steps=15 format=3 uid="uid://cxf5ewkbq7wsk"]
 
 [ext_resource type="Script" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
-[ext_resource type="Texture2D" uid="uid://c7ub68vb0b7qa" path="res://assets/Ui/PartyScreen/party_background.png" id="1_7fxw8"]
 [ext_resource type="PackedScene" uid="uid://bbk2dilhl5dmm" path="res://src/Ui/Pokemon/main_slot.tscn" id="2_shw64"]
 [ext_resource type="PackedScene" uid="uid://bomnjll0jderl" path="res://src/Ui/Pokemon/SubSlot.tscn" id="3_7xald"]
 [ext_resource type="Texture2D" uid="uid://dn4wxipelwxhl" path="res://assets/Ui/PartyScreen/exit_background_button.png" id="4_dbhfa"]
@@ -10,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dtygb6rt7c0eh" path="res://assets/Ui/PartyScreen/RadialBg.png" id="8_882g3"]
 [ext_resource type="Texture2D" uid="uid://d4gnim6nuvqe1" path="res://assets/Ui/PartyScreen/RadialPG.png" id="9_qi5mh"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="10_ay2wv"]
+
+[sub_resource type="Gradient" id="Gradient_wxt44"]
+offsets = PackedFloat32Array(0, 0.87055, 1)
+colors = PackedColorArray(0, 0.0639589, 0.363281, 1, 0, 0.0016559, 0.00940534, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_34c7m"]
+gradient = SubResource("Gradient_wxt44")
+fill_to = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6mx3s"]
 shader = ExtResource("7_58kkr")
@@ -39,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7fxw8")
+texture = SubResource("GradientTexture2D_34c7m")
 
 [node name="MainSlot" parent="." instance=ExtResource("2_shw64")]
 position = Vector2(220, 233)

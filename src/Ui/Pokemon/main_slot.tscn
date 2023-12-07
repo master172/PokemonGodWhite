@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbk2dilhl5dmm"]
+[gd_scene load_steps=11 format=3 uid="uid://bbk2dilhl5dmm"]
 
-[ext_resource type="Texture2D" uid="uid://b1dk4uyoeno2a" path="res://assets/Ui/PartyScreen/main_pokemon_background.png" id="1_6h6p6"]
 [ext_resource type="Script" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
+[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_xgbbi"]
 [ext_resource type="Texture2D" uid="uid://tnwsdu8tx56e" path="res://Core/Graphics/Pokemon/Gen1/Icons/BULBASAUR.png" id="3_kvlep"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_oq0tl"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_dqdfx"]
@@ -45,14 +45,22 @@ _data = {
 "RESET": SubResource("Animation_uqftl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nia2x"]
+bg_color = Color(0, 0, 0, 0.572549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="MainSlot" type="Node2D"]
 script = ExtResource("1_j5hej")
 
-[node name="Background" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(5, 5)
-texture = ExtResource("1_6h6p6")
-hframes = 2
+[node name="Background" type="Panel" parent="."]
+offset_left = -184.0
+offset_top = -104.0
+offset_right = 208.0
+offset_bottom = 144.0
+theme_override_styles/panel = ExtResource("2_xgbbi")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -62,10 +70,10 @@ texture = ExtResource("3_kvlep")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_owvcl")
 }
+autoplay = "Idle"
 
 [node name="Name" type="Label" parent="."]
 texture_filter = 1
@@ -73,6 +81,8 @@ offset_left = -25.0
 offset_top = -61.0
 offset_right = 195.0
 offset_bottom = -21.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
 theme_override_font_sizes/font_size = 31
 text = "Bulbasaur"
@@ -84,31 +94,37 @@ offset_left = 24.0
 offset_top = 11.0
 offset_right = 81.0
 offset_bottom = 54.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
 theme_override_font_sizes/font_size = 33
 text = "100"
 vertical_alignment = 1
 
-[node name="MaxHealth" type="Label" parent="."]
+[node name="CurrentHealth" type="Label" parent="."]
 texture_filter = 1
-offset_left = 21.0
+offset_left = 24.0
 offset_top = 88.0
-offset_right = 78.0
+offset_right = 81.0
 offset_bottom = 131.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
 theme_override_font_sizes/font_size = 32
 text = "520"
 vertical_alignment = 1
 
-[node name="CurrentHealth" type="Label" parent="."]
+[node name="MaxHealth" type="Label" parent="."]
 texture_filter = 1
-offset_left = 110.0
+offset_left = 96.0
 offset_top = 88.0
-offset_right = 167.0
+offset_right = 153.0
 offset_bottom = 131.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
 theme_override_font_sizes/font_size = 32
-text = "520"
+text = "/  520"
 vertical_alignment = 1
 
 [node name="Gender" type="Sprite2D" parent="."]
@@ -118,12 +134,19 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_dqdfx")
 hframes = 2
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = -64.0
+offset_top = 56.0
+offset_right = 192.0
+offset_bottom = 88.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nia2x")
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0, 1, 0.286275, 1)
-offset_left = -60.0
-offset_top = 62.0
-offset_right = 180.0
-offset_bottom = 78.0
+offset_left = -56.0
+offset_top = 64.0
+offset_right = 184.0
+offset_bottom = 80.0
 theme = ExtResource("5_lpud0")
 value = 100.0
 rounded = true

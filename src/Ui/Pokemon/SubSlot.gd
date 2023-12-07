@@ -14,9 +14,9 @@ var pokemon:game_pokemon = null
 
 func change_selected(value:bool):
 	if value == true:
-		background.frame = 1
+		background.self_modulate = Color(1, 1, 1, 0.451)
 	else:
-		background.frame = 0
+		background.self_modulate = Color(0.039, 0.039, 0.039, 0.451)
 
 func _ready():
 	if AllyPokemon.get_party_pokemon(slot_no) != null:
