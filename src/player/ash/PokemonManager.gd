@@ -11,6 +11,7 @@ var HashMap = {
 
 func _ready():
 	visible = false
+	global_position -= Vector2(0,16)
 	
 func set_seeable():
 	visible = true

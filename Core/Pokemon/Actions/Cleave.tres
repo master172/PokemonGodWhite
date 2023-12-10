@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://texg0s44dxhj"]
+
+[ext_resource type="PackedScene" uid="uid://dhkp38j5jj8th" path="res://Core/Actions/Cleave.tscn" id="1_ohr30"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_0hsb0"]
+
+[resource]
+script = ExtResource("2_0hsb0")
+name = "Cleave"
+learned_level = 5
+action = ExtResource("1_ohr30")
+staminaCost = 0
+Type = "Dark"
+power = 40.0
+range = 0
