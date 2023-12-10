@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://8gsrhcqg7qyw"]
+
+[ext_resource type="PackedScene" uid="uid://ftqpp4nqmbd6" path="res://Core/Actions/slash.tscn" id="1_iqwx3"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_mm5uh"]
+
+[resource]
+script = ExtResource("1_mm5uh")
+name = "Slash"
+learned_level = 4
+action = ExtResource("1_iqwx3")
+staminaCost = 0
+Type = "Dark"
+power = 35.0
+range = 0

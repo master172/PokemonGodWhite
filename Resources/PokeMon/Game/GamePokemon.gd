@@ -184,9 +184,6 @@ func get_icon():
 func get_front_sprite():
 	return Base_Pokemon.get_front_sprite()
 
-func get_back_sprite():
-	return Base_Pokemon.get_back_sprite()
-
 func inital_learn_moves():
 	for i in move_pool:
 		if i.action.learned_level <= self.level:

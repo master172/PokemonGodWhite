@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbk2dilhl5dmm"]
+[gd_scene load_steps=13 format=3 uid="uid://bbk2dilhl5dmm"]
 
 [ext_resource type="Script" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_xgbbi"]
-[ext_resource type="Texture2D" uid="uid://tnwsdu8tx56e" path="res://Core/Graphics/Pokemon/Gen1/Icons/BULBASAUR.png" id="3_kvlep"]
+[ext_resource type="Texture2D" uid="uid://ddepnuwob1ehj" path="res://Core/Graphics/Zehlvogs/Icons/NAICHI.png" id="3_kdkpd"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_oq0tl"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_dqdfx"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="5_lpud0"]
@@ -52,6 +52,15 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbmg6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k01bk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [node name="MainSlot" type="Node2D"]
 script = ExtResource("1_j5hej")
 
@@ -64,9 +73,9 @@ theme_override_styles/panel = ExtResource("2_xgbbi")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-127, -47)
-scale = Vector2(3, 3)
-texture = ExtResource("3_kvlep")
+position = Vector2(-128, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("3_kdkpd")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -85,7 +94,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
 theme_override_font_sizes/font_size = 31
-text = "Bulbasaur"
+text = "Naichi"
 vertical_alignment = 1
 
 [node name="Level" type="Label" parent="."]
@@ -148,6 +157,8 @@ offset_top = 64.0
 offset_right = 184.0
 offset_bottom = 80.0
 theme = ExtResource("5_lpud0")
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_pbmg6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k01bk")
+value = 82.0
 rounded = true
 show_percentage = false

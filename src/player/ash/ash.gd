@@ -601,9 +601,9 @@ func stop_animation():
 	
 func first_start():
 	player_uid = create_uid()
-	var pikachu = load("res://Core/Pokemon/MainPikachu.tres")
-	var MainPikachu:game_pokemon = game_pokemon.new(pikachu,5)
-	AllyPokemon.add_pokemon(MainPikachu)
+	var naichi = load("res://Core/Pokemon/Naichi.tres")
+	var MyNaichi:game_pokemon = game_pokemon.new(naichi,5)
+	AllyPokemon.add_pokemon(MyNaichi)
 
 func create_uid():
 	var rng = RandomNumberGenerator.new()

@@ -19,6 +19,7 @@ func change_selected(value:bool):
 		background.self_modulate = Color(0.039, 0.039, 0.039, 0.451)
 
 func _ready():
+	change_selected(false)
 	if AllyPokemon.get_party_pokemon(slot_no) != null:
 		pokemon = AllyPokemon.get_party_pokemon(slot_no)
 		update_items()

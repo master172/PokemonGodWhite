@@ -62,7 +62,6 @@ class_name Pokemon
 
 @export_group("Sprites")
 @export var Front:Texture2D
-@export var Back:Texture2D
 @export var Icon:Texture2D
 @export var Overworld:Texture2D
 
@@ -113,9 +112,6 @@ func get_icon_sprite():
 
 func get_front_sprite():
 	return Front
-
-func get_back_sprite():
-	return Back
 	
 func get_Type1():
 	return Type1
