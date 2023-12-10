@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dax0yjivpul7x"]
 
 [ext_resource type="Script" path="res://src/Pokemon/OverWorldPokemon.gd" id="1_1f7kr"]
-[ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sv3ig"]
+[ext_resource type="Texture2D" uid="uid://dbud2xu485wsl" path="res://Core/Graphics/Zehlvogs/Follower/NAICHI.png" id="2_nxj6p"]
 
 [sub_resource type="Animation" id="Animation_6vfpa"]
 length = 0.001
@@ -158,7 +158,7 @@ script = ExtResource("1_1f7kr")
 [node name="PokeSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
-texture = ExtResource("2_sv3ig")
+texture = ExtResource("2_nxj6p")
 hframes = 4
 vframes = 4
 

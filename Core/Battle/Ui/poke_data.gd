@@ -19,6 +19,8 @@ var player_pokemon:BattlePokemon = null
 
 var previous_stamina
 
+var Inside_Pokemons:Array = []
+
 func set_player(pokemon:game_pokemon,num:int = 0):
 	if num == 0:
 		d_icon.texture = pokemon.get_icon()
@@ -48,6 +50,7 @@ func set_exp_bar(pokemon:game_pokemon,exp_bar):
 	exp_bar.min_value = pokemon.exp_to_current_level
 
 func _physics_process(delta):
+
 	pokemons.visible = BattleManager.Trainer_Battle
 	if BattleManager.Trainer_Battle == true:
 		pokemons.frame = BattleManager.EnemyPokemons.size()
@@ -63,3 +66,16 @@ func set_stamina_bar():
 		await tween.finished
 	if player_pokemon != null:
 		previous_stamina = player_pokemon.Stamina
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("PlayerPokemon") or body.is_in_group("Pokemon"):
+		Inside_Pokemons.append(body)
+		modulate = Color(1,1,1,0.3)
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("PlayerPokemon") or body.is_in_group("Pokemon"):
+		Inside_Pokemons.erase(body)
+		if Inside_Pokemons == []:
+		
+			modulate = Color(1,1,1)

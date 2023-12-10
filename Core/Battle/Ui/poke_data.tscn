@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4ckyncwga1be"]
+[gd_scene load_steps=12 format=3 uid="uid://d4ckyncwga1be"]
 
 [ext_resource type="Script" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
 [ext_resource type="Texture2D" uid="uid://bgwlfovxeby4y" path="res://assets/Ui/BattleScene/databox_normal.png" id="1_v6x5b"]
@@ -27,6 +27,9 @@ bg_color = Color(0.156863, 0.741176, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gij1k"]
 bg_color = Color(0, 0.741176, 0.721569, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jixej"]
+size = Vector2(312, 172)
 
 [node name="PokeData" type="Control"]
 layout_mode = 3
@@ -178,3 +181,16 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g15p5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gij1k")
 fill_mode = 1
 show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(152, 56)
+shape = SubResource("RectangleShape2D_jixej")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1048, 82)
+shape = SubResource("RectangleShape2D_jixej")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
