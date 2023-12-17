@@ -5,8 +5,9 @@
 
 [node name="PokemonManager" type="Node2D"]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_w0ptj")
 
 [node name="pokemon" parent="." instance=ExtResource("2_xqc2i")]
-z_index = 0
+z_as_relative = false

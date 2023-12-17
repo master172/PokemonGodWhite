@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ch7oy3u8esah0"]
 
-[ext_resource type="Script" path="res://Core/Actions/sand_attack.gd" id="1_ig7d7"]
+[ext_resource type="Script" path="res://Core/Actions/Sand_Attack.gd" id="1_ig7d7"]
 [ext_resource type="Texture2D" uid="uid://b1i85d4eo1pgw" path="res://assets/BattleEffects/SandAttack.png" id="2_cid1h"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n10lk"]

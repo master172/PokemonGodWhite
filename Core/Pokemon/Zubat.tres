@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://dcx24t2o0gm4"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://dcx24t2o0gm4"]
 
-[ext_resource type="Texture2D" uid="uid://c0r22u448lslf" path="res://Core/Graphics/Pokemon/Gen1/Back/ZUBAT.png" id="1_3hi6d"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_efh7v"]
 [ext_resource type="Resource" uid="uid://stoes3mvj7wy" path="res://Core/Pokemon/Actions/LeechLife.tres" id="1_pl3pf"]
 [ext_resource type="Resource" uid="uid://dxjoidfxar5ag" path="res://Core/Pokemon/Actions/Supersonic.tres" id="2_iekqr"]
@@ -16,7 +15,6 @@ Type1 = "Poison"
 Type2 = "Flying"
 leveleing_type = null
 Front = ExtResource("2_j1ljj")
-Back = ExtResource("1_3hi6d")
 Icon = ExtResource("3_foexb")
 Overworld = ExtResource("4_n0xly")
 Base_Health = 40

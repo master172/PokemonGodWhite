@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Resources/Npc/Npcs/Lisa.gd" id="1_7jj87"]
 [ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="3_po7ty"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="3_tlqn1"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="3_tlqn1"]
 [ext_resource type="Texture2D" uid="uid://846cvt224lwl" path="res://assets/Npc/Trainers/General/Lisa.png" id="3_xbykm"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_rssv0"]
 

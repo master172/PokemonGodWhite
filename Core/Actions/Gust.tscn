@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://coqbxcj1dmdnq"]
 
-[ext_resource type="Script" path="res://Core/Actions/sand_attack.gd" id="1_p2au7"]
+[ext_resource type="Script" path="res://Core/Actions/Sand_Attack.gd" id="1_p2au7"]
 [ext_resource type="Texture2D" uid="uid://b781ert3n32lp" path="res://assets/BattleEffects/Gust.png" id="2_x3oqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w72b"]

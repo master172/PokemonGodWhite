@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bwhffc1xmgfnx"]
 
 [ext_resource type="Script" path="res://Resources/Npc/Npcs/Jodi.gd" id="1_pjhcc"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_merb7"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="2_merb7"]
 [ext_resource type="Texture2D" uid="uid://cq8cmb61s58us" path="res://assets/Npc/Trainers/General/Jodi.png" id="3_0ch10"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_r1ept"]
 

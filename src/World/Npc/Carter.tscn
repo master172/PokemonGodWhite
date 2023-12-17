@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bnerixltwubti"]
 
 [ext_resource type="Script" path="res://src/World/Npc/Carter.gd" id="1_2aetq"]
-[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="2_bwg4e"]
+[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="2_bwg4e"]
 [ext_resource type="Texture2D" uid="uid://c8g1svg2ml7p3" path="res://assets/Npc/Trainers/Story/Gym/Carter.png" id="3_ctg2h"]
 [ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="3_mdxar"]
 

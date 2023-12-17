@@ -3,13 +3,11 @@ extends Resource
 class_name GameAction
 
 @export var base_action:BaseAction = null
-
-
-
-
+@export var power:int = 0
 
 func _init(Base_Action:BaseAction = BaseAction.new()):
 	base_action = Base_Action
+	power = base_action.power
 
 func Name():
 	return base_action.name
@@ -63,9 +61,9 @@ func calculate_damage(body,User,AttackType:int = 0):
 			
 	var damage:int = 0
 	if AttackType == 0:
-		damage = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+		damage = ((((2*pokemon.level/5)+2)*power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
 	elif AttackType == 1:
-		damage = ((((2*pokemon.level/5)+2)*base_action.power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
+		damage = ((((2*pokemon.level/5)+2)*power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
 	body.recive_damage(damage,User,User)
 	
 	print(" ")

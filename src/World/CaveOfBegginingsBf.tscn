@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://btc06udca3qus"]
 
 [ext_resource type="Script" path="res://src/World/CaveOfBegginingsBf.gd" id="1_sgirk"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_tildt"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="2_tildt"]
 [ext_resource type="TileSet" uid="uid://b6v46wsnpnexa" path="res://src/World/Tilesets/Cave.tres" id="2_wif64"]
 [ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="14_rolfg"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="15_bjkna"]

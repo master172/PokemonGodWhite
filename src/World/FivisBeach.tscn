@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://cod833wnv5mhd"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_6usaq"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Paras.tres" id="2_ketbf"]
-[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="3_fnotl"]
-[ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Wurmple.tres" id="4_g2mgv"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="2_ketbf"]
+[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="3_fnotl"]
+[ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Ensparda.tres" id="4_g2mgv"]
 [ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="5_xvosc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="6_3xca0"]
 [ext_resource type="Texture2D" uid="uid://cwf4encngtflp" path="res://assets/PokemonTilesets/TransitionPointExteriors.png" id="6_12tpl"]

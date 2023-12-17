@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://7mrepf8gcgct"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://7mrepf8gcgct"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_l1s3u"]
-[ext_resource type="Texture2D" uid="uid://de1ly2vw6jsd6" path="res://Core/Graphics/Pokemon/Gen3/Back/NOSEPASS.png" id="1_nhbms"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_wxylg"]
 [ext_resource type="Texture2D" uid="uid://bk04xafqpx85r" path="res://Core/Graphics/Pokemon/Gen3/Front/NOSEPASS.png" id="2_sp0ck"]
 [ext_resource type="Resource" uid="uid://1n36tv4yu2cu" path="res://Core/Pokemon/Actions/Harden.tres" id="2_tld23"]
@@ -16,7 +15,6 @@ Type1 = "Rock"
 Type2 = null
 leveleing_type = null
 Front = ExtResource("2_sp0ck")
-Back = ExtResource("1_nhbms")
 Icon = ExtResource("3_crcvm")
 Overworld = ExtResource("4_8lift")
 Base_Health = 30

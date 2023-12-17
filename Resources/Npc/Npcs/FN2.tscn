@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Resources/Npc/Npcs/FN2.gd" id="1_nscuq"]
 [ext_resource type="Texture2D" uid="uid://cpxj36ax0sr7p" path="res://assets/Npc/Trainers/Story/Gym/Npc2.png" id="2_cg7p1"]
-[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Fletchling.tres" id="2_kitn8"]
+[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="2_kitn8"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_5rcxs"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
