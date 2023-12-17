@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://21eu2xl2vdgh"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://21eu2xl2vdgh"]
 
 [ext_resource type="Resource" uid="uid://xw3qldx2o4n1" path="res://Core/Pokemon/Actions/Peck.tres" id="1_u6h40"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_yqjs2"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_cxosg"]
+[ext_resource type="Resource" uid="uid://b2y7ur6xwsrk" path="res://Core/Pokemon/Actions/ThunderShock.tres" id="4_06l0d"]
 [ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="4_hatcn"]
 [ext_resource type="Texture2D" uid="uid://pshqncn1xibq" path="res://Core/Graphics/Zehlvogs/Icons/SPARKAVE.png" id="5_xmv4m"]
 [ext_resource type="Texture2D" uid="uid://bw2m1wgj3jskq" path="res://Core/Graphics/Zehlvogs/Follower/SPARKAVE.png" id="6_cuwu3"]
@@ -24,7 +25,7 @@ Base_Defense = 43
 Special_Base_Attack = 40
 Special_Base_Defense = 38
 Base_Speed = 62
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_u6h40"), ExtResource("2_yqjs2"), ExtResource("3_cxosg")])
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_u6h40"), ExtResource("2_yqjs2"), ExtResource("3_cxosg"), ExtResource("4_06l0d")])
 base_experience = null
 Yield_Health = null
 Yield_Attack = null

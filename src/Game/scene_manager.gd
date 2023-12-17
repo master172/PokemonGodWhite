@@ -233,7 +233,7 @@ func change_scene():
 	var player = Utils.get_player()
 	Utils.set_player()
 	player.set_spawn(player_location,player_direction)
-	player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
+	player.set_poke_pos_dir(player.global_position+Vector2(0,16),player.get_current_facing_direction())
 	Utils.set_player(false)
 	emit_signal("data_set_finished")
 	
@@ -257,7 +257,7 @@ func load_healing_place():
 	var player = Utils.get_player()
 	Utils.set_player()
 	player.set_spawn(Current_healing_place.get_heal_pos(),Current_healing_place.get_heal_dir())
-	player.set_poke_pos_dir(player.global_position,player.get_current_facing_direction())
+	player.set_poke_pos_dir(player.global_position+Vector2(0,16),player.get_current_facing_direction())
 	
 	Current_healing_place.heal()
 	

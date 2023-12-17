@@ -66,7 +66,9 @@ func _input(event):
 			AudioManager.cancel()
 			state = STATES.EMPTY
 			_set_radial()
+			await get_tree().create_timer(0.1).timeout
 			emit_signal("cancel")
+			
 		
 func _set_radial():
 	if state == STATES.RADIAL:

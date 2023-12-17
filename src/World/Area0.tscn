@@ -8782,6 +8782,7 @@ texture = ExtResource("20_lkfsn")
 texture_scale = 0.5
 
 [node name="CloudShadows" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CloudShadows"]
 z_index = 4

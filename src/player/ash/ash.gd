@@ -80,7 +80,7 @@ var jump_direction:Vector2 = Vector2.ZERO
 
 var collided:bool = false
 
-var poke_pos:Vector2 = Vector2.ZERO
+var poke_pos:Vector2 = Vector2(0,16)
 var pokeDirection:Vector2 = Vector2.ZERO
 
 var player_start:bool = false
@@ -102,7 +102,7 @@ func _ready():
 	#set looking direction
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:
-			poke_pos = self.global_position
+			poke_pos = self.global_position + Vector2(0,16)
 			
 		if Utils.get_scene_manager().first_time_start == false:
 			if Utils.get_scene_manager().just_loaded == true:
@@ -126,6 +126,7 @@ func _ready():
 func set_poke_pos_dir(val1:Vector2,val2):
 	poke_pos = val1
 	pokeDirection = val2
+	
 func load_process():
 	saver.load_data()
 	load_data(saver.playerData)
@@ -284,7 +285,7 @@ func cycle():
 				to_pokemon_follow = true
 				is_cycling = false
 				playerState = PlayerState.IDLE
-				poke_pos = self.position
+				poke_pos = self.position +Vector2(0,16)
 				pokeDirection = self.get_current_facing_direction()
 				
 
@@ -460,7 +461,7 @@ func player_surfing(data,check):
 				playerState = PlayerState.IDLE
 				global_position = data[1]+Vector2(0,8)
 				to_pokemon_follow = true
-				poke_pos = self.position
+				poke_pos = self.position +Vector2(0,16)
 				pokeDirection = self.get_current_facing_direction()
 
 

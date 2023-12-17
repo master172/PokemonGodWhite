@@ -96,10 +96,11 @@ func get_input():
 					attack_selector.start_radial()
 		elif Input.is_action_just_pressed("No") and init_delay == false:
 			if attacking == false and action == false:
-				AudioManager.select()
-				action = true
-				state = states.ACTION_SELECTION
-				action_chosen.start_radial()
+				if state == states.NORMAL:
+					AudioManager.select()
+					action = true
+					state = states.ACTION_SELECTION
+					action_chosen.start_radial()
 		else:
 			if stop == false and resting == false and Stun == false:
 				if state == states.NORMAL:
@@ -237,7 +238,6 @@ func _on_action_chosen_action_chosen(act):
 
 
 func _on_action_chosen_cancel():
-	await get_tree().create_timer(0.1).timeout
 	action = false
 	state = states.NORMAL
 	attacking = false
@@ -283,3 +283,4 @@ func paralyze(time:int=1,modifier:float=0.2):
 
 func _on_paralysis_timer_timeout():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+
