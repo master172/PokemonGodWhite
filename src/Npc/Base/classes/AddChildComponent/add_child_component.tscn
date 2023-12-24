@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dunkvns0kx4kp"]
+
+[ext_resource type="Script" path="res://src/Npc/Base/classes/AddChildComponent/add_child_component.gd" id="1_6cxbo"]
+
+[node name="AddChildComponent" type="Node2D"]
+script = ExtResource("1_6cxbo")

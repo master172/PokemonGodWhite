@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://daud4wv4suun6"]
+
+[ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_sgiqf"]
+[ext_resource type="Resource" uid="uid://dal1jyhtfa528" path="res://Core/Pokemon/Actions/TailWhip.tres" id="2_hngv4"]
+[ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_ddu3i"]
+[ext_resource type="Texture2D" uid="uid://7bd6clx0osw8" path="res://Core/Graphics/Zehlvogs/Icons/SYURPIK.png" id="4_ncogr"]
+[ext_resource type="Texture2D" uid="uid://dupsiy18td2q0" path="res://Core/Graphics/Zehlvogs/Front/SYURPIK.png" id="5_csx8t"]
+[ext_resource type="Texture2D" uid="uid://blgxp2edfy4si" path="res://Core/Graphics/Zehlvogs/Follower/SYURPIK.png" id="6_p053m"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="7_skwlx"]
+
+[resource]
+script = ExtResource("7_skwlx")
+Name = "Syurpik"
+Id = 134
+Type1 = "Psychic"
+Type2 = "NONE"
+leveleing_type = 1
+Front = ExtResource("4_ncogr")
+Icon = ExtResource("5_csx8t")
+Overworld = ExtResource("6_p053m")
+Base_Health = 130
+Base_Attack = 65
+Base_Defense = 60
+Special_Base_Attack = 110
+Special_Base_Defense = 95
+Base_Speed = 65
+Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_sgiqf"), ExtResource("2_hngv4"), ExtResource("3_ddu3i")])
+base_experience = 196
+Yield_Health = 2
+Yield_Attack = null
+Yield_Defense = null
+Yield_Special_Defense = null
+Yield_Special_Attack = null
+Yield_Speed = null
+catch_chance = 12

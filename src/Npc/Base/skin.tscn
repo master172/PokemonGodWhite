@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwm1t2bl323ac"]
+
+[ext_resource type="Script" path="res://src/Npc/Base/skin.gd" id="1_v3vjo"]
+
+[node name="Skin" type="Sprite2D"]
+position = Vector2(0, -12)
+hframes = 4
+vframes = 4
+script = ExtResource("1_v3vjo")

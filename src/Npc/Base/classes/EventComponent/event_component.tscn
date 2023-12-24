@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mt04ou3444yw"]
+
+[ext_resource type="Script" path="res://src/Npc/Base/classes/EventComponent/event_component.gd" id="1_71yem"]
+
+[node name="EventComponent" type="Node2D"]
+script = ExtResource("1_71yem")

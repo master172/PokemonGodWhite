@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NewTrainer" load_steps=4 format=3 uid="uid://dekjickbksnex"]
+
+[ext_resource type="Resource" uid="uid://bsop8r8swrxgj" path="res://src/Npc/Base/Resources/TestEventList.tres" id="1_8x1ii"]
+[ext_resource type="Script" path="res://src/World/Npc/NewTrainer.gd" id="1_w385r"]
+[ext_resource type="Texture2D" uid="uid://dgsy21lbb4ecm" path="res://assets/Npc/Trainers/General/Npc2.png" id="2_ks2qe"]
+
+[resource]
+script = ExtResource("1_w385r")
+sprite = ExtResource("2_ks2qe")
+Trainer_Type = 0
+event_list = ExtResource("1_8x1ii")
