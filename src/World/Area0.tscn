@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=37 format=3 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -17,9 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="12_yku7x"]
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_x3ica"]
 [ext_resource type="Resource" uid="uid://ngglvf785r2k" path="res://Resources/Dialogs/OverWorldItem.tres" id="14_yqc7c"]
-[ext_resource type="PackedScene" uid="uid://riyto8ufmaoj" path="res://src/World/Npc/Aiden.tscn" id="16_47g7f"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="19_uecm5"]
+[ext_resource type="Script" path="res://src/Npc/Trainer/base_trainer.gd" id="20_gugik"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="20_lkfsn"]
+[ext_resource type="Resource" uid="uid://dekjickbksnex" path="res://src/Npc/Resources/Yasuda.tres" id="21_js36o"]
+[ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Syurpik.tres" id="22_jedfn"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8765,9 +8767,6 @@ position = Vector2(-360, -16)
 item = ExtResource("13_x3ica")
 pick_up_dialog = ExtResource("14_yqc7c")
 
-[node name="Aiden" parent="." instance=ExtResource("16_47g7f")]
-position = Vector2(-328, -128)
-
 [node name="Door" parent="." instance=ExtResource("19_uecm5")]
 position = Vector2(-328, -152)
 next_scene_path = "res://src/World/CaveOfBegginings.tscn"
@@ -8809,6 +8808,13 @@ libraries = {
 }
 autoplay = "Default"
 speed_scale = 0.01
+
+[node name="BaseTrainer" type="CharacterBody2D" parent="."]
+position = Vector2(-328, -128)
+script = ExtResource("20_gugik")
+TrainerResource = ExtResource("21_js36o")
+Pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("22_jedfn")])
+levels = Array[int]([5])
 
 [connection signal="tree_exiting" from="." to="mainTilemap" method="_on_area_0_tree_exiting"]
 
