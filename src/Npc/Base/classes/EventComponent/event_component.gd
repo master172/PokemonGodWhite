@@ -23,6 +23,8 @@ func start():
 			manage_dailog_event(i)
 		elif i is LookEvent:
 			manage_look_event(i)
+		elif i is DelEvent:
+			get_parent().queue_free()
 
 func manage_look_event(event):
 	emit_signal("look_dir_changed",event.dir)
@@ -44,7 +46,6 @@ func dialog_event_over():
 	Dialogic.signal_event.disconnect(check_for_battle)
 	event_index += 1
 	get_viewport().set_input_as_handled()
-	get_tree().create_timer(0.2).timeout
 	
 	Utils.Player.set_physics_process(true)
 	emit_signal("event_over")
