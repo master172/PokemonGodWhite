@@ -1,3 +1,4 @@
-Aiden: I want to become the best trainer in the world one day, hence i train every day
+I want to become the best trainer in the world one day, hence i train every day
 [signal arg="DialogDone"]
+[save slot=""]
 [end_timeline]

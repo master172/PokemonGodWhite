@@ -38,7 +38,7 @@ TouchInput="*res://src/Ui/Input/TouchInput.tscn"
 
 variables={
 "Aiden": {
-"Relationship": "0"
+"CanBattle": "1"
 },
 "Battle": {
 "Caught": "DefaultCaught",
@@ -64,6 +64,9 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 text/autopauses={}
 glossary/default_case_sensitive=true
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+save/encryption_on_exports_only=true
 
 [display]
 

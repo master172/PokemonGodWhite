@@ -9,6 +9,7 @@ var event_component
 var TrainerSkin
 var battle_component
 var Losing_component
+var start_lose_component
 
 var my_pokemons:Array[game_pokemon]
 
@@ -18,11 +19,17 @@ var my_pokemons:Array[game_pokemon]
 @export var event_list:EventList = EventList.new()
 @export var losing_event_list:EventList = EventList.new()
 
+signal cannot_battle
+
 func _ready():
 	add_nodes()
 	look(Looking_direction)
 	add_pokemon()
-
+	check_can_battle()
+	
+func check_can_battle():
+	pass
+		
 func add_pokemon():
 	for i in range(Pokemons.size()):
 		my_pokemons.append(game_pokemon.new(Pokemons[i],levels[i]))
@@ -35,8 +42,12 @@ func GetTrainerResource():
 
 func _interact():
 	if event_component != null:
+		check_for_event_alterations()
 		event_component.start()
 
+func check_for_event_alterations():
+	pass
+	
 func set_event_component(node):
 	event_component = node
 	node.event_list = event_list
@@ -62,7 +73,15 @@ func set_losing_component(node):
 func return_battling():
 	Losing_component.get_losing(event_component.battling)
 	
-func lose():
-	event_list = losing_event_list
+func lose(ev_list:EventList = losing_event_list):
+	event_list = ev_list
 	event_component.event_list = event_list
 	event_component.reset()
+	after_lose()
+	
+func after_lose():
+	pass
+	
+func set_start_lose_component(node):
+	start_lose_component = node
+	cannot_battle.connect(start_lose_component.start_process)
