@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dac368r2gylw7"]
+[gd_scene load_steps=23 format=3 uid="uid://dac368r2gylw7"]
 
 [ext_resource type="Script" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sg6oc"]
 [ext_resource type="PackedScene" uid="uid://cimfdob80nm44" path="res://Core/Battle/Ui/Action_Selector.tscn" id="4_xmkfa"]
-[ext_resource type="PackedScene" uid="uid://dslup8uf30gtc" path="res://Core/Battle/Ui/battle_selector.tscn" id="5_wxstk"]
 [ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="5_xwcbp"]
 [ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="6_gu72b"]
 [ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="7_x237b"]
@@ -177,8 +176,6 @@ autostart = true
 
 [node name="UiLayer" type="CanvasLayer" parent="."]
 
-[node name="BattleSelector" parent="UiLayer" instance=ExtResource("5_wxstk")]
-
 [node name="ActionChosen" parent="UiLayer" instance=ExtResource("4_xmkfa")]
 
 [node name="WaitTimer" type="Timer" parent="."]
@@ -212,9 +209,6 @@ autostart = true
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="attack_chosen" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_attack_chosen"]
-[connection signal="cancel" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_cancel"]
-[connection signal="displayed" from="UiLayer/BattleSelector" to="." method="_on_attack_selector_displayed"]
 [connection signal="action_chosen" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_action_chosen"]
 [connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
 [connection signal="displayed" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_displayed"]

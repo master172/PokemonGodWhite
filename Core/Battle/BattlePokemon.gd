@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var animation_tree := $AnimationTree
 @onready var anim_state  = animation_tree.get("parameters/playback")
 @onready var sprite_2d := $Sprite2D
-@onready var attack_selector := $UiLayer/BattleSelector
 @onready var action_chosen := $UiLayer/ActionChosen
 @onready var stun_timer = $StunTimer
 @onready var hurt = $Node/Hurt
@@ -40,7 +39,6 @@ enum states {
 }
 
 var state := states.NORMAL
-var attacking := false
 var action := false
 var current_facing_direction := facingDirection.UP
 
@@ -88,14 +86,19 @@ func get_input():
 				
 			
 	if knockback == false:
-		if Input.is_action_just_pressed("Yes") and init_delay == false:
-			if attacking == false and action == false:
-				if stop == false and resting == false and Stun == false:
-					AudioManager.select()
-					state = states.ATTACK_SELECTION
-					attack_selector.start_radial()
-		elif Input.is_action_just_pressed("No") and init_delay == false:
-			if attacking == false and action == false:
+		if init_delay == false and action == false:
+			if stop == false and resting == false and Stun == false:
+				if Input.is_action_just_pressed("attack1"):
+					_on_attack_selector_attack_chosen(0)
+				elif Input.is_action_just_pressed("attack2"):
+					_on_attack_selector_attack_chosen(2)
+				elif Input.is_action_just_pressed("attack3"):
+					_on_attack_selector_attack_chosen(3)
+				elif Input.is_action_just_pressed("attack4"):
+					_on_attack_selector_attack_chosen(4)
+
+		if Input.is_action_just_pressed("No") and init_delay == false:
+			if action == false:
 				if state == states.NORMAL:
 					AudioManager.select()
 					action = true
@@ -176,16 +179,7 @@ func manage_move_list():
 func _on_timer_timeout():
 	init_delay = false
 
-
-func _on_attack_selector_cancel():
-	attacking = false
-	state = states.NORMAL
-
-func attack_prep():
-	attacking = true
-
 func attack_end():
-	attacking = false
 	state = states.NORMAL
 	resting = true
 	wait_timer.start()
@@ -216,8 +210,6 @@ func _start():
 	stop = false
 	action = false
 	
-func _on_attack_selector_displayed():
-	velocity = Vector2.ZERO
 
 
 func _on_action_chosen_action_chosen(act):
@@ -238,9 +230,9 @@ func _on_action_chosen_action_chosen(act):
 
 
 func _on_action_chosen_cancel():
+	await get_tree().create_timer(0.1).timeout
 	action = false
 	state = states.NORMAL
-	attacking = false
 	
 func _on_action_chosen_displayed():
 	velocity = Vector2.ZERO

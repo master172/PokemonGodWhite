@@ -261,7 +261,10 @@ func get_all_learned_attacks():
 	return learnable_attacks
 	
 func get_learned_attack(num:int):
-	return learned_attacks[num]
+	if learned_attacks.size()-1 >= num:
+		return learned_attacks[num]
+	else:
+		return null
 
 func get_Type1():
 	return Base_Pokemon.get_Type1()
