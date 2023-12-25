@@ -8,12 +8,15 @@ const TRAINER_BASE_ORDER = preload("res://src/Npc/Base/trainer_base_order.tscn")
 var event_component
 var TrainerSkin
 var battle_component
+var Losing_component
 
 var my_pokemons:Array[game_pokemon]
 
 @export var Pokemons:Array[Pokemon]
 @export var levels:Array[int]
 @export var map:int = 0
+@export var event_list:EventList = EventList.new()
+@export var losing_event_list:EventList = EventList.new()
 
 func _ready():
 	add_nodes()
@@ -36,7 +39,7 @@ func _interact():
 
 func set_event_component(node):
 	event_component = node
-	node.event_list = TrainerResource.event_list
+	node.event_list = event_list
 	event_component.look_dir_changed.connect(look)
 	event_component.Battle.connect(start_battle)
 	
@@ -49,3 +52,17 @@ func start_battle():
 func look(dir):
 	if TrainerSkin != null:
 		TrainerSkin.look(dir)
+
+func set_losing_component(node):
+	Losing_component = node
+	Losing_component.check_battle.connect(return_battling)
+	Losing_component.battle_over.connect(lose)
+	Losing_component._connect()
+	
+func return_battling():
+	Losing_component.get_losing(event_component.battling)
+	
+func lose():
+	event_list = losing_event_list
+	event_component.event_list = event_list
+	event_component.reset()

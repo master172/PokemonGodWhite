@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NodeList" load_steps=7 format=3 uid="uid://bke83lawle7ij"]
+[gd_resource type="Resource" script_class="NodeList" load_steps=8 format=3 uid="uid://bke83lawle7ij"]
 
 [ext_resource type="PackedScene" uid="uid://dwm1t2bl323ac" path="res://src/Npc/Base/skin.tscn" id="1_1m1eg"]
 [ext_resource type="PackedScene" uid="uid://cexfrln0n4kji" path="res://src/Npc/Base/CollisonShape.tscn" id="2_7imao"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bis4ivbx5b1l0" path="res://src/Npc/Base/classes/CollisionComponent/set_collision_layer_component.tscn" id="3_eyjyd"]
 [ext_resource type="PackedScene" uid="uid://mt04ou3444yw" path="res://src/Npc/Base/classes/EventComponent/event_component.tscn" id="4_5mimx"]
 [ext_resource type="PackedScene" uid="uid://d2s0rosbj0vpi" path="res://src/Npc/Base/classes/BattleComponent/battle_component.tscn" id="5_3j5pa"]
+[ext_resource type="PackedScene" uid="uid://bvw2hcn3xpgbj" path="res://src/Npc/Base/classes/LosingComponent/losing_component.tscn" id="6_0s8cu"]
 
 [resource]
 script = ExtResource("3_3mupg")
-Nodes = Array[PackedScene]([ExtResource("1_1m1eg"), ExtResource("2_7imao"), ExtResource("3_eyjyd"), ExtResource("4_5mimx"), ExtResource("5_3j5pa")])
+Nodes = Array[PackedScene]([ExtResource("1_1m1eg"), ExtResource("2_7imao"), ExtResource("3_eyjyd"), ExtResource("4_5mimx"), ExtResource("5_3j5pa"), ExtResource("6_0s8cu")])

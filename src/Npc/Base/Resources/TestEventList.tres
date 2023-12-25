@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_tx0uf"]
 script = ExtResource("1_hj38y")
-dialog_string = "TestDialog"
+dialog_string = "AidenInteraction"
 
 [sub_resource type="Resource" id="Resource_la5qc"]
 script = ExtResource("2_qie3s")

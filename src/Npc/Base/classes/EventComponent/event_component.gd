@@ -41,6 +41,7 @@ func manage_dailog_event(event):
 	
 func dialog_event_over():
 	Dialogic.timeline_ended.disconnect(dialog_event_over)
+	Dialogic.signal_event.disconnect(check_for_battle)
 	event_index += 1
 	get_viewport().set_input_as_handled()
 	get_tree().create_timer(0.2).timeout
@@ -53,3 +54,7 @@ func check_for_battle(Sign):
 	if Sign == "Battle":
 		emit_signal("Battle")
 		battling = true
+
+func reset():
+	battling = false
+	event_index = 0

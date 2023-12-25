@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=42 format=3 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="20_lkfsn"]
 [ext_resource type="Resource" uid="uid://dekjickbksnex" path="res://src/Npc/Resources/Yasuda.tres" id="21_js36o"]
 [ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Syurpik.tres" id="22_jedfn"]
+[ext_resource type="Resource" uid="uid://bsop8r8swrxgj" path="res://src/Npc/Base/Resources/TestEventList.tres" id="23_v6cp7"]
+[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="24_jks6w"]
+[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3da4n"]
 resource_name = "Trees"
@@ -8694,6 +8697,14 @@ _data = {
 "RESET": SubResource("Animation_5kgqg")
 }
 
+[sub_resource type="Resource" id="Resource_57gij"]
+script = ExtResource("24_jks6w")
+dialog_string = "AidenEnd"
+
+[sub_resource type="Resource" id="Resource_fclwc"]
+script = ExtResource("25_qjaos")
+events = Array[Resource("res://src/Npc/Base/ResourceScripts/BaseEvent.gd")]([SubResource("Resource_57gij")])
+
 [node name="Area0" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2ofmc")
@@ -8809,12 +8820,14 @@ libraries = {
 autoplay = "Default"
 speed_scale = 0.01
 
-[node name="BaseTrainer" type="CharacterBody2D" parent="."]
+[node name="Yasuda" type="CharacterBody2D" parent="."]
 position = Vector2(-328, -128)
 script = ExtResource("20_gugik")
 TrainerResource = ExtResource("21_js36o")
 Pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("22_jedfn")])
 levels = Array[int]([5])
+event_list = ExtResource("23_v6cp7")
+losing_event_list = SubResource("Resource_fclwc")
 
 [connection signal="tree_exiting" from="." to="mainTilemap" method="_on_area_0_tree_exiting"]
 

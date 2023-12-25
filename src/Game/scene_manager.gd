@@ -238,7 +238,7 @@ func change_scene():
 	emit_signal("data_set_finished")
 	
 func load_healing_place():
-	unload_battle_scene()
+	unload_battle_scene(false)
 	
 	if current_scene.get_child(0).has_method("get_modulater"):
 		current_scene.get_child(0).get_modulater().visible = false
@@ -341,7 +341,7 @@ func load_battle_scene(pokemon,map):
 	battle_layer.get_child(0).set_map(map)
 	BattleManager.in_battle = true
 	
-func unload_battle_scene():
+func unload_battle_scene(won:bool = true):
 	for i in battle_layer.get_children():
 		i.queue_free()
 	BattleManager.finish_battle()
@@ -351,7 +351,8 @@ func unload_battle_scene():
 	
 	if BattleManager.Trainer_Battle == true:
 		BattleManager.Trainer_Battle = false
-		emit_signal("trainer_battle_finished")
+		if won == true:
+			emit_signal("trainer_battle_finished")
 	if Global.auto_evolve == true:
 		AllyPokemon.check_evolution_all()
 		print_debug("what the fuck")
