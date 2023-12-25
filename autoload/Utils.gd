@@ -78,6 +78,7 @@ func save_data(sign:bool = true):
 	AllyPokemon.save_data()
 	Inventory.save_data()
 	save_self_data()
+	
 	if sign == true:
 		emit_signal("saving_done")
 
@@ -135,6 +136,7 @@ func remove_save_files():
 		
 		for file in files:
 			dir.remove(file)
+	
 	
 	##Deleting the pokemon save files
 	AllyPokemon.remove_data()

@@ -48,13 +48,15 @@ func dialog_event_over():
 	Dialogic.signal_event.disconnect(check_for_battle)
 	event_index += 1
 	get_viewport().set_input_as_handled()
-	
-	Utils.Player.set_physics_process(true)
+	await get_tree().create_timer(0.1).timeout
+	if battling == false:
+		Utils.Player.set_physics_process(true)
 	emit_signal("event_over")
 	start()
 
 func check_for_battle(Sign):
 	if Sign == "Battle":
+		Utils.Player.set_physics_process(false)
 		emit_signal("Battle")
 		battling = true
 

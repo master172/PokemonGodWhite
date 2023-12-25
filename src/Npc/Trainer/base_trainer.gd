@@ -42,6 +42,7 @@ func GetTrainerResource():
 
 func _interact():
 	if event_component != null:
+		get_viewport().set_input_as_handled()
 		check_for_event_alterations()
 		event_component.start()
 
