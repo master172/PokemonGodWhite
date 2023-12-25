@@ -5,6 +5,7 @@ class_name EventComponent
 signal look_dir_changed(dir)
 signal event_over
 signal Battle
+signal event_list_over
 
 var battling:bool = false
 
@@ -16,6 +17,7 @@ func start():
 	if battling == false:
 		if event_index > event_list.events.size()-1:
 			event_index = 0
+			emit_signal("event_list_over")
 			return
 			
 		var i = event_list.events[event_index]

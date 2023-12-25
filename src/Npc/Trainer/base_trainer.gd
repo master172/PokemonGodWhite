@@ -53,6 +53,14 @@ func set_event_component(node):
 	node.event_list = event_list
 	event_component.look_dir_changed.connect(look)
 	event_component.Battle.connect(start_battle)
+	event_component.event_list_over.connect(event_list_over)
+	event_component.event_over.connect(event_over)
+
+func event_over():
+	pass
+
+func event_list_over():
+	pass
 	
 func set_battle_component(node):
 	battle_component = node
