@@ -14,6 +14,8 @@ extends CharacterBody2D
 @onready var die = $Node/Die
 @onready var knock_back = $Node/KnockBack
 @onready var paralysis_timer = $ParalysisTimer
+@onready var dash = $Dash
+@onready var collision_shape_2d = $CollisionShape2D
 
 @export var pokemon :game_pokemon = null
 
@@ -24,6 +26,10 @@ var previous_moves:Array = []
 var Stamina:int = 0
 var MaxStamina:int = 0
 var RegenRate:int = 1
+
+var normal_speed := 256
+var dash_speed := 1500
+var dash_duration := 0.2
 
 enum facingDirection {
 	UP,
@@ -74,6 +80,7 @@ func _ready():
 		RegenRate *= pokemon.level
 		calc_max_stamina()
 		movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+		normal_speed = movement_speed
 		
 func calc_max_stamina():
 	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
@@ -85,36 +92,37 @@ func regen_stamina():
 func get_input():
 				
 			
-	if knockback == false:
-		if init_delay == false and action == false:
-			if stop == false and resting == false and Stun == false:
-				if Input.is_action_just_pressed("attack1"):
-					_on_attack_selector_attack_chosen(0)
-				elif Input.is_action_just_pressed("attack2"):
-					_on_attack_selector_attack_chosen(2)
-				elif Input.is_action_just_pressed("attack3"):
-					_on_attack_selector_attack_chosen(3)
-				elif Input.is_action_just_pressed("attack4"):
-					_on_attack_selector_attack_chosen(4)
+	if init_delay == false and action == false:
+		if stop == false and resting == false and Stun == false:
+			if Input.is_action_just_pressed("attack1"):
+				_on_attack_selector_attack_chosen(0)
+			elif Input.is_action_just_pressed("attack2"):
+				_on_attack_selector_attack_chosen(2)
+			elif Input.is_action_just_pressed("attack3"):
+				_on_attack_selector_attack_chosen(3)
+			elif Input.is_action_just_pressed("attack4"):
+				_on_attack_selector_attack_chosen(4)
 
-		if Input.is_action_just_pressed("No") and init_delay == false:
-			if action == false:
-				if state == states.NORMAL:
-					AudioManager.select()
-					action = true
-					state = states.ACTION_SELECTION
-					action_chosen.start_radial()
-		else:
-			if stop == false and resting == false and Stun == false:
-				if state == states.NORMAL:
-					input_direction = Input.get_vector("A", "D", "W", "S")
+	if Input.is_action_just_pressed("No") and init_delay == false:
+		if action == false:
+			if state == states.NORMAL:
+				AudioManager.select()
+				action = true
+				state = states.ACTION_SELECTION
+				action_chosen.start_radial()
+	if stop == false and resting == false and Stun == false:
+		if state == states.NORMAL:
+			input_direction = Input.get_vector("A", "D", "W", "S")
 						
-					velocity = input_direction * movement_speed
+			velocity = input_direction * movement_speed
 						
-					if input_direction != Vector2.ZERO:
-						knockback_vector = input_direction
-						animation_tree.set("parameters/Walk/blend_position",input_direction)
-						input_to_facing_direction(input_direction)
+			if input_direction != Vector2.ZERO:
+				knockback_vector = input_direction
+				animation_tree.set("parameters/Walk/blend_position",input_direction)
+				input_to_facing_direction(input_direction)
+	if state == states.NORMAL:
+		if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing():
+			dash.start_dash(dash_duration)
 
 func input_to_facing_direction(input_dir):
 	if input_dir == Vector2(0,-1):
@@ -147,7 +155,13 @@ func _physics_process(delta):
 	
 	if knockback == true:
 		velocity = self_knockback_vector
+	
+	if dash.is_dashing():
+		movement_speed = dash_speed
+	else:
+		movement_speed = normal_speed
 		
+	
 func _on_attack_selector_attack_chosen(attack):
 	if Stamina > 0:
 		print(pokemon.get_learned_attack_name(attack))
@@ -186,6 +200,8 @@ func attack_end():
 	animate_wait()
 
 func recive_damage(damage,User,Attacker):
+	if dash.is_dashing():
+		return
 	pokemon.Health -= damage
 	animate_hurt()
 	emit_signal("health_changed",self)
@@ -275,4 +291,6 @@ func paralyze(time:int=1,modifier:float=0.2):
 
 func _on_paralysis_timer_timeout():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+
+
 

@@ -21,7 +21,7 @@ func _attack():
 	tackle_timer.wait_time = duration
 	tackle_timer.start()
 	if User != null:
-		User.velocity = Vector2(1000,1000)
+		User.velocity = get_direction() * dash_speed
 
 func get_direction():
 	if User != null:

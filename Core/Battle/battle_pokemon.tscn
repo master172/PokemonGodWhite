@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dac368r2gylw7"]
+[gd_scene load_steps=24 format=3 uid="uid://dac368r2gylw7"]
 
 [ext_resource type="Script" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sg6oc"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="7_x237b"]
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="8_p4ks2"]
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="9_gj670"]
+[ext_resource type="Script" path="res://Core/Battle/Dash.gd" id="9_vnv32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksekj"]
 radius = 30.0
@@ -208,6 +209,12 @@ autostart = true
 [node name="ParalysisTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Dash" type="Node2D" parent="."]
+script = ExtResource("9_vnv32")
+
+[node name="DurationTimer" type="Timer" parent="Dash"]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="action_chosen" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_action_chosen"]
 [connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
@@ -216,3 +223,4 @@ one_shot = true
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="timeout" from="ParalysisTimer" to="." method="_on_paralysis_timer_timeout"]
+[connection signal="timeout" from="Dash/DurationTimer" to="Dash" method="_on_duration_timer_timeout"]
