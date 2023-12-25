@@ -336,13 +336,16 @@ func load_evolution():
 		menu.get_parent().hide()
 	
 func load_battle_scene(pokemon,map):
-	
+	TouchInput.toogele_default(false)
+	TouchInput.toggle_battle(true)
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
 	battle_layer.get_child(0).set_map(map)
 	BattleManager.in_battle = true
 	
 func unload_battle_scene(won:bool = true):
+	TouchInput.toogele_default(true)
+	TouchInput.toggle_battle(false)
 	for i in battle_layer.get_children():
 		i.queue_free()
 	BattleManager.finish_battle()

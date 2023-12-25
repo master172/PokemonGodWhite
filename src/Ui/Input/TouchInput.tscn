@@ -36,7 +36,7 @@ radius = 53.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_am44n"]
 radius = 53.0
 
-[node name="TiuchInput" type="CanvasLayer"]
+[node name="TouchInput" type="CanvasLayer"]
 layer = 50
 script = ExtResource("1_c8ig2")
 
@@ -84,7 +84,9 @@ passby_press = true
 action = "S"
 visibility_mode = 1
 
-[node name="Circle" type="TouchScreenButton" parent="."]
+[node name="Default" type="Node2D" parent="."]
+
+[node name="Circle" type="TouchScreenButton" parent="Default"]
 modulate = Color(1, 1, 1, 0.662745)
 position = Vector2(1028, 544)
 scale = Vector2(0.8, 0.8)
@@ -95,7 +97,7 @@ passby_press = true
 action = "Yes"
 visibility_mode = 1
 
-[node name="Square" type="TouchScreenButton" parent="."]
+[node name="Square" type="TouchScreenButton" parent="Default"]
 modulate = Color(1, 1, 1, 0.662745)
 position = Vector2(1104, 620)
 scale = Vector2(0.8, 0.8)
@@ -106,7 +108,7 @@ passby_press = true
 action = "Menu"
 visibility_mode = 1
 
-[node name="Triangle" type="TouchScreenButton" parent="."]
+[node name="Triangle" type="TouchScreenButton" parent="Default"]
 modulate = Color(1, 1, 1, 0.662745)
 position = Vector2(952, 620)
 scale = Vector2(0.8, 0.8)
@@ -117,9 +119,78 @@ passby_press = true
 action = "cycleQuick"
 visibility_mode = 1
 
-[node name="Cross" type="TouchScreenButton" parent="."]
+[node name="Cross" type="TouchScreenButton" parent="Default"]
 modulate = Color(1, 1, 1, 0.662745)
 position = Vector2(1028, 696)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("15_xpbgu")
+texture_pressed = ExtResource("16_cqova")
+shape = SubResource("CircleShape2D_am44n")
+passby_press = true
+action = "No"
+visibility_mode = 1
+
+[node name="Battle" type="Node2D" parent="."]
+visible = false
+
+[node name="Circle" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1028, 544)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("9_7b3yt")
+texture_pressed = ExtResource("10_f2mry")
+shape = SubResource("CircleShape2D_url30")
+passby_press = true
+action = "attack1"
+visibility_mode = 1
+
+[node name="Square" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1104, 620)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("11_ift5e")
+texture_pressed = ExtResource("12_opmj2")
+shape = SubResource("CircleShape2D_0d16x")
+passby_press = true
+action = "attack2"
+visibility_mode = 1
+
+[node name="Triangle" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(952, 620)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("13_jb6ta")
+texture_pressed = ExtResource("14_dm8io")
+shape = SubResource("CircleShape2D_twoeo")
+passby_press = true
+action = "attack3"
+visibility_mode = 1
+
+[node name="Cross" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1028, 696)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("15_xpbgu")
+texture_pressed = ExtResource("16_cqova")
+shape = SubResource("CircleShape2D_am44n")
+passby_press = true
+action = "attack4"
+visibility_mode = 1
+
+[node name="Circle2" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1024, 424)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("9_7b3yt")
+texture_pressed = ExtResource("10_f2mry")
+shape = SubResource("CircleShape2D_url30")
+passby_press = true
+action = "Yes"
+visibility_mode = 1
+
+[node name="Cross2" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(112, 424)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("15_xpbgu")
 texture_pressed = ExtResource("16_cqova")
@@ -132,6 +203,9 @@ visibility_mode = 1
 [connection signal="released" from="Up" to="." method="_on_up_released"]
 [connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
 [connection signal="released" from="Down" to="." method="_on_down_released"]
-[connection signal="pressed" from="Circle" to="." method="_on_circle_pressed"]
-[connection signal="released" from="Circle" to="." method="_on_circle_released"]
-[connection signal="pressed" from="Cross" to="." method="_on_cross_pressed"]
+[connection signal="pressed" from="Default/Circle" to="." method="_on_circle_pressed"]
+[connection signal="released" from="Default/Circle" to="." method="_on_circle_released"]
+[connection signal="pressed" from="Default/Cross" to="." method="_on_cross_pressed"]
+[connection signal="pressed" from="Battle/Circle2" to="." method="_on_circle_pressed"]
+[connection signal="released" from="Battle/Circle2" to="." method="_on_circle_released"]
+[connection signal="pressed" from="Battle/Cross2" to="." method="_on_cross_pressed"]

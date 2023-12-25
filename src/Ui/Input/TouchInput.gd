@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var battle = $Battle
+@onready var default = $Default
+
 var yes = InputEventAction.new()
 var no = InputEventAction.new()
 var run = InputEventAction.new()
@@ -53,3 +56,9 @@ func _on_down_pressed():
 func _on_down_released():
 	down.pressed = false
 	Input.parse_input_event(down)
+
+func toggle_battle(val:bool):
+	battle.visible = val
+
+func toogele_default(val:bool):
+	default.visible = val
