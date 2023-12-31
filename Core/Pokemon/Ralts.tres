@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://xqnf3jkcoya3"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://xqnf3jkcoya3"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_65loy"]
 [ext_resource type="Resource" uid="uid://hg3i8pmsjq6l" path="res://Core/Pokemon/Actions/DisarmingVoice.tres" id="1_qnhxs"]
-[ext_resource type="Texture2D" uid="uid://cwb4i5c6lnypx" path="res://Core/Graphics/Pokemon/Gen3/Back/RALTS.png" id="2_fg1mc"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_slslq"]
 [ext_resource type="Texture2D" uid="uid://nidnuatdxo8v" path="res://Core/Graphics/Pokemon/Gen3/Front/RALTS.png" id="3_d2pb2"]
 [ext_resource type="Texture2D" uid="uid://ddwmdmorka6o4" path="res://Core/Graphics/Pokemon/Gen3/Icons/RALTS.png" id="4_qpeim"]
@@ -16,7 +15,6 @@ Type1 = "Psychic"
 Type2 = "Fairy"
 leveleing_type = 0
 Front = ExtResource("3_d2pb2")
-Back = ExtResource("2_fg1mc")
 Icon = ExtResource("4_qpeim")
 Overworld = ExtResource("5_wyysx")
 Base_Health = 28

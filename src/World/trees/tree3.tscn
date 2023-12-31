@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxd3fxljtidla"]
+[gd_scene load_steps=5 format=3 uid="uid://dbc55dja5xwex"]
 
-[ext_resource type="Texture2D" uid="uid://82d60hhwmefa" path="res://assets/trees/Trees_texture_shadows_dark_source.png" id="1_1rgnl"]
+[ext_resource type="Texture2D" uid="uid://82d60hhwmefa" path="res://assets/trees/Trees_texture_shadows_dark_source.png" id="1_c0ix2"]
 
 [sub_resource type="Shader" id="Shader_sinkl"]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -71,9 +71,9 @@ collision_mask = 0
 texture_filter = 1
 material = SubResource("ShaderMaterial_hp64p")
 position = Vector2(8, -16)
-texture = ExtResource("1_1rgnl")
+texture = ExtResource("1_c0ix2")
 region_enabled = true
-region_rect = Rect2(128, 144, 48, 48)
+region_rect = Rect2(288, 144, 32, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
