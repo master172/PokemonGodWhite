@@ -20,13 +20,15 @@ func _attack():
 		User.attack_prep()
 	tackle_timer.wait_time = duration
 	tackle_timer.start()
+	await get_tree().create_timer(0.1).timeout
 	if User != null:
 		User.velocity = get_direction() * dash_speed
+		print_debug(get_direction())
+		print_debug(get_direction()*dash_speed)
 
 func get_direction():
 	if User != null:
 		if User.opposing_pokemons != []:
-			
 			return User.global_position.direction_to(User.opposing_pokemons[0].global_position)
 
 func is_tackling():
