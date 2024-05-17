@@ -33,6 +33,9 @@ var targetPokemon = null
 
 var pokemon :game_pokemon
 var knockback_vector :Vector2 = Vector2.ZERO
+
+var tackle:bool = false
+
 signal health_changed(body)
 
 enum attacks {
@@ -61,6 +64,9 @@ func _ready():
 	
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
+	calc_move_speed()
+	
+func calc_move_speed():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 0.75) + 50
 	
 func choose_attack():

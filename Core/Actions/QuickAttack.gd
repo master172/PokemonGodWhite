@@ -22,7 +22,8 @@ func _attack():
 	quick_attack_timer.wait_time = duration
 	quick_attack_timer.start()
 	if User != null:
-		User.velocity = get_direction() * dash_speed
+		User.tackle = true
+		User.velocity = User.get_current_facing_direction() * dash_speed
 		
 func is_tackling():
 	return quick_attack_timer.is_stopped()
@@ -36,6 +37,7 @@ func get_direction():
 func _on_quick_attack_timer_timeout():
 	await get_tree().create_timer(0.1).timeout
 	User.velocity = User.velocity * 0.001
+	User.tackle = false
 
 
 func _on_attack_delay_timeout():

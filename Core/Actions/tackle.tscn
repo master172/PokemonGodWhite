@@ -15,7 +15,6 @@ script = ExtResource("1_dbv25")
 one_shot = true
 
 [node name="AttackDelay" type="Timer" parent="."]
-wait_time = 0.17
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]

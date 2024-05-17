@@ -1,18 +1,21 @@
 extends Action
-
 @onready var tackle_timer = $TackleTimer
 @onready var attack_delay = $AttackDelay
 
 var User:CharacterBody2D = null
+
 var duration:float = 0.1
 var dash_speed:float = 1500
+
 var oneshot:bool = false
 
 func _ready():#ready overrider
 	pass
+
 	
 func set_user(user):
 	User = user
+
 	
 func _attack():
 	attack_delay.start()
@@ -20,30 +23,34 @@ func _attack():
 		User.attack_prep()
 	tackle_timer.wait_time = duration
 	tackle_timer.start()
-	await get_tree().create_timer(0.1).timeout
 	if User != null:
+		User.tackle = true
 		User.velocity = get_direction() * dash_speed
-		print_debug(get_direction())
-		print_debug(get_direction()*dash_speed)
 
 func get_direction():
 	if User != null:
 		if User.opposing_pokemons != []:
 			return User.global_position.direction_to(User.opposing_pokemons[0].global_position)
-
+			
 func is_tackling():
 	return tackle_timer.is_stopped()
-	
+
+
+
 func _on_tackle_timer_timeout():
 	User.velocity = User.velocity * 0.001
-	
+	User.tackle = false
+
+
 func _on_attack_delay_timeout():
 	if User.has_method("attack_end"):
 		User.attack_end()
 	connect("attack_finished",SignalBus.attack_completed)
 	emit_signal("attack_finished",self,User)
 	queue_free()
-	
+
+
+
 func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):

@@ -31,6 +31,8 @@ var normal_speed := 256
 var dash_speed := 1500
 var dash_duration := 0.2
 
+var tackle := false
+
 enum facingDirection {
 	UP,
 	DOWN,
@@ -79,8 +81,11 @@ func _ready():
 		sprite_2d.texture = pokemon.get_overworld_sprite()
 		RegenRate *= pokemon.level
 		calc_max_stamina()
-		movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
-		normal_speed = movement_speed
+		calc_move_speed()
+		
+func calc_move_speed():
+	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+	normal_speed = movement_speed
 		
 func calc_max_stamina():
 	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
@@ -113,8 +118,9 @@ func get_input():
 	if stop == false and resting == false and Stun == false:
 		if state == states.NORMAL:
 			input_direction = Input.get_vector("A", "D", "W", "S")
-						
-			velocity = input_direction * movement_speed
+			
+			if tackle == false:
+				velocity = input_direction * movement_speed
 						
 			if input_direction != Vector2.ZERO:
 				knockback_vector = input_direction

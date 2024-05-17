@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4ckyncwga1be"]
+[gd_scene load_steps=13 format=3 uid="uid://d4ckyncwga1be"]
 
 [ext_resource type="Script" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
 [ext_resource type="Texture2D" uid="uid://bgwlfovxeby4y" path="res://assets/Ui/BattleScene/databox_normal.png" id="1_v6x5b"]
@@ -29,7 +29,10 @@ bg_color = Color(0.156863, 0.741176, 0, 1)
 bg_color = Color(0, 0.741176, 0.721569, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jixej"]
-size = Vector2(312, 172)
+size = Vector2(312, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jimgn"]
+size = Vector2(312, 144)
 
 [node name="PokeData" type="Control"]
 layout_mode = 3
@@ -140,7 +143,7 @@ hframes = 2
 [node name="Name" type="Label" parent="HBoxContainer/Databox2"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 124.0
+offset_left = 82.0
 offset_top = 23.0
 offset_right = 206.0
 offset_bottom = 64.0
@@ -185,12 +188,12 @@ show_percentage = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(152, 56)
+position = Vector2(152, 71)
 shape = SubResource("RectangleShape2D_jixej")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1048, 82)
-shape = SubResource("RectangleShape2D_jixej")
+position = Vector2(1048, 72)
+shape = SubResource("RectangleShape2D_jimgn")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
