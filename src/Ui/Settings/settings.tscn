@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgcdwbhra4jvb"]
+[gd_scene load_steps=17 format=3 uid="uid://dgcdwbhra4jvb"]
 
 [ext_resource type="Script" path="res://src/Ui/Settings/settings.gd" id="1_u0ied"]
 [ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="1_wso78"]
@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://cli7b8echohhy" path="res://src/Ui/Settings/DefOptionMenu.tres" id="5_dwaxo"]
 [ext_resource type="StyleBox" uid="uid://bplox48dnn0v2" path="res://src/Ui/Settings/HrOptionMenu.tres" id="6_3kptk"]
 [ext_resource type="StyleBox" uid="uid://brsb4oxq2kcqr" path="res://src/Ui/Settings/PrOptionMenu.tres" id="7_ygj7m"]
+[ext_resource type="Script" path="res://src/Ui/Settings/VolumeSlider.gd" id="8_n6du1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d63nv"]
 bg_color = Color(0.164706, 0.164706, 0.164706, 1)
@@ -94,7 +95,6 @@ theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pksfy")
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxqpj")
 
 [node name="Engine" type="Panel" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ea6d8")
 
@@ -164,6 +164,7 @@ popup/item_3/text = "4x (warning not recommended)"
 popup/item_3/id = 4
 
 [node name="Display" type="Panel" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0sffj")
 
@@ -232,6 +233,67 @@ popup/item_2/id = 3
 popup/item_3/text = "Mailbox"
 popup/item_3/id = 4
 
+[node name="Audio" type="Panel" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0sffj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = -24.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Audio/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_fox5j")
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -22.0
+offset_right = 144.0
+offset_bottom = 19.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wso78")
+theme_override_font_sizes/font_size = 32
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("8_n6du1")
+bus_name = "Master"
+
 [node name="Apply" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -264,4 +326,5 @@ text = "Apply and close"
 
 [connection signal="item_selected" from="TabContainer/Engine/ScrollContainer/VBoxContainer/Panel/SpeedButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="TabContainer/Display/ScrollContainer/VBoxContainer/Panel/VsyncButton" to="." method="_on_vsync_button_item_selected"]
+[connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/Panel/VolumeSlider" to="TabContainer/Audio/ScrollContainer/VBoxContainer/Panel/VolumeSlider" method="_on_value_changed"]
 [connection signal="pressed" from="Apply/Button" to="." method="_on_button_pressed"]

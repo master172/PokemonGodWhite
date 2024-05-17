@@ -47,3 +47,4 @@ func _on_button_pressed():
 	Settings_Saver.v_sync_mode = vsync_button.selected
 	save_data()
 	visible = false
+
