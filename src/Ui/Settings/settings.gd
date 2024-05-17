@@ -7,6 +7,7 @@ var Settings_Saver:settings_saver = settings_saver.new()
 
 @onready var vsync_button = $TabContainer/Display/ScrollContainer/VBoxContainer/Panel/VsyncButton
 @onready var speed_button = $TabContainer/Engine/ScrollContainer/VBoxContainer/Panel/SpeedButton
+@onready var volume_slider = $TabContainer/Audio/ScrollContainer/VBoxContainer/Panel/VolumeSlider
 
 func _ready():
 	verify_save_directory(save_file_path)
@@ -27,6 +28,7 @@ func load_data():
 func apply_data():
 	speed_button.selected = Settings_Saver.speed_scale - 1
 	vsync_button.selected = Settings_Saver.v_sync_mode
+	volume_slider.value = Settings_Saver.master_audio
 	set_settings()
 	
 func set_settings():
@@ -45,6 +47,7 @@ func _on_vsync_button_item_selected(index):
 func _on_button_pressed():
 	Settings_Saver.speed_scale = speed_button.selected + 1
 	Settings_Saver.v_sync_mode = vsync_button.selected
+	Settings_Saver.master_audio = volume_slider.value
 	save_data()
 	visible = false
 
