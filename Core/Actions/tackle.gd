@@ -31,7 +31,8 @@ func get_direction():
 	if User != null:
 		if User.opposing_pokemons != []:
 			return User.global_position.direction_to(User.opposing_pokemons[0].global_position)
-			
+		else:
+			return Vector2.ZERO
 func is_tackling():
 	return tackle_timer.is_stopped()
 

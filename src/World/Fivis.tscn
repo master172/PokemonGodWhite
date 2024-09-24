@@ -9666,7 +9666,7 @@ Spawn_direction = Vector2(0, -1)
 position = Vector2(232, 408)
 next_scene_path = "res://src/World/Houses/TransistionPoint2.tscn"
 invisible = true
-Spawn_location = Vector2(56, 192)
+Spawn_location = Vector2(-56, -192)
 Spawn_direction = Vector2(0, 1)
 
 [node name="Door7" parent="Doors" instance=ExtResource("25_3xfsp")]

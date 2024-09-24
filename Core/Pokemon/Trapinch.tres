@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://bj22iqgv73rue"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://bj22iqgv73rue"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_4r1xm"]
-[ext_resource type="Texture2D" uid="uid://dhujw4uc42cbm" path="res://Core/Graphics/Pokemon/Gen3/Back/TRAPINCH.png" id="1_uddg5"]
 [ext_resource type="Resource" uid="uid://d16lcqp5040yi" path="res://Core/Pokemon/Actions/SandAttack.tres" id="1_uproh"]
 [ext_resource type="Resource" uid="uid://copmsnki7ep0k" path="res://Core/Pokemon/Actions/Astonish.tres" id="2_jtxja"]
 [ext_resource type="Texture2D" uid="uid://cye3hf6s546wh" path="res://Core/Graphics/Pokemon/Gen3/Front/TRAPINCH.png" id="2_vpcmy"]
@@ -16,7 +15,6 @@ Type1 = "Ground"
 Type2 = "NONE"
 leveleing_type = 1
 Front = ExtResource("2_vpcmy")
-Back = ExtResource("1_uddg5")
 Icon = ExtResource("3_3mv5f")
 Overworld = ExtResource("4_pfhl3")
 Base_Health = 45

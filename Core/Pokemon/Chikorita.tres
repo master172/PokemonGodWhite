@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://dnejklnbktcw4"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://dnejklnbktcw4"]
 
-[ext_resource type="Texture2D" uid="uid://bg3gs8070o56m" path="res://Core/Graphics/Pokemon/Gen2/Back/CHIKORITA.png" id="1_kp6ix"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_mp1pu"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_x3cgh"]
 [ext_resource type="Texture2D" uid="uid://w1m2gh0sonqw" path="res://Core/Graphics/Pokemon/Gen2/Front/CHIKORITA.png" id="2_0c7ra"]
@@ -16,7 +15,6 @@ Type1 = "Grass"
 Type2 = "NONE"
 leveleing_type = 1
 Front = ExtResource("2_0c7ra")
-Back = ExtResource("1_kp6ix")
 Icon = ExtResource("3_wswmc")
 Overworld = ExtResource("4_8t3kl")
 Base_Health = 45

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxd3fxljtidla"]
+[gd_scene load_steps=5 format=3 uid="uid://crdede7r7nlgb"]
 
-[ext_resource type="Texture2D" uid="uid://82d60hhwmefa" path="res://assets/trees/Trees_texture_shadows_dark_source.png" id="1_1rgnl"]
+[ext_resource type="Texture2D" uid="uid://82d60hhwmefa" path="res://assets/trees/Trees_texture_shadows_dark_source.png" id="1_sbluk"]
 
 [sub_resource type="Shader" id="Shader_sinkl"]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -56,7 +56,7 @@ shader_parameter/strengthScale = 100.0
 shader_parameter/interval = 3.5
 shader_parameter/detail = 1.0
 shader_parameter/distortion = 0.1
-shader_parameter/heightOffset = 0.052
+shader_parameter/heightOffset = 0.3
 shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkc67"]
@@ -70,12 +70,10 @@ collision_mask = 0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hp64p")
-position = Vector2(8, -16)
-texture = ExtResource("1_1rgnl")
+position = Vector2(0, -25)
+texture = ExtResource("1_sbluk")
 region_enabled = true
-region_rect = Rect2(128, 144, 48, 48)
+region_rect = Rect2(416, 0, 64, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_mkc67")

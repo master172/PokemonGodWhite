@@ -102,11 +102,11 @@ func get_input():
 			if Input.is_action_just_pressed("attack1"):
 				_on_attack_selector_attack_chosen(0)
 			elif Input.is_action_just_pressed("attack2"):
-				_on_attack_selector_attack_chosen(2)
+				_on_attack_selector_attack_chosen(1)
 			elif Input.is_action_just_pressed("attack3"):
-				_on_attack_selector_attack_chosen(3)
+				_on_attack_selector_attack_chosen(2)
 			elif Input.is_action_just_pressed("attack4"):
-				_on_attack_selector_attack_chosen(4)
+				_on_attack_selector_attack_chosen(3)
 
 	if Input.is_action_just_pressed("No") and init_delay == false:
 		if action == false:

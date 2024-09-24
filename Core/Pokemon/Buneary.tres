@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://ybd037xsc7be"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://ybd037xsc7be"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_7ko4u"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_obnr2"]
-[ext_resource type="Texture2D" uid="uid://byx8hb3ee2uhs" path="res://Core/Graphics/Pokemon/Gen4/Back/BUNEARY.png" id="2_iqcq0"]
 [ext_resource type="Texture2D" uid="uid://bd0mafgrmoksw" path="res://Core/Graphics/Pokemon/Gen4/Front/BUNEARY.png" id="3_ej4xi"]
 [ext_resource type="Texture2D" uid="uid://bjui25nb7si3a" path="res://Core/Graphics/Pokemon/Gen4/Icons/BUNEARY.png" id="4_ot83v"]
 [ext_resource type="Texture2D" uid="uid://cg86jt1otu0s0" path="res://Core/Graphics/Pokemon/Gen4/Followers/BUNEARY.png" id="5_dmh2c"]
@@ -15,7 +14,6 @@ Type1 = "Normal"
 Type2 = "NONE"
 leveleing_type = 2
 Front = ExtResource("3_ej4xi")
-Back = ExtResource("2_iqcq0")
 Icon = ExtResource("4_ot83v")
 Overworld = ExtResource("5_dmh2c")
 Base_Health = 55

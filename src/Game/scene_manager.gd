@@ -264,6 +264,8 @@ func load_healing_place():
 	
 	
 func load_battle_trainer(pokemon,map):
+	TouchInput.toogele_default(false)
+	TouchInput.toggle_battle(true)
 	battle_layer.add_child(battle_scene.instantiate())
 	battle_layer.get_child(0).set_enemy(pokemon)
 	battle_layer.get_child(0).set_map(map)

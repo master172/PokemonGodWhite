@@ -10,9 +10,9 @@ y_sort_enabled = true
 metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -248.0
-offset_top = -264.0
-offset_right = 256.0
+offset_left = -464.0
+offset_top = -472.0
+offset_right = 432.0
 offset_bottom = 264.0
 color = Color(0, 0, 0, 1)
 
@@ -50,17 +50,9 @@ script = ExtResource("4_bkd7g")
 [node name="player" parent="." instance=ExtResource("5_0jduf")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-72, -96)
+position = Vector2(-56, -96)
 can_surf = false
 can_cycle = false
-
-[node name="Door" parent="." instance=ExtResource("6_upmvu")]
-z_index = 2
-position = Vector2(-56, -216)
-next_scene_path = "res://src/World/Fivis.tscn"
-invisible = true
-Spawn_location = Vector2(232, 400)
-Spawn_direction = Vector2(0, -1)
 
 [node name="Door2" parent="." instance=ExtResource("6_upmvu")]
 z_index = 2
@@ -77,3 +69,11 @@ polygon = PackedVector2Array(-64, 0, -128, 0, -160, -32, -160, -176, -128, -208,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-48, 0, 16, 0, 16, -16, 32, -16, 32, -32, 48, -32, 48, -176, 16, -208, -48, -208, -48, -224, 24, -224, 64, -184, 64, -24, 24, 16, -48, 16)
+
+[node name="Door" parent="." instance=ExtResource("6_upmvu")]
+z_index = 1
+position = Vector2(-56, -216)
+next_scene_path = "res://src/World/Fivis.tscn"
+invisible = true
+Spawn_location = Vector2(232, 400)
+Spawn_direction = Vector2(0, -1)

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://cdhbxe8oemx0h"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://cdhbxe8oemx0h"]
 
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_0qahe"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_usxvq"]
-[ext_resource type="Texture2D" uid="uid://babo7mctf1a3j" path="res://Core/Graphics/Pokemon/Gen4/Back/GIBLE.png" id="2_lua2t"]
 [ext_resource type="Texture2D" uid="uid://i3b617ctf162" path="res://Core/Graphics/Pokemon/Gen4/Front/GIBLE.png" id="3_5lo7j"]
 [ext_resource type="Texture2D" uid="uid://b6ap054u12tbb" path="res://Core/Graphics/Pokemon/Gen4/Icons/GIBLE.png" id="4_oldwp"]
 [ext_resource type="Texture2D" uid="uid://cduf7dxdkwa3a" path="res://Core/Graphics/Pokemon/Gen4/Followers/GIBLE.png" id="5_uhbmf"]
@@ -15,7 +14,6 @@ Type1 = "Dragon"
 Type2 = "Ground"
 leveleing_type = 0
 Front = ExtResource("3_5lo7j")
-Back = ExtResource("2_lua2t")
 Icon = ExtResource("4_oldwp")
 Overworld = ExtResource("5_uhbmf")
 Base_Health = 58

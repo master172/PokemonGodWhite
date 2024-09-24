@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://dgf17pnpsvtsr"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://dgf17pnpsvtsr"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_gvbcs"]
-[ext_resource type="Texture2D" uid="uid://2d3q4rc5q0io" path="res://Core/Graphics/Pokemon/Gen1/Back/CATERPIE.png" id="1_lyxrr"]
 [ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_y2kxg"]
 [ext_resource type="Resource" uid="uid://cpo8n8bjupkw3" path="res://Core/Pokemon/Actions/StringShot.tres" id="2_8h3mv"]
 [ext_resource type="Texture2D" uid="uid://b8ph084si4kfl" path="res://Core/Graphics/Pokemon/Gen1/Front/CATERPIE.png" id="2_l8xii"]
@@ -16,7 +15,6 @@ Type1 = "Bug"
 Type2 = "NONE"
 leveleing_type = 2
 Front = ExtResource("2_l8xii")
-Back = ExtResource("1_lyxrr")
 Icon = ExtResource("3_erid8")
 Overworld = ExtResource("4_yfal2")
 Base_Health = 45

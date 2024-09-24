@@ -9625,7 +9625,7 @@ z_index = 1
 position = Vector2(-40, -176)
 next_scene_path = "res://src/World/Houses/TransistionPoint2.tscn"
 invisible = true
-Spawn_location = Vector2(66, 16)
+Spawn_location = Vector2(-56, 0)
 Spawn_direction = Vector2(0, -1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

@@ -3027,11 +3027,12 @@ color = Color(0, 0, 0, 1)
 [node name="player" parent="." instance=ExtResource("4_8jafr")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(8, 204)
+position = Vector2(8, 192)
 can_surf = false
 can_cycle = false
 
 [node name="mainTilemap" type="TileMap" parent="."]
+z_index = -1
 texture_filter = 1
 tile_set = SubResource("TileSet_yemnp")
 format = 2
