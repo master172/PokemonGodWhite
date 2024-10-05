@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cugqeykx40b2l"]
+[gd_scene load_steps=9 format=3 uid="uid://cugqeykx40b2l"]
 
 [ext_resource type="Script" path="res://src/Ui/Pokedex/pokedex.gd" id="1_mgcim"]
 [ext_resource type="PackedScene" uid="uid://tficeemr8hlg" path="res://src/Ui/Pokedex/poke_search.tscn" id="2_27g57"]
+[ext_resource type="Script" path="res://src/Ui/Pokedex/PokemonQuery.gd" id="3_aeyfn"]
+[ext_resource type="PackedScene" uid="uid://d174ktbsf1qmn" path="res://src/Ui/Pokedex/poke_info.tscn" id="4_4d2lr"]
 
 [sub_resource type="Gradient" id="Gradient_konxb"]
 offsets = PackedFloat32Array(0, 0.494845, 0.993127, 1)
@@ -131,4 +133,19 @@ size_flags_horizontal = 3
 [node name="PokeSearch" parent="MainContainer/ContentContainer/MainContainer" instance=ExtResource("2_27g57")]
 layout_mode = 1
 
+[node name="PokemonQuery" type="Node" parent="."]
+script = ExtResource("3_aeyfn")
+
+[node name="PokeInfo" parent="." instance=ExtResource("4_4d2lr")]
+visible = false
+layout_mode = 1
+
 [connection signal="text_submitted" from="MainContainer/MainBar/HBoxContainer/SearchBar" to="." method="_on_search_bar_text_submitted"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Party" to="." method="_on_party_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Taxonomy" to="." method="_on_taxonomy_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Universal" to="." method="_on_universal_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Alphabetcial" to="." method="_on_alphabetcial_pressed"]
+[connection signal="pokemon_searched" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_pokemon_searched"]
+[connection signal="selected" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_selected"]
+[connection signal="closed" from="PokeInfo" to="." method="_on_poke_info_closed"]

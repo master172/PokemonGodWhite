@@ -10,6 +10,7 @@ const Summary_scene = preload("res://src/Ui/Summary/Summary.tscn")
 const Bag_Scene = preload("res://src/Ui/Bag/bag.tscn")
 const Switch_Scene = preload("res://src/Ui/Pc/poke_storage.tscn")
 const Trainer_card = preload("res://src/Ui/TrainerCard/trainer_card.tscn")
+const POKEDEX = preload("res://src/Ui/Pokedex/pokedex.tscn")
 
 var Summary_Scene
 
@@ -21,7 +22,8 @@ enum current_state {
 	Bag,
 	Save,
 	Switching,
-	Card
+	Card,
+	Pokedex,
 }
 
 var CurrentState = current_state.Empty
@@ -87,6 +89,8 @@ func _input(event):
 					AudioManager.select()
 					if current_selected == 0:
 						Utils.get_scene_manager().transition_to_party_screen()
+					elif current_selected == 1:
+						Utils.get_scene_manager().transition_to_pokedex_scene()
 					elif current_selected == 2 or current_selected == -2:
 						Utils.get_scene_manager().transition_to_bag_scene()
 					elif current_selected == 4 or current_selected == -4:
@@ -198,6 +202,16 @@ func save():
 	Utils.get_scene_manager().shoot_screen()
 	Utils.save_data()
 	
+func load_pokedex():
+	visible = false
+	CurrentState = current_state.Pokedex
+	var scene = POKEDEX.instantiate()
+	get_parent().add_child(scene)
+
+func unload_pokedex():
+	visible = true
+	get_parent().get_node("Pokedex").queue_free()
+	CurrentState = current_state.Normal
 	
 func save_dialog_finished(Dialogline):
 	if Dialogline == Save_dialog:

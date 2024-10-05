@@ -37,6 +37,8 @@ enum Transition_Type {
 	BAG_SCENE,
 	EXIT_BAG_SCENE,
 	EVOLUTION,
+	POKEDEX,
+	EXIT_POKEDEX,
 	EXIT_EVOLUTION,
 	TRAINER_BATTLE,
 	EXIT_TRAINER_BATTLE,
@@ -131,7 +133,16 @@ func transistion_exit_evolution():
 	menu.get_parent().show()
 	re_check_evolution()
 	Utils.get_player().switch_default_camera()
+
+func transistion_exit_pokedex_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.EXIT_POKEDEX
 	
+func transition_to_pokedex_scene():
+	transition_player.play("FadeToBlack")
+	transition_type = Transition_Type.POKEDEX
+
+
 func transistion_exit_bag_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BAG_SCENE
@@ -219,6 +230,10 @@ func finished_fading():
 		Transition_Type.BATTLE_LOST:
 			load_healing_place()
 			AudioManager.switch_to_exploration()
+		Transition_Type.POKEDEX:
+			menu.load_pokedex()
+		Transition_Type.EXIT_POKEDEX:
+			menu.unload_pokedex()
 	transition_player.play("FadeToNormal")
 
 func change_scene():

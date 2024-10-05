@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=3 uid="uid://d174ktbsf1qmn"]
+
+[ext_resource type="Theme" uid="uid://cqst728xxipcw" path="res://addons/dialogic/Editor/Theme/MainTheme.tres" id="1_6foo2"]
+[ext_resource type="Script" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
+[ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="2_dx2s2"]
+[ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_atk5a"]
+
+[sub_resource type="Gradient" id="Gradient_xy1xx"]
+colors = PackedColorArray(0.00696641, 0.0154595, 0.046875, 1, 0, 0.134546, 0.34375, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lcd12"]
+gradient = SubResource("Gradient_xy1xx")
+width = 128
+height = 128
+fill_from = Vector2(1, 0.923077)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05xw6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 48
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_epvi7"]
+
+[node name="PokeInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hq1x4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 49.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lcd12")
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_05xw6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 1183.0
+offset_bottom = 49.0
+
+[node name="Label" type="Label" parent="TextureRect/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "not-seen"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.0
+offset_top = -265.0
+offset_right = 566.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Image" type="VBoxContainer" parent="TextureRect/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Number" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "No. 1001"
+
+[node name="Name" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 48
+text = "Naichi"
+
+[node name="Tag" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 28
+text = "the original sin"
+
+[node name="Types" type="RichTextLabel" parent="TextureRect/Panel/HBoxContainer/Image"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/normal_font_size = 32
+text = "fire / fighting"
+
+[node name="Description" type="RichTextLabel" parent="TextureRect/Panel/HBoxContainer/Image"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/normal_font_size = 32
+text = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of whatever you do, forever is it bound to you."
+
+[node name="ImageContainer" type="HBoxContainer" parent="TextureRect/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Image" type="TextureRect" parent="TextureRect/Panel/HBoxContainer/ImageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_dx2s2")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel/HBoxContainer/ImageContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 312
+theme_override_styles/separator = SubResource("StyleBoxEmpty_epvi7")
+
+[node name="HeightTitle" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "Height"
+
+[node name="Height" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "128m"
+
+[node name="WeightTitle" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "Weight"
+
+[node name="Weight" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6foo2")
+theme_override_font_sizes/font_size = 32
+text = "345kg"
+
+[node name="Gender" type="Sprite2D" parent="."]
+position = Vector2(1129, 70)
+scale = Vector2(10, 10)
+texture = ExtResource("4_atk5a")

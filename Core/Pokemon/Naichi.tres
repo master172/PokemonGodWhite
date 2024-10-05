@@ -34,3 +34,6 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 2
 Yield_Speed = 0
 catch_chance = 16
+Tag = "The original sin"
+description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of
+whatever you do, forever is it bound to you."

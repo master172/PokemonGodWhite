@@ -19,6 +19,9 @@ var max_selected:int = 0
 
 var active:bool = false
 
+signal pokemon_searched
+signal selected(poke:Pokemon)
+
 func dir_contents(path,search:String=""):
 	var dir = DirAccess.open(path)
 	if dir:
@@ -42,7 +45,8 @@ func _on_line_edit_text_submitted(new_text):
 	print(new_text)
 	dir_contents(PATH,new_text)
 	display_results()
-
+	pokemon_searched.emit()
+	
 func display_results():
 	if v_box_container.get_child_count() > 0:
 		for i in v_box_container.get_children():
@@ -86,6 +90,10 @@ func _input(event):
 				if current_selected == max_selected:
 					scroll_container.scroll_vertical = v_box_container.get_child_count() * 128
 				set_active()
+		elif event.is_action_pressed("Yes"):
+			if active == true:
+				var pokemon = v_box_container.get_child(current_selected).pokemon
+				selected.emit(pokemon)
 
 func set_inactive():
 	if v_box_container.get_child_count() > 0:
