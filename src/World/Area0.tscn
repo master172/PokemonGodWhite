@@ -1794,7 +1794,6 @@ unique_name_in_owner = true
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_338l5")
-collision_visibility_mode = 1
 format = 2
 layer_0/name = "ground"
 layer_0/y_sort_enabled = true
