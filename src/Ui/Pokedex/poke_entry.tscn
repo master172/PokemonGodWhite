@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7jacwue1rkc7"]
+
+[ext_resource type="Texture2D" uid="uid://bxatlfgo8m1ni" path="res://Core/Graphics/Pokemon/Gen6/Front/TYRUNT.png" id="1_4eqo4"]
+[ext_resource type="Script" path="res://src/Ui/Pokedex/poke_entry.gd" id="1_rdefb"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_hnmri"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_u3vpf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x54hs"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 20
+border_width_top = 10
+border_width_right = 20
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[node name="PokeEntry" type="Control"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rdefb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x54hs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4eqo4")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hnmri")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u3vpf")
+text = "Tyrunt"

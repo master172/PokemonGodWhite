@@ -1,0 +1,200 @@
+[gd_scene load_steps=26 format=3 uid="uid://dtcy8jt6yeehr"]
+
+[ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
+[ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_spcle"]
+[ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_83ynj"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_toy2f"]
+[ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_c16ga"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_cax24"]
+[ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
+[ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
+[ext_resource type="Script" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
+
+[sub_resource type="Resource" id="Resource_v2f5h"]
+script = ExtResource("2_spcle")
+function = "time_to_evolve"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_132ko"]
+script = ExtResource("3_83ynj")
+text = "yes"
+functions = Array[ExtResource("2_spcle")]([SubResource("Resource_v2f5h")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_blc8a"]
+script = ExtResource("2_spcle")
+function = "cancel_evolution"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_3ardk"]
+script = ExtResource("3_83ynj")
+text = "no"
+functions = Array[ExtResource("2_spcle")]([SubResource("Resource_blc8a")])
+next = -1
+
+[sub_resource type="Resource" id="Resource_0upln"]
+script = ExtResource("4_c16ga")
+Dialog_type = 1
+text = "{P1} wants to evolve, do you want to let {P1} to evolve"
+next = 0
+Actors = Array[ExtResource("3_toy2f")]([])
+functions = Array[ExtResource("2_spcle")]([])
+Options = Array[ExtResource("3_83ynj")]([SubResource("Resource_132ko"), SubResource("Resource_3ardk")])
+
+[sub_resource type="Resource" id="Resource_c8k5d"]
+script = ExtResource("5_cax24")
+Dialogs = Array[ExtResource("4_c16ga")]([SubResource("Resource_0upln")])
+Format = {}
+
+[sub_resource type="Animation" id="Animation_t24b6"]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_fading"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kjhft"]
+resource_name = "FadeToNormal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aupg7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqoy"]
+_data = {
+"FadeToBlack": SubResource("Animation_t24b6"),
+"FadeToNormal": SubResource("Animation_kjhft"),
+"RESET": SubResource("Animation_aupg7")
+}
+
+[sub_resource type="Animation" id="Animation_k5dtd"]
+resource_name = "Default"
+length = 24.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 4, 5.5, 6.5, 8, 12, 16, 17.5, 18.5, 20, 21.5, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.169088, 0.18037, 0.333017, 1), Color(0.215204, 0.199866, 0.394424, 1), Color(0.428431, 0.193332, 0.564388, 1), Color(0.953258, 0.459474, 0.668641, 1), Color(1, 0.594559, 0.609267, 1), Color(1.00198, 0.870214, 0.866891, 1), Color(1, 1, 1, 1), Color(1.00198, 0.870214, 0.866891, 1), Color(1, 0.594559, 0.609267, 1), Color(0.953258, 0.459474, 0.668641, 1), Color(0.428431, 0.193332, 0.564388, 1), Color(0.215204, 0.199866, 0.394424, 1), Color(0.169088, 0.18037, 0.333017, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lhjtr"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi3fv"]
+_data = {
+"Default": SubResource("Animation_k5dtd"),
+"RESET": SubResource("Animation_lhjtr")
+}
+
+[node name="SceneManager" type="Node2D" groups=["SceneManager"]]
+script = ExtResource("1_iar6v")
+evolution_dialog = SubResource("Resource_c8k5d")
+
+[node name="Current_scene" type="Node2D" parent="."]
+script = ExtResource("2_tvhi0")
+
+[node name="Area0" parent="Current_scene" instance=ExtResource("1_7uays")]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Menu" parent="Menu" instance=ExtResource("4_14eu5")]
+
+[node name="BattleLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenTranistion" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ColorRect" type="ColorRect" parent="ScreenTranistion"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenTranistion"]
+libraries = {
+"": SubResource("AnimationLibrary_5vqoy")
+}
+
+[node name="Debug" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="PokemonDebug" parent="Debug" instance=ExtResource("6_71aaj")]
+visible = false
+z_index = 20
+
+[node name="MoveDeletor" type="CanvasLayer" parent="."]
+
+[node name="MoveDeletor" parent="MoveDeletor" instance=ExtResource("7_3jiyl")]
+visible = false
+
+[node name="Mart_View" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="DayAndNight" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayAndNight"]
+libraries = {
+"": SubResource("AnimationLibrary_pi3fv")
+}
+script = ExtResource("12_bndex")
+
+[connection signal="has_modulate" from="Current_scene" to="." method="_on_current_scene_has_modulate"]
+[connection signal="no_modulate" from="Current_scene" to="." method="_on_current_scene_no_modulate"]

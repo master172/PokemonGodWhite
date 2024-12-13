@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=13 format=3 uid="uid://c4vikkbymtjnl"]
+
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_blnca"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="1_h6rcu"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="2_iakjl"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="2_yi0b2"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="3_kyod8"]
+
+[sub_resource type="Resource" id="Resource_7sork"]
+script = ExtResource("1_blnca")
+Dialog_type = 0
+text = "New Dialog Line"
+next = 1
+Actors = Array[ExtResource("2_yi0b2")]([])
+functions = Array[ExtResource("3_kyod8")]([])
+Options = Array[ExtResource("2_iakjl")]([])
+
+[sub_resource type="Resource" id="Resource_yu0gf"]
+script = ExtResource("2_iakjl")
+text = "Close"
+functions = Array[ExtResource("3_kyod8")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_uupue"]
+script = ExtResource("2_iakjl")
+text = "Continue"
+functions = Array[ExtResource("3_kyod8")]([])
+next = 2
+
+[sub_resource type="Resource" id="Resource_hq1uw"]
+script = ExtResource("1_blnca")
+Dialog_type = 1
+text = "Checking if it works"
+next = 0
+Actors = Array[ExtResource("2_yi0b2")]([])
+functions = Array[ExtResource("3_kyod8")]([])
+Options = Array[ExtResource("2_iakjl")]([SubResource("Resource_yu0gf"), SubResource("Resource_uupue")])
+
+[sub_resource type="Resource" id="Resource_14skd"]
+script = ExtResource("3_kyod8")
+function = "test_function"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_7oeyi"]
+script = ExtResource("1_blnca")
+Dialog_type = 0
+text = "Functions"
+next = 3
+Actors = Array[ExtResource("2_yi0b2")]([])
+functions = Array[ExtResource("3_kyod8")]([SubResource("Resource_14skd")])
+Options = Array[ExtResource("2_iakjl")]([])
+
+[sub_resource type="Resource" id="Resource_iaovc"]
+script = ExtResource("1_blnca")
+Dialog_type = 0
+text = "Last"
+next = -1
+Actors = Array[ExtResource("2_yi0b2")]([])
+functions = Array[ExtResource("3_kyod8")]([])
+Options = Array[ExtResource("2_iakjl")]([])
+
+[resource]
+script = ExtResource("1_h6rcu")
+Dialogs = Array[ExtResource("1_blnca")]([SubResource("Resource_7sork"), SubResource("Resource_hq1uw"), SubResource("Resource_7oeyi"), SubResource("Resource_iaovc")])
+Format = {}

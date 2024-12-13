@@ -1,0 +1,199 @@
+[gd_scene load_steps=13 format=3 uid="uid://d4ckyncwga1be"]
+
+[ext_resource type="Script" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
+[ext_resource type="Texture2D" uid="uid://bgwlfovxeby4y" path="res://assets/Ui/BattleScene/databox_normal.png" id="1_v6x5b"]
+[ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="2_gmj4o"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="3_i3dif"]
+[ext_resource type="Texture2D" uid="uid://cx8mifns2hvmr" path="res://assets/Ui/BattleScene/Pokemons.png" id="5_lnb54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x8fy"]
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgrd5"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g15p5"]
+bg_color = Color(0.72549, 0.72549, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqibt"]
+bg_color = Color(0.156863, 0.741176, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gij1k"]
+bg_color = Color(0, 0.741176, 0.721569, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jixej"]
+size = Vector2(312, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jimgn"]
+size = Vector2(312, 144)
+
+[node name="PokeData" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ibwju")
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+modulate = Color(0.160784, 1, 0.878431, 1)
+layout_mode = 2
+offset_left = 35.0
+offset_top = 99.0
+offset_right = 299.0
+offset_bottom = 116.0
+theme = ExtResource("2_gmj4o")
+theme_override_styles/background = SubResource("StyleBoxFlat_7x8fy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cgrd5")
+value = 100.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 107)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Databox" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_v6x5b")
+stretch_mode = 2
+
+[node name="Icon" type="Sprite2D" parent="HBoxContainer/Databox"]
+texture_filter = 1
+position = Vector2(41, 32)
+scale = Vector2(2, 2)
+hframes = 2
+
+[node name="Name" type="Label" parent="HBoxContainer/Databox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 93.0
+offset_top = 23.0
+offset_right = 175.0
+offset_bottom = 64.0
+theme = ExtResource("3_i3dif")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="Level" type="Label" parent="HBoxContainer/Databox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 90.0
+offset_top = 59.0
+offset_right = 133.0
+offset_bottom = 93.0
+theme = ExtResource("3_i3dif")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer/Databox"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 63.0
+offset_right = 266.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g15p5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mqibt")
+show_percentage = false
+
+[node name="ExpBar" type="ProgressBar" parent="HBoxContainer/Databox"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 97.0
+offset_right = 266.0
+offset_bottom = 101.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g15p5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gij1k")
+show_percentage = false
+
+[node name="Databox2" type="TextureRect" parent="HBoxContainer"]
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v6x5b")
+stretch_mode = 2
+flip_h = true
+
+[node name="Pokemons" type="Sprite2D" parent="HBoxContainer/Databox2"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(148, 131)
+texture = ExtResource("5_lnb54")
+vframes = 7
+
+[node name="Icon" type="Sprite2D" parent="HBoxContainer/Databox2"]
+texture_filter = 1
+position = Vector2(259, 31)
+scale = Vector2(2, 2)
+flip_h = true
+hframes = 2
+
+[node name="Name" type="Label" parent="HBoxContainer/Databox2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 82.0
+offset_top = 23.0
+offset_right = 206.0
+offset_bottom = 64.0
+theme = ExtResource("3_i3dif")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "
+"
+
+[node name="Level" type="Label" parent="HBoxContainer/Databox2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 62.0
+offset_right = 210.0
+offset_bottom = 96.0
+theme = ExtResource("3_i3dif")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer/Databox2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 63.0
+offset_right = 156.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g15p5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mqibt")
+fill_mode = 1
+show_percentage = false
+
+[node name="ExpBar" type="ProgressBar" parent="HBoxContainer/Databox2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 97.0
+offset_right = 224.0
+offset_bottom = 101.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g15p5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gij1k")
+fill_mode = 1
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(152, 71)
+shape = SubResource("RectangleShape2D_jixej")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1048, 72)
+shape = SubResource("RectangleShape2D_jimgn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

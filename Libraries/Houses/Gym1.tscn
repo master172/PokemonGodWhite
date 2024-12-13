@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddxpyqinkua4j"]
+
+[ext_resource type="Texture2D" uid="uid://brfu8kio0imw5" path="res://assets/PokemonTilesets/Houses/FivisGym.png" id="1_m5k52"]
+[ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_c4ro3"]
+[ext_resource type="Texture2D" uid="uid://ndkd0mm6smh" path="res://assets/PokemonTilesets/Doors/Gym1.png" id="3_2tdv8"]
+
+[node name="Gym1" type="StaticBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("1_m5k52")
+region_rect = Rect2(0, 5600, 112, 80)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(-40, -36, 40, -36, 40, 20, 8, 20, 8, 4, -8, 4, -8, 20, -40, 20)
+
+[node name="Door" parent="." instance=ExtResource("2_c4ro3")]
+position = Vector2(0, 16)
+next_scene_path = "res://src/World/Houses/FivisUnique/FivisGym.tscn"
+Spawn_location = Vector2(8, 224)
+Spawn_direction = Vector2(0, -1)
+
+[node name="Sprite2D" parent="Door" index="0"]
+texture = ExtResource("3_2tdv8")
+hframes = 1
+vframes = 4
+
+[editable path="Door"]

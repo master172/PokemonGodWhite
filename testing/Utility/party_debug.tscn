@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbm1xymidd5w7"]
+
+[ext_resource type="Script" path="res://testing/Utility/party_debug.gd" id="1_vx2pl"]
+
+[node name="PartyDebug" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vx2pl")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 155.0
+offset_bottom = 63.0
+text = "add debug party"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 72.0
+offset_right = 159.0
+offset_bottom = 103.0
+text = "heal party"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

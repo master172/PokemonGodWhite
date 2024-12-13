@@ -1,0 +1,4 @@
+Kyle: hey would you like to see my pokemon?
+[signal arg="Battle"]
+[signal arg="end"]
+[end_timeline]

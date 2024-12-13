@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://djsdrnjlavi14"]
+
+[ext_resource type="Texture2D" uid="uid://bbljurgmgi73r" path="res://assets/Serene_Village/Houses/House1.png" id="1_aa7ra"]
+[ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_8h3i4"]
+
+[node name="House" type="StaticBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -8)
+texture = ExtResource("1_aa7ra")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(8, 0)
+polygon = PackedVector2Array(-32, -24, 32, -24, 32, 24, 0, 24, 0, -8, -16, -8, -16, 24, -32, 24)
+
+[node name="Door" parent="." instance=ExtResource("2_8h3i4")]
+next_scene_path = "res://src/World/Houses/InnHouse.tscn"
+Spawn_location = Vector2(24, 64)
+Spawn_direction = Vector2(0, -1)

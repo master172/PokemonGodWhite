@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bupo65vvcq7fg"]
+
+[ext_resource type="Script" path="res://src/World/Helpers/EncounterManager.gd" id="1_dssws"]
+
+[node name="EncounterManager" type="Node2D"]
+script = ExtResource("1_dssws")

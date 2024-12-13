@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0xx2xkpqlmlr"]
+
+[ext_resource type="Script" path="res://src/Pokemon/PokeBalls/thrower.gd" id="1_x7eip"]
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_o4api"]
+
+[node name="thrower" type="Node2D"]
+script = ExtResource("1_x7eip")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 70.4
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_o4api")

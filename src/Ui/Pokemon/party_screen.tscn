@@ -1,0 +1,143 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxf5ewkbq7wsk"]
+
+[ext_resource type="Script" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
+[ext_resource type="PackedScene" uid="uid://bbk2dilhl5dmm" path="res://src/Ui/Pokemon/main_slot.tscn" id="2_shw64"]
+[ext_resource type="PackedScene" uid="uid://bomnjll0jderl" path="res://src/Ui/Pokemon/SubSlot.tscn" id="3_7xald"]
+[ext_resource type="Texture2D" uid="uid://dn4wxipelwxhl" path="res://assets/Ui/PartyScreen/exit_background_button.png" id="4_dbhfa"]
+[ext_resource type="Script" path="res://src/Ui/Pokemon/Cancel.gd" id="6_umcrd"]
+[ext_resource type="Shader" path="res://src/Ui/Pokemon/Circle.gdshader" id="7_58kkr"]
+[ext_resource type="Texture2D" uid="uid://dtygb6rt7c0eh" path="res://assets/Ui/PartyScreen/RadialBg.png" id="8_882g3"]
+[ext_resource type="Texture2D" uid="uid://d4gnim6nuvqe1" path="res://assets/Ui/PartyScreen/RadialPG.png" id="9_qi5mh"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="10_ay2wv"]
+
+[sub_resource type="Gradient" id="Gradient_wxt44"]
+offsets = PackedFloat32Array(0, 0.87055, 1)
+colors = PackedColorArray(0, 0.0639589, 0.363281, 1, 0, 0.0016559, 0.00940534, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_34c7m"]
+gradient = SubResource("Gradient_wxt44")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mx3s"]
+shader = ExtResource("7_58kkr")
+shader_parameter/amt = 0.562
+shader_parameter/color = Color(0.145098, 0.145098, 0.145098, 0.713726)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qct53"]
+
+[sub_resource type="Theme" id="Theme_t35bs"]
+default_font = ExtResource("10_ay2wv")
+default_font_size = 128
+
+[node name="PartyScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4o2vg")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_34c7m")
+
+[node name="MainSlot" parent="." instance=ExtResource("2_shw64")]
+position = Vector2(220, 233)
+
+[node name="Slot2" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 105)
+slot_no = 1
+
+[node name="Slot3" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 225)
+slot_no = 2
+
+[node name="Slot4" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 345)
+slot_no = 3
+
+[node name="Slot5" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 465)
+slot_no = 4
+
+[node name="Slot6" parent="." instance=ExtResource("3_7xald")]
+position = Vector2(815, 585)
+slot_no = 5
+
+[node name="Cancel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1056, 720)
+scale = Vector2(5, 5)
+texture = ExtResource("4_dbhfa")
+hframes = 2
+script = ExtResource("6_umcrd")
+
+[node name="ButtonPressTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HoldButton" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="HoldButton"]
+material = SubResource("ShaderMaterial_6mx3s")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 400.0
+offset_bottom = 800.0
+grow_horizontal = 2
+texture = SubResource("PlaceholderTexture2D_qct53")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="HoldButton/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 28.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("8_882g3")
+texture_progress = ExtResource("9_qi5mh")
+
+[node name="Label" type="Label" parent="HoldButton/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -77.0
+offset_right = 31.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t35bs")
+text = "z"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="ButtonPressTimer" to="." method="_on_button_press_timer_timeout"]

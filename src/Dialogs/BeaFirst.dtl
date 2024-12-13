@@ -1,0 +1,8 @@
+Bea: Oh my god, you look hurt let me help you
+[signal arg="FirstHeal"]
+[wait time="2.0"]
+Bea: You looked completely hurt what had happened
+................................................................
+Bea: Ah i see well i cant help you with any of that but i know someone who could, just go down left and you will find a house go inside and talk to him
+[signal arg="DialogicDone"]
+[end_timeline]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://dslup8uf30gtc"]
+
+[ext_resource type="Script" path="res://Core/Battle/Ui/battle_selector.gd" id="1_wafp2"]
+[ext_resource type="StyleBox" uid="uid://bhs31cu62uuda" path="res://Core/Battle/Ui/Panel.tres" id="2_kvwo1"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="4_m8tmb"]
+
+[node name="BattleSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wafp2")
+
+[node name="Main" type="Panel" parent="."]
+self_modulate = Color(1, 0.988235, 1, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -184.0
+offset_right = 136.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("2_kvwo1")
+
+[node name="Left" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -64.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_kvwo1")
+
+[node name="Label" type="Label" parent="Main/Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m8tmb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tackle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 216.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_kvwo1")
+
+[node name="Label" type="Label" parent="Main/Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m8tmb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tackle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m8tmb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tackle"
+horizontal_alignment = 1
+vertical_alignment = 1

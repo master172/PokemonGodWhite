@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://cuq2jbkvgjh57"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/PokeInfo.gd" id="1_4jr2m"]
+[ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/25.png" id="1_73pml"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_aty2r"]
+[ext_resource type="Script" path="res://Resources/PokeMon/StatSheet.gd" id="2_4lqbf"]
+[ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/25.png" id="2_ckstf"]
+[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/25.png" id="3_omck3"]
+[ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="4_arqmj"]
+
+[sub_resource type="Resource" id="Resource_r63jq"]
+script = ExtResource("1_4jr2m")
+Name = "Pikachu"
+Id = 25
+Types = Array[int]([6])
+Front = ExtResource("2_ckstf")
+Back = ExtResource("1_73pml")
+Icon = ExtResource("3_omck3")
+Overworld = ExtResource("4_arqmj")
+
+[sub_resource type="Resource" id="Resource_1hu2n"]
+script = ExtResource("2_4lqbf")
+Base_Health = 0
+Base_Attack = 0
+Base_Defense = 0
+Special_Base_Attack = 0
+Special_Base_Defense = 0
+Base_Speed = 0
+
+[resource]
+script = ExtResource("1_aty2r")
+pokeInfo = SubResource("Resource_r63jq")
+statSheet = SubResource("Resource_1hu2n")

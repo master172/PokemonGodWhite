@@ -1,0 +1,283 @@
+[gd_scene load_steps=32 format=3 uid="uid://cy76wy1prl8ih"]
+
+[ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
+[ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
+[ext_resource type="Script" path="res://Resources/StateMachine/FiniteStateMachine.gd" id="3_82o3u"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyFollowState.gd" id="4_0bbir"]
+[ext_resource type="Script" path="res://Resources/StateMachine/MelleAttackState.gd" id="5_et2fj"]
+[ext_resource type="Script" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
+[ext_resource type="Script" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
+[ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="11_co6j0"]
+[ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="12_m5l6s"]
+[ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="13_vcj04"]
+[ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="14_ablgi"]
+[ext_resource type="AudioStream" uid="uid://crwmjhnyx8kea" path="res://assets/Audio/SFX/Bfxr/Dodge.wav" id="15_pkr0q"]
+[ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuxi6"]
+radius = 30.0
+
+[sub_resource type="Animation" id="Animation_yb5mb"]
+resource_name = "Down"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_oq1gs"]
+resource_name = "Left"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_3snwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_l8538"]
+resource_name = "Right"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ynfar"]
+resource_name = "Up"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xoc6r"]
+_data = {
+"Down": SubResource("Animation_yb5mb"),
+"Left": SubResource("Animation_oq1gs"),
+"RESET": SubResource("Animation_3snwd"),
+"Right": SubResource("Animation_l8538"),
+"Up": SubResource("Animation_ynfar")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ddvf1"]
+animation = &"Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eqet1"]
+animation = &"Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_squ3v"]
+animation = &"Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ta5b0"]
+animation = &"Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_uqqu7"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ddvf1")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_eqet1")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_squ3v")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ta5b0")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kld30"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ci5n"]
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_uqqu7")
+states/Walk/position = Vector2(396, 100)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_kld30")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lyun"]
+radius = 72.9931
+
+[node name="PokeEnemy" type="CharacterBody2D" groups=["Pokemon"]]
+collision_layer = 33
+motion_mode = 1
+floor_snap_length = 2.0
+safe_margin = 0.1
+script = ExtResource("1_ss21h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("2_yfdu5")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_iuxi6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 60.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 1, 0.290196, 1)
+debug_path_custom_point_size = 7.57
+debug_path_custom_line_width = 2.36
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_82o3u")
+state = NodePath("EnemyFollowState")
+
+[node name="EnemyFollowState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "NavigationAgent")]
+script = ExtResource("4_0bbir")
+actor = NodePath("../..")
+NavigationAgent = NodePath("../../NavigationAgent2D")
+
+[node name="MelleAttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_et2fj")
+actor = NodePath("../..")
+
+[node name="RangeAttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_3w07w")
+actor = NodePath("../..")
+
+[node name="EnemyKnockBackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("User")]
+script = ExtResource("7_rkv4e")
+User = NodePath("../..")
+
+[node name="EnemyIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("User", "timer")]
+script = ExtResource("8_8u74g")
+User = NodePath("../..")
+timer = NodePath("../../IdleTimer")
+
+[node name="EnemyDodgeState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_kkcn1")
+actor = NodePath("../..")
+
+[node name="StallState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_jnrn1")
+actor = NodePath("../..")
+
+[node name="PokeCast" type="RayCast2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xoc6r")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xoc6r")
+}
+tree_root = SubResource("AnimationNodeStateMachine_1ci5n")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="KnockBackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockBackArea"]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_5lyun")
+debug_color = Color(0.701961, 0, 0.0705882, 0.419608)
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_co6j0")
+volume_db = -2.0
+autoplay = true
+script = ExtResource("12_m5l6s")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("13_vcj04")
+
+[node name="Die" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("14_ablgi")
+volume_db = -6.0
+
+[node name="Dodge" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("15_pkr0q")
+volume_db = 2.0
+
+[node name="KnockBack" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("16_fsbvv")
+
+[node name="AttackDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParalysisTimer" type="Timer" parent="."]
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
+[connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
+[connection signal="attackFinished" from="FiniteStateMachine/MelleAttackState" to="." method="_on_melle_attack_state_attack_finished"]
+[connection signal="attackFinished" from="FiniteStateMachine/RangeAttackState" to="." method="_on_range_attack_state_attack_finished"]
+[connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
+[connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]
+[connection signal="finished" from="FiniteStateMachine/EnemyDodgeState" to="." method="_on_enemy_dodge_state_finished"]
+[connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]
+[connection signal="timeout" from="ParalysisTimer" to="." method="_on_paralysis_timer_timeout"]

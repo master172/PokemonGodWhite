@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Nature" load_steps=2 format=3 uid="uid://cnv2hjfuown6s"]
+
+[ext_resource type="Script" path="res://Resources/PokeMon/Nature.gd" id="1_2xg3i"]
+
+[resource]
+script = ExtResource("1_2xg3i")
+increased_stat = 1
+decreased_stat = 4

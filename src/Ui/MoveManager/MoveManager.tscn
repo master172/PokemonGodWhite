@@ -1,0 +1,193 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhg0w3hc6j2dh"]
+
+[ext_resource type="Script" path="res://src/Ui/MoveManager/MoveManager.gd" id="1_vprld"]
+[ext_resource type="Texture2D" uid="uid://dq8yigvg5j12b" path="res://Core/Graphics/Pokemon/Gen4/Front/GARDEVOIR.png" id="2_5vg1q"]
+
+[sub_resource type="Gradient" id="Gradient_d557v"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.768751, 0.851563, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gy27n"]
+gradient = SubResource("Gradient_d557v")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_vwyvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j2sh"]
+bg_color = Color(0.6, 0, 0.0313726, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ijm"]
+bg_color = Color(0, 0.784314, 0.172549, 1)
+
+[sub_resource type="Theme" id="Theme_iqlt2"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6j2sh")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_80ijm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl66m"]
+bg_color = Color(0, 0.647059, 0.576471, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_i22r5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ork"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.34902)
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+
+[node name="MoveManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vprld")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_gy27n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PokeInfo" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="PokeImage" type="TextureRect" parent="VBoxContainer/PokeInfo"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_5vg1q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PokeInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PokeInfo/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Name" type="Label" parent="VBoxContainer/PokeInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_fonts/font = SubResource("SystemFont_vwyvu")
+theme_override_font_sizes/font_size = 24
+text = "Gardevior"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/PokeInfo/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme = SubResource("Theme_iqlt2")
+value = 100.0
+
+[node name="Level" type="Label" parent="VBoxContainer/PokeInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_fonts/font = SubResource("SystemFont_vwyvu")
+theme_override_font_sizes/font_size = 24
+text = "Level:200"
+vertical_alignment = 1
+
+[node name="OverContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/OverContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/OverContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl66m")
+
+[node name="NameContainer" type="HBoxContainer" parent="VBoxContainer/OverContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Learned" type="Label" parent="VBoxContainer/OverContainer/HBoxContainer/Panel/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = SubResource("SystemFont_i22r5")
+theme_override_font_sizes/font_size = 32
+text = "Learned Moves
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Learnable" type="Label" parent="VBoxContainer/OverContainer/HBoxContainer/Panel/NameContainer"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = SubResource("SystemFont_i22r5")
+theme_override_font_sizes/font_size = 32
+text = "Learnable  moves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovesContainer" type="HBoxContainer" parent="VBoxContainer/OverContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/OverContainer/MovesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_o4ork")
+
+[node name="Learned" type="VBoxContainer" parent="VBoxContainer/OverContainer/MovesContainer/Panel"]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 39.0
+offset_right = 467.0
+offset_bottom = 577.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/OverContainer/MovesContainer"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_o4ork")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/OverContainer/MovesContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 43.0
+offset_right = -40.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Learnable" type="VBoxContainer" parent="VBoxContainer/OverContainer/MovesContainer/Panel2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15

@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ddijydj0xx3"]
+
+[ext_resource type="Script" path="res://src/Utility/PauseScene.gd" id="1_70lqx"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_02wen"]
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_hf1v4"]
+
+[sub_resource type="Theme" id="Theme_8m4tt"]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("3_hf1v4")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_70lqx")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.101961, 0.101961, 0.470588)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = -95.5
+offset_right = 92.5
+offset_bottom = 95.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+theme = ExtResource("2_02wen")
+text = "GamePaused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = SubResource("Theme_8m4tt")
+text = "Continue"
+
+[node name="Exit" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = SubResource("Theme_8m4tt")
+text = "Exit"
+
+[node name="MainMenu" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = SubResource("Theme_8m4tt")
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

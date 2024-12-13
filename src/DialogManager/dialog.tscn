@@ -1,0 +1,189 @@
+[gd_scene load_steps=25 format=3 uid="uid://qr11x4n8f2gi"]
+
+[ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_bu7wt"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
+[ext_resource type="Resource" uid="uid://c4vikkbymtjnl" path="res://Resources/Dialogs/NewLine.tres" id="5_ixvud"]
+[ext_resource type="Script" path="res://src/DialogManager/FunctionManager.gd" id="8_7aqj1"]
+
+[sub_resource type="Resource" id="Resource_lpre6"]
+script = ExtResource("2_bu7wt")
+function = "test_function"
+parameters = []
+
+[sub_resource type="Resource" id="Resource_gefcc"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "First Dialog"
+next = 1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_lpre6")])
+Options = Array[ExtResource("3_s3u0i")]([])
+
+[sub_resource type="Resource" id="Resource_socbl"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Second Dialog"
+next = 2
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
+Options = Array[ExtResource("3_s3u0i")]([])
+
+[sub_resource type="Resource" id="Resource_pw24y"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Third Dialog"
+next = 3
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
+Options = Array[ExtResource("3_s3u0i")]([])
+
+[sub_resource type="Resource" id="Resource_dfbbq"]
+script = ExtResource("3_s3u0i")
+text = "Yo"
+functions = Array[ExtResource("2_bu7wt")]([])
+next = 4
+
+[sub_resource type="Resource" id="Resource_nsmhb"]
+script = ExtResource("3_s3u0i")
+text = "bro"
+functions = Array[ExtResource("2_bu7wt")]([])
+next = 5
+
+[sub_resource type="Resource" id="Resource_4g6a2"]
+script = ExtResource("3_s3u0i")
+text = "Hi"
+functions = Array[ExtResource("2_bu7wt")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_dplxx"]
+script = ExtResource("2_48l1n")
+Dialog_type = 1
+text = "Hello Question"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
+Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
+
+[sub_resource type="Resource" id="Resource_qxet3"]
+script = ExtResource("2_48l1n")
+Dialog_type = 0
+text = "Option 1"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
+Options = Array[ExtResource("3_s3u0i")]([])
+
+[sub_resource type="Resource" id="Resource_a5bnm"]
+script = ExtResource("3_s3u0i")
+text = "continue"
+functions = Array[ExtResource("2_bu7wt")]([])
+next = 6
+
+[sub_resource type="Resource" id="Resource_m5ghp"]
+script = ExtResource("3_s3u0i")
+text = "dont"
+functions = Array[ExtResource("2_bu7wt")]([])
+next = -1
+
+[sub_resource type="Resource" id="Resource_b3jue"]
+script = ExtResource("2_48l1n")
+Dialog_type = 1
+text = "Second Question"
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([])
+Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
+
+[sub_resource type="Resource" id="Resource_8helj"]
+script = ExtResource("2_bu7wt")
+function = "Change_Dialog"
+parameters = [ExtResource("5_ixvud")]
+
+[sub_resource type="Resource" id="Resource_7142w"]
+script = ExtResource("2_48l1n")
+Dialog_type = 2
+text = ""
+next = 0
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_8helj")])
+Options = Array[ExtResource("3_s3u0i")]([])
+
+[sub_resource type="Resource" id="Resource_3udj0"]
+script = ExtResource("3_pnle8")
+Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_gefcc"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue"), SubResource("Resource_7142w")])
+Format = {}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcicc"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.694118)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="DialogBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_klog6")
+current_dialog = SubResource("Resource_3udj0")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 232)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -272.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcicc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0125
+anchor_top = 0.0689655
+anchor_right = 0.9875
+anchor_bottom = 0.931035
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_080rw")
+bbcode_enabled = true
+text = "margin awareness is something to ponder on truly mesmerising how a few pixels of margin contribute to such an autistic experience of true freedom"
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Actors" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 211.0
+offset_bottom = -277.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speakers" type="HBoxContainer" parent="Actors"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Listners" type="HBoxContainer" parent="Actors"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="FunctionManager" type="Node" parent="."]
+script = ExtResource("8_7aqj1")

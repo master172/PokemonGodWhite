@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbql3cciglnnu"]
+
+[ext_resource type="Texture2D" uid="uid://cjwokc1ibilxm" path="res://assets/PokemonTilesets/Decor/Flowers0.png" id="1_82tmr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqjjm"]
+atlas = ExtResource("1_82tmr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hflk6"]
+atlas = ExtResource("1_82tmr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w50y2"]
+atlas = ExtResource("1_82tmr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5crr"]
+atlas = ExtResource("1_82tmr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk2bm"]
+atlas = ExtResource("1_82tmr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eb4t8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqjjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hflk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w50y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5crr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk2bm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Flowers0" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_eb4t8")
+autoplay = "default"
+frame_progress = 0.301438

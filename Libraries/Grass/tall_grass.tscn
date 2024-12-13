@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6h1kkkqjrqw1"]
+
+[ext_resource type="Script" path="res://Libraries/Grass/tall_grass.gd" id="1_0d38s"]
+[ext_resource type="Texture2D" uid="uid://u5trsui58q1i" path="res://assets/tallgrass/tall_grass.png" id="1_s3ykv"]
+[ext_resource type="Shader" path="res://src/World/trees/tree.gdshader" id="2_mk5gm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmdpe"]
+shader = ExtResource("2_mk5gm")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4cml"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_b1hme"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mghbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_au6ud"]
+resource_name = "stepped"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ruy2p"]
+_data = {
+"Idle": SubResource("Animation_b1hme"),
+"RESET": SubResource("Animation_mghbm"),
+"stepped": SubResource("Animation_au6ud")
+}
+
+[node name="TallGrass" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_0d38s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_lmdpe")
+texture = ExtResource("1_s3ykv")
+hframes = 2
+region_rect = Rect2(0, 80, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_y4cml")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ruy2p")
+}
+autoplay = "Idle"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

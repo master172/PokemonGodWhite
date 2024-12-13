@@ -1,0 +1,13 @@
+How may i help you today sir
+- Buy
+	What would you like to buy
+	[signal arg="Buy"]
+	[end_timeline]
+- Sell
+	Sorry selling is not yet available
+	[signal arg="Sell"]
+	[end_timeline]
+- Cancel
+	We hope to see you again
+	[signal arg="MartCancel"]
+	[end_timeline]

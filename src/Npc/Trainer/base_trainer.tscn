@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjoxiiie3i30t"]
+
+[ext_resource type="Script" path="res://src/Npc/Trainer/base_trainer.gd" id="1_yj4x8"]
+[ext_resource type="PackedScene" uid="uid://dwm1t2bl323ac" path="res://src/Npc/Base/skin.tscn" id="2_ft6p0"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="2_pjvcf"]
+[ext_resource type="Texture2D" uid="uid://b2sf3w3h3qm77" path="res://assets/Npc/Trainers/General/Npc1.png" id="3_6heci"]
+[ext_resource type="PackedScene" uid="uid://cexfrln0n4kji" path="res://src/Npc/Base/CollisonShape.tscn" id="4_k17ak"]
+
+[node name="BaseTrainer" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_yj4x8")
+Pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_pjvcf")])
+levels = Array[int]([5])
+
+[node name="Skin" parent="." instance=ExtResource("2_ft6p0")]
+texture = ExtResource("3_6heci")
+
+[node name="CollisionShape2D" parent="." instance=ExtResource("4_k17ak")]

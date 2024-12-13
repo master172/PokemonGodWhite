@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl1jgwppyykag"]
+
+[ext_resource type="Texture2D" uid="uid://udb6kdpg36a3" path="res://assets/PokemonTilesets/Houses/Mart.png" id="1_6iboo"]
+[ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_a3uou"]
+[ext_resource type="Texture2D" uid="uid://ch3420xlm80qo" path="res://assets/PokemonTilesets/Doors/PokeCenter.png" id="3_4hf4c"]
+
+[node name="Mart" type="StaticBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 8)
+texture = ExtResource("1_6iboo")
+region_rect = Rect2(0, 5296, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(-24, -28, 40, -28, 40, 20, 8, 20, 8, 4, -8, 4, -8, 20, -24, 20)
+
+[node name="Door" parent="." instance=ExtResource("2_a3uou")]
+position = Vector2(0, 16)
+next_scene_path = "res://src/World/Houses/FivisUnique/Mart.tscn"
+Spawn_location = Vector2(24, 64)
+Spawn_direction = Vector2(0, -1)
+
+[node name="Sprite2D" parent="Door" index="0"]
+texture = ExtResource("3_4hf4c")
+hframes = 1
+vframes = 4
+
+[editable path="Door"]

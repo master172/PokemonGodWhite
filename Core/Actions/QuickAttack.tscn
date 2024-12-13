@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2iaaypqka7gs"]
+
+[ext_resource type="Script" path="res://Core/Actions/QuickAttack.gd" id="1_jxbeb"]
+[ext_resource type="AudioStream" uid="uid://cemsf32at537i" path="res://assets/Audio/SFX/Battle/GeneralTackle.wav" id="2_h5iad"]
+[ext_resource type="PackedScene" uid="uid://beliewtyy2emk" path="res://Core/Actions/Resources/dust_brust.tscn" id="3_5f03j"]
+[ext_resource type="Script" path="res://Core/Actions/Resources/ObjectTrail.gd" id="4_jg75v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq7dy"]
+radius = 40.7922
+
+[node name="QuickAttack" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_jxbeb")
+
+[node name="QuickAttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.17
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_hq7dy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_h5iad")
+autoplay = true
+
+[node name="DustBrust" parent="." instance=ExtResource("3_5f03j")]
+
+[node name="ObjectTrail" type="Line2D" parent="."]
+script = ExtResource("4_jg75v")
+
+[connection signal="timeout" from="QuickAttackTimer" to="." method="_on_quick_attack_timer_timeout"]
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

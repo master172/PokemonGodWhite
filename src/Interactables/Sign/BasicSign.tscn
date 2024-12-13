@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq52puj5i2wvk"]
+
+[ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="1_4cukr"]
+[ext_resource type="Script" path="res://src/Interactables/Sign/BasicSign.gd" id="1_l04gh"]
+[ext_resource type="Resource" uid="uid://budscqmll3kan" path="res://Resources/Dialogs/AshActor.tres" id="2_5nit4"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_v4m4j"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_bv0gl"]
+
+[sub_resource type="Resource" id="Resource_0sakw"]
+script = ExtResource("2_v4m4j")
+Dialog_type = 0
+text = "{Welcome} to {NewfoundLand}"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([ExtResource("2_5nit4")])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+
+[sub_resource type="Resource" id="Resource_la14q"]
+script = ExtResource("3_bv0gl")
+Dialogs = Array[ExtResource("2_v4m4j")]([SubResource("Resource_0sakw")])
+Format = {
+"Welcome": "Hola"
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksmod"]
+size = Vector2(16, 16)
+
+[node name="Sign" type="StaticBody2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_l04gh")
+Current_dialog = SubResource("Resource_la14q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2.08616e-07)
+scale = Vector2(1, 0.941176)
+texture = ExtResource("1_4cukr")
+region_enabled = true
+region_rect = Rect2(129, 208, 14, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ksmod")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexfrln0n4kji"]
+
+[ext_resource type="Shape2D" uid="uid://dhj2wtfv0aapt" path="res://src/Npc/Base/Resources/BaseCollisionShape.tres" id="1_hnjm5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D"]
+position = Vector2(0, -8)
+shape = ExtResource("1_hnjm5")

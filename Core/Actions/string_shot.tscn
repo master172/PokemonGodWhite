@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbh7ttclrfj6x"]
+
+[ext_resource type="Script" path="res://Core/Actions/string_shot.gd" id="1_a3s44"]
+[ext_resource type="Texture2D" uid="uid://fpyb654sp2p" path="res://assets/BattleEffects/StringShot.png" id="2_3n5k7"]
+
+[node name="StringShot" type="Node2D"]
+script = ExtResource("1_a3s44")
+
+[node name="String" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(2.14577e-06, 0)
+texture = ExtResource("2_3n5k7")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

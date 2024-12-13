@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=7 format=3 uid="uid://dv08ml3o6ve44"]
+
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="1_7wkcu"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_g2kjm"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="2_c8583"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_op4sp"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="4_np6ce"]
+
+[sub_resource type="Resource" id="Resource_7vy1b"]
+script = ExtResource("1_g2kjm")
+Dialog_type = 0
+text = "{Pokemon} forgot {OldMove} and learnt {NewMove}"
+next = -1
+Actors = Array[ExtResource("2_c8583")]([])
+functions = Array[ExtResource("4_np6ce")]([])
+Options = Array[ExtResource("3_op4sp")]([])
+
+[resource]
+script = ExtResource("1_7wkcu")
+Dialogs = Array[ExtResource("1_g2kjm")]([SubResource("Resource_7vy1b")])
+Format = {}

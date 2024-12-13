@@ -1,0 +1,14 @@
+NurseJoy: Good Morning, would you like me to heal your pokemon
+- Yes
+	NurseJoy: Please give me your pokemon for a few seconds
+	[signal arg="PokeCenterYes"]
+	[wait time="3.0"]
+	[signal arg="TurnBack"]
+	NurseJoy: We have healed your pokemon to full health
+	NurseJoy: We hope to see you again
+	[signal arg="HealingDone"]
+	[end_timeline]
+- No
+	NurseJoy: We hope to see you again
+	[signal arg="PokeCenterNo"]
+	[end_timeline]

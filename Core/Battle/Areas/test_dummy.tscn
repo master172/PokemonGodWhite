@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ynr0nq4upd4"]
+
+[ext_resource type="Script" path="res://Core/Battle/Areas/TestDummy.gd" id="1_gcq1t"]
+[ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_qtfn7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp1n6"]
+size = Vector2(64, 63)
+
+[node name="TestDummy" type="RigidBody2D" groups=["Pokemon"]]
+position = Vector2(544, 224)
+gravity_scale = 0.0
+script = ExtResource("1_gcq1t")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qtfn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yp1n6")

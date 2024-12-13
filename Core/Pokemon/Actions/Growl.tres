@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://cu12qorykhtxs"]
+
+[ext_resource type="PackedScene" uid="uid://dr0p7y6lajf2q" path="res://Core/Actions/Growl.tscn" id="1_j8r0j"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_yy02d"]
+
+[resource]
+script = ExtResource("2_yy02d")
+name = "Growl"
+learned_level = 1
+action = ExtResource("1_j8r0j")
+Type = "Normal"
+power = 0.0
+range = 0

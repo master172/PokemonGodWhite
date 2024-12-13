@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmndgntrn1nfe"]
+
+[ext_resource type="Script" path="res://Core/Actions/Scracth.gd" id="1_li7ep"]
+[ext_resource type="Texture2D" uid="uid://bndgfssxmbs1" path="res://assets/BattleEffects/ScratchShadowClaw.png" id="2_g02iq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv87m"]
+atlas = ExtResource("2_g02iq")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut8b3"]
+atlas = ExtResource("2_g02iq")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibbxr"]
+atlas = ExtResource("2_g02iq")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jckd6"]
+atlas = ExtResource("2_g02iq")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch84f"]
+atlas = ExtResource("2_g02iq")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb6s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv87m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut8b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibbxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jckd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch84f")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hso81"]
+size = Vector2(40, 102.278)
+
+[node name="Action" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_li7ep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nb6s8")
+animation = &"Attack"
+frame = 12
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+rotation = 0.616867
+shape = SubResource("RectangleShape2D_hso81")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

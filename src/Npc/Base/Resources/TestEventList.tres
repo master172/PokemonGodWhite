@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventList" load_steps=5 format=3 uid="uid://bsop8r8swrxgj"]
+
+[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="1_hj38y"]
+[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/BaseEvent.gd" id="1_yweut"]
+[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="2_g7s87"]
+
+[sub_resource type="Resource" id="Resource_tx0uf"]
+script = ExtResource("1_hj38y")
+dialog_string = "AidenInteraction"
+
+[resource]
+script = ExtResource("2_g7s87")
+events = Array[ExtResource("1_yweut")]([SubResource("Resource_tx0uf")])

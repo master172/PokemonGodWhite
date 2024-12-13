@@ -1,0 +1,4 @@
+ash caught the opposing {Battle.Caught}
+take care of your new friend
+[signal arg="Caught"]
+[end_timeline]

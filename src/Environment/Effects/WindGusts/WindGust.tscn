@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://by2tee6vj1nq2"]
+
+[ext_resource type="Script" path="res://src/Environment/Effects/WindGusts/WindGust.gd" id="1_vpfva"]
+
+[sub_resource type="Curve" id="Curve_8nyfm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496951, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_45ohj"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.596078, 0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_lcail"]
+_data = {
+"points": PackedVector2Array(-152.655, -144.798, 152.655, 144.798, 19, 263, -107.747, -2.83355, 107.747, 2.83355, 363, 260, -183.329, -34.6001, 183.329, 34.6001, 643, 360, -193.314, -89.546, 193.314, 89.546, 973, 303)
+}
+point_count = 4
+
+[node name="WindGust" type="Line2D" node_paths=PackedStringArray("path")]
+top_level = true
+z_index = 2
+width_curve = SubResource("Curve_8nyfm")
+script = ExtResource("1_vpfva")
+trail_length = 0.4
+trail_color_gradient = SubResource("Gradient_45ohj")
+random_y_offset = 50.0
+path = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(36, -8)
+curve = SubResource("Curve2D_lcail")

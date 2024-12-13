@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://i2a45cdiv3md"]
+
+[node name="Actor" type="TextureRect"]
+texture_filter = 1
+expand_mode = 3

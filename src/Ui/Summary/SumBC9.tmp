@@ -1,0 +1,487 @@
+[gd_scene load_steps=23 format=3 uid="uid://cg2rtptj7jo3r"]
+
+[ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
+[ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_0rgf5"]
+[ext_resource type="Script" path="res://src/Ui/Summary/info.gd" id="3_4a30r"]
+[ext_resource type="Texture2D" uid="uid://c6vuk5wnqcujs" path="res://assets/Ui/Summary/POKEBALL.png" id="3_a8ai2"]
+[ext_resource type="Texture2D" uid="uid://bqw3xd0to5ien" path="res://assets/Ui/Summary/page_info.png" id="3_oogwt"]
+[ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_16jd6"]
+[ext_resource type="Texture2D" uid="uid://cqi0e0r16pkhy" path="res://assets/Ui/Summary/page_moves.png" id="4_rppev"]
+[ext_resource type="Texture2D" uid="uid://bmejnkh1nhnhx" path="res://assets/Ui/Summary/page_memo.png" id="5_jsjwq"]
+[ext_resource type="Texture2D" uid="uid://dt15mempfrgog" path="res://assets/Ui/Summary/types.png" id="6_ef2bl"]
+[ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
+[ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
+[ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="7_hhiqc"]
+[ext_resource type="Script" path="res://src/Ui/Summary/moves.gd" id="8_cr8m8"]
+[ext_resource type="Texture2D" uid="uid://df2t0ubvupo0m" path="res://assets/Ui/Summary/bg_memo.png" id="8_vv2m0"]
+[ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
+[ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
+[ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
+[ext_resource type="Texture2D" uid="uid://b4oii4yq02iaj" path="res://assets/Ui/Summary/bg_evolution.png" id="12_x1t8v"]
+[ext_resource type="Script" path="res://src/Ui/Summary/evolution.gd" id="13_aw7q6"]
+[ext_resource type="Texture2D" uid="uid://bfr5cxpqegvce" path="res://assets/Ui/Summary/page_evolution.png" id="18_76lr1"]
+[ext_resource type="PackedScene" uid="uid://bhg0w3hc6j2dh" path="res://src/Ui/MoveManager/MoveManager.tscn" id="19_qo35f"]
+
+[node name="Summary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqhau")
+
+[node name="info" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h0y60")
+script = ExtResource("3_4a30r")
+
+[node name="Tag" type="Label" parent="info"]
+layout_mode = 2
+offset_left = 47.0
+offset_top = 34.0
+offset_right = 145.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.968627, 0.341176, 0.341176, 1)
+theme_override_font_sizes/font_size = 52
+text = "Info"
+
+[node name="Info" type="Node2D" parent="info"]
+position = Vector2(246, 429)
+scale = Vector2(5.2, 5.2)
+
+[node name="Species" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = -50.1923
+offset_right = 174.692
+offset_bottom = -9.1923
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Species:"
+
+[node name="Species" type="Label" parent="info/Info/Species"]
+layout_mode = 2
+offset_left = 210.526
+offset_right = 334.526
+offset_bottom = 41.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Bulbasaur"
+
+[node name="DexNo" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = -37.5
+offset_right = 181.692
+offset_bottom = 3.5
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Dex No:"
+
+[node name="DexNo" type="Label" parent="info/Info/DexNo"]
+layout_mode = 2
+offset_left = 210.526
+offset_right = 334.526
+offset_bottom = 41.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "215"
+
+[node name="Ot" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = -24.4231
+offset_right = 181.692
+offset_bottom = 16.5769
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Ot:"
+
+[node name="Ot" type="Label" parent="info/Info/Ot"]
+layout_mode = 2
+offset_left = 210.526
+offset_right = 334.526
+offset_bottom = 41.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Ot"
+
+[node name="PokemonID" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = 1.15393
+offset_right = 181.692
+offset_bottom = 42.1539
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "PokeID:"
+
+[node name="PokemonID" type="Label" parent="info/Info/PokemonID"]
+layout_mode = 2
+offset_left = 210.526
+offset_right = 334.526
+offset_bottom = 41.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "53455"
+
+[node name="ExpPoints" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = 13.6539
+offset_right = 218.692
+offset_bottom = 54.6539
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Exp Points:"
+
+[node name="ExpPoints" type="Label" parent="info/Info/ExpPoints"]
+layout_mode = 2
+offset_left = 215.924
+offset_top = 45.8839
+offset_right = 339.924
+offset_bottom = 86.8839
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "0"
+
+[node name="ToNextLevel" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = 40.5769
+offset_right = 259.692
+offset_bottom = 81.5769
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "To next level:"
+
+[node name="ToNextLevel" type="Label" parent="info/Info/ToNextLevel"]
+layout_mode = 2
+offset_left = 215.924
+offset_top = 45.8839
+offset_right = 339.924
+offset_bottom = 86.8839
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "0"
+
+[node name="Type" type="Label" parent="info/Info"]
+offset_left = 57.6923
+offset_top = -11.5385
+offset_right = 181.692
+offset_bottom = 29.4615
+scale = Vector2(0.285, 0.285)
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+text = "Types:"
+
+[node name="Type1" type="Sprite2D" parent="info/Info/Type"]
+position = Vector2(254.652, 20.9496)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_ef2bl")
+vframes = 19
+
+[node name="Type2" type="Sprite2D" parent="info/Info/Type"]
+position = Vector2(352.395, 20.9496)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_ef2bl")
+vframes = 19
+
+[node name="ExpBar" type="ProgressBar" parent="info"]
+modulate = Color(0.415686, 0.917647, 1, 1)
+layout_mode = 0
+offset_left = 838.0
+offset_top = 775.0
+offset_right = 1145.0
+offset_bottom = 788.0
+theme = ExtResource("7_hhiqc")
+value = 62.51
+show_percentage = false
+
+[node name="moves" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_xk48v")
+script = ExtResource("8_cr8m8")
+
+[node name="Tag" type="Label" parent="moves"]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 34.0
+offset_right = 197.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Moves"
+
+[node name="Move1" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 208.0
+offset_right = 1136.0
+offset_bottom = 264.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move2" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 344.0
+offset_right = 1136.0
+offset_bottom = 400.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move3" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 476.0
+offset_right = 1136.0
+offset_bottom = 532.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="Move4" type="Label" parent="moves"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 609.0
+offset_right = 1136.0
+offset_bottom = 665.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+
+[node name="memo" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_vv2m0")
+
+[node name="Tag" type="Label" parent="memo"]
+layout_mode = 2
+offset_left = 47.0
+offset_top = 34.0
+offset_right = 191.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Memo"
+
+[node name="skills" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_e84sw")
+
+[node name="Tag" type="Label" parent="skills"]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 34.0
+offset_right = 191.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Skills"
+
+[node name="ribbons" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_erw2v")
+
+[node name="Tag" type="Label" parent="ribbons"]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 34.0
+offset_right = 234.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Ribbons"
+
+[node name="evolution" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_x1t8v")
+script = ExtResource("13_aw7q6")
+
+[node name="Tag" type="Label" parent="evolution"]
+layout_mode = 2
+offset_left = 46.0
+offset_top = 34.0
+offset_right = 234.0
+offset_bottom = 99.0
+theme = ExtResource("2_0rgf5")
+theme_override_font_sizes/font_size = 52
+text = "Evolution"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="evolution"]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 148.0
+offset_right = 1172.0
+offset_bottom = 667.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="evolution/ScrollContainer"]
+custom_minimum_size = Vector2(643, 519)
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Info" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("3_oogwt")
+hframes = 2
+
+[node name="Moves" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(676, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("4_rppev")
+hframes = 2
+
+[node name="Memo" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(775, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("5_jsjwq")
+hframes = 2
+
+[node name="Skills" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(874, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("6_finb3")
+hframes = 2
+
+[node name="Ribbons" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(973, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("7_ftuab")
+hframes = 2
+
+[node name="Evolution" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1072, 69)
+scale = Vector2(2, 2)
+texture = ExtResource("18_76lr1")
+hframes = 2
+
+[node name="presisting" type="Node2D" parent="."]
+
+[node name="Level" type="Label" parent="presisting"]
+offset_left = 109.0
+offset_top = 196.0
+offset_right = 207.0
+offset_bottom = 261.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "24"
+
+[node name="Name" type="Label" parent="presisting"]
+offset_left = 129.0
+offset_top = 126.0
+offset_right = 314.0
+offset_bottom = 191.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Pikachu"
+
+[node name="Item" type="Label" parent="presisting"]
+offset_left = 144.0
+offset_top = 661.0
+offset_right = 329.0
+offset_bottom = 726.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Item"
+
+[node name="What" type="Label" parent="presisting"]
+offset_left = 24.0
+offset_top = 736.0
+offset_right = 209.0
+offset_bottom = 801.0
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "None"
+
+[node name="Gender" type="Sprite2D" parent="presisting"]
+texture_filter = 1
+position = Vector2(440, 160)
+scale = Vector2(7.15, 6.875)
+texture = ExtResource("4_16jd6")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="presisting"]
+texture_filter = 1
+position = Vector2(246, 429)
+scale = Vector2(5.2, 5.2)
+
+[node name="BallCaught" type="Sprite2D" parent="presisting"]
+texture_filter = 1
+position = Vector2(81, 160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_a8ai2")
+
+[node name="MoveManager" parent="." instance=ExtResource("19_qo35f")]
+visible = false
+layout_mode = 1
+
+[connection signal="visibility_changed" from="evolution" to="evolution" method="_on_visibility_changed"]
+[connection signal="quit" from="MoveManager" to="." method="_on_move_manager_quit"]

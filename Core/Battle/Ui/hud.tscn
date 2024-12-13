@@ -1,0 +1,239 @@
+[gd_scene load_steps=9 format=3 uid="uid://4oakufv7l1dw"]
+
+[ext_resource type="Texture2D" uid="uid://cv2axym1rrm66" path="res://assets/Ui/BattleScene/RadialSelector.png" id="1_evap7"]
+[ext_resource type="Script" path="res://Core/Battle/Ui/hud.gd" id="1_ubc87"]
+[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_s6f3o"]
+[ext_resource type="Texture2D" uid="uid://7uxrskklwy87" path="res://Core/Graphics/Pokemon/Gen1/Icons/ABRA.png" id="3_vgkxg"]
+[ext_resource type="AudioStream" uid="uid://b0co7pfofcav" path="res://assets/Audio/SFX/Pokeball/Pokeball.wav" id="5_1mrvp"]
+
+[sub_resource type="Animation" id="Animation_p1603"]
+resource_name = "Breath"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PokemonSprites/PokemonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PokemonSprites/PokemonSprite1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PokemonSprites/PokemonSprite2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PokemonSprites/PokemonSprite3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PokemonSprites/PokemonSprite4:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PokemonSprites/PokemonSprite5:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_y0ay8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PokemonSprites/PokemonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PokemonSprites/PokemonSprite1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PokemonSprites/PokemonSprite2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PokemonSprites/PokemonSprite3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PokemonSprites/PokemonSprite4:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PokemonSprites/PokemonSprite5:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ct7ep"]
+_data = {
+"Breath": SubResource("Animation_p1603"),
+"RESET": SubResource("Animation_y0ay8")
+}
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ubc87")
+
+[node name="Radial" type="Sprite2D" parent="."]
+position = Vector2(600, 400)
+texture = ExtResource("1_evap7")
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Breath"
+libraries = {
+"": SubResource("AnimationLibrary_ct7ep")
+}
+
+[node name="PokemonSprites" type="Node2D" parent="."]
+
+[node name="PokemonSprite" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(645, 305)
+scale = Vector2(2, 2)
+texture = ExtResource("3_vgkxg")
+hframes = 2
+
+[node name="PokemonSprite1" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(692, 379)
+scale = Vector2(2, 2)
+texture = ExtResource("3_vgkxg")
+hframes = 2
+
+[node name="PokemonSprite2" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(640, 460)
+scale = Vector2(2, 2)
+texture = ExtResource("3_s6f3o")
+hframes = 2
+
+[node name="PokemonSprite3" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(553, 460)
+scale = Vector2(2, 2)
+texture = ExtResource("3_s6f3o")
+hframes = 2
+
+[node name="PokemonSprite4" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(510, 381)
+scale = Vector2(2, 2)
+texture = ExtResource("3_s6f3o")
+hframes = 2
+
+[node name="PokemonSprite5" type="Sprite2D" parent="PokemonSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(557, 304)
+scale = Vector2(2, 2)
+texture = ExtResource("3_s6f3o")
+hframes = 2
+
+[node name="Pokeball" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(601, 397)
+stream = ExtResource("5_1mrvp")

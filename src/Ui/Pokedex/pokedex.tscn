@@ -1,0 +1,151 @@
+[gd_scene load_steps=9 format=3 uid="uid://cugqeykx40b2l"]
+
+[ext_resource type="Script" path="res://src/Ui/Pokedex/pokedex.gd" id="1_mgcim"]
+[ext_resource type="PackedScene" uid="uid://tficeemr8hlg" path="res://src/Ui/Pokedex/poke_search.tscn" id="2_27g57"]
+[ext_resource type="Script" path="res://src/Ui/Pokedex/PokemonQuery.gd" id="3_aeyfn"]
+[ext_resource type="PackedScene" uid="uid://d174ktbsf1qmn" path="res://src/Ui/Pokedex/poke_info.tscn" id="4_4d2lr"]
+
+[sub_resource type="Gradient" id="Gradient_konxb"]
+offsets = PackedFloat32Array(0, 0.494845, 0.993127, 1)
+colors = PackedColorArray(0.0958223, 0.0147506, 0.160156, 1, 0.118053, 0.0176594, 0.195313, 1, 0.253034, 0.0311843, 0.392665, 1, 0.259271, 0.0319529, 0.402344, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y7akg"]
+gradient = SubResource("Gradient_konxb")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvfit"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.470588)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2h6r"]
+
+[node name="Pokedex" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mgcim")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_y7akg")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MainBar" type="Panel" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvfit")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/MainBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="NavLine" type="Panel" parent="MainContainer/MainBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../SearchBar")
+focus_neighbor_bottom = NodePath("../../../ContentContainer/SideBar/ListContainer/Home")
+
+[node name="SearchBar" type="LineEdit" parent="MainContainer/MainBar/HBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../NavLine")
+placeholder_text = "Search 🔍"
+
+[node name="ContentContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SideBar" type="Panel" parent="MainContainer/ContentContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="ListContainer" type="VBoxContainer" parent="MainContainer/ContentContainer/SideBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2h6r")
+
+[node name="Home" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Party")
+text = "⌂ Home"
+
+[node name="Party" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Home")
+focus_neighbor_bottom = NodePath("../Taxonomy")
+text = "⭗ Party"
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Taxonomy" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Party")
+focus_neighbor_bottom = NodePath("../Universal")
+text = "🗀 Taxonomy"
+
+[node name="Universal" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Taxonomy")
+focus_neighbor_bottom = NodePath("../Alphabetcial")
+text = "🗀 Universal"
+
+[node name="Alphabetcial" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Universal")
+text = "🗀 Alphabetical"
+
+[node name="MainContainer" type="Control" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PokeSearch" parent="MainContainer/ContentContainer/MainContainer" instance=ExtResource("2_27g57")]
+layout_mode = 1
+
+[node name="PokemonQuery" type="Node" parent="."]
+script = ExtResource("3_aeyfn")
+
+[node name="PokeInfo" parent="." instance=ExtResource("4_4d2lr")]
+visible = false
+layout_mode = 1
+
+[connection signal="text_submitted" from="MainContainer/MainBar/HBoxContainer/SearchBar" to="." method="_on_search_bar_text_submitted"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Party" to="." method="_on_party_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Taxonomy" to="." method="_on_taxonomy_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Universal" to="." method="_on_universal_pressed"]
+[connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Alphabetcial" to="." method="_on_alphabetcial_pressed"]
+[connection signal="pokemon_searched" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_pokemon_searched"]
+[connection signal="selected" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_selected"]
+[connection signal="closed" from="PokeInfo" to="." method="_on_poke_info_closed"]

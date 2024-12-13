@@ -1,0 +1,6 @@
+{Battle.Loser} has fainted, will ash send a new Pokemon.
+- Yes
+	[signal arg="SwitchPokemon"]
+- No
+	[signal arg="Run"]
+[end_timeline]

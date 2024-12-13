@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceouuljdah7o"]
+
+[ext_resource type="Texture2D" uid="uid://dj4hshcugmui1" path="res://assets/player/ash/Bag/ItemSelector.png" id="1_c12js"]
+[ext_resource type="Script" path="res://src/Ui/MoveManager/learnable_1.gd" id="2_w6ecj"]
+
+[sub_resource type="SystemFont" id="SystemFont_qbscn"]
+
+[node name="Learnable1" type="TextureRect"]
+texture = ExtResource("1_c12js")
+script = ExtResource("2_w6ecj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = SubResource("SystemFont_qbscn")
+theme_override_font_sizes/font_size = 32
+text = "Psychic"
+horizontal_alignment = 1
+vertical_alignment = 1

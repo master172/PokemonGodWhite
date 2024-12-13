@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b4g0dqxjsxjp1"]
+
+[ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="1_du0qb"]
+[ext_resource type="FontFile" uid="uid://cwetmuxdwym5x" path="res://assets/Fonts/Aller/Aller_Bd.ttf" id="2_uwx8p"]
+[ext_resource type="FontFile" uid="uid://2c3q1khp4ecn" path="res://assets/Fonts/Aller/Aller_BdIt.ttf" id="3_awrvx"]
+[ext_resource type="FontFile" uid="uid://eaars3fxvohf" path="res://assets/Fonts/Aller/Aller_It.ttf" id="4_fklnm"]
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_du0qb")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/bold_font = ExtResource("2_uwx8p")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_awrvx")
+RichTextLabel/fonts/italics_font = ExtResource("4_fklnm")
+RichTextLabel/fonts/normal_font = ExtResource("1_du0qb")

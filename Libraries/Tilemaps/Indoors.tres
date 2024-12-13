@@ -1,0 +1,5 @@
+[gd_resource type="TileSet" format=3 uid="uid://dh83mau70x1vp"]
+
+[resource]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0

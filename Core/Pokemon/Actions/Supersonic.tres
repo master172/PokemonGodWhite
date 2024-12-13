@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://dxjoidfxar5ag"]
+
+[ext_resource type="PackedScene" uid="uid://dcm8p33fcgnn5" path="res://Core/Actions/Supersonic.tscn" id="1_w84gt"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_7bwml"]
+
+[resource]
+script = ExtResource("2_7bwml")
+name = "Supersonic"
+learned_level = 1
+action = ExtResource("1_w84gt")
+Type = "Normal"
+power = 35.0
+range = 0

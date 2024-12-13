@@ -1,0 +1,3 @@
+Kyle: When i catch some new pokemon would you like another battle?
+[signal arg="DialogDone"]
+[end_timeline]

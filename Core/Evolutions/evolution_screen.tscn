@@ -1,0 +1,425 @@
+[gd_scene load_steps=21 format=3 uid="uid://bjl4vdn513pgx"]
+
+[ext_resource type="Texture2D" uid="uid://c38opcugh228e" path="res://Core/Graphics/Pokemon/Gen4/Front/RIOLU.png" id="1_83vv2"]
+[ext_resource type="Script" path="res://Core/Evolutions/evolution_screen.gd" id="1_n65us"]
+[ext_resource type="Texture2D" uid="uid://dq8yigvg5j12b" path="res://Core/Graphics/Pokemon/Gen4/Front/GARDEVOIR.png" id="2_ivmdn"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_qwndm"]
+[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_ti8sx"]
+[ext_resource type="PackedScene" uid="uid://oahn1flucj6k" path="res://src/Environment/world_environment.tscn" id="6_pjfk2"]
+
+[sub_resource type="Resource" id="Resource_p34sn"]
+script = ExtResource("2_qwndm")
+Dialog_type = 0
+text = "Congratulations your {P1} evolved into {P2}"
+next = -1
+Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
+Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+
+[sub_resource type="Resource" id="Resource_q3qsj"]
+script = ExtResource("3_ti8sx")
+Dialogs = Array[ExtResource("2_qwndm")]([SubResource("Resource_p34sn")])
+Format = {}
+
+[sub_resource type="Gradient" id="Gradient_avec2"]
+offsets = PackedFloat32Array(0.00431034, 1)
+colors = PackedColorArray(0, 0.25417, 1, 1, 1, 0.0599684, 0.0226566, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t0cwe"]
+gradient = SubResource("Gradient_avec2")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_rqnm1"]
+resource_name = "Evolve"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Current:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Previous:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Previous:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 4.5, 5.7),
+"transitions": PackedFloat32Array(1, 2.46229, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(100, 100, 100, 1), Color(100, 100, 100, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldEnvironment:environment:glow_blend_mode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 0.757859, 1),
+"update": 0,
+"values": [0, 0, 0, 0, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:glow_intensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
+"update": 0,
+"values": [0.8, 0.8, 5.47, 5.47, 0.8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:glow_strength")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.57, 1.57, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:glow_bloom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.02, 0.02, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:glow_hdr_threshold")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 0.757859, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.0, 1.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:glow_intensity")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
+"update": 0,
+"values": [0.8, 0.8, 5.47, 5.47, 0.8]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:glow_bloom")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
+"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.02, 0.02, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Current:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 3.1, 4.5, 5.7, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1, 0.153894, 0.153894, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 0), Color(100, 100, 100, 0), Color(100, 100, 100, 0), Color(100, 100, 100, 1), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_a7jp1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Current:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Previous:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Previous:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldEnvironment:environment:glow_blend_mode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:glow_intensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:glow_strength")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:glow_bloom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:glow_hdr_threshold")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:glow_intensity")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:glow_bloom")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Current:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(100, 100, 100, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jrhs"]
+_data = {
+"Evolve": SubResource("Animation_rqnm1"),
+"RESET": SubResource("Animation_a7jp1")
+}
+
+[sub_resource type="Gradient" id="Gradient_jprii"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.353774, 0.537736, 0.70283, 0.849057)
+colors = PackedColorArray(0, 100, 100, 1, 0, 100, 0, 1, 100, 0.01, 0, 1, 100, 100, 0.07, 1, 100, 100, 100, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvd0a"]
+gradient = SubResource("Gradient_jprii")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_xuopt"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_88hje"]
+curve = SubResource("Curve_xuopt")
+
+[sub_resource type="Curve" id="Curve_5j2p6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.17179, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_anwnr"]
+curve = SubResource("Curve_5j2p6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0xdcb"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 750.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 15.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_anwnr")
+color_ramp = SubResource("GradientTexture1D_fvd0a")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("CurveTexture_88hje")
+
+[node name="EvolutionScreen" type="Control"]
+z_index = 100
+custom_minimum_size = Vector2(1200, 800)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n65us")
+congratulation_dialog = SubResource("Resource_q3qsj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_t0cwe")
+
+[node name="Previous" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 400)
+scale = Vector2(7, 7)
+texture = ExtResource("1_83vv2")
+
+[node name="Current" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(100, 100, 100, 1)
+texture_filter = 1
+position = Vector2(600, 400)
+scale = Vector2(5, 5)
+texture = ExtResource("2_ivmdn")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("6_pjfk2")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Evolve"
+libraries = {
+"": SubResource("AnimationLibrary_2jrhs")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(600, 408)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_0xdcb")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

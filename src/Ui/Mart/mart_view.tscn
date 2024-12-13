@@ -1,0 +1,301 @@
+[gd_scene load_steps=16 format=3 uid="uid://bo0x0ceim5cks"]
+
+[ext_resource type="Script" path="res://src/Ui/Mart/mart_view.gd" id="1_s5w1a"]
+[ext_resource type="PackedScene" uid="uid://bnptc7qux02m4" path="res://src/Ui/Mart/item.tscn" id="2_cpuej"]
+[ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="3_vebfw"]
+[ext_resource type="Texture2D" uid="uid://d316lby6inr5k" path="res://assets/Ui/Mart/arrow.png" id="4_11gn8"]
+[ext_resource type="Script" path="res://src/Ui/Mart/Noi.gd" id="4_ee71l"]
+
+[sub_resource type="Gradient" id="Gradient_nro5a"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.38676, 0.400697, 0.473868, 0.491289, 0.954704, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.111888, 0.0763472, 0, 0.111888, 1, 0.682353, 0, 1, 1.01192, 0.716209, 0.155844, 1.02484, 0.334093, 0.952483, 0.940437, 1.00241, 0.277463, 0.957998, 0.959199, 1.00167, 0, 0.969695, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ro2qu"]
+gradient = SubResource("Gradient_nro5a")
+width = 400
+height = 266
+fill_to = Vector2(0.82906, 0.252137)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iysbx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aeof1"]
+
+[sub_resource type="Gradient" id="Gradient_c5msi"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.494774, 0.498258, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.965301, 0.965301, 0.965301, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bo10v"]
+gradient = SubResource("Gradient_c5msi")
+width = 600
+height = 32
+fill_to = Vector2(0.614286, 0.0133929)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tminx"]
+
+[sub_resource type="Gradient" id="Gradient_7qcbv"]
+offsets = PackedFloat32Array(0.501742, 0.515679, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.752941, 0, 1, 1, 0.752941, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m4s55"]
+gradient = SubResource("Gradient_7qcbv")
+width = 128
+height = 128
+fill_to = Vector2(0.470085, 0.119658)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4oik"]
+
+[node name="MartView" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5w1a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ro2qu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 608.0
+
+[node name="AllContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 608)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AllContainer"]
+layout_mode = 2
+theme_override_constants/separation = 620
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iysbx")
+
+[node name="MainView" type="VBoxContainer" parent="VBoxContainer/AllContainer"]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+
+[node name="Header" type="HSeparator" parent="VBoxContainer/AllContainer/MainView"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_aeof1")
+
+[node name="Label" type="Label" parent="VBoxContainer/AllContainer/MainView/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_vebfw")
+theme_override_font_sizes/font_size = 32
+text = "your money : $0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/AllContainer/MainView"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemList" type="VBoxContainer" parent="VBoxContainer/AllContainer/MainView/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="Item" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item2" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item3" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item4" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item5" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item6" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item7" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item8" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item9" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item10" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item11" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item12" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item13" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item14" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item15" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item16" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item17" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="Item18" parent="VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList" instance=ExtResource("2_cpuej")]
+layout_mode = 2
+
+[node name="DialogContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/DialogContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bo10v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DialogContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/DialogContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 375
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tminx")
+
+[node name="Label" type="Label" parent="VBoxContainer/DialogContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vebfw")
+theme_override_font_sizes/font_size = 24
+text = "Potion"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DialogContainer"]
+custom_minimum_size = Vector2(0, 152)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/DialogContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 375
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tminx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/DialogContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vebfw")
+text = "Potions Heal 20 hp of a pokemons"
+
+[node name="Noi" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 744.0
+offset_top = 408.0
+offset_right = 1200.0
+offset_bottom = 608.0
+texture = SubResource("GradientTexture2D_m4s55")
+script = ExtResource("4_ee71l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Noi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Noi/VBoxContainer"]
+layout_mode = 2
+
+[node name="left" type="VSeparator" parent="Noi/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x4oik")
+
+[node name="Up" type="TextureRect" parent="Noi/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("3_vebfw")
+texture = ExtResource("4_11gn8")
+stretch_mode = 2
+
+[node name="Right" type="VSeparator" parent="Noi/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x4oik")
+
+[node name="Pricing" type="HBoxContainer" parent="Noi/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="x" type="Label" parent="Noi/VBoxContainer/Pricing"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = ExtResource("3_vebfw")
+text = "x"
+
+[node name="num" type="Label" parent="Noi/VBoxContainer/Pricing"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vebfw")
+text = "999999"
+horizontal_alignment = 1
+
+[node name="price" type="Label" parent="Noi/VBoxContainer/Pricing"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vebfw")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Noi/VBoxContainer"]
+layout_mode = 2
+
+[node name="left" type="VSeparator" parent="Noi/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x4oik")
+
+[node name="Up" type="TextureRect" parent="Noi/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("3_vebfw")
+texture = ExtResource("4_11gn8")
+stretch_mode = 2
+flip_v = true
+
+[node name="Right" type="VSeparator" parent="Noi/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x4oik")

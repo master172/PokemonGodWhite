@@ -1,0 +1,260 @@
+[gd_scene load_steps=23 format=3 uid="uid://4u3erx4omnc8"]
+
+[ext_resource type="Script" path="res://src/Main/Intro/IntroScreen.gd" id="1_3rcjc"]
+[ext_resource type="Texture2D" uid="uid://coqp1mfugv8n2" path="res://assets/Intro/1.png" id="1_rh8ml"]
+[ext_resource type="Texture2D" uid="uid://dvxbaetj5oeq2" path="res://assets/Intro/2.png" id="2_0urov"]
+[ext_resource type="Texture2D" uid="uid://cpdxhv5pek06i" path="res://assets/Intro/3.png" id="3_230i6"]
+[ext_resource type="Texture2D" uid="uid://bp7srp88ipdtn" path="res://assets/Intro/4.png" id="4_q8ahd"]
+[ext_resource type="Texture2D" uid="uid://dl1jjc2aa6mnk" path="res://assets/Intro/5.png" id="5_fd47b"]
+[ext_resource type="Texture2D" uid="uid://c0hxoh4gwaqk8" path="res://assets/Intro/6.png" id="6_h4v5t"]
+[ext_resource type="Texture2D" uid="uid://b5q6fcgf0x7ip" path="res://assets/Intro/7.png" id="7_ytiwp"]
+[ext_resource type="Texture2D" uid="uid://c57rfqn8acfsr" path="res://assets/Intro/8.png" id="8_wxoa0"]
+[ext_resource type="Texture2D" uid="uid://7d4sryadscs8" path="res://assets/Intro/9.png" id="9_lk7ci"]
+[ext_resource type="Texture2D" uid="uid://ci3l71h7hci2s" path="res://assets/Intro/10.png" id="10_137c1"]
+[ext_resource type="Theme" uid="uid://d3g4i4dshtdpu" path="res://addons/dialogic/Editor/Events/styles/InputFieldsStyle.tres" id="13_0gprs"]
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="14_ifhxl"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="15_ws26d"]
+[ext_resource type="FontFile" uid="uid://b5c0p00x6g6u5" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Italic.ttf" id="16_anffr"]
+
+[sub_resource type="Animation" id="Animation_lkg2y"]
+resource_name = "Intro"
+length = 27.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modulator:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4, 4.1, 5.1, 5.7, 6.3, 7.2, 7.8, 8.4, 9.4, 10, 10.6, 11.5, 12.1, 12.7, 13.8, 14.4, 15, 16.1, 16.7, 17.3, 18.6, 19.2, 19.8, 21, 21.6, 22.2, 23.4, 24, 24.6, 26.3, 27),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.1, 5.7, 7.8, 10, 12.1, 14.4, 16.7, 19.2, 21.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_rh8ml"), ExtResource("1_rh8ml"), ExtResource("2_0urov"), ExtResource("3_230i6"), ExtResource("4_q8ahd"), ExtResource("5_fd47b"), ExtResource("6_h4v5t"), ExtResource("7_ytiwp"), ExtResource("8_wxoa0"), ExtResource("9_lk7ci"), ExtResource("10_137c1")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/RichTextLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.4, 5.7, 7.8, 10, 12.1, 14.4, 19.2, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["after the events of indigo Ash yearned for a new adventure", "fate had it that ash saw the promotional material for a new region on a box of cereals that promised new adventures", "being ash he decided to go to there with his friends and burning enthusiasm", "but fate had a different idea", "the hall was grand and the cruise filled with joy but it didn't last for long", "for the ship sank due to a whirpool near a island, no one knew what caused it at that time", "the trio tried to hold on together", "but they failed", "and ash woke up all alone"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 2.4, 2.4001, 3.5, 4.1, 5.1, 5.7, 6.7, 7.2, 7.8, 8.1, 8.9, 9.4, 10, 11, 11.5, 12.1, 13.3, 13.8, 14.4, 15.6, 16.1, 16.7, 19.2, 20.4, 21, 21.6, 24, 25.2, 25.7, 26.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(27),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_done"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uamav"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modulator:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_rh8ml")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/RichTextLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["after the events of indigo Ash yearned for a new adventure"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxalu"]
+_data = {
+"Intro": SubResource("Animation_lkg2y"),
+"RESET": SubResource("Animation_uamav")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mjot"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.45098)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okv3q"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 0.509804)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs2le"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 0.509804)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeuog"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.552941)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rcjc")
+
+[node name="Screen" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rh8ml")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Modulator" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jxalu")
+}
+speed_scale = 0.5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mjot")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_0gprs")
+theme_override_fonts/normal_font = ExtResource("14_ifhxl")
+theme_override_fonts/bold_font = ExtResource("15_ws26d")
+theme_override_fonts/italics_font = ExtResource("16_anffr")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+text = "after the events of indigo Ash yearned for a new adventure"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Skip" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 88.0
+offset_bottom = 144.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_ifhxl")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_okv3q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xs2le")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aeuog")
+text = "Skip"
+
+[connection signal="button_down" from="Skip" to="." method="_on_skip_button_down"]
+[connection signal="button_up" from="Skip" to="." method="_on_skip_button_up"]

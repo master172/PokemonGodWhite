@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://bcpartihgy8au"]
+
+[ext_resource type="Script" path="res://Resources/Bag/BaseItem.gd" id="1_cq3iv"]
+[ext_resource type="Resource" uid="uid://dk7rs4vflwuuj" path="res://Resources/Bag/Items/ItemActors/Potion.tres" id="1_sali4"]
+[ext_resource type="Texture2D" uid="uid://qgs527o5itk1" path="res://assets/items/POTION.png" id="2_7ot3n"]
+
+[resource]
+script = ExtResource("1_cq3iv")
+type_Hint = "Medicine"
+count = 1
+Name = "Potion"
+item = ExtResource("1_sali4")
+sprite = ExtResource("2_7ot3n")
+Description = "Potions heal 20 hp of a pokemon"
+price = 200

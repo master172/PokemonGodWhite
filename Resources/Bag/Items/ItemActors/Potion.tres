@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="general_potions" load_steps=2 format=3 uid="uid://dk7rs4vflwuuj"]
+
+[ext_resource type="Script" path="res://Resources/Bag/Items/GameItems/Potion.gd" id="1_ojl3w"]
+
+[resource]
+script = ExtResource("1_ojl3w")
+HealingHealth = 20
+my_function = 0
