@@ -232,6 +232,17 @@ passby_press = true
 action = "Yes"
 visibility_mode = 1
 
+[node name="Circle3" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(1024, 424)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("9_7b3yt")
+texture_pressed = ExtResource("10_f2mry")
+shape = SubResource("CircleShape2D_url30")
+passby_press = true
+action = "ui_accept"
+visibility_mode = 1
+
 [node name="Cross2" type="TouchScreenButton" parent="Battle"]
 modulate = Color(1, 1, 1, 0.662745)
 position = Vector2(112, 424)
@@ -243,6 +254,13 @@ passby_press = true
 action = "No"
 visibility_mode = 1
 
-[connection signal="pressed" from="Battle/Circle2" to="." method="_on_circle_pressed"]
-[connection signal="released" from="Battle/Circle2" to="." method="_on_circle_released"]
-[connection signal="pressed" from="Battle/Cross2" to="." method="_on_cross_pressed"]
+[node name="Cross3" type="TouchScreenButton" parent="Battle"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(112, 424)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("15_xpbgu")
+texture_pressed = ExtResource("16_cqova")
+shape = SubResource("CircleShape2D_am44n")
+passby_press = true
+action = "ui_cancel"
+visibility_mode = 1
