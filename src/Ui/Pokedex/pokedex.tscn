@@ -60,11 +60,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="NavLine" type="Panel" parent="MainContainer/MainBar/HBoxContainer"]
+[node name="NavLine" type="LineEdit" parent="MainContainer/MainBar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_right = NodePath("../SearchBar")
 focus_neighbor_bottom = NodePath("../../../ContentContainer/SideBar/ListContainer/Home")
+editable = false
 
 [node name="SearchBar" type="LineEdit" parent="MainContainer/MainBar/HBoxContainer"]
 custom_minimum_size = Vector2(360, 0)

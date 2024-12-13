@@ -93,7 +93,6 @@ func _input(event):
 				set_active()
 		elif event.is_action_pressed("Yes"):
 			if active == true:
-				
 				var pokemon = v_box_container.get_child(current_selected).pokemon
 				selected.emit(pokemon)
 

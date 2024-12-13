@@ -22,6 +22,7 @@ var max_selected = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	TouchInput.pokedex_active()
 	nav_line.grab_focus()
 	poke_info
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +57,7 @@ func _input(event):
 				poke_search.set_active()
 		elif event.is_action_pressed("No"):
 			if poke_info.visible == false:
+				TouchInput.pokedex_inactive()
 				Utils.get_scene_manager().transistion_exit_pokedex_scene()
 func _on_search_bar_text_submitted(new_text):
 	poke_search._on_line_edit_text_submitted(new_text)
