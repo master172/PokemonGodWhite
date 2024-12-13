@@ -65,7 +65,7 @@ var just_loaded:bool = true
 func _ready():
 	verify_save_directory(save_file_path)
 	load_data()
-	Dialogic.Save.load()
+	#Dialogic.Save.load()
 	first_time_load()
 	
 	

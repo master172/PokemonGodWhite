@@ -8,13 +8,17 @@ extends DialogicEvent
 ### Settings
 
 ## The path to the file to play.
-var file_path: String = ""
+var file_path := "":
+	set(value):
+		if file_path != value:
+			file_path = value
+			ui_update_needed.emit()
 ## The volume to play the sound at.
 var volume: float = 0
 ## The bus to play the sound on.
-var audio_bus: String = "Master"
+var audio_bus := ""
 ## If true, the sound will loop infinitely. Not recommended (as there is no way to stop it).
-var loop: bool = false
+var loop := false
 
 
 ################################################################################
@@ -54,7 +58,7 @@ func get_shortcode_parameters() -> Dictionary:
 		#param_name : property_name
 		"path"		: {"property": "file_path", 	"default": "",},
 		"volume"	: {"property": "volume", 		"default": 0},
-		"bus"		: {"property": "audio_bus", 	"default": "Master",
+		"bus"		: {"property": "audio_bus", 	"default": "",
 							"suggestions": get_bus_suggestions},
 		"loop"		: {"property": "loop", 			"default": false},
 	}
@@ -64,14 +68,16 @@ func get_shortcode_parameters() -> Dictionary:
 ## 						EDITOR REPRESENTATION
 ################################################################################
 
-func build_event_editor():
+func build_event_editor() -> void:
 	add_header_edit('file_path', ValueType.FILE,
 			{'left_text'	: 'Play',
 			'file_filter' 	: '*.mp3, *.ogg, *.wav; Supported Audio Files',
 			'placeholder' 	: "Select file",
 			'editor_icon' 	: ["AudioStreamPlayer", "EditorIcons"]})
+	add_header_edit('file_path', ValueType.AUDIO_PREVIEW)
 	add_body_edit('volume', ValueType.NUMBER, {'left_text':'Volume:', 'mode':2}, '!file_path.is_empty()')
 	add_body_edit('audio_bus', ValueType.SINGLELINE_TEXT, {'left_text':'Audio Bus:'}, '!file_path.is_empty()')
+
 
 func get_bus_suggestions() -> Dictionary:
 	var bus_name_list := {}

@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _on_button_pressed():
-	Dialogic.start("KyleStart")
+	Dialogic.start("BeaFirst")
 
 
 func _on_button_2_pressed():

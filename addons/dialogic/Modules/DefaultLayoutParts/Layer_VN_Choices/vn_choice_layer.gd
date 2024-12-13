@@ -7,7 +7,7 @@ extends DialogicLayoutLayer
 @export_group("Text")
 @export_subgroup('Font')
 @export var font_use_global: bool = true
-@export_file('*.ttf') var font_custom: String = ""
+@export_file('*.ttf', '*.tres') var font_custom: String = ""
 @export_subgroup('Size')
 @export var font_size_use_global: bool = true
 @export var font_size_custom: int = 16
@@ -31,6 +31,7 @@ extends DialogicLayoutLayer
 @export var boxes_v_separation: int = 10
 @export var boxes_fill_width: bool = true
 @export var boxes_min_size: Vector2 = Vector2()
+@export var boxes_offset: Vector2 = Vector2()
 
 @export_group('Sounds')
 @export_range(-80, 24, 0.01) var sounds_volume: float = -10
@@ -96,6 +97,7 @@ func _apply_export_overrides() -> void:
 		layer_theme.set_stylebox(&'focus', &'Button', load(boxes_stylebox_focused) as StyleBox)
 
 	get_choices().add_theme_constant_override(&"separation", boxes_v_separation)
+	self.position = boxes_offset
 
 	for child: Node in get_choices().get_children():
 		if not child is DialogicNode_ChoiceButton:
@@ -108,6 +110,7 @@ func _apply_export_overrides() -> void:
 			choice.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 
 		choice.custom_minimum_size = boxes_min_size
+
 
 	set(&'theme', layer_theme)
 
