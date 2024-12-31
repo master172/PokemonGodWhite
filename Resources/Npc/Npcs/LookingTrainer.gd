@@ -15,9 +15,9 @@ var move_speed = 64
 
 var can_move = false
 
-var position_to_move
-
 var player_spotted:bool = false
+
+signal reached_target
 
 func _ready():
 	basic_set()
@@ -50,21 +50,21 @@ func check():
 			print("can_see")
 			exclamation.visible = true
 			player_spotted = true
-			handle_moving()
+			handle_moving(LineOfSight.get_collision_point())
 	
-func handle_moving():
+func handle_moving(pos:Vector2):
 	can_move = true
 	
 	
-	set_to_move(LineOfSight.get_collision_point())
+	set_to_move(pos)
 	set_distance_to_move()
 	move_animation()
-	position_to_move = position + (distance_to_move*(looking_direction * 16))
 	print(distance_to_move)
 	print((distance_to_move*(looking_direction * 16)))
 	
-	player.stop()
-	player.stop_animation()
+	if player_spotted == true:
+		player.stop()
+		player.stop_animation()
 	
 	
 func _physics_process(delta):
@@ -75,7 +75,7 @@ func set_to_move(value:Vector2):
 	if looking_direction == Vector2(0,-1):
 		to_move_pos = value - 16*looking_direction
 	elif looking_direction == Vector2(0,1):
-		to_move_pos = value  + Vector2(0,8)
+		to_move_pos = value
 	elif looking_direction == Vector2(1,0):
 		to_move_pos = value - 8*looking_direction  + Vector2(0,8)
 	elif looking_direction == Vector2(-1,0):
@@ -92,18 +92,20 @@ func move_animation():
 
 func move(delta):
 	
-	if check_distance_to_player() > 0:
-		global_position = global_position.move_toward(position_to_move,delta*move_speed)
+	if check_distance_to_target() > 0:
+		global_position = global_position.move_toward(to_move_pos,delta*move_speed)
 	else:
 		exclamation.visible = false
 		can_move = false
 		look(looking_direction)
-		start_battle()
+		reached_target.emit()
+		if player_spotted == true:
+			start_battle()
 		
-func check_distance_to_player():
+func check_distance_to_target():
 	if looking_direction != Vector2(0,1):
 		return self.global_position.distance_to(to_move_pos)/16
-	return (self.global_position.distance_to(to_move_pos-Vector2(0,8))/16)
+	return (self.global_position.distance_to(to_move_pos)/16)
 	
 func start_battle():
 	

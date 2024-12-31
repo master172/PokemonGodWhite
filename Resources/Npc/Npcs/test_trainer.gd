@@ -1,11 +1,10 @@
-extends spinning_trainer
+extends moving_trainer
 
 func _ready():
 	basic_set()
 	
 	looking_set()
-	spinning_set()
-		
+	moving_set()
 func my_battle_finished():
 	if my_battle == true:
 		Utils.Lisa_defeated = true

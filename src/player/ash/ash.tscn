@@ -1276,9 +1276,6 @@ shape = SubResource("RectangleShape2D_uf1tr")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Skin")
-libraries = {
-"": SubResource("AnimationLibrary_1qbwx")
-}
 tree_root = SubResource("AnimationNodeStateMachine_xv4xc")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.000801921, 0.0131004)
