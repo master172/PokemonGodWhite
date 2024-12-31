@@ -17,6 +17,8 @@ var can_move = false
 
 var position_to_move
 
+var player_spotted:bool = false
+
 func _ready():
 	basic_set()
 	looking_set()
@@ -26,19 +28,28 @@ func looking_set():
 		exclamation.visible = false
 	
 	player = Utils.get_player()
-	if LineOfSight != null:
-		LineOfSight.target_position = (look_distance * 16) * looking_direction
 	
+	set_line_of_sight()
 	
 	if player != null:
 		player.connect("player_stopped_signal",check)
-	
+
+func set_line_of_sight():
+	if LineOfSight != null:
+		LineOfSight.target_position = (look_distance * 16) * looking_direction
+		
+		
 func check():
 	if exclamation != null and can_battle == true:
 		if not LineOfSight.is_colliding():
 			exclamation.visible = false
 		else:
+			if player != null:
+				if player.is_moving == true:
+					await player.player_stopped_signal
+			print("can_see")
 			exclamation.visible = true
+			player_spotted = true
 			handle_moving()
 	
 func handle_moving():
@@ -62,7 +73,7 @@ func _physics_process(delta):
 		
 func set_to_move(value:Vector2):
 	if looking_direction == Vector2(0,-1):
-		to_move_pos = value - 16*looking_direction + Vector2(0,8)
+		to_move_pos = value - 16*looking_direction
 	elif looking_direction == Vector2(0,1):
 		to_move_pos = value  + Vector2(0,8)
 	elif looking_direction == Vector2(1,0):
@@ -93,6 +104,7 @@ func check_distance_to_player():
 	if looking_direction != Vector2(0,1):
 		return self.global_position.distance_to(to_move_pos)/16
 	return (self.global_position.distance_to(to_move_pos-Vector2(0,8))/16)
+	
 func start_battle():
 	
 	_interact()

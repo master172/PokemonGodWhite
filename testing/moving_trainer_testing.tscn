@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bturg0f32a25h"]
+
+[ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="1_ujbfo"]
+[ext_resource type="PackedScene" uid="uid://beuqhi4cnskx3" path="res://Resources/Npc/Npcs/TestTrainer.tscn" id="2_adxui"]
+[ext_resource type="Script" path="res://Resources/Npc/Npcs/test_trainer.gd" id="3_84j31"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="4_dosjc"]
+
+[node name="MovingTrainerTesting" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_ujbfo")]
+
+[node name="TestTrainer" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("2_adxui")]
+position = Vector2(112, 0)
+script = ExtResource("3_84j31")
+timer = NodePath("Timer")
+spin_time = 200000
+spin_noise = 1
+can_look = true
+look_distance = 4
+pokemons = Array[ExtResource("4_dosjc")]([])
+levels = Array[ExtResource("4_dosjc")]([])
+current_dialog = ""
+ending_dialog = ""
+looking_direction = Vector2(0, -1)
+map = 0
+
+[node name="Timer" type="Timer" parent="TestTrainer"]
+
+[editable path="TestTrainer"]

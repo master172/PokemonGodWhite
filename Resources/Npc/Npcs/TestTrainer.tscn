@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://coi8qqjtpwbdc"]
+[gd_scene load_steps=32 format=3 uid="uid://beuqhi4cnskx3"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/Lisa.gd" id="1_7jj87"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_3d0xq"]
-[ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="3_po7ty"]
-[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="3_tlqn1"]
-[ext_resource type="Texture2D" uid="uid://846cvt224lwl" path="res://assets/Npc/Trainers/General/Lisa.png" id="3_xbykm"]
-[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_rssv0"]
+[ext_resource type="Script" path="res://Resources/Npc/Npcs/Lisa.gd" id="1_6ip1q"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_ab35e"]
+[ext_resource type="Resource" uid="uid://dcx24t2o0gm4" path="res://Core/Pokemon/Zubat.tres" id="3_caw5k"]
+[ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="4_8dbtw"]
+[ext_resource type="Texture2D" uid="uid://b2sf3w3h3qm77" path="res://assets/Npc/Trainers/General/Npc1.png" id="5_wdknj"]
+[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="6_yiua0"]
 
 [sub_resource type="Animation" id="Animation_8wmt8"]
 resource_name = "IdleDown"
@@ -238,14 +238,15 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
 size = Vector2(16, 16)
 
-[node name="Lisa" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
+[node name="Lisa" type="CharacterBody2D" node_paths=PackedStringArray("timer", "LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_7jj87")
+script = ExtResource("1_6ip1q")
+timer = NodePath("")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
 look_distance = 2
-pokemons = Array[ExtResource("2_3d0xq")]([ExtResource("3_po7ty"), ExtResource("3_tlqn1")])
+pokemons = Array[ExtResource("2_ab35e")]([ExtResource("3_caw5k"), ExtResource("4_8dbtw")])
 levels = Array[int]([5, 6])
 current_dialog = "LisaStart"
 ending_dialog = "LisaEnd"
@@ -258,7 +259,7 @@ map = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -12)
-texture = ExtResource("3_xbykm")
+texture = ExtResource("5_wdknj")
 hframes = 4
 vframes = 4
 frame = 12
@@ -282,7 +283,7 @@ shape = SubResource("RectangleShape2D_art2r")
 show_behind_parent = true
 position = Vector2(0, -24)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_rssv0")
+texture = ExtResource("6_yiua0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
