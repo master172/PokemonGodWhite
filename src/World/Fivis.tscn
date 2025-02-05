@@ -1734,9 +1734,9 @@ Spawn_direction = Vector2(0, 1)
 
 [node name="Door7" parent="Doors" instance=ExtResource("25_3xfsp")]
 position = Vector2(232, -136)
-next_scene_path = "res://src/World/Route2/route_2.tscn"
+next_scene_path = "res://src/World/Houses/TransistionPoint3.tscn"
 invisible = true
-Spawn_location = Vector2(-40, 144)
+Spawn_location = Vector2(-56, 16)
 Spawn_direction = Vector2(0, -1)
 
 [node name="TransistionPoint1" type="Sprite2D" parent="."]

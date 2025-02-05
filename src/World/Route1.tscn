@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://basjxyddsb2x2"]
+[gd_scene load_steps=23 format=3 uid="uid://basjxyddsb2x2"]
 
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
+[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_omuvt"]
 [ext_resource type="Resource" uid="uid://dgf17pnpsvtsr" path="res://Core/Pokemon/Caterpie.tres" id="2_ysqt8"]
 [ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="3_pa3ru"]
 [ext_resource type="Resource" uid="uid://bj22iqgv73rue" path="res://Core/Pokemon/Trapinch.tres" id="4_1oje1"]
@@ -225,8 +226,8 @@ _data = {
 [node name="Route1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_chr7b")
-common_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_ysqt8"), ExtResource("3_pa3ru")])
-rare_pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("4_1oje1")])
+common_pokemons = Array[ExtResource("2_omuvt")]([ExtResource("2_ysqt8"), ExtResource("3_pa3ru")])
+rare_pokemons = Array[ExtResource("2_omuvt")]([ExtResource("4_1oje1")])
 min_level = 2
 max_level = 5
 

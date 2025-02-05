@@ -1,10 +1,232 @@
-[gd_scene load_steps=6 format=3 uid="uid://6e1lj06227iq"]
+[gd_scene load_steps=14 format=3 uid="uid://6e1lj06227iq"]
 
 [ext_resource type="TileSet" uid="uid://b70nabfvm3gck" path="res://Libraries/Tilemaps/Overworld.tres" id="1_sf6sm"]
 [ext_resource type="Script" path="res://src/World/Area0.gd" id="1_y4bpw"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="2_wixvc"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="3_xn34v"]
 [ext_resource type="Texture2D" uid="uid://cuohx0f8ynx2" path="res://assets/PokemonTilesets/IndoorTileset.png" id="4_rt86s"]
+[ext_resource type="Script" path="res://src/World/Route2/CameraLimits.gd" id="6_v5o7l"]
+
+[sub_resource type="Animation" id="Animation_l0n3p"]
+resource_name = "Area1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-112]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-256]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [928]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [160]
+}
+
+[sub_resource type="Animation" id="Animation_26stl"]
+resource_name = "Normal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000000]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000000]
+}
+
+[sub_resource type="Animation" id="Animation_hfp0s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000000]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000000]
+}
+
+[sub_resource type="Animation" id="Animation_8qtli"]
+resource_name = "Area2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [432]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [160]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player/Camera2D:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1072]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("player/Camera2D:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [464]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5pgc"]
+_data = {
+"Area1": SubResource("Animation_l0n3p"),
+"Area2": SubResource("Animation_8qtli"),
+"Normal": SubResource("Animation_26stl"),
+"RESET": SubResource("Animation_hfp0s")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krts2"]
+size = Vector2(1040, 416)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j50f"]
+size = Vector2(640, 296)
 
 [node name="Route2" type="Node2D"]
 y_sort_enabled = true
@@ -43,7 +265,7 @@ layer_6/tile_data = PackedInt32Array(262180, 3145734, 26, 327716, 3145734, 27, 3
 
 [node name="player" parent="." instance=ExtResource("2_wixvc")]
 z_index = 1
-position = Vector2(-24, 80)
+position = Vector2(-40, 144)
 
 [node name="Camera2D" parent="player" index="5"]
 limit_smoothed = true
@@ -51,6 +273,32 @@ limit_smoothed = true
 [node name="Door" parent="." instance=ExtResource("3_xn34v")]
 z_index = 1
 position = Vector2(-40, 152)
+next_scene_path = "res://src/World/Houses/TransistionPoint3.tscn"
+invisible = true
+Spawn_location = Vector2(-56, -192)
+Spawn_direction = Vector2(0, 1)
+
+[node name="Exit" type="Node2D" parent="."]
+
+[node name="Door2" parent="Exit" instance=ExtResource("3_xn34v")]
+z_index = 1
+position = Vector2(1064, 376)
+next_scene_path = "res://src/World/Fivis.tscn"
+invisible = true
+Spawn_location = Vector2(231, -112)
+Spawn_direction = Vector2(0, 1)
+
+[node name="Door3" parent="Exit" instance=ExtResource("3_xn34v")]
+z_index = 1
+position = Vector2(1064, 392)
+next_scene_path = "res://src/World/Fivis.tscn"
+invisible = true
+Spawn_location = Vector2(231, -112)
+Spawn_direction = Vector2(0, 1)
+
+[node name="Door4" parent="Exit" instance=ExtResource("3_xn34v")]
+z_index = 1
+position = Vector2(1064, 408)
 next_scene_path = "res://src/World/Fivis.tscn"
 invisible = true
 Spawn_location = Vector2(231, -112)
@@ -61,5 +309,44 @@ position = Vector2(-40, 152)
 texture = ExtResource("4_rt86s")
 region_enabled = true
 region_rect = Rect2(837, 362, 36, 18)
+
+[node name="CameraManager" type="Node2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(-40, 144)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraManager"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_u5pgc")
+}
+script = ExtResource("6_v5o7l")
+
+[node name="Way1" type="Area2D" parent="CameraManager"]
+position = Vector2(40, -144)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Way1"]
+position = Vector2(408, -48)
+shape = SubResource("RectangleShape2D_krts2")
+
+[node name="Way2" type="Area2D" parent="CameraManager"]
+position = Vector2(40, -144)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Way2"]
+position = Vector2(752, 316)
+shape = SubResource("RectangleShape2D_8j50f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -480.0
+offset_top = -528.0
+offset_right = 1448.0
+offset_bottom = 784.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="body_entered" from="CameraManager/Way1" to="CameraManager/AnimationPlayer" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CameraManager/Way2" to="CameraManager/AnimationPlayer" method="_on_area_2d_2_body_entered"]
 
 [editable path="player"]

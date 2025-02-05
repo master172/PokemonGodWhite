@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bturg0f32a25h"]
+[gd_scene load_steps=9 format=3 uid="uid://bturg0f32a25h"]
 
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="1_ujbfo"]
 [ext_resource type="PackedScene" uid="uid://beuqhi4cnskx3" path="res://Resources/Npc/Npcs/TestTrainer.tscn" id="2_adxui"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="5_xpbeb"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="6_01tk1"]
 [ext_resource type="PackedScene" uid="uid://bwhffc1xmgfnx" path="res://Resources/Npc/Npcs/Jodi.tscn" id="7_1job4"]
+[ext_resource type="PackedScene" uid="uid://cswrmnf3rtfay" path="res://Resources/Npc/Npcs/TestSpinner.tscn" id="8_40748"]
 
 [node name="MovingTrainerTesting" type="Node2D"]
 
@@ -53,6 +54,9 @@ texture = ExtResource("6_01tk1")
 [node name="Jodi" parent="." instance=ExtResource("7_1job4")]
 position = Vector2(-32, 0)
 look_distance = 3
-looking_direction = Vector2(0, -1)
+looking_direction = Vector2(-1, 0)
+
+[node name="Jodi2" parent="." instance=ExtResource("8_40748")]
+position = Vector2(64, -120)
 
 [editable path="TestTrainer"]

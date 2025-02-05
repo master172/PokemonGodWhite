@@ -8,6 +8,7 @@ class_name Pokemon
 @export var Name:String = ""
 @export var Id :int = 0
 
+
 @export_enum(
 	"Normal",
 	"Fighting",
@@ -59,6 +60,44 @@ class_name Pokemon
 	"Erratic",
 	"Fluctuating"
 )var leveleing_type:int = 2
+
+@export_group("egg_groups")
+@export_enum(
+	"Monster",
+	"Fairy",
+	"Human_like",
+	"Field",
+	"Flying",
+	"Dragon",
+	"Bug",
+	"Water1",
+	"Water2",
+	"Water3",
+	"Grass",
+	"Amorphous",
+	"Mineral",
+	"Ditto",
+	"No_eggs_discovered"
+	)var Egg_group0:String = "Monster"
+
+@export_enum(
+	"Monster",
+	"Fairy",
+	"Human_like",
+	"Field",
+	"Flying",
+	"Dragon",
+	"Bug",
+	"Water1",
+	"Water2",
+	"Water3",
+	"Grass",
+	"Amorphous",
+	"Mineral",
+	"Ditto",
+	"No_eggs_discovered"
+	)var Egg_group1:String = "Human_like"
+
 
 @export_group("Sprites")
 @export var Front:Texture2D
@@ -124,4 +163,3 @@ func get_Type1():
 
 func get_Type2():
 	return Type2
-
