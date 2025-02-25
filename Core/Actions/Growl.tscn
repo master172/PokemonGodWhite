@@ -5,3 +5,4 @@
 [node name="Growl" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_lk4ca")
+stages = -1

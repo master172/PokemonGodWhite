@@ -14,8 +14,9 @@ func set_user(user):
 
 func _attack():
 	if User != null:
-		var Target = User.pokemon
-		Target.Defense = clamp(Target.Defense + stages,(Target.Max_Defense - 6),(Target.Max_Defense + 6))
+		var Target :game_pokemon= User.pokemon
+		Target.defense_stage = clamp(Target.defense_stage + stages,-6,6)
+		print_debug("target defense stage = ",Target.defense_stage)
 		User.animate_modulation_change(Color.RED)
 		_end()
 	

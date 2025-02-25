@@ -10,4 +10,3 @@ func _end():
 		User.attack_end()
 	connect("attack_finished",SignalBus.attack_completed)
 	emit_signal("attack_finished",self,User)
-

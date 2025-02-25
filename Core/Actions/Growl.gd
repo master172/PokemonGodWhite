@@ -17,8 +17,9 @@ func set_target(Target):
 
 func _attack():
 	if target != []:
-		var Target = target[0].pokemon
-		Target.Attack = clamp(Target.Attack + stages,(Target.Max_Attack - 6),(Target.Max_Attack + 6))
+		var Target :game_pokemon = target[0].pokemon
+		Target.attack_stage = clamp(Target.attack_stage + stages,-6,6)
+		print_debug("target attack stage = ",Target.attack_stage)
 		target[0].animate_modulation_change()
 		_end()
 		

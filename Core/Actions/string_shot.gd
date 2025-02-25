@@ -47,8 +47,8 @@ func _attack():
 		if User.opposing_pokemons != []:
 			if User.opposing_pokemons[0] == target[0]:
 				print("attack")
-				var Target = target[0].pokemon
-				Target.Speed = clamp(Target.Speed + -1,(Target.Max_Speed - 6),(Target.Max_Speed + 6))
+				var Target :game_pokemon= target[0].pokemon
+				Target.speed_stage = clamp(Target.speed_stage - 1,6,6)
 				target[0].animate_modulation_change(Color.GRAY,2)
 				target[0].movement_speed -= target[0].movement_speed * 0.1
 				if target[0].movement_speed <= 30:

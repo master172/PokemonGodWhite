@@ -406,6 +406,7 @@ func finish_battle():
 	AllyHolders = []
 	EnemyHolders = []
 	AllyPokemons.clear_pokemon()
+	AllyPokemon.battle_end()
 	EnemyPokemons = []
 	
 	in_battle = false

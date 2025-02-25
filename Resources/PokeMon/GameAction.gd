@@ -61,9 +61,11 @@ func calculate_damage(body,User,AttackType:int = 0):
 			
 	var damage:int = 0
 	if AttackType == 0:
-		damage = ((((2*pokemon.level/5)+2)*power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+		damage = calc_stat_modifier(pokemon,opposing_pokemon,0)*((((2*pokemon.level/5)+2)*power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+		print_debug("total stat modifier = ",calc_stat_modifier(pokemon,opposing_pokemon,0))
 	elif AttackType == 1:
-		damage = ((((2*pokemon.level/5)+2)*power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
+		damage = calc_stat_modifier(pokemon,opposing_pokemon,1)*((((2*pokemon.level/5)+2)*power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
+		print_debug("total special stat modifier = ",calc_stat_modifier(pokemon,opposing_pokemon,1))
 	body.recive_damage(damage,User,User)
 	
 	print(" ")
@@ -79,3 +81,13 @@ func calculate_damage(body,User,AttackType:int = 0):
 	
 	print(damage, ": damage")
 	print(" ")
+
+func calc_stat_modifier(pokemon:game_pokemon,opposing_pokemon:game_pokemon,type:int = 0):
+	if type == 0:
+		return range_mapper(pokemon.attack_stage)/range_mapper(opposing_pokemon.defense_stage)
+	else:
+		return range_mapper(pokemon.special_attack_stage)/range_mapper(opposing_pokemon.special_defense_stage)
+
+func range_mapper(x:int):
+	return (2.0) / (abs(x) + 2) if x <= 0 else (x+2)/2.0
+	

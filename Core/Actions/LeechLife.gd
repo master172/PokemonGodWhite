@@ -42,4 +42,3 @@ func leech_life():
 
 	elif User.is_in_group("PlayerPokemon"):
 		holder.calculate_damage(User.opposing_pokemons[0],User)
-

@@ -74,6 +74,14 @@ signal replaced_moves(pokemon,prev_move,new_move)
 
 signal learning_process_complete
 
+#stages
+var attack_stage:int = 0
+var defense_stage:int = 0
+var special_attack_stage:int = 0
+var special_defense_stage:int = 0
+var speed_stage:int = 0
+var health_stage:int = 0
+
 func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gender:int = -1,egg_values:Array = []):
 	Base_Pokemon = pokemon
 	level = lev
@@ -421,3 +429,11 @@ func calculate_IV_from_parent(egg_values:Array):
 	IV_Special_Attack = (p1.IV_Special_Attack + p2.IV_Special_Attack)/2 + rng.randi_range(-2,2)
 	rng.randomize()
 	IV_Speed = (p1.IV_Speed + p2.IV_Speed)/2 + rng.randi_range(-2,2)
+
+func reset_stages():
+	attack_stage = 0
+	defense_stage = 0
+	special_attack_stage = 0
+	special_defense_stage = 0
+	speed_stage = 0
+	health_stage = 0

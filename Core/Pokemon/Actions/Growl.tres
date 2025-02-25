@@ -8,6 +8,7 @@ script = ExtResource("2_yy02d")
 name = "Growl"
 learned_level = 1
 action = ExtResource("1_j8r0j")
+staminaCost = 10
 Type = "Normal"
 power = 0.0
 range = 0

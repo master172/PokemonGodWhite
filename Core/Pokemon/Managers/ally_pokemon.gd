@@ -124,3 +124,7 @@ func remove_data():
 		
 	PartyPokemon = Poke_list.new()
 	PcPokemon = Poke_list.new()
+
+func battle_end():
+	for i in PartyPokemon.pokemons:
+		i.reset_stages()
