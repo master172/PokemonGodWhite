@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://6e1lj06227iq"]
 
 [ext_resource type="TileSet" uid="uid://b70nabfvm3gck" path="res://Libraries/Tilemaps/Overworld.tres" id="1_sf6sm"]
-[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_y4bpw"]
+[ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_y4bpw"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="2_wixvc"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="3_xn34v"]
 [ext_resource type="Texture2D" uid="uid://cuohx0f8ynx2" path="res://assets/PokemonTilesets/IndoorTileset.png" id="4_rt86s"]
-[ext_resource type="Script" path="res://src/World/Route2/CameraLimits.gd" id="6_v5o7l"]
+[ext_resource type="Script" uid="uid://vylrotnx36ic" path="res://src/World/Route2/CameraLimits.gd" id="6_v5o7l"]
 
 [sub_resource type="Animation" id="Animation_l0n3p"]
 resource_name = "Area1"
@@ -216,10 +216,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u5pgc"]
 _data = {
-"Area1": SubResource("Animation_l0n3p"),
-"Area2": SubResource("Animation_8qtli"),
-"Normal": SubResource("Animation_26stl"),
-"RESET": SubResource("Animation_hfp0s")
+&"Area1": SubResource("Animation_l0n3p"),
+&"Area2": SubResource("Animation_8qtli"),
+&"Normal": SubResource("Animation_26stl"),
+&"RESET": SubResource("Animation_hfp0s")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krts2"]
@@ -318,7 +318,7 @@ position = Vector2(-40, 144)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraManager"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_u5pgc")
+&"": SubResource("AnimationLibrary_u5pgc")
 }
 script = ExtResource("6_v5o7l")
 

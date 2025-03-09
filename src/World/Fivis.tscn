@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://darwb2u3gw6vb"]
 
-[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_dfk0n"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_juhth"]
+[ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_dfk0n"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_juhth"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="2_v7bhv"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="3_lvtot"]
 [ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Ensparda.tres" id="4_lmjrt"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c386oiiwqna7p" path="res://Libraries/Houses/PokeCenter.tscn" id="13_dindp"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="13_g6xp2"]
 [ext_resource type="PackedScene" uid="uid://bl1jgwppyykag" path="res://Libraries/Houses/Mart.tscn" id="14_75c42"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="15_1avj8"]
+[ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="15_1avj8"]
 [ext_resource type="PackedScene" uid="uid://ddxpyqinkua4j" path="res://Libraries/Houses/Gym1.tscn" id="15_my7fl"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="16_eyovu"]
 [ext_resource type="PackedScene" uid="uid://bx6oukkvot041" path="res://Libraries/Houses/house2.tscn" id="16_hs777"]

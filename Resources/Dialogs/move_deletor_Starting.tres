@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DialogueLine" load_steps=13 format=3 uid="uid://d2ukxefdfv4hm"]
 
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_lhwso"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="2_515cv"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="2_v13ee"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="3_arxks"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="4_w7iol"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_lhwso"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="2_515cv"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="2_v13ee"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="3_arxks"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="4_w7iol"]
 
 [sub_resource type="Resource" id="Resource_enygy"]
 script = ExtResource("1_lhwso")

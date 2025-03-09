@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://cl71l5xotypmf"]
 
-[ext_resource type="Script" path="res://src/Ui/Input/TouchInput.gd" id="1_c8ig2"]
+[ext_resource type="Script" uid="uid://c6gtfeysk2437" path="res://src/Ui/Input/TouchInput.gd" id="1_c8ig2"]
 [ext_resource type="Texture2D" uid="uid://x7v3evu3ojwm" path="res://assets/Ui/Input/Button - PS Directional Arrow Down 2.svg" id="1_i2k6i"]
 [ext_resource type="Texture2D" uid="uid://cj0kt3ox2f03q" path="res://assets/Ui/Input/Button - PS Directional Arrow Down.svg" id="2_o3vj2"]
 [ext_resource type="Texture2D" uid="uid://doe3qsxn27g0j" path="res://assets/Ui/Input/Button - PS Directional Arrow Left 2.svg" id="3_4ex3q"]

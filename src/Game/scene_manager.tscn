@@ -1,17 +1,17 @@
 [gd_scene load_steps=26 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
-[ext_resource type="Script" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_spcle"]
-[ext_resource type="Script" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_83ynj"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_toy2f"]
+[ext_resource type="Script" uid="uid://bpiclmfiqepfa" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="2_spcle"]
+[ext_resource type="Script" uid="uid://c1qj0amor1i0r" path="res://src/Game/Current_scene.gd" id="2_tvhi0"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="3_83ynj"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_toy2f"]
 [ext_resource type="PackedScene" uid="uid://b5rtlmuoteprh" path="res://src/Ui/Menu/Smartphone.tscn" id="4_14eu5"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_c16ga"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_cax24"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="4_c16ga"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_cax24"]
 [ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
-[ext_resource type="Script" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
+[ext_resource type="Script" uid="uid://bqacquon4a7uv" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
 
 [sub_resource type="Resource" id="Resource_v2f5h"]
 script = ExtResource("2_spcle")
@@ -110,9 +110,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqoy"]
 _data = {
-"FadeToBlack": SubResource("Animation_t24b6"),
-"FadeToNormal": SubResource("Animation_kjhft"),
-"RESET": SubResource("Animation_aupg7")
+&"FadeToBlack": SubResource("Animation_t24b6"),
+&"FadeToNormal": SubResource("Animation_kjhft"),
+&"RESET": SubResource("Animation_aupg7")
 }
 
 [sub_resource type="Animation" id="Animation_k5dtd"]
@@ -137,8 +137,8 @@ length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pi3fv"]
 _data = {
-"Default": SubResource("Animation_k5dtd"),
-"RESET": SubResource("Animation_lhjtr")
+&"Default": SubResource("Animation_k5dtd"),
+&"RESET": SubResource("Animation_lhjtr")
 }
 
 [node name="SceneManager" type="Node2D" groups=["SceneManager"]]
@@ -170,7 +170,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenTranistion"]
 libraries = {
-"": SubResource("AnimationLibrary_5vqoy")
+&"": SubResource("AnimationLibrary_5vqoy")
 }
 
 [node name="Debug" type="CanvasLayer" parent="."]
@@ -192,7 +192,7 @@ layer = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DayAndNight"]
 libraries = {
-"": SubResource("AnimationLibrary_pi3fv")
+&"": SubResource("AnimationLibrary_pi3fv")
 }
 script = ExtResource("12_bndex")
 

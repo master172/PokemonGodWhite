@@ -297,6 +297,3 @@ func paralyze(time:int=1,modifier:float=0.2):
 
 func _on_paralysis_timer_timeout():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
-
-
-
