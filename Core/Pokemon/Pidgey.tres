@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Pokemon" load_steps=15 format=3 uid="uid://l227mwiloa0d"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_1dw5r"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_1dw5r"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_438bf"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_jcim1"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_jcim1"]
 [ext_resource type="Texture2D" uid="uid://d38qstja4kv5i" path="res://Core/Graphics/Pokemon/Gen1/Front/PIDGEY.png" id="1_mtgkp"]
 [ext_resource type="Texture2D" uid="uid://b1uplwn52vtud" path="res://Core/Graphics/Pokemon/Gen1/Icons/PIDGEY.png" id="2_p0kla"]
 [ext_resource type="Resource" uid="uid://d16lcqp5040yi" path="res://Core/Pokemon/Actions/SandAttack.tres" id="2_vg4r7"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c2hsuxylhwfig" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIDGEY.png" id="3_jg1iy"]
 [ext_resource type="Resource" uid="uid://bnsfegc4ufkec" path="res://Core/Pokemon/Actions/Gust.tres" id="4_nxisp"]
 [ext_resource type="Resource" uid="uid://3kfofee5j3vv" path="res://Core/Pokemon/Pidgeotto.tres" id="8_bj05p"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Trigger.gd" id="9_jy30c"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Evolutor.gd" id="10_j5lfm"]
+[ext_resource type="Script" uid="uid://ba5t688rcjadp" path="res://Resources/PokeMon/Trigger.gd" id="9_jy30c"]
+[ext_resource type="Script" uid="uid://0qgu36ew8dhj" path="res://Resources/PokeMon/Evolutor.gd" id="10_j5lfm"]
 
 [sub_resource type="Resource" id="Resource_hwbsi"]
 script = ExtResource("9_jy30c")

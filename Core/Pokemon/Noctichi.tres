@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://db8khd87yp6q5"]
+
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_ocdfy"]
+[ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="2_lyhf2"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_pdbe5"]
+[ext_resource type="PackedScene" uid="uid://dhvtsukji64ch" path="res://Core/Actions/LeechLife.tscn" id="2_qma00"]
+[ext_resource type="Texture2D" uid="uid://08fa8ft1mmmx" path="res://Core/Graphics/Zehlvogs/Icons/NOCTICHI.png" id="3_knc6e"]
+[ext_resource type="PackedScene" uid="uid://dcm8p33fcgnn5" path="res://Core/Actions/Supersonic.tscn" id="3_qma00"]
+[ext_resource type="Texture2D" uid="uid://djmqvd6h08jia" path="res://Core/Graphics/Zehlvogs/Follower/NOCTICHI.png" id="4_qma00"]
+
+[sub_resource type="Resource" id="Resource_p3gu1"]
+script = ExtResource("1_ocdfy")
+name = "LeechLife"
+learned_level = 17
+action = ExtResource("2_qma00")
+staminaCost = 10
+Type = "Grass"
+power = 40.0
+range = 1
+
+[sub_resource type="Resource" id="Resource_qs0bp"]
+script = ExtResource("1_ocdfy")
+name = "Supersonic"
+learned_level = 20
+action = ExtResource("3_qma00")
+staminaCost = 10
+Type = "Normal"
+power = 35.0
+range = 0
+
+[resource]
+script = ExtResource("2_pdbe5")
+Name = "Noctichi"
+Id = 1
+Type1 = "Dark"
+Type2 = "Ghost"
+leveleing_type = 2
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
+Front = ExtResource("2_lyhf2")
+Icon = ExtResource("3_knc6e")
+Overworld = ExtResource("4_qma00")
+Base_Health = 100
+Base_Attack = 90
+Base_Defense = 80
+Special_Base_Attack = 150
+Special_Base_Defense = 100
+Base_Speed = 140
+Actions = Array[ExtResource("1_ocdfy")]([SubResource("Resource_p3gu1"), SubResource("Resource_qs0bp")])
+base_experience = 128
+Yield_Health = 2
+Yield_Attack = 1
+Yield_Defense = 0
+Yield_Special_Defense = 0
+Yield_Special_Attack = 0
+Yield_Speed = 0
+catch_chance = 20
+Tag = "The original sin"
+description = "Having grown closer to you the pokemon has evolved, it now carries two tamas and much of its body is visible, it only grows closer to you and along with it its affection to you also grows, you can faintly see a beautiful face beneath its mask"
+height = 2
+weight = 30
+metadata/_custom_type_script = "uid://ke3dynqcoegg"

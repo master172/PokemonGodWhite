@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Evolution_sequence" load_steps=3 format=3 uid="uid://dcdcnr4a0j83d"]
+
+[ext_resource type="Script" uid="uid://du4g72lk20kmb" path="res://Resources/PokeMon/Game/GamePokemon.gd" id="1_ly56n"]
+[ext_resource type="Script" uid="uid://ca6xt333hqj0u" path="res://Resources/PokeMon/EvolutionList.gd" id="2_uausa"]
+
+[resource]
+script = ExtResource("2_uausa")
+EvolutionLine = Array[ExtResource("1_ly56n")]([null])
+metadata/_custom_type_script = "uid://ca6xt333hqj0u"

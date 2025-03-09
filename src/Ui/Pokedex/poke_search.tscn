@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tficeemr8hlg"]
 
-[ext_resource type="Script" path="res://src/Ui/Pokedex/poke_search.gd" id="1_hx38v"]
+[ext_resource type="Script" uid="uid://cxpa1j02g5vkm" path="res://src/Ui/Pokedex/poke_search.gd" id="1_hx38v"]
 
 [node name="PokeSearch" type="Control"]
 layout_mode = 3

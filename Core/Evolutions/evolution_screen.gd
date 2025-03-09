@@ -1,5 +1,8 @@
 extends Control
 
+const PATH = "res://Core/Pokemon/EvolutionLines"
+const EXTENSION =  "tres"
+
 @export var previous_pokemon:game_pokemon
 @export var current_pokemon:Pokemon
 

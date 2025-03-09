@@ -140,12 +140,13 @@ var natures :Array = [
 
 @export_group("evolution")
 @export var evolutor:Evolutor = Evolutor.new()
-
+@export var evolution_line:Evolution_sequence = null
 @export_group("pokedex")
 @export var Tag :String = ""
 @export_multiline var description :String = ""
 @export var height:int = 1
 @export var weight:int = 10
+
 func get_catch_rate():
 	return catch_chance
 	

@@ -1,21 +1,39 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://cgflecyahs0m5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=16 format=3 uid="uid://cgflecyahs0m5"]
 
 [ext_resource type="Resource" uid="uid://8gsrhcqg7qyw" path="res://Core/Pokemon/Actions/Slash.tres" id="1_1obch"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_3kbbw"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_3kbbw"]
 [ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="1_43efg"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_o037y"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_o037y"]
 [ext_resource type="Texture2D" uid="uid://ddepnuwob1ehj" path="res://Core/Graphics/Zehlvogs/Icons/NAICHI.png" id="2_di5yv"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_qnc0s"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="3_i8p32"]
 [ext_resource type="Texture2D" uid="uid://dbud2xu485wsl" path="res://Core/Graphics/Zehlvogs/Follower/NAICHI.png" id="3_jt25t"]
 [ext_resource type="Resource" uid="uid://texg0s44dxhj" path="res://Core/Pokemon/Actions/Cleave.tres" id="4_xwvrd"]
+[ext_resource type="Resource" uid="uid://dcdcnr4a0j83d" path="res://Core/Pokemon/EvolutionLines/LineNaichi.tres" id="9_v4rf7"]
+[ext_resource type="Script" uid="uid://ba5t688rcjadp" path="res://Resources/PokeMon/Trigger.gd" id="10_1bion"]
+[ext_resource type="Resource" uid="uid://db8khd87yp6q5" path="res://Core/Pokemon/Noctichi.tres" id="11_fumfo"]
+[ext_resource type="Script" uid="uid://0qgu36ew8dhj" path="res://Resources/PokeMon/Evolutor.gd" id="12_d1w5y"]
+
+[sub_resource type="Resource" id="Resource_h6v53"]
+script = ExtResource("10_1bion")
+evolution_type = 0
+evolving_level = 16
+NextPokemon = ExtResource("11_fumfo")
+can_evolve = false
+metadata/_custom_type_script = "uid://ba5t688rcjadp"
+
+[sub_resource type="Resource" id="Resource_o1s36"]
+script = ExtResource("12_d1w5y")
+Triggers = Array[ExtResource("10_1bion")]([SubResource("Resource_h6v53")])
+TriggersActive = Array[ExtResource("10_1bion")]([])
+metadata/_custom_type_script = "uid://0qgu36ew8dhj"
 
 [resource]
 script = ExtResource("1_o037y")
 Name = "Naichi"
 Id = 0
 Type1 = "Dark"
-Type2 = "NONE"
+Type2 = "Ghost"
 leveleing_type = 2
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"
@@ -37,6 +55,8 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 2
 Yield_Speed = 0
 catch_chance = 16
+evolutor = SubResource("Resource_o1s36")
+evolution_line = ExtResource("9_v4rf7")
 Tag = "The original sin"
 description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of
 whatever you do, forever is it bound to you."
