@@ -636,5 +636,6 @@ func switch_default_camera():
 	camera_2d.enabled = true
 
 func _pokemon_evolved():
-	pokemon_manager.update_pokemon()
+	if pokemon_manager != null:
+		pokemon_manager.update_pokemon()
 	evolve.emit()

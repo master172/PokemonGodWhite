@@ -1,22 +1,22 @@
 [gd_scene load_steps=46 format=3 uid="uid://i3rtwnl4su6j"]
 
-[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_2ofmc"]
+[ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_npi3j"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="2_wyec4"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_wyilf"]
+[ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="2_wyec4"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_wyilf"]
 [ext_resource type="PackedScene" uid="uid://c6h1kkkqjrqw1" path="res://Libraries/Grass/tall_grass.tscn" id="3_5tg8m"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="3_e07th"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="3_p24ug"]
 [ext_resource type="Texture2D" uid="uid://d1pkglneoxq4a" path="res://assets/PokemonTilesets/ledge.png" id="4_3hqum"]
 [ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Ensparda.tres" id="4_hdyfe"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_l5egc"]
-[ext_resource type="Script" path="res://src/Npc/Trainer/Aiden.gd" id="5_otxk3"]
+[ext_resource type="Script" uid="uid://cn1wyxm8lq4nm" path="res://src/Npc/Trainer/Aiden.gd" id="5_otxk3"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_gix2c"]
 [ext_resource type="PackedScene" uid="uid://bbyhnn6340w0c" path="res://Libraries/Houses/martHouse.tscn" id="7_3088l"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
 [ext_resource type="Resource" uid="uid://bbll1o6krkpec" path="res://Core/Pokemon/Canaris.tres" id="10_g640m"]
-[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/BaseEvent.gd" id="10_xb1sh"]
+[ext_resource type="Script" uid="uid://bmlhpdynj20pj" path="res://src/Npc/Base/ResourceScripts/BaseEvent.gd" id="10_xb1sh"]
 [ext_resource type="PackedScene" uid="uid://ddh3gq4jr51h" path="res://src/Ui/Bag/OverWorldItem.tscn" id="12_yku7x"]
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="13_x3ica"]
 [ext_resource type="Resource" uid="uid://ngglvf785r2k" path="res://Resources/Dialogs/OverWorldItem.tres" id="14_yqc7c"]
@@ -25,9 +25,9 @@
 [ext_resource type="Resource" uid="uid://dekjickbksnex" path="res://src/Npc/Resources/Yasuda.tres" id="21_js36o"]
 [ext_resource type="Resource" uid="uid://daud4wv4suun6" path="res://Core/Pokemon/Syurpik.tres" id="22_jedfn"]
 [ext_resource type="Resource" uid="uid://bsop8r8swrxgj" path="res://src/Npc/Base/Resources/TestEventList.tres" id="23_v6cp7"]
-[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="24_jks6w"]
-[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
-[ext_resource type="Script" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
+[ext_resource type="Script" uid="uid://u6b8s1gf5pxj" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="24_jks6w"]
+[ext_resource type="Script" uid="uid://dyw7lstkx7p10" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
+[ext_resource type="Script" uid="uid://djhr4xvud4035" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
 
 [sub_resource type="Resource" id="Resource_lhkw0"]
 script = ExtResource("24_jks6w")
@@ -1765,8 +1765,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_klbg0"]
 _data = {
-"Default": SubResource("Animation_tlwsx"),
-"RESET": SubResource("Animation_5kgqg")
+&"Default": SubResource("Animation_tlwsx"),
+&"RESET": SubResource("Animation_5kgqg")
 }
 
 [node name="Area0" type="Node2D"]
@@ -1888,7 +1888,7 @@ texture = SubResource("NoiseTexture2D_xhlmr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CloudShadows"]
 libraries = {
-"": SubResource("AnimationLibrary_klbg0")
+&"": SubResource("AnimationLibrary_klbg0")
 }
 autoplay = "Default"
 speed_scale = 0.01

@@ -1,7 +1,8 @@
 extends Action
 
-var User:CharacterBody2D = null
+var User:BattlePokemon = null
 var target:Array = []
+var Target :PokeEnemy
 
 @export var scale_factor:int = 100
 
@@ -26,13 +27,13 @@ func reset_modulation():
 	await tween.finished
 	
 func warp():
-	var Target :PokeEnemy
+	
 	if target != []:
 		Target = target[0]
 	
 	var teleport_position = Target.position - Target.get_current_facing_direction()*scale_factor
 	User.position = teleport_position
-	User.velocity = Target.get_current_facing_direction()
+	User.input_direction = Target.get_current_facing_direction()
  
 
 func _end():
@@ -40,4 +41,5 @@ func _end():
 		User.attack_end()
 	connect("attack_finished",SignalBus.attack_completed)
 	emit_signal("attack_finished",self,User)
+	
 	queue_free()

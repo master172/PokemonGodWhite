@@ -6,9 +6,10 @@ extends Control
 @onready var move_manager = $MoveManager
 @onready var evolution = $evolution
 @onready var moves = $moves
+@onready var naming_screen = $NamingScreen
 
 enum Options {FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, FOURTH_SLOT, FIFTH_SLOT,SIXTH_SLOT}
-enum States {Normal,Selection,MoveManagement,Evolution,Inactive}
+enum States {Normal,Selection,MoveManagement,Evolution,Inactive,Naming}
 
 var state = States.Normal
 var selected_option: int = Options.FIRST_SLOT
@@ -119,7 +120,11 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("Yes"):
 		AudioManager.select()
 		if  state == States.Normal:
-			if selected_option == 1:
+			if selected_option == 0:
+				state = States.Naming
+				naming_screen.show()
+				naming_screen.start(showing_pokemon)
+			elif selected_option == 1:
 				state = States.MoveManagement
 				move_manager.show()
 				move_manager.pokemon = showing_pokemon
@@ -151,3 +156,11 @@ func _on_move_manager_quit():
 	await get_tree().create_timer(0.1).timeout
 	Global.move_management = false
 	moves._display(showing_pokemon)
+
+
+func _on_naming_screen_naming_done() -> void:
+	naming_screen.hide()
+	state = States.Normal
+	info._display(showing_pokemon)
+	if Utils.get_party_screen() != null:
+		Utils.get_party_screen().all_update()

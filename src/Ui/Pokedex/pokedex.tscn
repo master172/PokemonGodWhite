@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cugqeykx40b2l"]
 
-[ext_resource type="Script" path="res://src/Ui/Pokedex/pokedex.gd" id="1_mgcim"]
+[ext_resource type="Script" uid="uid://7vngwesnwnmd" path="res://src/Ui/Pokedex/pokedex.gd" id="1_mgcim"]
 [ext_resource type="PackedScene" uid="uid://tficeemr8hlg" path="res://src/Ui/Pokedex/poke_search.tscn" id="2_27g57"]
-[ext_resource type="Script" path="res://src/Ui/Pokedex/PokemonQuery.gd" id="3_aeyfn"]
+[ext_resource type="Script" uid="uid://qogf3coucuss" path="res://src/Ui/Pokedex/PokemonQuery.gd" id="3_aeyfn"]
 [ext_resource type="PackedScene" uid="uid://d174ktbsf1qmn" path="res://src/Ui/Pokedex/poke_info.tscn" id="4_4d2lr"]
 
 [sub_resource type="Gradient" id="Gradient_konxb"]

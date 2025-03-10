@@ -400,13 +400,20 @@ func get_current_evolution_pokemon(num:int):
 	return poke
 	
 func evolve(pokemon):
+	if Nick_name == Base_Pokemon.Name:
+		set_nickname(pokemon.Name)
 	Base_Pokemon = pokemon
+	
 	set_movepool()
 	learn_moves()
 	recalculate_stats()
 	set_to_max_stats()
 	evolutor = Base_Pokemon.evolutor.duplicate()
-	
+
+
+func set_nickname(name):
+	Nick_name = name
+
 func get_current_evolution_triggers():
 	return evolutor.get_active_triggers()
 

@@ -59,7 +59,13 @@ func get_player():
 		if to_return.size() >= 1:
 			return to_return[0]
 	return null
-	
+
+func get_party_screen():
+	var party_screen = get_node("/root/SceneManager/Menu/PartyScreen")
+	if party_screen != null:
+		return party_screen
+	return null
+
 func get_scene_manager():
 	if get_tree().get_current_scene().name == "SceneManager":
 		return get_node("/root/SceneManager")

@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=26 format=3 uid="uid://cg2rtptj7jo3r"]
 
 [ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
-[ext_resource type="Script" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
+[ext_resource type="Script" uid="uid://kkfu0cfybbeh" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_0rgf5"]
-[ext_resource type="Script" path="res://src/Ui/Summary/info.gd" id="3_4a30r"]
+[ext_resource type="Script" uid="uid://cfog1yicxximo" path="res://src/Ui/Summary/info.gd" id="3_4a30r"]
 [ext_resource type="Texture2D" uid="uid://c6vuk5wnqcujs" path="res://assets/Ui/Summary/POKEBALL.png" id="3_a8ai2"]
 [ext_resource type="Texture2D" uid="uid://bqw3xd0to5ien" path="res://assets/Ui/Summary/page_info.png" id="3_oogwt"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_16jd6"]
@@ -13,16 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
 [ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="7_hhiqc"]
-[ext_resource type="Script" path="res://src/Ui/Summary/moves.gd" id="8_cr8m8"]
+[ext_resource type="Script" uid="uid://dbfaf0ah1itr3" path="res://src/Ui/Summary/moves.gd" id="8_cr8m8"]
 [ext_resource type="Texture2D" uid="uid://df2t0ubvupo0m" path="res://assets/Ui/Summary/bg_memo.png" id="8_vv2m0"]
 [ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
 [ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
 [ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
-[ext_resource type="Script" path="res://src/Ui/Summary/skills.gd" id="11_g8v2c"]
+[ext_resource type="Script" uid="uid://dpubcuslkm07c" path="res://src/Ui/Summary/skills.gd" id="11_g8v2c"]
 [ext_resource type="Texture2D" uid="uid://b4oii4yq02iaj" path="res://assets/Ui/Summary/bg_evolution.png" id="12_x1t8v"]
-[ext_resource type="Script" path="res://src/Ui/Summary/evolution.gd" id="13_aw7q6"]
+[ext_resource type="Script" uid="uid://cv04knmnimkkb" path="res://src/Ui/Summary/evolution.gd" id="13_aw7q6"]
 [ext_resource type="Texture2D" uid="uid://bfr5cxpqegvce" path="res://assets/Ui/Summary/page_evolution.png" id="18_76lr1"]
 [ext_resource type="PackedScene" uid="uid://bhg0w3hc6j2dh" path="res://src/Ui/MoveManager/MoveManager.tscn" id="19_qo35f"]
+[ext_resource type="Script" uid="uid://dbnl3oeaf743" path="res://src/Ui/Summary/naming_screen.gd" id="24_ailn7"]
+[ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="24_seykb"]
 
 [node name="Summary" type="Control"]
 layout_mode = 3
@@ -639,5 +641,67 @@ texture = ExtResource("3_a8ai2")
 visible = false
 layout_mode = 1
 
+[node name="NamingScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_ailn7")
+
+[node name="ColorRect" type="ColorRect" parent="NamingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Panel" type="Panel" parent="NamingScreen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -84.0
+offset_right = 300.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NamingScreen/ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="NamingScreen/ColorRect/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("24_seykb")
+text = "Enter the new name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="NamingScreen/ColorRect/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("24_seykb")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter The new name"
+alignment = 1
+
 [connection signal="visibility_changed" from="evolution" to="evolution" method="_on_visibility_changed"]
 [connection signal="quit" from="MoveManager" to="." method="_on_move_manager_quit"]
+[connection signal="naming_done" from="NamingScreen" to="." method="_on_naming_screen_naming_done"]
+[connection signal="text_submitted" from="NamingScreen/ColorRect/Panel/VBoxContainer/TextEdit" to="NamingScreen" method="_on_text_edit_text_submitted"]
