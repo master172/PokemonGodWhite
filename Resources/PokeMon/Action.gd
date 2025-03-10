@@ -3,7 +3,6 @@ extends Node2D
 class_name Action
 
 var holder:GameAction
-
 signal attack_finished(attack,User)
 signal attack_landed(attack,User)
 

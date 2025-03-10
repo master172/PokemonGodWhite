@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://b3hlrr0g7x0sc"]
+
+[ext_resource type="PackedScene" uid="uid://bhjoa4fg2vvof" path="res://Core/Actions/Dismantle.tscn" id="1_yr0l0"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_3tvce"]
+
+[resource]
+script = ExtResource("2_3tvce")
+name = "Dismantle"
+learned_level = 16
+action = ExtResource("1_yr0l0")
+staminaCost = 7
+Type = "Dark"
+power = 45.0
+range = 0

@@ -7,4 +7,3 @@ class_name MovePoolAction
 
 func _init(BaseAct:BaseAction = BaseAction.new()):
 	action = BaseAct
-	

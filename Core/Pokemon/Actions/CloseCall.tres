@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://jw7esjkjm2ny"]
+
+[ext_resource type="PackedScene" uid="uid://ch23261mml7m8" path="res://Core/Actions/CloseCall.tscn" id="1_1yvlf"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_6il8r"]
+
+[resource]
+script = ExtResource("1_6il8r")
+name = "CloseCall"
+learned_level = 17
+action = ExtResource("1_1yvlf")
+staminaCost = 7
+Type = "Dark"
+power = 0.0
+range = 0
+metadata/_custom_type_script = "uid://ckld52qknsbni"

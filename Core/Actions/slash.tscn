@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ftqpp4nqmbd6"]
 
-[ext_resource type="Script" path="res://Core/Actions/slash.gd" id="1_0yiur"]
+[ext_resource type="Script" uid="uid://hqvec5aay7xw" path="res://Core/Actions/slash.gd" id="1_0yiur"]
 [ext_resource type="Texture2D" uid="uid://cwwmtck6ql4kr" path="res://assets/BattleEffects/Slash.png" id="2_b6mdk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s57xa"]
@@ -196,8 +196,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcfg6"]
 _data = {
-"RESET": SubResource("Animation_yp02j"),
-"Slash": SubResource("Animation_0hyur")
+&"RESET": SubResource("Animation_yp02j"),
+&"Slash": SubResource("Animation_0hyur")
 }
 
 [node name="Slash" type="Node2D"]
@@ -224,7 +224,7 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vcfg6")
+&"": SubResource("AnimationLibrary_vcfg6")
 }
 autoplay = "Slash"
 speed_scale = 3.0

@@ -35,6 +35,7 @@ func load_data():
 		PartyPokemon = ResourceLoader.load(save_file_path + save_file_name).duplicate(true)
 	if FileAccess.file_exists(PC_save_file_path+PC_save_file_name):
 		PcPokemon = ResourceLoader.load(PC_save_file_path+PC_save_file_name).duplicate(true)
+
 	done_loading()
 	
 	

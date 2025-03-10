@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bhg0w3hc6j2dh"]
 
-[ext_resource type="Script" path="res://src/Ui/MoveManager/MoveManager.gd" id="1_vprld"]
+[ext_resource type="Script" uid="uid://ckojy5yg5qo7q" path="res://src/Ui/MoveManager/MoveManager.gd" id="1_vprld"]
 [ext_resource type="Texture2D" uid="uid://dq8yigvg5j12b" path="res://Core/Graphics/Pokemon/Gen4/Front/GARDEVOIR.png" id="2_5vg1q"]
 
 [sub_resource type="Gradient" id="Gradient_d557v"]
@@ -11,6 +11,7 @@ gradient = SubResource("Gradient_d557v")
 fill_to = Vector2(1, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_vwyvu"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j2sh"]
 bg_color = Color(0.6, 0, 0.0313726, 0)
@@ -26,6 +27,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_80ijm")
 bg_color = Color(0, 0.647059, 0.576471, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_i22r5"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ork"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.34902)
@@ -133,8 +135,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 theme_override_fonts/font = SubResource("SystemFont_i22r5")
 theme_override_font_sizes/font_size = 32
-text = "Learned Moves
-"
+text = "Learned Moves"
 horizontal_alignment = 1
 vertical_alignment = 1
 

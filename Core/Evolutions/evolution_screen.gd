@@ -11,7 +11,6 @@ const EXTENSION =  "tres"
 
 @export var congratulation_dialog:DialogueLine = DialogueLine.new()
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if previous_pokemon != null and current_pokemon != null:
@@ -34,6 +33,7 @@ func congatulate():
 	
 func finish(dial):
 	if dial == congratulation_dialog:
+		
 		queue_free()
 		Utils.get_scene_manager().transistion_exit_evolution()
 		

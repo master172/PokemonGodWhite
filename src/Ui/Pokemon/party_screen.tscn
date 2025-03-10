@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://cxf5ewkbq7wsk"]
 
-[ext_resource type="Script" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
+[ext_resource type="Script" uid="uid://bhbkmecqfd6km" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
 [ext_resource type="PackedScene" uid="uid://bbk2dilhl5dmm" path="res://src/Ui/Pokemon/main_slot.tscn" id="2_shw64"]
 [ext_resource type="PackedScene" uid="uid://bomnjll0jderl" path="res://src/Ui/Pokemon/SubSlot.tscn" id="3_7xald"]
 [ext_resource type="Texture2D" uid="uid://dn4wxipelwxhl" path="res://assets/Ui/PartyScreen/exit_background_button.png" id="4_dbhfa"]
-[ext_resource type="Script" path="res://src/Ui/Pokemon/Cancel.gd" id="6_umcrd"]
-[ext_resource type="Shader" path="res://src/Ui/Pokemon/Circle.gdshader" id="7_58kkr"]
+[ext_resource type="Script" uid="uid://caundnww25d11" path="res://src/Ui/Pokemon/Cancel.gd" id="6_umcrd"]
+[ext_resource type="Shader" uid="uid://cm8urabjjski5" path="res://src/Ui/Pokemon/Circle.gdshader" id="7_58kkr"]
 [ext_resource type="Texture2D" uid="uid://dtygb6rt7c0eh" path="res://assets/Ui/PartyScreen/RadialBg.png" id="8_882g3"]
 [ext_resource type="Texture2D" uid="uid://d4gnim6nuvqe1" path="res://assets/Ui/PartyScreen/RadialPG.png" id="9_qi5mh"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="10_ay2wv"]
@@ -29,7 +29,7 @@ shader_parameter/color = Color(0.145098, 0.145098, 0.145098, 0.713726)
 default_font = ExtResource("10_ay2wv")
 default_font_size = 128
 
-[node name="PartyScreen" type="Control"]
+[node name="PartyScreen" type="Control" node_paths=PackedStringArray("slot_refrences")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4o2vg")
+slot_refrences = [NodePath("MainSlot"), NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot4"), NodePath("Slot5"), NodePath("Slot6")]
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1

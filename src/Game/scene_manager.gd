@@ -26,6 +26,7 @@ var Scene_Saver:scene_saver = scene_saver.new()
 var player_location
 var player_direction
 
+
 enum Transition_Type {
 	NEW_SCENE,
 	PARTY_SCREEN,
@@ -310,7 +311,7 @@ func done_with_evolution():
 		WorldEnv = null
 	
 	EvolutionManager.done_evolving()
-	
+	Utils.get_player()._pokemon_evolved()
 	menu.set_summary_active()
 	
 func continue_check_evolution():
@@ -341,6 +342,7 @@ func load_evolution():
 	
 	if Global.auto_evolve == true:
 		var EvolutionScreen = evolution_scene.instantiate()
+		
 		EvolutionScreen.set_pokemons(EvolutionManager.pokemon_to_evolve[0],EvolutionManager.evolving_pokemon[0])
 		Utils.get_player().add_child(EvolutionScreen)
 		Utils.get_player().switch_evolution_camera()

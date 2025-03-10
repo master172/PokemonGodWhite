@@ -221,7 +221,7 @@ func learn_moves():
 			emit_signal("learning_process_complete")
 		else:
 			var to_learn_move:bool = true
-			if i.action.learned_level <= self.level and i.learned == false:	
+			if i.action.learned_level <= self.level and i.learned == false:
 				for j in learned_attacks:
 						if j.Name().to_lower() == i.action.name.to_lower():
 							to_learn_move = false
@@ -232,11 +232,16 @@ func learn_moves():
 func learn_move_manual(move:int):
 	var move_to_learn = GameAction.new(learnable_attacks[move].action)
 	learned_attacks.append(move_to_learn)
-	learnable_attacks.remove_at(move)	
+	learnable_attacks.remove_at(move)
 	
 
 func forget_move_manual(move:int):
 	var move_to_forget = learned_attacks[move]
+	
+	for i in move_pool:
+		if i.action == move_to_forget.base_action:
+			i.learned = false
+		
 	learned_attacks.remove_at(move)
 
 	learnable_attacks.append(MovePoolAction.new(move_to_forget.base_action))
@@ -245,12 +250,16 @@ func forget_move_manual(move:int):
 func replace_moves_manual(move1:int,move2:int):
 	var move_to_forget = learned_attacks[move1]
 	
+	for i in move_pool:
+		if i.action == move_to_forget.base_action:
+			i.learned = false
+			
 	var move_to_learn = GameAction.new(learnable_attacks[move2].action)
 	
 	learned_attacks[move1] = move_to_learn
 	
 	learnable_attacks[move2] = MovePoolAction.new(move_to_forget.base_action)
-
+	
 func get_learnable_attack_name(num:int):
 	if learnable_attacks.size() >= num + 1:
 		return learnable_attacks[num].action.name

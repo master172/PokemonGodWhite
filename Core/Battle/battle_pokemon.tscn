@@ -1,14 +1,14 @@
 [gd_scene load_steps=24 format=3 uid="uid://dac368r2gylw7"]
 
-[ext_resource type="Script" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
+[ext_resource type="Script" uid="uid://yb48fpsp007k" path="res://Core/Battle/BattlePokemon.gd" id="1_o4sl4"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="2_sg6oc"]
 [ext_resource type="PackedScene" uid="uid://cimfdob80nm44" path="res://Core/Battle/Ui/Action_Selector.tscn" id="4_xmkfa"]
 [ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="5_xwcbp"]
-[ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="6_gu72b"]
+[ext_resource type="Script" uid="uid://bfqi67wlpe0xc" path="res://src/Audio/loop_audio_player.gd" id="6_gu72b"]
 [ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="7_x237b"]
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="8_p4ks2"]
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="9_gj670"]
-[ext_resource type="Script" path="res://Core/Battle/Dash.gd" id="9_vnv32"]
+[ext_resource type="Script" uid="uid://05eejrj7m1j3" path="res://Core/Battle/Dash.gd" id="9_vnv32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksekj"]
 radius = 30.0
@@ -102,11 +102,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3xiau"]
 _data = {
-"Down": SubResource("Animation_e2eta"),
-"Left": SubResource("Animation_1gj5l"),
-"RESET": SubResource("Animation_xkplj"),
-"Right": SubResource("Animation_j0m6x"),
-"Up": SubResource("Animation_16fea")
+&"Down": SubResource("Animation_e2eta"),
+&"Left": SubResource("Animation_1gj5l"),
+&"RESET": SubResource("Animation_xkplj"),
+&"Right": SubResource("Animation_j0m6x"),
+&"Up": SubResource("Animation_16fea")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_riwvv"]
@@ -159,7 +159,7 @@ shape = SubResource("CircleShape2D_ksekj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3xiau")
+&"": SubResource("AnimationLibrary_3xiau")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

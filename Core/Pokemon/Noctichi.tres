@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://db8khd87yp6q5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://db8khd87yp6q5"]
 
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_ocdfy"]
 [ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="2_lyhf2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://08fa8ft1mmmx" path="res://Core/Graphics/Zehlvogs/Icons/NOCTICHI.png" id="3_knc6e"]
 [ext_resource type="PackedScene" uid="uid://dcm8p33fcgnn5" path="res://Core/Actions/Supersonic.tscn" id="3_qma00"]
 [ext_resource type="Texture2D" uid="uid://djmqvd6h08jia" path="res://Core/Graphics/Zehlvogs/Follower/NOCTICHI.png" id="4_qma00"]
+[ext_resource type="Resource" uid="uid://jw7esjkjm2ny" path="res://Core/Pokemon/Actions/CloseCall.tres" id="4_qs0bp"]
 
 [sub_resource type="Resource" id="Resource_p3gu1"]
 script = ExtResource("1_ocdfy")
@@ -46,7 +47,7 @@ Base_Defense = 80
 Special_Base_Attack = 150
 Special_Base_Defense = 100
 Base_Speed = 140
-Actions = Array[ExtResource("1_ocdfy")]([SubResource("Resource_p3gu1"), SubResource("Resource_qs0bp")])
+Actions = Array[ExtResource("1_ocdfy")]([SubResource("Resource_p3gu1"), SubResource("Resource_qs0bp"), ExtResource("4_qs0bp")])
 base_experience = 128
 Yield_Health = 2
 Yield_Attack = 1

@@ -1,17 +1,17 @@
 [gd_scene load_steps=32 format=3 uid="uid://cy76wy1prl8ih"]
 
-[ext_resource type="Script" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
+[ext_resource type="Script" uid="uid://dqb3ttfx75idx" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
-[ext_resource type="Script" path="res://Resources/StateMachine/FiniteStateMachine.gd" id="3_82o3u"]
-[ext_resource type="Script" path="res://Resources/StateMachine/EnemyFollowState.gd" id="4_0bbir"]
-[ext_resource type="Script" path="res://Resources/StateMachine/MelleAttackState.gd" id="5_et2fj"]
-[ext_resource type="Script" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
-[ext_resource type="Script" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
-[ext_resource type="Script" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
-[ext_resource type="Script" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
-[ext_resource type="Script" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
+[ext_resource type="Script" uid="uid://b2257tm7bwcfw" path="res://Resources/StateMachine/FiniteStateMachine.gd" id="3_82o3u"]
+[ext_resource type="Script" uid="uid://bm6nxhad2t07u" path="res://Resources/StateMachine/EnemyFollowState.gd" id="4_0bbir"]
+[ext_resource type="Script" uid="uid://c4lmu4sa3hcfk" path="res://Resources/StateMachine/MelleAttackState.gd" id="5_et2fj"]
+[ext_resource type="Script" uid="uid://boehqb24ba8jj" path="res://Resources/StateMachine/RangeAttackState.gd" id="6_3w07w"]
+[ext_resource type="Script" uid="uid://bg8j51u83r7no" path="res://Resources/StateMachine/EnemyKnockBackState.gd" id="7_rkv4e"]
+[ext_resource type="Script" uid="uid://bb3txe3uvxkn" path="res://Resources/StateMachine/EnemyIdleState.gd" id="8_8u74g"]
+[ext_resource type="Script" uid="uid://bsmxmgnaq6vlm" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
+[ext_resource type="Script" uid="uid://dmwffuc2nekas" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
 [ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="11_co6j0"]
-[ext_resource type="Script" path="res://src/Audio/loop_audio_player.gd" id="12_m5l6s"]
+[ext_resource type="Script" uid="uid://bfqi67wlpe0xc" path="res://src/Audio/loop_audio_player.gd" id="12_m5l6s"]
 [ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="13_vcj04"]
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="14_ablgi"]
 [ext_resource type="AudioStream" uid="uid://crwmjhnyx8kea" path="res://assets/Audio/SFX/Bfxr/Dodge.wav" id="15_pkr0q"]
@@ -109,11 +109,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xoc6r"]
 _data = {
-"Down": SubResource("Animation_yb5mb"),
-"Left": SubResource("Animation_oq1gs"),
-"RESET": SubResource("Animation_3snwd"),
-"Right": SubResource("Animation_l8538"),
-"Up": SubResource("Animation_ynfar")
+&"Down": SubResource("Animation_yb5mb"),
+&"Left": SubResource("Animation_oq1gs"),
+&"RESET": SubResource("Animation_3snwd"),
+&"Right": SubResource("Animation_l8538"),
+&"Up": SubResource("Animation_ynfar")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ddvf1"]
@@ -216,13 +216,10 @@ actor = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xoc6r")
+&"": SubResource("AnimationLibrary_xoc6r")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xoc6r")
-}
 tree_root = SubResource("AnimationNodeStateMachine_1ci5n")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Walk/blend_position = Vector2(0, 0)

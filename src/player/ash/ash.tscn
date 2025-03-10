@@ -1,18 +1,19 @@
-[gd_scene load_steps=128 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=129 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
-[ext_resource type="Script" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
+[ext_resource type="Script" uid="uid://c82iy61rmwmoh" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
+[ext_resource type="Resource" uid="uid://cgflecyahs0m5" path="res://Core/Pokemon/Naichi.tres" id="2_f55f4"]
 [ext_resource type="Texture2D" uid="uid://bf3hlxiuvp4hm" path="res://assets/player/ash/player_shadow.png" id="2_hcuyf"]
-[ext_resource type="Script" path="res://src/player/ash/Saver.gd" id="4_ydgc5"]
-[ext_resource type="Script" path="res://src/Audio/random_player.gd" id="5_0pi4e"]
+[ext_resource type="Script" uid="uid://dtskxvrxje74p" path="res://src/player/ash/Saver.gd" id="4_ydgc5"]
+[ext_resource type="Script" uid="uid://5ekgwth5tysy" path="res://src/Audio/random_player.gd" id="5_0pi4e"]
 [ext_resource type="AudioStream" uid="uid://t7c461afe72l" path="res://assets/Audio/SFX/Footstep/Concrete/1.wav" id="6_8g0lc"]
 [ext_resource type="AudioStream" uid="uid://bp8jnt3rhb4d3" path="res://assets/Audio/SFX/Footstep/Concrete/2.wav" id="7_p1phv"]
 [ext_resource type="AudioStream" uid="uid://ckvq8luru7214" path="res://assets/Audio/SFX/Footstep/Concrete/3.wav" id="8_eeyw1"]
-[ext_resource type="Script" path="res://src/player/ash/Leaves.gd" id="9_dqx2l"]
+[ext_resource type="Script" uid="uid://d4dy0j78pb8rh" path="res://src/player/ash/Leaves.gd" id="9_dqx2l"]
 [ext_resource type="Texture2D" uid="uid://bc3ojlmrkopii" path="res://assets/Effects/FallingLeaves/Leaf3.png" id="9_m0d4k"]
 [ext_resource type="Texture2D" uid="uid://bp0egh8oy12po" path="res://assets/Effects/FallingLeaves/Leaf1.png" id="10_cfayg"]
 [ext_resource type="Texture2D" uid="uid://bn8hqppd45tsa" path="res://assets/Effects/FallingLeaves/Leaf2.png" id="11_3m2yk"]
-[ext_resource type="Script" path="res://src/player/ash/WindGust.gd" id="13_xq3te"]
+[ext_resource type="Script" uid="uid://dk7kd566afqbl" path="res://src/player/ash/WindGust.gd" id="13_xq3te"]
 
 [sub_resource type="Animation" id="Animation_48a5r"]
 length = 0.001
@@ -906,44 +907,44 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qbwx"]
 _data = {
-"RESET": SubResource("Animation_48a5r"),
-"RunDown": SubResource("Animation_kgrl3"),
-"RunLeft": SubResource("Animation_bgxb5"),
-"RunRight": SubResource("Animation_ids25"),
-"RunUp": SubResource("Animation_p6f76"),
-"cycleDown": SubResource("Animation_yhfbn"),
-"cycleIdleDown": SubResource("Animation_hcf3g"),
-"cycleIdleLeft": SubResource("Animation_cko1q"),
-"cycleIdleRight": SubResource("Animation_4ntdl"),
-"cycleIdleUp": SubResource("Animation_dbk23"),
-"cycleLeft": SubResource("Animation_yu0lv"),
-"cycleRight": SubResource("Animation_hcfy1"),
-"cycleTurnDown": SubResource("Animation_ff4qv"),
-"cycleTurnLeft": SubResource("Animation_75iv6"),
-"cycleTurnRight": SubResource("Animation_g7fcw"),
-"cycleTurnUp": SubResource("Animation_gc1sl"),
-"cycleUp": SubResource("Animation_t3tm6"),
-"dissapear": SubResource("Animation_yea41"),
-"idleDown": SubResource("Animation_a4dbl"),
-"idleLeft": SubResource("Animation_j2ks2"),
-"idleRight": SubResource("Animation_5gfbc"),
-"idleUp": SubResource("Animation_jk3q5"),
-"surfDown": SubResource("Animation_tfn0u"),
-"surfLeft": SubResource("Animation_rqpx4"),
-"surfRight": SubResource("Animation_b3rjv"),
-"surfTurnDown": SubResource("Animation_sj4v0"),
-"surfTurnLeft": SubResource("Animation_wtxcd"),
-"surfTurnRight": SubResource("Animation_r0gvp"),
-"surfTurnUp": SubResource("Animation_r66yl"),
-"surfUp": SubResource("Animation_4esqw"),
-"turnDown": SubResource("Animation_mqp00"),
-"turnLeft": SubResource("Animation_37u6i"),
-"turnRight": SubResource("Animation_075pv"),
-"turnUp": SubResource("Animation_ff5b0"),
-"walkDown": SubResource("Animation_ny5o2"),
-"walkLeft": SubResource("Animation_5e37v"),
-"walkRight": SubResource("Animation_cju83"),
-"walkUp": SubResource("Animation_lqwt0")
+&"RESET": SubResource("Animation_48a5r"),
+&"RunDown": SubResource("Animation_kgrl3"),
+&"RunLeft": SubResource("Animation_bgxb5"),
+&"RunRight": SubResource("Animation_ids25"),
+&"RunUp": SubResource("Animation_p6f76"),
+&"cycleDown": SubResource("Animation_yhfbn"),
+&"cycleIdleDown": SubResource("Animation_hcf3g"),
+&"cycleIdleLeft": SubResource("Animation_cko1q"),
+&"cycleIdleRight": SubResource("Animation_4ntdl"),
+&"cycleIdleUp": SubResource("Animation_dbk23"),
+&"cycleLeft": SubResource("Animation_yu0lv"),
+&"cycleRight": SubResource("Animation_hcfy1"),
+&"cycleTurnDown": SubResource("Animation_ff4qv"),
+&"cycleTurnLeft": SubResource("Animation_75iv6"),
+&"cycleTurnRight": SubResource("Animation_g7fcw"),
+&"cycleTurnUp": SubResource("Animation_gc1sl"),
+&"cycleUp": SubResource("Animation_t3tm6"),
+&"dissapear": SubResource("Animation_yea41"),
+&"idleDown": SubResource("Animation_a4dbl"),
+&"idleLeft": SubResource("Animation_j2ks2"),
+&"idleRight": SubResource("Animation_5gfbc"),
+&"idleUp": SubResource("Animation_jk3q5"),
+&"surfDown": SubResource("Animation_tfn0u"),
+&"surfLeft": SubResource("Animation_rqpx4"),
+&"surfRight": SubResource("Animation_b3rjv"),
+&"surfTurnDown": SubResource("Animation_sj4v0"),
+&"surfTurnLeft": SubResource("Animation_wtxcd"),
+&"surfTurnRight": SubResource("Animation_r0gvp"),
+&"surfTurnUp": SubResource("Animation_r66yl"),
+&"surfUp": SubResource("Animation_4esqw"),
+&"turnDown": SubResource("Animation_mqp00"),
+&"turnLeft": SubResource("Animation_37u6i"),
+&"turnRight": SubResource("Animation_075pv"),
+&"turnUp": SubResource("Animation_ff5b0"),
+&"walkDown": SubResource("Animation_ny5o2"),
+&"walkLeft": SubResource("Animation_5e37v"),
+&"walkRight": SubResource("Animation_cju83"),
+&"walkUp": SubResource("Animation_lqwt0")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf1tr"]
@@ -1250,6 +1251,7 @@ hue_variation_max = 0.02
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_kcwe4")
+Starter = ExtResource("2_f55f4")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -1267,7 +1269,7 @@ region_rect = Rect2(6, 9, 16, 19)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Skin")
 libraries = {
-"": SubResource("AnimationLibrary_1qbwx")
+&"": SubResource("AnimationLibrary_1qbwx")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1347,9 +1349,9 @@ texture_filter = 1
 position = Vector2(-160, -160)
 emitting = false
 amount = 3
-process_material = SubResource("ParticleProcessMaterial_f6evh")
 texture = ExtResource("9_m0d4k")
 lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_f6evh")
 
 [node name="Leafs2" type="GPUParticles2D" parent="HudEffects/Leaves"]
 z_index = 2
@@ -1357,9 +1359,9 @@ texture_filter = 1
 position = Vector2(-160, -160)
 emitting = false
 amount = 5
-process_material = SubResource("ParticleProcessMaterial_f6evh")
 texture = ExtResource("10_cfayg")
 lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_f6evh")
 
 [node name="Leafs3" type="GPUParticles2D" parent="HudEffects/Leaves"]
 z_index = 2
@@ -1367,9 +1369,9 @@ texture_filter = 1
 position = Vector2(-160, -160)
 emitting = false
 amount = 7
-process_material = SubResource("ParticleProcessMaterial_f6evh")
 texture = ExtResource("11_3m2yk")
 lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_f6evh")
 
 [node name="WindGust" type="CanvasLayer" parent="HudEffects"]
 script = ExtResource("13_xq3te")

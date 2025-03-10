@@ -9,6 +9,7 @@ var selected_option: int = Options.FIRST_SLOT
 @onready var progress_bar = $HoldButton/Background/ProgressBar
 @onready var label = $HoldButton/Background/Label
 
+@export var slot_refrences:Array[Node2D] = []
 
 var options_selectable:int = 7
 
@@ -48,6 +49,7 @@ func set_active_option():
 	options[selected_option].change_selected(true)
 
 func _ready():
+	Utils.get_player().evolve.connect(all_update)
 	options_selectable = AllyPokemon.get_Party_pokemon_size() + 1
 	set_active_option()
 	hold_button.visible = false
@@ -153,3 +155,7 @@ func switch():
 func _on_button_press_timer_timeout():
 	print("sucessfull")
 	buttonHoldSucessful = true
+
+func all_update():
+	for i in slot_refrences:
+		i.update()

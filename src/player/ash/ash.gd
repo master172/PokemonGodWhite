@@ -7,6 +7,8 @@ signal player_entering_door_signal
 signal player_entered_door_signal
 #export variables
 
+@export_category("Pokemon")
+@export var Starter:Pokemon
 @export_category("Movement")
 @export_group("MovementSpeed")
 @export var walk_speed :float = 5.0
@@ -87,6 +89,7 @@ var player_start:bool = false
 
 var player_uid = ""
 signal player_ready
+signal evolve
 var Player_ready:bool = false
 
 func _ready():
@@ -602,8 +605,7 @@ func stop_animation():
 	
 func first_start():
 	player_uid = create_uid()
-	var naichi = load("res://Core/Pokemon/Naichi.tres")
-	var MyNaichi:game_pokemon = game_pokemon.new(naichi,5)
+	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
 	AllyPokemon.add_pokemon(MyNaichi)
 
 func create_uid():
@@ -632,3 +634,7 @@ func switch_evolution_camera():
 func switch_default_camera():
 	evolution_camera.enabled = false
 	camera_2d.enabled = true
+
+func _pokemon_evolved():
+	pokemon_manager.update_pokemon()
+	evolve.emit()

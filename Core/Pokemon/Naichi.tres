@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=16 format=3 uid="uid://cgflecyahs0m5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=17 format=3 uid="uid://cgflecyahs0m5"]
 
 [ext_resource type="Resource" uid="uid://8gsrhcqg7qyw" path="res://Core/Pokemon/Actions/Slash.tres" id="1_1obch"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_3kbbw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="3_i8p32"]
 [ext_resource type="Texture2D" uid="uid://dbud2xu485wsl" path="res://Core/Graphics/Zehlvogs/Follower/NAICHI.png" id="3_jt25t"]
 [ext_resource type="Resource" uid="uid://texg0s44dxhj" path="res://Core/Pokemon/Actions/Cleave.tres" id="4_xwvrd"]
+[ext_resource type="Resource" uid="uid://b3hlrr0g7x0sc" path="res://Core/Pokemon/Actions/Dismantle.tres" id="6_fumfo"]
 [ext_resource type="Resource" uid="uid://dcdcnr4a0j83d" path="res://Core/Pokemon/EvolutionLines/LineNaichi.tres" id="9_v4rf7"]
 [ext_resource type="Script" uid="uid://ba5t688rcjadp" path="res://Resources/PokeMon/Trigger.gd" id="10_1bion"]
 [ext_resource type="Resource" uid="uid://db8khd87yp6q5" path="res://Core/Pokemon/Noctichi.tres" id="11_fumfo"]
@@ -46,7 +47,7 @@ Base_Defense = 50
 Special_Base_Attack = 120
 Special_Base_Defense = 50
 Base_Speed = 120
-Actions = Array[ExtResource("1_3kbbw")]([ExtResource("1_1obch"), ExtResource("2_qnc0s"), ExtResource("3_i8p32"), ExtResource("4_xwvrd")])
+Actions = Array[ExtResource("1_3kbbw")]([ExtResource("1_1obch"), ExtResource("2_qnc0s"), ExtResource("3_i8p32"), ExtResource("4_xwvrd"), ExtResource("6_fumfo")])
 base_experience = 64
 Yield_Health = 0
 Yield_Attack = 0
