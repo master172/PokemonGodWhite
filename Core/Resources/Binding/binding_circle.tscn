@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://bo1uju0rr67nr"]
+
+[ext_resource type="Texture2D" uid="uid://wcvxnolpmkun" path="res://assets/Binding/BindingCirce.png" id="1_ia48y"]
+[ext_resource type="Shader" uid="uid://uyid5xe6wnpt" path="res://Core/Resources/Binding/binding_circle.gdshader" id="1_il58k"]
+[ext_resource type="Script" uid="uid://501co88t0nd7" path="res://Core/Resources/Binding/binding_circle.gd" id="1_pl27i"]
+[ext_resource type="Resource" uid="uid://b5x1fmabh628" path="res://Resources/PokeMon/BindingCircles/LowerBind.tres" id="2_pl27i"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_il58k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pl27i"]
+noise = SubResource("FastNoiseLite_il58k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gauh"]
+shader = ExtResource("1_il58k")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_pl27i")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.33
+shader_parameter/burn_color = Color(0, 0, 0, 1)
+
+[node name="BindingCircle" type="Node2D"]
+script = ExtResource("1_pl27i")
+Circle_type = ExtResource("2_pl27i")
+
+[node name="EffectSprite" type="Sprite2D" parent="."]
+modulate = Color(10, 10, 10, 1)
+material = SubResource("ShaderMaterial_6gauh")
+position = Vector2(0, -56)
+scale = Vector2(3.125, 3.375)
+texture = ExtResource("1_ia48y")

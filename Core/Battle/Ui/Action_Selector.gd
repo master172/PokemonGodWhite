@@ -13,7 +13,7 @@ var selected_option:int = 0
 @onready var right = $Main/Right
 @onready var main = $Main
 
-var options :Array = ["Pokemon","Bag","Pokeball","Run"]
+var options :Array = ["Zhevlogs","Bag","Soul Bind","Run"]
 
 enum STATES {
 	EMPTY,

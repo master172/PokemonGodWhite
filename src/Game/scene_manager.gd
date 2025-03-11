@@ -396,7 +396,28 @@ func shoot_screen():
 	var vpt :Viewport = get_viewport()
 	var tex :Texture = vpt.get_texture()
 	var img :Image = tex.get_image()
+	img.convert(Image.FORMAT_RGBA8)
+	img.linear_to_srgb()
+	#img = apply_tonemap(img)
 	img.save_png("user://save/Scene/"+"screenshot.png")
+
+func apply_tonemap(image: Image) -> Image:
+	for y in range(image.get_height()):
+		for x in range(image.get_width()):
+			
+			var color = image.get_pixel(x, y)
+			
+			# Reinhard tonemapping (simple but effective)
+			color.r = color.r / (color.r + 1.0)
+			color.g = color.g / (color.g + 1.0)
+			color.b = color.b / (color.b + 1.0)
+			
+			# Apply gamma correction (sRGB)
+			color.r = pow(color.r, 1.0 / 2.2)
+			color.g = pow(color.g, 1.0 / 2.2)
+			color.b = pow(color.b, 1.0 / 2.2)
+	
+	return image
 
 func set_current_healing_place(place):
 	current_healing_place = place

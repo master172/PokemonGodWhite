@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BindingCircle" load_steps=3 format=3 uid="uid://b5x1fmabh628"]
+
+[ext_resource type="Script" uid="uid://njhlj0artt8i" path="res://Resources/PokeMon/Pokeballs/BindingCircle.gd" id="1_iv4wn"]
+[ext_resource type="Texture2D" uid="uid://wcvxnolpmkun" path="res://assets/Binding/BindingCirce.png" id="2_ewh3f"]
+
+[resource]
+script = ExtResource("1_iv4wn")
+Name = "LowerBind"
+CatchRate = 8
+sprite = ExtResource("2_ewh3f")
+metadata/_custom_type_script = "uid://njhlj0artt8i"

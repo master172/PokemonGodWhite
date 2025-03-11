@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_ti8sx"]
 [ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="4_xa4j5"]
 [ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="5_m368w"]
-[ext_resource type="PackedScene" uid="uid://oahn1flucj6k" path="res://src/Environment/world_environment.tscn" id="6_pjfk2"]
+[ext_resource type="Environment" uid="uid://ssujpccv6q8e" path="res://Core/Evolutions/Glow.tres" id="7_1h63a"]
 
 [sub_resource type="Resource" id="Resource_p34sn"]
 script = ExtResource("2_qwndm")
@@ -72,106 +72,22 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:glow_blend_mode")
+tracks/3/path = NodePath("Current:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 0.757859, 1),
-"update": 0,
-"values": [0, 0, 0, 0, 0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("WorldEnvironment:environment:glow_intensity")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
-"update": 0,
-"values": [0.8, 0.8, 5.47, 5.47, 0.8]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("WorldEnvironment:environment:glow_strength")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
-"update": 0,
-"values": [1.0, 1.0, 1.57, 1.57, 1.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("WorldEnvironment:environment:glow_bloom")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.02, 0.02, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("WorldEnvironment:environment:glow_hdr_threshold")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 0.757859, 1),
-"update": 0,
-"values": [1.0, 1.0, 1.0, 1.0, 1.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WorldEnvironment:environment:glow_intensity")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
-"update": 0,
-"values": [0.8, 0.8, 5.47, 5.47, 0.8]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WorldEnvironment:environment:glow_bloom")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 6.4, 9),
-"transitions": PackedFloat32Array(1, 1, 12.5533, 0.757859, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.02, 0.02, 0.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Current:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 1, 3.1, 4.5, 5.7, 7.4),
 "transitions": PackedFloat32Array(1, 1, 1, 0.153894, 0.153894, 1),
 "update": 0,
 "values": [Color(100, 100, 100, 0), Color(100, 100, 100, 0), Color(100, 100, 100, 0), Color(100, 100, 100, 1), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("GPUParticles2D:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 6.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -219,106 +135,22 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:glow_blend_mode")
+tracks/3/path = NodePath("Current:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0]
+"values": [Color(100, 100, 100, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WorldEnvironment:environment:glow_intensity")
+tracks/4/path = NodePath("GPUParticles2D:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.8]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("WorldEnvironment:environment:glow_strength")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("WorldEnvironment:environment:glow_bloom")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("WorldEnvironment:environment:glow_hdr_threshold")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WorldEnvironment:environment:glow_intensity")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.8]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WorldEnvironment:environment:glow_bloom")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Current:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(100, 100, 100, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("GPUParticles2D:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -403,8 +235,6 @@ texture_filter = 1
 position = Vector2(600, 400)
 scale = Vector2(5, 5)
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("6_pjfk2")]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2jrhs")
@@ -418,5 +248,8 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_0xdcb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_1h63a")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

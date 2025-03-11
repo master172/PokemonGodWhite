@@ -1,23 +1,21 @@
 extends Node2D
-const pokeBall = preload("res://src/Pokemon/PokeBalls/poke_ball.tscn")
-@onready var marker_2d = $Marker2D
+const binding_circle = preload("res://Core/Resources/Binding/binding_circle.tscn")
 
-var bullet_speed = 1000
+@export var battle_scene:Node2D 
 
 signal success
 signal faliure
 
-func _throw(at_node):
-	look_at(at_node.get_global_position())
-	var PokeBall = pokeBall.instantiate()
-	PokeBall.rotation_degrees = self.rotation_degrees
-	PokeBall.position = marker_2d.get_global_position()
-	PokeBall.velocity = ((at_node.get_global_position() - PokeBall.get_global_position()) * bullet_speed)/PokeBall.get_global_position().distance_to(at_node.get_global_position())
+func _throw(pokemon:PokeEnemy):
+	var Binder = binding_circle.instantiate()
+	Binder.position = pokemon.position
+	pokemon.stun(2)
+	Binder.connect("catch_sucess",catch_success)
+	Binder.connect("catch_faliure",catch_faliure)
 	
-	PokeBall.connect("catch_sucess",catch_success)
-	PokeBall.connect("catch_faliure",catch_faliure)
-	
-	add_child(PokeBall)
+	if battle_scene != null:
+		battle_scene.add_child(Binder)
+		Binder.construct(pokemon.pokemon)
 
 func catch_success():
 	emit_signal("success")

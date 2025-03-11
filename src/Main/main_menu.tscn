@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=25 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" uid="uid://cpqvqexbu4d02" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
 [ext_resource type="Texture2D" uid="uid://culvmbg453do3" path="res://assets/Ui/MainMenu/Text.png" id="2_lmdbi"]
 [ext_resource type="Texture2D" uid="uid://bvyd0dcmpfv6i" path="res://assets/Ui/MainMenu/Background.png" id="2_t1dvj"]
 [ext_resource type="Texture2D" uid="uid://dyokl68i04iqc" path="res://assets/Ui/MainMenu/CogWheel.png" id="3_70heo"]
+[ext_resource type="Texture2D" uid="uid://bliuommofbdal" path="res://assets/Ui/MainMenu/screenshot.png" id="3_smh75"]
 [ext_resource type="Texture2D" uid="uid://bp2hmk2gtlmui" path="res://assets/Ui/MainMenu/QuitGame.png" id="4_qx406"]
 [ext_resource type="Script" uid="uid://bl6gbjc26jfls" path="res://src/Main/LoadingScreen.gd" id="7_cucda"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
@@ -135,7 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_t1dvj")
+texture = ExtResource("3_smh75")
 
 [node name="BackgroundNew" type="TextureRect" parent="Backgrounds"]
 visible = false

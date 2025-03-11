@@ -12,7 +12,7 @@ func _ready() -> void:
 func start(pokemon:game_pokemon):
     line_enter.grab_focus()
     active_pokemon = pokemon
-    line_enter.text = active_pokemon.Nick_name
+    line_enter.text = ""
 
 func _on_text_edit_text_submitted(new_text:String) -> void:
     active_pokemon.Nick_name = new_text

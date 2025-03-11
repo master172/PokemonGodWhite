@@ -114,7 +114,7 @@ directories/dtl_directory={
 "LisaStart": "res://src/Dialogs/LisaStart.dtl",
 "LostBattle": "res://src/Dialogs/LostBattle.dtl",
 "LostMatch": "res://src/Dialogs/LostMatch.dtl",
-"Mart": "res://Mart.dtl",
+"Mart": "res://src/World/Npc/Mart.dtl",
 "NurseJoyDefault": "res://src/Dialogs/NurseJoyDefault.dtl",
 "NurseJoyEmergency": "res://src/Dialogs/NurseJoyEmergency.dtl",
 "Run": "res://src/Dialogs/Run.dtl",
@@ -295,3 +295,4 @@ pointing/emulate_touch_from_mouse=true
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
+viewport/hdr_2d=true
