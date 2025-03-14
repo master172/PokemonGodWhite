@@ -217,6 +217,7 @@ func recive_damage(damage,User,Attacker):
 		await die.finished
 		pokemon.fainted = true
 		pokemon.Health = 0
+		pokemon.remove_friendship(1)
 		emit_signal("defeated",pokemon,self)
 		
 

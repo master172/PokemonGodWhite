@@ -1299,7 +1299,6 @@ enabled = false
 position_smoothing_enabled = true
 
 [node name="CollisionCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 22
@@ -1312,7 +1311,6 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="DoorCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
 collision_mask = 8
@@ -1320,10 +1318,9 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="InteractionCast" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 target_position = Vector2(0, 8)
-collision_mask = 16
+collision_mask = 144
 hit_from_inside = true
 collide_with_areas = true
 

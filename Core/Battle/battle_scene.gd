@@ -141,7 +141,8 @@ func defeating_dialog(pokemon:game_pokemon,body:BattlePokemon,loser:PokeEnemy):
 	body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
 	
 	pokemon.give_experience_points(body.pokemon)
-
+	body.pokemon.add_friendship(1)
+	
 func case_level_up(pokemon,body):
 	print_debug(pokemon.Nick_name," ",body.name," ",body.pokemon.Nick_name)
 	poke_data.set_player(body.pokemon)

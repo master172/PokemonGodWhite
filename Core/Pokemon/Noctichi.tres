@@ -36,6 +36,7 @@ Id = 1
 Type1 = "Dark"
 Type2 = "Ghost"
 leveleing_type = 2
+default_friendship = 70
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"
 Front = ExtResource("2_lyhf2")

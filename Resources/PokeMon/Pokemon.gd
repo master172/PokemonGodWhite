@@ -61,6 +61,9 @@ class_name Pokemon
 	"Fluctuating"
 )var leveleing_type:int = 2
 
+@export_group("personality")
+@export var default_friendship:int = 70
+
 @export_group("egg_groups")
 @export_enum(
 	"Monster",

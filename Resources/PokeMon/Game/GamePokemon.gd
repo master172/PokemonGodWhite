@@ -64,6 +64,9 @@ class_name game_pokemon
 @export_subgroup("evolution")
 @export var evolutor:Evolutor
 
+@export_subgroup("friendship")
+@export var friendship:int = 0
+@export var max_friendship:int = 300
 
 signal Level_up
 signal experience_added
@@ -108,6 +111,8 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gen
 	
 	evolutor = Base_Pokemon.evolutor.duplicate()
 	
+	friendship = Base_Pokemon.default_friendship
+
 func set_movepool():
 	for i in Base_Pokemon.Actions:
 		move_pool.append(MovePoolAction.new(i))
@@ -308,6 +313,7 @@ func level_up():
 	set_exp_to_levels()
 	learn_moves()
 	check_evolution()
+	add_friendship(5)
 
 func set_exp_to_levels():
 	exp_to_current_level = calc_exp_to_level(level-1)
@@ -453,3 +459,20 @@ func reset_stages():
 	special_defense_stage = 0
 	speed_stage = 0
 	health_stage = 0
+
+func add_friendship(value:int):
+	friendship += value
+	if friendship > max_friendship:
+		friendship = max_friendship
+
+func get_friendship():
+	return friendship
+
+func set_friendship(value:int):
+	friendship = value
+	friendship = clamp(friendship,0,max_friendship)
+
+func remove_friendship(value:int):
+	friendship -= value
+	if friendship < 0:
+		friendship = 0

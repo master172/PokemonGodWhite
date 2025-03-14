@@ -224,6 +224,7 @@ func process_player_input():
 			else:
 				playerState = PlayerState.TURNING
 				anim_state.travel("Turn")
+				update_interaction_cast()
 		else:
 			initial_position = position
 			is_moving = true
@@ -234,6 +235,11 @@ func process_player_input():
 			anim_state.travel("cycleIdle")
 		else:
 			anim_state.travel("Idle")
+
+func update_interaction_cast():
+	var desired_step: Vector2 = get_current_facing_direction() * TILE_SIZE/2
+	interaction_cast.set_target_position(desired_step)
+	interaction_cast.force_raycast_update()
 
 func need_to_turn():
 	var new_facing_direction

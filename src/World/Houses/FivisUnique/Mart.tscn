@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8l8c2hch18ui"]
 
 [ext_resource type="Texture2D" uid="uid://cuohx0f8ynx2" path="res://assets/PokemonTilesets/IndoorTileset.png" id="1_r4ckr"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="2_su562"]
+[ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="2_su562"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="3_vt2sh"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="4_2pin6"]
 [ext_resource type="PackedScene" uid="uid://wwrelinblkhs" path="res://src/World/Npc/MartMan.tscn" id="5_edxd3"]

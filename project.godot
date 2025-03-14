@@ -46,6 +46,10 @@ variables={
 "Loser": "DefaultLoser",
 "Points": "DefaultPoints",
 "Winner": "DefaultWinner"
+},
+"OverWorld": {
+"Pokemon": "DefaultPokemon",
+"Response": "DefaultResponse"
 }
 }
 text/letter_speed=0.01
@@ -97,6 +101,7 @@ directories/dtl_directory={
 "CarterEnd": "res://src/Dialogs/CarterEnd.dtl",
 "CarterStart": "res://src/Dialogs/CarterStart.dtl",
 "Caught": "res://src/Dialogs/Caught.dtl",
+"DefaultOverworld": "res://src/Dialogs/OverWorldPokemon/DefaultOverworld.dtl",
 "FN1END": "res://src/Dialogs/FN1END.dtl",
 "FN1Start": "res://src/Dialogs/FN1Start.dtl",
 "FN2END": "res://src/Dialogs/FN2END.dtl",
@@ -289,6 +294,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_5="Interactables"
 2d_physics/layer_6="pokeEnemy"
 2d_physics/layer_7="MapSection"
+2d_physics/layer_8="PureInteractions"
 
 [rendering]
 

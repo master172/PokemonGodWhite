@@ -1,19 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq52puj5i2wvk"]
+[gd_scene load_steps=12 format=3 uid="uid://dq52puj5i2wvk"]
 
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="1_4cukr"]
-[ext_resource type="Script" path="res://src/Interactables/Sign/BasicSign.gd" id="1_l04gh"]
+[ext_resource type="Script" uid="uid://7yihyt0d13tm" path="res://src/Interactables/Sign/BasicSign.gd" id="1_l04gh"]
 [ext_resource type="Resource" uid="uid://budscqmll3kan" path="res://Resources/Dialogs/AshActor.tres" id="2_5nit4"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_v4m4j"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_bv0gl"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_v4m4j"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_b4nc7"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_bv0gl"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="5_t3ioi"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="6_dwl08"]
 
 [sub_resource type="Resource" id="Resource_0sakw"]
 script = ExtResource("2_v4m4j")
 Dialog_type = 0
 text = "{Welcome} to {NewfoundLand}"
 next = -1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([ExtResource("2_5nit4")])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
+Actors = Array[ExtResource("3_b4nc7")]([ExtResource("2_5nit4")])
+functions = Array[ExtResource("6_dwl08")]([])
+Options = Array[ExtResource("5_t3ioi")]([])
 
 [sub_resource type="Resource" id="Resource_la14q"]
 script = ExtResource("3_bv0gl")
