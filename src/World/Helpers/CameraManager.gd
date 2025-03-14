@@ -4,8 +4,10 @@ extends Node2D
 
 
 func _on_area_1_body_entered(body):
-	animation_player.play("Area1")
+	if body.is_in_group("Player"):
+		animation_player.play("Area1")
 
 
 func _on_area_2_body_entered(body):
-	animation_player.play("Area2")
+	if body.is_in_group("Player"):
+		animation_player.play("Area2")

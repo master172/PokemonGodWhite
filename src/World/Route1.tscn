@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=3 uid="uid://basjxyddsb2x2"]
 
-[ext_resource type="Script" path="res://src/World/Area0.gd" id="1_chr7b"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="2_omuvt"]
+[ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_chr7b"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_omuvt"]
 [ext_resource type="Resource" uid="uid://dgf17pnpsvtsr" path="res://Core/Pokemon/Caterpie.tres" id="2_ysqt8"]
 [ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="3_pa3ru"]
 [ext_resource type="Resource" uid="uid://bj22iqgv73rue" path="res://Core/Pokemon/Trapinch.tres" id="4_1oje1"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="9_110l4"]
-[ext_resource type="Script" path="res://src/World/Helpers/CameraManager.gd" id="10_4lxdh"]
+[ext_resource type="Script" uid="uid://ban8fn7hc15cq" path="res://src/World/Helpers/CameraManager.gd" id="10_4lxdh"]
 [ext_resource type="PackedScene" uid="uid://cc5mvap1frk4n" path="res://src/World/way_manager.tscn" id="10_20xwa"]
-[ext_resource type="Script" path="res://src/World/Helpers/EntryPlayer.gd" id="11_lh71d"]
+[ext_resource type="Script" uid="uid://demm3k2iih6kd" path="res://src/World/Helpers/EntryPlayer.gd" id="11_lh71d"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="16_0htb7"]
 [ext_resource type="Texture2D" uid="uid://cgs5mwsb8573t" path="res://assets/lighting/light.png" id="22_cd3uj"]
 
@@ -16,7 +16,7 @@
 size = Vector2(23.8016, 23.8961)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa2eq"]
-size = Vector2(19.3388, 10)
+size = Vector2(18.3471, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqxir"]
 size = Vector2(880, 1024)
@@ -181,9 +181,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l7ewv"]
 _data = {
-"Area1": SubResource("Animation_dt3kp"),
-"Area2": SubResource("Animation_ubkx1"),
-"RESET": SubResource("Animation_o5id4")
+&"Area1": SubResource("Animation_dt3kp"),
+&"Area2": SubResource("Animation_ubkx1"),
+&"RESET": SubResource("Animation_o5id4")
 }
 
 [sub_resource type="Animation" id="Animation_wc4u1"]
@@ -219,8 +219,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jw45j"]
 _data = {
-"Default": SubResource("Animation_wc4u1"),
-"RESET": SubResource("Animation_p80ae")
+&"Default": SubResource("Animation_wc4u1"),
+&"RESET": SubResource("Animation_p80ae")
 }
 
 [node name="Route1" type="Node2D"]
@@ -279,7 +279,7 @@ my_scene = "res://src/World/Route1/Part3Tilemap.tscn"
 to_add_parent = NodePath("..")
 
 [node name="CollisionShape2D" parent="WayManager3/Area" index="0"]
-position = Vector2(-12.8925, -5.12987)
+position = Vector2(-13.3884, -5.12987)
 shape = SubResource("RectangleShape2D_wa2eq")
 
 [node name="Door" parent="." instance=ExtResource("9_110l4")]
@@ -335,12 +335,12 @@ shape = SubResource("RectangleShape2D_aai7u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraManager"]
 libraries = {
-"": SubResource("AnimationLibrary_l7ewv")
+&"": SubResource("AnimationLibrary_l7ewv")
 }
 
 [node name="EntryPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("color_rect", "canvas_layer")]
 libraries = {
-"": SubResource("AnimationLibrary_jw45j")
+&"": SubResource("AnimationLibrary_jw45j")
 }
 script = ExtResource("11_lh71d")
 color_rect = NodePath("../CanvasLayer/ColorRect")

@@ -227,7 +227,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krts2"]
-size = Vector2(1040, 416)
+size = Vector2(1040, 408)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j50f"]
 size = Vector2(640, 296)
@@ -319,7 +319,6 @@ region_enabled = true
 region_rect = Rect2(837, 362, 36, 18)
 
 [node name="CameraManager" type="Node2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-40, 144)
 
@@ -335,7 +334,7 @@ position = Vector2(40, -144)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Way1"]
-position = Vector2(408, -48)
+position = Vector2(408, -52)
 shape = SubResource("RectangleShape2D_krts2")
 
 [node name="Way2" type="Area2D" parent="CameraManager"]
