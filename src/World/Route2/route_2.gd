@@ -23,6 +23,7 @@ extends Node2D
 	"common":common_pokemons
 }
 
+@onready var forestModulate = $CanvasModulate
 
 # Called when the node enters the scene tree for the first time.
 func get_encounter_pokemon():
@@ -53,3 +54,6 @@ func calculate_total_relative():
 		total += rarity[i]
 	print(total)
 	return total
+
+func get_modulater():
+	return forestModulate

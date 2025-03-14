@@ -16,6 +16,7 @@ var next_scene = null
 @onready var battle_layer = $BattleLayer
 @onready var mart_view = $Mart_View
 @onready var day_and_night = $DayAndNight
+@onready var HudLayer = $HudLayer
 
 @export var evolution_dialog:DialogueLine = DialogueLine.new()
 
@@ -253,6 +254,8 @@ func change_scene():
 	player.set_poke_pos_dir(player.global_position+Vector2(0,16),player.get_current_facing_direction())
 	Utils.set_player(false)
 	emit_signal("data_set_finished")
+	await transition_player.animation_finished
+	HudLayer.DisplayMapName(current_scene.get_child(0).name)
 	
 func load_healing_place():
 	unload_battle_scene(false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=33 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" uid="uid://bpiclmfiqepfa" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="5_cax24"]
 [ext_resource type="PackedScene" uid="uid://gwpdf0pa0qvu" path="res://testing/Utility/pokemon_debug.tscn" id="6_71aaj"]
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
+[ext_resource type="Theme" uid="uid://halpx258wpw0" path="res://Libraries/Fonts/Ui.tres" id="9_hc13s"]
+[ext_resource type="Script" uid="uid://c8yxuyn7ttbv5" path="res://src/Game/hud_layer.gd" id="9_rgbp0"]
 [ext_resource type="Script" uid="uid://bqacquon4a7uv" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
 [ext_resource type="Environment" uid="uid://co5ke1rxd3epw" path="res://src/Environment/world_environment.tres" id="13_8glvd"]
 
@@ -49,6 +51,50 @@ Options = Array[ExtResource("3_83ynj")]([SubResource("Resource_132ko"), SubResou
 script = ExtResource("5_cax24")
 Dialogs = Array[ExtResource("4_c16ga")]([SubResource("Resource_0upln")])
 Format = {}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgbp0"]
+bg_color = Color(0, 0, 0, 0.568627)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="Animation" id="Animation_uius2"]
+resource_name = "DisplayMapIdentifier"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.2, 2),
+"transitions": PackedFloat32Array(0.25, 1, 0.732043, 1),
+"update": 0,
+"values": [Vector2(260, -145), Vector2(260, 37), Vector2(260, 37), Vector2(260, -145)]
+}
+
+[sub_resource type="Animation" id="Animation_n82tn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(260, -145)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4cre"]
+_data = {
+&"DisplayMapIdentifier": SubResource("Animation_uius2"),
+&"RESET": SubResource("Animation_n82tn")
+}
 
 [sub_resource type="Animation" id="Animation_t24b6"]
 resource_name = "FadeToBlack"
@@ -150,6 +196,47 @@ evolution_dialog = SubResource("Resource_c8k5d")
 script = ExtResource("2_tvhi0")
 
 [node name="Area0" parent="Current_scene" instance=ExtResource("1_7uays")]
+
+[node name="HudLayer" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("9_rgbp0")
+
+[node name="Control" type="Control" parent="HudLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HudLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = -145.0
+offset_right = 341.0
+offset_bottom = -84.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rgbp0")
+
+[node name="Label" type="Label" parent="HudLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_hc13s")
+text = "Fivis Town"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HudLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_q4cre")
+}
 
 [node name="Menu" type="CanvasLayer" parent="."]
 layer = 3
