@@ -119,7 +119,30 @@ class_name Pokemon
 
 var natures :Array = [
 	"res://Resources/PokeMon/Natures/Hardy.tres",
-	"res://Resources/PokeMon/Natures/Lonely.tres"
+	"res://Resources/PokeMon/Natures/Lonely.tres",
+	"res://Resources/PokeMon/Natures/Brave.tres",
+	"res://Resources/PokeMon/Natures/Adamant.tres",
+	"res://Resources/PokeMon/Natures/Naughty.tres",
+	"res://Resources/PokeMon/Natures/Bold.tres",
+	"res://Resources/PokeMon/Natures/Docile.tres",
+	"res://Resources/PokeMon/Natures/Relaxed.tres",
+	"res://Resources/PokeMon/Natures/Impish.tres",
+	"res://Resources/PokeMon/Natures/Lax.tres",
+	"res://Resources/PokeMon/Natures/Timid.tres",
+	"res://Resources/PokeMon/Natures/Hasty.tres",
+	"res://Resources/PokeMon/Natures/Serious.tres",
+	"res://Resources/PokeMon/Natures/Jolly.tres",
+	"res://Resources/PokeMon/Natures/Naive.tres",
+	"res://Resources/PokeMon/Natures/Modest.tres",
+	"res://Resources/PokeMon/Natures/Mild.tres",
+	"res://Resources/PokeMon/Natures/Quiet.tres",
+	"res://Resources/PokeMon/Natures/Bashful.tres",
+	"res://Resources/PokeMon/Natures/Rash.tres",
+	"res://Resources/PokeMon/Natures/Calm.tres",
+	"res://Resources/PokeMon/Natures/Gentle.tres",
+	"res://Resources/PokeMon/Natures/Sassy.tres",
+	"res://Resources/PokeMon/Natures/Careful.tres",
+	"res://Resources/PokeMon/Natures/Quirky.tres"
 ]
 
 @export_group("attacks")

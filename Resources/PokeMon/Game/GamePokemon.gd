@@ -166,10 +166,12 @@ func set_nature():
 	
 func get_nature_multiplier(stat:int):
 	if nature != null:
-		if nature.get_increased_stat() == stat:
+		if nature.get_increased_stat() == stat and nature.get_decreased_stat() == stat:
+			return 1
+		elif nature.get_increased_stat() == stat:
 			return 1.1
 			
-		if nature.get_decreased_stat() == stat:
+		elif nature.get_decreased_stat() == stat:
 			return 0.9
 	
 	return 1
