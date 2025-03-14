@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://s2dm6q8x6rs8"]
 
-[ext_resource type="Script" path="res://src/Ui/Pc/poke_storage.gd" id="1_f6l52"]
+[ext_resource type="Script" uid="uid://brkpb7frnp83v" path="res://src/Ui/Pc/poke_storage.gd" id="1_f6l52"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="1_ou26x"]
 [ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="3_43lnd"]
 [ext_resource type="Texture2D" uid="uid://vk4el5upy1sn" path="res://assets/Ui/Pc/apps/Storage/searchIcon.png" id="4_xl14t"]
-[ext_resource type="Script" path="res://src/Ui/Pc/QuitPanel.gd" id="5_c43kt"]
+[ext_resource type="Script" uid="uid://bgwklr5jqbxko" path="res://src/Ui/Pc/QuitPanel.gd" id="5_c43kt"]
 
 [sub_resource type="Gradient" id="Gradient_3vemh"]
 offsets = PackedFloat32Array(0, 0.707071, 1)

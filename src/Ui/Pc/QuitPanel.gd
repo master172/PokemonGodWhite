@@ -31,6 +31,7 @@ func set_active(num:int):
 
 func quit():
 	emit_signal("Quit")
+	Utils.get_player().update_following_pokemon()
 
 
 func _on_poke_storage_quit_active():
