@@ -34,6 +34,7 @@ func change_position(Position,Speed,Direction):
 	tween.tween_property(self,"global_position",Position,Speed)
 	await tween.finished
 	update_direction(Direction)
+	steps_covered += 1
 
 func set_direction(Direction):
 	await self.ready
