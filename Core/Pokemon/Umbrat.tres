@@ -15,6 +15,7 @@ Id = 45
 Type1 = "Poison"
 Type2 = "Flying"
 leveleing_type = 2
+default_friendship = 70
 Egg_group0 = "Flying"
 Egg_group1 = "No_eggs_discovered"
 Front = ExtResource("4_srk5j")

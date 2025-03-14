@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d4ckyncwga1be"]
 
-[ext_resource type="Script" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
+[ext_resource type="Script" uid="uid://ddqed6hchncx6" path="res://Core/Battle/Ui/poke_data.gd" id="1_ibwju"]
 [ext_resource type="Texture2D" uid="uid://bgwlfovxeby4y" path="res://assets/Ui/BattleScene/databox_normal.png" id="1_v6x5b"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="2_gmj4o"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="3_i3dif"]

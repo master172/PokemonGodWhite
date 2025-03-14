@@ -126,7 +126,7 @@ offset_bottom = 42.1539
 scale = Vector2(0.285, 0.285)
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "PokeID:"
+text = "Natue:"
 
 [node name="PokemonID" type="Label" parent="info/Info/PokemonID"]
 layout_mode = 2

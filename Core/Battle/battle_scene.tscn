@@ -45,6 +45,7 @@ y_sort_enabled = true
 script = ExtResource("1_lsbo8")
 
 [node name="Hud" parent="." instance=ExtResource("3_r76kw")]
+z_index = 2
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(609, 760)

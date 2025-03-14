@@ -2,23 +2,84 @@ extends CanvasLayer
 
 @onready var battle = $Battle
 @onready var default = $Default
-@onready var down_2: TouchScreenButton = $Down2
-@onready var up_2: TouchScreenButton = $Up2
 
-func _ready() -> void:
-	down_2.action = "ui_down"
-	up_2.action = "ui_up"
+var is_pokedex_active = false
+
 	
 func pokedex_active():
-	down_2.action = ""
-	up_2.action = ""
+	is_pokedex_active = true
 
 func pokedex_inactive():
-	down_2.action = "ui_down"
-	up_2.action = "ui_up"
+	is_pokedex_active = false
 	
 func toggle_battle(val:bool):
 	battle.visible = val
 
 func toogele_default(val:bool):
 	default.visible = val
+
+
+func _on_circle_pressed() -> void:
+	var event = InputEventAction.new()
+	event.action = "dialogic_default_action"
+	var event1 = InputEventAction.new()
+	event1.action = "ui_accept"
+	event.pressed = true
+	event1.pressed = true
+	Input.parse_input_event(event)
+	Input.parse_input_event(event1)
+
+
+func _on_circle_released() -> void:
+	var event = InputEventAction.new()
+	event.action = "dialogic_default_action"
+	var event1 = InputEventAction.new()
+	event1.action = "ui_accept"
+	event.pressed = false
+	event1.pressed = false
+	Input.parse_input_event(event)
+	Input.parse_input_event(event1)
+
+func _on_cross_pressed() -> void:
+	var event = InputEventAction.new()
+	event.action = "ui_cancel"
+	event.pressed = true
+	Input.parse_input_event(event)
+
+
+func _on_cross_released() -> void:
+	var event = InputEventAction.new()
+	event.action = "ui_cancel"
+	event.pressed = false
+	Input.parse_input_event(event)
+
+func _on_up_pressed() -> void:
+	if is_pokedex_active:
+		var event = InputEventAction.new()
+		event.action = "ui_up"
+		event.pressed = true
+		Input.parse_input_event(event)
+
+
+func _on_up_released() -> void:
+	if is_pokedex_active:
+		var event = InputEventAction.new()
+		event.action = "ui_up"
+		event.pressed = false
+		Input.parse_input_event(event)
+
+
+func _on_down_pressed() -> void:
+	if is_pokedex_active:
+		var event = InputEventAction.new()
+		event.action = "ui_down"
+		event.pressed = true
+		Input.parse_input_event(event)
+
+
+func _on_down_released() -> void:
+	if is_pokedex_active:
+		var event = InputEventAction.new()
+		event.action = "ui_down"
+		event.pressed = false
+		Input.parse_input_event(event)

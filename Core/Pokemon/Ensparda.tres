@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://c6kva5a3lgpr8"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://c6kva5a3lgpr8"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_1ugbo"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_j4lqv"]
 [ext_resource type="Resource" uid="uid://cpo8n8bjupkw3" path="res://Core/Pokemon/Actions/StringShot.tres" id="2_w1i83"]
 [ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="3_s3q0w"]
 [ext_resource type="Texture2D" uid="uid://dbju31ixyupta" path="res://Core/Graphics/Zehlvogs/Icons/ENSPARDA.png" id="4_c52wb"]
 [ext_resource type="Texture2D" uid="uid://bul0xtbumk6a2" path="res://Core/Graphics/Zehlvogs/Follower/ENSPARDA.png" id="5_m0pq1"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="6_rwqmq"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="6_rwqmq"]
 
 [resource]
 script = ExtResource("6_rwqmq")
@@ -14,6 +15,9 @@ Id = 4
 Type1 = "Bug"
 Type2 = "NONE"
 leveleing_type = 2
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("3_s3q0w")
 Icon = ExtResource("4_c52wb")
 Overworld = ExtResource("5_m0pq1")
@@ -23,7 +27,7 @@ Base_Defense = 35
 Special_Base_Attack = 20
 Special_Base_Defense = 30
 Base_Speed = 20
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_1ugbo"), ExtResource("2_w1i83")])
+Actions = Array[ExtResource("1_j4lqv")]([ExtResource("1_1ugbo"), ExtResource("2_w1i83")])
 base_experience = 64
 Yield_Health = 1
 Yield_Attack = 0
