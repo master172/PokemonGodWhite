@@ -4,7 +4,8 @@ var battle_scene = preload("res://Core/Battle/battle_scene.tscn")
 const evolution_scene = preload("res://Core/Evolutions/evolution_screen.tscn")
 const evolution_environment = preload("res://src/Environment/world_environment.tscn")
 
-const default_healing_place = preload("res://src/World/Houses/InnHouse.tscn")
+const default_healing_place_path = "res://src/World/Houses/InnHouse.tscn"
+const default_healing_place = preload(default_healing_place_path)
 
 var current_healing_place = null
 
@@ -246,6 +247,7 @@ func change_scene():
 	current_scene.get_child(0).queue_free()
 #	for i in current_scene.get_child(0).get_children():
 #		if i.has_method("remove_tilemap")
+	
 	current_scene.add_scene(load(next_scene))
 	
 	var player = Utils.get_player()
@@ -269,11 +271,14 @@ func load_healing_place():
 	
 	if current_healing_place == null:
 		Current_healing_place = default_healing_place.instantiate()
+		Scene_Saver.change_scene(default_healing_place_path)
 	else:
 		Current_healing_place = load(current_healing_place).instantiate()
+		Scene_Saver.change_scene(current_healing_place)
 		
 	current_scene.add_child(Current_healing_place)
 	
+
 	var player = Utils.get_player()
 	Utils.set_player()
 	player.set_spawn(Current_healing_place.get_heal_pos(),Current_healing_place.get_heal_dir())

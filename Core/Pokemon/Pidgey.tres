@@ -32,6 +32,7 @@ Id = 16
 Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
+default_friendship = 70
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"
 Front = ExtResource("1_mtgkp")

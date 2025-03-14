@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6h1kkkqjrqw1"]
 
-[ext_resource type="Script" path="res://Libraries/Grass/tall_grass.gd" id="1_0d38s"]
+[ext_resource type="Script" uid="uid://b157uuibcac8o" path="res://Libraries/Grass/tall_grass.gd" id="1_0d38s"]
 [ext_resource type="Texture2D" uid="uid://u5trsui58q1i" path="res://assets/tallgrass/tall_grass.png" id="1_s3ykv"]
-[ext_resource type="Shader" path="res://src/World/trees/tree.gdshader" id="2_mk5gm"]
+[ext_resource type="Shader" uid="uid://od6hmg1apq15" path="res://src/World/trees/tree.gdshader" id="2_mk5gm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmdpe"]
 shader = ExtResource("2_mk5gm")
@@ -12,8 +12,8 @@ shader_parameter/maxStrength = 0.01
 shader_parameter/strengthScale = 100.0
 shader_parameter/interval = 3.5
 shader_parameter/detail = 1.0
-shader_parameter/distortion = null
-shader_parameter/heightOffset = null
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
 shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4cml"]
@@ -67,9 +67,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ruy2p"]
 _data = {
-"Idle": SubResource("Animation_b1hme"),
-"RESET": SubResource("Animation_mghbm"),
-"stepped": SubResource("Animation_au6ud")
+&"Idle": SubResource("Animation_b1hme"),
+&"RESET": SubResource("Animation_mghbm"),
+&"stepped": SubResource("Animation_au6ud")
 }
 
 [node name="TallGrass" type="Node2D"]
@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_y4cml")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ruy2p")
+&"": SubResource("AnimationLibrary_ruy2p")
 }
 autoplay = "Idle"
 

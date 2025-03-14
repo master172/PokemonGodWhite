@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceovydj7x0od7"]
+
+[ext_resource type="Texture2D" uid="uid://b772yxn8b8acs" path="res://assets/tallgrass/stepped_tall_grass.png" id="1_c2plj"]
+
+[node name="StepEffect" type="Node2D"]
+z_index = 1
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_c2plj")

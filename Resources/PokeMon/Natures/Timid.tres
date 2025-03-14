@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_50ydl")
 increased_stat = 5
-decreased_stat = 1
+decreased_stat = 5

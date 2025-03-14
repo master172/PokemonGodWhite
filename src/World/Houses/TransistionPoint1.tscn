@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gmoaa40vnltp"]
 
 [ext_resource type="TileSet" uid="uid://d4ht3qwlseg7g" path="res://src/World/Tilesets/TransistionPoint.tres" id="1_shw68"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="4_yoxwn"]
+[ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="4_yoxwn"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="5_43gwu"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="6_xjbrl"]
 
@@ -76,6 +76,8 @@ Spawn_location = Vector2(584, 256)
 Spawn_direction = Vector2(-1, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-112, 64, -112, -32, -80, -64, 112, -64, 144, -32, 144, 64, 160, 64, 160, -40, 120, -80, -88, -80, -128, -40, -128, 64)

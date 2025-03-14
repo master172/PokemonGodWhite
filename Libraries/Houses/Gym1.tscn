@@ -17,10 +17,9 @@ region_rect = Rect2(0, 5600, 112, 80)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 4)
-polygon = PackedVector2Array(-40, -36, 40, -36, 40, 20, 8, 20, 8, 4, -8, 4, -8, 20, -40, 20)
+polygon = PackedVector2Array(-40, -36, 40, -36, 40, 20, 8, 20, 8, -12, -8, -12, -8, 20, -40, 20)
 
 [node name="Door" parent="." instance=ExtResource("2_c4ro3")]
-position = Vector2(0, 16)
 next_scene_path = "res://src/World/Houses/FivisUnique/FivisGym.tscn"
 Spawn_location = Vector2(8, 224)
 Spawn_direction = Vector2(0, -1)
@@ -29,5 +28,6 @@ Spawn_direction = Vector2(0, -1)
 texture = ExtResource("3_2tdv8")
 hframes = 1
 vframes = 4
+frame = 0
 
 [editable path="Door"]

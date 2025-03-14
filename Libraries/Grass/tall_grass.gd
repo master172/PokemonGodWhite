@@ -4,9 +4,9 @@ extends Node2D
 @onready var GrassStepEfect = preload("res://Libraries/Grass/grass_step_effect.tscn")
 
 var player_inside:bool = false
-var grass_overlay : Sprite2D = null
+var grass_overlay : Node2D = null
 
-const grass_overlay_texture = preload("res://assets/tallgrass/stepped_tall_grass.png")
+@onready var stepped_grass = preload("res://Libraries/Grass/stepped_effect.tscn")
 
 @export var EncounterRate :int = 33
 
@@ -26,11 +26,10 @@ func player_in_grass():
 		var grass_step_effect = GrassStepEfect.instantiate()
 		self.add_child(grass_step_effect)
 		
-		grass_overlay = Sprite2D.new()
-		grass_overlay.texture = grass_overlay_texture
-		grass_overlay.position
-		grass_overlay.z_index = 2
-		self.add_child(grass_overlay)
+		grass_overlay = stepped_grass.instantiate()
+		grass_overlay.global_position = self.global_position + Vector2(0,16)
+		grass_overlay.z_index = 1
+		Utils.get_scene_manager().current_scene.get_child(0).add_child(grass_overlay)
 		
 		if Utils.can_encounter == true:
 			check_encounter()

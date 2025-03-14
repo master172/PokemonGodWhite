@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_pg8b1")
-increased_stat = 5
+increased_stat = 4
 decreased_stat = 5
