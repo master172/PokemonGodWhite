@@ -33,5 +33,4 @@ func apply_data(player):
 		player.facingDirection = playerData.facingDirection
 		player.poke_pos = playerData.pokemonPos
 		player.pokeDirection = playerData.pokeDirection
-		player.player_uid = playerData.uniqueId
 		emit_signal("applying_done")

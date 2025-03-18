@@ -87,7 +87,6 @@ var pokeDirection:Vector2 = Vector2.ZERO
 
 var player_start:bool = false
 
-var player_uid = ""
 signal player_ready
 signal evolve
 var Player_ready:bool = false
@@ -588,7 +587,6 @@ func save_data():
 	saver.playerData.change_facing_direction(facingDirection)
 	saver.playerData.change_poke_pos(poke_pos + Vector2(0,16))
 	saver.playerData.change_poke_dir(pokeDirection)
-	saver.playerData.change_unique_id(player_uid)
 	saver.save_data()
 
 func load_data(playerDat):
@@ -610,15 +608,10 @@ func stop_animation():
 	anim_state.travel("Idle")
 	
 func first_start():
-	player_uid = create_uid()
+	Utils.create_uid()
 	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
 	AllyPokemon.add_pokemon(MyNaichi)
 
-func create_uid():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var num = rng.randi_range(100000,999999)
-	return str(num)
 	
 func play_footstep():
 	footstep.play()

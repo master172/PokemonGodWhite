@@ -18,7 +18,7 @@ func _ready():
 
 func update():
 	if Utils.get_player() != null:
-		uid.text = Utils.get_player().player_uid
+		uid.text = "#"+Utils.player_uid
 	for i in range(6):
 		if AllyPokemon.get_Party_pokemon_size() > i:
 			sprites[i].texture = AllyPokemon.get_party_pokemon(i).get_front_sprite()

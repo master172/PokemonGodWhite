@@ -14,6 +14,7 @@ var developer_mode:bool = true
 
 signal saving_done
 #story variables
+var player_uid:String = ""
 var Money:int = 100
 var Badge_count:int = 0
 var aiden_defeated:bool = false
@@ -91,6 +92,7 @@ func save_data(sign:bool = true):
 		emit_signal("saving_done")
 
 func update_self_data():
+	storyData.player_uid = player_uid
 	storyData.aiden_defeated = aiden_defeated
 	storyData.Bea_met = Bea_met
 	storyData.William_met = William_met
@@ -113,6 +115,7 @@ func load_data():
 		apply_self_data()
 		
 func apply_self_data():
+	player_uid = storyData.player_uid
 	Money = storyData.Money
 	Badge_count = storyData.Badge_count
 	aiden_defeated = storyData.aiden_defeated
@@ -166,6 +169,7 @@ func remove_self_data():
 		for file in files:
 			dir.remove(file)
 	
+	player_uid = ""
 	Money = 100
 	Badge_count = 0
 	aiden_defeated = false
@@ -181,3 +185,14 @@ func remove_self_data():
 	Carter_defeated = false
 	Abilene_defeated = false
 	Adelle_defeated = false
+
+func create_uid():
+	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	var uid = ""
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+    
+	for i in range(16):
+		uid += chars[rng.randi_range(0, chars.length() - 1)]
+	
+	player_uid = uid
