@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dubiaktmihsmi"]
 
-[ext_resource type="Script" path="res://testing/worl_debug.gd" id="1_sr8xp"]
+[ext_resource type="Script" uid="uid://b4uhg10m5y8m4" path="res://testing/worl_debug.gd" id="1_sr8xp"]
 
 [node name="WorlDebug" type="Control"]
 layout_mode = 3
@@ -19,13 +19,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="CheckButton" parent="Panel"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 24.0
-offset_right = 176.0
-offset_bottom = 72.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = -838.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="CheckButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
 button_pressed = true
 text = "can pokemon wild encounter"
 
-[connection signal="toggled" from="Panel/Button" to="." method="_on_button_toggled"]
+[node name="Button2" type="CheckButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Developer Mode"
+
+[connection signal="toggled" from="Panel/VBoxContainer/Button" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/Button2" to="." method="_on_button_2_toggled"]

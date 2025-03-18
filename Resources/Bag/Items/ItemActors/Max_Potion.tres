@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="max_potion" load_steps=2 format=3 uid="uid://bpf06ofrxjits"]
+
+[ext_resource type="Script" uid="uid://bvrfkmmmh0tyn" path="res://Resources/Bag/Items/GameItems/MaxPotion.gd" id="1_psi3h"]
+
+[resource]
+script = ExtResource("1_psi3h")
+my_function = 0
+metadata/_custom_type_script = "uid://bvrfkmmmh0tyn"

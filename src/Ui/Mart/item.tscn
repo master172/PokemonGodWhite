@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnptc7qux02m4"]
 
 [ext_resource type="Texture2D" uid="uid://dj4hshcugmui1" path="res://assets/player/ash/Bag/ItemSelector.png" id="1_s5brq"]
-[ext_resource type="Script" path="res://src/Ui/Mart/item.gd" id="1_vmim4"]
+[ext_resource type="Script" uid="uid://dq4cahp8ydw0u" path="res://src/Ui/Mart/item.gd" id="1_vmim4"]
 [ext_resource type="Texture2D" uid="uid://qgs527o5itk1" path="res://assets/items/POTION.png" id="2_1baum"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="3_urh3h"]
 

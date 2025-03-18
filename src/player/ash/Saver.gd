@@ -35,4 +35,3 @@ func apply_data(player):
 		player.pokeDirection = playerData.pokeDirection
 		player.player_uid = playerData.uniqueId
 		emit_signal("applying_done")
-

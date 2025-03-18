@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://d4g3wgtt2kokd"]
+
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="1_lscmn"]
+[ext_resource type="Resource" uid="uid://dtrauflp20xn0" path="res://Resources/Bag/Items/ItemActors/revive.tres" id="1_s7xvq"]
+[ext_resource type="Texture2D" uid="uid://bj5yyve1enhj2" path="res://assets/items/REVIVE.PNG" id="3_4jffc"]
+
+[resource]
+script = ExtResource("1_lscmn")
+type_Hint = "Medicine"
+count = 1
+Name = "Revive"
+item = ExtResource("1_s7xvq")
+sprite = ExtResource("3_4jffc")
+Description = "Revives the pokemon and restores 50% of its health"
+price = 70
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

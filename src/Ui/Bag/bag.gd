@@ -33,6 +33,7 @@ var max_selected:int = 9
 @onready var rich_text_label = $VBoxContainer/HBox/Bag/Text/HBoxContainer/RichTextLabel
 
 @onready var options_container = $OptionsContainer
+@onready var Money = $VBoxContainer/VSeparator/HBoxContainer/Money
 
 enum STATES {
 	NORMAL,
@@ -88,6 +89,7 @@ func _ready():
 	_unset_selection()
 	set_pockets()
 	clear_items()
+	Money.text = "YOUR MONEY : $ " + str(Utils.Money)
 	
 func set_pockets():
 	clear_items()

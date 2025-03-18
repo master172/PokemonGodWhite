@@ -10,9 +10,11 @@ var current_picking_up = null
 
 var player_set:bool = false
 var can_encounter:bool = true
+var developer_mode:bool = true
 
 signal saving_done
 #story variables
+var Money:int = 100
 var Badge_count:int = 0
 var aiden_defeated:bool = false
 var Bea_met:bool = false
@@ -103,6 +105,7 @@ func update_self_data():
 	storyData.Abilene_defeated = Abilene_defeated
 	storyData.Adelle_defeated = Adelle_defeated
 	storyData.Badge_count = Badge_count
+	storyData.Money = Money
 	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -110,6 +113,7 @@ func load_data():
 		apply_self_data()
 		
 func apply_self_data():
+	Money = storyData.Money
 	Badge_count = storyData.Badge_count
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
@@ -162,6 +166,7 @@ func remove_self_data():
 		for file in files:
 			dir.remove(file)
 	
+	Money = 100
 	Badge_count = 0
 	aiden_defeated = false
 	Bea_met = false

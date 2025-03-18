@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://c3xcqywgvc1wb"]
+
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="1_gftms"]
+[ext_resource type="Resource" uid="uid://sujld1pnwgp2" path="res://Resources/Bag/Items/ItemActors/Super_Potion.tres" id="1_h450v"]
+[ext_resource type="Texture2D" uid="uid://cn5fkjqyv8e8v" path="res://assets/items/SUPER_POTION.png" id="3_ertkc"]
+
+[resource]
+script = ExtResource("1_gftms")
+type_Hint = "Medicine"
+count = 1
+Name = "Super Potion"
+item = ExtResource("1_h450v")
+sprite = ExtResource("3_ertkc")
+Description = "Heals 50 hp of the selected pokemon"
+price = 20
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

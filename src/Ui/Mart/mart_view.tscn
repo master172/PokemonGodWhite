@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://bo0x0ceim5cks"]
 
-[ext_resource type="Script" path="res://src/Ui/Mart/mart_view.gd" id="1_s5w1a"]
+[ext_resource type="Script" uid="uid://8rtx1anhfi42" path="res://src/Ui/Mart/mart_view.gd" id="1_s5w1a"]
 [ext_resource type="PackedScene" uid="uid://bnptc7qux02m4" path="res://src/Ui/Mart/item.tscn" id="2_cpuej"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="3_vebfw"]
 [ext_resource type="Texture2D" uid="uid://d316lby6inr5k" path="res://assets/Ui/Mart/arrow.png" id="4_11gn8"]
-[ext_resource type="Script" path="res://src/Ui/Mart/Noi.gd" id="4_ee71l"]
+[ext_resource type="Script" uid="uid://dy7j1gouw1e38" path="res://src/Ui/Mart/Noi.gd" id="4_ee71l"]
 
 [sub_resource type="Gradient" id="Gradient_nro5a"]
 interpolation_mode = 2
@@ -90,7 +90,7 @@ custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_aeof1")
 
-[node name="Label" type="Label" parent="VBoxContainer/AllContainer/MainView/Header"]
+[node name="Money" type="Label" parent="VBoxContainer/AllContainer/MainView/Header"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

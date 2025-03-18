@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://c6kva5a3lgpr8"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://c6kva5a3lgpr8"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_1ugbo"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_hgxho"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_j4lqv"]
 [ext_resource type="Resource" uid="uid://cpo8n8bjupkw3" path="res://Core/Pokemon/Actions/StringShot.tres" id="2_w1i83"]
 [ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="3_s3q0w"]
@@ -15,6 +16,7 @@ Id = 4
 Type1 = "Bug"
 Type2 = "NONE"
 leveleing_type = 2
+Ability = Array[ExtResource("1_hgxho")]([])
 default_friendship = 70
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"

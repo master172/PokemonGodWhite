@@ -4,6 +4,7 @@ extends Control
 @onready var noi = $Noi
 @onready var item_list = $VBoxContainer/AllContainer/MainView/ScrollContainer/ItemList
 @onready var scroll_container = $VBoxContainer/AllContainer/MainView/ScrollContainer
+@onready var Money = $VBoxContainer/AllContainer/MainView/Header/Money
 
 const item_tab = preload("res://src/Ui/Mart/item.tscn")
 var current_selected:int = 0
@@ -52,7 +53,7 @@ func _input(event):
 			
 		elif state == STATES.ITEMS:
 			current_selected  = (current_selected +max_selected - 1) % max_selected
-			noi.set_values(current_selected,200)
+			noi.set_values(current_selected,item_selected.price)
 			
 			item_selected.count = current_selected
 	elif event.is_action_pressed("W"):
@@ -64,7 +65,7 @@ func _input(event):
 			
 		elif state == STATES.ITEMS:
 			current_selected  = (current_selected + 1) % max_selected
-			noi.set_values(current_selected,200)
+			noi.set_values(current_selected,item_selected.price)
 			
 			item_selected.count = current_selected
 	elif event.is_action_pressed("Yes"):
@@ -73,17 +74,29 @@ func _input(event):
 			state = STATES.ITEMS
 			item_selected = item_list.get_child(current_selected).item
 			itemkey = current_selected
-			current_selected = 0
+			current_selected = 1
+			item_selected.count = current_selected
 			noi.show()
-			noi.set_values(1,item_selected.price)
-			max_selected = 1000
+			noi.set_values(current_selected,item_selected.price)
+			max_selected = int(Utils.Money/item_selected.price) + 1
 		elif state == STATES.ITEMS:
-			buy()
-			state = STATES.NORMAL
-			current_selected = itemkey
-			itemkey = 0
-			noi.hide()
-			max_selected = item_list.get_child_count()
+			if Utils.developer_mode == false:
+				if Utils.Money >= item_selected.price*current_selected:
+					Utils.Money -= item_selected.price*current_selected
+					buy()
+					state = STATES.NORMAL
+					current_selected = itemkey
+					itemkey = 0
+					noi.hide()
+					max_selected = item_list.get_child_count()
+			else:
+				buy()
+				state = STATES.NORMAL
+				current_selected = itemkey
+				itemkey = 0
+				noi.hide()
+				max_selected = item_list.get_child_count()
+				
 	elif event.is_action_pressed("No"):
 		AudioManager.cancel()
 		if state == STATES.NORMAL:
@@ -101,6 +114,7 @@ func _input(event):
 func buy():
 	item_selected.pick_up()
 	item_selected = null
+	set_money()
 	
 func _scrollDown():
 	if current_selected >= 7:
@@ -114,3 +128,9 @@ func _scrollUp():
 		scroll_container.scroll_vertical -= 73
 	elif current_selected == max_selected-1:
 		scroll_container.scroll_vertical = current_selected*73
+
+func set_money():
+	Money.text = "your money: $ " + str(Utils.Money)
+
+func _ready() -> void:
+	set_money()

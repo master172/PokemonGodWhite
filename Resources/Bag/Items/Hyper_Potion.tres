@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://buc3u8aawsrf3"]
+
+[ext_resource type="Resource" uid="uid://b2ysxwembsl1i" path="res://Resources/Bag/Items/ItemActors/Hyper_Potion.tres" id="1_gcpuf"]
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="2_wjbaa"]
+[ext_resource type="Texture2D" uid="uid://dlenuyc3u8s4a" path="res://assets/items/HYPER_POTION.png" id="3_wjbaa"]
+
+[resource]
+script = ExtResource("2_wjbaa")
+type_Hint = "Medicine"
+count = 1
+Name = "Hyper Potion"
+item = ExtResource("1_gcpuf")
+sprite = ExtResource("3_wjbaa")
+Description = "Heals 200  hp of the selected pokemon"
+price = 40

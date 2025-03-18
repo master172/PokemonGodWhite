@@ -27,7 +27,7 @@ var Scene_Saver:scene_saver = scene_saver.new()
 
 var player_location
 var player_direction
-
+signal fading_finished
 
 enum Transition_Type {
 	NEW_SCENE,
@@ -105,7 +105,6 @@ func first_time_load():
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
 		Scene_Saver.change_scene("res://src/World/Area0.tscn")
-	
 
 func get_current_scene():
 	return current_scene.get_child(0)
@@ -238,7 +237,7 @@ func finished_fading():
 		Transition_Type.EXIT_POKEDEX:
 			menu.unload_pokedex()
 	transition_player.play("FadeToNormal")
-
+	
 func change_scene():
 	
 	if current_scene.get_child(0).has_method("get_modulater"):
@@ -430,3 +429,6 @@ func apply_tonemap(image: Image) -> Image:
 func set_current_healing_place(place):
 	current_healing_place = place
 	Scene_Saver.change_healing_place(current_healing_place)
+
+func finished_fading_to_normal():
+	emit_signal("fading_finished")

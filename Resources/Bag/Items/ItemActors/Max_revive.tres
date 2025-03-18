@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="revive" load_steps=2 format=3 uid="uid://beo7mbh5a2k5u"]
+
+[ext_resource type="Script" uid="uid://csj0kkyytfwaj" path="res://Resources/Bag/Items/GameItems/Revive.gd" id="1_d3jnd"]
+
+[resource]
+script = ExtResource("1_d3jnd")
+health_level = 1.0
+my_function = 0
+metadata/_custom_type_script = "uid://csj0kkyytfwaj"

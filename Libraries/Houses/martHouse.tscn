@@ -18,6 +18,6 @@ position = Vector2(0, -8)
 polygon = PackedVector2Array(-40, -16, 40, -16, 40, 32, 8, 32, 8, 0, -8, 0, -8, 32, -40, 32)
 
 [node name="Door" parent="." instance=ExtResource("2_l5yej")]
-next_scene_path = "res://src/World/Houses/mart.tscn"
+next_scene_path = "uid://jefqob5rdmsh"
 Spawn_location = Vector2(8, 80)
 Spawn_direction = Vector2(0, -1)

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://db8khd87yp6q5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=12 format=3 uid="uid://db8khd87yp6q5"]
 
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_ocdfy"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_p3gu1"]
 [ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="2_lyhf2"]
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_pdbe5"]
 [ext_resource type="PackedScene" uid="uid://dhvtsukji64ch" path="res://Core/Actions/LeechLife.tscn" id="2_qma00"]
@@ -36,6 +37,7 @@ Id = 1
 Type1 = "Dark"
 Type2 = "Ghost"
 leveleing_type = 2
+Ability = Array[ExtResource("1_p3gu1")]([])
 default_friendship = 70
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b6a8n65ge5i2y"]
 
 [ext_resource type="Texture2D" uid="uid://bs536jrp5vrpy" path="res://assets/player/ash/AshTrainer.png" id="1_34sjl"]
-[ext_resource type="Script" path="res://src/Ui/TrainerCard/trainer_card.gd" id="1_yeui6"]
+[ext_resource type="Script" uid="uid://c1fw3u4wm45ay" path="res://src/Ui/TrainerCard/trainer_card.gd" id="1_yeui6"]
 [ext_resource type="Texture2D" uid="uid://c6cnb0er5jct4" path="res://assets/items/Badges/Badge1.png" id="2_3smsu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvgkq"]
@@ -30,6 +30,7 @@ corner_radius_top_left = 64
 corner_radius_top_right = 32
 
 [sub_resource type="SystemFont" id="SystemFont_6grxr"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_225vu"]
 bg_color = Color(0.576471, 0.576471, 0.576471, 1)
