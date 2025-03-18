@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://njvctgxjiy6s"]
+
+[ext_resource type="Script" uid="uid://dwrl4jp8eh25h" path="res://Core/Abilities/test_ability.gd" id="1_xg56c"]
+
+[node name="TestAbility" type="Node"]
+script = ExtResource("1_xg56c")
+metadata/_custom_type_script = "uid://b0fvns1c7ek6q"

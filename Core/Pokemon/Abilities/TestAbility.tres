@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ability" load_steps=3 format=3 uid="uid://c0gbovkmnj2h"]
+
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_7oq8t"]
+[ext_resource type="PackedScene" uid="uid://njvctgxjiy6s" path="res://Core/Abilities/TestAbility.tscn" id="1_boejg"]
+
+[resource]
+script = ExtResource("1_7oq8t")
+name = "TestAbility"
+description = "Test ability"
+Ability = ExtResource("1_boejg")
+metadata/_custom_type_script = "uid://dmyslj1y34wxw"

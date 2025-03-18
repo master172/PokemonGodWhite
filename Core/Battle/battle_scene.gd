@@ -10,6 +10,7 @@ const poke_enemy = preload("res://Core/Battle/poke_enemy.tscn")
 @onready var poke_data = $PokeData
 @onready var dialog_handler = $DialogHandler
 @onready var hud = $Hud
+@onready var AbilityLoader = $AbilityLoader
 
 signal stop
 signal poke_enemy_stop
@@ -48,6 +49,7 @@ func set_enemy(pokemon):
 	
 	opponents.append(Poke_enemy)
 	set_opposers()
+	load_abilities_enemy()
 	
 func _on_hud_pokemon_selected(pokemon):
 	
@@ -75,6 +77,7 @@ func _on_hud_pokemon_selected(pokemon):
 	set_opposers()
 	poke_data.player_pokemon = BATTLE_POKEMON
 	emit_signal("start")
+	load_abilities_player()
 
 func _bag():
 	emit_signal("stop")
@@ -199,3 +202,27 @@ func set_map(map :int = 0):
 
 func _on_hud_run():
 	_run("Run")
+
+func load_abilities():
+	load_abilities_player()
+	load_abilities_enemy()
+
+func load_abilities_player():
+	for i:BattlePokemon in allys:
+		var Abilities = i.pokemon.get_ability()
+		if Abilities != []:
+			for j:ability in Abilities:
+				var Ability:GameAbility = j.use()
+				AbilityLoader.add_child(Ability)
+				Ability.Holder = i
+				Ability.pre_setup()
+
+func load_abilities_enemy():
+	for i:PokeEnemy in opponents:
+		var Abilities = i.pokemon.get_ability()
+		if Abilities != []:
+			for j:ability in Abilities:
+				var Ability:GameAbility = j.use()
+				AbilityLoader.add_child(Ability)
+				Ability.Holder = i
+				Ability.pre_setup()

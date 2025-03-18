@@ -61,6 +61,8 @@ class_name Pokemon
 	"Fluctuating"
 )var leveleing_type:int = 2
 
+@export var Ability:Array[ability] = []
+ 
 @export_group("personality")
 @export var default_friendship:int = 70
 
@@ -166,7 +168,7 @@ var natures :Array = [
 
 @export_group("evolution")
 @export var evolutor:Evolutor = Evolutor.new()
-@export var evolution_line:Evolution_sequence = null
+
 @export_group("pokedex")
 @export var Tag :String = ""
 @export_multiline var description :String = ""

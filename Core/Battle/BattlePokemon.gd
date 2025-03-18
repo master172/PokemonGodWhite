@@ -69,6 +69,7 @@ signal run(Value:String)
 signal throw
 signal switch(Value:String)
 signal bag
+signal attack_chosen(attack:int)
 
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
@@ -101,12 +102,16 @@ func get_input():
 		if stop == false and resting == false and Stun == false:
 			if Input.is_action_just_pressed("attack1"):
 				_on_attack_selector_attack_chosen(0)
+				emit_signal("attack_chosen",0)
 			elif Input.is_action_just_pressed("attack2"):
 				_on_attack_selector_attack_chosen(1)
+				emit_signal("attack_chosen",1)
 			elif Input.is_action_just_pressed("attack3"):
 				_on_attack_selector_attack_chosen(2)
+				emit_signal("attack_chosen",2)
 			elif Input.is_action_just_pressed("attack4"):
 				_on_attack_selector_attack_chosen(3)
+				emit_signal("attack_chosen",3)
 
 	if Input.is_action_just_pressed("No") and init_delay == false:
 		if action == false:

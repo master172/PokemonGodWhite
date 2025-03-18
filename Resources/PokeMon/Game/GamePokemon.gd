@@ -478,3 +478,6 @@ func remove_friendship(value:int):
 	friendship -= value
 	if friendship < 0:
 		friendship = 0
+
+func get_ability():
+	return Base_Pokemon.Ability

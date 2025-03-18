@@ -81,6 +81,8 @@ battle_scene = NodePath("..")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("11_wo8k1")]
 
+[node name="AbilityLoader" type="Node" parent="."]
+
 [connection signal="pokemon_selected" from="Hud" to="." method="_on_hud_pokemon_selected"]
 [connection signal="run" from="Hud" to="." method="_on_hud_run"]
 [connection signal="next_pokemon" from="DialogHandler" to="." method="_on_dialog_handler_next_pokemon"]
