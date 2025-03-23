@@ -1,6 +1,7 @@
 extends Node
 
-var Tilemaps : Array[TileMap] = []
+var Tilemaps : Array[GameTilemap] = []
+
 var DialogBar = null
 var Player = null
 

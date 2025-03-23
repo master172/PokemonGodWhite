@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=15 format=3 uid="uid://l227mwiloa0d"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=16 format=3 uid="uid://l227mwiloa0d"]
 
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_1dw5r"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_438bf"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_ekkj5"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_jcim1"]
 [ext_resource type="Texture2D" uid="uid://d38qstja4kv5i" path="res://Core/Graphics/Pokemon/Gen1/Front/PIDGEY.png" id="1_mtgkp"]
 [ext_resource type="Texture2D" uid="uid://b1uplwn52vtud" path="res://Core/Graphics/Pokemon/Gen1/Icons/PIDGEY.png" id="2_p0kla"]
@@ -32,6 +33,7 @@ Id = 16
 Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
+Ability = Array[ExtResource("1_ekkj5")]([])
 default_friendship = 70
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"

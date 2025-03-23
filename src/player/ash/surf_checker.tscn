@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://il5xoatmmngu"]
 
-[ext_resource type="Script" path="res://src/player/ash/SurfChecker.gd" id="1_8on7r"]
+[ext_resource type="Script" uid="uid://dvgvimbmlwu6e" path="res://src/player/ash/SurfChecker.gd" id="1_8on7r"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_2iwcx"]
 
 [node name="SurfChecker" type="Node2D"]
 script = ExtResource("1_8on7r")
+nonusebale_layers = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, -4.76837e-07)

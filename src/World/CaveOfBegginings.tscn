@@ -20,13 +20,12 @@ y_sort_enabled = true
 script = ExtResource("1_rk1oj")
 metadata/Modulate = true
 
-[node name="mainTilemap" type="TileMap" parent="."]
+[node name="mainTilemap" type="Node2D" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
 texture_filter = 1
-tile_set = ExtResource("2_xr0ch")
-format = 2
 script = ExtResource("13_wcx5f")
+metadata/_custom_type_script = "uid://cfo58sxvffl2w"
 
 [node name="ground" type="TileMapLayer" parent="mainTilemap"]
 y_sort_enabled = true
@@ -145,7 +144,5 @@ position = Vector2(-184, 160)
 [node name="Law" parent="Trainers" instance=ExtResource("22_n372y")]
 z_index = 1
 position = Vector2(136, -80)
-
-[connection signal="tree_exiting" from="." to="mainTilemap" method="_on_cave_of_begginings_tree_exiting"]
 
 [editable path="player"]

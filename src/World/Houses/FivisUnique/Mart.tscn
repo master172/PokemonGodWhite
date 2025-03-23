@@ -1037,12 +1037,10 @@ offset_right = 320.0
 offset_bottom = 260.0
 color = Color(0, 0, 0, 1)
 
-[node name="mainTilemap" type="TileMap" parent="."]
+[node name="mainTilemap" type="Node2D" parent="."]
 texture_filter = 1
-tile_set = SubResource("TileSet_yemnp")
-collision_visibility_mode = 1
-format = 2
 script = ExtResource("2_su562")
+metadata/_custom_type_script = "uid://cfo58sxvffl2w"
 
 [node name="Base" type="TileMapLayer" parent="mainTilemap"]
 texture_filter = 1

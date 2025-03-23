@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8ddijydj0xx3"]
 
-[ext_resource type="Script" path="res://src/Utility/PauseScene.gd" id="1_70lqx"]
+[ext_resource type="Script" uid="uid://b2qus242lph8d" path="res://src/Utility/PauseScene.gd" id="1_70lqx"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_02wen"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_hf1v4"]
 
@@ -10,7 +10,7 @@ Button/fonts/font = ExtResource("3_hf1v4")
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
-layer = 2
+layer = 10
 script = ExtResource("1_70lqx")
 
 [node name="Control" type="Control" parent="."]

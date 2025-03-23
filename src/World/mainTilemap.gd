@@ -1,30 +1,30 @@
-extends TileMap
+extends Node2D
+class_name GameTilemap
 
+@export var ground_layer:TileMapLayer = null
+@export var ground_object_layer:TileMapLayer = null
+@export var room_scene:Node2D = null
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
+	if ground_layer == null:
+		for i in get_children():
+			if i is TileMapLayer:
+				ground_layer = i
+				break
+	if ground_object_layer == null:
+		for i in get_children():
+			if i is TileMapLayer:
+				if ground_layer != i:
+					ground_object_layer = i
+					break
+	if room_scene == null:
+		room_scene = get_parent()
+	await get_parent().ready
+	room_scene.tree_exiting.connect(_on_tree_exiting)
 	Utils.Tilemaps.append(self)
 
 func remove_tilemap():
-
 	Utils.Tilemaps.erase(self)
 
-func _on_area_0_tree_exiting():
-	remove_tilemap()
-
-
-func _on_cave_of_begginings_tree_exiting():
-	remove_tilemap()
-
-
-func _on_cave_of_begginings_bf_tree_exiting():
-	remove_tilemap()
-
-
-func _on_fivis_town_tree_exiting():
-	remove_tilemap()
-
-
-func _on_fivis_beach_tree_exiting():
+func _on_tree_exiting():
 	remove_tilemap()

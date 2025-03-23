@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://bq7p2s3moylkv"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://bq7p2s3moylkv"]
 
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_n25ip"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_srk5j"]
 [ext_resource type="Resource" uid="uid://stoes3mvj7wy" path="res://Core/Pokemon/Actions/LeechLife.tres" id="2_n25ip"]
 [ext_resource type="Resource" uid="uid://dxjoidfxar5ag" path="res://Core/Pokemon/Actions/Supersonic.tres" id="3_qn6tq"]
@@ -15,6 +16,7 @@ Id = 45
 Type1 = "Poison"
 Type2 = "Flying"
 leveleing_type = 2
+Ability = Array[ExtResource("1_n25ip")]([])
 default_friendship = 70
 Egg_group0 = "Flying"
 Egg_group1 = "No_eggs_discovered"

@@ -535,11 +535,14 @@ func check_ledge_direction():
 	var tile_data
 	if ledge_cast.is_colliding():
 		var body_rid = ledge_cast.get_collider_rid()
+		var tilemaps:Array[TileMapLayer]
 		for i in Utils.Tilemaps:
+			tilemaps.append(i.ground_object_layer)
+		for i in tilemaps:
 			if is_instance_valid(i):
 				collided_tile_cords = i.get_coords_for_body_rid(body_rid)
-						
-				tile_data = i.get_cell_tile_data(1,collided_tile_cords)
+				
+				tile_data = i.get_cell_tile_data(collided_tile_cords)
 				if tile_data:
 					ledge_direction = tile_data.get_custom_data("ledgeDirection")
 				
