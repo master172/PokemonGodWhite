@@ -35,8 +35,8 @@ func add_debug_party():
 	
 	return "added debug party"
 
-func hello():
-	return "Hello World"
+func say_hello():
+	return "Hello, World!"
 
 func can_encounter(value:bool) ->String:
 	Utils.can_encounter = value
@@ -49,7 +49,7 @@ func developer_mode(value:bool) -> String:
 func set_pokemon(Name:String):
 	current_pokemon = AllyPokemon.find_pokemon_by_name(Name)
 	return "current pokemon is " + current_pokemon.Nick_name
-	
+
 func level_up(pokemon:String = ""):
 	if pokemon != "":
 		set_pokemon(pokemon)
@@ -74,3 +74,46 @@ func save():
 	Utils.get_scene_manager().shoot_screen()
 	Utils.save_data(false)
 	return "saved game"
+
+func set_position(x:int,y:int):
+	var player :CharacterBody2D = Utils.get_player()
+	if player != null:
+		player.global_position = Vector2(x,y)
+		
+		return "set player position to " + str(player.global_position)
+	return "[color=red]player not found[/color]"
+
+func move_position(x:int,y:int):
+	var player :CharacterBody2D = Utils.get_player()
+	if player != null:
+		player.global_position += Vector2(x*16,y*16)
+		
+		return "move player to " + str(player.global_position)
+	return "[color=red]player not found[/color]"
+
+func change_scene(scene_path:String,spawn_location:Vector2,spawn_dir:Vector2):
+	var SceneManager = Utils.get_scene_manager()
+	if not ResourceLoader.exists(scene_path):
+		return "[color=red]Invalid Scene Path[/color]"
+	if SceneManager == null:
+		return "[color=red]scene manager not found[/color]"
+	Utils.get_scene_manager().transition_to_scene(scene_path,spawn_location,spawn_dir)
+	return "[color=green]Succesfully changed scene[/color]"
+
+func set_bus_volume(bus_name:String,value:float):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(value)
+	)
+	return "change volueme to " + str(AudioServer.get_bus_volume_db(bus_index)) + " db"
+
+func set_time_scale(val:float):
+	Engine.set_time_scale(val)
+	return "set time scale to " + str(Engine.get_time_scale())
+
+func reload():
+	get_tree().reload_current_scene()
+
+func quit():
+	get_tree().quit()

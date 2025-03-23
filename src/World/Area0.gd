@@ -1,4 +1,5 @@
 extends Node2D
+class_name MapRoom
 
 @export_subgroup("land pokemons")
 @export_subgroup("common")

@@ -50,4 +50,3 @@ func _on_button_pressed():
 	Settings_Saver.master_audio = volume_slider.value
 	save_data()
 	visible = false
-
