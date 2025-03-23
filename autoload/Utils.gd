@@ -21,16 +21,6 @@ var Badge_count:int = 0
 var aiden_defeated:bool = false
 var Bea_met:bool = false
 var William_met:bool = false
-var kyle_defeated:bool = false
-var Lisa_defeated:bool = false
-var Law_defeated:bool = false
-var Jenney_defeated:bool = false
-var Jodi_defeated:bool = false
-var FN1_defeated:bool = false
-var FN2_defeated:bool = false
-var Carter_defeated:bool = false
-var Abilene_defeated:bool = false
-var Adelle_defeated:bool = false
 
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
@@ -97,16 +87,6 @@ func update_self_data():
 	storyData.aiden_defeated = aiden_defeated
 	storyData.Bea_met = Bea_met
 	storyData.William_met = William_met
-	storyData.kyle_defeated = kyle_defeated
-	storyData.Lisa_defeated = Lisa_defeated
-	storyData.Law_defeated = Law_defeated
-	storyData.Jenney_defeated = Jenney_defeated
-	storyData.Jodi_defeated = Jodi_defeated
-	storyData.FN1_defeated = FN1_defeated
-	storyData.FN2_defeated = FN2_defeated
-	storyData.Carter_defeated = Carter_defeated
-	storyData.Abilene_defeated = Abilene_defeated
-	storyData.Adelle_defeated = Adelle_defeated
 	storyData.Badge_count = Badge_count
 	storyData.Money = Money
 	
@@ -122,16 +102,6 @@ func apply_self_data():
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
-	kyle_defeated = storyData.kyle_defeated
-	Lisa_defeated = storyData.Lisa_defeated
-	Law_defeated = storyData.Law_defeated
-	Jenney_defeated = storyData.Jenney_defeated
-	Jodi_defeated = storyData.Jodi_defeated
-	FN1_defeated = storyData.FN1_defeated
-	FN2_defeated = storyData.FN2_defeated
-	Carter_defeated = storyData.Carter_defeated
-	Abilene_defeated = storyData.Abilene_defeated
-	Adelle_defeated = storyData.Adelle_defeated
 	
 func remove_save_files():
 	
@@ -151,6 +121,13 @@ func remove_save_files():
 		for file in files:
 			dir.remove(file)
 	
+	##deleting Trainer save files
+	if DirAccess.dir_exists_absolute("user://Save/Trainers/"):
+		var dir = DirAccess.open("user://Save/Trainers/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
 	
 	##Deleting the pokemon save files
 	AllyPokemon.remove_data()
@@ -176,16 +153,6 @@ func remove_self_data():
 	aiden_defeated = false
 	Bea_met = false
 	William_met = false
-	kyle_defeated = false
-	Lisa_defeated = false
-	Law_defeated = false
-	Jenney_defeated = false
-	Jodi_defeated = false
-	FN1_defeated = false
-	FN2_defeated = false
-	Carter_defeated = false
-	Abilene_defeated = false
-	Adelle_defeated = false
 
 func create_uid():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"

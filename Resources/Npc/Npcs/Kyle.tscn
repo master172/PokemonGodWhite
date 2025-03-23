@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://dswfxeiushvln"]
+[gd_scene load_steps=31 format=3 uid="uid://dswfxeiushvln"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/Kyle.gd" id="1_e4r5y"]
-[ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="2_71vhl"]
+[ext_resource type="Script" uid="uid://bcc301te4emdr" path="res://Resources/Npc/Npcs/LookingTrainer.gd" id="1_566u6"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_3p0bn"]
+[ext_resource type="Resource" uid="uid://7mrepf8gcgct" path="res://Core/Pokemon/Nosepass.tres" id="3_hcx08"]
 [ext_resource type="Texture2D" uid="uid://3lucgmqbos60" path="res://assets/Npc/Trainers/General/Kyle.png" id="3_opjbk"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_a7sje"]
 
@@ -162,15 +163,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxxnt"]
 _data = {
-"IdleDown": SubResource("Animation_8wmt8"),
-"IdleLeft": SubResource("Animation_laooc"),
-"IdleRight": SubResource("Animation_as7ej"),
-"IdleUp": SubResource("Animation_as4e3"),
-"RESET": SubResource("Animation_mf4l2"),
-"WalkDown": SubResource("Animation_61t2r"),
-"WalkLeft": SubResource("Animation_egh3c"),
-"WalkRight": SubResource("Animation_rwsci"),
-"WalkUp": SubResource("Animation_tuuhl")
+&"IdleDown": SubResource("Animation_8wmt8"),
+&"IdleLeft": SubResource("Animation_laooc"),
+&"IdleRight": SubResource("Animation_as7ej"),
+&"IdleUp": SubResource("Animation_as4e3"),
+&"RESET": SubResource("Animation_mf4l2"),
+&"WalkDown": SubResource("Animation_61t2r"),
+&"WalkLeft": SubResource("Animation_egh3c"),
+&"WalkRight": SubResource("Animation_rwsci"),
+&"WalkUp": SubResource("Animation_tuuhl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hknln"]
@@ -239,10 +240,10 @@ size = Vector2(16, 16)
 [node name="Kyle" type="CharacterBody2D" node_paths=PackedStringArray("LineOfSight", "exclamation", "animation_player", "animation_tree", "sprite_2d")]
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_e4r5y")
+script = ExtResource("1_566u6")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_71vhl")])
+pokemons = Array[ExtResource("2_3p0bn")]([ExtResource("3_hcx08")])
 levels = Array[int]([5])
 current_dialog = "KyleStart"
 ending_dialog = "KyleEnd"
@@ -251,6 +252,7 @@ animation_tree = NodePath("AnimationTree")
 sprite_2d = NodePath("Sprite2D")
 looking_direction = Vector2(1, 0)
 map = 1
+metadata/_custom_type_script = "uid://bcc301te4emdr"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -262,13 +264,10 @@ frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
+&"": SubResource("AnimationLibrary_nxxnt")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
-}
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)

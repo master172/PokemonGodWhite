@@ -50,10 +50,11 @@ func set_pokemon(Name:String):
 	current_pokemon = AllyPokemon.find_pokemon_by_name(Name)
 	return "current pokemon is " + current_pokemon.Nick_name
 
-func level_up(pokemon:String = ""):
+func level_up(pokemon:String = "",times:int = 1):
 	if pokemon != "":
 		set_pokemon(pokemon)
-	current_pokemon.recive_experience_points(current_pokemon.exp_to_next_level-current_pokemon.exp)
+	for i in range(times):
+		current_pokemon.recive_experience_points(current_pokemon.exp_to_next_level-current_pokemon.exp)
 	return "leveled " + current_pokemon.Nick_name + " up"
 
 func full_exp(pokemon:String = ""):

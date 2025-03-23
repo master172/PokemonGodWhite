@@ -1,18 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddh3gq4jr51h"]
+[gd_scene load_steps=15 format=3 uid="uid://ddh3gq4jr51h"]
 
-[ext_resource type="Script" path="res://src/Ui/Bag/OverWorldItem.gd" id="1_8gkw6"]
+[ext_resource type="Script" uid="uid://coquahtd7ny40" path="res://src/Ui/Bag/OverWorldItem.gd" id="1_8gkw6"]
 [ext_resource type="Texture2D" uid="uid://b7n42kwxktyqr" path="res://assets/player/ash/Bag/OverworldItem.png" id="1_mda50"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_sxyao"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="3_ttta6"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_w1tyw"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="4_33l5c"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_sxyao"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_48d6h"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="3_ttta6"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_w1tyw"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="4_33l5c"]
 
 [sub_resource type="Resource" id="Resource_wlxwi"]
 script = ExtResource("2_sxyao")
 Dialog_type = 0
 text = "Ash found an {Item}"
 next = 1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_48d6h")]([])
 functions = Array[ExtResource("3_ttta6")]([])
 Options = Array[ExtResource("4_33l5c")]([])
 
@@ -38,7 +39,7 @@ script = ExtResource("2_sxyao")
 Dialog_type = 1
 text = "Do you want to pick the item up"
 next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_48d6h")]([])
 functions = Array[ExtResource("3_ttta6")]([])
 Options = Array[ExtResource("4_33l5c")]([SubResource("Resource_53e0n"), SubResource("Resource_ympvx")])
 

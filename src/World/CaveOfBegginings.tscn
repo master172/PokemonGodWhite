@@ -142,7 +142,6 @@ z_index = 1
 position = Vector2(-184, 160)
 
 [node name="Law" parent="Trainers" instance=ExtResource("22_n372y")]
-z_index = 1
-position = Vector2(136, -80)
+position = Vector2(168, -80)
 
 [editable path="player"]

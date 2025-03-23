@@ -20,10 +20,16 @@ var player_spotted:bool = false
 signal reached_target
 
 func _ready():
+	save_prep()
 	basic_set()
+	await load_done
 	looking_set()
+	
 
 func looking_set():
+	if batteled == true:
+		print("battle finished")
+		return
 	if exclamation != null:
 		exclamation.visible = false
 	

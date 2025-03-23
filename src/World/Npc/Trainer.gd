@@ -34,9 +34,28 @@ signal talk(body)
 
 var my_pokemons:Array[game_pokemon]
 
+var save_file_path = "user://save/Trainers/"
+var save_file_name = "Trainer.tres"
+
+var saver:TrainerSaver = TrainerSaver.new()
+var batteled:bool = false
+
+signal load_done
+
 func _ready():
 	basic_set()
 
+func save_prep():
+	if !DirAccess.dir_exists_absolute(save_file_path):
+		verify_save_directory(save_file_path)
+	var SceneManager = Utils.get_scene_manager()
+	if SceneManager == null:
+		return
+	await get_tree().create_timer(0.01).timeout
+	var scene_name = SceneManager.get_current_scene().name
+	save_file_name = scene_name+self.name+".tres"
+	load_data()
+	
 func basic_set():
 	for i in range(pokemons.size()):
 		my_pokemons.append(game_pokemon.new(pokemons[i],levels[i]))
@@ -79,7 +98,7 @@ func _interact():
 	
 
 func battle(Sign):
-	if Sign == "Battle" and taliking == true:
+	if Sign == "Battle" and taliking == true and batteled == false:
 		my_battle = true
 		Utils.get_scene_manager().transistion_trainer_battle_scene(my_pokemons,map)
 		can_battle = false
@@ -102,9 +121,15 @@ func end(Sign):
 func my_battle_finished():
 	if my_battle == true:
 		my_battle_done = true
+		batteled = true
+		on_battled()
 		self.current_dialog = self.ending_dialog
 		emit_signal("battle_done")
 
+func on_battled():
+	saver.battled = batteled
+	save_data()
+	
 func finish(Sign):
 	get_viewport().set_input_as_handled()
 	if Sign == "DialogDone":
@@ -113,3 +138,23 @@ func finish(Sign):
 		await get_tree().create_timer(0.1).timeout
 		taliking = false
 		emit_signal("finished")
+
+func verify_save_directory(path:String):
+	DirAccess.make_dir_recursive_absolute(path)
+
+func save_data():
+	ResourceSaver.save(saver,save_file_path + save_file_name)
+	
+func load_data():
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		saver = ResourceLoader.load(save_file_path + save_file_name).duplicate(true)
+	apply_data()
+
+func apply_data():
+	batteled = saver.battled
+	set_load()
+
+func set_load():
+	if batteled == true:
+		current_dialog = ending_dialog
+	emit_signal("load_done")
