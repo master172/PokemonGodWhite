@@ -8,7 +8,7 @@ var faliure
 func process_tile(player:Node2D,check:String):
 	var result = process_tilemap_collision(player,check)
 	player.player_surfing(result,check)
-	#print(result,check)
+	print(result,check)
 	queue_free()
 	
 func process_tilemap_collision(player:Node2D,check:String):
@@ -61,4 +61,3 @@ func process_tilemap_collision(player:Node2D,check:String):
 		return faliure
 	else:
 		return [false]
-

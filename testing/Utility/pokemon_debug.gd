@@ -3,7 +3,13 @@ extends Control
 func _ready():
 	visible = false
 
+@onready var dev_terminal: Control = $DevTerminal
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("debug"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug"):
 		visible = not visible
+		dev_terminal.visible = visible
+		if visible:
+			Utils.get_player().set_physics_process(false)
+		else:
+			Utils.get_player().set_physics_process(true)

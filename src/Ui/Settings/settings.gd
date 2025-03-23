@@ -34,7 +34,7 @@ func apply_data():
 func set_settings():
 	Engine.set_time_scale(float(Settings_Saver.speed_scale))
 	DisplayServer.window_set_vsync_mode(Settings_Saver.v_sync_mode)
-	print(Engine.get_time_scale())
+	#print(Engine.get_time_scale())
 	
 func _on_option_button_item_selected(index):
 	Engine.set_time_scale(float(index+1))

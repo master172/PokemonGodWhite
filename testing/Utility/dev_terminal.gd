@@ -25,6 +25,8 @@ func _ready():
 	input_commands = get_method_names()
 	
 func _on_text_submitted(command):
+	if not visible:
+		return
 	var error = expression.parse(command)
 	if error != OK:
 		rich_text_label.newline()
@@ -65,7 +67,7 @@ func _input(event: InputEvent) -> void:
 			line_edit.caret_column = line_edit.text.length()
 			suggestions.text = ""
 	
-	if history.size() > 0:
+	if history.size() > 0 and visible:
 		if event.is_action_pressed("ui_up"):
 			current_history_index = (current_history_index + 1) % history.size()
 			line_edit.text = history[current_history_index]
@@ -100,6 +102,7 @@ func get_caret_global_position(line_edit: LineEdit) -> Vector2:
 func on_visibility_changed():
 	if not visible:
 		rich_text_label.text = ""
+		line_edit.text = ""
 
 func scale_history():
 	if history.size() > MAX_HISTORY_SIZE:
