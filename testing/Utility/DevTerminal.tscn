@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ocywe3sc2wp"]
+
+[ext_resource type="Script" uid="uid://dgpj6bhmmgxw7" path="res://testing/Utility/dev_terminal.gd" id="1_awggg"]
+[ext_resource type="Script" uid="uid://dqcmdacpjrjax" path="res://testing/Utility/commands.gd" id="2_ni5gy"]
+
+[node name="DevTerminal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awggg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152344, 0.152344, 0.152344, 0.243137)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+vertical_alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+caret_blink = true
+
+[node name="commands" type="Node" parent="."]
+script = ExtResource("2_ni5gy")
+
+[node name="suggestions" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+offset_left = 900.0
+offset_top = 769.0
+offset_right = 1050.0
+offset_bottom = 800.0
+vertical_alignment = 1
+
+[connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]

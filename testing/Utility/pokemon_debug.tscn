@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://gwpdf0pa0qvu"]
+[gd_scene load_steps=3 format=3 uid="uid://gwpdf0pa0qvu"]
 
-[ext_resource type="PackedScene" uid="uid://dw76gxraw6ywb" path="res://testing/pokemondebug.tscn" id="1_m46g6"]
-[ext_resource type="Script" path="res://testing/Utility/pokemon_debug.gd" id="1_qhic3"]
-[ext_resource type="PackedScene" uid="uid://dbm1xymidd5w7" path="res://testing/Utility/party_debug.tscn" id="3_q3tj1"]
-[ext_resource type="PackedScene" uid="uid://dubiaktmihsmi" path="res://testing/worl_debug.tscn" id="4_f436o"]
+[ext_resource type="Script" uid="uid://k756q7m5vgw6" path="res://testing/Utility/pokemon_debug.gd" id="1_qhic3"]
+[ext_resource type="PackedScene" uid="uid://c7ocywe3sc2wp" path="res://testing/Utility/DevTerminal.tscn" id="2_u7ojt"]
 
 [node name="PokemonDebug" type="Control"]
 layout_mode = 3
@@ -14,21 +12,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhic3")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="DevTerminal" parent="." instance=ExtResource("2_u7ojt")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PokeDebug" parent="TabContainer" instance=ExtResource("1_m46g6")]
-layout_mode = 2
-
-[node name="PartyDebug" parent="TabContainer" instance=ExtResource("3_q3tj1")]
-visible = false
-layout_mode = 2
-
-[node name="WorlDebug" parent="TabContainer" instance=ExtResource("4_f436o")]
-visible = false
-layout_mode = 2

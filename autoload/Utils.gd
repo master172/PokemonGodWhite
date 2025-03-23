@@ -191,7 +191,7 @@ func create_uid():
 	var uid = ""
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-    
+	
 	for i in range(16):
 		uid += chars[rng.randi_range(0, chars.length() - 1)]
 	

@@ -105,7 +105,7 @@ func _ready():
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:
 			poke_pos = self.global_position + Vector2(0,16)
-			
+		
 		if Utils.get_scene_manager().first_time_start == false:
 			if Utils.get_scene_manager().just_loaded == true:
 				await saver.applying_done

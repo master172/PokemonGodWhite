@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnfyjdfn4g5xm"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hkwh8"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_nv3ka"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rahvk"]
+curve = SubResource("Curve_nv3ka")
+
+[sub_resource type="Gradient" id="Gradient_peixe"]
+colors = PackedColorArray(1, 1, 1, 0.243137, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lifjf"]
+gradient = SubResource("Gradient_peixe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hkwh8"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -300, 0)
+emission_shape = 3
+emission_box_extents = Vector3(800, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(-0.5, 1, 0)
+spread = 10.0
+initial_velocity_min = 2000.0
+initial_velocity_max = 3000.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_lifjf")
+alpha_curve = SubResource("CurveTexture_rahvk")
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nv3ka"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.115
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+
+[node name="Rain" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_hkwh8")
+position = Vector2(1094, -207)
+amount = 500
+sub_emitter = NodePath("../GPUParticles2D2")
+lifetime = 0.5
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_hkwh8")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+amount = 20
+lifetime = 0.2
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nv3ka")

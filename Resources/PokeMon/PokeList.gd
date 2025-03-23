@@ -42,6 +42,12 @@ func all_heal():
 	for i in pokemons:
 		i.heal()
 
+func find_pokemon_by_name(Nick_Name:String):
+	if Nick_Name == "":
+		return null
+	for i in pokemons:
+		if i.Nick_name == Nick_Name:
+			return i
 
 func erase_pokemon(num:int):
 	pokemons.remove_at(num)

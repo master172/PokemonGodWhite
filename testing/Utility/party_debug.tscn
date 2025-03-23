@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbm1xymidd5w7"]
 
-[ext_resource type="Script" path="res://testing/Utility/party_debug.gd" id="1_vx2pl"]
+[ext_resource type="Script" uid="uid://h2flxpn1x545" path="res://testing/Utility/party_debug.gd" id="1_vx2pl"]
 
 [node name="PartyDebug" type="Control"]
 layout_mode = 3

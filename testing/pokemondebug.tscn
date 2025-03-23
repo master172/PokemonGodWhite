@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw76gxraw6ywb"]
 
-[ext_resource type="Script" path="res://testing/pokemondebug.gd" id="1_ncfsa"]
+[ext_resource type="Script" uid="uid://b2bv24cf0di7l" path="res://testing/pokemondebug.gd" id="1_ncfsa"]
 [ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/PIKACHU.png" id="2_hcpu6"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="3_hk8j2"]
 

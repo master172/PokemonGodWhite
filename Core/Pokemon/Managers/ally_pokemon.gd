@@ -129,3 +129,6 @@ func remove_data():
 func battle_end():
 	for i in PartyPokemon.pokemons:
 		i.reset_stages()
+
+func find_pokemon_by_name(Name:String):
+	return PartyPokemon.find_pokemon_by_name(Name)

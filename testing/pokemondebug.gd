@@ -40,7 +40,7 @@ func _update():
 		for i in range(4):
 			moves[i].text = current_pokemon.get_learned_attack_name(i)
 		
-		level.text = "Levle: " + str(current_pokemon.level)
+		level.text = "Level: " + str(current_pokemon.level)
 
 func manage_connections():
 	if current_pokemon != null:
