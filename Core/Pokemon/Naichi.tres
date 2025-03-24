@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=18 format=3 uid="uid://cgflecyahs0m5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=19 format=3 uid="uid://cgflecyahs0m5"]
 
 [ext_resource type="Resource" uid="uid://8gsrhcqg7qyw" path="res://Core/Pokemon/Actions/Slash.tres" id="1_1obch"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_3kbbw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dbud2xu485wsl" path="res://Core/Graphics/Zehlvogs/Follower/NAICHI.png" id="3_jt25t"]
 [ext_resource type="Resource" uid="uid://texg0s44dxhj" path="res://Core/Pokemon/Actions/Cleave.tres" id="4_xwvrd"]
 [ext_resource type="Resource" uid="uid://b3hlrr0g7x0sc" path="res://Core/Pokemon/Actions/Dismantle.tres" id="6_fumfo"]
+[ext_resource type="Resource" uid="uid://1n36tv4yu2cu" path="res://Core/Pokemon/Actions/Harden.tres" id="8_h6v53"]
 [ext_resource type="Script" uid="uid://ba5t688rcjadp" path="res://Resources/PokeMon/Trigger.gd" id="10_1bion"]
 [ext_resource type="Resource" uid="uid://copmsnki7ep0k" path="res://Core/Pokemon/Actions/Astonish.tres" id="11_d1w5y"]
 [ext_resource type="Resource" uid="uid://db8khd87yp6q5" path="res://Core/Pokemon/Noctichi.tres" id="11_fumfo"]
@@ -52,6 +53,7 @@ Special_Base_Defense = 50
 Base_Speed = 120
 Actions = Array[ExtResource("1_3kbbw")]([ExtResource("1_1obch"), ExtResource("2_qnc0s"), ExtResource("3_i8p32"), ExtResource("4_xwvrd"), ExtResource("6_fumfo")])
 TmActions = Array[ExtResource("1_3kbbw")]([ExtResource("11_d1w5y")])
+EggActions = Array[ExtResource("1_3kbbw")]([ExtResource("8_h6v53")])
 base_experience = 64
 Yield_Health = 0
 Yield_Attack = 0
@@ -61,6 +63,7 @@ Yield_Special_Attack = 2
 Yield_Speed = 0
 catch_chance = 16
 evolutor = SubResource("Resource_o1s36")
+previous_pokemon = ""
 Tag = "The original sin"
 description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of
 whatever you do, forever is it bound to you."

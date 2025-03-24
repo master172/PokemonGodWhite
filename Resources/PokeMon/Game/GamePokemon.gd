@@ -428,9 +428,15 @@ func get_current_evolution_triggers():
 func calculate_stats_from_parents(egg_values:Array):
 	if stats_calculated == false:
 		calculate_stats_parents(egg_values)
+		append_egg_attacks(egg_values)
 		set_attacks()
 		stats_calculated = true
 
+func append_egg_attacks(egg_values:Array):
+	var p1:game_pokemon = egg_values[1]
+	var p2:game_pokemon = egg_values[2]
+	for i in Base_Pokemon.EggActions:
+		move_pool.append(MovePoolAction.new(i))
 func calculate_stats_parents(egg_values:Array):
 	calculate_IV_from_parent(egg_values)
 	calculate_current_max_stats()

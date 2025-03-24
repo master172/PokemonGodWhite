@@ -9,8 +9,8 @@ var species:Pokemon
 var RNG:RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready():
-	parent0 = game_pokemon.new(load("res://Core/Pokemon/Noctichi.tres"),20)
-	parent1 = game_pokemon.new(load("res://Core/Pokemon/Pidgey.tres"),20)
+	parent0 = game_pokemon.new(load("res://Core/Pokemon/Noctichi.tres"),20,"",1)
+	parent1 = game_pokemon.new(load("res://Core/Pokemon/Pidgey.tres"),20,"",0)
 	_breed()
 
 func can_breed():

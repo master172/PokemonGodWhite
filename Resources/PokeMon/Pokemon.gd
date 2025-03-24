@@ -150,6 +150,7 @@ var natures :Array = [
 @export_group("attacks")
 @export var Actions:Array[BaseAction] = []
 @export var TmActions:Array[BaseAction] = []
+@export var EggActions:Array[BaseAction] = []
 
 @export_group("battles")
 @export var base_experience:int = 64
