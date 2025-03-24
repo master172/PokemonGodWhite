@@ -1,7 +1,7 @@
 extends Item
 class_name MoveMachine
 
-@export var singal_use:bool = false
+@export var singal_use:bool = true
 @export var action:BaseAction = null
 
 func _start(pokemon:game_pokemon = game_pokemon.new()):

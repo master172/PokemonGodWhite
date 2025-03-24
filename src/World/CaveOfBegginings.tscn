@@ -113,6 +113,7 @@ min_level = 3
 max_level = 6
 
 [node name="CaveModulate" parent="." instance=ExtResource("16_f1501")]
+visible = false
 z_index = 2
 color = Color(0.184314, 0.184314, 0.184314, 1)
 

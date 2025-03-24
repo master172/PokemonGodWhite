@@ -383,6 +383,7 @@ func move(delta):
 				pokeDirection = get_current_facing_direction()
 				
 			emit_signal("player_stopped_signal")
+			Global.steps_taken += 1
 			ManageOverworldPokemon("turned")
 			
 		else:

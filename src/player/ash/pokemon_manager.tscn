@@ -10,14 +10,15 @@ size = Vector2(16, 16)
 
 [node name="PokemonManager" type="Node2D"]
 z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_w0ptj")
 
 [node name="pokemon" parent="." instance=ExtResource("2_xqc2i")]
-z_index = 0
+z_as_relative = false
 
 [node name="Collider" type="Area2D" parent="." node_paths=PackedStringArray("OverWorldPokemon")]
+z_index = 1
+z_as_relative = false
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("3_vtlvy")
