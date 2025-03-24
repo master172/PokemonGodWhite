@@ -169,6 +169,7 @@ var natures :Array = [
 
 @export_group("evolution")
 @export var evolutor:Evolutor = Evolutor.new()
+@export_file("*.tres") var previous_pokemon:String = ""
 
 @export_group("pokedex")
 @export var Tag :String = ""

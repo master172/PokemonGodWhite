@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://3kfofee5j3vv"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://3kfofee5j3vv"]
 
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_3voc7"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_itfiy"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_ghsjt"]
 [ext_resource type="Resource" uid="uid://d16lcqp5040yi" path="res://Core/Pokemon/Actions/SandAttack.tres" id="2_q5y4u"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_8fyom"]
 [ext_resource type="Resource" uid="uid://bnsfegc4ufkec" path="res://Core/Pokemon/Actions/Gust.tres" id="4_1y7jl"]
 [ext_resource type="Texture2D" uid="uid://dav60vc2407ek" path="res://Core/Graphics/Pokemon/Gen1/Front/PIDGEOTTO.png" id="5_iki4p"]
 [ext_resource type="Texture2D" uid="uid://dqt40ryes83t7" path="res://Core/Graphics/Pokemon/Gen1/Icons/PIDGEOTTO.png" id="6_de3dp"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="7_f0mex"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="7_f0mex"]
 [ext_resource type="Texture2D" uid="uid://be3cpeo4fpxum" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIDGEOTTO.png" id="7_hcqpx"]
 
 [resource]
@@ -16,6 +18,10 @@ Id = 17
 Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
+Ability = Array[ExtResource("1_3voc7")]([])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("5_iki4p")
 Icon = ExtResource("6_de3dp")
 Overworld = ExtResource("7_hcqpx")
@@ -25,7 +31,8 @@ Base_Defense = 55
 Special_Base_Attack = 50
 Special_Base_Defense = 70
 Base_Speed = 71
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_itfiy"), ExtResource("2_q5y4u"), ExtResource("3_8fyom"), ExtResource("4_1y7jl")])
+Actions = Array[ExtResource("2_ghsjt")]([ExtResource("1_itfiy"), ExtResource("2_q5y4u"), ExtResource("3_8fyom"), ExtResource("4_1y7jl")])
+TmActions = Array[ExtResource("2_ghsjt")]([])
 base_experience = 55
 Yield_Health = 0
 Yield_Attack = 0
@@ -34,3 +41,8 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 0
 Yield_Speed = 2
 catch_chance = 24
+previous_pokemon = "uid://l227mwiloa0d"
+Tag = ""
+description = ""
+height = 1
+weight = 10
