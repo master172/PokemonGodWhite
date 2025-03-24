@@ -615,6 +615,7 @@ func first_start():
 	Utils.create_uid()
 	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
 	AllyPokemon.add_pokemon(MyNaichi)
+	#AllyPokemon.add_pokemon(MyNaichi.duplicate())
 
 	
 func play_footstep():

@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvl6du5otspxr"]
+[gd_scene load_steps=5 format=3 uid="uid://bvl6du5otspxr"]
 
-[ext_resource type="Script" path="res://Core/Pokemon/Managers/ally_pokemon.gd" id="1_bam7a"]
-[ext_resource type="Script" path="res://Resources/PokeMon/PokeList.gd" id="2_qvvgx"]
+[ext_resource type="Script" uid="uid://iqwhu4o5cdoi" path="res://Core/Pokemon/Managers/ally_pokemon.gd" id="1_bam7a"]
+[ext_resource type="Script" uid="uid://diovc1e7gw405" path="res://Resources/PokeMon/PokeList.gd" id="2_qvvgx"]
+[ext_resource type="Script" uid="uid://du4g72lk20kmb" path="res://Resources/PokeMon/Game/GamePokemon.gd" id="2_rdwpl"]
 
 [sub_resource type="Resource" id="Resource_ummw5"]
 script = ExtResource("2_qvvgx")
 Name = "PartyPokemon"
-pokemons = Array[Resource("res://Resources/PokeMon/Game/GamePokemon.gd")]([])
-learning_counter = 0
+pokemons = Array[ExtResource("2_rdwpl")]([])
 
 [node name="AllyPokemon" type="Node"]
 script = ExtResource("1_bam7a")

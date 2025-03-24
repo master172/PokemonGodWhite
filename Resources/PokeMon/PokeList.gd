@@ -22,6 +22,10 @@ func get_pokemons():
 	else:
 		return null
 
+func set_pokemon(num:int,pokemon:game_pokemon):
+	if num >= 0 and num < pokemons.size():
+		pokemons[num] = pokemon
+		
 func get_pokemon(num:int):
 	if pokemons.size() >= num + 1:
 		return(pokemons[num])

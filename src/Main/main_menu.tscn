@@ -468,10 +468,10 @@ PokemonGodWhite"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 647.0
-offset_right = 304.0
-offset_bottom = 764.0
+offset_left = 866.0
+offset_top = 231.0
+offset_right = 1131.0
+offset_bottom = 348.0
 text = "Test Trading"
 
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]

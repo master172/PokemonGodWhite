@@ -20,7 +20,12 @@ var offered_pokemon:Pokemon
 	set(value):
 		pokemon = value
 		my_poke.texture = pokemon.Base_Pokemon.get_front_sprite()
-var traded_pokemon:game_pokemon
+var traded_pokemon:game_pokemon:
+	set(value):
+		traded_pokemon = value
+		other_poke.texture = pokemon.Base_Pokemon.get_front_sprite()
+
+var set_pokemon_index:int = 0
 
 var connected_player_id:int
 var self_id:int = 1
@@ -39,6 +44,7 @@ var temp_file_name = "tradedpokemon.tres"
 
 func _ready() -> void:
 	pokemon = AllyPokemon.get_main_pokemon()
+	set_pokemon_index = 0
 	multiplayer_setup()
 	verify_save_directory(save_file_path)
 	
@@ -116,8 +122,9 @@ func _on_trade_pressed() -> void:
 	validate_trade()
 	#export_and_send()
 
-func _on_poke_selector_poke_changed(poke: game_pokemon) -> void:
+func _on_poke_selector_poke_changed(poke: game_pokemon,num:int) -> void:
 	pokemon = poke
+	set_pokemon_index = num
 
 func _on_offer_pressed() -> void:
 	send_offered_pokemon()
@@ -198,6 +205,7 @@ func set_pokemons():
 		pokemon = traded_pokemon
 		traded_pokemon = temp
 		remove_directires()
+		AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
 		
 func validate_trade():
 	if not (offer_set == true and trader_offer_set == true):

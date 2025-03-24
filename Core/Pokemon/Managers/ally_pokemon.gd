@@ -54,6 +54,9 @@ func get_party_pokemon(num:int):
 	var pokemon = PartyPokemon.get_pokemon(num)
 	return pokemon
 
+func set_pokemon(num:int,pokemon:game_pokemon):
+	PartyPokemon.set_pokemon(num,pokemon)
+	
 func get_Party_pokemon_size():
 	return PartyPokemon.pokemon_size()
 

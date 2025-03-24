@@ -1,6 +1,6 @@
 extends Control
 
-signal poke_changed(poke:game_pokemon)
+signal poke_changed(poke:game_pokemon,num:int)
 
 @onready var options: OptionButton = $Options
 
@@ -13,4 +13,4 @@ func _ready() -> void:
 
 
 func _on_options_item_selected(index: int) -> void:
-	emit_signal("poke_changed",pokemons[index])
+	emit_signal("poke_changed",pokemons[index],index)

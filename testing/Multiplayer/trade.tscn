@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2a4nw3cf270e"]
+[gd_scene load_steps=6 format=3 uid="uid://c2a4nw3cf270e"]
 
 [ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
 [ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="3_rp4ak"]
 [ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="4_hgcru"]
+[ext_resource type="Script" uid="uid://b1ug55qtm1t7l" path="res://testing/Multiplayer/MyIp.gd" id="5_p1ab3"]
 [ext_resource type="Script" uid="uid://dffue0ca2jw57" path="res://testing/Multiplayer/poke_selector.gd" id="5_rp4ak"]
 
 [node name="Trade" type="Control"]
@@ -120,6 +121,22 @@ offset_right = 600.0
 offset_bottom = 20.0
 grow_horizontal = 2
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "your ip is"
+horizontal_alignment = 2
+script = ExtResource("5_p1ab3")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Label"]
+timeout = 1.0
+
 [connection signal="pressed" from="VBoxContainer/TradeOptions/Trade" to="." method="_on_trade_pressed"]
 [connection signal="pressed" from="VBoxContainer/TradeOptions/Offer" to="." method="_on_offer_pressed"]
 [connection signal="pressed" from="VBoxContainer/TradeOptions/Reject" to="." method="_on_reject_pressed"]
@@ -130,3 +147,4 @@ grow_horizontal = 2
 [connection signal="pressed" from="VBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]
 [connection signal="poke_changed" from="VBoxContainer/PokeSelector" to="." method="_on_poke_selector_poke_changed"]
 [connection signal="item_selected" from="VBoxContainer/PokeSelector/Options" to="VBoxContainer/PokeSelector" method="_on_options_item_selected"]
+[connection signal="request_completed" from="Label/HTTPRequest" to="Label" method="_on_http_request_request_completed"]
