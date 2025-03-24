@@ -147,3 +147,7 @@ func set_confirm(num:int = 0):
 func _on_settings_visibility_changed():
 	if settings.visible == false:
 		state = STATES.NORMAL
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://testing/Multiplayer/trade.tscn")

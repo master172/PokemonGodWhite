@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2a4nw3cf270e"]
+
+[ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
+[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="2_hgcru"]
+[ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="3_rp4ak"]
+[ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="4_hgcru"]
+
+[node name="Trade" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgq22")
+base_pokemon = ExtResource("2_hgcru")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="SpriteHolder" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MyPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_rp4ak")
+
+[node name="OtherPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("4_hgcru")
+
+[node name="TradeOptions" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Trade" type="Button" parent="VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Trade"
+
+[node name="Offer" type="Button" parent="VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Offer"
+
+[node name="TradeOptions2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Connect" type="Button" parent="VBoxContainer/TradeOptions2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Connect"
+
+[node name="CreateHost" type="Button" parent="VBoxContainer/TradeOptions2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Create Host"
+
+[node name="LineEdit" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/TradeOptions/Trade" to="." method="_on_trade_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions2/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions2/CreateHost" to="." method="_on_create_host_pressed"]

@@ -7,4 +7,10 @@ var auto_evolve:bool = false
 
 var move_management :bool = false
 
-var steps_taken:int = 0
+var steps_taken:int = 0:
+	set(value):
+		if value > 9999:
+			value = 0
+		steps_taken = value
+	get:
+		return steps_taken

@@ -52,6 +52,7 @@ Special_Base_Defense = 100
 Base_Speed = 140
 Actions = Array[ExtResource("1_ocdfy")]([SubResource("Resource_p3gu1"), SubResource("Resource_qs0bp"), ExtResource("4_qs0bp")])
 TmActions = Array[ExtResource("1_ocdfy")]([])
+EggActions = Array[ExtResource("1_ocdfy")]([])
 base_experience = 128
 Yield_Health = 2
 Yield_Attack = 1

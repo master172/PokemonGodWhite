@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://prp1gqdbxkn1"]
+
+[ext_resource type="PackedScene" uid="uid://krevlx626k1h" path="res://Core/Actions/Frustration.tscn" id="1_jlrg1"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_px4el"]
+
+[resource]
+script = ExtResource("2_px4el")
+name = "Frustration"
+learned_level = 1
+action = ExtResource("1_jlrg1")
+staminaCost = 10
+Type = "Normal"
+power = 35.0
+range = 1
+metadata/_custom_type_script = "uid://ckld52qknsbni"

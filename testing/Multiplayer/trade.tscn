@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2a4nw3cf270e"]
+
+[ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
+[ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="3_rp4ak"]
+[ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="4_hgcru"]
+[ext_resource type="Script" uid="uid://dffue0ca2jw57" path="res://testing/Multiplayer/poke_selector.gd" id="5_rp4ak"]
+
+[node name="Trade" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgq22")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0592626, 0.215099, 0.234375, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SpriteHolder" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MyPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_rp4ak")
+
+[node name="OtherPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("4_hgcru")
+
+[node name="TradeOptions" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Trade" type="Button" parent="VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Trade"
+
+[node name="Offer" type="Button" parent="VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Offer"
+
+[node name="Reject" type="Button" parent="VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Reject"
+
+[node name="TradeOptions2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Connect" type="Button" parent="VBoxContainer/TradeOptions2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Connect"
+
+[node name="CreateHost" type="Button" parent="VBoxContainer/TradeOptions2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Create Host"
+
+[node name="PortOptions" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="port" type="SpinBox" parent="VBoxContainer/PortOptions"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 1025.0
+max_value = 65535.0
+value = 7000.0
+alignment = 1
+prefix = "Port"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PortOptions"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "enter ip eg: 127.0.0.1"
+
+[node name="Disconnect" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Disconnect"
+
+[node name="PokeSelector" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_rp4ak")
+
+[node name="Options" type="OptionButton" parent="VBoxContainer/PokeSelector"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_right = 600.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[connection signal="pressed" from="VBoxContainer/TradeOptions/Trade" to="." method="_on_trade_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions/Offer" to="." method="_on_offer_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions/Reject" to="." method="_on_reject_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions2/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="VBoxContainer/TradeOptions2/CreateHost" to="." method="_on_create_host_pressed"]
+[connection signal="value_changed" from="VBoxContainer/PortOptions/port" to="." method="_on_port_value_changed"]
+[connection signal="text_submitted" from="VBoxContainer/PortOptions/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]
+[connection signal="poke_changed" from="VBoxContainer/PokeSelector" to="." method="_on_poke_selector_poke_changed"]
+[connection signal="item_selected" from="VBoxContainer/PokeSelector/Options" to="VBoxContainer/PokeSelector" method="_on_options_item_selected"]

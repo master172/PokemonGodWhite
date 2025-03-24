@@ -466,5 +466,14 @@ SwirtezStudios:Youtube
 Master172:Github
 PokemonGodWhite"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 647.0
+offset_right = 304.0
+offset_bottom = 764.0
+text = "Test Trading"
+
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]
 [connection signal="visibility_changed" from="Settings" to="." method="_on_settings_visibility_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

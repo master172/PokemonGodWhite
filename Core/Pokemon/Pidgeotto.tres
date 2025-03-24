@@ -33,6 +33,7 @@ Special_Base_Defense = 70
 Base_Speed = 71
 Actions = Array[ExtResource("2_ghsjt")]([ExtResource("1_itfiy"), ExtResource("2_q5y4u"), ExtResource("3_8fyom"), ExtResource("4_1y7jl")])
 TmActions = Array[ExtResource("2_ghsjt")]([])
+EggActions = Array[ExtResource("2_ghsjt")]([])
 base_experience = 55
 Yield_Health = 0
 Yield_Attack = 0

@@ -24,12 +24,19 @@ func start_attack(User:CharacterBody2D):
 		if attack.has_method("_attack"):
 			attack._attack()
 	
-func calculate_damage(body,User,AttackType:int = 0):
+func calculate_damage(body,User,AttackType:int = 0,Power:int = power,mult:Array[float] = []):
+	var multiplier:float = 1.0
 	var attack_rng = RandomNumberGenerator.new()
 	var critical = 1
 	var pokemon:game_pokemon = User.pokemon
 	var opposing_pokemon:game_pokemon = body.pokemon
 	
+	if mult == []:
+		multiplier = 1.0
+	else:
+		for i in mult:
+			multiplier += i
+			
 	var crit_threshold = (pokemon.Base_Pokemon.Base_Speed/2)
 	var crit_chance = attack_rng.randi_range(0,255)
 	
@@ -61,10 +68,12 @@ func calculate_damage(body,User,AttackType:int = 0):
 			
 	var damage:int = 0
 	if AttackType == 0:
-		damage = calc_stat_modifier(pokemon,opposing_pokemon,0)*((((2*pokemon.level/5)+2)*power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+		damage = calc_stat_modifier(pokemon,opposing_pokemon,0)*((((2*pokemon.level/5)+2)*Power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random
+		damage*=multiplier
 		print_debug("total stat modifier = ",calc_stat_modifier(pokemon,opposing_pokemon,0))
 	elif AttackType == 1:
-		damage = calc_stat_modifier(pokemon,opposing_pokemon,1)*((((2*pokemon.level/5)+2)*power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
+		damage = calc_stat_modifier(pokemon,opposing_pokemon,1)*((((2*pokemon.level/5)+2)*Power*(pokemon.Special_Attack/opposing_pokemon.Special_Defense)/50)+2)*critical*stab*type*random
+		damage*=multiplier
 		print_debug("total special stat modifier = ",calc_stat_modifier(pokemon,opposing_pokemon,1))
 	body.recive_damage(damage,User,User)
 	
