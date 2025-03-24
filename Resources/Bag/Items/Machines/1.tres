@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://dch5vs2umdnnq"]
+
+[ext_resource type="Resource" uid="uid://crq4nmtfkhfoe" path="res://Resources/Bag/Items/ItemActors/Machines/1.tres" id="1_4x04y"]
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="1_um7sv"]
+[ext_resource type="Texture2D" uid="uid://bl284mwewsl84" path="res://assets/items/Machines/1.png" id="3_jie3m"]
+
+[resource]
+script = ExtResource("1_um7sv")
+type_Hint = "Machines"
+count = 1
+Name = "Tm 1"
+item = ExtResource("1_4x04y")
+sprite = ExtResource("3_jie3m")
+Description = "Teaches the move astonish to the given pokemon"
+price = 100
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

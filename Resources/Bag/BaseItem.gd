@@ -1,7 +1,19 @@
 extends Resource
 class_name BaseItem
 
-@export var type_Hint:String = "None"
+@export_enum(
+	"general_items",
+	"Medicine",
+	"BattleItems",
+	"Pokeballs",
+	"Machines",
+	"Berries",
+	"KeyItems",
+	"Evolution",
+	"Trophys",
+	"None",
+) var type_Hint:String = "None"
+
 @export var count:int = 1
 @export var Name:String = "NONE"
 @export var item:Item = null

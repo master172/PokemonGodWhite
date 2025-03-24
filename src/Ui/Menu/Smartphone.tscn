@@ -58,6 +58,7 @@ Dialogs = Array[ExtResource("3_jf7ap")]([SubResource("Resource_351vn"), SubResou
 Format = {}
 
 [node name="Smartphone" type="Control"]
+visibility_layer = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,6 +69,7 @@ script = ExtResource("1_tvmvy")
 Save_dialog = SubResource("Resource_a3nrw")
 
 [node name="Screen" type="ColorRect" parent="."]
+visibility_layer = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -138,6 +140,7 @@ layout_mode = 2
 icon = ExtResource("13_kg3cy")
 
 [node name="Base" type="TextureRect" parent="."]
+visibility_layer = 2
 texture_filter = 1
 custom_minimum_size = Vector2(1200, 720)
 layout_mode = 1

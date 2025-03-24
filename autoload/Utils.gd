@@ -26,6 +26,7 @@ var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
 
+
 func player_dialog_end(sign):
 	if sign == "DialogicDone":
 		get_viewport().set_input_as_handled()

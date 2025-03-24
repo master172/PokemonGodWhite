@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MoveMachine" load_steps=3 format=3 uid="uid://crq4nmtfkhfoe"]
+
+[ext_resource type="Resource" uid="uid://copmsnki7ep0k" path="res://Core/Pokemon/Actions/Astonish.tres" id="1_swcm7"]
+[ext_resource type="Script" uid="uid://blk8w7bpsxwqu" path="res://Resources/Bag/Items/GameItems/MoveMachine.gd" id="1_vnx4x"]
+
+[resource]
+script = ExtResource("1_vnx4x")
+singal_use = false
+action = ExtResource("1_swcm7")
+my_function = 0
+metadata/_custom_type_script = "uid://blk8w7bpsxwqu"

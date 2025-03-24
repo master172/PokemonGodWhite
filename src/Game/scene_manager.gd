@@ -29,6 +29,8 @@ var player_location
 var player_direction
 signal fading_finished
 
+signal screenshot_done
+
 enum Transition_Type {
 	NEW_SCENE,
 	PARTY_SCREEN,
@@ -401,12 +403,18 @@ func _on_current_scene_no_modulate():
 
 func shoot_screen():
 	var vpt :Viewport = get_viewport()
+	vpt.set_canvas_cull_mask_bit(1,false)
+	await get_tree().process_frame
+	
 	var tex :Texture = vpt.get_texture()
 	var img :Image = tex.get_image()
 	img.convert(Image.FORMAT_RGBA8)
 	img.linear_to_srgb()
 	#img = apply_tonemap(img)
 	img.save_png("user://save/Scene/"+"screenshot.png")
+	
+	vpt.set_canvas_cull_mask_bit(1,true)
+	emit_signal("screenshot_done")
 
 func apply_tonemap(image: Image) -> Image:
 	for y in range(image.get_height()):

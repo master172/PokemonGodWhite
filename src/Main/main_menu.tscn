@@ -461,7 +461,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_xxnl1")
 theme_override_font_sizes/font_size = 16
 text = "version:0.0.12
-built from commit:a9dea46
+built from commit:2cf12a0
 SwirtezStudios:Youtube
 Master172:Github
 PokemonGodWhite"

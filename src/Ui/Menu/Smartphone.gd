@@ -14,6 +14,8 @@ const POKEDEX = preload("res://src/Ui/Pokedex/pokedex.tscn")
 
 var Summary_Scene
 
+signal saving_done
+
 enum current_state {
 	Empty,
 	Normal,
@@ -48,6 +50,7 @@ func _input(event):
 					player.set_physics_process(false)
 					self.visible = true
 					CurrentState = current_state.Normal
+					
 		current_state.Normal:
 			if event.is_action_pressed("Menu") or event.is_action_pressed("No"):
 				AudioManager.cancel()
@@ -91,18 +94,18 @@ func _input(event):
 						Utils.get_scene_manager().transition_to_party_screen()
 					elif current_selected == 1:
 						Utils.get_scene_manager().transition_to_pokedex_scene()
-					elif current_selected == 2 or current_selected == -2:
+					elif current_selected == 2:
 						Utils.get_scene_manager().transition_to_bag_scene()
-					elif current_selected == 4 or current_selected == -4:
+					elif current_selected == 4:
 						save_dialog()
 						CurrentState = current_state.Save
-					elif current_selected == 7 or current_selected == -7:
+					elif current_selected == 7:
 						get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
-					elif current_selected == 6 or current_selected == -6:
+					elif current_selected == 6:
 						load_switching_scene()
-					elif current_selected == 3 or current_selected == -3:
+					elif current_selected == 3:
 						load_trainer_card()
-						
+
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
 				AudioManager.cancel()
@@ -197,8 +200,6 @@ func save_dialog():
 	DialogLayer.get_child(0).connect("finished",save_dialog_finished)
 	
 func save():
-	visible = false
-	await get_tree().create_timer(0.05).timeout
 	Utils.get_scene_manager().shoot_screen()
 	Utils.save_data()
 	

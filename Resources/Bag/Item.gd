@@ -7,6 +7,7 @@ enum function {
 	GENERAL
 }
 @export var my_function:function = 2
+
 func _start():
 	pass
 

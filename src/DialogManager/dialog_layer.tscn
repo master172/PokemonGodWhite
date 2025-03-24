@@ -6,3 +6,4 @@
 layer = 4
 
 [node name="Dialog" parent="." instance=ExtResource("1_y3p5b")]
+visibility_layer = 2
