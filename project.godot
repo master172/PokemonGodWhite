@@ -47,6 +47,10 @@ variables={
 "Points": "DefaultPoints",
 "Winner": "DefaultWinner"
 },
+"Gifting": {
+"Message": "DefaultMessage",
+"NickName": "DefaultNickName"
+},
 "OverWorld": {
 "Pokemon": "DefaultPokemon",
 "Response": "DefaultResponse"
@@ -129,6 +133,7 @@ directories/dtl_directory={
 "WilliamFirst": "res://src/Dialogs/WilliamFirst.dtl",
 "WinLevelUp": "res://src/Dialogs/WinLevelUp.dtl",
 "WinNormal": "res://src/Dialogs/WinNormal.dtl",
+"regular": "res://Resources/WonderTrade/regular.dtl",
 "trade_cancel": "res://Resources/trading/trade_cancel.dtl",
 "trade_end": "res://Resources/trading/trade_end.dtl",
 "trade_finished": "res://Resources/trading/trade_finished.dtl",

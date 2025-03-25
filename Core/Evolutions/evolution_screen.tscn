@@ -168,7 +168,7 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.353774, 0.537736, 0.70283, 0.849057)
 colors = PackedColorArray(0, 100, 100, 1, 0, 100, 0, 1, 100, 0.01, 0, 1, 100, 100, 0.07, 1, 100, 100, 100, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvd0a"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1h63a"]
 gradient = SubResource("Gradient_jprii")
 use_hdr = true
 
@@ -177,14 +177,14 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_88hje"]
+[sub_resource type="CurveTexture" id="CurveTexture_xa4j5"]
 curve = SubResource("Curve_xuopt")
 
 [sub_resource type="Curve" id="Curve_5j2p6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.17179, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_anwnr"]
+[sub_resource type="CurveTexture" id="CurveTexture_m368w"]
 curve = SubResource("Curve_5j2p6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0xdcb"]
@@ -196,11 +196,11 @@ initial_velocity_max = 750.0
 gravity = Vector3(0, 0, 0)
 scale_min = 15.0
 scale_max = 20.0
-scale_curve = SubResource("CurveTexture_anwnr")
-color_ramp = SubResource("GradientTexture1D_fvd0a")
+scale_curve = SubResource("CurveTexture_m368w")
+color_ramp = SubResource("GradientTexture1D_1h63a")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
-hue_variation_curve = SubResource("CurveTexture_88hje")
+hue_variation_curve = SubResource("CurveTexture_xa4j5")
 
 [node name="EvolutionScreen" type="Control"]
 z_index = 100

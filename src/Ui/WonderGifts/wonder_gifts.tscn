@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://dgmybegap5hli"]
+[gd_scene load_steps=47 format=3 uid="uid://dgmybegap5hli"]
 
 [ext_resource type="Script" uid="uid://c0ob7tp5bk5xt" path="res://src/Ui/WonderGifts/wonder_gifts.gd" id="1_o8oo7"]
 [ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="1_pom4u"]
 [ext_resource type="Texture2D" uid="uid://dw15pjnbvb5m6" path="res://assets/Ui/WonderGift/GiftCreate.svg" id="2_b3nqf"]
 [ext_resource type="Texture2D" uid="uid://xa20eykfdhnd" path="res://assets/Ui/WonderGift/GiftOpen.svg" id="3_6pviv"]
+[ext_resource type="Texture2D" uid="uid://cofie2kml0xrv" path="res://assets/Ui/TradeScene/back.svg" id="5_86o4v"]
 [ext_resource type="Script" uid="uid://h52m2gworhiv" path="res://src/Ui/WonderGifts/selection_panel.gd" id="5_h7eoe"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_lfxvg"]
 [ext_resource type="Texture2D" uid="uid://780ya5dcv22r" path="res://assets/Ui/WonderGift/left.svg" id="6_fpljh"]
@@ -11,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://qseobkhtgv5c" path="res://assets/Ui/WonderGift/right.svg" id="8_h7eoe"]
 [ext_resource type="Script" uid="uid://ddfqyijljorur" path="res://src/Ui/WonderGifts/gift_manager.gd" id="10_a82ge"]
 [ext_resource type="Script" uid="uid://c4e4t6udi82ee" path="res://src/Ui/WonderGifts/gift_picker.gd" id="11_vhcb0"]
+[ext_resource type="Script" uid="uid://c7i2keisfgjyx" path="res://src/Ui/WonderGifts/message.gd" id="12_ik2uo"]
+[ext_resource type="Script" uid="uid://b81shvreiyixd" path="res://src/Ui/WonderGifts/celebration.gd" id="14_8wg1y"]
+[ext_resource type="Environment" uid="uid://ssujpccv6q8e" path="res://Core/Evolutions/Glow.tres" id="14_imkp6"]
 
 [sub_resource type="Gradient" id="Gradient_iidx8"]
 offsets = PackedFloat32Array(0, 0.492908, 1)
@@ -156,6 +160,51 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnbih"]
+bg_color = Color(0.462375, 0.500906, 0.535156, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.435375, 0.471656, 0.503906, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceq22"]
+bg_color = Color(0.381375, 0.413156, 0.441406, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.351, 0.38025, 0.40625, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yl4r"]
+bg_color = Color(0.423529, 0.458824, 0.490196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.39825, 0.431437, 0.460938, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik2uo"]
 bg_color = Color(1, 1, 1, 0.67451)
 corner_radius_top_left = 32
@@ -197,6 +246,45 @@ corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
+
+[sub_resource type="Gradient" id="Gradient_8wg1y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.353774, 0.537736, 0.70283, 0.849057)
+colors = PackedColorArray(0, 100, 100, 1, 0, 100, 0, 1, 100, 0.01, 0, 1, 100, 100, 0.07, 1, 100, 100, 100, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvd0a"]
+gradient = SubResource("Gradient_8wg1y")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_vbjin"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_88hje"]
+curve = SubResource("Curve_vbjin")
+
+[sub_resource type="Curve" id="Curve_4swim"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.17179, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_anwnr"]
+curve = SubResource("Curve_4swim")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xnbih"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 750.0
+gravity = Vector3(0, 0, 0)
+scale_min = 15.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_anwnr")
+color_ramp = SubResource("GradientTexture1D_fvd0a")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("CurveTexture_88hje")
 
 [node name="WonderGifts" type="Control"]
 layout_mode = 3
@@ -321,7 +409,21 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6pviv")
 
+[node name="Back" type="Button" parent="GiftContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_xnbih")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ceq22")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnbih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ceq22")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5yl4r")
+text = "Back"
+icon = ExtResource("5_86o4v")
+
 [node name="SelectionPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -429,12 +531,120 @@ script = ExtResource("10_a82ge")
 anchors_preset = 0
 script = ExtResource("11_vhcb0")
 
+[node name="Message" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_ik2uo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Message"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Message/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BackDrop" type="ColorRect" parent="Message/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Message/MarginContainer/VBoxContainer/BackDrop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Add a message for your friend"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Message/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Message/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="cancel" type="Button" parent="Message/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "cancel"
+
+[node name="set" type="Button" parent="Message/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "done"
+
+[node name="Celebration" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_8wg1y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Celebration"]
+position = Vector2(600, 408)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xnbih")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Celebration"]
+environment = ExtResource("14_imkp6")
+
+[node name="TextureRect" type="TextureRect" parent="Celebration"]
+custom_minimum_size = Vector2(384, 384)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="pressed" from="GiftContainer/VBoxContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="GiftContainer/VBoxContainer/HBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="GiftContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="no" from="SelectionPanel" to="." method="_on_no_pressed"]
 [connection signal="yes" from="SelectionPanel" to="." method="_on_selection_panel_yes"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer/Left" to="SelectionPanel" method="_on_left_pressed"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer/Right" to="SelectionPanel" method="_on_right_pressed"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/Yes" to="SelectionPanel" method="_on_yes_pressed"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/No" to="SelectionPanel" method="_on_no_pressed"]
+[connection signal="cancelled_file_pick" from="GiftPicker" to="." method="_on_gift_picker_cancelled_file_pick"]
 [connection signal="file_found" from="GiftPicker" to="." method="_on_gift_picker_file_found"]
+[connection signal="cancelled" from="Message" to="." method="_on_message_cancelled"]
+[connection signal="message_submitted" from="Message" to="." method="_on_message_message_submitted"]
+[connection signal="pressed" from="Message/MarginContainer/VBoxContainer/HBoxContainer/cancel" to="Message" method="_on_button_pressed"]
+[connection signal="pressed" from="Message/MarginContainer/VBoxContainer/HBoxContainer/set" to="Message" method="_on_set_pressed"]
+[connection signal="done" from="Celebration" to="." method="_on_celebration_done"]
+[connection signal="starting" from="Celebration" to="." method="_on_celebration_starting"]
+[connection signal="finished" from="Celebration/GPUParticles2D" to="Celebration" method="_on_gpu_particles_2d_finished"]

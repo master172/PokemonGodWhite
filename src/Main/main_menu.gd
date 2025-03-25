@@ -1,7 +1,7 @@
 extends Control
 
 var current_selected:int = 0
-var max_selectable:int = 4
+var max_selectable:int = 5
 
 @onready var button_container = $ForeGround/ButtonContainer
 @onready var backgrounds = $Backgrounds
@@ -31,6 +31,7 @@ var loading:bool = false
 
 var WonderGiftsPath = "user://WonderGifts/"
 
+
 func _ready():
 	settings.visible = false
 	confirm_panel.hide()
@@ -50,9 +51,14 @@ func _ready():
 		Continue.self_modulate = disabled_color
 	set_selected(current_selected)
 func set_selected(num:int):
-	if num != 0:
+	if num != 0 and num != 4:
 		button_container.get_child(num).modulate = Color(0, 1, 0.247)
-	else:
+	elif num == 0:
+		if continue_disabled == false:
+			button_container.get_child(num).modulate = Color(0, 1, 0.247)
+		else:
+			button_container.get_child(num).modulate = not_selectable
+	elif num == 4:
 		if continue_disabled == false:
 			button_container.get_child(num).modulate = Color(0, 1, 0.247)
 		else:
@@ -117,6 +123,11 @@ func _input(event):
 				state = STATES.OPTIONS
 			elif current_selected == 3:
 				get_tree().quit()
+			elif current_selected == 4:
+				if continue_disabled == false:
+					get_tree().change_scene_to_file("res://src/Ui/WonderGifts/wonder_gifts.tscn")
+				else:
+					AudioManager.cancel()
 			
 		elif state == STATES.CONFIRM:
 			if current_selected == 0:
@@ -144,6 +155,7 @@ func unset_confirm(num:int = 0):
 
 func set_confirm(num:int = 0):
 	h_box_container.get_child(num).modulate = Color(0, 1, 0.275)
+
 
 
 func _on_settings_visibility_changed():

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://75a2an23uuk3"]
+
+[ext_resource type="PackedScene" uid="uid://dgmybegap5hli" path="res://src/Ui/WonderGifts/wonder_gifts.tscn" id="1_utypd"]
+
+[node name="WonderGiftLayer" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WonderGifts" parent="CanvasLayer" instance=ExtResource("1_utypd")]

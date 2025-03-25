@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=26 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" uid="uid://cpqvqexbu4d02" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyokl68i04iqc" path="res://assets/Ui/MainMenu/CogWheel.png" id="3_70heo"]
 [ext_resource type="Texture2D" uid="uid://bliuommofbdal" path="res://assets/Ui/MainMenu/screenshot.png" id="3_smh75"]
 [ext_resource type="Texture2D" uid="uid://bp2hmk2gtlmui" path="res://assets/Ui/MainMenu/QuitGame.png" id="4_qx406"]
+[ext_resource type="Texture2D" uid="uid://bgmuh78aoswmp" path="res://assets/Ui/WonderGift/Background.png" id="6_02g2f"]
 [ext_resource type="Script" uid="uid://bl6gbjc26jfls" path="res://src/Main/LoadingScreen.gd" id="7_cucda"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="8_err2f"]
 [ext_resource type="PackedScene" uid="uid://dgcdwbhra4jvb" path="res://src/Ui/Settings/settings.tscn" id="9_yovio"]
@@ -129,7 +130,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackgroundContinue" type="TextureRect" parent="Backgrounds"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,6 +159,7 @@ grow_vertical = 2
 color = Color(0.25098, 0.141176, 0.109804, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Backgrounds/BackgroundSettings"]
+visible = false
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -185,6 +186,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_qx406")
 
+[node name="BackgroundWonderGift" type="TextureRect" parent="Backgrounds"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_02g2f")
+
 [node name="ForeGround" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -199,6 +207,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 32.0
+offset_top = 64.0
 offset_right = 336.0
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -275,6 +284,26 @@ grow_vertical = 2
 theme = ExtResource("1_trdj8")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit2" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/Exit2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Wonder Trade"
 horizontal_alignment = 1
 vertical_alignment = 1
 
