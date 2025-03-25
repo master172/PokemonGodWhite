@@ -1,18 +1,23 @@
 extends Control
 
 ##Multiplayer Stuff
-var PORT = 7000
-var DEFAULT_SERVER_IP = "127.0.0.1"
-const MAX_CONNECTIONS = 1
+var PORT :int = 7000
+var DEFAULT_SERVER_IP :String = "127.0.0.1"
+var connection_server_ip :String= "127.0.0.1"
+const MAX_CONNECTIONS :int = 1
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 signal recived_pokemon
 
-@onready var my_poke: TextureRect = $VBoxContainer/SpriteHolder/MyPoke
-@onready var other_poke: TextureRect = $VBoxContainer/SpriteHolder/OtherPoke
-@onready var label: Label = $VBoxContainer/Label
+@onready var connection_screen: MarginContainer = $ConnectionScreen
+@onready var trade_scrren: VBoxContainer = $TradeScrren
+@onready var label: Label = $TradeScrren/Label
+@onready var my_poke: TextureRect = $TradeScrren/SpriteHolder/MyPoke
+@onready var other_poke: TextureRect = $TradeScrren/SpriteHolder/OtherPoke
+
+@onready var connection_label: Label = $ConnectionScreen/VBoxContainer/Label
 
 var offered_pokemon:Pokemon
 
@@ -42,11 +47,21 @@ var save_file_name = "Pokemon.tres"
 var path_to_temp = "user://Temp/"
 var temp_file_name = "tradedpokemon.tres"
 
+##sate variables
+enum states {
+	CONNECTION,
+	TRADE
+}
+var current_state:states = states.CONNECTION
+
 func _ready() -> void:
-	pokemon = AllyPokemon.get_main_pokemon()
+	DEFAULT_SERVER_IP = get_local_ip()
+	
 	set_pokemon_index = 0
 	multiplayer_setup()
 	verify_save_directory(save_file_path)
+	update()
+	
 	
 #region Multiplayer_Setup
 func multiplayer_setup():
@@ -61,6 +76,9 @@ func _on_peer_connected(id):
 	label.text = "connection made with " + str(1) if multiplayer.is_server() else str(multiplayer.get_unique_id())
 	var new_player_id = multiplayer.get_remote_sender_id()
 	connected_player_id = new_player_id
+	current_state = states.TRADE
+	pokemon = AllyPokemon.get_main_pokemon()
+	update()
 
 func _on_player_disconnected(id):
 	connected_player_id = NAN
@@ -70,10 +88,8 @@ func _on_player_disconnected(id):
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 
-
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
-
 
 func _on_server_disconnected():
 	multiplayer.multiplayer_peer = null
@@ -82,6 +98,7 @@ func _on_server_disconnected():
 	
 func create_game():
 	if multiplayer.multiplayer_peer:
+		print("closing")
 		multiplayer.multiplayer_peer.close()  # Optional but clean
 		multiplayer.multiplayer_peer = null
 	var peer = ENetMultiplayerPeer.new()
@@ -94,6 +111,7 @@ func create_game():
 
 func join_game(address = ""):
 	if multiplayer.multiplayer_peer:
+		print("closing")
 		multiplayer.multiplayer_peer.close()
 		multiplayer.multiplayer_peer = null
 	if address.is_empty():
@@ -105,11 +123,26 @@ func join_game(address = ""):
 	multiplayer.multiplayer_peer = peer
 #endregion
 
+func update():
+	if current_state == states.CONNECTION:
+		trade_scrren.visible = false
+		connection_screen.visible = true
+	elif current_state == states.TRADE:
+		connection_screen.visible = false
+		trade_scrren.visible = true
+
+func update_connection_label(str:String):
+	connection_label.text = str
+	
 func _on_create_host_pressed() -> void:
-	create_game()
+	if current_state == states.CONNECTION:
+		create_game()
+		update_connection_label("hosting trade on " + DEFAULT_SERVER_IP)
 
 func _on_connect_pressed() -> void:
-	join_game()
+	if current_state == states.CONNECTION:
+		join_game(connection_server_ip)
+		update_connection_label("looking for server on ip " + connection_server_ip)
 
 #region Saving
 func verify_save_directory(path:String):
@@ -205,11 +238,21 @@ func set_pokemons():
 		pokemon = traded_pokemon
 		traded_pokemon = temp
 		remove_directires()
-		AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
-		AllyPokemon.save_data()
-		AllyPokemon.get_party_pokemon(set_pokemon_index).set_trade_done(true)
-		AllyPokemon.get_party_pokemon(set_pokemon_index).check_evolution()
+		Ally_postset()
+		reset_trade_values()
 		
+func Ally_postset():
+	AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
+	AllyPokemon.save_data()
+	AllyPokemon.get_party_pokemon(set_pokemon_index).set_trade_done(true)
+	AllyPokemon.get_party_pokemon(set_pokemon_index).check_evolution()
+
+func reset_trade_values():
+	offer_set = false
+	trader_offer_set = false
+	self_accepeted = false
+	trader_accepeted = false
+	
 func validate_trade():
 	if not (offer_set == true and trader_offer_set == true):
 		label.text = "offers not made"
@@ -262,7 +305,7 @@ func _on_port_value_changed(value: float) -> void:
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
-	DEFAULT_SERVER_IP = new_text
+	connection_server_ip = new_text
 
 func disconnect_network():
 	if multiplayer.multiplayer_peer:
@@ -274,3 +317,17 @@ func disconnect_network():
 func _on_disconnect_pressed() -> void:
 	disconnect_network()
 	get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
+
+
+func _on_back_pressed() -> void:
+	disconnect_network()
+	current_state = states.CONNECTION
+	update()
+
+func get_local_ip():
+	var ips = IP.get_local_addresses()
+	for ip in ips:
+		if ip.begins_with("192.168.") or ip.begins_with("10.") or ip.begins_with("172."):
+			return ip
+	return "Unknown"
+	

@@ -1,10 +1,191 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2a4nw3cf270e"]
+[gd_scene load_steps=27 format=3 uid="uid://c2a4nw3cf270e"]
 
 [ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
+[ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="2_iidx8"]
 [ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="3_rp4ak"]
 [ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="4_hgcru"]
 [ext_resource type="Script" uid="uid://b1ug55qtm1t7l" path="res://testing/Multiplayer/MyIp.gd" id="5_p1ab3"]
 [ext_resource type="Script" uid="uid://dffue0ca2jw57" path="res://testing/Multiplayer/poke_selector.gd" id="5_rp4ak"]
+[ext_resource type="Texture2D" uid="uid://cofie2kml0xrv" path="res://assets/Ui/TradeScene/back.svg" id="6_p1ab3"]
+[ext_resource type="Texture2D" uid="uid://buemkvgfaqmg4" path="res://assets/Ui/TradeScene/connect.svg" id="8_m3o6m"]
+[ext_resource type="Texture2D" uid="uid://d4gdpygxvbyg5" path="res://assets/Ui/TradeScene/server.svg" id="9_wna62"]
+
+[sub_resource type="Gradient" id="Gradient_iidx8"]
+colors = PackedColorArray(0.631373, 0.768627, 0.992157, 1, 0.760784, 0.913725, 0.984314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m3o6m"]
+gradient = SubResource("Gradient_iidx8")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wna62"]
+offsets = PackedFloat32Array(0.138298, 0.489362)
+colors = PackedColorArray(0.631373, 0.768627, 0.992157, 0.470588, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62wb5"]
+noise_type = 3
+frequency = 0.025
+fractal_octaves = 8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pq0rv"]
+color_ramp = SubResource("Gradient_wna62")
+noise = SubResource("FastNoiseLite_62wb5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3o6m"]
+shader = ExtResource("2_iidx8")
+shader_parameter/outerRadius = 0.542
+shader_parameter/MainAlpha = 0.26
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62wb5"]
+bg_color = Color(0.462375, 0.500906, 0.535156, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.435375, 0.471656, 0.503906, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq0rv"]
+bg_color = Color(0.381375, 0.413156, 0.441406, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.351, 0.38025, 0.40625, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52naw"]
+bg_color = Color(0.423529, 0.458824, 0.490196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.39825, 0.431437, 0.460938, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh6ip"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtyy5"]
+bg_color = Color(0.320625, 0.738281, 0.3375, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.296875, 0.683594, 0.3125, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wna62"]
+bg_color = Color(0.276518, 0.636719, 0.291071, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.240893, 0.554688, 0.253571, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tr3im"]
+bg_color = Color(0.320625, 0.738281, 0.3375, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.296875, 0.683594, 0.3125, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3o6m"]
+bg_color = Color(0.298039, 0.686275, 0.313726, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.268036, 0.617188, 0.282143, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gegn8"]
+bg_color = Color(0.45606, 0.271171, 0.792969, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.474032, 0.281857, 0.824219, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hbrk"]
+bg_color = Color(0.379675, 0.225753, 0.660156, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.350469, 0.208387, 0.609375, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jinom"]
+bg_color = Color(0.435294, 0.258824, 0.756863, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.395402, 0.235104, 0.6875, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [node name="Trade" type="Control"]
 layout_mode = 3
@@ -15,103 +196,89 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wgq22")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0592626, 0.215099, 0.234375, 1)
+texture = SubResource("GradientTexture2D_m3o6m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Noise" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_pq0rv")
+
+[node name="Vigneette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m3o6m")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TradeScrren" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="TradeScrren"]
+visible = false
 layout_mode = 2
 
-[node name="SpriteHolder" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SpriteHolder" type="HBoxContainer" parent="TradeScrren"]
 layout_mode = 2
 alignment = 1
 
-[node name="MyPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+[node name="MyPoke" type="TextureRect" parent="TradeScrren/SpriteHolder"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("3_rp4ak")
 
-[node name="OtherPoke" type="TextureRect" parent="VBoxContainer/SpriteHolder"]
+[node name="OtherPoke" type="TextureRect" parent="TradeScrren/SpriteHolder"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("4_hgcru")
 
-[node name="TradeOptions" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TradeOptions" type="HBoxContainer" parent="TradeScrren"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Trade" type="Button" parent="VBoxContainer/TradeOptions"]
+[node name="Trade" type="Button" parent="TradeScrren/TradeOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Trade"
 
-[node name="Offer" type="Button" parent="VBoxContainer/TradeOptions"]
+[node name="Offer" type="Button" parent="TradeScrren/TradeOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Offer"
 
-[node name="Reject" type="Button" parent="VBoxContainer/TradeOptions"]
+[node name="Reject" type="Button" parent="TradeScrren/TradeOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Reject"
 
-[node name="TradeOptions2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Connect" type="Button" parent="VBoxContainer/TradeOptions2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Connect"
-
-[node name="CreateHost" type="Button" parent="VBoxContainer/TradeOptions2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Create Host"
-
-[node name="PortOptions" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="port" type="SpinBox" parent="VBoxContainer/PortOptions"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-min_value = 1025.0
-max_value = 65535.0
-value = 7000.0
-alignment = 1
-prefix = "Port"
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PortOptions"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-placeholder_text = "enter ip eg: 127.0.0.1"
-
-[node name="Disconnect" type="Button" parent="VBoxContainer"]
+[node name="Disconnect" type="Button" parent="TradeScrren"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Disconnect"
 
-[node name="PokeSelector" type="Control" parent="VBoxContainer"]
+[node name="PokeSelector" type="Control" parent="TradeScrren"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_rp4ak")
 
-[node name="Options" type="OptionButton" parent="VBoxContainer/PokeSelector"]
+[node name="Options" type="OptionButton" parent="TradeScrren/PokeSelector"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -121,30 +288,115 @@ offset_right = 600.0
 offset_bottom = 20.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="ConnectionScreen" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectionScreen"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Back" type="Button" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_62wb5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pq0rv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_62wb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pq0rv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_52naw")
+text = "Back"
+icon = ExtResource("6_p1ab3")
+
+[node name="VSeparator" type="HSeparator" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 350
+theme_override_styles/separator = SubResource("StyleBoxFlat_kh6ip")
+
+[node name="IPlabel" type="Label" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 text = "your ip is"
-horizontal_alignment = 2
+horizontal_alignment = 1
 script = ExtResource("5_p1ab3")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="Label"]
-timeout = 1.0
+[node name="PortOptions" type="HBoxContainer" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 20
+alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/TradeOptions/Trade" to="." method="_on_trade_pressed"]
-[connection signal="pressed" from="VBoxContainer/TradeOptions/Offer" to="." method="_on_offer_pressed"]
-[connection signal="pressed" from="VBoxContainer/TradeOptions/Reject" to="." method="_on_reject_pressed"]
-[connection signal="pressed" from="VBoxContainer/TradeOptions2/Connect" to="." method="_on_connect_pressed"]
-[connection signal="pressed" from="VBoxContainer/TradeOptions2/CreateHost" to="." method="_on_create_host_pressed"]
-[connection signal="value_changed" from="VBoxContainer/PortOptions/port" to="." method="_on_port_value_changed"]
-[connection signal="text_submitted" from="VBoxContainer/PortOptions/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="VBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]
-[connection signal="poke_changed" from="VBoxContainer/PokeSelector" to="." method="_on_poke_selector_poke_changed"]
-[connection signal="item_selected" from="VBoxContainer/PokeSelector/Options" to="VBoxContainer/PokeSelector" method="_on_options_item_selected"]
-[connection signal="request_completed" from="Label/HTTPRequest" to="Label" method="_on_http_request_request_completed"]
+[node name="port" type="SpinBox" parent="ConnectionScreen/VBoxContainer/PortOptions"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 1025.0
+max_value = 65535.0
+value = 7000.0
+alignment = 1
+prefix = "Port"
+
+[node name="LineEdit" type="LineEdit" parent="ConnectionScreen/VBoxContainer/PortOptions"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+placeholder_text = "enter ip eg: 127.0.0.1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Connect" type="Button" parent="ConnectionScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_vtyy5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wna62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tr3im")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wna62")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m3o6m")
+text = "CONNECT"
+icon = ExtResource("8_m3o6m")
+
+[node name="CreateHost" type="Button" parent="ConnectionScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_gegn8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8hbrk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gegn8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8hbrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jinom")
+text = "Create Host"
+icon = ExtResource("9_wna62")
+
+[node name="Label" type="Label" parent="ConnectionScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TradeScrren/TradeOptions/Trade" to="." method="_on_trade_pressed"]
+[connection signal="pressed" from="TradeScrren/TradeOptions/Offer" to="." method="_on_offer_pressed"]
+[connection signal="pressed" from="TradeScrren/TradeOptions/Reject" to="." method="_on_reject_pressed"]
+[connection signal="pressed" from="TradeScrren/Disconnect" to="." method="_on_disconnect_pressed"]
+[connection signal="poke_changed" from="TradeScrren/PokeSelector" to="." method="_on_poke_selector_poke_changed"]
+[connection signal="item_selected" from="TradeScrren/PokeSelector/Options" to="TradeScrren/PokeSelector" method="_on_options_item_selected"]
+[connection signal="pressed" from="ConnectionScreen/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="ConnectionScreen/VBoxContainer/PortOptions/port" to="." method="_on_port_value_changed"]
+[connection signal="text_submitted" from="ConnectionScreen/VBoxContainer/PortOptions/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="ConnectionScreen/VBoxContainer/HBoxContainer/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="ConnectionScreen/VBoxContainer/HBoxContainer/CreateHost" to="." method="_on_create_host_pressed"]
