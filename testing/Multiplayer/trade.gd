@@ -12,10 +12,16 @@ signal server_disconnected
 signal recived_pokemon
 
 @onready var connection_screen: MarginContainer = $ConnectionScreen
-@onready var trade_scrren: VBoxContainer = $TradeScrren
-@onready var label: Label = $TradeScrren/Label
-@onready var my_poke: TextureRect = $TradeScrren/SpriteHolder/MyPoke
-@onready var other_poke: TextureRect = $TradeScrren/SpriteHolder/OtherPoke
+@onready var trade_screen: Panel = $TradeScreen
+
+@onready var my_poke: TextureRect = $TradeScreen/MarginContainer/VBoxContainer/ImageContainer/BackDrop/my_poke
+@onready var other_poke: TextureRect = $TradeScreen/MarginContainer/VBoxContainer/ImageContainer/BackDrop2/other_poke
+@onready var label: Label = $TradeScreen/MarginContainer/VBoxContainer/InfoLabel
+
+@onready var lv_2: Label = $TradeScreen/MarginContainer/VBoxContainer/LabelContainer/Lv2
+@onready var lv_1: Label = $TradeScreen/MarginContainer/VBoxContainer/LabelContainer/Lv1
+
+@onready var selection_container: HBoxContainer = $TradeScreen/MarginContainer/VBoxContainer/SelectionContainer
 
 @onready var connection_label: Label = $ConnectionScreen/VBoxContainer/Label
 
@@ -73,12 +79,14 @@ func multiplayer_setup():
 	
 func _on_peer_connected(id):
 	print("peer connected ",id)
-	label.text = "connection made with " + str(1) if multiplayer.is_server() else str(multiplayer.get_unique_id())
+	label.text = "connection made with " + (str(1) if not multiplayer.is_server() else str(multiplayer.get_unique_id()))
 	var new_player_id = multiplayer.get_remote_sender_id()
 	connected_player_id = new_player_id
 	current_state = states.TRADE
 	pokemon = AllyPokemon.get_main_pokemon()
+	lv_1.text = "level: " + str(pokemon.level)
 	update()
+	selection_container.update()
 
 func _on_player_disconnected(id):
 	connected_player_id = NAN
@@ -125,11 +133,11 @@ func join_game(address = ""):
 
 func update():
 	if current_state == states.CONNECTION:
-		trade_scrren.visible = false
+		trade_screen.visible = false
 		connection_screen.visible = true
 	elif current_state == states.TRADE:
 		connection_screen.visible = false
-		trade_scrren.visible = true
+		trade_screen.visible = true
 
 func update_connection_label(str:String):
 	connection_label.text = str
@@ -155,10 +163,6 @@ func _on_trade_pressed() -> void:
 	validate_trade()
 	#export_and_send()
 
-func _on_poke_selector_poke_changed(poke: game_pokemon,num:int) -> void:
-	pokemon = poke
-	set_pokemon_index = num
-
 func _on_offer_pressed() -> void:
 	send_offered_pokemon()
 	
@@ -166,19 +170,20 @@ func send_offered_pokemon():
 	offer_set = true
 	var path:String = pokemon.Base_Pokemon.get_path()
 	if multiplayer.is_server():
-		recive_offered_pokemon.rpc_id(connected_player_id,path)
+		recive_offered_pokemon.rpc_id(connected_player_id,path,pokemon.level)
 	else:
-		recive_offered_pokemon.rpc_id(1,path)
+		recive_offered_pokemon.rpc_id(1,path,pokemon.level)
 
 
 @rpc("any_peer")
 
-func recive_offered_pokemon(path):
+func recive_offered_pokemon(path,lv:int):
 	trader_offer_set = true
 	var poke:Pokemon = load(path)
 	other_poke.texture = poke.get_front_sprite()
 	offered_pokemon = poke
-
+	lv_2.text = "level: " + str(lv)
+	
 func send_accept_reqest():
 	if multiplayer.is_server():
 		confirm_accept_request.rpc_id(connected_player_id)
@@ -215,7 +220,7 @@ func receive_resource_file(bytes):
 	file.close()
 	var monster = ResourceLoader.load(path_to_temp+temp_file_name)
 	traded_pokemon = monster
-	label.text = ("Received monster: "+ traded_pokemon.Nick_name)
+	label.text = ("Received pokemon: "+ traded_pokemon.Nick_name)
 
 
 func request_for_request_update():
@@ -258,7 +263,7 @@ func validate_trade():
 		label.text = "offers not made"
 		return
 	if not (self_accepeted == true and trader_accepeted == true):
-		label.text = "trade not finalized"
+		label.text = "trade request sent waiting for confirmation"
 		return
 	export_and_send()
 	ask_to_recive_pokemon()
@@ -278,7 +283,7 @@ func send_rejection():
 		
 @rpc("any_peer")
 func request_denied():
-	label.text = "request denied"
+	label.text = "offer denied make new offer"
 	offer_set = false
 
 func remove_directires():
@@ -316,13 +321,12 @@ func disconnect_network():
 
 func _on_disconnect_pressed() -> void:
 	disconnect_network()
-	get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
-
+	current_state = states.CONNECTION
+	update()
 
 func _on_back_pressed() -> void:
 	disconnect_network()
-	current_state = states.CONNECTION
-	update()
+	get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
 
 func get_local_ip():
 	var ips = IP.get_local_addresses()
@@ -330,4 +334,8 @@ func get_local_ip():
 		if ip.begins_with("192.168.") or ip.begins_with("10.") or ip.begins_with("172."):
 			return ip
 	return "Unknown"
-	
+
+func _on_selection_container_poke_changed(poke: game_pokemon, num: int) -> void:
+	pokemon = poke
+	lv_1.text = "level: " + str(pokemon.level)
+	set_pokemon_index = num

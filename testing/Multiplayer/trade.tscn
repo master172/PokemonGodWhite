@@ -1,14 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://c2a4nw3cf270e"]
+[gd_scene load_steps=55 format=3 uid="uid://c2a4nw3cf270e"]
 
 [ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
 [ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="2_iidx8"]
-[ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="3_rp4ak"]
-[ext_resource type="Texture2D" uid="uid://dl0ojq0376fn0" path="res://Core/Graphics/Zehlvogs/Front/ENSPARDA.png" id="4_hgcru"]
 [ext_resource type="Script" uid="uid://b1ug55qtm1t7l" path="res://testing/Multiplayer/MyIp.gd" id="5_p1ab3"]
-[ext_resource type="Script" uid="uid://dffue0ca2jw57" path="res://testing/Multiplayer/poke_selector.gd" id="5_rp4ak"]
 [ext_resource type="Texture2D" uid="uid://cofie2kml0xrv" path="res://assets/Ui/TradeScene/back.svg" id="6_p1ab3"]
 [ext_resource type="Texture2D" uid="uid://buemkvgfaqmg4" path="res://assets/Ui/TradeScene/connect.svg" id="8_m3o6m"]
+[ext_resource type="Texture2D" uid="uid://kbe5jnejjid2" path="res://assets/Ui/TradeScene/Empty.png" id="9_vtyy5"]
 [ext_resource type="Texture2D" uid="uid://d4gdpygxvbyg5" path="res://assets/Ui/TradeScene/server.svg" id="9_wna62"]
+[ext_resource type="Texture2D" uid="uid://l5u86m0y0nke" path="res://assets/Ui/TradeScene/accept.svg" id="10_52naw"]
+[ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="10_62wb5"]
+[ext_resource type="Script" uid="uid://bb05x0fyx2dyu" path="res://testing/Multiplayer/selection_container.gd" id="11_pq0rv"]
+[ext_resource type="Texture2D" uid="uid://vtji3xp86477" path="res://assets/Ui/TradeScene/offer.svg" id="11_vtyy5"]
+[ext_resource type="Texture2D" uid="uid://b2ovqyw4rxr7x" path="res://assets/Ui/TradeScene/reject.svg" id="12_tr3im"]
+[ext_resource type="Texture2D" uid="uid://dqtc148htu4fs" path="res://assets/Ui/TradeScene/Disconnect.svg" id="13_vtyy5"]
 
 [sub_resource type="Gradient" id="Gradient_iidx8"]
 colors = PackedColorArray(0.631373, 0.768627, 0.992157, 1, 0.760784, 0.913725, 0.984314, 1)
@@ -187,6 +191,296 @@ corner_radius_bottom_left = 48
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78df"]
+bg_color = Color(0.117647, 0.164706, 0.219608, 0.431373)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.176471, 0.247059, 0.313726, 0.568627)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5xin"]
+bg_color = Color(0.319838, 0.789474, 1, 0.172549)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.176471, 0.247059, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pxis"]
+bg_color = Color(0.219608, 0.545098, 0.690196, 0.333333)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.176471, 0.247059, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhb82"]
+bg_color = Color(0.319838, 0.789474, 1, 0.172549)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.176471, 0.247059, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts7xt"]
+bg_color = Color(0.309804, 0.764706, 0.968627, 0.172549)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.176471, 0.247059, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j02a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7k8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xyyb"]
+bg_color = Color(0, 0.7898, 0.890625, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.730911, 0.824219, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3tmd"]
+bg_color = Color(0, 0.696271, 0.785156, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.62699, 0.707031, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd6qm"]
+bg_color = Color(0, 0.7898, 0.890625, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.730911, 0.824219, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q3v6"]
+bg_color = Color(0, 0.696271, 0.785156, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.62699, 0.707031, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qbep"]
+bg_color = Color(0, 0.737255, 0.831373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.678951, 0.765625, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy1tf"]
+bg_color = Color(1, 0.766347, 0.044285, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.654902, 0.14902, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewswg"]
+bg_color = Color(0.894531, 0.58583, 0.133303, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.867188, 0.567923, 0.129228, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5am8"]
+bg_color = Color(1, 0.766347, 0.044285, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.654902, 0.14902, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47jav"]
+bg_color = Color(0.894531, 0.58583, 0.133303, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.867188, 0.567923, 0.129228, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4mev"]
+bg_color = Color(1, 0.654902, 0.14902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.933594, 0.611412, 0.139124, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nice"]
+bg_color = Color(0.949219, 0.312297, 0.24655, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.890625, 0.293019, 0.231331, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en7yb"]
+bg_color = Color(0.905882, 0.298039, 0.235294, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.820313, 0.269886, 0.213068, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp6kt"]
+bg_color = Color(0.914063, 0.459027, 0.459027, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.855469, 0.429602, 0.429602, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esglf"]
+bg_color = Color(0.820313, 0.411947, 0.411947, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.714844, 0.358983, 0.358983, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbup2"]
+bg_color = Color(0.914063, 0.459027, 0.459027, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.855469, 0.429602, 0.429602, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qw2mp"]
+bg_color = Color(0.820313, 0.411947, 0.411947, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.714844, 0.358983, 0.358983, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq2bk"]
+bg_color = Color(0.898039, 0.45098, 0.45098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.800781, 0.402139, 0.402139, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [node name="Trade" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -222,71 +516,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TradeScrren" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="TradeScrren"]
-visible = false
-layout_mode = 2
-
-[node name="SpriteHolder" type="HBoxContainer" parent="TradeScrren"]
-layout_mode = 2
-alignment = 1
-
-[node name="MyPoke" type="TextureRect" parent="TradeScrren/SpriteHolder"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("3_rp4ak")
-
-[node name="OtherPoke" type="TextureRect" parent="TradeScrren/SpriteHolder"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("4_hgcru")
-
-[node name="TradeOptions" type="HBoxContainer" parent="TradeScrren"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Trade" type="Button" parent="TradeScrren/TradeOptions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Trade"
-
-[node name="Offer" type="Button" parent="TradeScrren/TradeOptions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Offer"
-
-[node name="Reject" type="Button" parent="TradeScrren/TradeOptions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Reject"
-
-[node name="Disconnect" type="Button" parent="TradeScrren"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "Disconnect"
-
-[node name="PokeSelector" type="Control" parent="TradeScrren"]
-layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("5_rp4ak")
-
-[node name="Options" type="OptionButton" parent="TradeScrren/PokeSelector"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -600.0
-offset_right = 600.0
-offset_bottom = 20.0
-grow_horizontal = 2
 
 [node name="ConnectionScreen" type="MarginContainer" parent="."]
 visible = false
@@ -389,14 +618,232 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="TradeScrren/TradeOptions/Trade" to="." method="_on_trade_pressed"]
-[connection signal="pressed" from="TradeScrren/TradeOptions/Offer" to="." method="_on_offer_pressed"]
-[connection signal="pressed" from="TradeScrren/TradeOptions/Reject" to="." method="_on_reject_pressed"]
-[connection signal="pressed" from="TradeScrren/Disconnect" to="." method="_on_disconnect_pressed"]
-[connection signal="poke_changed" from="TradeScrren/PokeSelector" to="." method="_on_poke_selector_poke_changed"]
-[connection signal="item_selected" from="TradeScrren/PokeSelector/Options" to="TradeScrren/PokeSelector" method="_on_options_item_selected"]
+[node name="TradeScreen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 23.0
+offset_right = -28.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t78df")
+
+[node name="MarginContainer" type="MarginContainer" parent="TradeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ImageContainer" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 256)
+layout_mode = 2
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="BackDrop" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/ImageContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t78df")
+
+[node name="my_poke" type="TextureRect" parent="TradeScreen/MarginContainer/VBoxContainer/ImageContainer/BackDrop"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_62wb5")
+
+[node name="BackDrop2" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/ImageContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t78df")
+
+[node name="other_poke" type="TextureRect" parent="TradeScreen/MarginContainer/VBoxContainer/ImageContainer/BackDrop2"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Lv1" type="Label" parent="TradeScreen/MarginContainer/VBoxContainer/LabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.623529)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "16"
+horizontal_alignment = 1
+
+[node name="Lv2" type="Label" parent="TradeScreen/MarginContainer/VBoxContainer/LabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.623529)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "16"
+horizontal_alignment = 1
+
+[node name="SelectionContainer" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("11_pq0rv")
+
+[node name="0" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="1" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="2" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="3" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="4" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="5" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
+icon = ExtResource("9_vtyy5")
+
+[node name="TradeOptions" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Trade" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_4xyyb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y3tmd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2q3v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6qbep")
+text = "Trade"
+icon = ExtResource("10_52naw")
+
+[node name="Offer" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_cy1tf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ewswg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q5am8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_47jav")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4mev")
+text = "Offer"
+icon = ExtResource("11_vtyy5")
+
+[node name="Reject" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_7nice")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7nice")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7nice")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7nice")
+theme_override_styles/normal = SubResource("StyleBoxFlat_en7yb")
+text = "Reject"
+icon = ExtResource("12_tr3im")
+
+[node name="Disconnect" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_bp6kt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_esglf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lbup2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qw2mp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iq2bk")
+text = "Disconnect"
+icon = ExtResource("13_vtyy5")
+
+[node name="InfoLabel" type="Label" parent="TradeScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.552941)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "the trade was rejected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="ConnectionScreen/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="ConnectionScreen/VBoxContainer/PortOptions/port" to="." method="_on_port_value_changed"]
 [connection signal="text_submitted" from="ConnectionScreen/VBoxContainer/PortOptions/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="ConnectionScreen/VBoxContainer/HBoxContainer/Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="ConnectionScreen/VBoxContainer/HBoxContainer/CreateHost" to="." method="_on_create_host_pressed"]
+[connection signal="poke_changed" from="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer" to="." method="_on_selection_container_poke_changed"]
+[connection signal="pressed" from="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Trade" to="." method="_on_trade_pressed"]
+[connection signal="pressed" from="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Offer" to="." method="_on_offer_pressed"]
+[connection signal="pressed" from="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Reject" to="." method="_on_reject_pressed"]
+[connection signal="pressed" from="TradeScreen/MarginContainer/VBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]
