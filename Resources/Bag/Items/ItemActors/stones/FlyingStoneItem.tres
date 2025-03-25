@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EvolutionStoneItem" load_steps=3 format=3 uid="uid://cv6sucxfcd5ci"]
+
+[ext_resource type="Resource" uid="uid://cw88c4ril5opi" path="res://Resources/PokeMon/stones/FlyingStone.tres" id="1_x7f7c"]
+[ext_resource type="Script" uid="uid://cl4mjh2d7kjio" path="res://Resources/Bag/Items/GameItems/EvolutionStone.gd" id="1_xe8i5"]
+
+[resource]
+script = ExtResource("1_xe8i5")
+evolving_stone = ExtResource("1_x7f7c")
+singal_use = true
+my_function = 0
+metadata/_custom_type_script = "uid://cl4mjh2d7kjio"

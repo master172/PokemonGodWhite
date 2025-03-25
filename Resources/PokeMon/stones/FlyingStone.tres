@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EvolutionStone" load_steps=2 format=3 uid="uid://cw88c4ril5opi"]
+
+[ext_resource type="Script" uid="uid://bx4bgqtcidads" path="res://Resources/PokeMon/Stone.gd" id="1_q4ufj"]
+
+[resource]
+script = ExtResource("1_q4ufj")
+Name = "FlyingStone"
+metadata/_custom_type_script = "uid://bx4bgqtcidads"

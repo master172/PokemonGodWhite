@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://jefqob5rdmsh"]
+[gd_scene load_steps=18 format=4 uid="uid://jefqob5rdmsh"]
 
 [ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="1_sn1by"]
 [ext_resource type="Texture2D" uid="uid://cmwsu7lwnixa8" path="res://assets/PokemonTilesets/Japanese.png" id="2_quy84"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b6umlamkcla0p" path="res://Resources/Bag/Items/Max_Potion.tres" id="11_uof5w"]
 [ext_resource type="Resource" uid="uid://d4g3wgtt2kokd" path="res://Resources/Bag/Items/Revive.tres" id="12_snfl5"]
 [ext_resource type="Resource" uid="uid://c2qxs1qeiahwu" path="res://Resources/Bag/Items/Max_Revive.tres" id="13_n15it"]
+[ext_resource type="Resource" uid="uid://cr8cr6tmjuv2c" path="res://Resources/Bag/Items/stones/FlyingStone.tres" id="14_n15it"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8aox"]
 texture = ExtResource("2_quy84")
@@ -582,4 +583,4 @@ Spawn_direction = Vector2(0, 1)
 
 [node name="Gerald" parent="." instance=ExtResource("7_o6dno")]
 position = Vector2(40, 16)
-items_to_sell = Array[ExtResource("7_tsqeb")]([ExtResource("9_hgc7u"), ExtResource("10_hgc7u"), ExtResource("11_uof5w"), ExtResource("12_snfl5"), ExtResource("13_n15it"), ExtResource("8_c0gmc")])
+items_to_sell = Array[ExtResource("7_tsqeb")]([ExtResource("9_hgc7u"), ExtResource("10_hgc7u"), ExtResource("11_uof5w"), ExtResource("12_snfl5"), ExtResource("13_n15it"), ExtResource("8_c0gmc"), ExtResource("14_n15it")])

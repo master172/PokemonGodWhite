@@ -400,7 +400,14 @@ func check_evolution():
 func set_trade_done(val:bool):
 	if evolutor != null:
 		evolutor.set_trade_availaible(val)
-		
+
+func set_stone_used(val:bool,type:EvolutionStone):
+	if evolutor != null:
+		evolutor.set_stone_availaible(val,type)
+
+func get_stone_list():
+	if evolutor != null:
+		return evolutor.get_evolution_stone()
 func evolve_with_evolutor(num:int):
 	var active_trigger = evolutor.get_active_trigger(num)
 	var poke = active_trigger.get_next_pokemon()

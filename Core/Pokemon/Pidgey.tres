@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=17 format=3 uid="uid://l227mwiloa0d"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=20 format=3 uid="uid://l227mwiloa0d"]
 
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_1dw5r"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_438bf"]
@@ -14,17 +14,32 @@
 [ext_resource type="Resource" uid="uid://3kfofee5j3vv" path="res://Core/Pokemon/Pidgeotto.tres" id="8_bj05p"]
 [ext_resource type="Script" uid="uid://ba5t688rcjadp" path="res://Resources/PokeMon/Trigger.gd" id="9_jy30c"]
 [ext_resource type="Script" uid="uid://0qgu36ew8dhj" path="res://Resources/PokeMon/Evolutor.gd" id="10_j5lfm"]
+[ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="13_7jpyq"]
+[ext_resource type="Resource" uid="uid://cw88c4ril5opi" path="res://Resources/PokeMon/stones/FlyingStone.tres" id="14_u7h66"]
 
 [sub_resource type="Resource" id="Resource_hwbsi"]
 script = ExtResource("9_jy30c")
-evolution_type = 2
+evolution_type = 0
 evolving_level = 18
 NextPokemon = ExtResource("8_bj05p")
 can_evolve = false
+trade_evolution_availaible = false
+stone_evolution_availaible = false
+
+[sub_resource type="Resource" id="Resource_tpyby"]
+script = ExtResource("9_jy30c")
+evolution_type = 1
+evolving_level = 16
+evolving_stone = ExtResource("14_u7h66")
+NextPokemon = ExtResource("13_7jpyq")
+can_evolve = false
+trade_evolution_availaible = false
+stone_evolution_availaible = false
+metadata/_custom_type_script = "uid://ba5t688rcjadp"
 
 [sub_resource type="Resource" id="Resource_fqgx3"]
 script = ExtResource("10_j5lfm")
-Triggers = Array[ExtResource("9_jy30c")]([SubResource("Resource_hwbsi")])
+Triggers = Array[ExtResource("9_jy30c")]([SubResource("Resource_hwbsi"), SubResource("Resource_tpyby")])
 TriggersActive = Array[ExtResource("9_jy30c")]([])
 
 [resource]
