@@ -29,11 +29,13 @@ var continue_disabled:bool = false
 
 var loading:bool = false
 
+var WonderGiftsPath = "user://WonderGifts/"
+
 func _ready():
 	settings.visible = false
 	confirm_panel.hide()
 	AudioManager.switch_to_mainMenu()
-	
+	verify_save_directory(WonderGiftsPath)
 	loading_screen.hide()
 	if FileAccess.file_exists("user://save/Scene/screenshot.png"):
 		var img = Image.load_from_file("user://save/Scene/screenshot.png")
@@ -147,3 +149,6 @@ func set_confirm(num:int = 0):
 func _on_settings_visibility_changed():
 	if settings.visible == false:
 		state = STATES.NORMAL
+
+func verify_save_directory(path:String):
+	DirAccess.make_dir_recursive_absolute(path)

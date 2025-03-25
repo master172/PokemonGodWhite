@@ -23,6 +23,8 @@ evolution_type = 0
 evolving_level = 16
 NextPokemon = ExtResource("11_fumfo")
 can_evolve = false
+trade_evolution_availaible = false
+stone_evolution_availaible = false
 metadata/_custom_type_script = "uid://ba5t688rcjadp"
 
 [sub_resource type="Resource" id="Resource_o1s36"]

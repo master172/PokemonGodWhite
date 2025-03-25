@@ -25,6 +25,12 @@ func trade_pokemon(set_pokemon_index:int,pokemon:game_pokemon):
 	get_party_pokemon(set_pokemon_index).set_trade_done(true)
 	get_party_pokemon(set_pokemon_index).check_evolution()
 	save_data()
+
+func wonder_gift_open(poke:game_pokemon):
+	add_pokemon(poke.duplicate())
+	poke.set_trade_done(true)
+	poke.check_evolution()
+	save_data()
 	
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
@@ -111,6 +117,9 @@ func withdraw(num:int):
 		PcPokemon.erase_pokemon(num)
 		PartyPokemon.add_pokemon(temp)
 
+func erase_party_pokemon(num:int):
+	PartyPokemon.erase_pokemon(num)
+	
 func Pc2Party_pokemon_switch(index1: int, index2: int):
 	var temp = PartyPokemon.pokemons[index1]
 	

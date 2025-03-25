@@ -1,0 +1,440 @@
+[gd_scene load_steps=33 format=3 uid="uid://dgmybegap5hli"]
+
+[ext_resource type="Script" uid="uid://c0ob7tp5bk5xt" path="res://src/Ui/WonderGifts/wonder_gifts.gd" id="1_o8oo7"]
+[ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="1_pom4u"]
+[ext_resource type="Texture2D" uid="uid://dw15pjnbvb5m6" path="res://assets/Ui/WonderGift/GiftCreate.svg" id="2_b3nqf"]
+[ext_resource type="Texture2D" uid="uid://xa20eykfdhnd" path="res://assets/Ui/WonderGift/GiftOpen.svg" id="3_6pviv"]
+[ext_resource type="Script" uid="uid://h52m2gworhiv" path="res://src/Ui/WonderGifts/selection_panel.gd" id="5_h7eoe"]
+[ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_lfxvg"]
+[ext_resource type="Texture2D" uid="uid://780ya5dcv22r" path="res://assets/Ui/WonderGift/left.svg" id="6_fpljh"]
+[ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="6_ts5oh"]
+[ext_resource type="Texture2D" uid="uid://qseobkhtgv5c" path="res://assets/Ui/WonderGift/right.svg" id="8_h7eoe"]
+[ext_resource type="Script" uid="uid://ddfqyijljorur" path="res://src/Ui/WonderGifts/gift_manager.gd" id="10_a82ge"]
+[ext_resource type="Script" uid="uid://c4e4t6udi82ee" path="res://src/Ui/WonderGifts/gift_picker.gd" id="11_vhcb0"]
+
+[sub_resource type="Gradient" id="Gradient_iidx8"]
+offsets = PackedFloat32Array(0, 0.492908, 1)
+colors = PackedColorArray(0.117647, 0.105882, 0.227451, 1, 0.235294, 0.184314, 0.411765, 1, 0.235294, 0.184314, 0.411765, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b3nqf"]
+gradient = SubResource("Gradient_iidx8")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wna62"]
+offsets = PackedFloat32Array(0, 0.453901)
+colors = PackedColorArray(0.423529, 0.309804, 0.647059, 0.027451, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_62wb5"]
+noise_type = 3
+seed = 2
+frequency = 0.028
+fractal_octaves = 8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6pviv"]
+color_ramp = SubResource("Gradient_wna62")
+noise = SubResource("FastNoiseLite_62wb5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8oo7"]
+shader = ExtResource("1_pom4u")
+shader_parameter/outerRadius = 0.542
+shader_parameter/MainAlpha = 0.26
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8oo7"]
+bg_color = Color(0.319838, 0.789474, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.291103, 0.718545, 0.910156, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfxvg"]
+bg_color = Color(0.27736, 0.684622, 0.867188, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.206146, 0.508841, 0.644531, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts5oh"]
+bg_color = Color(0.27736, 0.684622, 0.867188, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.206146, 0.508841, 0.644531, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a65ii"]
+bg_color = Color(0.309804, 0.764706, 0.968627, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.247375, 0.610609, 0.773438, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pviv"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 72
+corner_radius_top_right = 72
+corner_radius_bottom_right = 72
+corner_radius_bottom_left = 72
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhcb0"]
+bg_color = Color(0.552018, 0.851563, 0.564856, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.481117, 0.742188, 0.492305, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7eoe"]
+bg_color = Color(0.465923, 0.71875, 0.476759, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.321569, 0.498039, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a82ge"]
+bg_color = Color(0.465923, 0.71875, 0.476759, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.321569, 0.498039, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpljh"]
+bg_color = Color(0.505882, 0.780392, 0.517647, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.41528, 0.640625, 0.424937, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik2uo"]
+bg_color = Color(1, 1, 1, 0.67451)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imkp6"]
+bg_color = Color(0.847656, 0.847656, 0.847656, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wg1y"]
+bg_color = Color(0.570313, 0.570313, 0.570313, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbjin"]
+bg_color = Color(0.847656, 0.847656, 0.847656, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4swim"]
+bg_color = Color(0.570313, 0.570313, 0.570313, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86o4v"]
+bg_color = Color(0.726563, 0.726563, 0.726563, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="WonderGifts" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8oo7")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_b3nqf")
+
+[node name="Noise" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_6pviv")
+
+[node name="Vigneette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_o8oo7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GiftContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GiftContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Name" type="Label" parent="GiftContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Wonder Gift"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GiftContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Create" type="Button" parent="GiftContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8oo7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lfxvg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8oo7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ts5oh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a65ii")
+text = "Create Gift"
+icon = ExtResource("2_b3nqf")
+
+[node name="Outline" type="Panel" parent="GiftContainer/VBoxContainer/HBoxContainer/Create"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pviv")
+
+[node name="Load" type="Button" parent="GiftContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_vhcb0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_h7eoe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhcb0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a82ge")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpljh")
+text = "Open Gift"
+icon = ExtResource("3_6pviv")
+
+[node name="Outline" type="Panel" parent="GiftContainer/VBoxContainer/HBoxContainer/Load"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pviv")
+
+[node name="SelectionPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_h7eoe")
+
+[node name="ConfirmPanel" type="Panel" parent="SelectionPanel"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.5
+offset_top = -190.0
+offset_right = 265.5
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ik2uo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectionPanel/ConfirmPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -123.0
+offset_right = 184.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="SelectionPanel/ConfirmPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_lfxvg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+text = "Choose the pokemon to create the gift with"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PokeContainer" type="HBoxContainer" parent="SelectionPanel/ConfirmPanel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Left" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer"]
+layout_mode = 2
+icon = ExtResource("6_fpljh")
+flat = true
+
+[node name="Pokemon" type="TextureRect" parent="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture = ExtResource("6_ts5oh")
+
+[node name="Right" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer"]
+layout_mode = 2
+icon = ExtResource("8_h7eoe")
+flat = true
+
+[node name="OptionsContainer" type="HBoxContainer" parent="SelectionPanel/ConfirmPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 58
+alignment = 1
+
+[node name="Yes" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
+theme_override_styles/normal = SubResource("StyleBoxFlat_86o4v")
+text = "Choose"
+
+[node name="No" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
+theme_override_styles/normal = SubResource("StyleBoxFlat_86o4v")
+text = "Cancel"
+
+[node name="GiftManager" type="Node" parent="."]
+script = ExtResource("10_a82ge")
+
+[node name="GiftPicker" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("11_vhcb0")
+
+[connection signal="pressed" from="GiftContainer/VBoxContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="GiftContainer/VBoxContainer/HBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="no" from="SelectionPanel" to="." method="_on_no_pressed"]
+[connection signal="yes" from="SelectionPanel" to="." method="_on_selection_panel_yes"]
+[connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer/Left" to="SelectionPanel" method="_on_left_pressed"]
+[connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer/Right" to="SelectionPanel" method="_on_right_pressed"]
+[connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/Yes" to="SelectionPanel" method="_on_yes_pressed"]
+[connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/No" to="SelectionPanel" method="_on_no_pressed"]
+[connection signal="file_found" from="GiftPicker" to="." method="_on_gift_picker_file_found"]

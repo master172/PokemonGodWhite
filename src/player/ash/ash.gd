@@ -646,4 +646,6 @@ func _pokemon_evolved():
 	evolve.emit()
 
 func set_physics_process_custom(enable: bool):
+	##this was for debugging purposes
+	##to check where the function request are coming from
 	set_physics_process(enable)
