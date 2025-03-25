@@ -4,6 +4,7 @@ var Tilemaps : Array[GameTilemap] = []
 
 var DialogBar = null
 var Player = null
+var Menu :Control= null
 
 var DialogProcessing:bool = false
 

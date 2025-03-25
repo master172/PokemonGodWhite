@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c2a4nw3cf270e"]
+[gd_scene load_steps=46 format=3 uid="uid://c2a4nw3cf270e"]
 
 [ext_resource type="Script" uid="uid://beqe7eafyogc0" path="res://testing/Multiplayer/trade.gd" id="1_wgq22"]
 [ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="2_iidx8"]
@@ -256,43 +256,26 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j02a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7k8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xyyb"]
-bg_color = Color(0, 0.7898, 0.890625, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0.730911, 0.824219, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3tmd"]
-bg_color = Color(0, 0.696271, 0.785156, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0.62699, 0.707031, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7ipt"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd6qm"]
-bg_color = Color(0, 0.7898, 0.890625, 1)
+bg_color = Color(0, 0, 0, 0.760784)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
-border_color = Color(0, 0.730911, 0.824219, 1)
+border_color = Color(0, 0, 0, 0.756863)
 border_blend = true
 corner_radius_top_left = 32
 corner_radius_top_right = 32
@@ -300,12 +283,12 @@ corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q3v6"]
-bg_color = Color(0, 0.696271, 0.785156, 1)
+bg_color = Color(0, 0, 0, 0.921569)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
-border_color = Color(0, 0.62699, 0.707031, 1)
+border_color = Color(0, 0, 0, 0.952941)
 border_blend = true
 corner_radius_top_left = 32
 corner_radius_top_right = 32
@@ -313,108 +296,30 @@ corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qbep"]
-bg_color = Color(0, 0.737255, 0.831373, 1)
+bg_color = Color(0, 0, 0, 0.882353)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
-border_color = Color(0, 0.678951, 0.765625, 1)
+border_color = Color(0, 0, 0, 0.854902)
 border_blend = true
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy1tf"]
-bg_color = Color(1, 0.766347, 0.044285, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 0.654902, 0.14902, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewswg"]
-bg_color = Color(0.894531, 0.58583, 0.133303, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.867188, 0.567923, 0.129228, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5am8"]
-bg_color = Color(1, 0.766347, 0.044285, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 0.654902, 0.14902, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47jav"]
-bg_color = Color(0.894531, 0.58583, 0.133303, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.867188, 0.567923, 0.129228, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4mev"]
-bg_color = Color(1, 0.654902, 0.14902, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.933594, 0.611412, 0.139124, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nice"]
-bg_color = Color(0.949219, 0.312297, 0.24655, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.890625, 0.293019, 0.231331, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en7yb"]
-bg_color = Color(0.905882, 0.298039, 0.235294, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.820313, 0.269886, 0.213068, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aiph"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp6kt"]
 bg_color = Color(0.914063, 0.459027, 0.459027, 1)
@@ -645,7 +550,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TradeScreen/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 18
 
 [node name="ImageContainer" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 256)
@@ -713,7 +618,7 @@ horizontal_alignment = 1
 
 [node name="SelectionContainer" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 alignment = 1
 script = ExtResource("11_pq0rv")
 
@@ -726,44 +631,144 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
 
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/0"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
+
 [node name="1" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
 
 [node name="2" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
 
 [node name="3" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/3"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
 
 [node name="4" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/4"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
 
 [node name="5" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer"]
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_2j02a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2j7k8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5xin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3pxis")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhb82")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3pxis")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts7xt")
 icon = ExtResource("9_vtyy5")
 
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/SelectionContainer/5"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ipt")
+
 [node name="TradeOptions" type="HBoxContainer" parent="TradeScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 48
 alignment = 1
 
 [node name="Trade" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
@@ -772,27 +777,57 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_4xyyb")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y3tmd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2q3v6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yd6qm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2q3v6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6qbep")
 text = "Trade"
 icon = ExtResource("10_52naw")
 
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Trade"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aiph")
+
 [node name="Offer" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_cy1tf")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ewswg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_q5am8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_47jav")
-theme_override_styles/normal = SubResource("StyleBoxFlat_u4mev")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2q3v6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2q3v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6qbep")
 text = "Offer"
 icon = ExtResource("11_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Offer"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aiph")
 
 [node name="Reject" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions"]
 layout_mode = 2
@@ -800,13 +835,28 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_7nice")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7nice")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7nice")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7nice")
-theme_override_styles/normal = SubResource("StyleBoxFlat_en7yb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2q3v6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yd6qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2q3v6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6qbep")
 text = "Reject"
 icon = ExtResource("12_tr3im")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/TradeOptions/Reject"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aiph")
 
 [node name="Disconnect" type="Button" parent="TradeScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -822,6 +872,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qw2mp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iq2bk")
 text = "Disconnect"
 icon = ExtResource("13_vtyy5")
+
+[node name="Outline" type="Panel" parent="TradeScreen/MarginContainer/VBoxContainer/Disconnect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aiph")
 
 [node name="InfoLabel" type="Label" parent="TradeScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2

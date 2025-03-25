@@ -16,6 +16,8 @@ var Summary_Scene
 
 signal saving_done
 
+var lock:bool = false
+
 enum current_state {
 	Empty,
 	Normal,
@@ -31,6 +33,7 @@ enum current_state {
 var CurrentState = current_state.Empty
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Utils.Menu = self
 	Utils.connect("saving_done",show)
 	DialogLayer.get_child(0).function_manager.connect("Save",save)
 	self.visible = false
@@ -43,13 +46,13 @@ func _input(event):
 	match CurrentState:
 		current_state.Empty:
 			if event.is_action_pressed("Menu") and BattleManager.in_battle == false:
-				
-				AudioManager.select()
-				var player = Utils.get_player()
-				if !player.is_moving:
-					player.set_physics_process(false)
-					self.visible = true
-					CurrentState = current_state.Normal
+				if lock == false:
+					AudioManager.select()
+					var player = Utils.get_player()
+					if !player.is_moving:
+						player.set_physics_process(false)
+						self.visible = true
+						CurrentState = current_state.Normal
 					
 		current_state.Normal:
 			if event.is_action_pressed("Menu") or event.is_action_pressed("No"):
@@ -100,6 +103,7 @@ func _input(event):
 						save_dialog()
 						CurrentState = current_state.Save
 					elif current_selected == 7:
+						Utils.Menu = null
 						get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
 					elif current_selected == 6:
 						load_switching_scene()

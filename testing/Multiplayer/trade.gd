@@ -245,6 +245,7 @@ func set_pokemons():
 		remove_directires()
 		Ally_postset()
 		reset_trade_values()
+		selection_container.update_without_signals()
 		
 func Ally_postset():
 	AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
@@ -326,7 +327,7 @@ func _on_disconnect_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	disconnect_network()
-	get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
+	queue_free()
 
 func get_local_ip():
 	var ips = IP.get_local_addresses()

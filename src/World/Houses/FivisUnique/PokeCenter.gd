@@ -51,4 +51,3 @@ func get_heal_pos():
 	
 func get_heal_dir():
 	return Vector2(0,-1)
-

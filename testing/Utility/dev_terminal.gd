@@ -103,6 +103,9 @@ func on_visibility_changed():
 	if not visible:
 		rich_text_label.text = ""
 		line_edit.text = ""
+		Utils.Menu.lock = false
+	else:
+		Utils.Menu.lock = true
 
 func scale_history():
 	if history.size() > MAX_HISTORY_SIZE:

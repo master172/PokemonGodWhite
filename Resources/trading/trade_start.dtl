@@ -1,0 +1,8 @@
+Do you Want to start lan trading (recommended to save before trading)
+- yes
+	Switching To Lan Trading
+	[signal arg="StartTrading"]
+- No
+	Canceled Trading
+	[signal arg="CancelTrading"]
+[end_timeline]

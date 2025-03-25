@@ -126,7 +126,8 @@ directories/dtl_directory={
 "TestDialog": "res://src/Dialogs/TestDialog.dtl",
 "WilliamFirst": "res://src/Dialogs/WilliamFirst.dtl",
 "WinLevelUp": "res://src/Dialogs/WinLevelUp.dtl",
-"WinNormal": "res://src/Dialogs/WinNormal.dtl"
+"WinNormal": "res://src/Dialogs/WinNormal.dtl",
+"trade_start": "res://Resources/trading/trade_start.dtl"
 }
 layout/style_list=[]
 layout/default_style="Default"

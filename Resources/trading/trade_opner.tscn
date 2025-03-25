@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ng37iihckul2"]
+
+[ext_resource type="Script" uid="uid://cohb3goxbxmgt" path="res://Resources/trading/trade_opner.gd" id="1_366py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dy5a"]
+size = Vector2(16, 16)
+
+[node name="TradeOpner" type="Area2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_366py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7dy5a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
