@@ -20,6 +20,7 @@ var next_scene = null
 @onready var HudLayer = $HudLayer
 
 @export var evolution_dialog:DialogueLine = DialogueLine.new()
+@export var selector:Control = null
 
 var first_time_start:bool = true
 

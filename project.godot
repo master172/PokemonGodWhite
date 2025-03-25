@@ -77,6 +77,7 @@ directories/dch_directory={
 "Aiden": "res://src/Dialogs/Characters/Aiden.dch",
 "Ash": "res://src/Dialogs/Characters/Ash.dch",
 "Bea": "res://src/Dialogs/Characters/Bea.dch",
+"Benjamin": "res://Resources/trading/Benjamin.dch",
 "Carter": "res://src/Dialogs/Characters/Carter.dch",
 "Jenney": "res://src/Dialogs/Characters/Jenney.dch",
 "Jodi": "res://src/Dialogs/Characters/Jodi.dch",
@@ -98,6 +99,7 @@ directories/dtl_directory={
 "AidenStall": "res://src/Dialogs/AidenStall.dtl",
 "BeaFirst": "res://src/Dialogs/BeaFirst.dtl",
 "BeaHeal": "res://src/Dialogs/BeaHeal.dtl",
+"BenStart": "res://Resources/trading/BenStart.dtl",
 "CarterEnd": "res://src/Dialogs/CarterEnd.dtl",
 "CarterStart": "res://src/Dialogs/CarterStart.dtl",
 "Caught": "res://src/Dialogs/Caught.dtl",
@@ -127,6 +129,9 @@ directories/dtl_directory={
 "WilliamFirst": "res://src/Dialogs/WilliamFirst.dtl",
 "WinLevelUp": "res://src/Dialogs/WinLevelUp.dtl",
 "WinNormal": "res://src/Dialogs/WinNormal.dtl",
+"trade_cancel": "res://Resources/trading/trade_cancel.dtl",
+"trade_end": "res://Resources/trading/trade_end.dtl",
+"trade_reject": "res://Resources/trading/trade_reject.dtl",
 "trade_start": "res://Resources/trading/trade_start.dtl"
 }
 layout/style_list=[]

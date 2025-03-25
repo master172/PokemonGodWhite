@@ -1,0 +1,8 @@
+Benjamin: Hello my dear friend do you have a pidgey you would like to trade for my pidgeotto                                                
+- Yes
+	Benjamin: Ah thats great whats the wait then.
+	[signal arg="SaidYes"]
+- No
+	Benjamin: Well Thats's a shame
+	[signal arg="SaidNo"]
+[end_timeline]

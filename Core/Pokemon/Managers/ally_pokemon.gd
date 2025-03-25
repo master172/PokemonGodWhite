@@ -20,7 +20,12 @@ func done_loading():
 		for i in PcPokemon.get_pokemons():
 			i.calculate_stats_init()
 	
-
+func trade_pokemon(set_pokemon_index:int,pokemon:game_pokemon):
+	set_pokemon(set_pokemon_index,pokemon.duplicate())
+	get_party_pokemon(set_pokemon_index).set_trade_done(true)
+	get_party_pokemon(set_pokemon_index).check_evolution()
+	save_data()
+	
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
 	load_data()

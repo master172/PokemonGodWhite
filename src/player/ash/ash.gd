@@ -552,7 +552,6 @@ func check_ledge_direction():
 	return
 func check_interaction():
 	if interaction_cast.is_colliding():
-		
 		if Input.is_action_just_pressed("Yes"):
 			if Utils.DialogProcessing == false and Dialogic.current_timeline == null:
 	
@@ -645,3 +644,7 @@ func _pokemon_evolved():
 	if pokemon_manager != null:
 		pokemon_manager.update_pokemon()
 	evolve.emit()
+
+func set_physics_process_custom(enable: bool):
+	print("changed")
+	set_physics_process(enable)

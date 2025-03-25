@@ -249,9 +249,9 @@ func set_pokemons():
 		
 func Ally_postset():
 	AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
-	AllyPokemon.save_data()
 	AllyPokemon.get_party_pokemon(set_pokemon_index).set_trade_done(true)
 	AllyPokemon.get_party_pokemon(set_pokemon_index).check_evolution()
+	AllyPokemon.save_data()
 
 func reset_trade_values():
 	offer_set = false
@@ -296,7 +296,6 @@ func remove_directires():
 			dir.remove(file)
 		dir.remove("user://Trade/")
 		
-	##deleting Trainer save files
 	if DirAccess.dir_exists_absolute("user://Temp/"):
 		var dir = DirAccess.open("user://Temp/")
 		var files = dir.get_files()

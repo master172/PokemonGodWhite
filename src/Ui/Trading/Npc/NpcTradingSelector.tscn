@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://2o1txcjdlokb"]
+
+[ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="1_anda1"]
+[ext_resource type="Script" uid="uid://dv02k2vooq1x6" path="res://src/Ui/Trading/Npc/npc_trading_selector.gd" id="1_r1wtw"]
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r1wtw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon0" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+
+[node name="Icon1" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+pokemon_number = 1
+
+[node name="Icon2" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+pokemon_number = 2
+
+[node name="Icon3" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+pokemon_number = 3
+
+[node name="Icon4" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+pokemon_number = 4
+
+[node name="Icon5" parent="VBoxContainer" instance=ExtResource("1_anda1")]
+layout_mode = 2
+pokemon_number = 5

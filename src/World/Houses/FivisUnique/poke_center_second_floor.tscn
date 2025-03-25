@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dieabbwatyesi"]
+[gd_scene load_steps=7 format=4 uid="uid://dieabbwatyesi"]
 
 [ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="1_foyk3"]
 [ext_resource type="TileSet" uid="uid://dh83mau70x1vp" path="res://Libraries/Tilemaps/Indoors.tres" id="2_1df2n"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="3_r1fff"]
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="4_7dy5a"]
 [ext_resource type="PackedScene" uid="uid://ng37iihckul2" path="res://Resources/trading/trade_opner.tscn" id="5_7bqbn"]
+[ext_resource type="PackedScene" uid="uid://rh1m4pj8g60f" path="res://src/World/Npc/Benjamin.tscn" id="6_joom6"]
 
 [node name="PokeCenterSecondFloor" type="Node2D"]
 y_sort_enabled = true
@@ -59,5 +60,8 @@ Spawn_direction = Vector2(-1, 0)
 
 [node name="TradeOpner" parent="." instance=ExtResource("5_7bqbn")]
 position = Vector2(72, 72)
+
+[node name="Benjamin" parent="." instance=ExtResource("6_joom6")]
+position = Vector2(136, 80)
 
 [editable path="player"]

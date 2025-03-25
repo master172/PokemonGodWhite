@@ -131,6 +131,13 @@ func remove_save_files():
 		for file in files:
 			dir.remove(file)
 	
+	##Deleting Story files
+	if DirAccess.dir_exists_absolute("user://save/Global/"):
+		var dir = DirAccess.open("user://save/Global/")
+		var files = dir.get_files()
+		
+		for file in files:
+			dir.remove(file)
 	##Deleting the pokemon save files
 	AllyPokemon.remove_data()
 	

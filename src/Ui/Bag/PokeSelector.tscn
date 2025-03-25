@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dhoey1dbbtoc2"]
 
 [ext_resource type="Texture2D" uid="uid://dmn1n157dsdkb" path="res://assets/player/ash/Bag/pokeselector.png" id="1_faugp"]
-[ext_resource type="Script" path="res://src/Ui/Bag/PokeSelector.gd" id="2_06fha"]
+[ext_resource type="Script" uid="uid://v2wno1gkmggm" path="res://src/Ui/Bag/PokeSelector.gd" id="2_06fha"]
 [ext_resource type="Texture2D" uid="uid://7uxrskklwy87" path="res://Core/Graphics/Pokemon/Gen1/Icons/ABRA.png" id="2_boq2o"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="3_5ouv3"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="4_heqst"]
@@ -49,8 +49,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rvx5w"]
 _data = {
-"Breathe": SubResource("Animation_ra0pw"),
-"RESET": SubResource("Animation_cg7jj")
+&"Breathe": SubResource("Animation_ra0pw"),
+&"RESET": SubResource("Animation_cg7jj")
 }
 
 [node name="Icon0" type="TextureRect"]
@@ -129,9 +129,9 @@ hframes = 2
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Breathe"
 libraries = {
-"": SubResource("AnimationLibrary_rvx5w")
+&"": SubResource("AnimationLibrary_rvx5w")
 }
+autoplay = "Breathe"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
