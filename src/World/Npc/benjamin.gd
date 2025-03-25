@@ -45,8 +45,8 @@ func trade(Sign:String):
 func _interact():
 	interacting = true
 	Utils.get_player().set_physics_process(false)
-	if Global.has_var("traded"):
-		traded = Global.load_var("traded")
+	if Global.has_var(self.name,"traded"):
+		traded = Global.load_var(self.name,"traded")
 	if traded == false:
 		Dialogic.start(start_dialog)
 	else:
@@ -84,7 +84,7 @@ func pokemon_selected(num:int):
 	if AllyPokemon.get_party_pokemon(num).Base_Pokemon == required_pokemon:
 		traded = true
 		print("traded ", traded)
-		Global.save_var("traded",traded)
+		Global.save_var(self.name,"traded",traded)
 		AllyPokemon.trade_pokemon(num,pokemon)
 		var selector = Utils.get_scene_manager().selector
 		selector.stop()

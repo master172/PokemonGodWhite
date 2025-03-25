@@ -20,10 +20,6 @@ var steps_taken:int = 0:
 	get:
 		return steps_taken
 
-func has_var(key: String) -> bool:
-	return save_data.data.has(key)
-	
-
 func _ready():
 	verify_save_directory(save_file_path)
 
@@ -31,12 +27,19 @@ func verify_save_directory(path: String):
 	DirAccess.make_dir_recursive_absolute(path)
 	load_data()  # Load after ensuring directory exists
 
-func save_var(key: String, value):
-	save_data.data[key] = value
+func save_var(caller: String, key: String, value):
+	if not save_data.data.has(caller):
+		save_data.data[caller] = {}
+	save_data.data[caller][key] = value
 	save_data_to_disk()
 
-func load_var(key: String, default = null):
-	return save_data.data.get(key, default)
+func load_var(caller: String, key: String, default = null):
+	if save_data.data.has(caller):
+		return save_data.data[caller].get(key, default)
+	return default
+
+func has_var(caller: String, key: String) -> bool:
+	return save_data.data.has(caller) and save_data.data[caller].has(key)
 
 func save_data_to_disk():
 	var full_path = save_file_path + save_file_name
