@@ -9,9 +9,14 @@ func check_evolution(pokemon:game_pokemon):
 	TriggersActive = []
 	for i in Triggers:
 		var to_evolve :bool = i.check_evolution(pokemon)
-		if to_evolve == true:
+		var already_can_evolve = i.can_evolve
+		if to_evolve == true and already_can_evolve == false:
 			TriggersActive.append(i)
-			break
+
+func set_trade_availaible(val:bool):
+	TriggersActive = []
+	for i in Triggers:
+		i.set_trade_availabile(val)
 
 func get_active_triggers():
 	return TriggersActive

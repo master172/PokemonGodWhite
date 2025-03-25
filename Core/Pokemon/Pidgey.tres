@@ -17,7 +17,7 @@
 
 [sub_resource type="Resource" id="Resource_hwbsi"]
 script = ExtResource("9_jy30c")
-evolution_type = 0
+evolution_type = 2
 evolving_level = 18
 NextPokemon = ExtResource("8_bj05p")
 can_evolve = false

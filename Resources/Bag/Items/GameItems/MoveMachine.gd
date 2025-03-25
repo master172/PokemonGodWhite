@@ -11,6 +11,7 @@ func _start(pokemon:game_pokemon = game_pokemon.new()):
 	if not pokemon.Base_Pokemon.TmActions.has(action):
 		return false
 	pokemon.move_pool.append(MovePoolAction.new(action))
+	pokemon.learn_moves()
 	return true
 
 func use(pokenum:int,user:BaseItem):

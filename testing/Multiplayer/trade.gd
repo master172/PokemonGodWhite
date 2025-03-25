@@ -58,7 +58,7 @@ func multiplayer_setup():
 	
 func _on_peer_connected(id):
 	print("peer connected ",id)
-	label.text = "connection made with"
+	label.text = "connection made with " + str(1) if multiplayer.is_server() else str(multiplayer.get_unique_id())
 	var new_player_id = multiplayer.get_remote_sender_id()
 	connected_player_id = new_player_id
 
@@ -206,6 +206,9 @@ func set_pokemons():
 		traded_pokemon = temp
 		remove_directires()
 		AllyPokemon.set_pokemon(set_pokemon_index,pokemon.duplicate())
+		AllyPokemon.save_data()
+		AllyPokemon.get_party_pokemon(set_pokemon_index).set_trade_done(true)
+		AllyPokemon.get_party_pokemon(set_pokemon_index).check_evolution()
 		
 func validate_trade():
 	if not (offer_set == true and trader_offer_set == true):
@@ -222,6 +225,7 @@ func validate_trade():
 func _on_reject_pressed() -> void:
 	if trader_accepeted == false:
 		send_rejection()
+		trader_offer_set = false
 
 func send_rejection():
 	if multiplayer.is_server():

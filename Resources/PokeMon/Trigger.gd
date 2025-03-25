@@ -9,6 +9,9 @@ class_name trigger
 @export var NextPokemon:Pokemon
 
 @export var can_evolve:bool = false
+
+@export var trade_evolution_availaible:bool = false
+
 func check_evolution(pokemon:game_pokemon):
 	if evolution_type == 0:
 		if pokemon.level >= evolving_level:
@@ -16,9 +19,16 @@ func check_evolution(pokemon:game_pokemon):
 			return true
 		else:
 			return false
+	elif evolution_type == 2:
+		if trade_evolution_availaible == true:
+			append_evolution(pokemon)
+			return true
 	else:
 		return false
 
+func set_trade_availabile(value:bool):
+	trade_evolution_availaible = value
+	
 func append_evolution(pokemon):
 	if Global.auto_evolve == false:
 		EvolutionManager.pokemon_to_evolve.append(pokemon)

@@ -109,7 +109,7 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gen
 	else:
 		gender = Gender
 	
-	evolutor = Base_Pokemon.evolutor.duplicate()
+	evolutor = Base_Pokemon.evolutor.duplicate(true)
 	
 	friendship = Base_Pokemon.default_friendship
 
@@ -397,6 +397,10 @@ func check_evolution():
 		evolutor.check_evolution(self)
 		print("checking evolution")
 
+func set_trade_done(val:bool):
+	if evolutor != null:
+		evolutor.set_trade_availaible(val)
+		
 func evolve_with_evolutor(num:int):
 	var active_trigger = evolutor.get_active_trigger(num)
 	var poke = active_trigger.get_next_pokemon()
@@ -416,7 +420,7 @@ func evolve(pokemon):
 	learn_moves()
 	recalculate_stats()
 	set_to_max_stats()
-	evolutor = Base_Pokemon.evolutor.duplicate()
+	evolutor = Base_Pokemon.evolutor.duplicate(true)
 
 
 func set_nickname(name):
