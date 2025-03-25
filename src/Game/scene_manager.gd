@@ -335,7 +335,7 @@ func continue_check_evolution():
 		unlaod_evolution()
 
 func unlaod_evolution():
-	Utils.get_player().set_physics_process(true)
+	Utils.get_player().set_physics_process_custom(true)
 	
 	
 func ask_evolution():
@@ -378,7 +378,7 @@ func unload_battle_scene(won:bool = true):
 	for i in battle_layer.get_children():
 		i.queue_free()
 	BattleManager.finish_battle()
-	Utils.get_player().set_physics_process(true)
+	Utils.get_player().set_physics_process_custom(true)
 	Utils.get_player().finish_battle()
 	BattleManager.in_battle = false
 	

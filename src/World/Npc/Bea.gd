@@ -43,7 +43,7 @@ func _interact():
 
 func finish(dial):
 	if dial == current_dialog:
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 
 func heal():
 	look(Vector2(-1,0))
@@ -52,4 +52,4 @@ func heal():
 
 func healing_done(Sign):
 	if Sign == "Done":
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)

@@ -50,7 +50,7 @@ func dialog_event_over():
 	get_viewport().set_input_as_handled()
 	await get_tree().create_timer(0.1).timeout
 	if battling == false:
-		Utils.Player.set_physics_process(true)
+		Utils.Player.set_physics_process_custom(true)
 	emit_signal("event_over")
 	start()
 

@@ -230,4 +230,4 @@ func quit():
 	CurrentState = current_state.Empty
 	handle_closing()
 	if BattleManager.in_battle == false:
-		player.set_physics_process(true)
+		player.set_physics_process_custom(true)

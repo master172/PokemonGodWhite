@@ -56,7 +56,7 @@ func end_finish(dial):
 func recursive_move_check():
 	emit_signal("finishLearningMoves")
 	if MovesToLearn == []:
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 		emit_signal("allfinished")
 		
 	else:

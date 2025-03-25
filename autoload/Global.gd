@@ -7,10 +7,10 @@ var auto_evolve:bool = false
 
 var move_management :bool = false
 
-var data = {}
+var save_data: SaveData
 
 var save_file_path = "user://save/Global/"
-var save_file_name = "Story.json"
+var save_file_name = "Story.tres"
 
 var steps_taken:int = 0:
 	set(value):
@@ -20,28 +20,34 @@ var steps_taken:int = 0:
 	get:
 		return steps_taken
 
+func has_var(key: String) -> bool:
+	return save_data.data.has(key)
+	
+
 func _ready():
 	verify_save_directory(save_file_path)
 
-func verify_save_directory(path:String):
+func verify_save_directory(path: String):
 	DirAccess.make_dir_recursive_absolute(path)
-	load_data()
-	
+	load_data()  # Load after ensuring directory exists
+
 func save_var(key: String, value):
-	data[key] = value
-	save_data()
+	save_data.data[key] = value
+	save_data_to_disk()
 
 func load_var(key: String, default = null):
-	return data.get(key, default)
+	return save_data.data.get(key, default)
 
-func save_data():
-	verify_save_directory(save_file_path)
-	var file = FileAccess.open(save_file_path+save_file_name, FileAccess.WRITE)
-	file.store_string(JSON.stringify(data))
-	file.close()
+func save_data_to_disk():
+	var full_path = save_file_path + save_file_name
+	var err = ResourceSaver.save(save_data, full_path)
+	if err != OK:
+		print("Save failed with error code: ", err)
 
 func load_data():
-	if FileAccess.file_exists(save_file_path+save_file_name):
-		var file = FileAccess.open(save_file_path+save_file_name, FileAccess.READ)
-		data = JSON.parse_string(file.get_as_text())
-		file.close()
+	var full_path = save_file_path + save_file_name
+	if ResourceLoader.exists(full_path):
+		save_data = ResourceLoader.load(full_path) as SaveData
+	else:
+		save_data = SaveData.new()
+		

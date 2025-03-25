@@ -51,7 +51,7 @@ func sell():
 
 func cancel():
 	await get_tree().create_timer(0.1).timeout
-	Utils.get_player().set_physics_process(true)
+	Utils.get_player().set_physics_process_custom(true)
 
 func time_to_evolve():
 	emit_signal("evolve")

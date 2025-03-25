@@ -18,7 +18,7 @@ func _interact():
 func healing(Sign):
 	if Sign == "PokeCenterNo":
 		await get_tree().create_timer(0.1).timeout
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 	elif Sign == "PokeCenterYes":
 		animation_player.play("Heal")
 		AllyPokemon.all_heal()
@@ -28,7 +28,7 @@ func healing(Sign):
 	elif Sign == "HealingDone":
 		animation_player.play("Bow")
 		await get_tree().create_timer(0.1).timeout
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 		
 func heal():
 	Utils.get_player().set_physics_process(false)

@@ -326,6 +326,7 @@ func _on_disconnect_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	disconnect_network()
+	remove_directires()
 	queue_free()
 
 func get_local_ip():

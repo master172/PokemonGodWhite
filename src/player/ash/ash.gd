@@ -646,5 +646,4 @@ func _pokemon_evolved():
 	evolve.emit()
 
 func set_physics_process_custom(enable: bool):
-	print("changed")
 	set_physics_process(enable)

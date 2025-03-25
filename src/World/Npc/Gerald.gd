@@ -39,7 +39,7 @@ func _interact():
 func finish(dial):
 	if dial == current_dialog:
 		if current_dialog == first_dialog:
-			Utils.get_player().set_physics_process(true)
+			Utils.get_player().set_physics_process_custom(true)
 
 func buy():
 	var mart_view = load("res://src/Ui/Mart/mart_view.tscn")

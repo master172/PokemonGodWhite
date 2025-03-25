@@ -105,7 +105,7 @@ func battle(Sign):
 		
 func no(Sign):
 	if Sign == "No" and taliking == true:
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 		
 
 func get_pokemon(num:int):
@@ -134,7 +134,7 @@ func finish(Sign):
 	get_viewport().set_input_as_handled()
 	if Sign == "DialogDone":
 		Utils.save_data(false)
-		Utils.Player.set_physics_process(true)
+		Utils.Player.set_physics_process_custom(true)
 		await get_tree().create_timer(0.1).timeout
 		taliking = false
 		emit_signal("finished")

@@ -12,4 +12,4 @@ func _input(event: InputEvent) -> void:
 		if visible:
 			Utils.get_player().set_physics_process(false)
 		else:
-			Utils.get_player().set_physics_process(true)
+			Utils.get_player().set_physics_process_custom(true)

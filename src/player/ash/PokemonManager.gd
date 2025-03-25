@@ -63,7 +63,7 @@ func _interact():
 func handle_event(Sign:String):
 	if Sign == "Finished":
 		await get_tree().create_timer(0.1).timeout
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 
 func update_friendship():
 	var rng = RandomNumberGenerator.new()

@@ -29,7 +29,7 @@ func _interact():
 	
 func finish(dial):
 	if dial == pick_up_dialog:
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 	DialogLayer.get_child(0).disconnect("finished",finish)
 		
 

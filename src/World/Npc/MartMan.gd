@@ -23,7 +23,7 @@ func buy():
 
 func sell():
 	print("sell")
-	Utils.get_player().set_physics_process(true)
+	Utils.get_player().set_physics_process_custom(true)
 	
 func mart_work(Sign):
 	if Sign == "Buy":
@@ -32,4 +32,4 @@ func mart_work(Sign):
 		sell()
 	elif Sign == "MartCancel":
 		await get_tree().create_timer(0.1).timeout
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)

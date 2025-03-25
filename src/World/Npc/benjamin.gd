@@ -7,9 +7,10 @@ class_name TraderNpc
 
 @onready var anim_state  = animation_tree.get("parameters/playback")
 
-@export var current_dialog:String
+@export var start_dialog:String
 @export var trade_done_dialog:String
 @export var trade_reject_dialog:String
+@export var trade_finish_dialog:String
 
 @export var my_pokemon:Pokemon = null
 @export var required_pokemon:Pokemon = null
@@ -20,10 +21,11 @@ var pokemon:game_pokemon = null
 var traded:bool = false
 var trade_accepted:bool = false
 
+var interacting:bool = false
+
 func _ready():
 	Dialogic.connect("signal_event",trade)
 	Dialogic.connect("timeline_ended",end)
-	Global.save_var("traded",traded)
 	create_pokemon()
 	
 func create_pokemon():
@@ -41,22 +43,26 @@ func trade(Sign:String):
 		trade_accepted = false
 	
 func _interact():
+	interacting = true
 	Utils.get_player().set_physics_process(false)
-	traded = Global.load_var("traded")
+	if Global.has_var("traded"):
+		traded = Global.load_var("traded")
 	if traded == false:
-		Dialogic.start(current_dialog)
+		Dialogic.start(start_dialog)
 	else:
 		Dialogic.start(trade_done_dialog)
 
 func end():
+	if not interacting:
+		return
 	if traded == true:
 		trade_accepted = false
 	if trade_accepted == false:
-		print("is this the cause")
 		get_viewport().set_input_as_handled()
 		await get_tree().create_timer(0.1).timeout
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)
 		Utils.Menu.lock = false
+		interacting = false
 	elif trade_accepted == true:
 		set_connections()
 
@@ -77,14 +83,18 @@ func reset_connections():
 func pokemon_selected(num:int):
 	if AllyPokemon.get_party_pokemon(num).Base_Pokemon == required_pokemon:
 		traded = true
+		print("traded ", traded)
 		Global.save_var("traded",traded)
 		AllyPokemon.trade_pokemon(num,pokemon)
-		end()
+		var selector = Utils.get_scene_manager().selector
+		selector.stop()
+		Dialogic.start(trade_finish_dialog)
 	else:
 		trade_accepted = false
 		var selector = Utils.get_scene_manager().selector
 		selector.stop()
 		Dialogic.start("trade_reject")
+		reset_connections()
 
 func canceled():
 	trade_accepted = false

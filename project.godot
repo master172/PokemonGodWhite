@@ -131,6 +131,7 @@ directories/dtl_directory={
 "WinNormal": "res://src/Dialogs/WinNormal.dtl",
 "trade_cancel": "res://Resources/trading/trade_cancel.dtl",
 "trade_end": "res://Resources/trading/trade_end.dtl",
+"trade_finished": "res://Resources/trading/trade_finished.dtl",
 "trade_reject": "res://Resources/trading/trade_reject.dtl",
 "trade_start": "res://Resources/trading/trade_start.dtl"
 }

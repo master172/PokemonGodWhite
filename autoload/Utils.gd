@@ -32,7 +32,7 @@ func player_dialog_end(sign):
 	if sign == "DialogicDone":
 		get_viewport().set_input_as_handled()
 		await get_tree().create_timer(0.1).timeout
-		get_player().set_physics_process(true)
+		get_player().set_physics_process_custom(true)
 		
 func _ready():
 	Dialogic.connect("signal_event",player_dialog_end)

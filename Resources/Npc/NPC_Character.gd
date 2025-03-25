@@ -22,4 +22,4 @@ func _interact():
 
 func finish(dial):
 	if dial == current_dialog:
-		Utils.get_player().set_physics_process(true)
+		Utils.get_player().set_physics_process_custom(true)

@@ -103,7 +103,7 @@ func _input(event):
 	
 			queue_free()
 			if Utils.get_player() != null:
-				Utils.get_player().set_physics_process(true)
+				Utils.get_player().set_physics_process_custom(true)
 		elif state == STATES.ITEMS:
 			state = STATES.NORMAL
 			current_selected = itemkey

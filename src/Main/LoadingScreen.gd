@@ -38,6 +38,7 @@ func _process(delta):
 			var new_scene = ResourceLoader.load_threaded_get(sceneName)
 			AudioManager.switch_to_exploration()
 			get_tree().change_scene_to_packed(new_scene)
+			#Global.load_data()
 
 
 func change_tip():
