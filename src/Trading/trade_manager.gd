@@ -11,7 +11,7 @@ var self_id: int = 1
 var pokemon: game_pokemon
 var traded_pokemon: game_pokemon
 var offered_pokemon: Pokemon
-var set_pokemon_index: int = 0
+var set_pokemon_index: int = -1
 
 var offer_set := false
 var trader_offer_set := false
@@ -73,7 +73,8 @@ func _on_connected_fail(): multiplayer.multiplayer_peer = null
 func _on_server_disconnected(): multiplayer.multiplayer_peer = null; emit_signal("server_disconnected")
 
 # Offer and Trade Logic
-func offer_pokemon(poke: game_pokemon):
+func offer_pokemon(poke: game_pokemon,num:int):
+	set_pokemon_index = num
 	pokemon = poke
 	offer_set = true
 	_send_offered_pokemon()
@@ -136,6 +137,7 @@ func reject_trade():
 @rpc("any_peer")
 func request_denied():
 	offer_set = false
+	set_pokemon_index = -1
 	emit_signal("offer_denied")
 
 @rpc("any_peer")
@@ -151,6 +153,7 @@ func set_pokemons():
 		print("reached here")
 		
 func Ally_postset():
+	print(set_pokemon_index)
 	AllyPokemon.trade_pokemon(set_pokemon_index,pokemon)
 
 func reset_trade_values():

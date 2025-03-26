@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cl71l5xotypmf"]
+[gd_scene load_steps=27 format=3 uid="uid://cl71l5xotypmf"]
 
 [ext_resource type="Script" uid="uid://c6gtfeysk2437" path="res://src/Ui/Input/TouchInput.gd" id="1_c8ig2"]
 [ext_resource type="Texture2D" uid="uid://x7v3evu3ojwm" path="res://assets/Ui/Input/Button - PS Directional Arrow Down 2.svg" id="1_i2k6i"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://do8r6d5ymxxfo" path="res://assets/Ui/Input/Button - PS Triangle 2.svg" id="14_dm8io"]
 [ext_resource type="Texture2D" uid="uid://fpw28r0cvdrr" path="res://assets/Ui/Input/Button - PS Cross 1.svg" id="15_xpbgu"]
 [ext_resource type="Texture2D" uid="uid://c2ss1x5lxfggy" path="res://assets/Ui/Input/Button - PS Cross 2.svg" id="16_cqova"]
+[ext_resource type="Texture2D" uid="uid://boq0fvs7fdk32" path="res://assets/Ui/Input/debug.svg" id="18_os0fl"]
+[ext_resource type="Texture2D" uid="uid://luf5xg5xvenc" path="res://assets/Ui/Input/debugPressed.svg" id="19_83erp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtlh5"]
 size = Vector2(64, 114)
@@ -35,6 +37,9 @@ radius = 53.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am44n"]
 radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83erp"]
+radius = 42.25
 
 [node name="TouchInput" type="CanvasLayer"]
 layer = 50
@@ -198,6 +203,13 @@ shape = SubResource("CircleShape2D_am44n")
 passby_press = true
 action = "No"
 visibility_mode = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+texture_normal = ExtResource("18_os0fl")
+texture_pressed = ExtResource("19_83erp")
+shape = SubResource("CircleShape2D_83erp")
+passby_press = true
+action = "debug"
 
 [connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
 [connection signal="released" from="Up" to="." method="_on_up_released"]

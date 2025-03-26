@@ -85,7 +85,7 @@ func _on_trade_pressed() -> void:
 	label.text = "waiting for trade confirmation"
 
 func _on_offer_pressed() -> void:
-	TradeManager.offer_pokemon(selected_pokemon)
+	TradeManager.offer_pokemon(selected_pokemon,selected_pokemon_num)
 	label.text = "offer sent"
 	
 func _on_reject_pressed() -> void:
