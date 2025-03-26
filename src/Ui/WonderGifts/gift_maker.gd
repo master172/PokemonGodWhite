@@ -8,10 +8,11 @@ var msg:String = ""
 var to_delete:int = -1
 func _ready():
 	add_child(save_dialog)
+	save_dialog.set_use_native_dialog(true)
 	save_dialog.access = FileDialog.ACCESS_FILESYSTEM
 	save_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	save_dialog.filters = PackedStringArray(["*.tres"])
-	save_dialog.confirmed.connect(_on_save_confirmed)
+	save_dialog.file_selected.connect(_on_save_confirmed)
 	save_dialog.canceled.connect(_on_file_dialog_canceled)
 
 func export_gift(pokemon:game_pokemon,uid:String = "",message:String = ""):
@@ -23,16 +24,17 @@ func create_gift_data(poke:game_pokemon,UID:String = "",message:String = ""):
 	uid = UID
 	msg = message
 
-func _on_save_confirmed():
+func _on_save_confirmed(export_path):
 	AudioManager.select()
-	var export_path = save_dialog.get_current_path()
-	# Create or load your WonderGiftResource (a custom Resource you defined)
+	if export_path == "":
+		OS.alert("Filename cannot be empty!")
+		return
+		
 	var wonder_gift = WonderGift.new()
 	wonder_gift.pokemon = pokemon
 	wonder_gift.uid = uid
 	wonder_gift.message = msg
-
-	# Optional: Ensure the file extension is .tres or .res
+	
 	if not export_path.ends_with(".tres"):
 		export_path += ".tres"
 

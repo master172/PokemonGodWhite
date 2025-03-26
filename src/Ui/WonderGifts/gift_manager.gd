@@ -13,11 +13,12 @@ func start_making_gift(num:int,poke:game_pokemon,uid:String,msg:String):
 
 func load_wonder_gift(import_path: String, current_player_uid: String) ->WonderGift :
 	if not ResourceLoader.exists(import_path):
-		print("Gift file not found")
+		print("invalid path")
 		return null
 
 	var gift: WonderGift = ResourceLoader.load(import_path)
 	if not gift:
+		OS.alert("failed to load gift")
 		print("failed to load gift")
 		return null
 	#if gift.uid == Utils.player_uid:
@@ -37,7 +38,7 @@ func load_wonder_gift(import_path: String, current_player_uid: String) ->WonderG
 			return gift_instance
 	else:
 		return gift_instance
-
+		
 func add_monster_to_collection(monster: game_pokemon):
 	# Example of adding the monster to your collection
 	print("Monster received:", monster.Nick_name)

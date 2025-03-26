@@ -649,6 +649,7 @@ grow_vertical = 2
 [connection signal="export_gift" from="GiftManager" to="GiftMaker" method="_on_gift_manager_export_gift"]
 [connection signal="cancelled_file_pick" from="GiftPicker" to="." method="_on_gift_picker_cancelled_file_pick"]
 [connection signal="file_found" from="GiftPicker" to="." method="_on_gift_picker_file_found"]
+[connection signal="return_normal" from="GiftPicker" to="." method="_return_to_normal"]
 [connection signal="cancelled" from="Message" to="." method="_on_message_cancelled"]
 [connection signal="message_submitted" from="Message" to="." method="_on_message_message_submitted"]
 [connection signal="pressed" from="Message/MarginContainer/VBoxContainer/HBoxContainer/cancel" to="Message" method="_on_button_pressed"]

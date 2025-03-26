@@ -87,9 +87,12 @@ func _on_load_pressed() -> void:
 		gift_picker.import_gift()
 		AudioManager.select()
 
-
+func _return_to_normal():
+	current_state = states.NORMAL
+	
 func _on_gift_picker_file_found(path: String) -> void:
 	current_state = states.NORMAL
+	print("should reach here if possible")
 	var sucess = gift_manager.load_wonder_gift(path,Utils.player_uid)
 	if not sucess == null:
 		celebration.celebrate(sucess)
