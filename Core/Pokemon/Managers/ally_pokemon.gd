@@ -118,6 +118,8 @@ func withdraw(num:int):
 		PartyPokemon.add_pokemon(temp)
 
 func erase_party_pokemon(num:int):
+	if num == -1:
+		return
 	PartyPokemon.erase_pokemon(num)
 	
 func Pc2Party_pokemon_switch(index1: int, index2: int):

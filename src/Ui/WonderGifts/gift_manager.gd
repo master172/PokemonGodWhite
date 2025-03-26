@@ -1,6 +1,6 @@
 extends Node
 
-signal export_gift(pokemon:game_pokemon,uid:String,message:String)
+signal export_gift(pokemon:game_pokemon,uid:String,message:String,num:int)
 
 func _ready() -> void:
 	verify_save_directory("user://WonderGifts/")
@@ -8,12 +8,8 @@ func _ready() -> void:
 func start_making_gift(num:int,poke:game_pokemon,uid:String,msg:String):
 	if num == -1:
 		return "no gift created pokemon not selected"
-	emit_signal("export_gift",poke.duplicate(),uid,msg)
-	erase_pokemon_from_list(num)
-	
-func erase_pokemon_from_list(num:int):
-	AllyPokemon.erase_party_pokemon(num)
-	AllyPokemon.save_data()
+	emit_signal("export_gift",poke.duplicate(),uid,msg,num)
+
 
 func load_wonder_gift(import_path: String, current_player_uid: String) ->WonderGift :
 	if not ResourceLoader.exists(import_path):
