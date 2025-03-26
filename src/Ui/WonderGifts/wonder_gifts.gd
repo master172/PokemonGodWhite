@@ -128,3 +128,6 @@ func _on_celebration_done() -> void:
 
 func _on_celebration_starting() -> void:
 	release_all_focus()
+
+func verify_save_directory(path:String):
+	DirAccess.make_dir_recursive_absolute(path)

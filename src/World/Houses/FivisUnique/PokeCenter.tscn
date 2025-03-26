@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://budiqxxsko1vt"]
+[gd_scene load_steps=20 format=4 uid="uid://budiqxxsko1vt"]
 
 [ext_resource type="Script" uid="uid://dsb18jbp8w4iq" path="res://src/World/Houses/FivisUnique/PokeCenter.gd" id="1_nguti"]
 [ext_resource type="Texture2D" uid="uid://cuohx0f8ynx2" path="res://assets/PokemonTilesets/IndoorTileset.png" id="3_0m44j"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="6_nyvl3"]
 [ext_resource type="Texture2D" uid="uid://ccln5kw8ber7r" path="res://assets/Npc/Important/HealingBalls.png" id="7_0whtu"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="7_2b5nk"]
+[ext_resource type="PackedScene" uid="uid://ng37iihckul2" path="res://Resources/trading/trade_opner.tscn" id="9_qqyik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xoowf"]
 texture = ExtResource("3_0m44j")
@@ -1291,6 +1292,9 @@ next_scene_path = "uid://dieabbwatyesi"
 invisible = true
 Spawn_location = Vector2(216, 112)
 Spawn_direction = Vector2(-1, 0)
+
+[node name="TradeOpner" parent="." instance=ExtResource("9_qqyik")]
+position = Vector2(104, -8)
 
 [connection signal="start_healing" from="NurseJoy" to="." method="_on_nurse_joy_start_healing"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_healing_timer_timeout"]

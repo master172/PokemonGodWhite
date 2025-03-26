@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=46 format=4 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -28,8 +28,6 @@
 [ext_resource type="Script" uid="uid://u6b8s1gf5pxj" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="24_jks6w"]
 [ext_resource type="Script" uid="uid://dyw7lstkx7p10" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
 [ext_resource type="Script" uid="uid://djhr4xvud4035" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
-[ext_resource type="PackedScene" uid="uid://ng37iihckul2" path="res://Resources/trading/trade_opner.tscn" id="29_iokfe"]
-[ext_resource type="Texture2D" uid="uid://c6vuk5wnqcujs" path="res://assets/Ui/Summary/POKEBALL.png" id="30_fmunh"]
 
 [sub_resource type="Resource" id="Resource_lhkw0"]
 script = ExtResource("24_jks6w")
@@ -1897,12 +1895,5 @@ libraries = {
 }
 autoplay = "Default"
 speed_scale = 0.01
-
-[node name="TradeOpner" parent="." instance=ExtResource("29_iokfe")]
-position = Vector2(104, -56)
-
-[node name="Sprite2D" type="Sprite2D" parent="TradeOpner"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("30_fmunh")
 
 [editable path="player"]
