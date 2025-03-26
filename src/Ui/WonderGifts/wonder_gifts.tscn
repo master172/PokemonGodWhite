@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dgmybegap5hli"]
+[gd_scene load_steps=48 format=3 uid="uid://dgmybegap5hli"]
 
 [ext_resource type="Script" uid="uid://c0ob7tp5bk5xt" path="res://src/Ui/WonderGifts/wonder_gifts.gd" id="1_o8oo7"]
 [ext_resource type="Shader" uid="uid://c6iuyafbr0vjc" path="res://testing/Multiplayer/trade.gdshader" id="1_pom4u"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ddfqyijljorur" path="res://src/Ui/WonderGifts/gift_manager.gd" id="10_a82ge"]
 [ext_resource type="Script" uid="uid://c4e4t6udi82ee" path="res://src/Ui/WonderGifts/gift_picker.gd" id="11_vhcb0"]
 [ext_resource type="Script" uid="uid://c7i2keisfgjyx" path="res://src/Ui/WonderGifts/message.gd" id="12_ik2uo"]
+[ext_resource type="Script" uid="uid://dyxkjnq7e3cjn" path="res://src/Ui/WonderGifts/gift_maker.gd" id="12_vbjin"]
 [ext_resource type="Script" uid="uid://b81shvreiyixd" path="res://src/Ui/WonderGifts/celebration.gd" id="14_8wg1y"]
 [ext_resource type="Environment" uid="uid://ssujpccv6q8e" path="res://Core/Evolutions/Glow.tres" id="14_imkp6"]
 
@@ -527,6 +528,12 @@ text = "Cancel"
 [node name="GiftManager" type="Node" parent="."]
 script = ExtResource("10_a82ge")
 
+[node name="GiftMaker" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_vbjin")
+
 [node name="GiftPicker" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("11_vhcb0")
@@ -639,6 +646,7 @@ grow_vertical = 2
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/PokeContainer/Right" to="SelectionPanel" method="_on_right_pressed"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/Yes" to="SelectionPanel" method="_on_yes_pressed"]
 [connection signal="pressed" from="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer/No" to="SelectionPanel" method="_on_no_pressed"]
+[connection signal="export_gift" from="GiftManager" to="GiftMaker" method="_on_gift_manager_export_gift"]
 [connection signal="cancelled_file_pick" from="GiftPicker" to="." method="_on_gift_picker_cancelled_file_pick"]
 [connection signal="file_found" from="GiftPicker" to="." method="_on_gift_picker_file_found"]
 [connection signal="cancelled" from="Message" to="." method="_on_message_cancelled"]

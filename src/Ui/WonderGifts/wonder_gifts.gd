@@ -79,12 +79,8 @@ func _on_selection_panel_yes(num: int, poke: game_pokemon) -> void:
 
 func send_gift_request(num: int, poke: game_pokemon,msg:String):
 	current_state = states.NORMAL
-	var result :String = gift_manager.start_making_gift(num,poke,Utils.player_uid,msg)
-	if not result.begins_with("could not create gift"):
-		OS.alert("the gift file was created at "+result+ ", share this file to your friends","gift created")
-	else:
-		OS.alert(result,"failed to create gift")
-		
+	gift_manager.start_making_gift(num,poke,Utils.player_uid,msg)
+
 func _on_load_pressed() -> void:
 	if current_state == states.NORMAL:
 		current_state = states.PICKING
