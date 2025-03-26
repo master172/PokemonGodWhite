@@ -1,5 +1,9 @@
 extends Node
 
+
+var default_pokemon_path = "res://Core/Pokemon/"
+
+
 @onready var current_pokemon:game_pokemon = AllyPokemon.get_main_pokemon()
 
 func add_debug_party():
@@ -71,9 +75,12 @@ func all_heal():
 	AllyPokemon.all_heal()
 	return "healed all pokemon"
 
-func save():
-	Utils.get_scene_manager().shoot_screen()
-	Utils.save_data(false)
+func save(debug:bool = false):
+	if debug == false:
+		Utils.get_scene_manager().shoot_screen()
+		Utils.save_data(false)
+	else:
+		AllyPokemon.save_data()
 	return "saved game"
 
 func set_position(x:int,y:int):
@@ -118,3 +125,36 @@ func reload():
 
 func quit():
 	get_tree().quit()
+
+func add_pokemon(Name:String,level:int = 5, NickName:String = "",gender:int = -1):
+	var pokemon_refrence = find_pokemon_by_path(Name)
+	if not pokemon_refrence:
+		return "Invalid Request"
+	var pokemon = load(pokemon_refrence)
+	if not pokemon:
+		return "pokemon not found"
+	AllyPokemon.add_pokemon(game_pokemon.new(pokemon,level,NickName,gender))
+	return "pokemon sucessfully added"
+	
+func find_pokemon_by_path(Name:String = "",path:String = default_pokemon_path):
+	var dir = DirAccess.open(path)
+	if not dir:
+		return null
+		
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			file_name = dir.get_next()
+			continue
+		if not file_name.ends_with(".tres"):
+			file_name = dir.get_next()
+			continue
+		if Name == "" or not file_name.get_basename().to_lower() == Name.to_lower():
+			file_name = dir.get_next()
+			continue
+		return path+file_name
+		file_name = dir.get_next()
+		
+	return null
+	

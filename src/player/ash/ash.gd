@@ -614,11 +614,8 @@ func first_start():
 	Utils.create_uid()
 	var pidgey:Pokemon = load("res://Core/Pokemon/Pidgey.tres")
 	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
-	var my_pidgey:game_pokemon = game_pokemon.new(pidgey,7)
 	AllyPokemon.add_pokemon(MyNaichi)
-	AllyPokemon.add_pokemon(my_pidgey)
-	Utils.get_scene_manager().transition_to_scene("res://src/World/Houses/FivisUnique/poke_center_second_floor.tscn",Vector2(216,112),Vector2(-1,0))
-	
+
 func play_footstep():
 	footstep.play()
 
