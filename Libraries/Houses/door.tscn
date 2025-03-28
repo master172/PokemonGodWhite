@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c33p1dn5wi8t6"]
 
-[ext_resource type="Script" path="res://Libraries/Houses/Door.gd" id="1_vcyns"]
+[ext_resource type="Script" uid="uid://blagifkxpt1oj" path="res://Libraries/Houses/Door.gd" id="1_vcyns"]
 [ext_resource type="Texture2D" uid="uid://d3ic7w7bji22c" path="res://assets/Serene_Village/Animated stuff/door_16x16.png" id="2_ny3iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oquvs"]
@@ -105,9 +105,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2mvl"]
 _data = {
-"CloseDoor": SubResource("Animation_32qfk"),
-"OpenDoor": SubResource("Animation_5vg7s"),
-"RESET": SubResource("Animation_t80td")
+&"CloseDoor": SubResource("Animation_32qfk"),
+&"OpenDoor": SubResource("Animation_5vg7s"),
+&"RESET": SubResource("Animation_t80td")
 }
 
 [node name="Door" type="Area2D"]
@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_oquvs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b2mvl")
+&"": SubResource("AnimationLibrary_b2mvl")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -157,4 +157,7 @@ func find_pokemon_by_path(Name:String = "",path:String = default_pokemon_path):
 		file_name = dir.get_next()
 		
 	return null
-	
+
+func change_animation_player(state:bool):
+	Utils.get_player().change_animation(state)
+	return "set animation stae to " + str(state)

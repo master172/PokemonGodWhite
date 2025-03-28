@@ -25,8 +25,10 @@ func _ready():
 
 func enter_door():
 	if player_entered == true:
+		
 		animation_player.play("OpenDoor")
-
+	
+	
 func close_door():
 	if player_entered == true:
 		animation_player.play("CloseDoor")
@@ -39,6 +41,7 @@ func door_closed():
 
 
 func _on_body_entered(body):
+	Utils.get_player().change_animation(false)
 	player_entered = true
 
 
