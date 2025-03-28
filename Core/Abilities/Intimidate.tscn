@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvrmjv7mrxj5n"]
+
+[ext_resource type="Script" uid="uid://j7rp0r82ya66" path="res://Core/Abilities/torment.gd" id="1_72j23"]
+
+[node name="Intimidate" type="Node"]
+script = ExtResource("1_72j23")
+metadata/_custom_type_script = "uid://b0fvns1c7ek6q"

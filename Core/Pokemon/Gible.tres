@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=6 format=3 uid="uid://cdhbxe8oemx0h"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://cdhbxe8oemx0h"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_0qahe"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_0qahe"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_injjv"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_usxvq"]
+[ext_resource type="Resource" uid="uid://dduwkifn3mxwr" path="res://Core/Pokemon/Abilities/Intimidate.tres" id="2_ip1ny"]
 [ext_resource type="Texture2D" uid="uid://i3b617ctf162" path="res://Core/Graphics/Pokemon/Gen4/Front/GIBLE.png" id="3_5lo7j"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="3_h4o5g"]
 [ext_resource type="Texture2D" uid="uid://b6ap054u12tbb" path="res://Core/Graphics/Pokemon/Gen4/Icons/GIBLE.png" id="4_oldwp"]
 [ext_resource type="Texture2D" uid="uid://cduf7dxdkwa3a" path="res://Core/Graphics/Pokemon/Gen4/Followers/GIBLE.png" id="5_uhbmf"]
 
@@ -13,6 +16,10 @@ Id = 443
 Type1 = "Dragon"
 Type2 = "Ground"
 leveleing_type = 0
+Ability = Array[ExtResource("1_injjv")]([ExtResource("2_ip1ny")])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("3_5lo7j")
 Icon = ExtResource("4_oldwp")
 Overworld = ExtResource("5_uhbmf")
@@ -22,7 +29,9 @@ Base_Defense = 45
 Special_Base_Attack = 40
 Special_Base_Defense = 45
 Base_Speed = 42
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_usxvq")])
+Actions = Array[ExtResource("3_h4o5g")]([ExtResource("1_usxvq")])
+TmActions = Array[ExtResource("3_h4o5g")]([])
+EggActions = Array[ExtResource("3_h4o5g")]([])
 base_experience = 67
 Yield_Health = 0
 Yield_Attack = 1
@@ -31,3 +40,8 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 0
 Yield_Speed = 0
 catch_chance = 12
+previous_pokemon = ""
+Tag = ""
+description = ""
+height = 1
+weight = 10

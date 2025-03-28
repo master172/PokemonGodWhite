@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=19 format=3 uid="uid://cgflecyahs0m5"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=20 format=3 uid="uid://cgflecyahs0m5"]
 
 [ext_resource type="Resource" uid="uid://8gsrhcqg7qyw" path="res://Core/Pokemon/Actions/Slash.tres" id="1_1obch"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_3kbbw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_d1w5y"]
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_o037y"]
 [ext_resource type="Texture2D" uid="uid://ddepnuwob1ehj" path="res://Core/Graphics/Zehlvogs/Icons/NAICHI.png" id="2_di5yv"]
+[ext_resource type="Resource" uid="uid://ch287c88iy0ww" path="res://Core/Pokemon/Abilities/Torment.tres" id="2_o1s36"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_qnc0s"]
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="3_i8p32"]
 [ext_resource type="Texture2D" uid="uid://dbud2xu485wsl" path="res://Core/Graphics/Zehlvogs/Follower/NAICHI.png" id="3_jt25t"]
@@ -40,7 +41,7 @@ Id = 0
 Type1 = "Dark"
 Type2 = "Ghost"
 leveleing_type = 2
-Ability = Array[ExtResource("1_d1w5y")]([])
+Ability = Array[ExtResource("1_d1w5y")]([ExtResource("2_o1s36")])
 default_friendship = 300
 Egg_group0 = "Monster"
 Egg_group1 = "Human_like"

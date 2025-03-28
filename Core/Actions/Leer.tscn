@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://du6fhdd45op8m"]
+
+[ext_resource type="Script" uid="uid://dmfwphqy8ed8x" path="res://Core/Actions/leer.gd" id="1_nwkf1"]
+
+[node name="Growl" type="Node2D"]
+script = ExtResource("1_nwkf1")
+stages = -1

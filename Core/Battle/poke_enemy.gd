@@ -37,6 +37,7 @@ var knockback_vector :Vector2 = Vector2.ZERO
 var tackle:bool = false
 
 signal health_changed(body)
+signal defeated(pokemon,attacker,body)
 
 enum attacks {
 	RANGE,
@@ -49,12 +50,14 @@ var attack_num:int = 0
 
 var Attack
 var attack_chosen:bool = false
-signal defeated(pokemon,attacker,body)
+
 
 var stop:bool = false
 var Stun:bool = false
 
 var opposing_pokemons :Array[BattlePokemon] = []
+
+var damage_multiplier:float = 1
 
 func _ready():
 	choose_attack()
@@ -119,7 +122,7 @@ func _on_enemy_follow_state_next_to():
 			finite_state_machine.change_state(melle_attack_state)
 
 func recive_damage(damage,body,Attacker):
-	pokemon.Health -= damage
+	pokemon.Health -= damage * damage_multiplier
 	receive_knockback(body,damage)
 	animate_hurt()
 	if pokemon.Health <= 0:

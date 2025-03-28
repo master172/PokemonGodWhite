@@ -74,6 +74,8 @@ signal attack_chosen(attack:int)
 var opposing_pokemons :Array[PokeEnemy] = []
 var Stun:bool = false
 
+var damage_multiplier:float = 1
+
 func _ready():
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,-1))
@@ -213,7 +215,7 @@ func attack_end():
 func recive_damage(damage,User,Attacker):
 	if dash.is_dashing():
 		return
-	pokemon.Health -= damage
+	pokemon.Health -= damage*damage_multiplier
 	animate_hurt()
 	emit_signal("health_changed",self)
 	receive_knockback(User,damage)

@@ -8,5 +8,5 @@ class_name ability
 
 
 func use():
-    var abilityInstance = Ability.instantiate()
-    return abilityInstance
+	var abilityInstance = Ability.instantiate()
+	return abilityInstance
