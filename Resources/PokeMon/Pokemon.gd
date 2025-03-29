@@ -62,7 +62,7 @@ class_name Pokemon
 )var leveleing_type:int = 2
 
 @export var Ability:Array[ability] = []
- 
+
 @export_group("personality")
 @export var default_friendship:int = 70
 

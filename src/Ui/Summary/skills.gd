@@ -9,9 +9,9 @@ extends TextureRect
 @onready var health_bar = $HealthBar
 
 func _display(pokemon:game_pokemon):
+	abl_tag.text = pokemon.Ability.Name
 	health_bar.max_value = pokemon.Max_Health
 	health_bar.value = pokemon.Health
-	abl_tag.text = "None"
 	at_tag.text = str(pokemon.Attack, "/" , pokemon.Max_Attack)
 	sp_at_tag.text = str(pokemon.Special_Attack, "/" , pokemon.Max_Special_Attack)
 	def_tag.text = str(pokemon.Defense, "/" , pokemon.Max_Defense)

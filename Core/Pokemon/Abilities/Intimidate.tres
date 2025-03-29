@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("2_iy14w")
-name = "Torment"
+Name = "Intimidate"
 description = "lowers opponents attack stage by 2 stages"
 Ability = "uid://dvrmjv7mrxj5n"
 metadata/_custom_type_script = "uid://dmyslj1y34wxw"

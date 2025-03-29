@@ -210,20 +210,18 @@ func load_abilities():
 
 func load_abilities_player():
 	for i:BattlePokemon in allys:
-		var Abilities = i.pokemon.get_ability()
-		if Abilities != []:
-			for j:ability in Abilities:
-				var Ability:GameAbility = j.use()
-				AbilityLoader.add_child(Ability)
-				Ability.Holder = i
-				Ability.pre_setup()
+		var Ability = i.pokemon.get_ability()
+		if Ability != null:
+			var game_ability:GameAbility = Ability.use()
+			AbilityLoader.add_child(game_ability)
+			game_ability.Holder = i
+			game_ability.pre_setup()
 
 func load_abilities_enemy():
 	for i:PokeEnemy in opponents:
-		var Abilities = i.pokemon.get_ability()
-		if Abilities != []:
-			for j:ability in Abilities:
-				var Ability:GameAbility = j.use()
-				AbilityLoader.add_child(Ability)
-				Ability.Holder = i
-				Ability.pre_setup()
+		var Ability = i.pokemon.get_ability()
+		if Ability != null:
+			var game_ability:GameAbility = Ability.use()
+			AbilityLoader.add_child(game_ability)
+			game_ability.Holder = i
+			game_ability.pre_setup()

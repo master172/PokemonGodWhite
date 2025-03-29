@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_x600i")
-name = "Torment"
+Name = "Torment"
 description = "user takes half the damage when below half health"
 Ability = "uid://ctq6aiytki2lb"
 metadata/_custom_type_script = "uid://dmyslj1y34wxw"

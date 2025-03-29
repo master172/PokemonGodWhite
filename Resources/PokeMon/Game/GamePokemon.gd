@@ -71,6 +71,7 @@ class_name game_pokemon
 @export_group("battle")
 @export var held_item:BaseItem = null
 @export var status_condition:StatusCondition = null
+@export var Ability:ability
 
 signal Level_up
 signal experience_added
@@ -117,6 +118,11 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gen
 	evolutor = Base_Pokemon.evolutor.duplicate(true)
 	
 	friendship = Base_Pokemon.default_friendship
+	
+	if Base_Pokemon.Ability != []:
+		
+		Ability = Base_Pokemon.Ability.pick_random()
+		print(Ability.Name)
 
 func set_movepool():
 	for i in Base_Pokemon.Actions:
@@ -503,7 +509,7 @@ func remove_friendship(value:int):
 		friendship = 0
 
 func get_ability():
-	return Base_Pokemon.Ability
+	return Ability
 
 func take_item(item:BaseItem):
 	if held_item != null:

@@ -13,6 +13,7 @@ signal clicked(num:int)
 @onready var health = $Container/health
 @onready var level = $Container/Level
 @onready var gender = $Container/Gender
+@onready var item_sprite: Sprite2D = $Container/ItemSprite
 
 var Active:bool = false
 
@@ -36,6 +37,10 @@ func _display():
 		health.text = (str(pokemon.Health)+"/"+str(pokemon.Max_Health))
 		gender.frame = pokemon.gender
 		level.text = "lv. "+str(pokemon.level)
+		if pokemon.held_item != null:
+			item_sprite.texture = pokemon.held_item.sprite
+		else:
+			item_sprite.texture = null
 	else:
 		container.visible = false
 		

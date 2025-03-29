@@ -1,7 +1,7 @@
 extends Resource
 class_name ability
 
-@export var name :String = ""
+@export var Name :String = ""
 @export var description :String = ""
 
 @export_file("*.tscn") var Ability :String = ""
