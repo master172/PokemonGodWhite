@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://qhgc5yjrxs65"]
 
-[ext_resource type="Script" path="res://src/World/Npc/NurseJoy.gd" id="1_8re76"]
+[ext_resource type="Script" uid="uid://vb73d6hr35hi" path="res://src/World/Npc/NurseJoy.gd" id="1_8re76"]
 [ext_resource type="Texture2D" uid="uid://cn2fp0u114hc7" path="res://assets/Npc/Important/NurseJoy.png" id="2_qsgcc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_art2r"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e1drh"]
 _data = {
-"Heal": SubResource("Animation_opfru"),
-"RESET": SubResource("Animation_l2gf0")
+&"Heal": SubResource("Animation_opfru"),
+&"RESET": SubResource("Animation_l2gf0")
 }
 
 [sub_resource type="Animation" id="Animation_e6gqn"]
@@ -110,10 +110,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2nbkp"]
 _data = {
-"Bow": SubResource("Animation_e6gqn"),
-"Default": SubResource("Animation_u8bog"),
-"Heal": SubResource("Animation_0j2fp"),
-"RESET": SubResource("Animation_xiuju")
+&"Bow": SubResource("Animation_e6gqn"),
+&"Default": SubResource("Animation_u8bog"),
+&"Heal": SubResource("Animation_0j2fp"),
+&"RESET": SubResource("Animation_xiuju")
 }
 
 [node name="NurseJoy" type="CharacterBody2D"]
@@ -145,10 +145,10 @@ color = Color(0, 0, 0, 0)
 
 [node name="CanvasPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_e1drh")
+&"": SubResource("AnimationLibrary_e1drh")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2nbkp")
+&"": SubResource("AnimationLibrary_2nbkp")
 }

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://c8f7dpvp46x03"]
+
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_csgg0"]
+
+[resource]
+script = ExtResource("1_csgg0")
+name = "Poison Spit"
+learned_level = 10
+action = "uid://dvf5o4khgtbia"
+staminaCost = 20
+Type = "Poison"
+power = 35.0
+range = 0
+metadata/_custom_type_script = "uid://ckld52qknsbni"

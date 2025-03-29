@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PoisonEffect" load_steps=2 format=3 uid="uid://tgpmne7w752j"]
+
+[ext_resource type="Script" uid="uid://cylgi702vm581" path="res://Resources/PokeMon/StatusConditions/PoisoneEffect.gd" id="1_1mx36"]
+
+[resource]
+script = ExtResource("1_1mx36")
+status_condition = "uid://dd56gb1wwknxm"
+metadata/_custom_type_script = "uid://cylgi702vm581"

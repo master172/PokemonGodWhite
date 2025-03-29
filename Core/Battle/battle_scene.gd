@@ -117,7 +117,9 @@ func set_opposers():
 	
 	for i in opponents:
 		i.opposing_pokemons = allys
-	
+		if i.opposing_pokemons != []:
+			i.previous_attacking_pokemon = i.opposing_pokemons[0].pokemon
+			
 func battle_pokemon_defeated(pokemon,loser):
 	allys.erase(loser)
 	set_opposers()
@@ -132,35 +134,34 @@ func update_poke_data_enemy(body):
 func update_poke_data_player(body):
 	poke_data.set_player(body.pokemon)
 
-func defeating_dialog(pokemon:game_pokemon,body:BattlePokemon,loser:PokeEnemy):
-	print(pokemon.Nick_name," ",body.name," ",loser.name)
+func defeating_dialog(pokemon:game_pokemon,winning_pokemon:game_pokemon,loser:PokeEnemy):
+	print(pokemon.Nick_name," ",loser.name)
 	opponents.erase(loser)
 	set_opposers()
 	emit_signal("stop")
 	
 	
-	body.pokemon.Level_up.connect(case_level_up.bind(pokemon,body))
+	winning_pokemon.Level_up.connect(case_level_up.bind(pokemon,winning_pokemon))
 
-	body.pokemon.experience_added.connect(case_experience_added.bind(pokemon,body))
+	winning_pokemon.experience_added.connect(case_experience_added.bind(pokemon,winning_pokemon))
 	
-	pokemon.give_experience_points(body.pokemon)
-	body.pokemon.add_friendship(1)
+	pokemon.give_experience_points(winning_pokemon)
+	winning_pokemon.add_friendship(1)
 	
-func case_level_up(pokemon,body):
-	print_debug(pokemon.Nick_name," ",body.name," ",body.pokemon.Nick_name)
-	poke_data.set_player(body.pokemon)
-	dialog_handler.add_won_dialog_level_up(pokemon,body.pokemon)
-	body.pokemon.Level_up.disconnect(case_level_up)
-	body.pokemon.experience_added.disconnect(case_experience_added)
+func case_level_up(pokemon,winning_pokemon:game_pokemon):
+	print_debug(pokemon.Nick_name," ",winning_pokemon.Nick_name)
+	poke_data.set_player(winning_pokemon)
+	dialog_handler.add_won_dialog_level_up(pokemon,winning_pokemon)
+	winning_pokemon.Level_up.disconnect(case_level_up)
+	winning_pokemon.experience_added.disconnect(case_experience_added)
 	
-func case_experience_added(pokemon,body):
+func case_experience_added(pokemon,winning_pokemon:game_pokemon):
+	print_debug(pokemon.Nick_name," ",winning_pokemon.Nick_name)
+	poke_data.set_player(winning_pokemon)
+	dialog_handler.add_won_dialog(pokemon,winning_pokemon)
+	winning_pokemon.Level_up.disconnect(case_level_up)
+	winning_pokemon.experience_added.disconnect(case_experience_added)
 	
-	print_debug(pokemon.Nick_name," ",body.name," ",body.pokemon.Nick_name)
-	poke_data.set_player(body.pokemon)
-	dialog_handler.add_won_dialog(pokemon,body.pokemon)
-	body.pokemon.Level_up.disconnect(case_level_up)
-	body.pokemon.experience_added.disconnect(case_experience_added)
-		
 func _player_attacked(player):
 	emit_signal("player_attacked",player)
 

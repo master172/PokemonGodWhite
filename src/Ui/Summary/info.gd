@@ -53,7 +53,7 @@ func _display(pokemon:game_pokemon):
 	pokemon_id.text = get_file_name_no_extension(pokemon.nature)
 	exp_points.text = str(pokemon.exp)
 	gender.frame = pokemon.gender
-	to_next_level.text = str(pokemon.exp_to_next_level)
+	to_next_level.text = str(pokemon.exp_to_next_level - pokemon.exp)
 	exp_bar.min_value = pokemon.exp_to_current_level
 	exp_bar.max_value = pokemon.exp_to_next_level
 	exp_bar.value = pokemon.exp

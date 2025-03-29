@@ -17,8 +17,11 @@ var steps_taken:int = 0:
 		if value > 9999:
 			value = 0
 		steps_taken = value
+		emit_signal("steps_updated",value)
 	get:
 		return steps_taken
+
+signal steps_updated(steps:int)
 
 func _ready():
 	verify_save_directory(save_file_path)

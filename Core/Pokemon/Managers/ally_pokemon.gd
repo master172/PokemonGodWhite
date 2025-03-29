@@ -11,7 +11,8 @@ var PC_save_file_name = "PC_Pokemon.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)
-
+	Global.steps_updated.connect(check_status_condition)
+	
 func done_loading():
 	if PartyPokemon.pokemon_size() >= 1:
 		for i in PartyPokemon.get_pokemons():
@@ -151,3 +152,11 @@ func battle_end():
 
 func find_pokemon_by_name(Name:String):
 	return PartyPokemon.find_pokemon_by_name(Name)
+
+func check_status_condition(steps:int):
+	for i in PartyPokemon.pokemons:
+		if i.status_condition != null:
+			var can_apply = i.status_condition.check_trigger_condition(steps)
+			if can_apply:
+				i.status_condition.apply_effect(i)
+		

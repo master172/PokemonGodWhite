@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvf5o4khgtbia"]
+
+[ext_resource type="Script" uid="uid://dswgpqmerdknn" path="res://Core/Actions/poison_spit.gd" id="1_l5s2j"]
+
+[sub_resource type="Gradient" id="Gradient_l5s2j"]
+colors = PackedColorArray(0.0229802, 0.476563, 0.0656701, 1, 0, 0.179688, 0.00731456, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ypt7"]
+gradient = SubResource("Gradient_l5s2j")
+
+[sub_resource type="Curve" id="Curve_fpd53"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.28441, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_htsa1"]
+curve = SubResource("Curve_fpd53")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h43pg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 150.0
+initial_velocity_max = 170.0
+gravity = Vector3(0, 0, 0)
+scale_min = 20.0
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_htsa1")
+color_ramp = SubResource("GradientTexture1D_2ypt7")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5s2j"]
+radius = 38.6394
+
+[node name="PoisonSpit" type="Node2D"]
+script = ExtResource("1_l5s2j")
+metadata/_custom_type_script = "uid://bbkmhjgdlmio5"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_h43pg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_l5s2j")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

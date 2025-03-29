@@ -92,7 +92,7 @@ func _ready():
 			held_item.Holder = self
 			held_items.add_child(held_item)
 			held_item.pre_setup()
-			
+		set_inital_status()
 func calc_move_speed():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
 	normal_speed = movement_speed
@@ -233,6 +233,17 @@ func recive_damage(damage,User,Attacker):
 		emit_signal("defeated",pokemon,self)
 		
 
+func recive_plain_damage(damage:int):
+	pokemon.Health -= damage
+	animate_hurt()
+	
+	if pokemon.Health <= 0:
+		die.play()
+		await die.finished
+		pokemon.fainted = true
+		pokemon.Health = 0
+		pokemon.remove_friendship(1)
+		emit_signal("defeated",pokemon,opposing_pokemons[0],self)
 		
 func receive_knockback(body,damage):
 	knockback = true
@@ -313,5 +324,20 @@ func _on_paralysis_timer_timeout():
 
 func add_status_condition(path:String):
 	var effect :VolatileStausCondition = load(path).instantiate()
+	effect.Holder = self
+	status_conditions.add_child(effect)
+
+func set_inital_status():
+	if pokemon.status_condition == null:
+		return
+	var effect:VolatileStausCondition = load(pokemon.status_condition.status_condition).instantiate()
+	effect.Holder = self
+	status_conditions.add_child(effect)
+	
+func add_perma_status_condition(status:StatusCondition):
+	if pokemon.status_condition != null:
+		return
+	pokemon.set_status_condition(status)
+	var effect :VolatileStausCondition = load(status.status_condition).instantiate()
 	effect.Holder = self
 	status_conditions.add_child(effect)

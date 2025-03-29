@@ -17,4 +17,4 @@ func _on_bleeding_timer_timeout() -> void:
 func deal_damage():
 	if bleeding_effect_set == true and Holder != null:
 		print("dealt bleeding damage")
-		Holder.pokemon.Health -= 10
+		Holder.recive_plain_damage(1)

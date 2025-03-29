@@ -70,6 +70,7 @@ class_name game_pokemon
 
 @export_group("battle")
 @export var held_item:BaseItem = null
+@export var status_condition:StatusCondition = null
 
 signal Level_up
 signal experience_added
@@ -80,6 +81,7 @@ signal replaced_moves(pokemon,prev_move,new_move)
 
 signal learning_process_complete
 
+signal recived_condition(staus:StatusCondition)
 #stages
 var attack_stage:int = 0
 var defense_stage:int = 0
@@ -383,6 +385,7 @@ func recive_ev_yield():
 func heal():
 	fainted = false
 	set_to_max_stats()
+	status_condition = null
 
 func replace_moves(index,move:MovePoolAction):
 	move.learned = true
@@ -507,3 +510,8 @@ func take_item(item:BaseItem):
 		held_item.pick_up()
 	held_item = item
 	held_item.count = 1
+
+func set_status_condition(condition:StatusCondition):
+	if status_condition != null:
+		return
+	status_condition = condition

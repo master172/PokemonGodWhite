@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd56gb1wwknxm"]
+
+[ext_resource type="Script" uid="uid://clbhvyephqw1" path="res://Core/StatusConditions/Poisoned.gd" id="1_0yxh7"]
+
+[node name="Poisoned" type="Node"]
+script = ExtResource("1_0yxh7")
+metadata/_custom_type_script = "uid://cum2q12q2bll2"
+
+[node name="PosionedTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="PosionedTimer" to="." method="_on_posioned_timer_timeout"]

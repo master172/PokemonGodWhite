@@ -1,14 +1,10 @@
-extends Node
-class_name VolatileStausCondition
+extends Resource
+class_name StatusCondition
 
-var Holder:CharacterBody2D
+@export_file("*.tscn") var status_condition:String = ""
 
-func _ready() -> void:
-	self.tree_exiting.connect(remove_condition)
-	add_effect()
-	
-func add_effect():
-	pass
-	
-func remove_condition():
-	pass
+func check_trigger_condition(steps:int) ->bool:
+	return false
+
+func apply_effect(pokemon:game_pokemon):
+	return
