@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctq6aiytki2lb"]
 
-[ext_resource type="Script" uid="uid://j7rp0r82ya66" path="res://Core/Abilities/torment.gd" id="1_0c0qr"]
+[ext_resource type="Script" uid="uid://dodh7km0ks0nj" path="res://Core/Abilities/torment.gd" id="1_0c0qr"]
 
 [node name="Torment" type="Node"]
 script = ExtResource("1_0c0qr")

@@ -220,12 +220,19 @@ func _input(event):
 							current_selected = pokekey
 							set_pokemon()
 				1:
-					pass
+					var ci :BaseItem= Inventory.pocket.pockets[current_pocket].items[current_item]
+					if ci.held_item_file != "":
+						max_selected = 6
+						current_itme_state = ITEM_STATES.GIVING
+						_unset_selection()
+						state = STATES.POKEMON
+						current_selected = pokekey
+						set_pokemon()
 				2:
 					pass
 		elif state == STATES.POKEMON:
 			if Inventory.pocket.pockets[current_pocket].items.size() > current_item:
-				var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
+				var ci :BaseItem = Inventory.pocket.pockets[current_pocket].items[current_item]
 				if current_itme_state == ITEM_STATES.USING:
 					if AllyPokemon.get_party_pokemon(current_selected) != null:
 						ci.use(current_selected)
@@ -237,7 +244,18 @@ func _input(event):
 						add_items()
 						current_selected = temp
 						clear_data()
+				elif current_itme_state == ITEM_STATES.GIVING:
+					if AllyPokemon.get_party_pokemon(current_selected) != null:
+						AllyPokemon.get_party_pokemon(current_selected).take_item(ci.duplicate())
+						ci.set_count(-1)
+						poke_container._all_display()
+						clear_items()
+						var temp = current_selected
 						
+						current_selected = bagkey
+						add_items()
+						current_selected = temp
+						clear_data()
 	elif event.is_action_pressed("No"):
 		AudioManager.cancel()
 		if state == STATES.POKEMON:

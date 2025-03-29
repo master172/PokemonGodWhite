@@ -68,6 +68,9 @@ class_name game_pokemon
 @export var friendship:int = 0
 @export var max_friendship:int = 300
 
+@export_group("battle")
+@export var held_item:BaseItem = null
+
 signal Level_up
 signal experience_added
 
@@ -498,3 +501,9 @@ func remove_friendship(value:int):
 
 func get_ability():
 	return Base_Pokemon.Ability
+
+func take_item(item:BaseItem):
+	if held_item != null:
+		held_item.pick_up()
+	held_item = item
+	held_item.count = 1

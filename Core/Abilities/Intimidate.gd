@@ -1,13 +1,14 @@
 extends GameAbility
 
-var health_to_start:int = 0
-@export var divisor:int = 2
-func setup():
-	health_to_start = Holder.pokemon.Max_Health/divisor
-	Holder.health_changed.connect(on_health_changed)
+var opponents= []
+@export var stages:int = -2
 
-func on_health_changed(body:CharacterBody2D):
-	if body.pokemon.Health <= health_to_start:
-		body.damage_multiplier = 0.5
-	else:
-		body.damage_multiplier = 1
+
+func setup():
+	opponents = Holder.opposing_pokemons
+	for i in opponents:
+		print("Intimadting "+i.pokemon.Nick_name)
+		var Target :game_pokemon = i.pokemon
+		Target.attack_stage = clamp(Target.attack_stage + stages,-6,6)
+		print_debug("target attack stage = ",Target.attack_stage)
+		i.animate_modulation_change()

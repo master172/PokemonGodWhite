@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://dsh15gjj2h530"]
+
+[ext_resource type="Resource" uid="uid://bvki8j4vp5ekf" path="res://Resources/Bag/Items/ItemActors/Berries/OranBerry.tres" id="1_eqlwe"]
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="1_rge7u"]
+[ext_resource type="Texture2D" uid="uid://bm4sd2pk4n4fy" path="res://assets/items/Berries/OranBerry.png" id="3_llsrc"]
+
+[resource]
+script = ExtResource("1_rge7u")
+type_Hint = "Berries"
+count = 1
+Name = "Oran Berry"
+item = ExtResource("1_eqlwe")
+held_item_file = "uid://breh5n3jkrebl"
+sprite = ExtResource("3_llsrc")
+Description = "Heals 10 hp of the pokemon can be used in battle automatically by the pokemon"
+price = 5
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

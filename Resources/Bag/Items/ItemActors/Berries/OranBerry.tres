@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Berry" load_steps=2 format=3 uid="uid://bvki8j4vp5ekf"]
+
+[ext_resource type="Script" uid="uid://vevulgidskg3" path="res://Resources/Bag/Items/GameItems/Berry.gd" id="1_vpdp4"]
+
+[resource]
+script = ExtResource("1_vpdp4")
+HealingHealth = 20
+my_function = 0
+metadata/_custom_type_script = "uid://vevulgidskg3"

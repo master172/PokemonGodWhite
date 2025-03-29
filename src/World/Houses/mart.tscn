@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="8_c0gmc"]
 [ext_resource type="Resource" uid="uid://c3xcqywgvc1wb" path="res://Resources/Bag/Items/Super_Potion.tres" id="9_hgc7u"]
 [ext_resource type="Resource" uid="uid://buc3u8aawsrf3" path="res://Resources/Bag/Items/Hyper_Potion.tres" id="10_hgc7u"]
-[ext_resource type="Resource" uid="uid://b6umlamkcla0p" path="res://Resources/Bag/Items/Max_Potion.tres" id="11_uof5w"]
+[ext_resource type="Resource" uid="uid://b6umlamkcla0p" path="res://Core/Max_Potion.tres" id="11_uof5w"]
 [ext_resource type="Resource" uid="uid://d4g3wgtt2kokd" path="res://Resources/Bag/Items/Revive.tres" id="12_snfl5"]
 [ext_resource type="Resource" uid="uid://c2qxs1qeiahwu" path="res://Resources/Bag/Items/Max_Revive.tres" id="13_n15it"]
 [ext_resource type="Resource" uid="uid://cr8cr6tmjuv2c" path="res://Resources/Bag/Items/stones/FlyingStone.tres" id="14_n15it"]

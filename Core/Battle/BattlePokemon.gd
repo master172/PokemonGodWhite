@@ -85,7 +85,12 @@ func _ready():
 		RegenRate *= pokemon.level
 		calc_max_stamina()
 		calc_move_speed()
-		
+		if pokemon.held_item != null:
+			var held_item :HeldItem = load(pokemon.held_item.held_item_file).instantiate()
+			held_item.Holder = self
+			add_child(held_item)
+			held_item.pre_setup()
+			
 func calc_move_speed():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
 	normal_speed = movement_speed
@@ -98,8 +103,6 @@ func regen_stamina():
 	Stamina = min(Stamina + RegenRate , MaxStamina)
 	
 func get_input():
-				
-			
 	if init_delay == false and action == false:
 		if stop == false and resting == false and Stun == false:
 			if Input.is_action_just_pressed("attack1"):

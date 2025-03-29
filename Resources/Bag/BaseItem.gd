@@ -17,6 +17,7 @@ class_name BaseItem
 @export var count:int = 1
 @export var Name:String = "NONE"
 @export var item:Item = null
+@export_file("*.tscn") var held_item_file:String = ""
 @export var sprite:Texture2D = null
 @export_multiline var Description = "None"
 @export var price:int = 200

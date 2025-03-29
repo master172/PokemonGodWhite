@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://breh5n3jkrebl"]
+
+[ext_resource type="Script" uid="uid://1wsapmikgljt" path="res://Core/HeldItems/oran_berry.gd" id="1_ql516"]
+
+[node name="OranBerry" type="Node"]
+script = ExtResource("1_ql516")
+metadata/_custom_type_script = "uid://d2y4plireiv3m"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c8l8c2hch18ui"]
+[gd_scene load_steps=15 format=4 uid="uid://c8l8c2hch18ui"]
 
 [ext_resource type="Texture2D" uid="uid://cuohx0f8ynx2" path="res://assets/PokemonTilesets/IndoorTileset.png" id="1_r4ckr"]
 [ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="2_su562"]
@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="6_lkv26"]
 [ext_resource type="Resource" uid="uid://bcpartihgy8au" path="res://Resources/Bag/Items/Potion.tres" id="7_npq1c"]
 [ext_resource type="Resource" uid="uid://dch5vs2umdnnq" path="res://Resources/Bag/Items/Machines/1.tres" id="8_7370d"]
-[ext_resource type="Resource" uid="uid://b6umlamkcla0p" path="res://Resources/Bag/Items/Max_Potion.tres" id="9_fvu1f"]
+[ext_resource type="Resource" uid="uid://b6umlamkcla0p" path="res://Core/Max_Potion.tres" id="9_fvu1f"]
 [ext_resource type="Resource" uid="uid://c3xcqywgvc1wb" path="res://Resources/Bag/Items/Super_Potion.tres" id="10_as81l"]
 [ext_resource type="Resource" uid="uid://d4g3wgtt2kokd" path="res://Resources/Bag/Items/Revive.tres" id="11_d60xc"]
+[ext_resource type="Resource" uid="uid://dsh15gjj2h530" path="res://Resources/Bag/Items/OranBerry.tres" id="12_npq1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogwvg"]
 texture = ExtResource("1_r4ckr")
@@ -1097,4 +1098,4 @@ can_cycle = false
 
 [node name="MartMan" parent="." instance=ExtResource("5_edxd3")]
 position = Vector2(-72, -16)
-items_to_sell = Array[ExtResource("6_lkv26")]([ExtResource("7_npq1c"), ExtResource("9_fvu1f"), ExtResource("10_as81l"), ExtResource("11_d60xc"), ExtResource("8_7370d")])
+items_to_sell = Array[ExtResource("6_lkv26")]([ExtResource("7_npq1c"), ExtResource("9_fvu1f"), ExtResource("10_as81l"), ExtResource("11_d60xc"), ExtResource("8_7370d"), ExtResource("12_npq1c")])

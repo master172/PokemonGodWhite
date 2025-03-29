@@ -64,7 +64,11 @@ func _ready():
 
 	if pokemon != null:
 		sprite_2d.texture = pokemon.get_overworld_sprite()
-	
+		if pokemon.held_item != null:
+			var held_item :HeldItem = load(pokemon.held_item.held_item_file).instantiate()
+			held_item.Holder = self
+			add_child(held_item)
+			held_item.pre_setup()
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
 	calc_move_speed()
