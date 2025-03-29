@@ -52,6 +52,8 @@ func developer_mode(value:bool) -> String:
 
 func set_pokemon(Name:String):
 	current_pokemon = AllyPokemon.find_pokemon_by_name(Name)
+	if current_pokemon == null:
+		return "Pokemon not found"
 	return "current pokemon is " + current_pokemon.Nick_name
 
 func level_up(pokemon:String = "",times:int = 1):

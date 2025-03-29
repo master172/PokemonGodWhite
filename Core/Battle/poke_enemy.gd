@@ -24,6 +24,8 @@ var movement_speed: float = 128.0
 @onready var knock_back = $Node/KnockBack
 @onready var attack_delay = $AttackDelay
 @onready var paralysis_timer = $ParalysisTimer
+@onready var held_items: Node = $HeldItems
+@onready var status_conditions: Node = $StatusConditions
 
 @onready var finite_state_machine:FiniteStateMachine = $FiniteStateMachine
 
@@ -67,7 +69,7 @@ func _ready():
 		if pokemon.held_item != null:
 			var held_item :HeldItem = load(pokemon.held_item.held_item_file).instantiate()
 			held_item.Holder = self
-			add_child(held_item)
+			held_items.add_child(held_item)
 			held_item.pre_setup()
 	anim_state.travel("Walk")
 	animation_tree.set("parameters/Walk/blend_position",Vector2(0,1))
@@ -240,3 +242,7 @@ func paralyze(time:int=1,modifier:float=0.2):
 func _on_paralysis_timer_timeout():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 0.75) + 50
 	
+func add_status_condition(path:String):
+	var effect :VolatileStausCondition= load(path).instantiate()
+	effect.Holder = self
+	status_conditions.add_child(effect)

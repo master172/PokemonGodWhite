@@ -266,6 +266,10 @@ one_shot = true
 
 [node name="ParalysisTimer" type="Timer" parent="."]
 
+[node name="HeldItems" type="Node" parent="."]
+
+[node name="StatusConditions" type="Node" parent="."]
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]

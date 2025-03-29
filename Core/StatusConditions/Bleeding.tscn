@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://caypdprdmfwi6"]
+
+[ext_resource type="Script" uid="uid://shjwabd1yd64" path="res://Core/StatusConditions/bleeding.gd" id="1_xd4ji"]
+
+[node name="Bleeding" type="Node"]
+script = ExtResource("1_xd4ji")
+metadata/_custom_type_script = "uid://cum2q12q2bll2"
+
+[node name="RemovingTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="BleedingTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RemovingTimer" to="." method="_on_removing_timer_timeout"]
+[connection signal="timeout" from="BleedingTimer" to="." method="_on_bleeding_timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://0pwd2wwly0cw"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://0pwd2wwly0cw"]
 
 [ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="1_5rom2"]
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_rqgsd"]
 [ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_vnlks"]
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_ypwbu"]
 [ext_resource type="Texture2D" uid="uid://bmi5r2togdxy2" path="res://Core/Graphics/Pokemon/Gen6/Front/FENNEKIN.png" id="3_3wxd1"]
+[ext_resource type="Resource" uid="uid://c5mwanc7qogiy" path="res://Core/Pokemon/Actions/Scratch.tres" id="4_bk4js"]
 [ext_resource type="Texture2D" uid="uid://dhvxx3ljfuwkh" path="res://Core/Graphics/Pokemon/Gen6/Icons/FENNEKIN.png" id="4_jpj4r"]
 [ext_resource type="Texture2D" uid="uid://bjui6pb3ipa5c" path="res://Core/Graphics/Pokemon/Gen6/Followers/FENNEKIN.png" id="5_xk3qr"]
 
@@ -28,7 +29,7 @@ Base_Defense = 40
 Special_Base_Attack = 62
 Special_Base_Defense = 60
 Base_Speed = 60
-Actions = Array[ExtResource("1_rqgsd")]([ExtResource("1_5rom2")])
+Actions = Array[ExtResource("1_rqgsd")]([ExtResource("1_5rom2"), ExtResource("4_bk4js")])
 TmActions = Array[ExtResource("1_rqgsd")]([])
 EggActions = Array[ExtResource("1_rqgsd")]([])
 base_experience = 61

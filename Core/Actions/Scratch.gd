@@ -1,5 +1,6 @@
 extends Action
 
+const BLEEDING_EFFECT :String= "res://Core/StatusConditions/Bleeding.tscn"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 var User:CharacterBody2D = null
 
@@ -35,6 +36,7 @@ func _on_area_2d_body_entered(body):
 	if body != User:
 		if body.is_in_group("Pokemon") or body.is_in_group("PlayerPokemon"):
 			holder.calculate_damage(body,User)
+			body.add_status_condition(BLEEDING_EFFECT)
 			if oneshot == false:
 				connect("attack_landed",SignalBus.on_attack_landed)
 				oneshot = true

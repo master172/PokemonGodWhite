@@ -1,26 +1,26 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmndgntrn1nfe"]
 
-[ext_resource type="Script" path="res://Core/Actions/Scracth.gd" id="1_li7ep"]
-[ext_resource type="Texture2D" uid="uid://bndgfssxmbs1" path="res://assets/BattleEffects/ScratchShadowClaw.png" id="2_g02iq"]
+[ext_resource type="Script" uid="uid://bt0x50sgcddwq" path="res://Core/Actions/Scratch.gd" id="1_a652t"]
+[ext_resource type="Texture2D" uid="uid://bndgfssxmbs1" path="res://assets/BattleEffects/ScratchShadowClaw.png" id="2_3dxs4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kv87m"]
-atlas = ExtResource("2_g02iq")
+atlas = ExtResource("2_3dxs4")
 region = Rect2(192, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ut8b3"]
-atlas = ExtResource("2_g02iq")
+atlas = ExtResource("2_3dxs4")
 region = Rect2(576, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibbxr"]
-atlas = ExtResource("2_g02iq")
+atlas = ExtResource("2_3dxs4")
 region = Rect2(384, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jckd6"]
-atlas = ExtResource("2_g02iq")
+atlas = ExtResource("2_3dxs4")
 region = Rect2(0, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch84f"]
-atlas = ExtResource("2_g02iq")
+atlas = ExtResource("2_3dxs4")
 region = Rect2(192, 384, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nb6s8"]
@@ -75,7 +75,7 @@ size = Vector2(40, 102.278)
 
 [node name="Action" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_li7ep")
+script = ExtResource("1_a652t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nb6s8")

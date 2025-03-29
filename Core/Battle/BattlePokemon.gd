@@ -16,6 +16,8 @@ extends CharacterBody2D
 @onready var paralysis_timer = $ParalysisTimer
 @onready var dash = $Dash
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var held_items: Node = $HeldItems
+@onready var status_conditions: Node = $StatusConditions
 
 @export var pokemon :game_pokemon = null
 
@@ -88,7 +90,7 @@ func _ready():
 		if pokemon.held_item != null:
 			var held_item :HeldItem = load(pokemon.held_item.held_item_file).instantiate()
 			held_item.Holder = self
-			add_child(held_item)
+			held_items.add_child(held_item)
 			held_item.pre_setup()
 			
 func calc_move_speed():
@@ -308,3 +310,8 @@ func paralyze(time:int=1,modifier:float=0.2):
 
 func _on_paralysis_timer_timeout():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
+
+func add_status_condition(path:String):
+	var effect :VolatileStausCondition = load(path).instantiate()
+	effect.Holder = self
+	status_conditions.add_child(effect)

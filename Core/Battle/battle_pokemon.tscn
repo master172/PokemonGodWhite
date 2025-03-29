@@ -212,6 +212,10 @@ script = ExtResource("9_vnv32")
 [node name="DurationTimer" type="Timer" parent="Dash"]
 one_shot = true
 
+[node name="HeldItems" type="Node" parent="."]
+
+[node name="StatusConditions" type="Node" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="action_chosen" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_action_chosen"]
 [connection signal="cancel" from="UiLayer/ActionChosen" to="." method="_on_action_chosen_cancel"]
