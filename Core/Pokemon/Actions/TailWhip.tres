@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://dal1jyhtfa528"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://dal1jyhtfa528"]
 
-[ext_resource type="PackedScene" uid="uid://uoifqgix2sbk" path="res://Core/Actions/TailWhip.tscn" id="1_e5jv5"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_jh7ff"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_jh7ff"]
 
 [resource]
 script = ExtResource("2_jh7ff")
 name = "TailWhip"
 learned_level = 1
-action = ExtResource("1_e5jv5")
+action = "uid://uoifqgix2sbk"
+staminaCost = 10
 Type = "Normal"
 power = 0.0
 range = 0

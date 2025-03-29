@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://stoes3mvj7wy"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://stoes3mvj7wy"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_aeq6a"]
-[ext_resource type="PackedScene" uid="uid://dhvtsukji64ch" path="res://Core/Actions/LeechLife.tscn" id="1_verdm"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_aeq6a"]
 
 [resource]
 script = ExtResource("1_aeq6a")
 name = "LeechLife"
 learned_level = 1
-action = ExtResource("1_verdm")
+action = "uid://dhvtsukji64ch"
+staminaCost = 10
 Type = "Grass"
 power = 40.0
 range = 1

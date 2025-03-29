@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://c28p5n6x8po3i"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://c28p5n6x8po3i"]
 
-[ext_resource type="PackedScene" uid="uid://biav4boxyl57c" path="res://Core/Actions/tackle.tscn" id="1_d0684"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_jspu5"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_jspu5"]
 
 [resource]
 script = ExtResource("1_jspu5")
 name = "Tackle"
 learned_level = 1
-action = ExtResource("1_d0684")
+action = "uid://biav4boxyl57c"
+staminaCost = 10
+Type = "Normal"
+power = 35.0
 range = 1

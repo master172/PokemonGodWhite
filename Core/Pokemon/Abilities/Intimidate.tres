@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="ability" load_steps=3 format=3 uid="uid://dduwkifn3mxwr"]
+[gd_resource type="Resource" script_class="ability" load_steps=2 format=3 uid="uid://dduwkifn3mxwr"]
 
-[ext_resource type="PackedScene" uid="uid://dvrmjv7mrxj5n" path="res://Core/Abilities/Intimidate.tscn" id="1_fwehu"]
 [ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="2_iy14w"]
 
 [resource]
 script = ExtResource("2_iy14w")
 name = "Torment"
 description = "lowers opponents attack stage by 2 stages"
-Ability = ExtResource("1_fwehu")
+Ability = "uid://dvrmjv7mrxj5n"
 metadata/_custom_type_script = "uid://dmyslj1y34wxw"

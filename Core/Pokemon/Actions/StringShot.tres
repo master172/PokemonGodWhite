@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://cpo8n8bjupkw3"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://cpo8n8bjupkw3"]
 
-[ext_resource type="PackedScene" uid="uid://cbh7ttclrfj6x" path="res://Core/Actions/string_shot.tscn" id="1_u5156"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_gbovc"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_gbovc"]
 
 [resource]
 script = ExtResource("2_gbovc")
 name = "StringShot"
 learned_level = 1
-action = ExtResource("1_u5156")
+action = "uid://cbh7ttclrfj6x"
+staminaCost = 10
 Type = "Bug"
 power = 0.0
 range = 0

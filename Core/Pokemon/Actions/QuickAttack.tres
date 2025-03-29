@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://bk0hoc58h300g"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://bk0hoc58h300g"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_cfwtk"]
-[ext_resource type="PackedScene" uid="uid://d2iaaypqka7gs" path="res://Core/Actions/QuickAttack.tscn" id="1_fvoie"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_cfwtk"]
 
 [resource]
 script = ExtResource("1_cfwtk")
 name = "QuickAttack"
 learned_level = 3
-action = ExtResource("1_fvoie")
+action = "uid://d2iaaypqka7gs"
+staminaCost = 10
 Type = "Normal"
 power = 35.0
 range = 0

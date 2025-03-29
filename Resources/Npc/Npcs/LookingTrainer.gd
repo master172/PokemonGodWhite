@@ -22,6 +22,7 @@ signal reached_target
 func _ready():
 	save_prep()
 	basic_set()
+	
 	await load_done
 	looking_set()
 	

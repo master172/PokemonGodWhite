@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://y4shqkantpfw"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://y4shqkantpfw"]
 
-[ext_resource type="PackedScene" uid="uid://diqal547otpu6" path="res://Core/Actions/StunSpore.tscn" id="1_vduoi"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_6sc5p"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_6sc5p"]
 
 [resource]
 script = ExtResource("2_6sc5p")
 name = "StunSpore"
 learned_level = 1
-action = ExtResource("1_vduoi")
+action = "uid://diqal547otpu6"
+staminaCost = 10
 Type = "Bug"
 power = 0.0
 range = 0

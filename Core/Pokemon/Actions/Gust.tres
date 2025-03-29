@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://bnsfegc4ufkec"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://bnsfegc4ufkec"]
 
-[ext_resource type="PackedScene" uid="uid://coqbxcj1dmdnq" path="res://Core/Actions/Gust.tscn" id="1_6ekfg"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_d4fk0"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_d4fk0"]
 
 [resource]
 script = ExtResource("2_d4fk0")
 name = "Gust"
 learned_level = 1
-action = ExtResource("1_6ekfg")
+action = "uid://coqbxcj1dmdnq"
+staminaCost = 10
 Type = "Flying"
 power = 40.0
 range = 0

@@ -14,7 +14,7 @@ func Name():
 
 func start_attack(User:CharacterBody2D):
 	if base_action.action != null:
-		var attack = base_action.action.instantiate()
+		var attack = load(base_action.action).instantiate()
 		attack.set_holder(self)
 		attack.set_user(User)
 		if attack.has_method("set_target"):

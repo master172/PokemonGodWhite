@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://copmsnki7ep0k"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://copmsnki7ep0k"]
 
-[ext_resource type="PackedScene" uid="uid://dcn4easwaon75" path="res://Core/Actions/Astonish.tscn" id="1_vru3a"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_rxex8"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_rxex8"]
 
 [resource]
 script = ExtResource("2_rxex8")
 name = "Astonish"
 learned_level = 1
-action = ExtResource("1_vru3a")
+action = "uid://dcn4easwaon75"
+staminaCost = 10
 Type = "Ghost"
 power = 0.0
 range = 0

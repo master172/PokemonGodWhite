@@ -43,6 +43,7 @@ var batteled:bool = false
 signal load_done
 
 func _ready():
+	save_prep()
 	basic_set()
 
 func save_prep():

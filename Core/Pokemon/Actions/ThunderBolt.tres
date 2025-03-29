@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="BaseAction" load_steps=3 format=3 uid="uid://dyye4noc6flfr"]
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://dyye4noc6flfr"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_w8may"]
-[ext_resource type="PackedScene" uid="uid://esuovq8i863f" path="res://Core/Actions/thunder_bolt.tscn" id="1_xwexr"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_w8may"]
 
 [resource]
 script = ExtResource("1_w8may")
 name = "ThunderBolt"
 learned_level = 7
-action = ExtResource("1_xwexr")
+action = "uid://esuovq8i863f"
 staminaCost = 20
 Type = "Electric"
 power = 1.0

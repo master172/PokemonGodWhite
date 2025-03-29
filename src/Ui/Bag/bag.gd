@@ -42,6 +42,15 @@ enum STATES {
 	SELECTION
 }
 
+enum ITEM_STATES {
+	NONE,
+	USING,
+	GIVING,
+	THROWING,
+}
+
+var current_itme_state = ITEM_STATES.NONE
+
 var state:=STATES.NORMAL
 var bagkey:int = 0
 var itemkey:int = 0
@@ -202,15 +211,14 @@ func _input(event):
 			match current_selected:
 				0:
 					var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
-
 					if ci.item != null:
 						if ci.item.get_function() == 0 or ci.item.get_function() == 1:
 							max_selected = 6
+							current_itme_state = ITEM_STATES.USING
 							_unset_selection()
 							state = STATES.POKEMON
 							current_selected = pokekey
 							set_pokemon()
-
 				1:
 					pass
 				2:
@@ -218,7 +226,7 @@ func _input(event):
 		elif state == STATES.POKEMON:
 			if Inventory.pocket.pockets[current_pocket].items.size() > current_item:
 				var ci = Inventory.pocket.pockets[current_pocket].items[current_item]
-				if ci.item.get_function() == 0:
+				if current_itme_state == ITEM_STATES.USING:
 					if AllyPokemon.get_party_pokemon(current_selected) != null:
 						ci.use(current_selected)
 						poke_container._all_display()
@@ -235,6 +243,7 @@ func _input(event):
 		if state == STATES.POKEMON:
 			if v_box_container.get_child_count() > 0:
 				state = STATES.ITEMS
+				current_itme_state = ITEM_STATES.NONE
 				max_selected = v_box_container.get_child_count()
 				unset_pokemon()
 				pokekey = current_selected

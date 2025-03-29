@@ -4,9 +4,9 @@ class_name ability
 @export var name :String = ""
 @export var description :String = ""
 
-@export var Ability :PackedScene = null
+@export_file("*.tscn") var Ability :String = ""
 
 
 func use():
-	var abilityInstance = Ability.instantiate()
+	var abilityInstance = load(Ability).instantiate()
 	return abilityInstance

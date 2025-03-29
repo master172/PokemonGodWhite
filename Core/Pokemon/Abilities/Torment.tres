@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="ability" load_steps=3 format=3 uid="uid://ch287c88iy0ww"]
+[gd_resource type="Resource" script_class="ability" load_steps=2 format=3 uid="uid://ch287c88iy0ww"]
 
-[ext_resource type="PackedScene" uid="uid://ctq6aiytki2lb" path="res://Core/Abilities/Torment.tscn" id="1_whxh4"]
 [ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_x600i"]
 
 [resource]
 script = ExtResource("1_x600i")
 name = "Torment"
 description = "user takes half the damage when below half health"
-Ability = ExtResource("1_whxh4")
+Ability = "uid://ctq6aiytki2lb"
 metadata/_custom_type_script = "uid://dmyslj1y34wxw"
