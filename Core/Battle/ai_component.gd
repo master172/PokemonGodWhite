@@ -4,9 +4,11 @@ class_name EnemyAIManager
 var current_ai:EnemyAI = WildAI
 
 @export var WildAI:EnemyAI = null
+@export var basic_trainer_ai:BasicTrainerAI = null
 
 @onready var ai_level_map:Dictionary[int,EnemyAI] = {
-	0:WildAI
+	0:WildAI,
+	1:basic_trainer_ai,
 }
 
 func _ready() -> void:

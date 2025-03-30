@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=36 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" uid="uid://dqb3ttfx75idx" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
 [ext_resource type="Script" uid="uid://bcnmbcp7k1mwk" path="res://Core/Battle/ai_component.gd" id="18_wo3jq"]
 [ext_resource type="Script" uid="uid://d0iv4qpnpobxi" path="res://Core/Battle/wild_ai.gd" id="19_70msp"]
+[ext_resource type="Script" uid="uid://befhp1u30jvqy" path="res://Core/Battle/basic_trainer_ai.gd" id="20_7u3g6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iuxi6"]
 radius = 30.0
@@ -280,12 +281,17 @@ stream = ExtResource("16_fsbvv")
 [node name="RectTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("WildAI")]
+[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("WildAI", "basic_trainer_ai")]
 script = ExtResource("18_wo3jq")
 WildAI = NodePath("WildAI")
+basic_trainer_ai = NodePath("BasicTrainerAI")
 
 [node name="WildAI" type="Node" parent="AIComponent"]
 script = ExtResource("19_70msp")
+metadata/_custom_type_script = "uid://drgf1fkwfskpm"
+
+[node name="BasicTrainerAI" type="Node" parent="AIComponent"]
+script = ExtResource("20_7u3g6")
 metadata/_custom_type_script = "uid://drgf1fkwfskpm"
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]

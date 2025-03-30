@@ -295,6 +295,9 @@ func initiate_attack(num:int,user:CharacterBody2D):
 func get_learned_attacks_size():
 	return learned_attacks.size()
 
+func get_learned_attacks():
+	return learned_attacks
+	
 func get_all_learned_attacks():
 	return learnable_attacks
 	
