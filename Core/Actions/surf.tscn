@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=3 uid="uid://dii1pds1i34ew"]
+
+[ext_resource type="Script" uid="uid://dhwhahcbsmosp" path="res://Core/Actions/surf.gd" id="1_2jaui"]
+[ext_resource type="Shader" uid="uid://dlh2nyuxs84t7" path="res://Core/Actions/Resources/surf.gdshader" id="2_2jaui"]
+[ext_resource type="Texture2D" uid="uid://c2x34etdfjthd" path="res://assets/BattleEffects/Surf.png" id="3_4andq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqlku"]
+shader = ExtResource("2_2jaui")
+shader_parameter/wave_speed = 0.1
+shader_parameter/wave_strength = 0.01
+shader_parameter/wave_frequency = 1.0
+shader_parameter/ripple_speed = 3.41
+shader_parameter/ripple_strength = 0.2
+shader_parameter/ripple_frequency = 5.0
+shader_parameter/shoreline_radius = 0.376
+shader_parameter/shoreline_thickness = 0.05
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/tiling = 2.0
+shader_parameter/alpha = 0.505
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jaui"]
+radius = 22.0907
+
+[sub_resource type="Animation" id="Animation_2jaui"]
+resource_name = "default"
+length = 1.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/tiling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0743254, 1),
+"update": 0,
+"values": [2.0, 10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.064704, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(50, 50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.505, 0.505, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.66667),
+"transitions": PackedFloat32Array(0.0853775, 1, 1),
+"update": 0,
+"values": [22.0907, 1072.77, 0.01]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.66667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4andq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/tiling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.505]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [22.0907]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqlku"]
+_data = {
+&"RESET": SubResource("Animation_4andq"),
+&"default": SubResource("Animation_2jaui")
+}
+
+[node name="Surf" type="Node2D"]
+script = ExtResource("1_2jaui")
+metadata/_custom_type_script = "uid://bbkmhjgdlmio5"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.443137)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_lqlku")
+texture = ExtResource("3_4andq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2jaui")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lqlku")
+}
+autoplay = "default"

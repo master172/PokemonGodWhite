@@ -44,6 +44,7 @@ var is_surfing:bool = false
 var is_cycling:bool = false
 var jumping_over_ledge:bool = false
 
+var to_switch_pos:Vector2 = Vector2.ZERO
 var surf_timer_active:bool = false
 var speed :float= 4.0
 
@@ -69,7 +70,7 @@ var pokemon_manager
 var pokemon_following:bool = false
 var to_pokemon_follow:bool = true
 #player_states
-enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING}
+enum PlayerState {IDLE, TURNING, WALKING,SURFING,CYCLING,USING}
 enum FacingDirection {LEFT,RIGHT,UP,DOWN}
 
 var playerState = PlayerState.IDLE
@@ -86,6 +87,9 @@ var poke_pos:Vector2 = Vector2(0,16)
 var pokeDirection:Vector2 = Vector2.ZERO
 
 var player_start:bool = false
+
+enum HM_CHECK {NONE,SURF,FLY}
+var current_check = HM_CHECK.NONE
 
 signal player_ready
 signal evolve
@@ -232,6 +236,8 @@ func process_player_input():
 			anim_state.travel("Surf")
 		elif playerState == PlayerState.CYCLING:
 			anim_state.travel("cycleIdle")
+		elif playerState == PlayerState.USING:
+			return
 		else:
 			anim_state.travel("Idle")
 
@@ -406,7 +412,7 @@ func get_current_facing_direction():
 
 func check_water():
 	if playerState != PlayerState.SURFING and surf_timer_active == false:
-		if Input.is_action_just_pressed("CheckWater"):
+		if Input.is_action_just_pressed("Yes"):
 			surf_timer_active = true
 			surf_timer.start()
 			var desired_place: Vector2 = Vector2.ZERO
@@ -431,7 +437,7 @@ func check_water():
 
 func check_shore():
 	if playerState == PlayerState.SURFING and surf_timer_active == false:
-		if Input.is_action_just_pressed("CheckWater"):
+		if Input.is_action_just_pressed("Yes"):
 			surf_timer_active = true
 			surf_timer.start()
 			var desired_place = Vector2.ZERO
@@ -453,26 +459,35 @@ func check_shore():
 				get_tree().current_scene.add_child(Surf)
 				Surf.process_tile(self,"shore")
 
-func player_surfing(data,check):
+func call_before_surf(data,check):
 	if data[0] != false:
 		if check == "surf":
 			if can_surf == true:
-				remove_overworld_pokemon()
-				is_surfing = true
-				is_cycling = false
-				is_running = false
-				playerState = PlayerState.SURFING
-				global_position = data[1]+Vector2(0,8)
+				playerState = PlayerState.USING
+				to_switch_pos = data[1]
+				current_check = HM_CHECK.SURF
+				anim_state.travel("UsePokemon")
 		elif check == "shore":
 			if playerState == PlayerState.SURFING:
-				
-				is_surfing = false
-				playerState = PlayerState.IDLE
-				global_position = data[1]+Vector2(0,8)
-				to_pokemon_follow = true
-				poke_pos = self.position +Vector2(0,16)
-				pokeDirection = self.get_current_facing_direction()
+				to_switch_pos = data[1]
+				current_check = HM_CHECK.NONE
+				shore()
 
+func surf():
+	remove_overworld_pokemon()
+	is_surfing = true
+	is_cycling = false
+	is_running = false
+	playerState = PlayerState.SURFING
+	global_position = to_switch_pos+Vector2(0,8)
+
+func shore():
+	is_surfing = false
+	playerState = PlayerState.IDLE
+	global_position = to_switch_pos+Vector2(0,8)
+	to_pokemon_follow = true
+	poke_pos = self.position +Vector2(0,16)
+	pokeDirection = self.get_current_facing_direction()
 
 func _on_surf_timer_timeout():
 	surf_timer_active = false
@@ -494,15 +509,6 @@ func update_casts():
 	
 	interaction_cast.set_target_position(desired_step)
 	interaction_cast.force_raycast_update()
-
-#func get_clicked_tile_power():
-#	if Input.is_action_just_pressed("LeftClick"):
-#		var clicked_cell = Utils.Tilemap.local_to_map(Utils.Tilemap.get_local_mouse_position())
-#		var data =  Utils.Tilemap.get_cell_tile_data(0, clicked_cell)
-#		if data:
-#			print(data.get_custom_data("surf"))
-#		else:
-#			print("null")
 
 func entered_door():
 	emit_signal("player_entered_door_signal")
@@ -646,3 +652,8 @@ func set_physics_process_custom(enable: bool):
 	##this was for debugging purposes
 	##to check where the function request are coming from
 	set_physics_process(enable)
+
+func swith_after_call():
+	if current_check == HM_CHECK.SURF:
+		current_check = HM_CHECK.NONE
+		surf()

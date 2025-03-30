@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MoveMachine" load_steps=3 format=3 uid="uid://c1n8pcmvn4h5m"]
+
+[ext_resource type="Resource" uid="uid://dn6v8u0lmfpoo" path="res://Core/Pokemon/Actions/Surf.tres" id="1_ymlcb"]
+[ext_resource type="Script" uid="uid://blk8w7bpsxwqu" path="res://Resources/Bag/Items/GameItems/MoveMachine.gd" id="2_gw403"]
+
+[resource]
+script = ExtResource("2_gw403")
+singal_use = false
+action = ExtResource("1_ymlcb")
+my_function = 0
+metadata/_custom_type_script = "uid://blk8w7bpsxwqu"

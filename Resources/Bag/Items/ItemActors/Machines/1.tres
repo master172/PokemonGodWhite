@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_vnx4x")
-singal_use = false
+singal_use = true
 action = ExtResource("1_swcm7")
 my_function = 0
 metadata/_custom_type_script = "uid://blk8w7bpsxwqu"

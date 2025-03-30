@@ -1,5 +1,6 @@
 extends Node2D
 
+const SURF = preload("res://Core/Pokemon/Actions/Surf.tres")
 var can_return:bool = true
 var tile_cords
 var sucess
@@ -9,7 +10,7 @@ var faliure
 
 func process_tile(player:Node2D,check:String):
 	var result = process_tilemap_collision(player,check)
-	player.player_surfing(result,check)
+	player.call_before_surf(result,check)
 	print(result,check)
 	queue_free()
 	
@@ -22,7 +23,7 @@ func process_tilemap_collision(player:Node2D,check:String):
 	var tilemaps:Array[TileMapLayer]
 	for i in Tilemaps:
 		tilemaps.append(i.ground_layer)
-			
+		
 	if tilemaps != []:
 		for current_tilemap in tilemaps:
 			print(current_tilemap.name)
@@ -53,11 +54,21 @@ func process_tilemap_collision(player:Node2D,check:String):
 		if check == "shore":
 			if returning_value == [true] and can_return == true:
 				#print(returning_value)
+				
 				return sucess
 		elif check == "surf":
+			can_return = check_pokemons_know_surf()
 			if returning_value == [true] and can_return == true:
 				#print(returning_value)
+				
 				return sucess
 		return faliure
 	else:
 		return [false]
+
+func check_pokemons_know_surf() ->bool:
+	for i:game_pokemon in AllyPokemon.get_party_pokemons():
+		for j in i.learned_attacks:
+			if j.base_action == SURF:
+				return true
+	return false

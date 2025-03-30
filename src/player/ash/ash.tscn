@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://dv6h8hgby3phq"]
+[gd_scene load_steps=135 format=3 uid="uid://dv6h8hgby3phq"]
 
 [ext_resource type="Texture2D" uid="uid://dmynvvrcfmr80" path="res://assets/player/ash/ash.png" id="1_5y4tl"]
 [ext_resource type="Script" uid="uid://c82iy61rmwmoh" path="res://src/player/ash/ash.gd" id="1_kcwe4"]
@@ -108,6 +108,36 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(131, 39, 16, 19), Rect2(113, 39, 16, 18), Rect2(149, 39, 16, 19), Rect2(113, 39, 16, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_f55f4"]
+resource_name = "UsePokemon"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(5, 68, 18, 19), Rect2(25, 68, 18, 19), Rect2(44, 68, 18, 19), Rect2(64, 68, 18, 19), Rect2(85, 68, 18, 19)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swith_after_call"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yhfbn"]
@@ -644,6 +674,7 @@ tracks/1/keys = {
 resource_name = "surfUp"
 length = 1.8
 loop_mode = 1
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -912,6 +943,7 @@ _data = {
 &"RunLeft": SubResource("Animation_bgxb5"),
 &"RunRight": SubResource("Animation_ids25"),
 &"RunUp": SubResource("Animation_p6f76"),
+&"UsePokemon": SubResource("Animation_f55f4"),
 &"cycleDown": SubResource("Animation_yhfbn"),
 &"cycleIdleDown": SubResource("Animation_hcf3g"),
 &"cycleIdleLeft": SubResource("Animation_cko1q"),
@@ -1064,6 +1096,9 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_evn4t")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f55f4"]
+animation = &"UsePokemon"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ui86f"]
 animation = &"walkLeft"
 
@@ -1211,28 +1246,39 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8rjqp"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sly6d"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xre7k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dcele"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8wgns"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xv4xc"]
+states/End/position = Vector2(1117, 80)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_5devn")
-states/Idle/position = Vector2(334, 100)
+states/Idle/position = Vector2(458, 80)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_vlxsx")
-states/Run/position = Vector2(451, 255)
-states/Start/position = Vector2(168, 100)
+states/Run/position = Vector2(610, 334)
+states/Start/position = Vector2(169, 80)
 states/Surf/node = SubResource("AnimationNodeBlendSpace2D_bk5py")
-states/Surf/position = Vector2(451, 8)
+states/Surf/position = Vector2(610, -7)
 states/SurfTurn/node = SubResource("AnimationNodeBlendSpace2D_1vjx1")
-states/SurfTurn/position = Vector2(274, 8)
+states/SurfTurn/position = Vector2(610, -164)
 states/Turn/node = SubResource("AnimationNodeBlendSpace2D_h1r6q")
-states/Turn/position = Vector2(451, 179)
+states/Turn/position = Vector2(610, 171)
+states/UsePokemon/node = SubResource("AnimationNodeAnimation_f55f4")
+states/UsePokemon/position = Vector2(308, -75)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ajhc2")
-states/Walk/position = Vector2(553, 100)
+states/Walk/position = Vector2(753, 80)
 states/cycle/node = SubResource("AnimationNodeBlendSpace2D_0n7jp")
-states/cycle/position = Vector2(47, 292)
+states/cycle/position = Vector2(257, 330)
 states/cycleIdle/node = SubResource("AnimationNodeBlendSpace2D_yhujw")
-states/cycleIdle/position = Vector2(151, 202)
+states/cycleIdle/position = Vector2(361, 240)
 states/cycleTurn/node = SubResource("AnimationNodeBlendSpace2D_e6idt")
-states/cycleTurn/position = Vector2(255, 296)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwm2l"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_rwh7e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_brjux"), "Idle", "Turn", SubResource("AnimationNodeStateMachineTransition_1ce3x"), "Turn", "Idle", SubResource("AnimationNodeStateMachineTransition_87t22"), "Turn", "Walk", SubResource("AnimationNodeStateMachineTransition_n0vnf"), "Walk", "Turn", SubResource("AnimationNodeStateMachineTransition_ft56w"), "Idle", "Surf", SubResource("AnimationNodeStateMachineTransition_fx44w"), "Surf", "Idle", SubResource("AnimationNodeStateMachineTransition_jmi2e"), "Surf", "Walk", SubResource("AnimationNodeStateMachineTransition_e1j1w"), "Walk", "Surf", SubResource("AnimationNodeStateMachineTransition_dovaj"), "SurfTurn", "Surf", SubResource("AnimationNodeStateMachineTransition_14g3v"), "Surf", "SurfTurn", SubResource("AnimationNodeStateMachineTransition_yhtxt"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_rsckp"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4kv4"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_kdt2x"), "Run", "Turn", SubResource("AnimationNodeStateMachineTransition_4a4xp"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_ipoe7"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_w1vx0"), "Idle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_vbc8t"), "cycleIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_ugir4"), "cycleIdle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_cdd6x"), "cycleTurn", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_7c0bt"), "cycleIdle", "cycle", SubResource("AnimationNodeStateMachineTransition_ay2gp"), "cycle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_o72fi"), "cycle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_ai0dp"), "cycleTurn", "cycle", SubResource("AnimationNodeStateMachineTransition_8rjqp")]
-graph_offset = Vector2(-63, -13)
+states/cycleTurn/position = Vector2(465, 334)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwm2l"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_rwh7e"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_brjux"), "Idle", "Turn", SubResource("AnimationNodeStateMachineTransition_1ce3x"), "Turn", "Idle", SubResource("AnimationNodeStateMachineTransition_87t22"), "Turn", "Walk", SubResource("AnimationNodeStateMachineTransition_n0vnf"), "Walk", "Turn", SubResource("AnimationNodeStateMachineTransition_ft56w"), "Idle", "Surf", SubResource("AnimationNodeStateMachineTransition_fx44w"), "Surf", "Idle", SubResource("AnimationNodeStateMachineTransition_jmi2e"), "Surf", "Walk", SubResource("AnimationNodeStateMachineTransition_e1j1w"), "Walk", "Surf", SubResource("AnimationNodeStateMachineTransition_dovaj"), "SurfTurn", "Surf", SubResource("AnimationNodeStateMachineTransition_14g3v"), "Surf", "SurfTurn", SubResource("AnimationNodeStateMachineTransition_yhtxt"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_rsckp"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4kv4"), "Turn", "Run", SubResource("AnimationNodeStateMachineTransition_kdt2x"), "Run", "Turn", SubResource("AnimationNodeStateMachineTransition_4a4xp"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_ipoe7"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_w1vx0"), "Idle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_vbc8t"), "cycleIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_ugir4"), "cycleIdle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_cdd6x"), "cycleTurn", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_7c0bt"), "cycleIdle", "cycle", SubResource("AnimationNodeStateMachineTransition_ay2gp"), "cycle", "cycleIdle", SubResource("AnimationNodeStateMachineTransition_o72fi"), "cycle", "cycleTurn", SubResource("AnimationNodeStateMachineTransition_ai0dp"), "cycleTurn", "cycle", SubResource("AnimationNodeStateMachineTransition_8rjqp"), "UsePokemon", "Idle", SubResource("AnimationNodeStateMachineTransition_sly6d"), "Idle", "UsePokemon", SubResource("AnimationNodeStateMachineTransition_xre7k"), "Surf", "UsePokemon", SubResource("AnimationNodeStateMachineTransition_dcele"), "UsePokemon", "Surf", SubResource("AnimationNodeStateMachineTransition_8wgns")]
+graph_offset = Vector2(-241, -112)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f6evh"]
 particle_flag_disable_z = true

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://nc8mga6oyumt"]
+
+[ext_resource type="Resource" uid="uid://c1n8pcmvn4h5m" path="res://Resources/Bag/Items/ItemActors/Machines/HM1.tres" id="1_2v8nd"]
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="2_s8ht6"]
+[ext_resource type="Texture2D" uid="uid://bl284mwewsl84" path="res://assets/items/Machines/1.png" id="3_16nji"]
+
+[resource]
+script = ExtResource("2_s8ht6")
+type_Hint = "Machines"
+count = 1
+Name = "HM 01 Surf"
+item = ExtResource("1_2v8nd")
+held_item_file = ""
+sprite = ExtResource("3_16nji")
+Description = "Teaches the move surf to the given pokemon"
+price = 100
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

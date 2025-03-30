@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseAction" load_steps=2 format=3 uid="uid://dn6v8u0lmfpoo"]
+
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="1_pc21g"]
+
+[resource]
+script = ExtResource("1_pc21g")
+name = "Surf"
+learned_level = 1
+action = "uid://dii1pds1i34ew"
+staminaCost = 40
+Type = "Water"
+power = 100.0
+range = 0
+metadata/_custom_type_script = "uid://ckld52qknsbni"

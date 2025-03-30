@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=47 format=4 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://u6b8s1gf5pxj" path="res://src/Npc/Base/ResourceScripts/Events/DialogEvent.gd" id="24_jks6w"]
 [ext_resource type="Script" uid="uid://dyw7lstkx7p10" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
 [ext_resource type="Script" uid="uid://djhr4xvud4035" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
+[ext_resource type="Resource" uid="uid://nc8mga6oyumt" path="res://Resources/Bag/Items/Machines/HM1.tres" id="27_iokfe"]
 
 [sub_resource type="Resource" id="Resource_lhkw0"]
 script = ExtResource("24_jks6w")
@@ -1852,6 +1853,12 @@ pick_up_dialog = ExtResource("14_yqc7c")
 z_index = 1
 position = Vector2(-360, -16)
 item = ExtResource("13_x3ica")
+pick_up_dialog = ExtResource("14_yqc7c")
+
+[node name="OverWorldItem3" parent="Items" instance=ExtResource("12_yku7x")]
+z_index = 1
+position = Vector2(56, -112)
+item = ExtResource("27_iokfe")
 pick_up_dialog = ExtResource("14_yqc7c")
 
 [node name="Door" parent="." instance=ExtResource("19_uecm5")]

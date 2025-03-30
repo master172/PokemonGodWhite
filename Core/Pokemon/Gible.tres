@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://cdhbxe8oemx0h"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://cdhbxe8oemx0h"]
 
 [ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_0qahe"]
 [ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_injjv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="3_h4o5g"]
 [ext_resource type="Texture2D" uid="uid://b6ap054u12tbb" path="res://Core/Graphics/Pokemon/Gen4/Icons/GIBLE.png" id="4_oldwp"]
 [ext_resource type="Texture2D" uid="uid://cduf7dxdkwa3a" path="res://Core/Graphics/Pokemon/Gen4/Followers/GIBLE.png" id="5_uhbmf"]
+[ext_resource type="Resource" uid="uid://dn6v8u0lmfpoo" path="res://Core/Pokemon/Actions/Surf.tres" id="8_ip1ny"]
 
 [resource]
 script = ExtResource("1_0qahe")
@@ -30,7 +31,7 @@ Special_Base_Attack = 40
 Special_Base_Defense = 45
 Base_Speed = 42
 Actions = Array[ExtResource("3_h4o5g")]([ExtResource("1_usxvq")])
-TmActions = Array[ExtResource("3_h4o5g")]([])
+TmActions = Array[ExtResource("3_h4o5g")]([ExtResource("8_ip1ny")])
 EggActions = Array[ExtResource("3_h4o5g")]([])
 base_experience = 67
 Yield_Health = 0
