@@ -96,9 +96,9 @@ func _input(event):
 			await get_tree().create_timer(0.1).timeout
 			if waiting == false:
 				if selected_option == 6:
-					Utils.get_scene_manager().transistion_exit_party_screen()
+					Utils.get_scene_manager().transition_exit_party_screen()
 				else:
-					Utils.get_scene_manager().transistion_to_summary_scene(selected_option)
+					Utils.get_scene_manager().transition_to_summary_scene(selected_option)
 					summary = true
 		elif state == states.switching:
 			if selected_option != switch_a:

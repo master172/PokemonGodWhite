@@ -57,7 +57,7 @@ func Lost_battle(pokemon):
 
 func on_lost_battle_finished(dialog):
 	if dialog == "Defeat":
-		Utils.get_scene_manager().transistion_exit_battle_loast()
+		Utils.get_scene_manager().transition_exit_battle_loast()
 		AllyPokemon.all_heal()
 	
 func Lost_match(pokemon):
@@ -75,7 +75,7 @@ func _run():
 
 func _run_finished(dialog):
 	if dialog == "Ran":
-		Utils.get_scene_manager().transistion_exit_battle_scene()
+		Utils.get_scene_manager().transition_exit_battle_scene()
 
 func start_move_learning():
 	PokemonManager.connect("allfinished",check_move_learned)
@@ -90,7 +90,7 @@ func check_move_learned():
 
 func check_next_pokemon():
 	if BattleManager.EnemyPokemons.size() == 0:
-		Utils.get_scene_manager().transistion_exit_battle_scene()
+		Utils.get_scene_manager().transition_exit_battle_scene()
 	else:
 		emit_signal("next_pokemon")
 
@@ -115,4 +115,4 @@ func pokemon_caught(pokemon:game_pokemon):
 
 func _pokemon_caught_finished(dialog):
 	if dialog == "Caught":
-		Utils.get_scene_manager().transistion_exit_battle_scene()
+		Utils.get_scene_manager().transition_exit_battle_scene()

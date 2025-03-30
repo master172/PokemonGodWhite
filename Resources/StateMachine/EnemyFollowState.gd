@@ -45,11 +45,12 @@ func _physics_process(delta) -> void:
 			if NavigationAgent.is_navigation_finished():
 				return
 			
-			if actor.global_position.distance_to(actor.targetPokemon.global_position) <= 400:
-				emit_signal("close_to")
-			
-			if actor.global_position.distance_to(actor.targetPokemon.global_position) <= 200:
-				emit_signal("next_to")
+			if actor.can_attack == true:
+				if actor.global_position.distance_to(actor.targetPokemon.global_position) <= 400:
+					emit_signal("close_to")
+				
+				if actor.global_position.distance_to(actor.targetPokemon.global_position) <= 200:
+					emit_signal("next_to")
 				
 			var current_agent_position: Vector2 = actor.global_position
 			var next_path_position: Vector2 = NavigationAgent.get_next_path_position()

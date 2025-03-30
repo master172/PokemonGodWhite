@@ -24,7 +24,6 @@ var movement_speed: float = 128.0
 @onready var die = $Node/Die
 @onready var dodge = $Node/Dodge
 @onready var knock_back = $Node/KnockBack
-@onready var attack_delay = $AttackDelay
 @onready var paralysis_timer = $ParalysisTimer
 @onready var held_items: Node = $HeldItems
 @onready var status_conditions: Node = $StatusConditions
@@ -34,6 +33,8 @@ var movement_speed: float = 128.0
 @onready var stun_timer = $StunTimer
 
 var targetPokemon = null
+
+@onready var ai_component: EnemyAIManager = $AIComponent
 
 var pokemon :game_pokemon
 var knockback_vector :Vector2 = Vector2.ZERO
@@ -54,7 +55,7 @@ var attack_num:int = 0
 
 var Attack
 var attack_chosen:bool = false
-
+var can_attack:bool = true
 
 var stop:bool = false
 var Stun:bool = false
@@ -65,7 +66,6 @@ var previous_attacking_pokemon:game_pokemon
 var damage_multiplier:float = 1
 
 func _ready():
-	choose_attack()
 
 	if pokemon != null:
 		sprite_2d.texture = pokemon.get_overworld_sprite()
@@ -85,11 +85,7 @@ func calc_move_speed():
 func choose_attack():
 	if attack_chosen == false:
 		if pokemon != null:
-			
-			var rng = RandomNumberGenerator.new()
-			rng.randomize()
-		
-			var at = rng.randi_range(0,pokemon.get_learned_attacks_size()-1)
+			var at = ai_component.choose_attack(self,targetPokemon)
 			Attack = pokemon.get_learned_attack(at)
 			attack = Attack.base_action.range
 			attack_num = at
@@ -103,11 +99,8 @@ func _physics_process(delta):
 		
 	knockback_vector = velocity.normalized()
 	#print(velocity)
-	if targetPokemon == null:
-		if BattleManager.AllyHolders != []:
-			targetPokemon = BattleManager.AllyHolders[0]
 	
-	elif targetPokemon != null:
+	if targetPokemon != null:
 		poke_cast.set_target_position(to_local(targetPokemon.global_position))
 	
 	animation_tree.set("parameters/Walk/blend_position",velocity.normalized())
@@ -168,7 +161,7 @@ func _on_enemy_knock_back_state_finished():
 	if chance == 0:
 		finite_state_machine.change_state(enemy_retreat_state)
 	else:
-		finite_state_machine.change_state(enemy_follow_state)
+		finite_state_machine.change_state(enemy_idle_state)
 
 func get_current_facing_direction():
 	return velocity.normalized()
@@ -189,14 +182,17 @@ func _on_melle_attack_state_attack_finished(attack,user):
 func _on_enemy_idle_state_done():
 	if stop == false:
 		finite_state_machine.change_state(enemy_follow_state)
-	attack_delay.start()
-	print("this should work")
+	can_attack = true
+	choose_attack()
 	
 func _stop():
 	stop = true
 	finite_state_machine.change_state(stall_state)
 
 func _start():
+	print_debug("starting the move sequence")
+	targetPokemon = BattleManager.AllyHolders[0]
+	choose_attack()
 	stop = false
 	finite_state_machine.change_state(enemy_follow_state)
 	
@@ -250,10 +246,6 @@ func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 		
 	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)
 
-
-
-func _on_attack_delay_timeout():
-	choose_attack()
 
 func paralyze(time:int=1,modifier:float=0.2):
 	movement_speed *= modifier

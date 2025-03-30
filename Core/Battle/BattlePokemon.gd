@@ -133,7 +133,7 @@ func get_input():
 			
 			if tackle == false:
 				velocity = input_direction * movement_speed
-						
+					
 			if input_direction != Vector2.ZERO:
 				knockback_vector = input_direction
 				animation_tree.set("parameters/Walk/blend_position",input_direction)
@@ -244,7 +244,7 @@ func recive_plain_damage(damage:int):
 		pokemon.fainted = true
 		pokemon.Health = 0
 		pokemon.remove_friendship(1)
-		emit_signal("defeated",pokemon,opposing_pokemons[0],self)
+		emit_signal("defeated",pokemon,self)
 		
 func receive_knockback(body,damage):
 	knockback = true

@@ -276,7 +276,7 @@ func _input(event):
 				set_pockets()
 				bagkey = 0
 		elif state == STATES.ITEMS or state == STATES.NORMAL:
-			Utils.get_scene_manager().transistion_exit_bag_scene()
+			Utils.get_scene_manager().transition_exit_bag_scene()
 		elif state == STATES.SELECTION:
 			_unset_selection()
 			state = STATES.ITEMS

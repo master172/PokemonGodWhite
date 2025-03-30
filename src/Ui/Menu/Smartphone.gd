@@ -113,12 +113,12 @@ func _input(event):
 		current_state.Pokemons:
 			if event.is_action_pressed("No"):
 				AudioManager.cancel()
-				Utils.get_scene_manager().transistion_exit_party_screen()
+				Utils.get_scene_manager().transition_exit_party_screen()
 		current_state.Summary:
 			if event.is_action_pressed("No"):
 				AudioManager.cancel()
 				if Global.move_management == false:
-					Utils.get_scene_manager().transistion_exit_summary_screen()
+					Utils.get_scene_manager().transition_exit_summary_screen()
 		current_state.Card:
 			if event.is_action_pressed("No"):
 				AudioManager.cancel()

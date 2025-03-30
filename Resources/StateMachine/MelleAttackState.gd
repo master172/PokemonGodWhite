@@ -20,6 +20,7 @@ func _enter_state():
 	attack()
 	
 func attack():
+	actor.can_attack = false
 	actor.pokemon.initiate_attack(move_index,actor)
 
 func _finished_attack(attack,user):

@@ -393,6 +393,8 @@ var in_battle:bool = false
 
 var Trainer_Battle:bool = false
 
+var current_ai_level:int = 0
+
 func _ready():
 	AllyPokemons.Name = "AllyPokemons"
 

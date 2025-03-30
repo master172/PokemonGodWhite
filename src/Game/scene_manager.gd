@@ -122,7 +122,7 @@ func check_evolution():
 	
 	ask_evolution()
 
-func transistion_trainer_battle_scene(pokemons,map):
+func transition_trainer_battle_scene(pokemons,map = 0):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.TRAINER_BATTLE
@@ -134,12 +134,12 @@ func transition_to_evolution():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EVOLUTION
 
-func transistion_exit_evolution():
+func transition_exit_evolution():
 	menu.get_parent().show()
 	re_check_evolution()
 	Utils.get_player().switch_default_camera()
 
-func transistion_exit_pokedex_scene():
+func transition_exit_pokedex_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_POKEDEX
 	
@@ -148,7 +148,7 @@ func transition_to_pokedex_scene():
 	transition_type = Transition_Type.POKEDEX
 
 
-func transistion_exit_bag_scene():
+func transition_exit_bag_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BAG_SCENE
 	
@@ -156,28 +156,28 @@ func transition_to_bag_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BAG_SCENE
 
-func transistion_to_battle_scene(pokemon,map = 0):
+func transition_to_battle_scene(pokemon,map = 0):
 	Utils.get_player().set_physics_process(false)
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BATTLE_SCENE
 	pocket_monster = pokemon
 	Map = map
 	
-func transistion_exit_battle_scene():
+func transition_exit_battle_scene():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_BATTLE_SCENE
 
-func transistion_exit_battle_loast():
+func transition_exit_battle_loast():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.BATTLE_LOST
 	
-func transistion_to_summary_scene(poke_number:int):
+func transition_to_summary_scene(poke_number:int):
 	transition_player.play("FadeToBlack")
 	summary_pokemon = poke_number
 
 	transition_type = Transition_Type.SUMMARY_SCENE
 	
-func transistion_exit_summary_screen():
+func transition_exit_summary_screen():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.EXIT_SUMMARY_SCENE
 	
@@ -185,7 +185,7 @@ func transition_to_party_screen():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.PARTY_SCREEN
 	
-func transistion_exit_party_screen():
+func transition_exit_party_screen():
 	transition_player.play("FadeToBlack")
 	transition_type = Transition_Type.MENU_ONLY
 	
@@ -373,6 +373,7 @@ func load_battle_scene(pokemon,map):
 	BattleManager.in_battle = true
 	
 func unload_battle_scene(won:bool = true):
+	BattleManager.current_ai_level = 0
 	TouchInput.toogele_default(true)
 	TouchInput.toggle_battle(false)
 	for i in battle_layer.get_children():

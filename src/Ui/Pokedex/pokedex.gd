@@ -58,7 +58,7 @@ func _input(event):
 		elif event.is_action_pressed("No"):
 			if poke_info.visible == false:
 				TouchInput.pokedex_inactive()
-				Utils.get_scene_manager().transistion_exit_pokedex_scene()
+				Utils.get_scene_manager().transition_exit_pokedex_scene()
 				
 func _on_search_bar_text_submitted(new_text):
 	poke_search._on_line_edit_text_submitted(new_text)

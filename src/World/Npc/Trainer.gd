@@ -101,7 +101,7 @@ func _interact():
 func battle(Sign):
 	if Sign == "Battle" and taliking == true and batteled == false:
 		my_battle = true
-		Utils.get_scene_manager().transistion_trainer_battle_scene(my_pokemons,map)
+		Utils.get_scene_manager().transition_trainer_battle_scene(my_pokemons,map)
 		can_battle = false
 		
 func no(Sign):

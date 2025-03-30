@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=35 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" uid="uid://dqb3ttfx75idx" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="14_ablgi"]
 [ext_resource type="AudioStream" uid="uid://crwmjhnyx8kea" path="res://assets/Audio/SFX/Bfxr/Dodge.wav" id="15_pkr0q"]
 [ext_resource type="AudioStream" uid="uid://ci2pqd8nyeyo8" path="res://assets/Audio/SFX/Bfxr/KnockBack.wav" id="16_fsbvv"]
+[ext_resource type="Script" uid="uid://bcnmbcp7k1mwk" path="res://Core/Battle/ai_component.gd" id="18_wo3jq"]
+[ext_resource type="Script" uid="uid://d0iv4qpnpobxi" path="res://Core/Battle/wild_ai.gd" id="19_70msp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iuxi6"]
 radius = 30.0
@@ -269,9 +271,6 @@ volume_db = 2.0
 [node name="KnockBack" type="AudioStreamPlayer2D" parent="Node"]
 stream = ExtResource("16_fsbvv")
 
-[node name="AttackDelay" type="Timer" parent="."]
-one_shot = true
-
 [node name="ParalysisTimer" type="Timer" parent="."]
 
 [node name="HeldItems" type="Node" parent="."]
@@ -280,6 +279,14 @@ one_shot = true
 
 [node name="RectTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("WildAI")]
+script = ExtResource("18_wo3jq")
+WildAI = NodePath("WildAI")
+
+[node name="WildAI" type="Node" parent="AIComponent"]
+script = ExtResource("19_70msp")
+metadata/_custom_type_script = "uid://drgf1fkwfskpm"
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
@@ -292,5 +299,4 @@ one_shot = true
 [connection signal="state_finished" from="FiniteStateMachine/EnemyRetreatState" to="." method="_on_enemy_retreat_state_state_finished"]
 [connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
-[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="timeout" from="ParalysisTimer" to="." method="_on_paralysis_timer_timeout"]

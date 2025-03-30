@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://xqnf3jkcoya3"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://xqnf3jkcoya3"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_65loy"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_65loy"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_qm8i2"]
 [ext_resource type="Resource" uid="uid://hg3i8pmsjq6l" path="res://Core/Pokemon/Actions/DisarmingVoice.tres" id="1_qnhxs"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_2fit3"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_slslq"]
 [ext_resource type="Texture2D" uid="uid://nidnuatdxo8v" path="res://Core/Graphics/Pokemon/Gen3/Front/RALTS.png" id="3_d2pb2"]
 [ext_resource type="Texture2D" uid="uid://ddwmdmorka6o4" path="res://Core/Graphics/Pokemon/Gen3/Icons/RALTS.png" id="4_qpeim"]
+[ext_resource type="Resource" uid="uid://c28p5n6x8po3i" path="res://Core/Pokemon/Actions/Tackle.tres" id="5_5e5rf"]
 [ext_resource type="Texture2D" uid="uid://cssdpg8bwo5tc" path="res://Core/Graphics/Pokemon/Gen3/Followers/RALTS.png" id="5_wyysx"]
+[ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="6_sogyj"]
 
 [resource]
 script = ExtResource("1_65loy")
@@ -14,6 +18,10 @@ Id = 280
 Type1 = "Psychic"
 Type2 = "Fairy"
 leveleing_type = 0
+Ability = Array[ExtResource("1_qm8i2")]([])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("3_d2pb2")
 Icon = ExtResource("4_qpeim")
 Overworld = ExtResource("5_wyysx")
@@ -23,7 +31,9 @@ Base_Defense = 25
 Special_Base_Attack = 45
 Special_Base_Defense = 35
 Base_Speed = 40
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qnhxs"), ExtResource("2_slslq")])
+Actions = Array[ExtResource("2_2fit3")]([ExtResource("1_qnhxs"), ExtResource("2_slslq"), ExtResource("5_5e5rf"), ExtResource("6_sogyj")])
+TmActions = Array[ExtResource("2_2fit3")]([])
+EggActions = Array[ExtResource("2_2fit3")]([])
 base_experience = 70
 Yield_Health = 0
 Yield_Attack = 0
@@ -32,6 +42,7 @@ Yield_Special_Defense = 0
 Yield_Special_Attack = 1
 Yield_Speed = 0
 catch_chance = 41
+previous_pokemon = ""
 Tag = ""
 description = ""
 height = 1

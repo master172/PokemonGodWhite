@@ -48,7 +48,8 @@ func check_encounter():
 	if Utils.get_scene_manager() != null:
 		if encounter() == true:
 			var pokemon = get_encounter_pokemon()
-			Utils.get_scene_manager().transistion_to_battle_scene(pokemon)
+			BattleManager.current_ai_level = 0
+			Utils.get_scene_manager().transition_to_battle_scene(pokemon)
 			Utils.get_player().change_animation(false)
 
 func get_encounter_pokemon():

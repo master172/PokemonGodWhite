@@ -6,4 +6,4 @@ func _ready():
 		get_parent().set_battle_component(self)
 		
 func battle(my_pokemons,map):
-	Utils.get_scene_manager().transistion_trainer_battle_scene(my_pokemons,map)
+	Utils.get_scene_manager().transition_trainer_battle_scene(my_pokemons,map)
