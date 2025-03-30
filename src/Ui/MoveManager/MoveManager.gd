@@ -170,14 +170,14 @@ func _input(event):
 		elif event.is_action_pressed("Yes"):
 			AudioManager.select()
 			if state == states.LEARNED:
-				if pokemon.get_learned_attacks() >= 1:
+				if pokemon.get_learned_attacks_size() > 1:
 					pokemon.forget_move_manual(current_selected)
 					if current_selected >0:
 						current_selected -=1
 					update_move_forgot()
 					
 			elif state == states.LEARNABLE:
-				if pokemon.get_learned_attacks() <= 2:
+				if pokemon.get_learned_attacks_size() <= 3:
 					pokemon.learn_move_manual(current_selected)
 					if current_selected >0:
 						current_selected -= 1

@@ -182,11 +182,12 @@ func _physics_process(delta):
 	
 func _on_attack_selector_attack_chosen(attack):
 	if Stamina > 0:
-		print(pokemon.get_learned_attack_name(attack))
-		var can_attack = manage_stamina(attack)
-		if can_attack == true:
-			pokemon.initiate_attack(attack,self)
-			emit_signal("attacked",self)
+		if pokemon.get_learned_attacks_size() > attack:
+			print(pokemon.get_learned_attack_name(attack))
+			var can_attack = manage_stamina(attack)
+			if can_attack == true:
+				pokemon.initiate_attack(attack,self)
+				emit_signal("attacked",self)
 
 func manage_stamina(atk):
 	var new_Stamina:int = Stamina

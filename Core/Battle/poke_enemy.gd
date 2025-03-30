@@ -87,7 +87,7 @@ func choose_attack():
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 		
-			var at = rng.randi_range(0,pokemon.get_learned_attacks())
+			var at = rng.randi_range(0,pokemon.get_learned_attacks_size()-1)
 			Attack = pokemon.get_learned_attack(at)
 			attack = Attack.base_action.range
 			attack_num = at
