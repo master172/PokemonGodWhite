@@ -5,12 +5,13 @@ var User:CharacterBody2D = null
 var oneshot:bool = false
 
 func _ready():#ready overrider
-	_attack()
+	pass
 	
 func set_user(user):
 	User = user
 	
 func _attack():
+	print("attacking")
 	if User.has_method("attack_prep"):
 		User.attack_prep()
 	if User != null:

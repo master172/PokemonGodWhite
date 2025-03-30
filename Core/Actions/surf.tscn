@@ -164,3 +164,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_lqlku")
 }
 autoplay = "default"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

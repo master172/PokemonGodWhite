@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://djmqvd6h08jia" path="res://Core/Graphics/Zehlvogs/Follower/NOCTICHI.png" id="4_qma00"]
 [ext_resource type="Resource" uid="uid://jw7esjkjm2ny" path="res://Core/Pokemon/Actions/CloseCall.tres" id="4_qs0bp"]
 
-[sub_resource type="Resource" id="Resource_p3gu1"]
+[sub_resource type="Resource" id="Resource_qma00"]
 script = ExtResource("1_ocdfy")
 name = "LeechLife"
 learned_level = 17
-action = ""
+action = "uid://dhvtsukji64ch"
 staminaCost = 10
 Type = "Grass"
 power = 40.0
@@ -21,8 +21,8 @@ range = 1
 [sub_resource type="Resource" id="Resource_qs0bp"]
 script = ExtResource("1_ocdfy")
 name = "Supersonic"
-learned_level = 20
-action = ""
+learned_level = 18
+action = "uid://dcm8p33fcgnn5"
 staminaCost = 10
 Type = "Normal"
 power = 35.0
@@ -48,7 +48,7 @@ Base_Defense = 80
 Special_Base_Attack = 150
 Special_Base_Defense = 100
 Base_Speed = 140
-Actions = Array[ExtResource("1_ocdfy")]([SubResource("Resource_p3gu1"), SubResource("Resource_qs0bp"), ExtResource("4_qs0bp")])
+Actions = Array[ExtResource("1_ocdfy")]([ExtResource("4_qs0bp"), SubResource("Resource_qma00"), SubResource("Resource_qs0bp")])
 TmActions = Array[ExtResource("1_ocdfy")]([])
 EggActions = Array[ExtResource("1_ocdfy")]([])
 base_experience = 128
