@@ -19,11 +19,12 @@ func actor_setup():
 	await get_tree().physics_frame
 
 func _enter_state():
+	print("entering wander state")
 	create_random_position()
 	set_physics_process(true)
 
 func _exit_state():
-	print("ro")
+	print("leaving wander state")
 
 func create_random_position():
 	desired_position = selection_mapping(100)

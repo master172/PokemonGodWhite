@@ -18,6 +18,8 @@ var movement_speed: float = 128.0
 @onready var enemy_dodge_state:EnemyDodgeState = $FiniteStateMachine/EnemyDodgeState
 @onready var stall_state:StallState = $FiniteStateMachine/StallState
 @onready var enemy_idle_state:EnemyIdleState = $FiniteStateMachine/EnemyIdleState
+@onready var enemy_retreat_state: EnemyRetreatState = $FiniteStateMachine/EnemyRetreatState
+
 @onready var hurt = $Node/Hurt
 @onready var die = $Node/Die
 @onready var dodge = $Node/Dodge
@@ -162,7 +164,11 @@ func receive_knockback(body,damage):
 
 
 func _on_enemy_knock_back_state_finished():
-	finite_state_machine.change_state(enemy_follow_state)
+	var chance = randi() % 3
+	if chance == 0:
+		finite_state_machine.change_state(enemy_retreat_state)
+	else:
+		finite_state_machine.change_state(enemy_follow_state)
 
 func get_current_facing_direction():
 	return velocity.normalized()
@@ -275,3 +281,7 @@ func add_perma_status_condition(status:StatusCondition):
 	var effect :VolatileStausCondition = load(status.status_condition).instantiate()
 	effect.Holder = self
 	status_conditions.add_child(effect)
+
+
+func _on_enemy_retreat_state_state_finished() -> void:
+	finite_state_machine.change_state(enemy_follow_state)

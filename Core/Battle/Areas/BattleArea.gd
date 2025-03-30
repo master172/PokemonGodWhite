@@ -4,7 +4,8 @@ const ROCK1 = preload("res://Core/Battle/Cosmetics/Rock1.tscn")
 
 @export var numberOfTiles : int = 10
 @export var NavMesh:NavigationRegion2D
-@export var Tilemap:TileMap
+@export var Tilemap:Node2D
+
 func _ready():
 	add_decorations()
 
@@ -26,7 +27,7 @@ func randomize_tiles():
 		# Set the desired tile at the random coordinates
 
 func get_tilemap_width() -> int:
-	return Tilemap.get_used_rect().size.x
+	return Tilemap.get_tilemap_width()
 
 func get_tilemap_height() -> int:
-	return Tilemap.get_used_rect().size.y
+	return Tilemap.get_tilemap_height()

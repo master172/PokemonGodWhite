@@ -58,6 +58,3 @@ func _physics_process(delta) -> void:
 			
 	else:
 		actor.velocity = actor.velocity * 0.001
-
-
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cy76wy1prl8ih"]
+[gd_scene load_steps=33 format=3 uid="uid://cy76wy1prl8ih"]
 
 [ext_resource type="Script" uid="uid://dqb3ttfx75idx" path="res://Core/Battle/poke_enemy.gd" id="1_ss21h"]
 [ext_resource type="Texture2D" uid="uid://b8fkxq4gdcqvy" path="res://Core/Graphics/Pokemon/Gen1/Followers/ABRA.png" id="2_yfdu5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bsmxmgnaq6vlm" path="res://Resources/StateMachine/EnemyStallState.gd" id="9_jnrn1"]
 [ext_resource type="Script" uid="uid://dmwffuc2nekas" path="res://Resources/StateMachine/EnemyDodgeState.gd" id="9_kkcn1"]
 [ext_resource type="AudioStream" uid="uid://bgbfp33xnonpj" path="res://assets/Audio/SFX/Footstep/Grass/Footstep.wav" id="11_co6j0"]
+[ext_resource type="Script" uid="uid://bprq471pisegi" path="res://Core/Battle/enemy_retreat_state.gd" id="11_it232"]
 [ext_resource type="Script" uid="uid://bfqi67wlpe0xc" path="res://src/Audio/loop_audio_player.gd" id="12_m5l6s"]
 [ext_resource type="AudioStream" uid="uid://b0qwol075p4ep" path="res://assets/Audio/SFX/Bfxr/Hit_Hurt10.wav" id="13_vcj04"]
 [ext_resource type="AudioStream" uid="uid://b3q64h5njq044" path="res://assets/Audio/SFX/Bfxr/Die.wav" id="14_ablgi"]
@@ -212,6 +213,13 @@ actor = NodePath("../..")
 script = ExtResource("9_jnrn1")
 actor = NodePath("../..")
 
+[node name="EnemyRetreatState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("rect_timer", "actor", "NavigationAgent")]
+script = ExtResource("11_it232")
+rect_timer = NodePath("../../RectTimer")
+actor = NodePath("../..")
+NavigationAgent = NodePath("../../NavigationAgent2D")
+metadata/_custom_type_script = "uid://2cn7jxxnqtej"
+
 [node name="PokeCast" type="RayCast2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -270,6 +278,9 @@ one_shot = true
 
 [node name="StatusConditions" type="Node" parent="."]
 
+[node name="RectTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="close_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_close_to"]
 [connection signal="next_to" from="FiniteStateMachine/EnemyFollowState" to="." method="_on_enemy_follow_state_next_to"]
@@ -278,6 +289,7 @@ one_shot = true
 [connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
 [connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]
 [connection signal="finished" from="FiniteStateMachine/EnemyDodgeState" to="." method="_on_enemy_dodge_state_finished"]
+[connection signal="state_finished" from="FiniteStateMachine/EnemyRetreatState" to="." method="_on_enemy_retreat_state_state_finished"]
 [connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

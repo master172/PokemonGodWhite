@@ -20,4 +20,4 @@ shape = SubResource("CircleShape2D_3dh3n")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 position = Vector2(0, -40)
-vertices = PackedVector2Array(0, -40, 24, -32, 40, -8, 40, 16, 16, 40, -16, 40, -40, 16, -40, -16, -24, -32)
+radius = 48.39
