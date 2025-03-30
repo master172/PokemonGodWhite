@@ -41,6 +41,7 @@ func on_won_dialog_finished(dialog):
 		if BattleManager.EnemyPokemons.size() > 0:
 			BattleManager.EnemyPokemons.remove_at(0)
 		check_move_learned()
+		check_next_pokemon()
 
 func battle_pokemon_defeated(pokemon):
 	if AllyPokemon.all_fainted() == true:
@@ -86,13 +87,12 @@ func check_move_learned():
 	else:
 		if PokemonManager.MovesToLearn.size() > 0:
 			start_move_learning()
-		else:
 
-			if BattleManager.EnemyPokemons.size() == 0:
-				Utils.get_scene_manager().transistion_exit_battle_scene()
-
-			else:
-				emit_signal("next_pokemon")
+func check_next_pokemon():
+	if BattleManager.EnemyPokemons.size() == 0:
+		Utils.get_scene_manager().transistion_exit_battle_scene()
+	else:
+		emit_signal("next_pokemon")
 
 func move_learned():
 	moveLearned_dialog.add_symbols_to_replace({"Pokemon":PokemonManager.movesLearned[0].pokemon.Nick_name})
@@ -105,6 +105,7 @@ func _move_learned_finished(dialog):
 		PokemonManager.movesLearned.remove_at(0)
 		moveLearned_dialog.remove_all_symbols()
 		check_move_learned()
+		check_next_pokemon()
 
 func pokemon_caught(pokemon:game_pokemon):
 	
