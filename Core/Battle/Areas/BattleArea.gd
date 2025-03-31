@@ -18,7 +18,6 @@ func randomize_tiles():
 		# Generate random coordinates within the tilemap bounds
 		var x = randi() % get_tilemap_width()
 		var y = randi() % get_tilemap_height()
-		print(x," ",y)
 		
 		var Decor = ROCK1.instantiate()
 		Decor.global_position = Vector2(x,y)*64

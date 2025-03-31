@@ -67,6 +67,3 @@ func _set_radial():
 				pokemon_sprites.get_child(i).texture = AllyPokemon.get_party_pokemon(i).get_icon()
 	else:
 		visible = false
-
-
-

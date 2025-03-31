@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvxwvgasf6c7a"]
+
+[ext_resource type="Script" uid="uid://c1o1d6tb134ol" path="res://src/World/Helpers/surf_encounter_manager.gd" id="1_8ubxp"]
+
+[node name="SurfEncounterManager" type="Node"]
+script = ExtResource("1_8ubxp")
+metadata/_custom_type_script = "uid://biht0ffqktihe"

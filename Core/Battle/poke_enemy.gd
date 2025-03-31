@@ -277,3 +277,8 @@ func add_perma_status_condition(status:StatusCondition):
 
 func _on_enemy_retreat_state_state_finished() -> void:
 	finite_state_machine.change_state(enemy_follow_state)
+
+
+func _on_stall_state_state_finished() -> void:
+	ai_component.reset_attacks()
+	ai_component.choose_attack(self,targetPokemon)

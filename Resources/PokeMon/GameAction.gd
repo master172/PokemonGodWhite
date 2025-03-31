@@ -59,13 +59,8 @@ func calculate_damage(body,User,AttackType:int = 0,Power:int = power,mult:Array[
 	
 	if opposing_pokemon.get_Type2() != "NONE":
 		var mod = BattleManager.get_type_modifier(base_action.Type,opposing_pokemon.get_Type2())
-		if mod <1:
-			type -= mod 
-		elif mod == 1:
-			type = type
-		elif mod >1:
-			type += mod
-			
+		type = type*mod
+		
 	var damage:int = 0
 	if AttackType == 0:
 		damage = calc_stat_modifier(pokemon,opposing_pokemon,0)*((((2*pokemon.level/5)+2)*Power*(pokemon.Attack/opposing_pokemon.Defense)/50)+2)*critical*stab*type*random

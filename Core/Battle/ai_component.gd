@@ -16,3 +16,6 @@ func _ready() -> void:
 	
 func choose_attack(pokemon:PokeEnemy,enemy_pokemon:BattlePokemon):
 	return current_ai.choose_attack(pokemon,enemy_pokemon)
+
+func reset_attacks():
+	current_ai.reset_attacks()

@@ -302,6 +302,7 @@ metadata/_custom_type_script = "uid://drgf1fkwfskpm"
 [connection signal="finished" from="FiniteStateMachine/EnemyKnockBackState" to="." method="_on_enemy_knock_back_state_finished"]
 [connection signal="done" from="FiniteStateMachine/EnemyIdleState" to="." method="_on_enemy_idle_state_done"]
 [connection signal="finished" from="FiniteStateMachine/EnemyDodgeState" to="." method="_on_enemy_dodge_state_finished"]
+[connection signal="state_finished" from="FiniteStateMachine/StallState" to="." method="_on_stall_state_state_finished"]
 [connection signal="state_finished" from="FiniteStateMachine/EnemyRetreatState" to="." method="_on_enemy_retreat_state_state_finished"]
 [connection signal="body_entered" from="KnockBackArea" to="." method="_on_knock_back_area_body_entered"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

@@ -3,3 +3,6 @@ class_name EnemyAI
 
 func choose_attack(pokemon:PokeEnemy,enemy_pokemon:BattlePokemon):
 	pass
+
+func reset_attacks():
+	pass

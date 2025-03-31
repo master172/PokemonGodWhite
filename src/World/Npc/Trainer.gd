@@ -6,6 +6,7 @@ class_name trainer
 @export var levels :Array[int]
 @export var current_dialog := ''
 @export var ending_dialog := ''
+@export var self_ai_level:int = 1
 
 @export_group("Animations")
 @export var animation_player :AnimationPlayer
@@ -101,6 +102,7 @@ func _interact():
 func battle(Sign):
 	if Sign == "Battle" and taliking == true and batteled == false:
 		my_battle = true
+		BattleManager.current_ai_level = self_ai_level
 		Utils.get_scene_manager().transition_trainer_battle_scene(my_pokemons,map)
 		can_battle = false
 		

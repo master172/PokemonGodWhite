@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=52 format=4 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://c6kva5a3lgpr8" path="res://Core/Pokemon/Ensparda.tres" id="4_hdyfe"]
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="5_l5egc"]
 [ext_resource type="Script" uid="uid://cn1wyxm8lq4nm" path="res://src/Npc/Trainer/Aiden.gd" id="5_otxk3"]
+[ext_resource type="Resource" uid="uid://bq7p2s3moylkv" path="res://Core/Pokemon/Umbrat.tres" id="5_pm2q6"]
 [ext_resource type="PackedScene" uid="uid://djsdrnjlavi14" path="res://Libraries/Houses/house1.tscn" id="6_gix2c"]
 [ext_resource type="PackedScene" uid="uid://bbyhnn6340w0c" path="res://Libraries/Houses/martHouse.tscn" id="7_3088l"]
 [ext_resource type="PackedScene" uid="uid://dq52puj5i2wvk" path="res://src/Interactables/Sign/BasicSign.tscn" id="7_agoln"]
@@ -29,6 +30,10 @@
 [ext_resource type="Script" uid="uid://dyw7lstkx7p10" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
 [ext_resource type="Script" uid="uid://djhr4xvud4035" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
 [ext_resource type="Resource" uid="uid://nc8mga6oyumt" path="res://Resources/Bag/Items/Machines/HM1.tres" id="27_iokfe"]
+[ext_resource type="Script" uid="uid://c1o1d6tb134ol" path="res://src/World/Helpers/surf_encounter_manager.gd" id="30_1vjks"]
+[ext_resource type="Resource" uid="uid://ybd037xsc7be" path="res://Core/Pokemon/Buneary.tres" id="31_pm2q6"]
+[ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="32_w0qkq"]
+[ext_resource type="Resource" uid="uid://dnejklnbktcw4" path="res://Core/Pokemon/Chikorita.tres" id="33_wk2t4"]
 
 [sub_resource type="Resource" id="Resource_lhkw0"]
 script = ExtResource("24_jks6w")
@@ -1774,7 +1779,7 @@ _data = {
 y_sort_enabled = true
 script = ExtResource("1_2ofmc")
 common_pokemons = Array[ExtResource("2_wyilf")]([ExtResource("10_g640m"), ExtResource("4_hdyfe")])
-common_relative = 7
+uncommon_pokemons = Array[ExtResource("2_wyilf")]([ExtResource("5_pm2q6")])
 rare_pokemons = Array[ExtResource("2_wyilf")]([ExtResource("3_p24ug")])
 rare_relative = 3
 min_level = 2
@@ -1902,5 +1907,14 @@ libraries = {
 }
 autoplay = "Default"
 speed_scale = 0.01
+
+[node name="SurfEncounterManager" type="Node" parent="."]
+script = ExtResource("30_1vjks")
+common_pokemons = Array[ExtResource("2_wyilf")]([ExtResource("31_pm2q6"), ExtResource("32_w0qkq")])
+rare_pokemons = Array[ExtResource("2_wyilf")]([ExtResource("33_wk2t4")])
+min_level = 5
+max_level = 10
+map = 0
+metadata/_custom_type_script = "uid://c1o1d6tb134ol"
 
 [editable path="player"]
