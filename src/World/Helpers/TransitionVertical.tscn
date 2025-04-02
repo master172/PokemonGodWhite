@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxu172ydrdp46"]
+
+[ext_resource type="Texture2D" uid="uid://cwf4encngtflp" path="res://assets/PokemonTilesets/TransitionPointExteriors.png" id="1_5m3ah"]
+
+[node name="StaticBody2D3" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_5m3ah")
+region_enabled = true
+region_rect = Rect2(18, 15, 102, 164)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.800003, -35.2)
+polygon = PackedVector2Array(-51.2, 43.2, -51.2, -52.8, 44.8, -52.8, 44.8, 43.2, 12.8, 43.2, 12.8, 19.2, -19.2, 19.2, -19.2, 43.2)

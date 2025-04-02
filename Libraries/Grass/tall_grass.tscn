@@ -73,11 +73,11 @@ _data = {
 }
 
 [node name="TallGrass" type="Node2D"]
+y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_0d38s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_lmdpe")
 texture = ExtResource("1_s3ykv")

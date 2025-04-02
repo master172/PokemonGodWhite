@@ -151,13 +151,12 @@ states/Walk/position = Vector2(422, 115)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_08nmc")]
 
 [node name="OverworldPokemon" type="Node2D"]
-z_index = 1
-scale = Vector2(0.75, 0.75)
 script = ExtResource("1_1f7kr")
 
 [node name="PokeSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -16)
+position = Vector2(0, -12)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_nxj6p")
 hframes = 4
 vframes = 4

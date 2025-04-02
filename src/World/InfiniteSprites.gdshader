@@ -17,6 +17,6 @@ void fragment() {
 	else {
 		uv = mod(uv * scale, 1.0);
 	}
-	
+
 	COLOR = texture(TEXTURE, uv);
 }

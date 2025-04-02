@@ -29,7 +29,8 @@ func player_in_grass():
 		grass_overlay = stepped_grass.instantiate()
 		grass_overlay.global_position = self.global_position + Vector2(0,16)
 		grass_overlay.z_index = 1
-		Utils.get_scene_manager().current_scene.get_child(0).add_child(grass_overlay)
+		if Utils.get_scene_manager() != null:
+			Utils.get_scene_manager().current_scene.get_child(0).add_child(grass_overlay)
 		
 		if Utils.can_encounter == true:
 			check_encounter()

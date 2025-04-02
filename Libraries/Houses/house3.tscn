@@ -3,17 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://dumqjjqct60uk" path="res://assets/Serene_Village/Serene_Village_16x16.png" id="1_vx6wv"]
 
 [node name="House" type="StaticBody2D"]
-z_index = 1
 collision_layer = 2
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(8, -8)
+position = Vector2(8, -24)
 texture = ExtResource("1_vx6wv")
 region_enabled = true
 region_rect = Rect2(96, 464, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(8, 0)
+position = Vector2(8, -16)
 polygon = PackedVector2Array(-32, -24, 32, -24, 32, 24, 0, 24, 0, -8, -16, -8, -16, 24, -32, 24)

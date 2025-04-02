@@ -233,7 +233,6 @@ max_level = 5
 
 [node name="player" parent="." instance=ExtResource("16_0htb7")]
 unique_name_in_owner = true
-z_index = 1
 position = Vector2(-168, -600)
 can_leaf = true
 can_wind = true

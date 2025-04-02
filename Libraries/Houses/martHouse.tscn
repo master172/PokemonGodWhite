@@ -4,20 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_l5yej"]
 
 [node name="House" type="StaticBody2D"]
-z_index = 1
 collision_layer = 2
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(0, -24)
 texture = ExtResource("1_dpo6c")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -24)
 polygon = PackedVector2Array(-40, -16, 40, -16, 40, 32, 8, 32, 8, 0, -8, 0, -8, 32, -40, 32)
 
 [node name="Door" parent="." instance=ExtResource("2_l5yej")]
+position = Vector2(0, -16)
 next_scene_path = "uid://jefqob5rdmsh"
 Spawn_location = Vector2(8, 80)
 Spawn_direction = Vector2(0, -1)

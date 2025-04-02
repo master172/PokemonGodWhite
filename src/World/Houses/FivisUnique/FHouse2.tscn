@@ -480,7 +480,7 @@ tile_set = SubResource("TileSet_yemnp")
 position = Vector2(24, 72)
 next_scene_path = "res://src/World/Fivis.tscn"
 invisible = true
-Spawn_location = Vector2(8, 176)
+Spawn_location = Vector2(8, 184)
 Spawn_direction = Vector2(0, 1)
 
 [node name="player" parent="." instance=ExtResource("7_fo0nj")]
