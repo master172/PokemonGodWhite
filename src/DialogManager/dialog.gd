@@ -112,17 +112,17 @@ func process_dialog():
 				
 				dialog_changed.emit(current_dialog.Dialogs[current_index])
 				
-				current_dialog.replace_symbols(current_index)
-				
 				
 				if current_dialog.Dialogs[current_index].get_dialog_type() == 0:
 					show()
 					set_text_empty()
 					call_functions()
 					
+					var text = replace_variables(current_dialog.Dialogs[current_index].text , current_dialog.Format)
+					
 					add_actors(current_dialog.Dialogs[current_index])
 					
-					displayText(current_dialog.Dialogs[current_index].text)
+					displayText(text)
 					dialog = current_dialog.Dialogs[current_index]
 					state = State.Normal
 					
@@ -133,9 +133,11 @@ func process_dialog():
 					set_text_empty()
 					call_functions()
 					
+					var text = replace_variables(current_dialog.Dialogs[current_index].text , current_dialog.Format)
+					
 					add_actors(current_dialog.Dialogs[current_index])
 					
-					displayText(current_dialog.Dialogs[current_index].text)
+					displayText(text)
 					dialog = current_dialog.Dialogs[current_index]
 					await self.text_completed
 					
@@ -266,4 +268,8 @@ func get_rid_of_actors():
 	for i in listners.get_children():
 		i.queue_free()
 
-
+static func replace_variables(text: String, variables: Dictionary) -> String:
+	var result = text
+	for key in variables.keys():
+		result = result.replace("{" + key + "}", str(variables[key]))
+	return result

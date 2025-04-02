@@ -1037,6 +1037,7 @@ y_sort_enabled = true
 metadata/Modulate = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
 offset_left = -320.0
 offset_top = -260.0
 offset_right = 320.0
@@ -1050,6 +1051,7 @@ script = ExtResource("2_su562")
 metadata/_custom_type_script = "uid://cfo58sxvffl2w"
 
 [node name="Base" type="TileMapLayer" parent="mainTilemap"]
+z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 use_parent_material = true
@@ -1091,7 +1093,6 @@ Spawn_direction = Vector2(0, 1)
 
 [node name="player" parent="." instance=ExtResource("4_2pin6")]
 unique_name_in_owner = true
-z_index = 1
 position = Vector2(-72, 16)
 can_surf = false
 can_cycle = false

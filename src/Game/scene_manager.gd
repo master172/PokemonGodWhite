@@ -260,6 +260,7 @@ func change_scene():
 	emit_signal("data_set_finished")
 	await transition_player.animation_finished
 	HudLayer.DisplayMapName(current_scene.get_child(0).name)
+	autosave()
 	
 func load_healing_place():
 	unload_battle_scene(false)
@@ -280,7 +281,7 @@ func load_healing_place():
 		
 	current_scene.add_child(Current_healing_place)
 	
-
+	
 	var player = Utils.get_player()
 	Utils.set_player()
 	player.set_spawn(Current_healing_place.get_heal_pos(),Current_healing_place.get_heal_dir())
@@ -392,6 +393,8 @@ func unload_battle_scene(won:bool = true):
 		print_debug("what the fuck")
 	
 	BattleManager.EnemyPokemons = []
+	autosave()
+	
 func get_current_scene_name():
 	return current_scene.get_child(0).name
 
@@ -442,3 +445,11 @@ func set_current_healing_place(place):
 
 func finished_fading_to_normal():
 	emit_signal("fading_finished")
+
+
+func _on_timer_timeout() -> void:
+	autosave()
+	
+func autosave():
+	HudLayer.DisplaySave()
+	Utils.autosave()

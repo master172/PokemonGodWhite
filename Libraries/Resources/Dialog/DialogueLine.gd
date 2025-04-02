@@ -10,7 +10,7 @@ func replace_symbols(index:int):
 	Dialogs[index].format_text(Format)
 
 func add_symbols_to_replace(format:Dictionary):
-	Format.merge(format)
+	Format = format
 	
 func remove_all_symbols():
 	Format = {}

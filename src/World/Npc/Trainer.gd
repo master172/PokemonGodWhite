@@ -19,6 +19,7 @@ class_name trainer
 @export_subgroup("Events")
 @export var EventManager:Node2D
 @export var map:int = 0
+@export var prize_money:int = 50
 @onready var anim_state = animation_tree.get("parameters/playback")
 
 var rng = RandomNumberGenerator.new()
@@ -125,6 +126,7 @@ func my_battle_finished():
 	if my_battle == true:
 		my_battle_done = true
 		batteled = true
+		Utils.Money += prize_money
 		on_battled()
 		self.current_dialog = self.ending_dialog
 		emit_signal("battle_done")

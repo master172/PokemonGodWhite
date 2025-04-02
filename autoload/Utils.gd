@@ -173,3 +173,8 @@ func create_uid():
 		uid += chars[rng.randi_range(0, chars.length() - 1)]
 	
 	player_uid = uid
+
+func autosave():
+	if get_scene_manager() != null:
+		get_scene_manager().shoot_screen()
+		save_data(false)

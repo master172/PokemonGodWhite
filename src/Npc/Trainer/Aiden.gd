@@ -6,7 +6,8 @@ func check_can_battle():
 
 func after_lose():
 	Utils.aiden_defeated = true
-	Utils.save_data()
+	Utils.Money += 100
+	Utils.save_data(false)
 
 func check_for_event_alterations():
 	if Utils.aiden_defeated == false:

@@ -28,7 +28,7 @@ func player_in_grass():
 		
 		grass_overlay = stepped_grass.instantiate()
 		grass_overlay.global_position = self.global_position + Vector2(0,16)
-		grass_overlay.z_index = 1
+		grass_overlay.z_index = 0
 		if Utils.get_scene_manager() != null:
 			Utils.get_scene_manager().current_scene.get_child(0).add_child(grass_overlay)
 		
@@ -49,6 +49,8 @@ func check_encounter():
 	if Utils.get_scene_manager() != null:
 		if encounter() == true:
 			var pokemon = get_encounter_pokemon()
+			if pokemon == null:
+				return
 			BattleManager.current_ai_level = 0
 			Utils.get_scene_manager().transition_to_battle_scene(pokemon)
 			Utils.get_player().change_animation(false)
@@ -57,6 +59,10 @@ func get_encounter_pokemon():
 	var Rng = RandomNumberGenerator.new()
 	var scene = Utils.get_scene_manager().get_current_scene()
 	var encounter_pokemon = scene.get_encounter_pokemon()
+	
+	if encounter_pokemon == null:
+		return null
+	
 	var poke_data = [encounter_pokemon,Rng.randi_range(scene.min_level,scene.max_level)]
 	var pokemon = game_pokemon.new(poke_data[0],poke_data[1])
 	return pokemon

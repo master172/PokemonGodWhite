@@ -189,9 +189,9 @@ func _on_thrower_success():
 
 func _on_dialog_handler_next_pokemon():
 	emit_signal("poke_start")
-
 	set_enemy(BattleManager.EnemyPokemons[0])
-
+	emit_signal("start")
+	
 func set_map(map :int = 0):
 	var Map
 	if map == 0:

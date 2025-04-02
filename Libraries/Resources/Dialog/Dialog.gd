@@ -8,7 +8,6 @@ enum dialog_Type {
 	Conditional,
 }
 
-
 @export_group("dialog_information")
 @export var Dialog_type:dialog_Type = 0 
 @export var text :String = ""

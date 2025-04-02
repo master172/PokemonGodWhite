@@ -1,13 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://qr11x4n8f2gi"]
+[gd_scene load_steps=26 format=3 uid="uid://qr11x4n8f2gi"]
 
-[ext_resource type="Script" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/function.gd" id="2_bu7wt"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
+[ext_resource type="Script" uid="uid://u2nj6r4p1hmn" path="res://src/DialogManager/dialog.gd" id="1_klog6"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="2_48l1n"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="2_bu7wt"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="3_nixps"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="3_pnle8"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="3_s3u0i"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="5_080rw"]
 [ext_resource type="Resource" uid="uid://c4vikkbymtjnl" path="res://Resources/Dialogs/NewLine.tres" id="5_ixvud"]
-[ext_resource type="Script" path="res://src/DialogManager/FunctionManager.gd" id="8_7aqj1"]
+[ext_resource type="Script" uid="uid://8rjn2e6qlcb3" path="res://src/DialogManager/FunctionManager.gd" id="8_7aqj1"]
 
 [sub_resource type="Resource" id="Resource_lpre6"]
 script = ExtResource("2_bu7wt")
@@ -19,7 +20,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "First Dialog"
 next = 1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_lpre6")])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -28,7 +29,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Second Dialog"
 next = 2
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -37,7 +38,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Third Dialog"
 next = 3
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -64,7 +65,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Hello Question"
 next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
 
@@ -73,7 +74,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 0
 text = "Option 1"
 next = -1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([])
 
@@ -94,7 +95,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Second Question"
 next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
 
@@ -108,7 +109,7 @@ script = ExtResource("2_48l1n")
 Dialog_type = 2
 text = ""
 next = 0
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
+Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_8helj")])
 Options = Array[ExtResource("3_s3u0i")]([])
 

@@ -114,7 +114,10 @@ invisible = true
 
 [node name="Door4" parent="Node2D" instance=ExtResource("10_7ceyd")]
 position = Vector2(-168, 232)
+next_scene_path = "uid://6e1lj06227iq"
 invisible = true
+Spawn_location = Vector2(1048, 400)
+Spawn_direction = Vector2(-1, 0)
 
 [node name="CollisionShape2D" parent="Node2D/Door4" index="1"]
 position = Vector2(0, 8)

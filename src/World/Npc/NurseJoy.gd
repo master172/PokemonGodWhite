@@ -29,6 +29,7 @@ func healing(Sign):
 		animation_player.play("Bow")
 		await get_tree().create_timer(0.1).timeout
 		Utils.get_player().set_physics_process_custom(true)
+		Utils.autosave()
 		
 func heal():
 	Utils.get_player().set_physics_process(false)

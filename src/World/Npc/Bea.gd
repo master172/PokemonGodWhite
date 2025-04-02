@@ -53,3 +53,4 @@ func heal():
 func healing_done(Sign):
 	if Sign == "Done":
 		Utils.get_player().set_physics_process_custom(true)
+		Utils.autosave()

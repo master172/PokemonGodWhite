@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtcy8jt6yeehr"]
+[gd_scene load_steps=36 format=3 uid="uid://dtcy8jt6yeehr"]
 
 [ext_resource type="PackedScene" uid="uid://i3rtwnl4su6j" path="res://src/World/Area0.tscn" id="1_7uays"]
 [ext_resource type="Script" uid="uid://bpiclmfiqepfa" path="res://src/Game/scene_manager.gd" id="1_iar6v"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bj1jts7ijsikk" path="res://src/Ui/MoveDeletor/move_deletor.tscn" id="7_3jiyl"]
 [ext_resource type="Theme" uid="uid://halpx258wpw0" path="res://Libraries/Fonts/Ui.tres" id="9_hc13s"]
 [ext_resource type="Script" uid="uid://c8yxuyn7ttbv5" path="res://src/Game/hud_layer.gd" id="9_rgbp0"]
+[ext_resource type="Texture2D" uid="uid://ca5hmpmyu5bs4" path="res://assets/Ui/Hud/autosave.svg" id="11_n82tn"]
 [ext_resource type="Script" uid="uid://bqacquon4a7uv" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
 [ext_resource type="PackedScene" uid="uid://2o1txcjdlokb" path="res://src/Ui/Trading/Npc/NpcTradingSelector.tscn" id="12_uius2"]
 [ext_resource type="Environment" uid="uid://co5ke1rxd3epw" path="res://src/Environment/world_environment.tres" id="13_8glvd"]
@@ -90,10 +91,40 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(260, -145)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1120, 910)]
+}
+
+[sub_resource type="Animation" id="Animation_q4cre"]
+resource_name = "DisplaySave"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(0.129408, 1, 0.129, 1),
+"update": 0,
+"values": [Vector2(1120, 910), Vector2(1120, 720), Vector2(1120, 720), Vector2(1120, 910)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4cre"]
 _data = {
 &"DisplayMapIdentifier": SubResource("Animation_uius2"),
+&"DisplaySave": SubResource("Animation_q4cre"),
 &"RESET": SubResource("Animation_n82tn")
 }
 
@@ -249,10 +280,29 @@ text = "Fivis Town"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HudLayer/Control"]
+[node name="NamePlayer" type="AnimationPlayer" parent="HudLayer/Control"]
 libraries = {
 &"": SubResource("AnimationLibrary_q4cre")
 }
+
+[node name="SavePlayer" type="AnimationPlayer" parent="HudLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_q4cre")
+}
+
+[node name="TextureRect" type="TextureRect" parent="HudLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 110.0
+offset_bottom = 190.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_n82tn")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 layer = 3
@@ -307,5 +357,10 @@ script = ExtResource("12_bndex")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("13_8glvd")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
 [connection signal="has_modulate" from="Current_scene" to="." method="_on_current_scene_has_modulate"]
 [connection signal="no_modulate" from="Current_scene" to="." method="_on_current_scene_no_modulate"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

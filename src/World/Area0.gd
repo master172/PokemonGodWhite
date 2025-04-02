@@ -46,8 +46,9 @@ func initialize_groups():
 func get_encounter_pokemon():
 	var index = get_group_from_rarity()
 	var Rng = RandomNumberGenerator.new()
-	var pokemon = index[Rng.randi() % index.size()]
-	return pokemon
+	if index != null:
+		var pokemon = index[Rng.randi() % index.size()]
+		return pokemon
 
 func get_group_from_rarity():
 	var max_relative = calculate_total_relative()

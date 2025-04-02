@@ -6,7 +6,7 @@ class_name EnemyRetreatState
 @export var rect_timer:Timer
 
 const BOUNDARY_RECT = Rect2(Vector2(0, 0), Vector2(1200, 800))
-const max_time:float = 5.0
+const max_time:float = 2.0
 
 func _ready() -> void:
 	rect_timer.timeout.connect(_on_rect_timer_timeout)

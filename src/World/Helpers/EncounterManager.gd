@@ -10,7 +10,7 @@ class_name encounterManager
 @export_subgroup("uncommon")
 @export var uncommon_pokemons :Array[Pokemon] = []
 @export var uncommon_relative:int = 5
-@export var uncommon_enabled:bool = true
+@export var uncommon_enabled:bool = false
 
 @export_subgroup("rare")
 @export var rare_pokemons :Array[Pokemon] = []
