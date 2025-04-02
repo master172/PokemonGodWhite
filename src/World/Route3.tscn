@@ -12,24 +12,26 @@
 [ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="10_7ceyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ceyd"]
-size = Vector2(31, 14)
+size = Vector2(30, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42srm"]
-size = Vector2(15.5, 31)
+size = Vector2(14, 30)
 
-[node name="MapRoom" type="Node2D"]
+[node name="Route3" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_nh4wl")
+common_enabled = false
+uncommon_enabled = false
+rare_enabled = false
 metadata/_custom_type_script = "uid://b3k7l5fkt0ruj"
 
 [node name="player" parent="." instance=ExtResource("7_myhi6")]
-position = Vector2(16, 229)
-metadata/_edit_group_ = true
+position = Vector2(-136, 240)
 
 [node name="Camera2D" parent="player" index="5"]
 limit_left = -224
 limit_top = -232
-limit_right = 320
+limit_right = 280
 limit_bottom = 416
 
 [node name="GameTilemap" type="Node2D" parent="." node_paths=PackedStringArray("ground_layer", "ground_object_layer", "room_scene")]
@@ -99,7 +101,7 @@ position = Vector2(72, -152)
 invisible = true
 
 [node name="CollisionShape2D" parent="Node2D/Door" index="1"]
-position = Vector2(8.5, 0)
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_7ceyd")
 
 [node name="Door2" parent="Node2D" instance=ExtResource("10_7ceyd")]
@@ -115,7 +117,7 @@ position = Vector2(-168, 232)
 invisible = true
 
 [node name="CollisionShape2D" parent="Node2D/Door4" index="1"]
-position = Vector2(0.25, 8)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_42srm")
 
 [editable path="player"]

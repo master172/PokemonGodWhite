@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://vylrotnx36ic" path="res://src/World/Route2/CameraLimits.gd" id="6_v5o7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fa3v"]
-size = Vector2(14, 47)
+size = Vector2(14, 46)
 
 [sub_resource type="Animation" id="Animation_l0n3p"]
 resource_name = "Area1"
@@ -319,7 +319,7 @@ Spawn_location = Vector2(-152, 240)
 Spawn_direction = Vector2(1, 0)
 
 [node name="CollisionShape2D" parent="Exit/Door2" index="1"]
-position = Vector2(0, 16.5)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_0fa3v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
