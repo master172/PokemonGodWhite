@@ -1089,7 +1089,6 @@ looking_direction = Vector2(-1, 0)
 z_index = 0
 position = Vector2(8, -128)
 
-[node name="BadgeHandler" type="Node2D" parent="."]
+[node name="BadgeHandler" type="Node" parent="."]
 script = ExtResource("8_emg6d")
 BadgeSignal = "BadgeAvin"
-badge_count = 1

@@ -1,9 +1,8 @@
-extends Node2D
-
-
+extends Node
+class_name BadgeHandler
 
 @export var BadgeSignal :String = ""
-@export var badge_count :int = 0
+@export var badge_count :int = 1
 
 func _ready():
 	Dialogic.connect("signal_event",check)
@@ -11,5 +10,4 @@ func _ready():
 func check(Sign):
 
 	if Sign == BadgeSignal:
-		Utils.Badge_count = badge_count
-
+		Utils.Badge_count += badge_count
