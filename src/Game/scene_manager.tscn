@@ -77,6 +77,23 @@ tracks/0/keys = {
 "values": [Vector2(260, -145), Vector2(260, 37), Vector2(260, 37), Vector2(260, -145)]
 }
 
+[sub_resource type="Animation" id="Animation_q4cre"]
+resource_name = "DisplaySave"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(0.129408, 1, 0.129, 1),
+"update": 0,
+"values": [Vector2(1120, 910), Vector2(1120, 720), Vector2(1120, 720), Vector2(1120, 910)]
+}
+
 [sub_resource type="Animation" id="Animation_n82tn"]
 length = 0.001
 tracks/0/type = "value"
@@ -102,23 +119,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1120, 910)]
-}
-
-[sub_resource type="Animation" id="Animation_q4cre"]
-resource_name = "DisplaySave"
-length = 3.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3),
-"transitions": PackedFloat32Array(0.129408, 1, 0.129, 1),
-"update": 0,
-"values": [Vector2(1120, 910), Vector2(1120, 720), Vector2(1120, 720), Vector2(1120, 910)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4cre"]

@@ -160,7 +160,6 @@ grow_vertical = 2
 color = Color(0.25098, 0.141176, 0.109804, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Backgrounds/BackgroundSettings"]
-visible = false
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
 anchors_preset = 8

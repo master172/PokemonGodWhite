@@ -56,7 +56,7 @@ func set_pokemon(Name:String):
 		return "Pokemon not found"
 	return "current pokemon is " + current_pokemon.Nick_name
 
-func level_up(pokemon:String = "",times:int = 1):
+func level_up(times:int = 1,pokemon:String = ""):
 	if pokemon != "":
 		set_pokemon(pokemon)
 	for i in range(times):
@@ -163,3 +163,38 @@ func find_pokemon_by_path(Name:String = "",path:String = default_pokemon_path):
 func change_animation_player(state:bool):
 	Utils.get_player().change_animation(state)
 	return "set animation stae to " + str(state)
+
+func print_scene_structure():
+	var scene_manager = Utils.get_scene_manager()
+	if not scene_manager:
+		return "scene manager not found"
+	else:
+		scene_manager.print_tree_pretty()
+		return "printing scene tree"
+
+func loseRound():
+	Battle_commands("loseRound")
+
+func winRound():
+	Battle_commands("winRound")
+
+func Battle_commands(command:String):
+	if BattleManager.in_battle == true:
+		BattleManager.emit_battle_control_signal(command)
+		return "performing command"
+
+func start_battle(poke_name:String,level:int = -1,gender:int = -1,map:int = 0,ai_level:int = 0):
+	if poke_name == "":
+		return "please enter a valid pokemon name"
+	var pokemon_refrence = find_pokemon_by_path(poke_name)
+	if not pokemon_refrence:
+		return "Invalid Request"
+	var pokemon = load(pokemon_refrence)
+	if not pokemon:
+		return "pokemon not found"
+	if level == -1:
+		level = AllyPokemon.get_main_pokemon().level
+	var poke_instance = game_pokemon.new(pokemon,level,"",gender)
+	BattleManager.current_ai_level = ai_level
+	Utils.get_scene_manager().transition_to_battle_scene(poke_instance)
+	return "starting battle"

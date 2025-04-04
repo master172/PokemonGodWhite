@@ -24,13 +24,18 @@ var allys :Array[BattlePokemon] = []
 var opponents :Array[PokeEnemy] = []
 
 
-var BATTLE_POKEMON
-var Poke_enemy
+var BATTLE_POKEMON:BattlePokemon
+var Poke_enemy:PokeEnemy
 
 
 func _ready():
 	Dialogic.connect("signal_event",_switch)
 	Dialogic.connect("signal_event",_run)
+	set_battle_connections()
+
+func set_battle_connections():
+	BattleManager.connect("winRound",WinBattle)
+	BattleManager.connect("loseRound",LoseBattle)
 	
 func set_enemy(pokemon):
 	Poke_enemy = poke_enemy.instantiate()
@@ -225,3 +230,9 @@ func load_abilities_enemy():
 			AbilityLoader.add_child(game_ability)
 			game_ability.Holder = i
 			game_ability.pre_setup()
+
+func WinBattle():
+	Poke_enemy.recive_plain_damage(Poke_enemy.pokemon.Health)
+
+func LoseBattle():
+	BATTLE_POKEMON.recive_plain_damage(BATTLE_POKEMON.pokemon.Health)

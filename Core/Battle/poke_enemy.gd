@@ -84,7 +84,7 @@ func calc_move_speed():
 	
 func choose_attack():
 	if attack_chosen == false:
-		if pokemon != null:
+		if pokemon != null and targetPokemon != null:
 			var at = ai_component.choose_attack(self,targetPokemon)
 			Attack = pokemon.get_learned_attack(at)
 			attack = Attack.base_action.range

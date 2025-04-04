@@ -1,6 +1,9 @@
 extends Node
 
-
+signal winBattle
+signal loseBattle
+signal winRound
+signal loseRound
 
 var normal_type:Dictionary = {
 	Normal = 1,
@@ -412,3 +415,9 @@ func finish_battle():
 	EnemyPokemons = []
 	
 	in_battle = false
+
+func emit_battle_control_signal(SignalRef:String):
+	var err = emit_signal(SignalRef)
+	if err == OK:
+		emit_signal(SignalRef)
+	
