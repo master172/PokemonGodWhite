@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ijdcbs023311"]
+[gd_scene load_steps=30 format=3 uid="uid://ijdcbs023311"]
 
 [ext_resource type="Script" uid="uid://cpqvqexbu4d02" path="res://src/Main/main_menu.gd" id="1_ptet1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_trdj8"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dgcdwbhra4jvb" path="res://src/Ui/Settings/settings.tscn" id="9_yovio"]
 [ext_resource type="PackedScene" uid="uid://4u3erx4omnc8" path="res://src/Main/Intro/IntroScreen.tscn" id="10_2yk6m"]
 [ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="11_xxnl1"]
+[ext_resource type="Theme" uid="uid://halpx258wpw0" path="res://Libraries/Fonts/Ui.tres" id="14_smh75"]
+[ext_resource type="Script" uid="uid://dhb24h1g8nmos" path="res://src/Main/load_game.gd" id="14_uyb6f"]
 
 [sub_resource type="Gradient" id="Gradient_twt4i"]
 interpolation_mode = 1
@@ -112,6 +114,14 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
+[sub_resource type="Gradient" id="Gradient_vtyy5"]
+offsets = PackedFloat32Array(0, 0.526066, 1)
+colors = PackedColorArray(0.0588235, 0.0470588, 0.101961, 1, 0.266667, 0.192157, 0.486275, 1, 0.172549, 0.137255, 0.352941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fstii"]
+gradient = SubResource("Gradient_vtyy5")
+fill_from = Vector2(0, 1)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -140,6 +150,16 @@ grow_vertical = 2
 texture = ExtResource("3_smh75")
 
 [node name="BackgroundNew" type="TextureRect" parent="Backgrounds"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t1dvj")
+
+[node name="BackgroundLoadGame" type="TextureRect" parent="Backgrounds"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -207,7 +227,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = 64.0
+offset_top = 170.0
 offset_right = 336.0
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -246,6 +266,24 @@ grow_vertical = 2
 theme = ExtResource("1_trdj8")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadGame" type="Panel" parent="ForeGround/ButtonContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsvha")
+
+[node name="Label" type="Label" parent="ForeGround/ButtonContainer/LoadGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_trdj8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -495,6 +533,58 @@ built from commit:2cf12a0
 SwirtezStudios:Youtube
 Master172:Github
 PokemonGodWhite"
+
+[node name="LoadGame" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_uyb6f")
+
+[node name="Background" type="TextureRect" parent="LoadGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_fstii")
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MainContainer" type="VBoxContainer" parent="LoadGame/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="LoadGame/MarginContainer/MainContainer"]
+layout_mode = 2
+theme = ExtResource("14_smh75")
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadGame/MarginContainer/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SlotContainer" type="VBoxContainer" parent="LoadGame/MarginContainer/MainContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
 
 [connection signal="timeout" from="LoadingScreen/TipTimer" to="LoadingScreen" method="_on_tip_timer_timeout"]
 [connection signal="visibility_changed" from="Settings" to="." method="_on_settings_visibility_changed"]

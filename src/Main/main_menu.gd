@@ -1,7 +1,7 @@
 extends Control
 
 var current_selected:int = 0
-var max_selectable:int = 5
+var max_selectable:int = 6
 
 @onready var button_container = $ForeGround/ButtonContainer
 @onready var backgrounds = $Backgrounds
@@ -13,13 +13,18 @@ var max_selectable:int = 5
 @onready var settings = $Settings
 @onready var label = $ForeGround/ButtonContainer/NewGame/Label
 @onready var Continue = $ForeGround/ButtonContainer/Continue
+@onready var background_load_game: TextureRect = $Backgrounds/BackgroundLoadGame
+@onready var Button_load_game: Panel = $ForeGround/ButtonContainer/LoadGame
+
+@onready var load_game: Control = $LoadGame
 
 
 enum STATES {
 	NORMAL,
 	EMPTY,
 	CONFIRM,
-	OPTIONS
+	OPTIONS,
+	LOAD_GAME
 }
 var state = STATES.NORMAL
 
@@ -42,23 +47,31 @@ func _ready():
 		var img = Image.load_from_file("user://save/"+str(Global.current_load_path)+"/Scene/"+"screenshot.png")
 		var level_pic_tex = ImageTexture.create_from_image(img)
 		background_continue.texture = level_pic_tex
+		background_load_game.texture = level_pic_tex
 		continue_disabled = false
 		Continue.self_modulate = Color(1, 1, 1)
+		Button_load_game.self_modulate = Color(1,1,1)
 	else:
 		background_continue.texture = load("res://assets/Ui/MainMenu/Background.png")
 		continue_disabled = true
-		
+		Button_load_game.self_modulate = disabled_color
 		Continue.self_modulate = disabled_color
 	set_selected(current_selected)
+	
 func set_selected(num:int):
-	if num != 0 and num != 4:
+	if num != 0 and num != 5 and num != 2:
 		button_container.get_child(num).modulate = Color(0, 1, 0.247)
 	elif num == 0:
 		if continue_disabled == false:
 			button_container.get_child(num).modulate = Color(0, 1, 0.247)
 		else:
 			button_container.get_child(num).modulate = not_selectable
-	elif num == 4:
+	elif num == 5:
+		if continue_disabled == false:
+			button_container.get_child(num).modulate = Color(0, 1, 0.247)
+		else:
+			button_container.get_child(num).modulate = not_selectable
+	elif num == 2:
 		if continue_disabled == false:
 			button_container.get_child(num).modulate = Color(0, 1, 0.247)
 		else:
@@ -79,6 +92,11 @@ func _input(event):
 			unset_selected(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_selected(current_selected)
+		elif state == STATES.LOAD_GAME:
+			AudioManager.input()
+			unset_load_slot()
+			current_selected  = (current_selected +max_selectable - 1) % max_selectable
+			set_load_slot()
 	elif event.is_action_pressed("A"):
 		if state == STATES.CONFIRM:
 			AudioManager.input()
@@ -92,6 +110,11 @@ func _input(event):
 			unset_selected(current_selected)
 			current_selected = (current_selected + 1) % max_selectable
 			set_selected(current_selected)
+		elif state == STATES.LOAD_GAME:
+			AudioManager.input()
+			unset_load_slot()
+			current_selected = (current_selected + 1) % max_selectable
+			set_load_slot()
 			
 	elif event.is_action_pressed("D"):
 		if state == STATES.CONFIRM:
@@ -121,11 +144,17 @@ func _input(event):
 				loading = true
 				new_game()
 			elif current_selected == 2:
+				current_selected = 0
+				max_selectable = count_save_folders()
+				state = STATES.LOAD_GAME
+				load_game.active = true
+				set_load_slot()
+			elif current_selected == 3:
 				settings.visible = true
 				state = STATES.OPTIONS
-			elif current_selected == 3:
-				get_tree().quit()
 			elif current_selected == 4:
+				get_tree().quit()
+			elif current_selected == 5:
 				if continue_disabled == false:
 					get_tree().change_scene_to_file("res://src/Ui/WonderGifts/wonder_gifts.tscn")
 				else:
@@ -142,8 +171,20 @@ func _input(event):
 				max_selectable = 4
 				confirm_panel.hide()
 				state = STATES.NORMAL
-		
-				
+		elif state == STATES.LOAD_GAME:
+			Global.current_load_path = current_selected
+			load_game.active = false
+			loading = true
+			state = STATES.EMPTY
+			loading_screen.show()
+			loading_screen.load_game()
+			
+	elif event.is_action_pressed("No"):
+		if state == STATES.LOAD_GAME:
+			current_selected = 2
+			max_selectable = 6
+			state = STATES.NORMAL
+			load_game.active = false
 
 func new_game():
 	Global.current_load_path += 1
@@ -166,3 +207,27 @@ func _on_settings_visibility_changed():
 
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
+
+func count_save_folders() -> int:
+	var dir = DirAccess.open("user://save")
+	if dir == null:
+		print("Directory not found.")
+		return 0
+
+	var folder_count = 0
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	
+	while file_name != "":
+		if dir.current_is_dir() and file_name != "." and file_name != "..":
+			folder_count += 1
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	return folder_count
+
+func unset_load_slot():
+	load_game.unset_selected(current_selected)
+
+func set_load_slot():
+	load_game.set_selected(current_selected)

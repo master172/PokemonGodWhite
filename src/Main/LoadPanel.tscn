@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ux1gnpq7vcf"]
+
+[ext_resource type="Theme" uid="uid://halpx258wpw0" path="res://Libraries/Fonts/Ui.tres" id="1_6p1t0"]
+[ext_resource type="Script" uid="uid://cghfgkngx3v3q" path="res://src/Main/load_panel.gd" id="1_qpcme"]
+[ext_resource type="Texture2D" uid="uid://bliuommofbdal" path="res://assets/Ui/MainMenu/screenshot.png" id="2_qpcme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fstii"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(0, 128)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fstii")
+script = ExtResource("1_qpcme")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6p1t0")
+text = "Save Slot:0"
+vertical_alignment = 1
+
+[node name="Loc" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6p1t0")
+text = "CurrentPlace:="
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_qpcme")
+expand_mode = 3
