@@ -13,8 +13,6 @@ var save_file_path = "user://save/Global/"
 var save_file_name = "Story.tres"
 
 var current_load_path:int = 0
-var num_active_path:int = 0
-var max_active_path:int = 0
 
 var steps_taken:int = 0:
 	set(value):
@@ -30,6 +28,9 @@ signal steps_updated(steps:int)
 func _ready():
 	load_config_info()
 
+func unload_data():
+	save_data = SaveData.new()
+	
 func start_load():
 	save_file_path = "user://save/"+str(current_load_path)+"/Global/"
 	verify_save_directory(save_file_path)

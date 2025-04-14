@@ -12,6 +12,10 @@ var PC_save_file_name = "PC_Pokemon.tres"
 func _ready():
 	Global.steps_updated.connect(check_status_condition)
 
+func unload_data():
+	PartyPokemon = Poke_list.new()
+	PcPokemon = Poke_list.new()
+	
 func start_load():
 	save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
 	PC_save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
@@ -141,13 +145,14 @@ func check_evolution_all():
 		i.check_evolution()
 	Utils.get_scene_manager().check_evolution()
 
-func remove_data():
-	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Pokemon/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Pokemon/")
+func remove_data(slot:int):
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Pokemon/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Pokemon/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
+		dir.remove("user://save/"+str(slot) + "/Pokemon/")
 		
 	PartyPokemon = Poke_list.new()
 	PcPokemon = Poke_list.new()

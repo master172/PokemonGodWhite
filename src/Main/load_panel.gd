@@ -58,6 +58,6 @@ func get_png_and_tres_files(dir_path: String) -> Dictionary:
 	return result
 
 func get_clean_filename(path: String) -> String:
-	var file_name = path.get_file()           # "CaveOfBegginings.tscn"
-	var name_no_ext = file_name.get_basename() # "CaveOfBegginings"
+	var file_name = path.get_file()
+	var name_no_ext = file_name.get_basename()
 	return name_no_ext

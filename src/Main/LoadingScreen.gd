@@ -48,7 +48,7 @@ func change_tip():
 	
 func _on_tip_timer_timeout():
 	animation_player.play("Fade")
-	
+
 func load_game_data():
 	Utils.handle_load()
 	Global.start_load()

@@ -104,6 +104,7 @@ func _input(event):
 						CurrentState = current_state.Save
 					elif current_selected == 7:
 						Utils.Menu = null
+						unload_game_data()
 						get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
 					elif current_selected == 6:
 						load_switching_scene()
@@ -125,6 +126,11 @@ func _input(event):
 				unload_trainer_card()
 			
 
+func unload_game_data():
+	Utils.unload_data()
+	Global.unload_data()
+	AllyPokemon.unload_data()
+	Inventory.unload_data()
 
 func handle_closing():
 	for i in grid_container.get_children():

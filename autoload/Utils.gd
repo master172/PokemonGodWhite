@@ -109,57 +109,74 @@ func apply_self_data():
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
 	
-func remove_save_files():
+func remove_save_files(slot:int):
 	
 	##deleting the player save files
-	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Player/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Player/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Player/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Player/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
-	
+		dir.remove("user://save/"+str(slot) + "/Player/")
 	##deleting scene save files
-	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Scene/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Scene/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Scene/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Scene/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
-	
+		dir.remove("user://save/"+str(slot) + "/Scene/")
+		
 	##deleting Trainer save files
-	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Trainers/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Trainers/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Trainers/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Trainers/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
-	
+		dir.remove("user://save/"+str(slot) + "/Trainers/")
 	##Deleting Story files
-	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Global/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Global/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Global/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Global/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
+		dir.remove("user://save/"+str(slot) + "/Global/")
 	##Deleting the pokemon save files
-	AllyPokemon.remove_data()
+	AllyPokemon.remove_data(slot)
 	
 	##Deleting the inventory save files
 	
-	Inventory.remove_data()
+	Inventory.remove_data(slot)
 	
 	##Deleting story data
-	remove_self_data()
-
-func remove_self_data():
-	if DirAccess.dir_exists_absolute("user://"+str(Global.current_load_path) + "/save/Utils/"):
-		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Utils/")
+	remove_self_data(slot)
+	
+	
+	
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/")
+		var err = dir.remove("user://save/"+str(slot) + "/")
+		if err != OK:
+			push_error("failed to delete save slot " + str(slot))
+	
+	shift_save_slots_down(slot)
+	Global.current_load_path -= 1
+	
+func remove_self_data(slot:int):
+	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Utils/"):
+		var dir = DirAccess.open("user://save/"+str(slot) + "/Utils/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
+		dir.remove("user://save/"+str(slot) + "/Utils/")
 	
+	unload_data()
+
+func unload_data():
 	player_uid = ""
 	Money = 100
 	Badge_count = 0
@@ -167,6 +184,43 @@ func remove_self_data():
 	Bea_met = false
 	William_met = false
 
+func get_numeric_folder_names(path: String) -> Array[int]:
+	var dir = DirAccess.open(path)
+	if dir == null:
+		print("Directory not found:", path)
+		return []
+
+	var folder_names: Array[int] = []
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir() and file_name != "." and file_name != "..":
+			if file_name.is_valid_int():
+				folder_names.append(file_name.to_int())
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+	return folder_names
+	
+func shift_save_slots_down(start_index: int, save_dir: String = "user://save") -> void:
+	var folder_names := get_numeric_folder_names(save_dir)
+	
+	if folder_names.is_empty():
+		return
+	
+	folder_names.sort()
+	var max_index = folder_names[-1]
+	# Rename folders from high to low to avoid overwriting
+	for slot_index in folder_names: # Go from last to first
+		if slot_index > start_index:
+			var old_path = save_dir + "/%d" % slot_index
+			var new_path = save_dir + "/%d" % (slot_index - 1)
+
+			var err = DirAccess.rename_absolute(old_path, new_path)
+			if err != OK:
+				print("Failed to rename", old_path, "to", new_path, "Error:", err)
+			
 func create_uid():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 	var uid = ""

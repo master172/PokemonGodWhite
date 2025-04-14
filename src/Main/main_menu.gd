@@ -36,6 +36,8 @@ var loading:bool = false
 
 var WonderGiftsPath = "user://WonderGifts/"
 
+var previous_selected:int = 0
+var previous_max_selectable:int = 0
 
 func _ready():
 	settings.visible = false
@@ -103,7 +105,14 @@ func _input(event):
 			unset_confirm(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_confirm(current_selected)
-		
+		elif state == STATES.LOAD_GAME:
+			AudioManager.cancel()
+			unset_load_slot()
+			current_selected = 2
+			max_selectable = 6
+			state = STATES.NORMAL
+			load_game.active = false
+			
 	elif event.is_action_pressed("S"):
 		if state == STATES.NORMAL:
 			AudioManager.input()
@@ -134,25 +143,21 @@ func _input(event):
 					loading_screen.show()
 					loading_screen.load_game()
 			elif current_selected == 1:
-				#current_selected = 1
-				#max_selectable = 2
-				#state = STATES.CONFIRM
-				#confirm_panel.show()
-				#unset_confirm(0)
-				#unset_confirm(1)
-				#set_confirm(current_selected)
+
 				loading = true
 				new_game()
 			elif current_selected == 2:
-				current_selected = 0
-				max_selectable = count_save_folders()
-				state = STATES.LOAD_GAME
-				load_game.active = true
-				set_load_slot()
+				if continue_disabled == false and loading == false:
+					current_selected = 0
+					max_selectable = count_save_folders()
+					state = STATES.LOAD_GAME
+					load_game.active = true
+					set_load_slot()
 			elif current_selected == 3:
 				settings.visible = true
 				state = STATES.OPTIONS
 			elif current_selected == 4:
+				Global.save_config_file()
 				get_tree().quit()
 			elif current_selected == 5:
 				if continue_disabled == false:
@@ -163,14 +168,14 @@ func _input(event):
 		elif state == STATES.CONFIRM:
 			if current_selected == 0:
 				if loading == false:
-					new_game()
-					confirm_panel.hide()
-					loading = true
+					delete_slot()
 			elif current_selected == 1:
-				current_selected = 1
-				max_selectable = 4
+				current_selected = previous_selected
+				max_selectable = previous_max_selectable
 				confirm_panel.hide()
-				state = STATES.NORMAL
+				state = STATES.LOAD_GAME
+				previous_selected = 0
+				previous_max_selectable = 0
 		elif state == STATES.LOAD_GAME:
 			Global.current_load_path = current_selected
 			load_game.active = false
@@ -182,11 +187,29 @@ func _input(event):
 	elif event.is_action_pressed("No"):
 		if state == STATES.LOAD_GAME:
 			AudioManager.cancel()
-			current_selected = 2
-			max_selectable = 6
-			state = STATES.NORMAL
-			load_game.active = false
+			previous_selected = current_selected
+			previous_max_selectable = max_selectable
+			current_selected = 1
+			max_selectable = 2
+			state = STATES.CONFIRM
+			confirm_panel.show()
+			unset_confirm(0)
+			unset_confirm(1)
+			set_confirm(current_selected)
 
+func delete_slot():
+	var slot = previous_selected
+	Utils.remove_save_files(slot)
+	load_game.delete_slot(slot)
+	confirm_panel.hide()
+	current_selected = previous_selected
+	max_selectable = previous_max_selectable
+	current_selected -= 1
+	max_selectable -=1
+	previous_selected = 0
+	previous_max_selectable = 0
+	state = STATES.LOAD_GAME
+	
 func new_game():
 	Global.current_load_path = count_save_folders()
 	state = STATES.EMPTY
@@ -232,3 +255,4 @@ func unset_load_slot():
 
 func set_load_slot():
 	load_game.set_selected(current_selected)
+	load_game.scroll(current_selected)
