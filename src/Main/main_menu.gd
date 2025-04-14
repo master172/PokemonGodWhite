@@ -181,13 +181,14 @@ func _input(event):
 			
 	elif event.is_action_pressed("No"):
 		if state == STATES.LOAD_GAME:
+			AudioManager.cancel()
 			current_selected = 2
 			max_selectable = 6
 			state = STATES.NORMAL
 			load_game.active = false
 
 func new_game():
-	Global.current_load_path += 1
+	Global.current_load_path = count_save_folders()
 	state = STATES.EMPTY
 	#Utils.remove_save_files()
 	

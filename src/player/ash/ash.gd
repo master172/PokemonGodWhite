@@ -618,7 +618,6 @@ func stop_animation():
 	
 func first_start():
 	Utils.create_uid()
-	var pidgey:Pokemon = load("res://Core/Pokemon/Pidgey.tres")
 	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
 	AllyPokemon.add_pokemon(MyNaichi)
 

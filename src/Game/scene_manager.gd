@@ -109,7 +109,10 @@ func first_time_load():
 		first_time_start = false
 		Scene_Saver.change_start(first_time_start)
 		Scene_Saver.change_scene("res://src/World/Area0.tscn")
-
+		shoot_screen()
+		Utils.save_data(false)
+		
+		
 func get_current_scene():
 	return current_scene.get_child(0)
 
