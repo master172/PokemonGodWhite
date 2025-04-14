@@ -11,6 +11,7 @@ var save_file_path = "user://save/Overworld/"
 var save_file_name = "Items.tres"
 
 func _ready():
+	save_file_path = "user://save/"+str(Global.current_load_path) + "/Overworld/"
 	if !DirAccess.dir_exists_absolute(save_file_path):
 		verify_save_directory(save_file_path)
 	var SceneManager = Utils.get_scene_manager()

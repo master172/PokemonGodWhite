@@ -10,6 +10,7 @@ var Settings_Saver:settings_saver = settings_saver.new()
 @onready var volume_slider = $TabContainer/Audio/ScrollContainer/VBoxContainer/Panel/VolumeSlider
 
 func _ready():
+	save_file_path = "user://save/"+str(Global.current_load_path)+ "/Settings/"
 	verify_save_directory(save_file_path)
 	load_data()
 	

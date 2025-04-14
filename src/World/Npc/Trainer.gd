@@ -49,6 +49,7 @@ func _ready():
 	basic_set()
 
 func save_prep():
+	save_file_path = "user://save/"+str(Global.current_load_path)+ "/Trainers/"
 	if !DirAccess.dir_exists_absolute(save_file_path):
 		verify_save_directory(save_file_path)
 	var SceneManager = Utils.get_scene_manager()

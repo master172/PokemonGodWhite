@@ -8,6 +8,7 @@ var save_file_name = "PlayerSave.tres"
 signal applying_done
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	save_file_path = "user://save/"+str(Global.current_load_path)+"/Player/"
 	verify_save_directory(save_file_path)
 
 func verify_save_directory(path:String):

@@ -69,6 +69,7 @@ signal trainer_battle_finished
 var just_loaded:bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	save_file_path = "user://save/"+str(Global.current_load_path)+"/Scene/"
 	verify_save_directory(save_file_path)
 	load_data()
 	#Dialogic.Save.load()
@@ -416,7 +417,7 @@ func shoot_screen():
 	img.convert(Image.FORMAT_RGBA8)
 	img.linear_to_srgb()
 	#img = apply_tonemap(img)
-	img.save_png("user://save/Scene/"+"screenshot.png")
+	img.save_png("user://save/"+str(Global.current_load_path)+"/Scene/"+"screenshot.png")
 	
 	vpt.set_canvas_cull_mask_bit(1,true)
 	emit_signal("screenshot_done")

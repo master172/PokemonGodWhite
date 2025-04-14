@@ -10,6 +10,8 @@ var PC_save_file_path = "user://save/Pokemon/"
 var PC_save_file_name = "PC_Pokemon.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
+	PC_save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
 	verify_save_directory(save_file_path)
 	Global.steps_updated.connect(check_status_condition)
 	
@@ -137,8 +139,8 @@ func check_evolution_all():
 	Utils.get_scene_manager().check_evolution()
 
 func remove_data():
-	if DirAccess.dir_exists_absolute("user://save/Pokemon/"):
-		var dir = DirAccess.open("user://save/Pokemon/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Pokemon/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Pokemon/")
 		var files = dir.get_files()
 		
 		for file in files:

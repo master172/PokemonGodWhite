@@ -38,8 +38,8 @@ func _ready():
 	AudioManager.switch_to_mainMenu()
 	verify_save_directory(WonderGiftsPath)
 	loading_screen.hide()
-	if FileAccess.file_exists("user://save/Scene/screenshot.png"):
-		var img = Image.load_from_file("user://save/Scene/screenshot.png")
+	if FileAccess.file_exists("user://save/"+str(Global.current_load_path)+"/Scene/"+"screenshot.png"):
+		var img = Image.load_from_file("user://save/"+str(Global.current_load_path)+"/Scene/"+"screenshot.png")
 		var level_pic_tex = ImageTexture.create_from_image(img)
 		background_continue.texture = level_pic_tex
 		continue_disabled = false

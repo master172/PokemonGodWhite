@@ -36,6 +36,9 @@ func player_dialog_end(sign):
 		
 func _ready():
 	Dialogic.connect("signal_event",player_dialog_end)
+
+func handle_load():
+	save_file_path =  "user://save/"+str(Global.current_load_path) + "/Utils/"
 	verify_save_directory(save_file_path)
 	load_data()
 	
@@ -79,6 +82,7 @@ func save_data(sign:bool = true):
 	get_scene_manager().save_data()
 	AllyPokemon.save_data()
 	Inventory.save_data()
+	Global.save_config_info()
 	save_self_data()
 	
 	if sign == true:
@@ -108,32 +112,32 @@ func apply_self_data():
 func remove_save_files():
 	
 	##deleting the player save files
-	if DirAccess.dir_exists_absolute("user://save/Player/"):
-		var dir = DirAccess.open("user://save/Player/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Player/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Player/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
 	
 	##deleting scene save files
-	if DirAccess.dir_exists_absolute("user://save/Scene/"):
-		var dir = DirAccess.open("user://save/Scene/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Scene/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Scene/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
 	
 	##deleting Trainer save files
-	if DirAccess.dir_exists_absolute("user://Save/Trainers/"):
-		var dir = DirAccess.open("user://Save/Trainers/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Trainers/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Trainers/")
 		var files = dir.get_files()
 		
 		for file in files:
 			dir.remove(file)
 	
 	##Deleting Story files
-	if DirAccess.dir_exists_absolute("user://save/Global/"):
-		var dir = DirAccess.open("user://save/Global/")
+	if DirAccess.dir_exists_absolute("user://save/"+str(Global.current_load_path) + "/Global/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Global/")
 		var files = dir.get_files()
 		
 		for file in files:
@@ -149,8 +153,8 @@ func remove_save_files():
 	remove_self_data()
 
 func remove_self_data():
-	if DirAccess.dir_exists_absolute("user://save/Utils/"):
-		var dir = DirAccess.open("user://save/Utils/")
+	if DirAccess.dir_exists_absolute("user://"+str(Global.current_load_path) + "/save/Utils/"):
+		var dir = DirAccess.open("user://save/"+str(Global.current_load_path) + "/Utils/")
 		var files = dir.get_files()
 		
 		for file in files:
