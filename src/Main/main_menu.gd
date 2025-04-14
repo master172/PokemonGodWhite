@@ -168,7 +168,10 @@ func _input(event):
 		elif state == STATES.CONFIRM:
 			if current_selected == 0:
 				if loading == false:
-					delete_slot()
+					if previous_max_selectable <= 1:
+						AudioManager.cancel()
+					else:
+						delete_slot()
 			elif current_selected == 1:
 				current_selected = previous_selected
 				max_selectable = previous_max_selectable
@@ -196,6 +199,13 @@ func _input(event):
 			unset_confirm(0)
 			unset_confirm(1)
 			set_confirm(current_selected)
+		elif state == STATES.CONFIRM:
+			state = STATES.LOAD_GAME
+			confirm_panel.hide()
+			max_selectable = previous_max_selectable
+			current_selected = previous_selected
+			previous_max_selectable = 0
+			previous_selected = 0
 
 func delete_slot():
 	var slot = previous_selected
