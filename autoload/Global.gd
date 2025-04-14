@@ -29,9 +29,10 @@ signal steps_updated(steps:int)
 
 func _ready():
 	load_config_info()
+
+func start_load():
 	save_file_path = "user://save/"+str(current_load_path)+"/Global/"
 	verify_save_directory(save_file_path)
-	Utils.handle_load()
 	
 func verify_save_directory(path: String):
 	DirAccess.make_dir_recursive_absolute(path)

@@ -9,7 +9,7 @@ func verify_save_directory(path:String):
 	
 	DirAccess.make_dir_recursive_absolute(path)
 
-func _ready():
+func start_load():
 	save_file_path = "user://save/"+str(Global.current_load_path)+"/Bag/"
 	verify_save_directory(save_file_path)
 	load_data()

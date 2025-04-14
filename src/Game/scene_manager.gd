@@ -96,7 +96,7 @@ func apply_data():
 		
 		var scene = load(Scene_Saver.scene)
 		current_scene.get_child(0).queue_free()
-		await get_tree().create_timer(0.01).timeout
+		await current_scene.get_child(0).tree_exited
 		current_scene.add_scene(scene)
 		Utils.get_player().load_process()
 		Utils.set_player()

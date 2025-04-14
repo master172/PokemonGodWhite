@@ -18,6 +18,7 @@ func _ready():
 	change_tip()
 
 func load_game():
+	load_game_data()
 	ResourceLoader.load_threaded_request(sceneName)
 
 func load_intro():
@@ -48,3 +49,8 @@ func change_tip():
 func _on_tip_timer_timeout():
 	animation_player.play("Fade")
 	
+func load_game_data():
+	Utils.handle_load()
+	Global.start_load()
+	AllyPokemon.start_load()
+	Inventory.start_load()

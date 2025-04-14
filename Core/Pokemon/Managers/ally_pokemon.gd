@@ -10,10 +10,13 @@ var PC_save_file_path = "user://save/Pokemon/"
 var PC_save_file_name = "PC_Pokemon.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.steps_updated.connect(check_status_condition)
+
+func start_load():
 	save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
 	PC_save_file_path = "user://save/"+str(Global.current_load_path) + "/Pokemon/"
 	verify_save_directory(save_file_path)
-	Global.steps_updated.connect(check_status_condition)
+	
 	
 func done_loading():
 	if PartyPokemon.pokemon_size() >= 1:
