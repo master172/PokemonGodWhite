@@ -198,3 +198,8 @@ func start_battle(poke_name:String,level:int = -1,gender:int = -1,map:int = 0,ai
 	BattleManager.current_ai_level = ai_level
 	Utils.get_scene_manager().transition_to_battle_scene(poke_instance)
 	return "starting battle"
+
+func set_initial_pokemon():
+	if current_pokemon != null:
+		return
+	current_pokemon = AllyPokemon.get_main_pokemon()

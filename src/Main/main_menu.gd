@@ -111,13 +111,15 @@ func _input(event):
 					loading_screen.show()
 					loading_screen.load_game()
 			elif current_selected == 1:
-				current_selected = 1
-				max_selectable = 2
-				state = STATES.CONFIRM
-				confirm_panel.show()
-				unset_confirm(0)
-				unset_confirm(1)
-				set_confirm(current_selected)
+				#current_selected = 1
+				#max_selectable = 2
+				#state = STATES.CONFIRM
+				#confirm_panel.show()
+				#unset_confirm(0)
+				#unset_confirm(1)
+				#set_confirm(current_selected)
+				loading = true
+				new_game()
 			elif current_selected == 2:
 				settings.visible = true
 				state = STATES.OPTIONS
@@ -144,8 +146,9 @@ func _input(event):
 				
 
 func new_game():
+	Global.current_load_path += 1
 	state = STATES.EMPTY
-	Utils.remove_save_files()
+	#Utils.remove_save_files()
 	
 	loading_screen.show()
 	loading_screen.load_intro()
@@ -155,7 +158,6 @@ func unset_confirm(num:int = 0):
 
 func set_confirm(num:int = 0):
 	h_box_container.get_child(num).modulate = Color(0, 1, 0.275)
-
 
 
 func _on_settings_visibility_changed():

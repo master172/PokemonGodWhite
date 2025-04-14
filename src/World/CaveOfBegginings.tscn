@@ -56,7 +56,7 @@ tile_set = ExtResource("2_xr0ch")
 
 [node name="player" parent="." instance=ExtResource("14_5hnuk")]
 unique_name_in_owner = true
-position = Vector2(80, 272)
+position = Vector2(104, 272)
 
 [node name="Camera2D" parent="player" index="5"]
 limit_left = -400
@@ -105,7 +105,6 @@ Spawn_direction = Vector2(0, -1)
 [node name="EncounterManager" parent="." instance=ExtResource("17_vujiw")]
 common_pokemons = Array[ExtResource("7_50rrp")]([ExtResource("18_vxdaa")])
 common_relative = 7
-uncommon_enabled = false
 rare_pokemons = Array[ExtResource("7_50rrp")]([ExtResource("17_8n0qy"), ExtResource("2_oe4ly")])
 rare_relative = 3
 min_level = 3
@@ -116,7 +115,7 @@ z_index = 2
 color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(80, 272)
+position = Vector2(104, 272)
 energy = 0.7
 texture = ExtResource("17_12cxl")
 texture_scale = 0.5

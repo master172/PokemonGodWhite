@@ -106,6 +106,7 @@ func on_visibility_changed():
 		Utils.Menu.lock = false
 	else:
 		Utils.Menu.lock = true
+		commands.set_initial_pokemon()
 
 func scale_history():
 	if history.size() > MAX_HISTORY_SIZE:
