@@ -188,8 +188,8 @@ func _input(event):
 			loading_screen.load_game()
 			
 	elif event.is_action_pressed("No"):
+		AudioManager.cancel()
 		if state == STATES.LOAD_GAME:
-			AudioManager.cancel()
 			previous_selected = current_selected
 			previous_max_selectable = max_selectable
 			current_selected = 1
@@ -208,14 +208,17 @@ func _input(event):
 			previous_selected = 0
 
 func delete_slot():
-	var slot = previous_selected
+	var slot = Global.slot_dict[previous_selected]
 	Utils.remove_save_files(slot)
-	load_game.delete_slot(slot)
+	Global.delete_save_slot(previous_selected)
+	#Global.current_load_path = Global.slot_dict[previous_selected-1]
+	
+	load_game.delete_slot(previous_selected)
 	confirm_panel.hide()
 	current_selected = previous_selected
 	max_selectable = previous_max_selectable
-	current_selected -= 1
 	max_selectable -=1
+	current_selected = clamp(current_selected-1,0,max_selectable)
 	previous_selected = 0
 	previous_max_selectable = 0
 	state = STATES.LOAD_GAME

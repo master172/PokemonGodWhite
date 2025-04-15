@@ -32,11 +32,14 @@ signal steps_updated(steps:int)
 signal slots_loaded
 
 
-	
 func _ready():
 	update_slots()
 	load_config_info()
 
+func delete_save_slot(num:int):
+	slot_dict.erase(num)
+	update_slots()
+	
 func update_slots():
 	slot_dict = get_save_slots()
 	

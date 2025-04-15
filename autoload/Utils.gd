@@ -162,8 +162,8 @@ func remove_save_files(slot:int):
 		if err != OK:
 			push_error("failed to delete save slot " + str(slot))
 	
-	shift_save_slots_down(slot)
-	Global.current_load_path -= 1
+	#shift_save_slots_down(slot)
+
 	
 func remove_self_data(slot:int):
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Utils/"):
