@@ -41,24 +41,6 @@ func delete_slot(num:int):
 func reset_info():
 	for i in range(0,slot_container.get_child_count()):
 		slot_container.get_child(i).slot_index = i
-		
-func count_save_folders() -> int:
-	var dir = DirAccess.open("user://save")
-	if dir == null:
-		print("Directory not found.")
-		return 0
-
-	var folder_count = 0
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	
-	while file_name != "":
-		if dir.current_is_dir() and file_name != "." and file_name != "..":
-			folder_count += 1
-		file_name = dir.get_next()
-
-	dir.list_dir_end()
-	return folder_count
 
 func scroll(num:int):
 	scroll_container.scroll_vertical = clamp((num-4)*142,0,max_range*142)

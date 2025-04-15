@@ -184,43 +184,6 @@ func unload_data():
 	Bea_met = false
 	William_met = false
 
-func get_numeric_folder_names(path: String) -> Array[int]:
-	var dir = DirAccess.open(path)
-	if dir == null:
-		print("Directory not found:", path)
-		return []
-
-	var folder_names: Array[int] = []
-
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if dir.current_is_dir() and file_name != "." and file_name != "..":
-			if file_name.is_valid_int():
-				folder_names.append(file_name.to_int())
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
-	return folder_names
-	
-func shift_save_slots_down(start_index: int, save_dir: String = "user://save") -> void:
-	var folder_names := get_numeric_folder_names(save_dir)
-	
-	if folder_names.is_empty():
-		return
-	
-	folder_names.sort()
-	var max_index = folder_names[-1]
-	# Rename folders from high to low to avoid overwriting
-	for slot_index in folder_names: # Go from last to first
-		if slot_index > start_index:
-			var old_path = save_dir + "/%d" % slot_index
-			var new_path = save_dir + "/%d" % (slot_index - 1)
-
-			var err = DirAccess.rename_absolute(old_path, new_path)
-			if err != OK:
-				print("Failed to rename", old_path, "to", new_path, "Error:", err)
-			
 func create_uid():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 	var uid = ""

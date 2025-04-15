@@ -149,7 +149,7 @@ func _input(event):
 			elif current_selected == 2:
 				if continue_disabled == false and loading == false:
 					current_selected = 0
-					max_selectable = count_save_folders()
+					max_selectable = Global.slot_dict.keys().size()
 					state = STATES.LOAD_GAME
 					load_game.active = true
 					set_load_slot()
@@ -244,24 +244,6 @@ func _on_settings_visibility_changed():
 
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
-
-func count_save_folders() -> int:
-	var dir = DirAccess.open("user://save")
-	if dir == null:
-		print("Directory not found.")
-		return 0
-
-	var folder_count = 0
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	
-	while file_name != "":
-		if dir.current_is_dir() and file_name != "." and file_name != "..":
-			folder_count += 1
-		file_name = dir.get_next()
-
-	dir.list_dir_end()
-	return folder_count
 
 func unset_load_slot():
 	load_game.unset_selected(current_selected)
