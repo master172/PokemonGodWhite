@@ -14,6 +14,11 @@ var save_file_name = "Story.tres"
 
 var current_load_path:int = 0
 
+var slot_dict:Dictionary = {}:
+	set(value):
+		slot_dict = value
+		slots_loaded.emit()
+
 var steps_taken:int = 0:
 	set(value):
 		if value > 9999:
@@ -24,9 +29,44 @@ var steps_taken:int = 0:
 		return steps_taken
 
 signal steps_updated(steps:int)
+signal slots_loaded
 
+
+	
 func _ready():
+	update_slots()
 	load_config_info()
+
+func update_slots():
+	slot_dict = get_save_slots()
+	
+func get_save_slots() ->Dictionary:
+	var save_path = "user://save"
+	var dir :DirAccess
+	var slots :Dictionary = {}
+	
+	if not DirAccess.dir_exists_absolute(save_path):
+		push_error("Save directory does not exsist: ",save_path)
+		return slots
+	
+	dir = DirAccess.open(save_path)
+	
+	dir.list_dir_begin()
+	var timestamps:Array[int] = []
+	var Name:String = dir.get_next()
+	
+	while Name != "":
+		if dir.current_is_dir():
+			timestamps.append(int(Name))
+		Name = dir.get_next()
+	dir.list_dir_end()
+		
+	timestamps.sort()
+	
+	for i in range(timestamps.size()):
+		slots[i] = timestamps[i]
+		#print(slots[i])
+	return slots
 
 func unload_data():
 	save_data = SaveData.new()

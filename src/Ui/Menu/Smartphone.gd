@@ -105,6 +105,7 @@ func _input(event):
 					elif current_selected == 7:
 						Utils.Menu = null
 						unload_game_data()
+						Global.update_slots()
 						get_tree().change_scene_to_file("res://src/Main/main_menu.tscn")
 					elif current_selected == 6:
 						load_switching_scene()

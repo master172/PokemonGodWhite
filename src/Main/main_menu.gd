@@ -180,7 +180,7 @@ func _input(event):
 				previous_selected = 0
 				previous_max_selectable = 0
 		elif state == STATES.LOAD_GAME:
-			Global.current_load_path = current_selected
+			Global.current_load_path = Global.slot_dict[current_selected]
 			load_game.active = false
 			loading = true
 			state = STATES.EMPTY
@@ -221,7 +221,7 @@ func delete_slot():
 	state = STATES.LOAD_GAME
 	
 func new_game():
-	Global.current_load_path = count_save_folders()
+	Global.current_load_path = int(Time.get_unix_time_from_system())
 	state = STATES.EMPTY
 	#Utils.remove_save_files()
 	

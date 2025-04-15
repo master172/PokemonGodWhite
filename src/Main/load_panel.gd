@@ -21,8 +21,9 @@ func set_active():
 		self_modulate = Color.WHITE
 
 func set_info(num:int):
+	var slot = Global.slot_dict[num]
 	Name.text = "Save Slot: " + str(num)
-	var dir =  ("user://save/"+str(slot_index)+"/Scene")
+	var dir =  ("user://save/"+str(slot)+"/Scene")
 	var files :Dictionary = get_png_and_tres_files(dir)
 	
 	var scene_save:scene_saver = ResourceLoader.load(files["tres"])

@@ -14,11 +14,12 @@ var active:bool = false:
 
 func _ready() -> void:
 	visible = active
+	#Global.slots_loaded.connect(add_nodes)
 	add_nodes()
 	
 func add_nodes():
-	max_range = count_save_folders()
-	for i in range(0,count_save_folders()):
+	max_range = Global.slot_dict.keys().size()
+	for i in max_range:
 		var slot = LOAD_PANEL.instantiate()
 		slot_container.add_child(slot)
 		slot.slot_index = i
