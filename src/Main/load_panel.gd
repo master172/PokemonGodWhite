@@ -1,8 +1,9 @@
-extends Panel
+extends Control
 
-@onready var Name: Label = $MarginContainer/HBoxContainer/VBoxContainer/Name
-@onready var Loc: Label = $MarginContainer/HBoxContainer/VBoxContainer/Loc
-@onready var texture_rect: TextureRect = $MarginContainer/HBoxContainer/TextureRect
+@onready var Name: Label = $MainContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/Name
+@onready var Loc: Label = $MainContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/Loc
+@onready var texture_rect: TextureRect = $MainContainer/Panel/MarginContainer/HBoxContainer/TextureRect
+@onready var panel: Panel = $MainContainer/Panel
 
 var active:bool = false:
 	set(value):
@@ -16,9 +17,9 @@ var slot_index:int = 0:
 
 func set_active():
 	if active == true:
-		self_modulate = Color.GREEN
+		panel.self_modulate = Color.GREEN
 	else:
-		self_modulate = Color.WHITE
+		panel.self_modulate = Color.WHITE
 
 func set_info(num:int):
 	var slot = Global.slot_dict[num]

@@ -39,7 +39,36 @@ func _ready():
 func delete_save_slot(num:int):
 	slot_dict.erase(num)
 	update_slots()
+	current_load_path = reassign_to_nearest_slot(current_load_path,slot_dict)
 	
+func reassign_to_nearest_slot(current_slot: int, save_slots: Dictionary) -> int:
+	var timestamps := save_slots.values()
+	timestamps.sort()  # Ascending: older to newer
+
+	if timestamps.size() == 0:
+		return -1
+
+	var previous := -1
+	var next := -1
+
+	for timestamp in timestamps:
+		if timestamp < current_slot:
+			previous = timestamp
+		elif timestamp > current_slot and next == -1:
+			next = timestamp
+
+	# Prefer older one (before)
+	if previous != -1:
+		return previous
+	# Else, fallback to newer one
+	elif next != -1:
+		return next
+
+	# No valid slots found
+	return -1
+
+
+
 func update_slots():
 	slot_dict = get_save_slots()
 	
@@ -49,7 +78,7 @@ func get_save_slots() ->Dictionary:
 	var slots :Dictionary = {}
 	
 	if not DirAccess.dir_exists_absolute(save_path):
-		push_error("Save directory does not exsist: ",save_path)
+		push_warning("Save directory does not exsist: ",save_path)
 		return slots
 	
 	dir = DirAccess.open(save_path)

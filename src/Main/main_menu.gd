@@ -105,13 +105,6 @@ func _input(event):
 			unset_confirm(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_confirm(current_selected)
-		elif state == STATES.LOAD_GAME:
-			AudioManager.cancel()
-			unset_load_slot()
-			current_selected = 2
-			max_selectable = 6
-			state = STATES.NORMAL
-			load_game.active = false
 			
 	elif event.is_action_pressed("S"):
 		if state == STATES.NORMAL:
@@ -131,7 +124,18 @@ func _input(event):
 			unset_confirm(current_selected)
 			current_selected  = (current_selected +max_selectable - 1) % max_selectable
 			set_confirm(current_selected)
-	
+		elif state == STATES.LOAD_GAME:
+			AudioManager.cancel()
+			previous_selected = current_selected
+			previous_max_selectable = max_selectable
+			current_selected = 1
+			max_selectable = 2
+			state = STATES.CONFIRM
+			confirm_panel.show()
+			unset_confirm(0)
+			unset_confirm(1)
+			set_confirm(current_selected)
+			
 	elif event.is_action_pressed("Yes"):
 		AudioManager.select()
 		if state == STATES.NORMAL:
@@ -190,15 +194,11 @@ func _input(event):
 	elif event.is_action_pressed("No"):
 		AudioManager.cancel()
 		if state == STATES.LOAD_GAME:
-			previous_selected = current_selected
-			previous_max_selectable = max_selectable
-			current_selected = 1
-			max_selectable = 2
-			state = STATES.CONFIRM
-			confirm_panel.show()
-			unset_confirm(0)
-			unset_confirm(1)
-			set_confirm(current_selected)
+			unset_load_slot()
+			current_selected = 2
+			max_selectable = 6
+			state = STATES.NORMAL
+			load_game.active = false
 		elif state == STATES.CONFIRM:
 			state = STATES.LOAD_GAME
 			confirm_panel.hide()

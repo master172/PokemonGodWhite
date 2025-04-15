@@ -461,6 +461,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="MainContainer" type="VBoxContainer" parent="LoadGame/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="LoadGame/MarginContainer/MainContainer"]
