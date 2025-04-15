@@ -60,6 +60,15 @@ func get_png_and_tres_files(dir_path: String) -> Dictionary:
 	return result
 
 func get_clean_filename(path: String) -> String:
-	var file_name = path.get_file()
+	var path_to_file:String = ""
+	
+	var is_valid_uid = ResourceUID.has_id(ResourceUID.text_to_id(path))
+	var scene_uid = ResourceUID.text_to_id(path)
+	if is_valid_uid == true:
+		path_to_file = ResourceUID.get_id_path(scene_uid)
+	else:
+		path_to_file = path
+		
+	var file_name = path_to_file.get_file()
 	var name_no_ext = file_name.get_basename()
 	return name_no_ext
