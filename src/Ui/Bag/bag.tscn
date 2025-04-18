@@ -333,7 +333,7 @@ grow_vertical = 2
 
 [node name="Use" parent="OptionsContainer/VBoxContainer" instance=ExtResource("17_f2f13")]
 layout_mode = 2
-NameAddition = "on a Pokémon"
+NameAddition = "the item"
 
 [node name="Give" parent="OptionsContainer/VBoxContainer" instance=ExtResource("17_f2f13")]
 layout_mode = 2

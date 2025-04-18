@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Talisman" load_steps=2 format=3 uid="uid://g6epp6134rty"]
+
+[ext_resource type="Script" uid="uid://ctdjvrte6ics0" path="res://Resources/Bag/Items/GameItems/Talisman.gd" id="1_qsxid"]
+
+[resource]
+script = ExtResource("1_qsxid")
+my_function = 2
+metadata/_custom_type_script = "uid://ctdjvrte6ics0"

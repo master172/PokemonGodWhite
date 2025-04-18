@@ -65,10 +65,26 @@ func check_encounter():
 			if encounter() == true:
 				var Rng = RandomNumberGenerator.new()
 				var pokemon = [get_encounter_pokemon(),Rng.randi_range(min_level,max_level),]
+				if pokemon == null:
+					return
+				if talisman_attuned(pokemon):
+					return
 				var pokemon_to_encounter = game_pokemon.new(pokemon[0],pokemon[1])
 				BattleManager.current_ai_level = 0
 				Utils.get_scene_manager().transition_to_battle_scene(pokemon_to_encounter,map)
 				Utils.get_player().change_animation(false)
+
+func talisman_attuned(pokemon:game_pokemon) -> bool:
+	if Utils.talisman_active == false:
+		return false
+	var level:int = 0
+	for i :game_pokemon in AllyPokemon.get_party_pokemons():
+		level += i.level
+	
+	if level >= pokemon.level:
+		return true
+	
+	return false
 	
 func encounter():
 	var Rng = RandomNumberGenerator.new()

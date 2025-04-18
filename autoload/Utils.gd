@@ -23,6 +23,8 @@ var aiden_defeated:bool = false
 var Bea_met:bool = false
 var William_met:bool = false
 
+var talisman_active:bool = false
+
 var storyData :story_saver = story_saver.new()
 var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
@@ -95,6 +97,7 @@ func update_self_data():
 	storyData.William_met = William_met
 	storyData.Badge_count = Badge_count
 	storyData.Money = Money
+	storyData.talisman_active = talisman_active
 	
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
@@ -108,6 +111,7 @@ func apply_self_data():
 	aiden_defeated = storyData.aiden_defeated
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
+	talisman_active = storyData.talisman_active
 	
 func remove_save_files(slot:int):
 	

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=4 format=3 uid="uid://rr0pn38xdfp8"]
+
+[ext_resource type="Resource" uid="uid://g6epp6134rty" path="res://Resources/Bag/Items/ItemActors/Talisman.tres" id="1_u2u7i"]
+[ext_resource type="Script" uid="uid://cyh30wdac70o8" path="res://Resources/Bag/BaseItem.gd" id="1_w7skv"]
+[ext_resource type="Texture2D" uid="uid://b6ulosvjw0udp" path="res://assets/items/Talisman.png" id="3_w60t5"]
+
+[resource]
+script = ExtResource("1_w7skv")
+type_Hint = "KeyItems"
+count = 1
+Name = "Talisman"
+item = ExtResource("1_u2u7i")
+held_item_file = ""
+sprite = ExtResource("3_w60t5")
+Description = "Wards weaker pokemon form approaching when active"
+price = 200
+metadata/_custom_type_script = "uid://cyh30wdac70o8"

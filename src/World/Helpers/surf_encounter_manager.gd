@@ -8,6 +8,10 @@ func check_encounter():
 			if encounter() == true:
 				var Rng = RandomNumberGenerator.new()
 				var pokemon = [get_encounter_pokemon(),Rng.randi_range(min_level,max_level),]
+				if pokemon == null:
+					return
+				if talisman_attuned(pokemon):
+					return
 				var pokemon_to_encounter = game_pokemon.new(pokemon[0],pokemon[1])
 				BattleManager.current_ai_level = 0
 				Utils.get_scene_manager().transition_to_battle_scene(pokemon_to_encounter,map)

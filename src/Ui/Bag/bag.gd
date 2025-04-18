@@ -49,7 +49,7 @@ enum ITEM_STATES {
 	THROWING,
 }
 
-var current_itme_state = ITEM_STATES.NONE
+var current_item_state = ITEM_STATES.NONE
 
 var state:=STATES.NORMAL
 var bagkey:int = 0
@@ -214,16 +214,20 @@ func _input(event):
 					if ci.item != null:
 						if ci.item.get_function() == 0 or ci.item.get_function() == 1:
 							max_selected = 6
-							current_itme_state = ITEM_STATES.USING
+							current_item_state = ITEM_STATES.USING
 							_unset_selection()
 							state = STATES.POKEMON
 							current_selected = pokekey
 							set_pokemon()
+						elif ci.item.get_function() == 2:
+							ci.use(current_selected)
+							handle_item_use_closing()
+							
 				1:
 					var ci :BaseItem= Inventory.pocket.pockets[current_pocket].items[current_item]
 					if ci.held_item_file != "":
 						max_selected = 6
-						current_itme_state = ITEM_STATES.GIVING
+						current_item_state = ITEM_STATES.GIVING
 						_unset_selection()
 						state = STATES.POKEMON
 						current_selected = pokekey
@@ -233,18 +237,19 @@ func _input(event):
 		elif state == STATES.POKEMON:
 			if Inventory.pocket.pockets[current_pocket].items.size() > current_item:
 				var ci :BaseItem = Inventory.pocket.pockets[current_pocket].items[current_item]
-				if current_itme_state == ITEM_STATES.USING:
+				if current_item_state == ITEM_STATES.USING:
 					if AllyPokemon.get_party_pokemon(current_selected) != null:
 						ci.use(current_selected)
 						poke_container._all_display()
 						clear_items()
 						var temp = current_selected
-						
+
 						current_selected = bagkey
 						add_items()
 						current_selected = temp
 						clear_data()
-				elif current_itme_state == ITEM_STATES.GIVING:
+
+				elif current_item_state == ITEM_STATES.GIVING:
 					if AllyPokemon.get_party_pokemon(current_selected) != null:
 						AllyPokemon.get_party_pokemon(current_selected).take_item(ci.duplicate())
 						ci.set_count(-1)
@@ -261,7 +266,7 @@ func _input(event):
 		if state == STATES.POKEMON:
 			if v_box_container.get_child_count() > 0:
 				state = STATES.ITEMS
-				current_itme_state = ITEM_STATES.NONE
+				current_item_state = ITEM_STATES.NONE
 				max_selected = v_box_container.get_child_count()
 				unset_pokemon()
 				pokekey = current_selected
@@ -283,6 +288,30 @@ func _input(event):
 			current_selected = itemkey
 			itemkey = 0
 			
+
+func handle_item_use_closing():
+	clear_items()
+	var temp = current_selected
+	current_selected = bagkey
+	add_items()
+	
+	await get_tree().process_frame
+	if v_box_container.get_child_count() > 0:
+		state = STATES.ITEMS
+		current_item_state = ITEM_STATES.NONE
+		
+		max_selected = v_box_container.get_child_count()
+		current_selected = itemkey
+		itemkey = 0
+		_unset_selection()
+		set_item()
+	else:
+		state = STATES.NORMAL
+		max_selected = 9
+		current_selected = bagkey
+		set_pockets()
+		bagkey = 0
+	
 	
 func clear_items():
 	for i in v_box_container.get_children():

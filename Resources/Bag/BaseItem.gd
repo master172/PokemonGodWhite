@@ -30,5 +30,5 @@ func use(pokenum:int = 0):
 
 func set_count(num:int):
 	count += num
-	if count == 0:
+	if count <= 0:
 		Inventory.pocket.pockets[type_Hint].erase(self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=53 format=4 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://dyw7lstkx7p10" path="res://src/Npc/Base/ResourceScripts/Events/DelEvent.gd" id="25_e3gm3"]
 [ext_resource type="Script" uid="uid://djhr4xvud4035" path="res://src/Npc/Base/ResourceScripts/EventList.gd" id="25_qjaos"]
 [ext_resource type="Resource" uid="uid://d4g3wgtt2kokd" path="res://Resources/Bag/Items/Revive.tres" id="28_pm2q6"]
+[ext_resource type="Resource" uid="uid://rr0pn38xdfp8" path="res://Resources/Bag/Items/Talisman.tres" id="28_w0qkq"]
 [ext_resource type="Script" uid="uid://c1o1d6tb134ol" path="res://src/World/Helpers/surf_encounter_manager.gd" id="30_1vjks"]
 [ext_resource type="Resource" uid="uid://ybd037xsc7be" path="res://Core/Pokemon/Buneary.tres" id="31_pm2q6"]
 [ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="32_w0qkq"]
@@ -1850,6 +1851,11 @@ y_sort_enabled = true
 [node name="OverWorldItem" parent="Items" instance=ExtResource("12_yku7x")]
 position = Vector2(56, -64)
 item = ExtResource("13_x3ica")
+pick_up_dialog = ExtResource("14_yqc7c")
+
+[node name="OverWorldItem3" parent="Items" instance=ExtResource("12_yku7x")]
+position = Vector2(56, -112)
+item = ExtResource("28_w0qkq")
 pick_up_dialog = ExtResource("14_yqc7c")
 
 [node name="OverWorldItem2" parent="Items" instance=ExtResource("12_yku7x")]

@@ -28,6 +28,7 @@ var steps_taken:int = 0:
 	get:
 		return steps_taken
 
+
 signal steps_updated(steps:int)
 signal slots_loaded
 
