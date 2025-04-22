@@ -306,6 +306,9 @@ func handle_item_use_closing():
 		_unset_selection()
 		set_item()
 	else:
+		current_selected = 0
+		_unset_selection()
+		clear_data()
 		state = STATES.NORMAL
 		max_selected = 9
 		current_selected = bagkey

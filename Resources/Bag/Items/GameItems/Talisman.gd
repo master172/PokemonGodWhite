@@ -6,3 +6,4 @@ func _start():
 
 func use(_pokenum:int,user:BaseItem):
 	_start()
+	#user.set_count(-1)
