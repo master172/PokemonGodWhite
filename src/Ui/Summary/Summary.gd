@@ -8,8 +8,17 @@ extends Control
 @onready var moves = $moves
 @onready var naming_screen = $NamingScreen
 
+@onready var level = $presisting/Level
+@onready var Name = $presisting/Name
+@onready var item = $presisting/Item
+@onready var what = $presisting/What
+@onready var ball_caught = $presisting/BallCaught
+@onready var gender = $presisting/Gender
+@onready var poke = $presisting/Pokemon
+@onready var item_tex: TextureRect = $presisting/ItemTex
+
 enum Options {FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, FOURTH_SLOT, FIFTH_SLOT,SIXTH_SLOT}
-enum States {Normal,Selection,MoveManagement,Evolution,Inactive,Naming}
+enum States {Normal,Selection,MoveManagement,Evolution,Inactive,Naming,Items}
 
 var state = States.Normal
 var selected_option: int = Options.FIRST_SLOT
@@ -52,7 +61,8 @@ func set_active_option():
 	
 func _show_info():
 	info._display(showing_pokemon)
-
+	_display(showing_pokemon)
+	
 func set_pokemon(poke:game_pokemon):
 	showing_pokemon = poke
 	_show_info()
@@ -81,13 +91,17 @@ func _unhandled_input(event):
 		AudioManager.input()
 		if state == States.Normal:
 			if selected_option == 5:
+				if evolution.get_max() == 0:
+					return
 				temp_panel = selected_option
 				selected_option = 0
 				state = States.Evolution
 				options_selectable = evolution.get_max()
 				
 				evolution.update_display(selected_option,true)
-			
+			elif selected_option == 0:
+				state = States.Items
+				item_tex.self_modulate = Color.GREEN
 		elif state == States.Evolution:
 			evolution.update_display(selected_option,false)
 			selected_option  = (selected_option + 1) % options_selectable
@@ -116,7 +130,10 @@ func _unhandled_input(event):
 					evolution.scroll_full_up()
 				if selected_option > 0:
 					evolution.scroll_up()
-				
+		elif state == States.Items:
+			state = States.Normal
+			selected_option = 0
+			item_tex.self_modulate = Color.WHITE
 	elif event.is_action_pressed("Yes"):
 		AudioManager.select()
 		if  state == States.Normal:
@@ -139,7 +156,20 @@ func _unhandled_input(event):
 			state = States.Inactive
 			Utils.get_scene_manager().transition_to_evolution()
 			showing_pokemon.evolve_with_evolutor(selected_option)
+		elif state == States.Items:
+			state = States.Normal
+			showing_pokemon.remove_item()
+			selected_option = 0
+			item_tex.self_modulate = Color.WHITE
+			display_item()
 
+func display_item():
+	if showing_pokemon.held_item == null:
+		what.text = "None"
+		item_tex.texture = null
+	else:
+		what.text = showing_pokemon.held_item.Name
+		item_tex.texture = showing_pokemon.held_item.sprite
 func set_active():
 	state = States.Normal
 	selected_option = temp_panel
@@ -157,7 +187,14 @@ func _on_move_manager_quit():
 	Global.move_management = false
 	moves._display(showing_pokemon)
 
-
+func _display(pokemon:game_pokemon):
+	level.text = str(pokemon.level)
+	Name.text = pokemon.Nick_name
+	poke.texture = pokemon.Base_Pokemon.Front
+	gender.frame = pokemon.gender
+	if pokemon.held_item != null:
+		what.text = pokemon.held_item.Name
+		item_tex.texture = pokemon.held_item.sprite
 func _on_naming_screen_naming_done() -> void:
 	naming_screen.hide()
 	state = States.Normal

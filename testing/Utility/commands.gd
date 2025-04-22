@@ -101,7 +101,7 @@ func move_position(x:int,y:int):
 		return "move player to " + str(player.global_position)
 	return "[color=red]player not found[/color]"
 
-func change_scene(scene_path:String,spawn_location:Vector2,spawn_dir:Vector2):
+func change_scene(scene_path:String,spawn_location:Vector2,spawn_dir:Vector2=Vector2(0,-1)):
 	var SceneManager = Utils.get_scene_manager()
 	if not ResourceLoader.exists(scene_path):
 		return "[color=red]Invalid Scene Path[/color]"

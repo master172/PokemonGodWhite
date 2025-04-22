@@ -637,6 +637,17 @@ position = Vector2(81, 160)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_a8ai2")
 
+[node name="ItemTex" type="TextureRect" parent="presisting"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 618.0
+offset_right = 119.0
+offset_bottom = 714.0
+grow_vertical = 0
+stretch_mode = 6
+
 [node name="MoveManager" parent="." instance=ExtResource("19_qo35f")]
 visible = false
 layout_mode = 1

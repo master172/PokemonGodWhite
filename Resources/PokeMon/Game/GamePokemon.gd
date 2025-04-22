@@ -520,6 +520,12 @@ func take_item(item:BaseItem):
 	held_item = item
 	held_item.count = 1
 
+func remove_item():
+	if held_item == null:
+		return
+	held_item.pick_up()
+	held_item = null
+	
 func set_status_condition(condition:StatusCondition):
 	if status_condition != null:
 		return

@@ -9,7 +9,7 @@ func pre_setup():
 	setup()
 
 func handle_freeing():
-	print("removing ability")
+	print("removing item")
 	queue_free()
 
 func setup():
