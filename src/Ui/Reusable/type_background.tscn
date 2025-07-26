@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://caqshdikt58mh"]
+
+[ext_resource type="Script" uid="uid://dlefim6jikb4i" path="res://src/Ui/Pokedex/type_background.gd" id="1_dj5lo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42d6g"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="SystemFont" id="SystemFont_w81bp"]
+subpixel_positioning = 0
+
+[node name="TypeBackground" type="Panel"]
+custom_minimum_size = Vector2(128, 32)
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_42d6g")
+script = ExtResource("1_dj5lo")
+
+[node name="Type" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 21
+text = "Type"
+horizontal_alignment = 1
+vertical_alignment = 1

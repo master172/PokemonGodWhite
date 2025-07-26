@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwp0maanniovr"]
+
+[ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="1_gu6ms"]
+[ext_resource type="Script" uid="uid://clo4ydaxllhtv" path="res://src/Ui/Reusable/stat_container.gd" id="1_uvwce"]
+
+[sub_resource type="SystemFont" id="SystemFont_w81bp"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvwce"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_082es"]
+bg_color = Color(0, 0.683594, 0.191383, 1)
+skew = Vector2(0.45, 0)
+
+[node name="StatContainer" type="HBoxContainer"]
+script = ExtResource("1_uvwce")
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Hp"
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "64"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_gu6ms")
+theme_override_styles/background = SubResource("StyleBoxEmpty_uvwce")
+theme_override_styles/fill = SubResource("StyleBoxFlat_082es")
+max_value = 255.0
+value = 190.0
+show_percentage = false

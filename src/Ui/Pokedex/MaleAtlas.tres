@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://didsdnlio5jml"]
+
+[ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="1_6s1kk"]
+
+[resource]
+atlas = ExtResource("1_6s1kk")
+region = Rect2(0, 0, 5, 8)

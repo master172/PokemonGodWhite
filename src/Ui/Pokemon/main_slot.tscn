@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bbk2dilhl5dmm"]
 
-[ext_resource type="Script" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
+[ext_resource type="Script" uid="uid://b765aage71ce" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_xgbbi"]
 [ext_resource type="Texture2D" uid="uid://ddepnuwob1ehj" path="res://Core/Graphics/Zehlvogs/Icons/NAICHI.png" id="3_kdkpd"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_oq0tl"]
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owvcl"]
 _data = {
-"Idle": SubResource("Animation_c0kax"),
-"RESET": SubResource("Animation_uqftl")
+&"Idle": SubResource("Animation_c0kax"),
+&"RESET": SubResource("Animation_uqftl")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nia2x"]
@@ -80,7 +80,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_owvcl")
+&"": SubResource("AnimationLibrary_owvcl")
 }
 autoplay = "Idle"
 

@@ -1,26 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://d174ktbsf1qmn"]
+[gd_scene load_steps=20 format=3 uid="uid://d174ktbsf1qmn"]
 
-[ext_resource type="Theme" uid="uid://cqst728xxipcw" path="res://addons/dialogic/Editor/Theme/MainTheme.tres" id="1_6foo2"]
-[ext_resource type="Script" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
+[ext_resource type="Script" uid="uid://brxeihobt3m3m" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
 [ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="2_dx2s2"]
-[ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_atk5a"]
+[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_nswpf"]
+[ext_resource type="Script" uid="uid://bfag2hsisdbod" path="res://src/Ui/Pokedex/image_container.gd" id="3_3w12g"]
+[ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="3_42d6g"]
+[ext_resource type="PackedScene" uid="uid://caqshdikt58mh" path="res://src/Ui/Reusable/type_background.tscn" id="3_w81bp"]
+[ext_resource type="Shader" uid="uid://cvh3b0t05boom" path="res://src/Ui/Pokedex/Gradient.gdshader" id="4_3w12g"]
+[ext_resource type="StyleBox" uid="uid://ityqkqoeydat" path="res://src/Ui/Pokedex/EvolutionBackground.tres" id="6_56h31"]
+[ext_resource type="Script" uid="uid://dui10tcpp0bdv" path="res://src/Ui/Pokedex/stage.gd" id="6_e2w3g"]
+[ext_resource type="Texture2D" uid="uid://didsdnlio5jml" path="res://src/Ui/Pokedex/MaleAtlas.tres" id="10_xmmef"]
+[ext_resource type="Texture2D" uid="uid://btd1vb4jlbwmv" path="res://src/Ui/Pokedex/FemaleAtlas.tres" id="11_r70dy"]
+[ext_resource type="PackedScene" uid="uid://dwp0maanniovr" path="res://src/Ui/Reusable/stat_container.tscn" id="12_r70dy"]
 
-[sub_resource type="Gradient" id="Gradient_xy1xx"]
-colors = PackedColorArray(0.00696641, 0.0154595, 0.046875, 1, 0, 0.134546, 0.34375, 1)
+[sub_resource type="SystemFont" id="SystemFont_w81bp"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lcd12"]
-gradient = SubResource("Gradient_xy1xx")
-width = 128
-height = 128
-fill_from = Vector2(1, 0.923077)
-fill_to = Vector2(0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56h31"]
+shader = ExtResource("4_3w12g")
+shader_parameter/base_texture = ExtResource("3_42d6g")
+shader_parameter/gradient_radius = 0.527
+shader_parameter/gradient_intensity = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05xw6"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_top = 48
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70dy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_epvi7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gxqa"]
+content_margin_right = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmmef"]
+content_margin_right = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 5
+border_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe60t"]
+content_margin_right = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 5
+border_color = Color(0.675781, 0.675781, 0.675781, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgyb"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 4
 
 [node name="PokeInfo" type="Control"]
 layout_mode = 3
@@ -38,134 +69,446 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.160784, 0.160784, 0.160784, 1)
+color = Color(1, 0.972549, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 49.0
-offset_bottom = -47.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_lcd12")
-
-[node name="Panel" type="Panel" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_05xw6")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel"]
-layout_mode = 0
-offset_left = 17.0
-offset_right = 1183.0
-offset_bottom = 49.0
-
-[node name="Label" type="Label" parent="TextureRect/Panel/VBoxContainer"]
+[node name="Main" type="Control" parent="."]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 32
-text = "not-seen"
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/Panel"]
+[node name="TopContainer" type="HBoxContainer" parent="Main"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -562.0
-offset_top = -265.0
-offset_right = 566.0
-offset_bottom = 328.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = 32.0
+offset_right = -112.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Image" type="VBoxContainer" parent="TextureRect/Panel/HBoxContainer"]
+[node name="BaseContainer" type="VBoxContainer" parent="Main/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Number" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+[node name="NameContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
+
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/NameContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 32
-text = "No. 1001"
+text = "Charmander"
 
-[node name="Name" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+[node name="id" type="Label" parent="Main/TopContainer/BaseContainer/NameContainer"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 48
-text = "Naichi"
+theme_override_colors/font_color = Color(0.253906, 0.253906, 0.253906, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 24
+text = "#001"
 
-[node name="Tag" type="Label" parent="TextureRect/Panel/HBoxContainer/Image"]
+[node name="TypeContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 28
-text = "the original sin"
 
-[node name="Types" type="RichTextLabel" parent="TextureRect/Panel/HBoxContainer/Image"]
-custom_minimum_size = Vector2(0, 48)
+[node name="TypeBackground" parent="Main/TopContainer/BaseContainer/TypeContainer" instance=ExtResource("3_w81bp")]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/normal_font_size = 32
-text = "fire / fighting"
+DefType = "Dark"
 
-[node name="Description" type="RichTextLabel" parent="TextureRect/Panel/HBoxContainer/Image"]
+[node name="TypeBackground2" parent="Main/TopContainer/BaseContainer/TypeContainer" instance=ExtResource("3_w81bp")]
+layout_mode = 2
+DefType = "Ghost"
+
+[node name="ImageContainer" type="Control" parent="Main/TopContainer/BaseContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/normal_font_size = 32
-text = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of whatever you do, forever is it bound to you."
+script = ExtResource("3_3w12g")
 
-[node name="ImageContainer" type="HBoxContainer" parent="TextureRect/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Image" type="TextureRect" parent="TextureRect/Panel/HBoxContainer/ImageContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_dx2s2")
+[node name="Image" type="TextureRect" parent="Main/TopContainer/BaseContainer/ImageContainer"]
+custom_minimum_size = Vector2(0, 384)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 486.0
+grow_horizontal = 2
+texture = ExtResource("3_42d6g")
+expand_mode = 5
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel/HBoxContainer/ImageContainer"]
-custom_minimum_size = Vector2(128, 0)
+[node name="Gradient" type="ColorRect" parent="Main/TopContainer/BaseContainer/ImageContainer/Image"]
+texture_filter = 2
+material = SubResource("ShaderMaterial_56h31")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Main/TopContainer/BaseContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 24
+text = "Evolution"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Line2D" type="Line2D" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+points = PackedVector2Array(72, 48, 416, 48)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="stage0" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("6_e2w3g")
+
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0"]
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("6_56h31")
+
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dx2s2")
+
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 16
+text = "Naichi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stage1" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("6_e2w3g")
+
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1"]
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("6_56h31")
+
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dx2s2")
+
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 16
+text = "Naichi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stage2" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("6_e2w3g")
+
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2"]
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("6_56h31")
+
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dx2s2")
+
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 16
+text = "Naichi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoContainer" type="TabContainer" parent="Main/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_unselected_color = Color(0.67451, 0.67451, 0.67451, 1)
+theme_override_colors/font_hovered_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_r70dy")
+theme_override_styles/panel = ExtResource("2_nswpf")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_oe60t")
+current_tab = 0
+
+[node name="About" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 0
+
+[node name="Weaknesses" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Weaknesses"]
 layout_mode = 2
-theme_override_constants/separation = 312
-theme_override_styles/separator = SubResource("StyleBoxEmpty_epvi7")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 22
+text = "Weaknesses"
 
-[node name="HeightTitle" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+[node name="Types" type="GridContainer" parent="Main/TopContainer/InfoContainer/About/Weaknesses"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 32
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="TypeBackground" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
+layout_mode = 2
+DefType = "Water"
+
+[node name="TypeBackground2" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
+layout_mode = 2
+DefType = "Ghost"
+
+[node name="TypeBackground3" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
+layout_mode = 2
+DefType = "Grass"
+
+[node name="Story" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Story"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 22
+text = "Story"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/TopContainer/InfoContainer/About/Story"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "Naichi the original sin has evolved into noctichi and now is way more powerful than you"
+fit_content = true
+
+[node name="Biometrics" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Biometrics"
+
+[node name="GridContainer" type="GridContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics"]
+layout_mode = 2
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 11
+columns = 3
+
+[node name="Height" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
+
+[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height/DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
 text = "Height"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Height" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height/DataContainer"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 32
-text = "128m"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "0.6m"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="WeightTitle" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+[node name="Weight" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
+
+[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight/DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
 text = "Weight"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Weight" type="Label" parent="TextureRect/Panel/HBoxContainer/ImageContainer/VBoxContainer"]
+[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight/DataContainer"]
 layout_mode = 2
-theme = ExtResource("1_6foo2")
-theme_override_font_sizes/font_size = 32
-text = "345kg"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "999 Kg"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Gender" type="Sprite2D" parent="."]
-position = Vector2(1129, 70)
-scale = Vector2(10, 10)
-texture = ExtResource("4_atk5a")
+[node name="Gender" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
+
+[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Gender"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Data" type="HBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer/Data"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_xmmef")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer/Data"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_r70dy")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Ability0" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
+
+[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0/DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Ability"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0/DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Blaze"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 22
+text = "Stats"
+
+[node name="StatContainer" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Hp"
+
+[node name="StatContainer2" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Atk"
+
+[node name="StatContainer3" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Def"
+
+[node name="StatContainer4" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Sp_Atk"
+
+[node name="StatContainer5" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Sp_def"
+
+[node name="StatContainer6" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+layout_mode = 2
+default_stat = "Sp"
+
+[node name="Moves" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Locations" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
