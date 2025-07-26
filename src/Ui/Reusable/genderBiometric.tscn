@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://lnn7c3si74j2"]
+
+[ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="1_k0ee6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgyb"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 4
+
+[sub_resource type="SystemFont" id="SystemFont_w81bp"]
+subpixel_positioning = 0
+
+[node name="Gender" type="Panel"]
+custom_minimum_size = Vector2(80, 80)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
+
+[node name="DataContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="DataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_w81bp")
+theme_override_font_sizes/font_size = 18
+text = "Gender"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DataContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("1_k0ee6")
+stretch_mode = 5

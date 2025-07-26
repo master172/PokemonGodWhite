@@ -8,4 +8,4 @@ extends Control
 func set_image(texture:Texture2D):
 	image.texture = texture
 	var mat :ShaderMaterial = gradient.material
-	material.set_shader_parameter("base_texture", texture)
+	mat.set_shader_parameter("base_texture", texture)

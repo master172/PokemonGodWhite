@@ -18,7 +18,8 @@ var TYPE_COLORS := {
 	"Ice": Color(0.6, 0.9, 1.0),          # Light icy blue
 	"Dragon": Color(0.5, 0.2, 1.0),       # Royal purple
 	"Dark": Color(0.3, 0.3, 0.3),         # Dark gray
-	"Fairy": Color(1.0, 0.7, 1.0)         # Pastel pink
+	"Fairy": Color(1.0, 0.7, 1.0),        # Pastel pink
+	"None":Color(0.0,0.0,0.0,0.0)         # Transperant
 }
 
 @onready var type_label: Label = $Type
@@ -45,10 +46,6 @@ var TYPE_COLORS := {
 	"None"
 	) var DefType:String = "None"
 
-func _ready() -> void:
-	if DefType != "None":
-		set_type(DefType)
-		
 func set_type(type:String)->void:
 	type_label.text = type
 	self_modulate = TYPE_COLORS[type]

@@ -1,17 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://d174ktbsf1qmn"]
+[gd_scene load_steps=24 format=3 uid="uid://d174ktbsf1qmn"]
 
 [ext_resource type="Script" uid="uid://brxeihobt3m3m" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
 [ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="2_dx2s2"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_nswpf"]
+[ext_resource type="Script" uid="uid://dvxe4ns1dactj" path="res://src/Ui/Pokedex/base_container.gd" id="2_ppgyb"]
 [ext_resource type="Script" uid="uid://bfag2hsisdbod" path="res://src/Ui/Pokedex/image_container.gd" id="3_3w12g"]
 [ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="3_42d6g"]
 [ext_resource type="PackedScene" uid="uid://caqshdikt58mh" path="res://src/Ui/Reusable/type_background.tscn" id="3_w81bp"]
 [ext_resource type="Shader" uid="uid://cvh3b0t05boom" path="res://src/Ui/Pokedex/Gradient.gdshader" id="4_3w12g"]
 [ext_resource type="StyleBox" uid="uid://ityqkqoeydat" path="res://src/Ui/Pokedex/EvolutionBackground.tres" id="6_56h31"]
 [ext_resource type="Script" uid="uid://dui10tcpp0bdv" path="res://src/Ui/Pokedex/stage.gd" id="6_e2w3g"]
-[ext_resource type="Texture2D" uid="uid://didsdnlio5jml" path="res://src/Ui/Pokedex/MaleAtlas.tres" id="10_xmmef"]
-[ext_resource type="Texture2D" uid="uid://btd1vb4jlbwmv" path="res://src/Ui/Pokedex/FemaleAtlas.tres" id="11_r70dy"]
+[ext_resource type="Script" uid="uid://dt47yflqsweea" path="res://src/Ui/Pokedex/evolution_container.gd" id="7_byty8"]
+[ext_resource type="Script" uid="uid://sapj57njlqx8" path="res://src/Ui/Pokedex/info_container.gd" id="12_od8su"]
 [ext_resource type="PackedScene" uid="uid://dwp0maanniovr" path="res://src/Ui/Reusable/stat_container.tscn" id="12_r70dy"]
+[ext_resource type="PackedScene" uid="uid://dwoakijjp87mk" path="res://src/Ui/Reusable/BiometricPanel.tscn" id="13_c8x7n"]
+[ext_resource type="Script" uid="uid://dva3xpvh7ek82" path="res://src/Ui/Pokedex/biometrics.gd" id="13_mux3a"]
+[ext_resource type="PackedScene" uid="uid://lnn7c3si74j2" path="res://src/Ui/Reusable/genderBiometric.tscn" id="14_c8x7n"]
+[ext_resource type="Script" uid="uid://dc4k82stvq6iv" path="res://src/Ui/Pokedex/stats.gd" id="17_mux3a"]
 
 [sub_resource type="SystemFont" id="SystemFont_w81bp"]
 
@@ -43,15 +48,6 @@ content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 1)
 border_width_bottom = 5
 border_color = Color(0.675781, 0.675781, 0.675781, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgyb"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 4
 
 [node name="PokeInfo" type="Control"]
 layout_mode = 3
@@ -93,6 +89,7 @@ grow_vertical = 2
 [node name="BaseContainer" type="VBoxContainer" parent="Main/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("2_ppgyb")
 
 [node name="NameContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
 layout_mode = 2
@@ -149,34 +146,37 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Main/TopContainer/BaseContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 24
 text = "Evolution"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
+[node name="EvolutionContainer" type="HBoxContainer" parent="Main/TopContainer/BaseContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
+script = ExtResource("7_byty8")
 
-[node name="Line2D" type="Line2D" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+[node name="Line2D" type="Line2D" parent="Main/TopContainer/BaseContainer/EvolutionContainer"]
 points = PackedVector2Array(72, 48, 416, 48)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="stage0" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+[node name="stage0" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/EvolutionContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("6_e2w3g")
 
-[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0"]
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage0"]
 custom_minimum_size = Vector2(98, 98)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("6_56h31")
 
-[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0/Panel"]
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage0/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,7 +185,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dx2s2")
 
-[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage0"]
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage0"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
@@ -194,18 +194,18 @@ text = "Naichi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stage1" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+[node name="stage1" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/EvolutionContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("6_e2w3g")
 
-[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1"]
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage1"]
 custom_minimum_size = Vector2(98, 98)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("6_56h31")
 
-[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1/Panel"]
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage1/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,7 +214,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dx2s2")
 
-[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage1"]
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
@@ -223,18 +223,18 @@ text = "Naichi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stage2" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/HBoxContainer"]
+[node name="stage2" type="VBoxContainer" parent="Main/TopContainer/BaseContainer/EvolutionContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("6_e2w3g")
 
-[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2"]
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage2"]
 custom_minimum_size = Vector2(98, 98)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("6_56h31")
 
-[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2/Panel"]
+[node name="Pokemon" type="TextureRect" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage2/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,7 +243,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dx2s2")
 
-[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/HBoxContainer/stage2"]
+[node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/EvolutionContainer/stage2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
@@ -264,6 +264,7 @@ theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_oe60t")
 current_tab = 0
+script = ExtResource("12_od8su")
 
 [node name="About" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
 layout_mode = 2
@@ -286,18 +287,6 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="TypeBackground" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
-layout_mode = 2
-DefType = "Water"
-
-[node name="TypeBackground2" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
-layout_mode = 2
-DefType = "Ghost"
-
-[node name="TypeBackground3" parent="Main/TopContainer/InfoContainer/About/Weaknesses/Types" instance=ExtResource("3_w81bp")]
-layout_mode = 2
-DefType = "Grass"
-
 [node name="Story" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
 
@@ -308,7 +297,7 @@ theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
 text = "Story"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/TopContainer/InfoContainer/About/Story"]
+[node name="PokedexStory" type="RichTextLabel" parent="Main/TopContainer/InfoContainer/About/Story"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -319,6 +308,7 @@ fit_content = true
 
 [node name="Biometrics" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
+script = ExtResource("13_mux3a")
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics"]
 layout_mode = 2
@@ -333,144 +323,18 @@ theme_override_constants/h_separation = 22
 theme_override_constants/v_separation = 11
 columns = 3
 
-[node name="Height" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
-
-[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "Height"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Height/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "0.6m"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Weight" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
-
-[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "Weight"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Weight/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "999 Kg"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Gender" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
-
-[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "Gender"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Data" type="HBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer"]
+[node name="Height" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer" instance=ExtResource("13_c8x7n")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer/Data"]
+[node name="Weight" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer" instance=ExtResource("13_c8x7n")]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("10_xmmef")
-expand_mode = 4
-stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Gender/DataContainer/Data"]
+[node name="Gender" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer" instance=ExtResource("14_c8x7n")]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("11_r70dy")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Ability0" type="Panel" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppgyb")
-
-[node name="DataContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "Ability"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Data" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics/GridContainer/Ability0/DataContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_w81bp")
-theme_override_font_sizes/font_size = 18
-text = "Blaze"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Stats" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
+script = ExtResource("17_mux3a")
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Stats"]
 layout_mode = 2
@@ -479,29 +343,34 @@ theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
 text = "Stats"
 
-[node name="StatContainer" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="StatContainer" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
 default_stat = "Hp"
 
-[node name="StatContainer2" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer2" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
-default_stat = "Atk"
+default_stat = "Attack"
 
-[node name="StatContainer3" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer3" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
-default_stat = "Def"
+default_stat = "Defense"
 
-[node name="StatContainer4" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer4" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
-default_stat = "Sp_Atk"
+default_stat = "Sp_Attack"
 
-[node name="StatContainer5" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer5" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
-default_stat = "Sp_def"
+default_stat = "Sp_Defense"
 
-[node name="StatContainer6" parent="Main/TopContainer/InfoContainer/About/Stats" instance=ExtResource("12_r70dy")]
+[node name="StatContainer6" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
-default_stat = "Sp"
+default_stat = "Speed"
 
 [node name="Moves" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
 visible = false

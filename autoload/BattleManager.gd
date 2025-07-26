@@ -420,4 +420,47 @@ func emit_battle_control_signal(SignalRef:String):
 	var err = emit_signal(SignalRef)
 	if err == OK:
 		emit_signal(SignalRef)
-	
+
+# Function to get types the Pokémon is weak to (takes 2x or more damage from)
+func get_weaknesses(pokemon: Pokemon) -> Array[String]:
+	var weaknesses: Array[String] = []
+	for type in Types.keys():
+		var modifier = get_type_modifier(type, pokemon.Type1)
+		if pokemon.Type2 != "":
+			modifier *= get_type_modifier(type, pokemon.Type2)
+		if modifier >= 2.0:
+			weaknesses.append(type)
+	return weaknesses
+
+# Function to get types the Pokémon is strong against (deals 2x or more damage to)
+func get_strengths(pokemon: Pokemon) -> Array[String]:
+	var strengths: Array[String] = []
+	for type in Types.keys():
+		var modifier = get_type_modifier(pokemon.Type1, type)
+		if pokemon.Type2 != "":
+			modifier *= get_type_modifier(pokemon.Type2, type)  # Multiply for dual types
+		if modifier >= 2.0:
+			strengths.append(type)
+	return strengths
+
+# Function to get types the Pokémon is resistant to (takes 0.5x or less damage from)
+func get_resistances(pokemon: Pokemon) -> Array[String]:
+	var resistances: Array[String] = []
+	for type in Types.keys():
+		var modifier = get_type_modifier(type, pokemon.Type1)
+		if pokemon.Type2 != "":
+			modifier *= get_type_modifier(type, pokemon.Type2)
+		if modifier > 0.0 and modifier <= 0.5:
+			resistances.append(type)
+	return resistances
+
+# Function to get types the Pokémon is immune to (takes 0x damage from)
+func get_immunities(pokemon: Pokemon) -> Array[String]:
+	var immunities: Array[String] = []
+	for type in Types.keys():
+		var modifier = get_type_modifier(type, pokemon.Type1)
+		if pokemon.Type2 != "":
+			modifier *= get_type_modifier(type, pokemon.Type2)
+		if modifier == 0.0:
+			immunities.append(type)
+	return immunities

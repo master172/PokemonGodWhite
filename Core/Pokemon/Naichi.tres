@@ -69,7 +69,6 @@ catch_chance = 16
 evolutor = SubResource("Resource_o1s36")
 previous_pokemon = ""
 Tag = "The original sin"
-description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of
-whatever you do, forever is it bound to you."
+description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of whatever you do, forever is it bound to you."
 height = 1
 weight = 10
