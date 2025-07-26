@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=8 format=3 uid="uid://bbll1o6krkpec"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=10 format=3 uid="uid://bbll1o6krkpec"]
 
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_37i0i"]
 [ext_resource type="Resource" uid="uid://c5mwanc7qogiy" path="res://Core/Pokemon/Actions/Scratch.tres" id="1_swen0"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_nske3"]
 [ext_resource type="Resource" uid="uid://b2y7ur6xwsrk" path="res://Core/Pokemon/Actions/ThunderShock.tres" id="2_xu254"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_0qlrj"]
 [ext_resource type="Texture2D" uid="uid://budv2g8ffygq3" path="res://Core/Graphics/Zehlvogs/Front/CANARIS.png" id="3_a371u"]
 [ext_resource type="Texture2D" uid="uid://dkye5s4jjd5kq" path="res://Core/Graphics/Zehlvogs/Icons/CANARIS.png" id="4_m8vso"]
 [ext_resource type="Texture2D" uid="uid://dynbkwnppm5qv" path="res://Core/Graphics/Zehlvogs/Follower/CANARIS.png" id="5_gl4l1"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="6_dbrld"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="6_dbrld"]
 
 [resource]
 script = ExtResource("6_dbrld")
@@ -15,6 +17,10 @@ Id = 10
 Type1 = "Bug"
 Type2 = "Grass"
 leveleing_type = 2
+Ability = Array[ExtResource("1_37i0i")]([])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("3_a371u")
 Icon = ExtResource("4_m8vso")
 Overworld = ExtResource("5_gl4l1")
@@ -24,7 +30,9 @@ Base_Defense = 55
 Special_Base_Attack = 45
 Special_Base_Defense = 55
 Base_Speed = 50
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_swen0"), ExtResource("2_xu254"), ExtResource("3_0qlrj")])
+Actions = Array[ExtResource("2_nske3")]([ExtResource("1_swen0"), ExtResource("2_xu254"), ExtResource("3_0qlrj")])
+TmActions = Array[ExtResource("2_nske3")]([])
+EggActions = Array[ExtResource("2_nske3")]([])
 base_experience = 70
 Yield_Health = null
 Yield_Attack = 1
@@ -33,6 +41,7 @@ Yield_Special_Defense = null
 Yield_Special_Attack = null
 Yield_Speed = null
 catch_chance = 35
+previous_pokemon = ""
 Tag = ""
 description = ""
 height = 1

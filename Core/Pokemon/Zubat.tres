@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=7 format=3 uid="uid://dcx24t2o0gm4"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://dcx24t2o0gm4"]
 
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="1_efh7v"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="1_efh7v"]
 [ext_resource type="Resource" uid="uid://stoes3mvj7wy" path="res://Core/Pokemon/Actions/LeechLife.tres" id="1_pl3pf"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_wxmor"]
 [ext_resource type="Resource" uid="uid://dxjoidfxar5ag" path="res://Core/Pokemon/Actions/Supersonic.tres" id="2_iekqr"]
 [ext_resource type="Texture2D" uid="uid://ccvow85vvxb32" path="res://Core/Graphics/Pokemon/Gen1/Front/ZUBAT.png" id="2_j1ljj"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_k66gy"]
 [ext_resource type="Texture2D" uid="uid://4k1f08hp6bsi" path="res://Core/Graphics/Pokemon/Gen1/Icons/ZUBAT.png" id="3_foexb"]
 [ext_resource type="Texture2D" uid="uid://x05b10h5m50t" path="res://Core/Graphics/Pokemon/Gen1/Followers/ZUBAT.png" id="4_n0xly"]
 
@@ -14,6 +16,10 @@ Id = 41
 Type1 = "Poison"
 Type2 = "Flying"
 leveleing_type = null
+Ability = Array[ExtResource("1_wxmor")]([])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("2_j1ljj")
 Icon = ExtResource("3_foexb")
 Overworld = ExtResource("4_n0xly")
@@ -23,7 +29,9 @@ Base_Defense = 35
 Special_Base_Attack = 30
 Special_Base_Defense = 40
 Base_Speed = 55
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_pl3pf"), ExtResource("2_iekqr")])
+Actions = Array[ExtResource("2_k66gy")]([ExtResource("1_pl3pf"), ExtResource("2_iekqr")])
+TmActions = Array[ExtResource("2_k66gy")]([])
+EggActions = Array[ExtResource("2_k66gy")]([])
 base_experience = 54
 Yield_Health = null
 Yield_Attack = null
@@ -32,3 +40,8 @@ Yield_Special_Defense = null
 Yield_Special_Attack = null
 Yield_Speed = 1
 catch_chance = 44
+previous_pokemon = ""
+Tag = ""
+description = ""
+height = 1
+weight = 10

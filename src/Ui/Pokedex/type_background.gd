@@ -19,7 +19,7 @@ var TYPE_COLORS := {
 	"Dragon": Color(0.5, 0.2, 1.0),       # Royal purple
 	"Dark": Color(0.3, 0.3, 0.3),         # Dark gray
 	"Fairy": Color(1.0, 0.7, 1.0),        # Pastel pink
-	"None":Color(0.0,0.0,0.0,0.0)         # Transperant
+	"NONE":Color(0.0,0.0,0.0,0.0)         # Transperant
 }
 
 @onready var type_label: Label = $Type
@@ -43,9 +43,12 @@ var TYPE_COLORS := {
 	"Dragon",
 	"Dark",
 	"Fairy",
-	"None"
-	) var DefType:String = "None"
+	"NONE"
+	) var DefType:String = "NONE"
 
 func set_type(type:String)->void:
 	type_label.text = type
-	self_modulate = TYPE_COLORS[type]
+	if type != "NONE":
+		self_modulate = TYPE_COLORS[type]
+	else:
+		visible = false

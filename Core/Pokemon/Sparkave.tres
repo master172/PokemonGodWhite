@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=9 format=3 uid="uid://21eu2xl2vdgh"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://21eu2xl2vdgh"]
 
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_417tv"]
 [ext_resource type="Resource" uid="uid://xw3qldx2o4n1" path="res://Core/Pokemon/Actions/Peck.tres" id="1_u6h40"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_enpd7"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="2_yqjs2"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="3_cxosg"]
 [ext_resource type="Resource" uid="uid://b2y7ur6xwsrk" path="res://Core/Pokemon/Actions/ThunderShock.tres" id="4_06l0d"]
 [ext_resource type="Texture2D" uid="uid://btpjjsjw1rgyo" path="res://Core/Graphics/Zehlvogs/Front/SPARKAVE.png" id="4_hatcn"]
 [ext_resource type="Texture2D" uid="uid://pshqncn1xibq" path="res://Core/Graphics/Zehlvogs/Icons/SPARKAVE.png" id="5_xmv4m"]
 [ext_resource type="Texture2D" uid="uid://bw2m1wgj3jskq" path="res://Core/Graphics/Zehlvogs/Follower/SPARKAVE.png" id="6_cuwu3"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="7_1bxng"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="7_1bxng"]
 
 [resource]
 script = ExtResource("7_1bxng")
@@ -16,6 +18,10 @@ Id = 7
 Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
+Ability = Array[ExtResource("1_417tv")]([])
+default_friendship = 70
+Egg_group0 = "Monster"
+Egg_group1 = "Human_like"
 Front = ExtResource("4_hatcn")
 Icon = ExtResource("5_xmv4m")
 Overworld = ExtResource("6_cuwu3")
@@ -25,7 +31,9 @@ Base_Defense = 43
 Special_Base_Attack = 40
 Special_Base_Defense = 38
 Base_Speed = 62
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_u6h40"), ExtResource("2_yqjs2"), ExtResource("3_cxosg"), ExtResource("4_06l0d")])
+Actions = Array[ExtResource("2_enpd7")]([ExtResource("1_u6h40"), ExtResource("2_yqjs2"), ExtResource("3_cxosg"), ExtResource("4_06l0d")])
+TmActions = Array[ExtResource("2_enpd7")]([])
+EggActions = Array[ExtResource("2_enpd7")]([])
 base_experience = null
 Yield_Health = null
 Yield_Attack = null
@@ -34,6 +42,7 @@ Yield_Special_Defense = null
 Yield_Special_Attack = null
 Yield_Speed = 1
 catch_chance = 44
+previous_pokemon = ""
 Tag = ""
 description = ""
 height = 1

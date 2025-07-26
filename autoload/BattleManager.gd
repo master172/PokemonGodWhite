@@ -426,7 +426,7 @@ func get_weaknesses(pokemon: Pokemon) -> Array[String]:
 	var weaknesses: Array[String] = []
 	for type in Types.keys():
 		var modifier = get_type_modifier(type, pokemon.Type1)
-		if pokemon.Type2 != "":
+		if pokemon.Type2 != "" and pokemon.Type2 != "NONE":
 			modifier *= get_type_modifier(type, pokemon.Type2)
 		if modifier >= 2.0:
 			weaknesses.append(type)
@@ -437,7 +437,7 @@ func get_strengths(pokemon: Pokemon) -> Array[String]:
 	var strengths: Array[String] = []
 	for type in Types.keys():
 		var modifier = get_type_modifier(pokemon.Type1, type)
-		if pokemon.Type2 != "":
+		if pokemon.Type2 != "" and pokemon.Type2 != "NONE":
 			modifier *= get_type_modifier(pokemon.Type2, type)  # Multiply for dual types
 		if modifier >= 2.0:
 			strengths.append(type)
@@ -448,7 +448,7 @@ func get_resistances(pokemon: Pokemon) -> Array[String]:
 	var resistances: Array[String] = []
 	for type in Types.keys():
 		var modifier = get_type_modifier(type, pokemon.Type1)
-		if pokemon.Type2 != "":
+		if pokemon.Type2 != "" and pokemon.Type2 != "NONE":
 			modifier *= get_type_modifier(type, pokemon.Type2)
 		if modifier > 0.0 and modifier <= 0.5:
 			resistances.append(type)
@@ -459,7 +459,7 @@ func get_immunities(pokemon: Pokemon) -> Array[String]:
 	var immunities: Array[String] = []
 	for type in Types.keys():
 		var modifier = get_type_modifier(type, pokemon.Type1)
-		if pokemon.Type2 != "":
+		if pokemon.Type2 != "" and pokemon.Type2 != "NONE":
 			modifier *= get_type_modifier(type, pokemon.Type2)
 		if modifier == 0.0:
 			immunities.append(type)

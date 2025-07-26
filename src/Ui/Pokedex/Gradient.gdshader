@@ -3,7 +3,7 @@ shader_type canvas_item;
 // Uniforms
 uniform sampler2D base_texture : source_color;
 uniform float gradient_radius : hint_range(0.0, 1.0) = 0.5;
-uniform float gradient_intensity : hint_range(0.0, 1.0) = 0.5;
+uniform float gradient_intensity : hint_range(0.0, 2.0) = 0.5;
 
 // Function to compute average color from texture
 vec3 compute_average_color(sampler2D tex) {
