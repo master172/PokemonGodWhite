@@ -1,8 +1,9 @@
-extends HBoxContainer
+extends Panel
 
-@onready var title: Label = $Title
-@onready var value_label: Label = $Value
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var title: Label = $VBoxContainer/Title
+@onready var value_label: Label = $VBoxContainer/Value
+@onready var progress_bar: ProgressBar = $VBoxContainer/ProgressBar
+
 
 @export_enum (
 	"Hp",

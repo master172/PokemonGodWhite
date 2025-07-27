@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwp0maanniovr"]
+[gd_scene load_steps=7 format=3 uid="uid://dwp0maanniovr"]
 
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="1_gu6ms"]
 [ext_resource type="Script" uid="uid://clo4ydaxllhtv" path="res://src/Ui/Reusable/stat_container.gd" id="1_uvwce"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvwce"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_bottom = 5.0
 
 [sub_resource type="SystemFont" id="SystemFont_w81bp"]
 subpixel_positioning = 0
@@ -12,10 +20,23 @@ subpixel_positioning = 0
 bg_color = Color(0, 0.683594, 0.191383, 1)
 skew = Vector2(0.45, 0)
 
-[node name="StatContainer" type="HBoxContainer"]
+[node name="StatContainer" type="Panel"]
+custom_minimum_size = Vector2(0, 24)
+offset_right = 168.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uvwce")
 script = ExtResource("1_uvwce")
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -23,14 +44,14 @@ theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 text = "Hp"
 
-[node name="Value" type="Label" parent="."]
+[node name="Value" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3

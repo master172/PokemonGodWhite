@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d174ktbsf1qmn"]
+[gd_scene load_steps=40 format=3 uid="uid://d174ktbsf1qmn"]
 
 [ext_resource type="Script" uid="uid://brxeihobt3m3m" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
 [ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="2_dx2s2"]
@@ -12,6 +12,8 @@
 [ext_resource type="StyleBox" uid="uid://ityqkqoeydat" path="res://src/Ui/Pokedex/EvolutionBackground.tres" id="6_56h31"]
 [ext_resource type="Script" uid="uid://dui10tcpp0bdv" path="res://src/Ui/Pokedex/stage.gd" id="6_e2w3g"]
 [ext_resource type="Script" uid="uid://dt47yflqsweea" path="res://src/Ui/Pokedex/evolution_container.gd" id="7_byty8"]
+[ext_resource type="Shader" uid="uid://dp00ag4ip61e0" path="res://src/Ui/Pokedex/fill.gdshader" id="8_c6bel"]
+[ext_resource type="Texture2D" uid="uid://b8ph084si4kfl" path="res://Core/Graphics/Pokemon/Gen1/Front/CATERPIE.png" id="9_kypdb"]
 [ext_resource type="Script" uid="uid://sapj57njlqx8" path="res://src/Ui/Pokedex/info_container.gd" id="12_od8su"]
 [ext_resource type="PackedScene" uid="uid://dwp0maanniovr" path="res://src/Ui/Reusable/stat_container.tscn" id="12_r70dy"]
 [ext_resource type="PackedScene" uid="uid://dwoakijjp87mk" path="res://src/Ui/Reusable/BiometricPanel.tscn" id="13_c8x7n"]
@@ -26,23 +28,55 @@ noise = SubResource("FastNoiseLite_mux3a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_crd1n"]
 shader = ExtResource("2_mux3a")
+shader_parameter/base_texture = ExtResource("3_42d6g")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_7m20b")
 shader_parameter/tint_strength = 0.2
-shader_parameter/noise_scale = 0.4
-shader_parameter/noise_intensity = 0.3
+shader_parameter/noise_scale = 0.268
+shader_parameter/noise_intensity = 1.0
 
 [sub_resource type="SystemFont" id="SystemFont_w81bp"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kypdb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oys0"]
+shader = ExtResource("8_c6bel")
+shader_parameter/base_texture = ExtResource("9_kypdb")
+shader_parameter/gradient_strength = 0.745
+shader_parameter/gradient_falloff = 1.073
+shader_parameter/center_size = 0.114
+shader_parameter/smoothness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_56h31"]
 shader = ExtResource("4_3w12g")
 shader_parameter/base_texture = ExtResource("3_42d6g")
-shader_parameter/gradient_radius = 0.527
-shader_parameter/gradient_intensity = 1.0
+shader_parameter/gradient_radius = 0.432
+shader_parameter/gradient_intensity = 1.491
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70dy"]
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rgeh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8x7n"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -64,6 +98,68 @@ content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
 border_color = Color(0.675781, 0.675781, 0.675781, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnfwd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s0qw"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6umkd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3qvx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usew4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6bel"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="PokeInfo" type="Control"]
 layout_mode = 3
@@ -96,12 +192,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 112.0
+offset_left = 96.0
 offset_top = 32.0
-offset_right = -112.0
+offset_right = -96.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
 [node name="BaseContainer" type="VBoxContainer" parent="Main/TopContainer"]
 layout_mode = 2
@@ -152,7 +249,28 @@ texture = ExtResource("3_42d6g")
 expand_mode = 5
 stretch_mode = 5
 
+[node name="Panel" type="Panel" parent="Main/TopContainer/BaseContainer/ImageContainer/Image"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kypdb")
+
+[node name="Back" type="ColorRect" parent="Main/TopContainer/BaseContainer/ImageContainer/Image"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_7oys0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Gradient" type="ColorRect" parent="Main/TopContainer/BaseContainer/ImageContainer/Image"]
+show_behind_parent = true
 texture_filter = 2
 material = SubResource("ShaderMaterial_56h31")
 layout_mode = 1
@@ -276,6 +394,7 @@ theme_override_colors/font_unselected_color = Color(0.67451, 0.67451, 0.67451, 1
 theme_override_colors/font_hovered_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_r70dy")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_1rgeh")
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8x7n")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
@@ -290,12 +409,14 @@ metadata/_tab_index = 0
 
 [node name="Weaknesses" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Weaknesses"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_xnfwd")
 text = "Weaknesses"
 
 [node name="Types" type="GridContainer" parent="Main/TopContainer/InfoContainer/About/Weaknesses"]
@@ -312,16 +433,20 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_3s0qw")
 text = "Story"
 
 [node name="PokedexStory" type="RichTextLabel" parent="Main/TopContainer/InfoContainer/About/Story"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_6umkd")
 bbcode_enabled = true
 text = "Naichi the original sin has evolved into noctichi and now is way more powerful than you"
 fit_content = true
+selection_enabled = true
 
 [node name="Biometrics" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About"]
 layout_mode = 2
@@ -332,6 +457,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_d3qvx")
 text = "Biometrics"
 
 [node name="GridContainer" type="GridContainer" parent="Main/TopContainer/InfoContainer/About/Biometrics"]
@@ -358,6 +484,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_usew4")
 text = "Stats"
 
 [node name="StatContainer" type="VBoxContainer" parent="Main/TopContainer/InfoContainer/About/Stats"]
@@ -388,6 +515,12 @@ default_stat = "Sp_Defense"
 [node name="StatContainer6" parent="Main/TopContainer/InfoContainer/About/Stats/StatContainer" instance=ExtResource("12_r70dy")]
 layout_mode = 2
 default_stat = "Speed"
+
+[node name="Panel" type="Panel" parent="Main/TopContainer/InfoContainer/About/Stats"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_c6bel")
 
 [node name="Moves" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
 visible = false
