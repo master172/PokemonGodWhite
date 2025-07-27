@@ -433,11 +433,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_c8x7n")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_oe60t")
-current_tab = 1
+current_tab = 0
 script = ExtResource("12_od8su")
 
 [node name="About" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 metadata/_tab_index = 0
@@ -558,6 +557,7 @@ localize_numeral_system = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_c6bel")
 
 [node name="Moves" type="VBoxContainer" parent="Main/TopContainer/InfoContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 metadata/_tab_index = 1

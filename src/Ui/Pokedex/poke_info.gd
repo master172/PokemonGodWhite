@@ -31,7 +31,7 @@ func _input(event):
 		elif event.is_action_pressed("D"):
 			current_panel = (current_panel +1) % max_panels
 		elif event.is_action_pressed("A"):
-			current_panel = (current_panel -1) % max_panels
+			current_panel = (current_panel +max_panels-1) % max_panels
 
 func update_panel(num:int):
 	info_container.current_tab = num
