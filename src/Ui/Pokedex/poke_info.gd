@@ -11,6 +11,7 @@ func _set_details(pokemon:Pokemon):
 		base_container.present_info(pokemon)
 		info_container.present_info(pokemon)
 		bacground.set_background(pokemon)
+		
 	prev_pokemon = pokemon
 
 var current_panel:int = 0:

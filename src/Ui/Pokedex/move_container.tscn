@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://besnib6ygo2ns"]
+
+[ext_resource type="PackedScene" uid="uid://caqshdikt58mh" path="res://src/Ui/Reusable/type_background.tscn" id="1_5ej2p"]
+[ext_resource type="Script" uid="uid://dbkedeu0e70m8" path="res://src/Ui/Pokedex/move_container.gd" id="1_w4loo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yugy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Move" type="Panel"]
+custom_minimum_size = Vector2(0, 32)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yugy")
+script = ExtResource("1_w4loo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Blast"
+vertical_alignment = 1
+
+[node name="TypeBackground" parent="HBoxContainer" instance=ExtResource("1_5ej2p")]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Blast"
+horizontal_alignment = 2
+vertical_alignment = 1
