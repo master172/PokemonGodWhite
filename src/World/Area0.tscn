@@ -1795,11 +1795,14 @@ levels = Array[int]([5])
 event_list = ExtResource("23_v6cp7")
 losing_event_list = SubResource("Resource_ysjdg")
 
-[node name="mainTilemap" type="Node2D" parent="."]
+[node name="mainTilemap" type="Node2D" parent="." node_paths=PackedStringArray("ground_layer", "ground_object_layer", "room_scene")]
 unique_name_in_owner = true
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("2_wyec4")
+ground_layer = NodePath("ground")
+ground_object_layer = NodePath("GroundObjects")
+room_scene = NodePath("..")
 metadata/_custom_type_script = "uid://cfo58sxvffl2w"
 
 [node name="ground" type="TileMapLayer" parent="mainTilemap"]

@@ -208,9 +208,12 @@ texture = ExtResource("4_qx406")
 
 [node name="BackgroundWonderGift" type="TextureRect" parent="Backgrounds"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_02g2f")
 
 [node name="ForeGround" type="TextureRect" parent="."]
@@ -355,6 +358,7 @@ texture = ExtResource("2_lmdbi")
 stretch_mode = 5
 
 [node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("Intro")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

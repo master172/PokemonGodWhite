@@ -13,17 +13,19 @@ func process_tile(player:Node2D,check:String):
 	player.call_before_surf(result,check)
 	print(result,check)
 	queue_free()
-	
+
 func process_tilemap_collision(player:Node2D,check:String):
-	
+
 	var returning_value = []
-	
-	
+
 	var Tilemaps = Utils.Tilemaps
 	var tilemaps:Array[TileMapLayer]
 	for i in Tilemaps:
-		tilemaps.append(i.ground_layer)
-		
+		if i.water_layer == null:
+			tilemaps.append(i.ground_layer)
+		else:
+			tilemaps.append(i.water_layer)
+
 	if tilemaps != []:
 		for current_tilemap in tilemaps:
 			print(current_tilemap.name)
@@ -31,36 +33,37 @@ func process_tilemap_collision(player:Node2D,check:String):
 			print(tile_cords)
 			sucess =  [true,position,tile_cords]
 			faliure = [false,position,tile_cords]
-			
+
 			var query = PhysicsPointQueryParameters2D.new()
 			query.position = position
 			query.set_collision_mask(nonusebale_layers)
-			
+
 			var direct_state = get_world_2d().direct_space_state
 			var collision = direct_state.intersect_point(query)
-			
+
 			if collision:
 				can_return = false
-			
+
 			var tile_data = current_tilemap.get_cell_tile_data(tile_cords)
-			
+
 			if tile_data:
 				if check == "surf":
 					returning_value.append(tile_data.get_custom_data("water"))
-					
+
 				elif check == "shore":
+
 					returning_value.append(tile_data.get_custom_data("land"))
-		
+					print_debug("returning value = ",tile_data.get_custom_data("land"))
 		if check == "shore":
 			if returning_value == [true] and can_return == true:
 				#print(returning_value)
-				
+
 				return sucess
 		elif check == "surf":
-			can_return = check_pokemons_know_surf()
+			can_return = true if Utils.developer_mode == true else check_pokemons_know_surf()
 			if returning_value == [true] and can_return == true:
 				#print(returning_value)
-				
+
 				return sucess
 		return faliure
 	else:

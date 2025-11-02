@@ -3,6 +3,7 @@ class_name GameTilemap
 
 @export var ground_layer:TileMapLayer = null
 @export var ground_object_layer:TileMapLayer = null
+@export var water_layer:TileMapLayer = null
 @export var room_scene:Node2D = null
 
 func _ready() -> void:
