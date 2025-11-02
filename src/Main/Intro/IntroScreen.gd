@@ -6,14 +6,15 @@ signal done
 
 func _ready():
 	visible = false
-	
+
 func start():
 	TouchInput.hide()
 	visible = true
 	animation_player.play("Intro")
-	
+
 func _emit_done():
-	TouchInput.show()
+	if OS.has_feature("Android"):
+		TouchInput.show()
 	emit_signal("done")
 
 

@@ -48,6 +48,19 @@ func help():
 func say_hello():
 	return "Hello, World!"
 
+func get_current_moon_phase_sign():
+	var moon_sign_mappings:Array[String] = [
+		"Despair",
+		"Greed",
+		"Wrath",
+		"Envy",
+		"Gluttony",
+		"Sloth",
+		"Lust",
+		"Pride",
+	]
+	return moon_sign_mappings[PokemonManager.get_current_moon_phase()]
+
 func can_encounter(value:bool) ->String:
 	Utils.can_encounter = value
 	return "set encounters to "+str(value)

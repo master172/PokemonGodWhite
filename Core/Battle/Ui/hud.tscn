@@ -174,7 +174,7 @@ grow_vertical = 2
 script = ExtResource("1_ubc87")
 
 [node name="Radial" type="Sprite2D" parent="."]
-position = Vector2(600, 400)
+position = Vector2(960, 540)
 texture = ExtResource("1_evap7")
 vframes = 7
 
@@ -185,6 +185,7 @@ libraries = {
 autoplay = "Breath"
 
 [node name="PokemonSprites" type="Node2D" parent="."]
+position = Vector2(360, 146)
 
 [node name="PokemonSprite" type="Sprite2D" parent="PokemonSprites"]
 visible = false
@@ -235,5 +236,6 @@ texture = ExtResource("3_s6f3o")
 hframes = 2
 
 [node name="Pokeball" type="AudioStreamPlayer2D" parent="."]
+visible = false
 position = Vector2(601, 397)
 stream = ExtResource("5_1mrvp")

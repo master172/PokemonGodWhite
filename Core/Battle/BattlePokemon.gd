@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var held_items: Node = $HeldItems
 @onready var status_conditions: Node = $StatusConditions
+@onready var sign_manager:Node = $SignManager
 
 @export var pokemon :game_pokemon = null
 
@@ -27,7 +28,7 @@ var previous_moves:Array = []
 
 var Stamina:int = 0
 var MaxStamina:int = 0
-var RegenRate:int = 1
+var RegenRate:float = 1
 
 var normal_speed := 256
 var dash_speed := 1500
@@ -93,17 +94,19 @@ func _ready():
 			held_items.add_child(held_item)
 			held_item.pre_setup()
 		set_inital_status()
+	sign_manager.pokemon = self.pokemon
+	
 func calc_move_speed():
 	movement_speed = (pokemon.Base_Pokemon.Base_Speed * 1.5)+ 50
 	normal_speed = movement_speed
-		
+
 func calc_max_stamina():
 	MaxStamina = pokemon.level * (0.1 * pokemon.Max_Attack + 0.2 * pokemon.Max_Speed + 0.3 * pokemon.Max_Defense) + 50
 	Stamina = MaxStamina
-	
+
 func regen_stamina():
 	Stamina = min(Stamina + RegenRate , MaxStamina)
-	
+
 func get_input():
 	if init_delay == false and action == false:
 		if stop == false and resting == false and Stun == false:
@@ -130,10 +133,10 @@ func get_input():
 	if stop == false and resting == false and Stun == false:
 		if state == states.NORMAL:
 			input_direction = Input.get_vector("A", "D", "W", "S")
-			
+
 			if tackle == false:
 				velocity = input_direction * movement_speed
-					
+
 			if input_direction != Vector2.ZERO:
 				knockback_vector = input_direction
 				animation_tree.set("parameters/Walk/blend_position",input_direction)
@@ -166,20 +169,20 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	self_knockback_vector = self_knockback_vector.move_toward(Vector2.ZERO,10000*delta)
-	
+
 
 	if self_knockback_vector == Vector2.ZERO:
 		knockback = false
-	
+
 	if knockback == true:
 		velocity = self_knockback_vector
-	
+
 	if dash.is_dashing():
 		movement_speed = dash_speed
 	else:
 		movement_speed = normal_speed
-		
-	
+
+
 func _on_attack_selector_attack_chosen(attack):
 	if Stamina > 0:
 		if pokemon.get_learned_attacks_size() > attack:
@@ -196,19 +199,19 @@ func manage_stamina(atk):
 	else:
 		new_Stamina -= (pokemon.get_learned_attack(atk).base_action.staminaCost * pokemon.level  * 0.7) / 2
 	previous_moves.append(atk)
-	
+
 	if new_Stamina <= 0:
 		return false
 	else:
 		Stamina = new_Stamina
 		return true
 	manage_move_list()
-	
+
 func manage_move_list():
 	if previous_moves.size() > 4:
 		previous_moves.remove_at(0)
-		
-	
+
+
 func _on_timer_timeout():
 	init_delay = false
 
@@ -232,12 +235,12 @@ func recive_damage(damage,User,Attacker):
 		pokemon.Health = 0
 		pokemon.remove_friendship(1)
 		emit_signal("defeated",pokemon,self)
-		
+
 
 func recive_plain_damage(damage:int):
 	pokemon.Health -= damage
 	animate_hurt()
-	
+
 	if pokemon.Health <= 0:
 		die.play()
 		await die.finished
@@ -245,7 +248,7 @@ func recive_plain_damage(damage:int):
 		pokemon.Health = 0
 		pokemon.remove_friendship(1)
 		emit_signal("defeated",pokemon,self)
-		
+
 func receive_knockback(body,damage):
 	knockback = true
 	self_knockback_vector = body.knockback_vector * knockback_modifier + Vector2(damage,damage)
@@ -256,7 +259,7 @@ func _stop():
 func _start():
 	stop = false
 	action = false
-	
+
 
 
 func _on_action_chosen_action_chosen(act):
@@ -280,7 +283,7 @@ func _on_action_chosen_cancel():
 	await get_tree().create_timer(0.1).timeout
 	action = false
 	state = states.NORMAL
-	
+
 func _on_action_chosen_displayed():
 	velocity = Vector2.ZERO
 
@@ -309,7 +312,7 @@ func _on_stun_timer_timeout():
 func animate_modulation_change(color:Color = Color(0, 0.129, 1),time:int = 1):
 	var tween = get_tree().create_tween()
 	self.modulate = color
-		
+
 	tween.tween_property(self, "modulate", Color(1,1,1), time).set_trans(Tween.TRANS_LINEAR)
 
 
@@ -334,7 +337,7 @@ func set_inital_status():
 	var effect:VolatileStausCondition = load(pokemon.status_condition.status_condition).instantiate()
 	effect.Holder = self
 	status_conditions.add_child(effect)
-	
+
 func add_perma_status_condition(status:StatusCondition):
 	if pokemon.status_condition != null:
 		return
@@ -342,3 +345,7 @@ func add_perma_status_condition(status:StatusCondition):
 	var effect :VolatileStausCondition = load(status.status_condition).instantiate()
 	effect.Holder = self
 	status_conditions.add_child(effect)
+
+
+func _on_tree_exiting() -> void:
+	sign_manager.return_back()

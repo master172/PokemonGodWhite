@@ -65,10 +65,10 @@ tracks/0/path = NodePath("Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.766667, 1.2, 2),
-"transitions": PackedFloat32Array(0.25, 1, 0.732043, 1),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(0.29730198, 1, 0.27739242, 1),
 "update": 0,
-"values": [Vector2(260, -145), Vector2(260, 37), Vector2(260, 37), Vector2(260, -145)]
+"values": [Vector2(619.5, -100), Vector2(619.5, 100), Vector2(619.5, 100), Vector2(619.5, -100)]
 }
 
 [sub_resource type="Animation" id="Animation_q4cre"]
@@ -83,9 +83,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
-"transitions": PackedFloat32Array(0.129408, 1, 0.129, 1),
+"transitions": PackedFloat32Array(0.14358719, 1, 0.14865123, 1),
 "update": 0,
-"values": [Vector2(1120, 910), Vector2(1120, 720), Vector2(1120, 720), Vector2(1120, 910)]
+"values": [Vector2(1800, 1144), Vector2(1800, 960), Vector2(1800, 960), Vector2(1800, 1144)]
 }
 
 [sub_resource type="Animation" id="Animation_n82tn"]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(260, -145)]
+"values": [Vector2(619.5, -100)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -112,7 +112,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1120, 910)]
+"values": [Vector2(1800, 1144)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4cre"]
@@ -255,10 +255,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -340.0
-offset_top = -145.0
-offset_right = 341.0
-offset_bottom = -84.0
+offset_left = -340.5
+offset_top = -100.0
+offset_right = 340.50024
+offset_bottom = -39.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rgbp0")
 
@@ -291,9 +291,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = 110.0
-offset_bottom = 190.0
+offset_left = -120.0
+offset_top = 64.0
+offset_right = -40.0
+offset_bottom = 144.00061
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("11_n82tn")

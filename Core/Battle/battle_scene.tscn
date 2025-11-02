@@ -57,8 +57,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1200.0
-offset_bottom = 800.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="DialogHandler" type="Node" parent="."]
 script = ExtResource("5_duj7c")

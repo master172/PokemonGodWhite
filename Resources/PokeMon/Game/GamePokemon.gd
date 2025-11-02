@@ -57,6 +57,7 @@ class_name game_pokemon
 
 @export_subgroup("pokemon")
 @export var gender:int = 0
+@export var moon_sign:MoonSign = null
 
 @export_subgroup("battle")
 @export var fainted:bool = false
@@ -91,17 +92,20 @@ var special_defense_stage:int = 0
 var speed_stage:int = 0
 var health_stage:int = 0
 
-func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gender:int = -1,egg_values:Array = []):
+var exp_multiplier:float = 1
+var crit_multiplier:float = 1
+
+func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gender:int = -1,egg_values:Array = [],sign:int=-1):
 	Base_Pokemon = pokemon
 	level = lev
-	
-	
+
+
 	if NickName != "":
 		Nick_name = NickName
 	else:
 		Nick_name = Base_Pokemon.Name
-	
-	
+
+
 	set_movepool()
 	set_nature()
 	if egg_values == []:
@@ -109,25 +113,27 @@ func _init(pokemon:Pokemon = Pokemon.new() ,lev:int = 0,NickName:String = "",Gen
 	else:
 		calculate_stats_from_parents(egg_values)
 	set_exp_to_levels()
-	
+
 	if Gender == -1:
 		calc_gender()
 	else:
 		gender = Gender
-	
+
 	evolutor = Base_Pokemon.evolutor.duplicate(true)
-	
+
 	friendship = Base_Pokemon.default_friendship
-	
+
 	if Base_Pokemon.Ability != []:
-		
+
 		Ability = Base_Pokemon.Ability.pick_random()
 		print(Ability.Name)
+
+	moon_sign = MoonSign.new(sign)
 
 func set_movepool():
 	for i in Base_Pokemon.Actions:
 		move_pool.append(MovePoolAction.new(i))
-		
+
 func calc_gender():
 	var gender_rng = RandomNumberGenerator.new()
 	gender = gender_rng.randi_range(0,1)
@@ -146,7 +152,7 @@ func calculate_IVs():
 	IV_Special_Attack = rng.randi_range(1,31)
 	rng.randomize()
 	IV_Speed = rng.randi_range(1,31)
-	
+
 func calculate_current_max_stats():
 	Max_Health = floor(0.01 * (2 * Base_Pokemon.Base_Health + IV_Health + floor(0.25 * EV_Health)) * level) + level + 10
 	Max_Attack = (floor(0.01 * (2* Base_Pokemon.Base_Attack + IV_Attack + floor(0.25 * EV_Attack)) * level) + 5) * get_nature_multiplier(1)
@@ -162,7 +168,14 @@ func set_to_max_stats():
 	Special_Attack = Max_Special_Attack
 	Special_Defense = Max_Special_Defense
 	Speed = Max_Speed
-	
+
+func reset_stats():
+	Attack = Max_Attack
+	Defense = Max_Defense
+	Special_Attack = Max_Special_Attack
+	Special_Defense = Max_Special_Defense
+	Speed = Max_Speed
+
 func print_stats():
 	print("Current")
 	print(Health," ",Attack," ",Defense," ",Special_Attack," ",Special_Defense," ",Speed )
@@ -174,19 +187,19 @@ func set_nature():
 	var index = rng.randi_range(0,Base_Pokemon.natures.size() -1)
 	var NATURE = load(Base_Pokemon.natures[index])
 	nature = NATURE
-	
+
 func get_nature_multiplier(stat:int):
 	if nature != null:
 		if nature.get_increased_stat() == stat and nature.get_decreased_stat() == stat:
 			return 1
 		elif nature.get_increased_stat() == stat:
 			return 1.1
-			
+
 		elif nature.get_decreased_stat() == stat:
 			return 0.9
-	
+
 	return 1
-	
+
 func calculate_stats():
 	calculate_IVs()
 	calculate_current_max_stats()
@@ -194,7 +207,7 @@ func calculate_stats():
 
 func recalculate_stats():
 	calculate_current_max_stats()
-	
+
 func set_attacks():
 	inital_learn_moves()
 
@@ -220,7 +233,7 @@ func inital_learn_moves():
 				var move_to_learn = GameAction.new(i.action)
 				learned_attacks.append(move_to_learn)
 				i.learned = true
-				
+
 func learn_moves():
 	learnable_attacks = []
 	for i in move_pool:
@@ -233,7 +246,7 @@ func learn_moves():
 					PokemonManager.movesLearned.append(MoveToLearn.new(self,i))
 					emit_signal("learn_move",self,i)
 				else:
-					
+
 					PokemonManager.MovesToLearn.append(MoveToLearn.new(self,i))
 					emit_signal("learn_extra_move",self,i)
 			emit_signal("learning_process_complete")
@@ -243,7 +256,7 @@ func learn_moves():
 				for j in learned_attacks:
 						if j.Name().to_lower() == i.action.name.to_lower():
 							to_learn_move = false
-				
+
 				if to_learn_move == true:
 					learnable_attacks.append(i)
 
@@ -251,38 +264,38 @@ func learn_move_manual(move:int):
 	var move_to_learn = GameAction.new(learnable_attacks[move].action)
 	learned_attacks.append(move_to_learn)
 	learnable_attacks.remove_at(move)
-	
+
 
 func forget_move_manual(move:int):
 	var move_to_forget = learned_attacks[move]
-	
+
 	for i in move_pool:
 		if i.action == move_to_forget.base_action:
 			i.learned = false
-		
+
 	learned_attacks.remove_at(move)
 
 	learnable_attacks.append(MovePoolAction.new(move_to_forget.base_action))
-	
+
 
 func replace_moves_manual(move1:int,move2:int):
 	var move_to_forget = learned_attacks[move1]
-	
+
 	for i in move_pool:
 		if i.action == move_to_forget.base_action:
 			i.learned = false
-			
+
 	var move_to_learn = GameAction.new(learnable_attacks[move2].action)
-	
+
 	learned_attacks[move1] = move_to_learn
-	
+
 	learnable_attacks[move2] = MovePoolAction.new(move_to_forget.base_action)
-	
+
 func get_learnable_attack_name(num:int):
 	if learnable_attacks.size() >= num + 1:
 		return learnable_attacks[num].action.name
 	return ""
-	
+
 func get_learned_attack_name(num:int):
 	if learned_attacks.size() >= num +1:
 		return learned_attacks[num].Name()
@@ -297,10 +310,10 @@ func get_learned_attacks_size():
 
 func get_learned_attacks():
 	return learned_attacks
-	
+
 func get_all_learned_attacks():
 	return learnable_attacks
-	
+
 func get_learned_attack(num:int):
 	if learned_attacks.size()-1 >= num:
 		return learned_attacks[num]
@@ -316,7 +329,7 @@ func get_Type2():
 func add_exp(exper):
 	exp += exper
 	check_level_up()
-	
+
 func check_level_up():
 	if exp >= exp_to_next_level:
 		level_up()
@@ -324,7 +337,7 @@ func check_level_up():
 	else:
 		emit_signal("experience_added")
 func level_up():
-	
+
 	level +=1
 	set_exp_to_levels()
 	learn_moves()
@@ -335,7 +348,7 @@ func set_exp_to_levels():
 	exp_to_current_level = calc_exp_to_level(level-1)
 	exp_to_next_level = calc_exp_to_level(level)
 	calculate_current_max_stats()
-	
+
 func calc_exp_to_level(lev):
 	var etl:int = 0
 	if Base_Pokemon.leveleing_type == 0:
@@ -362,21 +375,21 @@ func calc_exp_to_level(lev):
 			etl = pow(lev,3)*(lev+14)/50
 		elif lev <= 100:
 			etl = pow(lev,3)*((lev/2)+32)/50
-	
+
 	return etl
 
 func give_experience_points(enemy):
 	var points_to_give = calculate_experience_points()
 	enemy.recive_experience_points(points_to_give)
 	give_iv_yield(enemy)
-	
+
 func recive_experience_points(expr):
 	add_exp(expr)
-	
+
 func calculate_experience_points():
-	var trainer = 1
+	var opposing_trainer = 1
 	var wild = 1
-	var exp = ((Base_Pokemon.base_experience * level)* trainer * wild)/7
+	var exp = int(((Base_Pokemon.base_experience * level)* opposing_trainer * wild)/7*exp_multiplier)
 	return exp
 
 func give_iv_yield(pokemon:game_pokemon):
@@ -432,12 +445,12 @@ func get_current_evolution_pokemon(num:int):
 	var active_trigger = evolutor.get_active_trigger(num)
 	var poke = active_trigger.get_next_pokemon()
 	return poke
-	
+
 func evolve(pokemon):
 	if Nick_name == Base_Pokemon.Name:
 		set_nickname(pokemon.Name)
 	Base_Pokemon = pokemon
-	
+
 	set_movepool()
 	learn_moves()
 	recalculate_stats()
@@ -467,11 +480,11 @@ func calculate_stats_parents(egg_values:Array):
 	calculate_IV_from_parent(egg_values)
 	calculate_current_max_stats()
 	set_to_max_stats()
-	
+
 func calculate_IV_from_parent(egg_values:Array):
 	var p1:game_pokemon = egg_values[1]
 	var p2:game_pokemon = egg_values[2]
-	
+
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	IV_Health = (p1.IV_Health + p2.IV_Health)/2 + rng.randi_range(-2,2)
@@ -525,8 +538,13 @@ func remove_item():
 		return
 	held_item.pick_up()
 	held_item = null
-	
+
 func set_status_condition(condition:StatusCondition):
 	if status_condition != null:
 		return
 	status_condition = condition
+
+func heal_by_percent(percent:float=0):
+	var percent_to_heal:int = int(Health*percent)
+	Health += percent_to_heal
+	Health = clamp(Health,0,Max_Health)

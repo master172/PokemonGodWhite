@@ -50,31 +50,31 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_34c7m")
 
 [node name="MainSlot" parent="." instance=ExtResource("2_shw64")]
-position = Vector2(220, 233)
+position = Vector2(248, 168)
 
 [node name="Slot2" parent="." instance=ExtResource("3_7xald")]
-position = Vector2(815, 105)
+position = Vector2(1512, 120)
 slot_no = 1
 
 [node name="Slot3" parent="." instance=ExtResource("3_7xald")]
-position = Vector2(815, 225)
+position = Vector2(1512, 240)
 slot_no = 2
 
 [node name="Slot4" parent="." instance=ExtResource("3_7xald")]
-position = Vector2(815, 345)
+position = Vector2(1512, 360)
 slot_no = 3
 
 [node name="Slot5" parent="." instance=ExtResource("3_7xald")]
-position = Vector2(815, 465)
+position = Vector2(1512, 480)
 slot_no = 4
 
 [node name="Slot6" parent="." instance=ExtResource("3_7xald")]
-position = Vector2(815, 585)
+position = Vector2(1512, 600)
 slot_no = 5
 
 [node name="Cancel" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1056, 720)
+position = Vector2(1784, 1020)
 scale = Vector2(5, 5)
 texture = ExtResource("4_dbhfa")
 hframes = 2
