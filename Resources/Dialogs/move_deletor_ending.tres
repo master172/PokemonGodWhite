@@ -8,14 +8,9 @@
 
 [sub_resource type="Resource" id="Resource_7vy1b"]
 script = ExtResource("1_g2kjm")
-Dialog_type = 0
 text = "{Pokemon} forgot {OldMove} and learnt {NewMove}"
 next = -1
-Actors = Array[ExtResource("2_c8583")]([])
-functions = Array[ExtResource("4_np6ce")]([])
-Options = Array[ExtResource("3_op4sp")]([])
 
 [resource]
 script = ExtResource("1_7wkcu")
 Dialogs = Array[ExtResource("1_g2kjm")]([SubResource("Resource_7vy1b")])
-Format = {}

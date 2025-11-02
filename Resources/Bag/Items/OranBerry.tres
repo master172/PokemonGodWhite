@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("1_rge7u")
 type_Hint = "Berries"
-count = 1
 Name = "Oran Berry"
 item = ExtResource("1_eqlwe")
 held_item_file = "uid://breh5n3jkrebl"

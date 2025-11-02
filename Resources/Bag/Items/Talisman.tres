@@ -7,11 +7,8 @@
 [resource]
 script = ExtResource("1_w7skv")
 type_Hint = "KeyItems"
-count = 1
 Name = "Talisman"
 item = ExtResource("1_u2u7i")
-held_item_file = ""
 sprite = ExtResource("3_w60t5")
 Description = "Wards weaker pokemon form approaching when active"
-price = 200
 metadata/_custom_type_script = "uid://cyh30wdac70o8"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://m6qj43jv7rnu"]
 
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="1_nn780"]
-[ext_resource type="Script" path="res://src/DialogManager/option.gd" id="2_pd4g8"]
+[ext_resource type="Script" uid="uid://bhguv1ooni2q5" path="res://src/DialogManager/option.gd" id="2_pd4g8"]
 
 [node name="Option" type="Label"]
 z_index = 2

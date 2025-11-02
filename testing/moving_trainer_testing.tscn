@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="1_ujbfo"]
 [ext_resource type="PackedScene" uid="uid://beuqhi4cnskx3" path="res://Resources/Npc/Npcs/TestTrainer.tscn" id="2_adxui"]
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/test_trainer.gd" id="3_84j31"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="4_dosjc"]
+[ext_resource type="Script" uid="uid://s2j346rpfk6c" path="res://Resources/Npc/Npcs/test_trainer.gd" id="3_84j31"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="4_dosjc"]
 [ext_resource type="Resource" uid="uid://l227mwiloa0d" path="res://Core/Pokemon/Pidgey.tres" id="5_xpbeb"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="6_01tk1"]
 [ext_resource type="PackedScene" uid="uid://bwhffc1xmgfnx" path="res://Resources/Npc/Npcs/Jodi.tscn" id="7_1job4"]

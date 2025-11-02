@@ -45,7 +45,7 @@ script = ExtResource("1_ibwju")
 
 [node name="StaminaBar" type="ProgressBar" parent="."]
 modulate = Color(0.160784, 1, 0.878431, 1)
-layout_mode = 2
+layout_mode = 0
 offset_left = 35.0
 offset_top = 99.0
 offset_right = 299.0

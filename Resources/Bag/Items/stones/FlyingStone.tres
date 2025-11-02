@@ -7,10 +7,8 @@
 [resource]
 script = ExtResource("1_5kx48")
 type_Hint = "Evolution"
-count = 1
 Name = "Flying Stone"
 item = ExtResource("1_ybr7k")
 sprite = ExtResource("3_lk3o7")
 Description = "Allows some Flying Type Pokemon To evolve"
-price = 200
 metadata/_custom_type_script = "uid://cyh30wdac70o8"

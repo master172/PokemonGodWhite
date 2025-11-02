@@ -25,16 +25,16 @@ func player_in_grass():
 	if player_inside == true:
 		var grass_step_effect = GrassStepEfect.instantiate()
 		self.add_child(grass_step_effect)
-		
+
 		grass_overlay = stepped_grass.instantiate()
 		grass_overlay.global_position = self.global_position + Vector2(0,16)
 		grass_overlay.z_index = 0
 		if Utils.get_scene_manager() != null:
 			Utils.get_scene_manager().current_scene.get_child(0).add_child(grass_overlay)
-		
+
 		if Utils.can_encounter == true:
 			check_encounter()
-		
+
 
 func player_exiting_grass():
 	player_inside = false
@@ -49,7 +49,7 @@ func check_encounter():
 	if Utils.get_scene_manager() != null:
 		if encounter() == true:
 			var pokemon = get_encounter_pokemon()
-			
+
 			if pokemon == null:
 				return
 			if talisman_attuned(pokemon):
@@ -61,33 +61,33 @@ func check_encounter():
 func talisman_attuned(pokemon:game_pokemon):
 	if Utils.talisman_active == false:
 		return false
-		
+
 	var level:int = 0
 	for i :game_pokemon in AllyPokemon.get_party_pokemons():
 		level += i.level
-	
+
 	if level >= pokemon.level:
 		return true
-	
+
 	return false
-	
+
 func get_encounter_pokemon():
 	var Rng = RandomNumberGenerator.new()
 	var scene = Utils.get_scene_manager().get_current_scene()
 	var encounter_pokemon = scene.get_encounter_pokemon()
-	
+
 	if encounter_pokemon == null:
 		return null
-	
+
 	var poke_data = [encounter_pokemon,Rng.randi_range(scene.min_level,scene.max_level)]
 	var pokemon = game_pokemon.new(poke_data[0],poke_data[1])
 	return pokemon
-	
+
 func encounter():
 	var Rng = RandomNumberGenerator.new()
 	Rng.randomize()
 	var random_encounter = randi_range(0,100)
 	if random_encounter <= EncounterRate:
 		return true
-	
+
 	return false

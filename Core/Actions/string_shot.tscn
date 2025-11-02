@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbh7ttclrfj6x"]
 
-[ext_resource type="Script" path="res://Core/Actions/string_shot.gd" id="1_a3s44"]
+[ext_resource type="Script" uid="uid://4mm8xavq63fd" path="res://Core/Actions/string_shot.gd" id="1_a3s44"]
 [ext_resource type="Texture2D" uid="uid://fpyb654sp2p" path="res://assets/BattleEffects/StringShot.png" id="2_3n5k7"]
 
 [node name="StringShot" type="Node2D"]

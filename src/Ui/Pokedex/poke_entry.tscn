@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7jacwue1rkc7"]
 
 [ext_resource type="Texture2D" uid="uid://bxatlfgo8m1ni" path="res://Core/Graphics/Pokemon/Gen6/Front/TYRUNT.png" id="1_4eqo4"]
-[ext_resource type="Script" path="res://src/Ui/Pokedex/poke_entry.gd" id="1_rdefb"]
+[ext_resource type="Script" uid="uid://nlbjhd4e1apj" path="res://src/Ui/Pokedex/poke_entry.gd" id="1_rdefb"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_hnmri"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_u3vpf"]
 

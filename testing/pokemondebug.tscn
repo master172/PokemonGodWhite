@@ -120,7 +120,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="LevelUp" type="Button" parent="VBoxContainer/Actions/Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 24.0
 offset_top = 36.0
 offset_right = 248.0
@@ -128,7 +128,7 @@ offset_bottom = 140.0
 text = "Level Up"
 
 [node name="FullExp" type="Button" parent="VBoxContainer/Actions/Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 272.0
 offset_top = 36.0
 offset_right = 496.0

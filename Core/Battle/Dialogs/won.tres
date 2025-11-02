@@ -1,27 +1,21 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=5 format=3 uid="uid://xw4t7u53u2rp"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=8 format=3 uid="uid://xw4t7u53u2rp"]
 
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_ek5kq"]
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="2_dtwgo"]
+[ext_resource type="Script" uid="uid://cc13stbnqko2d" path="res://Libraries/Resources/Dialog/Dialog.gd" id="1_ek5kq"]
+[ext_resource type="Script" uid="uid://cvfx5e2lmdp4m" path="res://Libraries/Resources/Dialog/DialogueLine.gd" id="2_dtwgo"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="2_iosn4"]
+[ext_resource type="Script" uid="uid://bikfp677wm1u6" path="res://Libraries/Resources/Dialog/Option.gd" id="3_va0e5"]
+[ext_resource type="Script" uid="uid://bbm2mqhaec3wi" path="res://Libraries/Resources/Dialog/function.gd" id="4_emg4w"]
 
 [sub_resource type="Resource" id="Resource_tifw2"]
 script = ExtResource("1_ek5kq")
-Dialog_type = 0
 text = "Ash defeated the opposing {Pokemon}"
 next = 1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
 
 [sub_resource type="Resource" id="Resource_h8xl5"]
 script = ExtResource("1_ek5kq")
-Dialog_type = 0
 text = "{Winner} recived {points} exp points"
 next = -1
-Actors = Array[Resource("res://Libraries/Resources/Dialog/Actor.gd")]([])
-functions = Array[Resource("res://Libraries/Resources/Dialog/function.gd")]([])
-Options = Array[Resource("res://Libraries/Resources/Dialog/Option.gd")]([])
 
 [resource]
 script = ExtResource("2_dtwgo")
 Dialogs = Array[ExtResource("1_ek5kq")]([SubResource("Resource_tifw2"), SubResource("Resource_h8xl5")])
-Format = {}

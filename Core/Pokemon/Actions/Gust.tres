@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("2_d4fk0")
 name = "Gust"
-learned_level = 1
 action = "uid://coqbxcj1dmdnq"
-staminaCost = 10
 Type = "Flying"
 power = 40.0
-range = 0

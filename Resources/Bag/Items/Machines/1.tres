@@ -7,10 +7,8 @@
 [resource]
 script = ExtResource("1_um7sv")
 type_Hint = "Machines"
-count = 1
 Name = "Tm 1"
 item = ExtResource("1_4x04y")
-held_item_file = ""
 sprite = ExtResource("3_jie3m")
 Description = "Teaches the move astonish to the given pokemon"
 price = 100

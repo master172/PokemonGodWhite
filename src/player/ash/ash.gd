@@ -96,25 +96,25 @@ signal evolve
 var Player_ready:bool = false
 
 func _ready():
-	
+
 	Utils.Player = self
 	initial_position = position
 	animation_tree.active = true
 	shadow.visible = false
 	skin.visible = true
-	
+
 	leaves.emit(can_leaf)
 	Wind_gust.start(can_wind)
 	#set looking direction
 	if Utils.get_scene_manager() != null:
 		if Utils.get_scene_manager().first_time_start == true:
 			poke_pos = self.global_position + Vector2(0,16)
-		
+
 		if Utils.get_scene_manager().first_time_start == false:
 			if Utils.get_scene_manager().just_loaded == true:
 				await saver.applying_done
 				Utils.get_scene_manager().just_loaded = false
-	
+
 	animation_tree.set("parameters/Idle/blend_position",input_direction)
 	animation_tree.set("parameters/Walk/blend_position",input_direction)
 	animation_tree.set("parameters/Turn/blend_position",input_direction)
@@ -124,32 +124,32 @@ func _ready():
 	animation_tree.set("parameters/cycle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
-	
-	
+
+
 	emit_signal("player_ready")
 	Player_ready = true
-	
+
 func set_poke_pos_dir(val1:Vector2,val2):
 	poke_pos = val1
 	pokeDirection = val2
-	
+
 func load_process():
 	saver.load_data()
 	load_data(saver.playerData)
-	
+
 func add_overworld_pokemon(set_see:bool = true,initial:bool = true):
 	if initial == true:
 		var scene_manager = Utils.get_scene_manager()
 		if scene_manager != null:
 			await scene_manager.data_set_finished
-			
+
 	pokemon_manager = Pokemon_manager.instantiate()
 	get_parent().call_deferred("add_child",pokemon_manager)
 	pokemon_following = true
 	to_pokemon_follow = false
 	pokemon_manager.global_position = poke_pos
 	pokemon_manager.set_direction(pokeDirection)
-	
+
 	if set_see == true:
 		await pokemon_manager.ready
 		pokemon_manager.set_seeable()
@@ -159,15 +159,15 @@ func remove_overworld_pokemon():
 		pokemon_manager.queue_free()
 		pokemon_following = false
 	to_pokemon_follow = false
-		
+
 func _physics_process(delta):
-	
+
 	#handle movement
 	if playerState == PlayerState.TURNING or can_move == false:
 		return
 	elif is_moving == false:
 		process_player_input()
-		
+
 	elif input_direction != Vector2.ZERO:
 		if playerState == PlayerState.SURFING:
 			anim_state.travel("Surf")
@@ -189,13 +189,13 @@ func _physics_process(delta):
 		else:
 			anim_state.travel("Idle")
 			is_moving = false
-		
+
 	#handle process functions
 	check_water()
 	check_shore()
 	Run()
 	cycle()
-	
+
 	speed_handler()
 #	get_clicked_tile_power()
 	if Player_ready == true:
@@ -207,7 +207,7 @@ func process_player_input():
 		input_direction.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
 	if input_direction.x == 0:
 		input_direction.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
-	
+
 	if input_direction != Vector2.ZERO:
 		animation_tree.set("parameters/Idle/blend_position",input_direction)
 		animation_tree.set("parameters/Walk/blend_position",input_direction)
@@ -218,7 +218,7 @@ func process_player_input():
 		animation_tree.set("parameters/cycle/blend_position",input_direction)
 		animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 		animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
-		
+
 		if need_to_turn() and is_running == false and is_cycling == false:
 
 			if playerState == PlayerState.SURFING:
@@ -256,13 +256,13 @@ func need_to_turn():
 		new_facing_direction = FacingDirection.UP
 	elif input_direction.y > 0:
 		new_facing_direction = FacingDirection.DOWN
-	
+
 	if facingDirection != new_facing_direction:
 		previous_facing_direction = facingDirection
 		facingDirection = new_facing_direction
-		
+
 		return true
-	
+
 	facingDirection = new_facing_direction
 	return false
 
@@ -279,7 +279,7 @@ func Run():
 		if not is_cycling and not is_surfing:
 			if Input.is_action_pressed("No"):
 				is_running = true
-				
+
 			else:
 				is_running = false
 
@@ -301,7 +301,7 @@ func cycle():
 				playerState = PlayerState.IDLE
 				poke_pos = self.position +Vector2(0,16)
 				pokeDirection = self.get_current_facing_direction()
-				
+
 
 func speed_handler():
 	if is_running == true:
@@ -314,24 +314,24 @@ func speed_handler():
 func move(delta):
 	update_casts()
 	#stopping or allowing movement based on collision
-	
-	
+
+
 	if (ledge_cast.is_colliding() and ledge_direction == get_current_facing_direction()) or jumping_over_ledge == true:
 		just_ledge_jumped = true
 		if percent_moved_to_next_tile == 0.0:
 			ManageOverworldPokemon("ledge")
-			
-			
+
+
 		percent_moved_to_next_tile += jump_speed * delta
-		
+
 		if percent_moved_to_next_tile >= 2.0:
 			position = initial_position + (input_direction * TILE_SIZE * 2)
-			
+
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
 			jumping_over_ledge = false
 			shadow.visible = false
-			
+
 			var DustEffect = LandingDustEffect.instantiate()
 			DustEffect.position = position-Vector2(0,8)
 			get_tree().current_scene.add_child(DustEffect)
@@ -351,10 +351,10 @@ func move(delta):
 			elif ledge_direction == Vector2(1,0):
 				var input = input_direction.x * TILE_SIZE * percent_moved_to_next_tile
 				position.x = initial_position.x + (-0.96 - 0.53 * input + 0.05 * pow(input, 2))
-			
+
 			jump_direction = ledge_direction
 	elif door_cast.is_colliding():
-		
+
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_entering_door_signal")
 			ManageOverworldPokemon("moving")
@@ -368,18 +368,18 @@ func move(delta):
 			ManageOverworldPokemon("turned")
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
-			
-		
+
+
 	elif !collision_cast.is_colliding():
 		just_ledge_jumped = false
 		ledge_direction = Vector2.ZERO
-		
+
 		if percent_moved_to_next_tile == 0.0:
 			emit_signal("player_moving_signal")
-			
+
 			if !collision_cast.is_colliding() and !ledge_cast.is_colliding():
 				ManageOverworldPokemon("moving")
-			
+
 		percent_moved_to_next_tile += speed * delta
 		if percent_moved_to_next_tile >= 1.0:
 			position = initial_position +(TILE_SIZE * input_direction)
@@ -387,11 +387,11 @@ func move(delta):
 			is_moving = false
 			if pokeDirection ==Vector2.ZERO:
 				pokeDirection = get_current_facing_direction()
-				
+
 			emit_signal("player_stopped_signal")
 			Global.steps_taken += 1
 			ManageOverworldPokemon("turned")
-			
+
 		else:
 			position = initial_position +(TILE_SIZE * input_direction * percent_moved_to_next_tile)
 	else:
@@ -399,7 +399,7 @@ func move(delta):
 		just_ledge_jumped = false
 		is_moving = false
 		percent_moved_to_next_tile = 0.0
-		
+
 func get_current_facing_direction():
 	if facingDirection == FacingDirection.UP:
 		return Vector2(0,-1)
@@ -418,16 +418,16 @@ func check_water():
 			var desired_place: Vector2 = Vector2.ZERO
 			if get_current_facing_direction() == Vector2(0,-1):
 				desired_place = Vector2(0,-24)
-				
+
 			elif get_current_facing_direction() == Vector2(0,1):
 				desired_place = Vector2(0,24)
-				
+
 			elif get_current_facing_direction() == Vector2(-1,0):
 				desired_place = Vector2(-32,-8)
-				
+
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
-			
+
 			if can_surf:
 				var Surf = SurfChecker.instantiate()
 				Surf.position = to_global(desired_place)
@@ -443,16 +443,16 @@ func check_shore():
 			var desired_place = Vector2.ZERO
 			if get_current_facing_direction() == Vector2(0,-1):
 				desired_place = Vector2(0,-40)
-				
+
 			elif get_current_facing_direction() == Vector2(0,1):
 				desired_place = Vector2(0,8)
-				
+
 			elif get_current_facing_direction() == Vector2(-1,0):
 				desired_place = Vector2(-32,-8)
-				
+
 			elif get_current_facing_direction() == Vector2(1,0):
 				desired_place = Vector2(32,-8)
-			
+
 			if can_surf:
 				var Surf = SurfChecker.instantiate()
 				Surf.position = to_global(desired_place)
@@ -495,18 +495,18 @@ func _on_surf_timer_timeout():
 
 func update_casts():
 	var desired_step: Vector2 = input_direction * TILE_SIZE/2
-	
+
 	#checking for collideable collision
-	
+
 	ledge_cast.set_target_position(desired_step)
 	ledge_cast.force_raycast_update()
-	
+
 	collision_cast.set_target_position(desired_step)
 	collision_cast.force_raycast_update()
-	
+
 	door_cast.set_target_position(desired_step)
 	door_cast.force_raycast_update()
-	
+
 	interaction_cast.set_target_position(desired_step)
 	interaction_cast.force_raycast_update()
 
@@ -523,7 +523,7 @@ func set_spawn(location:Vector2,direction:Vector2):
 		animation_tree.set("parameters/cycle/blend_position",direction)
 		animation_tree.set("parameters/cycleIdle/blend_position",direction)
 		animation_tree.set("parameters/cycleTurn/blend_position",direction)
-		
+
 		position = location
 		facingDirection = facing_direction_to_enum(direction)
 
@@ -536,7 +536,7 @@ func facing_direction_to_enum(direction:Vector2):
 		return FacingDirection.LEFT
 	elif direction == Vector2(1,0):
 		return FacingDirection.RIGHT
-		
+
 func check_ledge_direction():
 	var collided_tile_cords
 	var tile_data
@@ -548,26 +548,26 @@ func check_ledge_direction():
 		for i in tilemaps:
 			if is_instance_valid(i):
 				collided_tile_cords = i.get_coords_for_body_rid(body_rid)
-				
+
 				tile_data = i.get_cell_tile_data(collided_tile_cords)
 				if tile_data:
 					ledge_direction = tile_data.get_custom_data("ledgeDirection")
-				
+
 				return
-				
+
 	return
 func check_interaction():
 	if interaction_cast.is_colliding():
 		if Input.is_action_just_pressed("Yes"):
 			if Utils.DialogProcessing == false and Dialogic.current_timeline == null:
-	
+
 				var interactable = interaction_cast.get_collider()
 				if Utils.DialogBar != null:
 					interactable._interact()
 					if interactable.has_method("look"):
 
 						interactable.look(get_current_facing_direction() * -1)
-						
+
 func ManageOverworldPokemon(case:String):
 	if pokemon_following == true:
 		var following_speed:float = 0.2
@@ -575,13 +575,13 @@ func ManageOverworldPokemon(case:String):
 			following_speed = 0.2
 		elif speed == Run_speed:
 			following_speed = 0.1
-		
+
 		if case.to_lower() == "moving":
 			pokemon_manager.change_position(self.global_position,following_speed,get_current_facing_direction())
 		elif case.to_lower() == "ledge":
 			pokemon_manager.change_position_to_ledge(self.global_position,0.4,get_current_facing_direction())
 		pokemon_manager.set_seeable()
-	
+
 	if to_pokemon_follow == true and case.to_lower() == "turned":
 		add_overworld_pokemon(true,false)
 
@@ -598,13 +598,13 @@ func save_data():
 	saver.playerData.change_poke_dir(pokeDirection)
 	saver.save_data()
 
-func load_data(playerDat):
+func load_data(_playerDat):
 	saver.apply_data(self)
-	
+
 
 func check_to_add_overworld_pokemon(set_see:bool = true):
 	if pokemon_following == true:
-	
+
 		add_overworld_pokemon(set_see)
 
 func change_animation(state:bool):
@@ -615,7 +615,7 @@ func stop():
 
 func stop_animation():
 	anim_state.travel("Idle")
-	
+
 func first_start():
 	Utils.create_uid()
 	var MyNaichi:game_pokemon = game_pokemon.new(Starter,5,"",1)
@@ -637,7 +637,7 @@ func set_camera_zoom(num:int):
 func switch_evolution_camera():
 	camera_2d.enabled = false
 	evolution_camera.enabled = true
-	
+
 func switch_default_camera():
 	evolution_camera.enabled = false
 	camera_2d.enabled = true

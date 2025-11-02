@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://esuovq8i863f"]
 
-[ext_resource type="Script" path="res://Core/Actions/ThunderBolt.gd" id="1_s27n4"]
-[ext_resource type="Shader" path="res://Resources/shaders/thunder_bolt.gdshader" id="2_otl78"]
+[ext_resource type="Script" uid="uid://bvr4runxfhhfv" path="res://Core/Actions/ThunderBolt.gd" id="1_s27n4"]
+[ext_resource type="Shader" uid="uid://bvdpjcb6nfbc8" path="res://Resources/shaders/thunder_bolt.gdshader" id="2_otl78"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="3_25nwo"]
 [ext_resource type="Texture2D" uid="uid://dyyhne8f8ihl0" path="res://assets/BattleEffects/electric1.png" id="4_oqbe5"]
 [ext_resource type="AudioStream" uid="uid://c8w567hd60ml2" path="res://assets/Audio/SFX/Battle/Electricity.wav" id="5_bawnq"]
@@ -83,8 +83,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6q2s"]
 _data = {
-"Playing": SubResource("Animation_n6vkb"),
-"RESET": SubResource("Animation_yes0b")
+&"Playing": SubResource("Animation_n6vkb"),
+&"RESET": SubResource("Animation_yes0b")
 }
 
 [node name="ThunderBolt" type="Node2D"]
@@ -117,7 +117,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_q6q2s")
+&"": SubResource("AnimationLibrary_q6q2s")
 }
 autoplay = "Playing"
 

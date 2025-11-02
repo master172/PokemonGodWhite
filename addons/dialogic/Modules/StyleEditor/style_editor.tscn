@@ -1,25 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx6h3tck10s1g"]
+[gd_scene load_steps=15 format=3 uid="uid://cx6h3tck10s1g"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/StyleEditor/style_editor.gd" id="1_gy14f"]
+[ext_resource type="Script" uid="uid://cdblpy2mqxmti" path="res://addons/dialogic/Modules/StyleEditor/style_editor.gd" id="1_gy14f"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_g4mnt"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/StyleEditor/style_layer_editor.gd" id="3_iih7c"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/StyleEditor/Components/style_layer_tree.gd" id="4_kpoqn"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/StyleEditor/Components/style_browser_window.gd" id="5_qbwx0"]
+[ext_resource type="Script" uid="uid://cgtqpv6q3elj6" path="res://addons/dialogic/Modules/StyleEditor/style_layer_editor.gd" id="3_iih7c"]
+[ext_resource type="Script" uid="uid://xln0qp4a845w" path="res://addons/dialogic/Modules/StyleEditor/Components/style_layer_tree.gd" id="4_kpoqn"]
+[ext_resource type="Script" uid="uid://dagmu844n5kjq" path="res://addons/dialogic/Modules/StyleEditor/Components/style_browser_window.gd" id="5_qbwx0"]
 [ext_resource type="PackedScene" uid="uid://cs381i3h7sveq" path="res://addons/dialogic/Modules/StyleEditor/Components/style_browser.tscn" id="6_p6lia"]
 
-[sub_resource type="Image" id="Image_tg5pd"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
-[sub_resource type="ImageTexture" id="ImageTexture_f5xt2"]
-image = SubResource("Image_tg5pd")
-
-[sub_resource type="Image" id="Image_ns66m"]
+[sub_resource type="Image" id="Image_3rxjh"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -29,7 +21,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_xtj53"]
-image = SubResource("Image_ns66m")
+image = SubResource("Image_3rxjh")
 
 [sub_resource type="Theme" id="Theme_l6tyr"]
 
@@ -42,7 +34,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="Image" id="Image_op8ly"]
+[sub_resource type="Image" id="Image_yj7mc"]
 data = {
 "data": PackedByteArray(0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255),
 "format": "RGBA8",
@@ -52,7 +44,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_yr3tj"]
-image = SubResource("Image_op8ly")
+image = SubResource("Image_yj7mc")
 
 [node name="StyleEditor" type="HSplitContainer"]
 anchors_preset = 15
@@ -103,13 +95,12 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Add layout-style"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 switch_on_hover = true
 item_count = 5
 popup/item_0/text = "ADD STYLE"
 popup/item_0/id = 0
 popup/item_0/disabled = true
-popup/item_1/text = ""
 popup/item_1/id = 0
 popup/item_1/separator = true
 popup/item_2/text = "Premade Style"
@@ -123,14 +114,14 @@ popup/item_4/id = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Duplicate style"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="RemoveButton" type="Button" parent="Panel/VBox/StyleButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Remove style from list"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="MakeDefaultButton" type="Button" parent="Panel/VBox/StyleButtons"]
@@ -139,7 +130,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Make Default"
 toggle_mode = true
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="StyleList" type="ItemList" parent="Panel/VBox"]
@@ -166,8 +157,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"DialogicTitle"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tixgs")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tixgs")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_tixgs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tixgs")
 text = "Style"
 expand_to_text_length = true
 
@@ -175,7 +166,7 @@ expand_to_text_length = true
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Edit Name"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="InheritanceButton" type="MenuButton" parent="StyleView/HBox"]
@@ -183,7 +174,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Inherits VN Style"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 icon_alignment = 2
 item_count = 1
 popup/item_0/text = "Clear Inheritance"
@@ -195,7 +186,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Play current timeline with this style"
 text = "Test Style"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="PanelContainer" type="PanelContainer" parent="StyleView"]
 layout_mode = 2
@@ -238,13 +229,12 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Add Layer"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 switch_on_hover = true
 item_count = 4
 popup/item_0/text = "ADD LAYER"
 popup/item_0/id = 1
 popup/item_0/disabled = true
-popup/item_1/text = ""
 popup/item_1/id = 1
 popup/item_1/separator = true
 popup/item_2/text = "Premade Layer"
@@ -256,13 +246,12 @@ popup/item_3/id = 0
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Replace Layer"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 switch_on_hover = true
 item_count = 4
 popup/item_0/text = "REPLACE LAYER"
 popup/item_0/id = 0
 popup/item_0/disabled = true
-popup/item_1/text = ""
 popup/item_1/id = 0
 popup/item_1/separator = true
 popup/item_2/text = "Premade Layer"
@@ -274,13 +263,12 @@ popup/item_3/id = 1
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Make Custom"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 switch_on_hover = true
 item_count = 4
 popup/item_0/text = "MAKE CUSTOM"
 popup/item_0/id = 3
 popup/item_0/disabled = true
-popup/item_1/text = ""
 popup/item_1/id = 0
 popup/item_1/separator = true
 popup/item_2/text = "Current Layer"
@@ -293,7 +281,7 @@ unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Delete Layer (no undo!)"
 disabled = true
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="LayerTree" type="Tree" parent="StyleView/PanelContainer/StyleEditor/LayerPanel/VBox"]
@@ -324,7 +312,7 @@ text = "Default Layout Base"
 [node name="ExpandLayerInfo" type="Button" parent="StyleView/PanelContainer/StyleEditor/LayerSettings/LayerInfoHeader"]
 unique_name_in_owner = true
 layout_mode = 2
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 flat = true
 
 [node name="LayerInfoBody" type="VBoxContainer" parent="StyleView/PanelContainer/StyleEditor/LayerSettings"]

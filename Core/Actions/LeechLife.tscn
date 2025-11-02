@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhvtsukji64ch"]
 
-[ext_resource type="Script" path="res://Core/Actions/LeechLife.gd" id="1_s0jts"]
+[ext_resource type="Script" uid="uid://boqqht1m4p4fm" path="res://Core/Actions/LeechLife.gd" id="1_s0jts"]
 
 [node name="LeechLife" type="Node2D"]
 script = ExtResource("1_s0jts")

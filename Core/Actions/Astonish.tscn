@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcn4easwaon75"]
 
-[ext_resource type="Script" path="res://Core/Actions/Astonish.gd" id="1_6pls7"]
-[ext_resource type="Shader" path="res://src/Ui/Pokemon/Circle.gdshader" id="2_5alw4"]
+[ext_resource type="Script" uid="uid://crdgxkmrx4son" path="res://Core/Actions/Astonish.gd" id="1_6pls7"]
+[ext_resource type="Shader" uid="uid://cm8urabjjski5" path="res://src/Ui/Pokemon/Circle.gdshader" id="2_5alw4"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_g7rxb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdltd"]
 shader = ExtResource("2_5alw4")
 shader_parameter/amt = 1.0
-shader_parameter/color = null
+shader_parameter/color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_mrjmy"]
 resource_name = "Default"
@@ -104,8 +104,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2q5t"]
 _data = {
-"Default": SubResource("Animation_mrjmy"),
-"RESET": SubResource("Animation_ph7qq")
+&"Default": SubResource("Animation_mrjmy"),
+&"RESET": SubResource("Animation_ph7qq")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hugcw"]
@@ -120,10 +120,10 @@ scale = Vector2(25, 25)
 texture = ExtResource("2_g7rxb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Default"
 libraries = {
-"": SubResource("AnimationLibrary_x2q5t")
+&"": SubResource("AnimationLibrary_x2q5t")
 }
+autoplay = "Default"
 
 [node name="Area2D" type="Area2D" parent="."]
 

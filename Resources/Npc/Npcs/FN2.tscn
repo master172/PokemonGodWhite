@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bhlly8gnhkywh"]
+[gd_scene load_steps=31 format=3 uid="uid://bhlly8gnhkywh"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/FN2.gd" id="1_nscuq"]
+[ext_resource type="Script" uid="uid://fsvfpm2y65ay" path="res://Resources/Npc/Npcs/FN2.gd" id="1_nscuq"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_2c62t"]
 [ext_resource type="Texture2D" uid="uid://cpxj36ax0sr7p" path="res://assets/Npc/Trainers/Story/Gym/Npc2.png" id="2_cg7p1"]
 [ext_resource type="Resource" uid="uid://21eu2xl2vdgh" path="res://Core/Pokemon/Sparkave.tres" id="2_kitn8"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="4_5rcxs"]
@@ -162,15 +163,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxxnt"]
 _data = {
-"IdleDown": SubResource("Animation_8wmt8"),
-"IdleLeft": SubResource("Animation_laooc"),
-"IdleRight": SubResource("Animation_as7ej"),
-"IdleUp": SubResource("Animation_as4e3"),
-"RESET": SubResource("Animation_mf4l2"),
-"WalkDown": SubResource("Animation_61t2r"),
-"WalkLeft": SubResource("Animation_egh3c"),
-"WalkRight": SubResource("Animation_rwsci"),
-"WalkUp": SubResource("Animation_tuuhl")
+&"IdleDown": SubResource("Animation_8wmt8"),
+&"IdleLeft": SubResource("Animation_laooc"),
+&"IdleRight": SubResource("Animation_as7ej"),
+&"IdleUp": SubResource("Animation_as4e3"),
+&"RESET": SubResource("Animation_mf4l2"),
+&"WalkDown": SubResource("Animation_61t2r"),
+&"WalkLeft": SubResource("Animation_egh3c"),
+&"WalkRight": SubResource("Animation_rwsci"),
+&"WalkUp": SubResource("Animation_tuuhl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hknln"]
@@ -242,7 +243,7 @@ collision_mask = 0
 script = ExtResource("1_nscuq")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_kitn8")])
+pokemons = Array[ExtResource("2_2c62t")]([ExtResource("2_kitn8")])
 levels = Array[int]([6])
 current_dialog = "FN2Start"
 ending_dialog = "FN2END"
@@ -260,13 +261,10 @@ frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
+&"": SubResource("AnimationLibrary_nxxnt")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
-}
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)

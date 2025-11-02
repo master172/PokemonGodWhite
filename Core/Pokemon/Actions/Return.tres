@@ -5,10 +5,6 @@
 [resource]
 script = ExtResource("1_0m5ju")
 name = "Return"
-learned_level = 1
 action = "uid://bvulwuaepwlxh"
-staminaCost = 10
-Type = "Normal"
-power = 35.0
 range = 1
 metadata/_custom_type_script = "uid://ckld52qknsbni"

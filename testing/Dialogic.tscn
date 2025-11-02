@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cudsmsiapidhr"]
 
-[ext_resource type="Script" path="res://testing/Dialogic.gd" id="1_yqxgr"]
+[ext_resource type="Script" uid="uid://bogsvq7wogi0g" path="res://testing/Dialogic.gd" id="1_yqxgr"]
 
 [node name="DialogTesting" type="Control"]
 layout_mode = 3

@@ -16,19 +16,19 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d63nv"]
-bg_color = Color(0.164706, 0.164706, 0.164706, 1)
-border_width_left = 8
-border_width_right = 4
-border_color = Color(0.117647, 0.117647, 0.117647, 0.639216)
-border_blend = true
-corner_radius_top_left = 11
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pksfy"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.945098)
 border_width_left = 8
 border_width_right = 4
 border_color = Color(0.054902, 0.054902, 0.054902, 0.784314)
+border_blend = true
+corner_radius_top_left = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d63nv"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
+border_width_left = 8
+border_width_right = 4
+border_color = Color(0.117647, 0.117647, 0.117647, 0.639216)
 border_blend = true
 corner_radius_top_left = 11
 
@@ -52,7 +52,8 @@ bg_color = Color(0, 0.658128, 0.671875, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rog47"]
 bg_color = Color(0, 0.769531, 0.669188, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kys7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ktcm"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 0.803922)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -65,8 +66,7 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ktcm"]
-bg_color = Color(0.105882, 0.105882, 0.105882, 0.803922)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kys7"]
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -101,8 +101,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_wso78")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxqpj")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_d63nv")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pksfy")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_d63nv")
 current_tab = 0
 
 [node name="Engine" type="Panel" parent="TabContainer"]
@@ -161,10 +161,10 @@ offset_right = -17.0
 offset_bottom = 13.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("4_xbq58")
-theme_override_styles/hover = ExtResource("6_3kptk")
-theme_override_styles/pressed = ExtResource("7_ygj7m")
 theme_override_styles/normal = ExtResource("5_dwaxo")
+theme_override_styles/pressed = ExtResource("7_ygj7m")
+theme_override_styles/hover = ExtResource("6_3kptk")
+theme_override_styles/focus = ExtResource("4_xbq58")
 alignment = 1
 selected = 0
 item_count = 4
@@ -234,10 +234,10 @@ offset_right = -21.0
 offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("4_xbq58")
-theme_override_styles/hover = ExtResource("6_3kptk")
-theme_override_styles/pressed = ExtResource("7_ygj7m")
 theme_override_styles/normal = ExtResource("5_dwaxo")
+theme_override_styles/pressed = ExtResource("7_ygj7m")
+theme_override_styles/hover = ExtResource("6_3kptk")
+theme_override_styles/focus = ExtResource("4_xbq58")
 alignment = 1
 selected = 3
 item_count = 4
@@ -342,9 +342,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_wso78")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_7kys7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6udgu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7ktcm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6udgu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7kys7")
 text = "Apply and close"
 
 [connection signal="item_selected" from="TabContainer/Engine/ScrollContainer/VBoxContainer/Panel/SpeedButton" to="." method="_on_option_button_item_selected"]

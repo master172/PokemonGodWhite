@@ -7,7 +7,3 @@ script = ExtResource("1_cfwtk")
 name = "QuickAttack"
 learned_level = 3
 action = "uid://cn7fox0348spv"
-staminaCost = 10
-Type = "Normal"
-power = 35.0
-range = 0

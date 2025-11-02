@@ -13,90 +13,63 @@
 [sub_resource type="Resource" id="Resource_lpre6"]
 script = ExtResource("2_bu7wt")
 function = "test_function"
-parameters = []
 
 [sub_resource type="Resource" id="Resource_gefcc"]
 script = ExtResource("2_48l1n")
-Dialog_type = 0
 text = "First Dialog"
 next = 1
-Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_lpre6")])
-Options = Array[ExtResource("3_s3u0i")]([])
 
 [sub_resource type="Resource" id="Resource_socbl"]
 script = ExtResource("2_48l1n")
-Dialog_type = 0
 text = "Second Dialog"
 next = 2
-Actors = Array[ExtResource("3_nixps")]([])
-functions = Array[ExtResource("2_bu7wt")]([])
-Options = Array[ExtResource("3_s3u0i")]([])
 
 [sub_resource type="Resource" id="Resource_pw24y"]
 script = ExtResource("2_48l1n")
-Dialog_type = 0
 text = "Third Dialog"
 next = 3
-Actors = Array[ExtResource("3_nixps")]([])
-functions = Array[ExtResource("2_bu7wt")]([])
-Options = Array[ExtResource("3_s3u0i")]([])
 
 [sub_resource type="Resource" id="Resource_dfbbq"]
 script = ExtResource("3_s3u0i")
 text = "Yo"
-functions = Array[ExtResource("2_bu7wt")]([])
 next = 4
 
 [sub_resource type="Resource" id="Resource_nsmhb"]
 script = ExtResource("3_s3u0i")
 text = "bro"
-functions = Array[ExtResource("2_bu7wt")]([])
 next = 5
 
 [sub_resource type="Resource" id="Resource_4g6a2"]
 script = ExtResource("3_s3u0i")
 text = "Hi"
-functions = Array[ExtResource("2_bu7wt")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_dplxx"]
 script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Hello Question"
-next = 0
-Actors = Array[ExtResource("3_nixps")]([])
-functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_dfbbq"), SubResource("Resource_nsmhb"), SubResource("Resource_4g6a2")])
 
 [sub_resource type="Resource" id="Resource_qxet3"]
 script = ExtResource("2_48l1n")
-Dialog_type = 0
 text = "Option 1"
 next = -1
-Actors = Array[ExtResource("3_nixps")]([])
-functions = Array[ExtResource("2_bu7wt")]([])
-Options = Array[ExtResource("3_s3u0i")]([])
 
 [sub_resource type="Resource" id="Resource_a5bnm"]
 script = ExtResource("3_s3u0i")
 text = "continue"
-functions = Array[ExtResource("2_bu7wt")]([])
 next = 6
 
 [sub_resource type="Resource" id="Resource_m5ghp"]
 script = ExtResource("3_s3u0i")
 text = "dont"
-functions = Array[ExtResource("2_bu7wt")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_b3jue"]
 script = ExtResource("2_48l1n")
 Dialog_type = 1
 text = "Second Question"
-next = 0
-Actors = Array[ExtResource("3_nixps")]([])
-functions = Array[ExtResource("2_bu7wt")]([])
 Options = Array[ExtResource("3_s3u0i")]([SubResource("Resource_a5bnm"), SubResource("Resource_m5ghp")])
 
 [sub_resource type="Resource" id="Resource_8helj"]
@@ -107,16 +80,11 @@ parameters = [ExtResource("5_ixvud")]
 [sub_resource type="Resource" id="Resource_7142w"]
 script = ExtResource("2_48l1n")
 Dialog_type = 2
-text = ""
-next = 0
-Actors = Array[ExtResource("3_nixps")]([])
 functions = Array[ExtResource("2_bu7wt")]([SubResource("Resource_8helj")])
-Options = Array[ExtResource("3_s3u0i")]([])
 
 [sub_resource type="Resource" id="Resource_3udj0"]
 script = ExtResource("3_pnle8")
 Dialogs = Array[ExtResource("2_48l1n")]([SubResource("Resource_gefcc"), SubResource("Resource_socbl"), SubResource("Resource_pw24y"), SubResource("Resource_dplxx"), SubResource("Resource_qxet3"), SubResource("Resource_b3jue"), SubResource("Resource_7142w")])
-Format = {}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcicc"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.694118)

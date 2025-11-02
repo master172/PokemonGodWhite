@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://dwm1t2bl323ac"]
 
 [ext_resource type="Texture2D" uid="uid://bgpb0n050pg4d" path="res://assets/Npc/Shopkeepers/NPC_18.png" id="1_m2vjr"]
-[ext_resource type="Script" path="res://src/Npc/Base/skin.gd" id="1_v3vjo"]
+[ext_resource type="Script" uid="uid://b67nnqwl7qcc3" path="res://src/Npc/Base/skin.gd" id="1_v3vjo"]
 
 [sub_resource type="Animation" id="Animation_76k0t"]
 resource_name = "IdleDown"
@@ -160,15 +160,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6c14x"]
 _data = {
-"IdleDown": SubResource("Animation_76k0t"),
-"IdleLeft": SubResource("Animation_fthvn"),
-"IdleRight": SubResource("Animation_ewqct"),
-"IdleUp": SubResource("Animation_yrqyc"),
-"RESET": SubResource("Animation_ry52o"),
-"WalkDown": SubResource("Animation_1pfjt"),
-"WalkLeft": SubResource("Animation_lmwkx"),
-"WalkRight": SubResource("Animation_2xbmg"),
-"WalkUp": SubResource("Animation_13rrq")
+&"IdleDown": SubResource("Animation_76k0t"),
+&"IdleLeft": SubResource("Animation_fthvn"),
+&"IdleRight": SubResource("Animation_ewqct"),
+&"IdleUp": SubResource("Animation_yrqyc"),
+&"RESET": SubResource("Animation_ry52o"),
+&"WalkDown": SubResource("Animation_1pfjt"),
+&"WalkLeft": SubResource("Animation_lmwkx"),
+&"WalkRight": SubResource("Animation_2xbmg"),
+&"WalkUp": SubResource("Animation_13rrq")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nybaw"]
@@ -241,13 +241,10 @@ script = ExtResource("1_v3vjo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6c14x")
+&"": SubResource("AnimationLibrary_6c14x")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6c14x")
-}
 tree_root = SubResource("AnimationNodeStateMachine_limr0")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)

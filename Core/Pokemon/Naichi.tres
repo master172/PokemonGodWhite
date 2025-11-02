@@ -21,31 +21,21 @@
 
 [sub_resource type="Resource" id="Resource_h6v53"]
 script = ExtResource("10_1bion")
-evolution_type = 0
-evolving_level = 16
 NextPokemon = ExtResource("11_fumfo")
-can_evolve = false
-trade_evolution_availaible = false
-stone_evolution_availaible = false
 metadata/_custom_type_script = "uid://ba5t688rcjadp"
 
 [sub_resource type="Resource" id="Resource_o1s36"]
 script = ExtResource("12_d1w5y")
 Triggers = Array[ExtResource("10_1bion")]([SubResource("Resource_h6v53")])
-TriggersActive = Array[ExtResource("10_1bion")]([])
 metadata/_custom_type_script = "uid://0qgu36ew8dhj"
 
 [resource]
 script = ExtResource("1_o037y")
 Name = "Naichi"
-Id = 0
 Type1 = "Dark"
 Type2 = "Ghost"
-leveleing_type = 2
 Ability = Array[ExtResource("1_d1w5y")]([ExtResource("2_o1s36"), ExtResource("3_wggno")])
 default_friendship = 300
-Egg_group0 = "Monster"
-Egg_group1 = "Human_like"
 Front = ExtResource("1_43efg")
 Icon = ExtResource("2_di5yv")
 Overworld = ExtResource("3_jt25t")
@@ -58,17 +48,8 @@ Base_Speed = 120
 Actions = Array[ExtResource("1_3kbbw")]([ExtResource("1_1obch"), ExtResource("2_qnc0s"), ExtResource("3_i8p32"), ExtResource("4_xwvrd"), ExtResource("6_fumfo")])
 TmActions = Array[ExtResource("1_3kbbw")]([ExtResource("11_d1w5y")])
 EggActions = Array[ExtResource("1_3kbbw")]([ExtResource("8_h6v53")])
-base_experience = 64
-Yield_Health = 0
-Yield_Attack = 0
-Yield_Defense = 0
-Yield_Special_Defense = 0
 Yield_Special_Attack = 2
-Yield_Speed = 0
 catch_chance = 16
 evolutor = SubResource("Resource_o1s36")
-previous_pokemon = ""
 Tag = "The original sin"
 description = "Naichi the original sin bound to you freverous hope, it stays loyal to you regardless of whatever you do, forever is it bound to you."
-height = 1
-weight = 10

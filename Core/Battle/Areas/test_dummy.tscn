@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ynr0nq4upd4"]
 
-[ext_resource type="Script" path="res://Core/Battle/Areas/TestDummy.gd" id="1_gcq1t"]
+[ext_resource type="Script" uid="uid://cv0yiefdo87bg" path="res://Core/Battle/Areas/TestDummy.gd" id="1_gcq1t"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_qtfn7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp1n6"]

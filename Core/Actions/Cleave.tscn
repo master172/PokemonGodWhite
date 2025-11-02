@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhkp38j5jj8th"]
 
-[ext_resource type="Script" path="res://Core/Actions/Cleave.gd" id="1_ttx2p"]
+[ext_resource type="Script" uid="uid://chffx0ubafhms" path="res://Core/Actions/Cleave.gd" id="1_ttx2p"]
 [ext_resource type="Texture2D" uid="uid://cwwmtck6ql4kr" path="res://assets/BattleEffects/Slash.png" id="2_8dhkh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gujyv"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ikg4v"]
 _data = {
-"Default": SubResource("Animation_dcqu0"),
-"RESET": SubResource("Animation_an6sp")
+&"Default": SubResource("Animation_dcqu0"),
+&"RESET": SubResource("Animation_an6sp")
 }
 
 [node name="Cleave" type="Node2D"]
@@ -66,7 +66,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ikg4v")
+&"": SubResource("AnimationLibrary_ikg4v")
 }
 autoplay = "Default"
 

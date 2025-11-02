@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://4u3erx4omnc8"]
 
-[ext_resource type="Script" path="res://src/Main/Intro/IntroScreen.gd" id="1_3rcjc"]
+[ext_resource type="Script" uid="uid://ddb5pojv0qhot" path="res://src/Main/Intro/IntroScreen.gd" id="1_3rcjc"]
 [ext_resource type="Texture2D" uid="uid://coqp1mfugv8n2" path="res://assets/Intro/1.png" id="1_rh8ml"]
 [ext_resource type="Texture2D" uid="uid://dvxbaetj5oeq2" path="res://assets/Intro/2.png" id="2_0urov"]
 [ext_resource type="Texture2D" uid="uid://cpdxhv5pek06i" path="res://assets/Intro/3.png" id="3_230i6"]
@@ -135,8 +135,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jxalu"]
 _data = {
-"Intro": SubResource("Animation_lkg2y"),
-"RESET": SubResource("Animation_uamav")
+&"Intro": SubResource("Animation_lkg2y"),
+&"RESET": SubResource("Animation_uamav")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mjot"]
@@ -153,15 +153,15 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs2le"]
-bg_color = Color(0.203922, 0.203922, 0.203922, 0.509804)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeuog"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.552941)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeuog"]
-bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.552941)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs2le"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 0.509804)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -198,7 +198,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jxalu")
+&"": SubResource("AnimationLibrary_jxalu")
 }
 speed_scale = 0.5
 
@@ -230,8 +230,8 @@ theme_override_fonts/bold_font = ExtResource("15_ws26d")
 theme_override_fonts/italics_font = ExtResource("16_anffr")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 text = "after the events of indigo Ash yearned for a new adventure"
 visible_characters = 0
@@ -252,8 +252,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("14_ifhxl")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_okv3q")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xs2le")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_aeuog")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xs2le")
 text = "Skip"
 
 [connection signal="button_down" from="Skip" to="." method="_on_skip_button_down"]

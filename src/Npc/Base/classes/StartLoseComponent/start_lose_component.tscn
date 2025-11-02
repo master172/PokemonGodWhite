@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgm4mw2yjaect"]
 
-[ext_resource type="Script" path="res://src/Npc/Base/classes/StartLoseComponent/start_lose_component.gd" id="1_541lj"]
+[ext_resource type="Script" uid="uid://bhq4b3xsfff41" path="res://src/Npc/Base/classes/StartLoseComponent/start_lose_component.gd" id="1_541lj"]
 
 [node name="StartLoseComponent" type="Node2D"]
 script = ExtResource("1_541lj")

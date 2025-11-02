@@ -5,10 +5,8 @@
 [resource]
 script = ExtResource("1_pc21g")
 name = "Surf"
-learned_level = 1
 action = "uid://dii1pds1i34ew"
 staminaCost = 30
 Type = "Water"
 power = 100.0
-range = 0
 metadata/_custom_type_script = "uid://ckld52qknsbni"

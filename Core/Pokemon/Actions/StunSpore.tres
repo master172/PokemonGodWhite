@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("2_6sc5p")
 name = "StunSpore"
-learned_level = 1
 action = "uid://diqal547otpu6"
-staminaCost = 10
 Type = "Bug"
 power = 0.0
-range = 0

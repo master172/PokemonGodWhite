@@ -5,9 +5,7 @@
 [resource]
 script = ExtResource("1_aeq6a")
 name = "LeechLife"
-learned_level = 1
 action = "uid://dhvtsukji64ch"
-staminaCost = 10
 Type = "Grass"
 power = 40.0
 range = 1

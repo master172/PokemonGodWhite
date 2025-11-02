@@ -14,31 +14,21 @@
 
 [sub_resource type="Resource" id="Resource_i0e1r"]
 script = ExtResource("7_1shl8")
-Dialog_type = 0
 text = "{Pokemon} learned {Move}"
 next = -1
-Actors = Array[ExtResource("7_0f1jc")]([])
-functions = Array[ExtResource("9_j2rjy")]([])
-Options = Array[ExtResource("8_x761t")]([])
 
 [sub_resource type="Resource" id="Resource_omf7m"]
 script = ExtResource("8_geedj")
 Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_i0e1r")])
-Format = {}
 
 [sub_resource type="Resource" id="Resource_we8xn"]
 script = ExtResource("7_1shl8")
-Dialog_type = 0
 text = "The opposing {pokemon} was caught"
 next = -1
-Actors = Array[ExtResource("7_0f1jc")]([])
-functions = Array[ExtResource("9_j2rjy")]([])
-Options = Array[ExtResource("8_x761t")]([])
 
 [sub_resource type="Resource" id="Resource_kh0ti"]
 script = ExtResource("8_geedj")
 Dialogs = Array[ExtResource("7_1shl8")]([SubResource("Resource_we8xn")])
-Format = {}
 
 [node name="BattleScene" type="Node2D"]
 y_sort_enabled = true

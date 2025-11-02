@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("2_bnqn8")
 name = "DisarmingVoice"
-learned_level = 1
 action = "uid://bl28433m8ogvx"
-staminaCost = 10
 Type = "Fairy"
 power = 40.0
-range = 0

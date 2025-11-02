@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("1_gftms")
 type_Hint = "Medicine"
-count = 1
 Name = "Super Potion"
 item = ExtResource("1_h450v")
 sprite = ExtResource("3_ertkc")

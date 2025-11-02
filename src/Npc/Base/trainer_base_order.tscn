@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dm2vn8us4y3s2"]
 
-[ext_resource type="Script" path="res://src/Npc/Base/classes/AddChildComponent/add_child_component.gd" id="1_xgimi"]
+[ext_resource type="Script" uid="uid://ctomxpyxbkull" path="res://src/Npc/Base/classes/AddChildComponent/add_child_component.gd" id="1_xgimi"]
 [ext_resource type="Resource" uid="uid://bke83lawle7ij" path="res://src/Npc/Base/Resources/BaseNodeOrder.tres" id="2_mmn1w"]
 
 [node name="TrainerBaseOrder" type="Node2D"]

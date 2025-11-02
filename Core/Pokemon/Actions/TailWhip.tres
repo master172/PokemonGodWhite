@@ -5,9 +5,5 @@
 [resource]
 script = ExtResource("2_jh7ff")
 name = "TailWhip"
-learned_level = 1
 action = "uid://uoifqgix2sbk"
-staminaCost = 10
-Type = "Normal"
 power = 0.0
-range = 0

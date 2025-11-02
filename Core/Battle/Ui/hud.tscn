@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://4oakufv7l1dw"]
 
 [ext_resource type="Texture2D" uid="uid://cv2axym1rrm66" path="res://assets/Ui/BattleScene/RadialSelector.png" id="1_evap7"]
-[ext_resource type="Script" path="res://Core/Battle/Ui/hud.gd" id="1_ubc87"]
-[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_s6f3o"]
+[ext_resource type="Script" uid="uid://8v37y4hxqtu" path="res://Core/Battle/Ui/hud.gd" id="1_ubc87"]
+[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/PIKACHU.png" id="3_s6f3o"]
 [ext_resource type="Texture2D" uid="uid://7uxrskklwy87" path="res://Core/Graphics/Pokemon/Gen1/Icons/ABRA.png" id="3_vgkxg"]
 [ext_resource type="AudioStream" uid="uid://b0co7pfofcav" path="res://assets/Audio/SFX/Pokeball/Pokeball.wav" id="5_1mrvp"]
 
@@ -160,8 +160,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ct7ep"]
 _data = {
-"Breath": SubResource("Animation_p1603"),
-"RESET": SubResource("Animation_y0ay8")
+&"Breath": SubResource("Animation_p1603"),
+&"RESET": SubResource("Animation_y0ay8")
 }
 
 [node name="Hud" type="Control"]
@@ -179,10 +179,10 @@ texture = ExtResource("1_evap7")
 vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Breath"
 libraries = {
-"": SubResource("AnimationLibrary_ct7ep")
+&"": SubResource("AnimationLibrary_ct7ep")
 }
+autoplay = "Breath"
 
 [node name="PokemonSprites" type="Node2D" parent="."]
 

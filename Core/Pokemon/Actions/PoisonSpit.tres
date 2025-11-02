@@ -9,6 +9,4 @@ learned_level = 10
 action = "uid://dvf5o4khgtbia"
 staminaCost = 20
 Type = "Poison"
-power = 35.0
-range = 0
 metadata/_custom_type_script = "uid://ckld52qknsbni"

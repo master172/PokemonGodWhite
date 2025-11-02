@@ -5,9 +5,5 @@
 [resource]
 script = ExtResource("2_rch7l")
 name = "Harden"
-learned_level = 1
 action = "uid://by58558l7umui"
-staminaCost = 10
-Type = "Normal"
 power = 0.0
-range = 0

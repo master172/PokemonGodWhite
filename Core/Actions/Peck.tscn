@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://pjyya3lsymtu"]
 
-[ext_resource type="Script" path="res://Core/Actions/Peck.gd" id="1_td6vd"]
+[ext_resource type="Script" uid="uid://gck6scjjh47" path="res://Core/Actions/Peck.gd" id="1_td6vd"]
 [ext_resource type="Texture2D" uid="uid://vcb6onm5ib15" path="res://assets/BattleEffects/Peck.png" id="2_geq4l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nb6s8"]

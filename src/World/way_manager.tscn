@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc5mvap1frk4n"]
 
-[ext_resource type="Script" path="res://src/World/WayManager.gd" id="1_psom3"]
+[ext_resource type="Script" uid="uid://cf21nu2g5y3py" path="res://src/World/WayManager.gd" id="1_psom3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhotf"]
 size = Vector2(18.843, 18.961)

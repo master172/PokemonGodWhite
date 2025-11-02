@@ -14,7 +14,7 @@ config/name="PokemonGodWhite"
 config/tags=PackedStringArray("dream")
 run/main_scene="res://src/Main/main_menu.tscn"
 config/use_custom_user_dir=true
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://EditorIcon.png"
 
 [autoload]
@@ -151,10 +151,10 @@ timer/process_in_physics=false
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=800
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
-window/per_pixel_transparency/allowed=true
 window/vsync/vsync_mode=3
 
 [editor]

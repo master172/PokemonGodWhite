@@ -5,9 +5,4 @@
 [resource]
 script = ExtResource("2_7bwml")
 name = "Supersonic"
-learned_level = 1
 action = "uid://dcm8p33fcgnn5"
-staminaCost = 10
-Type = "Normal"
-power = 35.0
-range = 0

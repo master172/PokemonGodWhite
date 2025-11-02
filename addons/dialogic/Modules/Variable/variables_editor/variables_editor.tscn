@@ -1,37 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://6tdle4y5o03o"]
+[gd_scene load_steps=9 format=3 uid="uid://6tdle4y5o03o"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Variable/variables_editor/variables_editor.gd" id="2"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Variable/variables_editor/variable_tree.gd" id="2_1i17i"]
+[ext_resource type="Script" uid="uid://bkqw135mysyrc" path="res://addons/dialogic/Modules/Variable/variables_editor/variables_editor.gd" id="2"]
+[ext_resource type="Script" uid="uid://cd0ph8j2gxpc" path="res://addons/dialogic/Modules/Variable/variables_editor/variable_tree.gd" id="2_1i17i"]
 
-[sub_resource type="Image" id="Image_e1dkh"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
-[sub_resource type="ImageTexture" id="ImageTexture_sr7s6"]
-image = SubResource("Image_e1dkh")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aodm"]
-content_margin_left = 2.0
-content_margin_top = 0.0
-content_margin_right = 2.0
-content_margin_bottom = 0.0
-bg_color = Color(0.44, 0.73, 0.98, 0.1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mevaw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.44, 0.73, 0.98, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 3
-anti_aliasing = false
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn21i"]
 
@@ -47,9 +34,9 @@ expand_margin_bottom = 4.0
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_17j6i"]
-Button/styles/hover = SubResource("StyleBoxFlat_7aodm")
+Button/styles/hover = SubResource("StyleBoxFlat_mevaw")
 Button/styles/normal = SubResource("StyleBoxEmpty_vn21i")
-Button/styles/pressed = SubResource("StyleBoxFlat_7aodm")
+Button/styles/pressed = SubResource("StyleBoxFlat_mevaw")
 pressed/styles/Button = SubResource("StyleBoxFlat_ffuxp")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncgqs"]
@@ -84,7 +71,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search"
-right_icon = SubResource("ImageTexture_sr7s6")
+right_icon = SubResource("DPITexture_2j4b6")
 
 [node name="Tree" type="Tree" parent="Editor"]
 unique_name_in_owner = true
@@ -117,7 +104,7 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 tooltip_text = "String (Any text)"
 toggle_mode = true
-icon = SubResource("ImageTexture_sr7s6")
+icon = SubResource("DPITexture_2j4b6")
 icon_alignment = 1
 
 [node name="Float" type="Button" parent="Editor/Tree/ChangeTypePopup/HBox"]
@@ -125,7 +112,7 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 tooltip_text = "Float (Number with Decimals)"
 toggle_mode = true
-icon = SubResource("ImageTexture_sr7s6")
+icon = SubResource("DPITexture_2j4b6")
 icon_alignment = 1
 
 [node name="Int" type="Button" parent="Editor/Tree/ChangeTypePopup/HBox"]
@@ -133,7 +120,7 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 tooltip_text = "Int (Integer)"
 toggle_mode = true
-icon = SubResource("ImageTexture_sr7s6")
+icon = SubResource("DPITexture_2j4b6")
 icon_alignment = 1
 
 [node name="Bool" type="Button" parent="Editor/Tree/ChangeTypePopup/HBox"]
@@ -141,7 +128,7 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 tooltip_text = "Bool (True/False flag)"
 toggle_mode = true
-icon = SubResource("ImageTexture_sr7s6")
+icon = SubResource("DPITexture_2j4b6")
 icon_alignment = 1
 
 [node name="RightClickMenu" type="PopupMenu" parent="Editor/Tree"]
@@ -149,6 +136,7 @@ unique_name_in_owner = true
 size = Vector2i(67, 35)
 item_count = 1
 item_0/text = "Copy"
+item_0/icon = SubResource("DPITexture_2j4b6")
 item_0/id = 0
 
 [node name="ReferenceInfo" type="HBoxContainer" parent="Editor"]

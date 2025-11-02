@@ -20,42 +20,32 @@
 [sub_resource type="Resource" id="Resource_5yf03"]
 script = ExtResource("2_awic8")
 text = "yes"
-functions = Array[ExtResource("4_jgriw")]([])
 next = 1
 
 [sub_resource type="Resource" id="Resource_ef0ql"]
 script = ExtResource("2_awic8")
 text = "No"
-functions = Array[ExtResource("4_jgriw")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_351vn"]
 script = ExtResource("3_jf7ap")
 Dialog_type = 1
 text = "Would You like to save the game"
-next = 0
-Actors = Array[ExtResource("3_jpxqj")]([])
-functions = Array[ExtResource("4_jgriw")]([])
 Options = Array[ExtResource("2_awic8")]([SubResource("Resource_5yf03"), SubResource("Resource_ef0ql")])
 
 [sub_resource type="Resource" id="Resource_vsiiy"]
 script = ExtResource("4_jgriw")
 function = "save"
-parameters = []
 
 [sub_resource type="Resource" id="Resource_2acqe"]
 script = ExtResource("3_jf7ap")
-Dialog_type = 0
 text = "Ash saved the game"
 next = -1
-Actors = Array[ExtResource("3_jpxqj")]([])
 functions = Array[ExtResource("4_jgriw")]([SubResource("Resource_vsiiy")])
-Options = Array[ExtResource("2_awic8")]([])
 
 [sub_resource type="Resource" id="Resource_a3nrw"]
 script = ExtResource("5_7aj6p")
 Dialogs = Array[ExtResource("3_jf7ap")]([SubResource("Resource_351vn"), SubResource("Resource_2acqe")])
-Format = {}
 
 [node name="Smartphone" type="Control"]
 visibility_layer = 2

@@ -5,10 +5,6 @@
 [resource]
 script = ExtResource("2_px4el")
 name = "Frustration"
-learned_level = 1
 action = "uid://krevlx626k1h"
-staminaCost = 10
-Type = "Normal"
-power = 35.0
 range = 1
 metadata/_custom_type_script = "uid://ckld52qknsbni"

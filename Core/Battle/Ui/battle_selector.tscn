@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dslup8uf30gtc"]
 
-[ext_resource type="Script" path="res://Core/Battle/Ui/battle_selector.gd" id="1_wafp2"]
+[ext_resource type="Script" uid="uid://bumsbgcecoqvy" path="res://Core/Battle/Ui/battle_selector.gd" id="1_wafp2"]
 [ext_resource type="StyleBox" uid="uid://bhs31cu62uuda" path="res://Core/Battle/Ui/Panel.tres" id="2_kvwo1"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="4_m8tmb"]
 

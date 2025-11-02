@@ -29,7 +29,7 @@ func matching_egg_groups():
 		return true
 	return false
 	
-func choose_species():
+func choose_species() ->Pokemon:
 	if RNG.randi() % 2 == 0:
 		return find_base_pokemon(parent0.Base_Pokemon)
 	else:
@@ -56,4 +56,4 @@ func _breed():
 	show_results(product_pokemon)
 	
 func show_results(product:game_pokemon):
-	print(product_pokemon.Nick_name)
+	print(product.Nick_name)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://diqal547otpu6"]
 
-[ext_resource type="Script" path="res://Core/Actions/StunSpore.gd" id="1_lw8bu"]
+[ext_resource type="Script" uid="uid://do0o4737p0ovr" path="res://Core/Actions/StunSpore.gd" id="1_lw8bu"]
 
 [sub_resource type="Animation" id="Animation_jafrf"]
 resource_name = "Default"
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_thhfn"]
 _data = {
-"Default": SubResource("Animation_jafrf"),
-"RESET": SubResource("Animation_ls43x")
+&"Default": SubResource("Animation_jafrf"),
+&"RESET": SubResource("Animation_ls43x")
 }
 
 [node name="StunSpore" type="Node2D"]
@@ -54,10 +54,10 @@ grow_vertical = 2
 color = Color(0.737255, 0.72549, 0, 0.501961)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Default"
 libraries = {
-"": SubResource("AnimationLibrary_thhfn")
+&"": SubResource("AnimationLibrary_thhfn")
 }
+autoplay = "Default"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

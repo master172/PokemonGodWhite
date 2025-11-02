@@ -5,9 +5,5 @@
 [resource]
 script = ExtResource("1_jspu5")
 name = "Tackle"
-learned_level = 1
 action = "uid://biav4boxyl57c"
-staminaCost = 10
-Type = "Normal"
-power = 35.0
 range = 1

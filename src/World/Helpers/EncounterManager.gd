@@ -48,7 +48,7 @@ func _ready():
 func initialize_groups():
 	rarity.clear()
 	groups.clear()
-	
+
 	if common_enabled:
 		rarity["common"] = common_relative
 		groups["common"] = common_pokemons
@@ -58,7 +58,7 @@ func initialize_groups():
 	if uncommon_enabled:
 		rarity["uncommon"] = uncommon_relative
 		groups["uncommon"] = uncommon_pokemons
-		
+
 func check_encounter():
 	if Utils.can_encounter == true and Utils.get_player().is_surfing == false:
 		if Utils.get_scene_manager() != null:
@@ -80,12 +80,12 @@ func talisman_attuned(pokemon:game_pokemon) -> bool:
 	var level:int = 0
 	for i :game_pokemon in AllyPokemon.get_party_pokemons():
 		level += i.level
-	
+
 	if level >= pokemon.level:
 		return true
-	
+
 	return false
-	
+
 func encounter():
 	var Rng = RandomNumberGenerator.new()
 	var random_encounter = Rng.randi_range(0,100)
@@ -99,19 +99,19 @@ func get_encounter_pokemon():
 
 func get_group_from_rarity():
 	var max_relative = calculate_total_relative()
-	
+
 	var Rng = RandomNumberGenerator.new()
 	var group_index = Rng.randi_range(0,max_relative)
-	
+
 	print("group index: ",group_index)
-	
+
 	var running_total :int = 0
 	for i in rarity:
 		running_total += rarity[i]
 		if group_index <= running_total:
 			print("rarity group: ", i)
 			return groups[i]
-			
+
 func calculate_total_relative():
 	var total:int = 0
 	for value in rarity.values():

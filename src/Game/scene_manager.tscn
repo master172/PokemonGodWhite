@@ -21,7 +21,6 @@
 [sub_resource type="Resource" id="Resource_v2f5h"]
 script = ExtResource("2_spcle")
 function = "time_to_evolve"
-parameters = []
 
 [sub_resource type="Resource" id="Resource_132ko"]
 script = ExtResource("3_83ynj")
@@ -32,7 +31,6 @@ next = -1
 [sub_resource type="Resource" id="Resource_blc8a"]
 script = ExtResource("2_spcle")
 function = "cancel_evolution"
-parameters = []
 
 [sub_resource type="Resource" id="Resource_3ardk"]
 script = ExtResource("3_83ynj")
@@ -44,15 +42,11 @@ next = -1
 script = ExtResource("4_c16ga")
 Dialog_type = 1
 text = "{P1} wants to evolve, do you want to let {P1} to evolve"
-next = 0
-Actors = Array[ExtResource("3_toy2f")]([])
-functions = Array[ExtResource("2_spcle")]([])
 Options = Array[ExtResource("3_83ynj")]([SubResource("Resource_132ko"), SubResource("Resource_3ardk")])
 
 [sub_resource type="Resource" id="Resource_c8k5d"]
 script = ExtResource("5_cax24")
 Dialogs = Array[ExtResource("4_c16ga")]([SubResource("Resource_0upln")])
-Format = {}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgbp0"]
 bg_color = Color(0, 0, 0, 0.568627)

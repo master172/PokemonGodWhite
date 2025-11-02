@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qdqx1fmiqvo4"]
 
-[ext_resource type="Script" path="res://testing/CodeEdit.gd" id="1_lenqq"]
+[ext_resource type="Script" uid="uid://cv0q1qkygifk" path="res://testing/CodeEdit.gd" id="1_lenqq"]
 
 [node name="Recurs" type="Control"]
 layout_mode = 3

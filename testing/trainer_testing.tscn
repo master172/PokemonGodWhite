@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvj5p2mrtorba"]
 
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="1_8bl08"]
-[ext_resource type="Script" path="res://src/Npc/Trainer/base_trainer.gd" id="2_264dh"]
+[ext_resource type="Script" uid="uid://dkhh660cbfrge" path="res://src/Npc/Trainer/base_trainer.gd" id="2_264dh"]
 [ext_resource type="Resource" uid="uid://dekjickbksnex" path="res://src/Npc/Resources/Yasuda.tres" id="3_0almy"]
 
 [node name="TrainerTesting" type="Node2D"]

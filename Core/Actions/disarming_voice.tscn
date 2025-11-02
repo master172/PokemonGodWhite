@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl28433m8ogvx"]
 
-[ext_resource type="Script" path="res://Core/Actions/DisarmingVoice.gd" id="1_mrgyy"]
+[ext_resource type="Script" uid="uid://cf8fcgguyxh0h" path="res://Core/Actions/DisarmingVoice.gd" id="1_mrgyy"]
 [ext_resource type="Texture2D" uid="uid://bndv2b0jl2ncc" path="res://assets/BattleEffects/DisarmingVoice.png" id="2_cft0e"]
 
 [sub_resource type="Animation" id="Animation_qi4rn"]
@@ -157,8 +157,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wdjod"]
 _data = {
-"Default": SubResource("Animation_qi4rn"),
-"RESET": SubResource("Animation_nxqsg")
+&"Default": SubResource("Animation_qi4rn"),
+&"RESET": SubResource("Animation_nxqsg")
 }
 
 [node name="DisarmingVoice" type="Node2D"]
@@ -187,10 +187,10 @@ region_enabled = true
 region_rect = Rect2(54, 21, 22, 27)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Default"
 libraries = {
-"": SubResource("AnimationLibrary_wdjod")
+&"": SubResource("AnimationLibrary_wdjod")
 }
+autoplay = "Default"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

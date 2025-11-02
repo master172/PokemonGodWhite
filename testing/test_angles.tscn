@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://r1gp1ahdul2m"]
 
-[ext_resource type="Script" path="res://testing/test_angles.gd" id="1_tkfs3"]
+[ext_resource type="Script" uid="uid://dupd74qmwram" path="res://testing/test_angles.gd" id="1_tkfs3"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="2_m3tss"]
 
 [node name="test angles" type="Node2D"]

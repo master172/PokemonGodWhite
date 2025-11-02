@@ -17,29 +17,19 @@
 
 [sub_resource type="Resource" id="Resource_hwbsi"]
 script = ExtResource("9_jy30c")
-evolution_type = 0
 evolving_level = 18
 NextPokemon = ExtResource("8_bj05p")
-can_evolve = false
-trade_evolution_availaible = false
-stone_evolution_availaible = false
 
 [sub_resource type="Resource" id="Resource_fqgx3"]
 script = ExtResource("10_j5lfm")
 Triggers = Array[ExtResource("9_jy30c")]([SubResource("Resource_hwbsi")])
-TriggersActive = Array[ExtResource("9_jy30c")]([])
 
 [resource]
 script = ExtResource("1_1dw5r")
 Name = "Pidgey"
 Id = 16
-Type1 = "Normal"
 Type2 = "Flying"
 leveleing_type = 1
-Ability = Array[ExtResource("1_ekkj5")]([])
-default_friendship = 70
-Egg_group0 = "Monster"
-Egg_group1 = "Human_like"
 Front = ExtResource("1_mtgkp")
 Icon = ExtResource("2_p0kla")
 Overworld = ExtResource("3_jg1iy")
@@ -50,19 +40,8 @@ Special_Base_Attack = 35
 Special_Base_Defense = 35
 Base_Speed = 56
 Actions = Array[ExtResource("1_jcim1")]([ExtResource("1_438bf"), ExtResource("2_vg4r7"), ExtResource("3_geo2v"), ExtResource("4_nxisp")])
-TmActions = Array[ExtResource("1_jcim1")]([])
 EggActions = Array[ExtResource("1_jcim1")]([ExtResource("7_tct7g")])
 base_experience = 55
-Yield_Health = 0
-Yield_Attack = 0
-Yield_Defense = 0
-Yield_Special_Defense = 0
-Yield_Special_Attack = 0
 Yield_Speed = 1
 catch_chance = 43
 evolutor = SubResource("Resource_fqgx3")
-previous_pokemon = ""
-Tag = ""
-description = ""
-height = 1
-weight = 10

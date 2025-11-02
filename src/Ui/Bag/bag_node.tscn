@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5i6a1gekskpd"]
 
-[ext_resource type="Script" path="res://src/Ui/Bag/bag_node.gd" id="1_1s0pp"]
+[ext_resource type="Script" uid="uid://ivekqfnelqa" path="res://src/Ui/Bag/bag_node.gd" id="1_1s0pp"]
 [ext_resource type="Texture2D" uid="uid://dj4hshcugmui1" path="res://assets/player/ash/Bag/ItemSelector.png" id="1_lwyqj"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="1_us4au"]
 

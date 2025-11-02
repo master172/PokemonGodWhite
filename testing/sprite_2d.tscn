@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvl5djr0vcve6"]
 
-[ext_resource type="Shader" path="res://Resources/shaders/thunder_bolt.gdshader" id="1_3a7su"]
+[ext_resource type="Shader" uid="uid://bvdpjcb6nfbc8" path="res://Resources/shaders/thunder_bolt.gdshader" id="1_3a7su"]
 [ext_resource type="Texture2D" uid="uid://brq8cmurptn3h" path="res://icon.svg" id="4_p22d7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sudnn"]

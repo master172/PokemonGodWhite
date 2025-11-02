@@ -1,25 +1,23 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=11 format=3 uid="uid://bh4qpoqtq7sea"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=12 format=3 uid="uid://bh4qpoqtq7sea"]
 
-[ext_resource type="Texture2D" uid="uid://n13heissspbb" path="res://Core/Graphics/Pokemon/Gen1/Back/PIKACHU.png" id="1_h0jw8"]
 [ext_resource type="Resource" uid="uid://b2y7ur6xwsrk" path="res://Core/Pokemon/Actions/ThunderShock.tres" id="1_qwc0o"]
+[ext_resource type="Script" uid="uid://dmyslj1y34wxw" path="res://Resources/PokeMon/Ability.gd" id="1_ybogy"]
+[ext_resource type="Script" uid="uid://ckld52qknsbni" path="res://Resources/PokeMon/Actions/BaseAction.gd" id="2_ksse5"]
 [ext_resource type="Texture2D" uid="uid://bk73fhioq7lc0" path="res://Core/Graphics/Pokemon/Gen1/Front/PIKACHU.png" id="2_mnree"]
 [ext_resource type="Resource" uid="uid://bk0hoc58h300g" path="res://Core/Pokemon/Actions/QuickAttack.tres" id="2_qici2"]
 [ext_resource type="Resource" uid="uid://dyye4noc6flfr" path="res://Core/Pokemon/Actions/ThunderBolt.tres" id="3_2e55o"]
-[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/Pikachu.png" id="3_rmte6"]
+[ext_resource type="Texture2D" uid="uid://dxttm58pdkqp6" path="res://Core/Graphics/Pokemon/Gen1/Icons/PIKACHU.png" id="3_rmte6"]
 [ext_resource type="Texture2D" uid="uid://kwyqm7lufbw3" path="res://Core/Graphics/Pokemon/Gen1/Followers/PIKACHU.png" id="4_4kf0j"]
 [ext_resource type="Resource" uid="uid://dal1jyhtfa528" path="res://Core/Pokemon/Actions/TailWhip.tres" id="4_vjt2f"]
 [ext_resource type="Resource" uid="uid://cu12qorykhtxs" path="res://Core/Pokemon/Actions/Growl.tres" id="5_mfu0s"]
-[ext_resource type="Script" path="res://Resources/PokeMon/Pokemon.gd" id="6_my436"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="6_my436"]
 
 [resource]
 script = ExtResource("6_my436")
 Name = "Pikachu"
 Id = 25
 Type1 = "Electric"
-Type2 = "NONE"
-leveleing_type = 2
 Front = ExtResource("2_mnree")
-Back = ExtResource("1_h0jw8")
 Icon = ExtResource("3_rmte6")
 Overworld = ExtResource("4_4kf0j")
 Base_Health = 45
@@ -28,12 +26,6 @@ Base_Defense = 50
 Special_Base_Attack = 60
 Special_Base_Defense = 60
 Base_Speed = 100
-Actions = Array[Resource("res://Resources/PokeMon/Actions/BaseAction.gd")]([ExtResource("1_qwc0o"), ExtResource("2_qici2"), ExtResource("3_2e55o"), ExtResource("4_vjt2f"), ExtResource("5_mfu0s")])
+Actions = Array[ExtResource("2_ksse5")]([ExtResource("1_qwc0o"), ExtResource("2_qici2"), ExtResource("3_2e55o"), ExtResource("4_vjt2f"), ExtResource("5_mfu0s")])
 base_experience = 112
-Yield_Health = 0
-Yield_Attack = 0
-Yield_Defense = 0
-Yield_Special_Defense = 0
-Yield_Special_Attack = 0
 Yield_Speed = 2
-catch_chance = 20

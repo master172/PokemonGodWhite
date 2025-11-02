@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("2_rxex8")
 name = "Astonish"
-learned_level = 1
 action = "uid://dcn4easwaon75"
-staminaCost = 10
 Type = "Ghost"
 power = 0.0
-range = 0

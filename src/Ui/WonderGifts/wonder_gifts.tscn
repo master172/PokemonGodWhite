@@ -36,13 +36,39 @@ frequency = 0.028
 fractal_octaves = 8
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6pviv"]
-color_ramp = SubResource("Gradient_wna62")
 noise = SubResource("FastNoiseLite_62wb5")
+color_ramp = SubResource("Gradient_wna62")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8oo7"]
 shader = ExtResource("1_pom4u")
 shader_parameter/outerRadius = 0.542
 shader_parameter/MainAlpha = 0.26
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a65ii"]
+bg_color = Color(0.309804, 0.764706, 0.968627, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.247375, 0.610609, 0.773438, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts5oh"]
+bg_color = Color(0.27736, 0.684622, 0.867188, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.206146, 0.508841, 0.644531, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8oo7"]
 bg_color = Color(0.319838, 0.789474, 1, 1)
@@ -70,32 +96,6 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts5oh"]
-bg_color = Color(0.27736, 0.684622, 0.867188, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.206146, 0.508841, 0.644531, 1)
-border_blend = true
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a65ii"]
-bg_color = Color(0.309804, 0.764706, 0.968627, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.247375, 0.610609, 0.773438, 1)
-border_blend = true
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pviv"]
 bg_color = Color(0, 0, 0, 1)
 draw_center = false
@@ -108,6 +108,32 @@ corner_radius_top_left = 72
 corner_radius_top_right = 72
 corner_radius_bottom_right = 72
 corner_radius_bottom_left = 72
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpljh"]
+bg_color = Color(0.505882, 0.780392, 0.517647, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.41528, 0.640625, 0.424937, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a82ge"]
+bg_color = Color(0.465923, 0.71875, 0.476759, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.321569, 0.498039, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhcb0"]
 bg_color = Color(0.552018, 0.851563, 0.564856, 1)
@@ -135,39 +161,13 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a82ge"]
-bg_color = Color(0.465923, 0.71875, 0.476759, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.321569, 0.498039, 0.329412, 1)
-border_blend = true
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpljh"]
-bg_color = Color(0.505882, 0.780392, 0.517647, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.41528, 0.640625, 0.424937, 1)
-border_blend = true
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnbih"]
-bg_color = Color(0.462375, 0.500906, 0.535156, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yl4r"]
+bg_color = Color(0.423529, 0.458824, 0.490196, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.435375, 0.471656, 0.503906, 1)
+border_color = Color(0.39825, 0.431437, 0.460938, 1)
 border_blend = true
 corner_radius_top_left = 25
 corner_radius_top_right = 25
@@ -191,13 +191,13 @@ corner_radius_bottom_left = 25
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yl4r"]
-bg_color = Color(0.423529, 0.458824, 0.490196, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnbih"]
+bg_color = Color(0.462375, 0.500906, 0.535156, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.39825, 0.431437, 0.460938, 1)
+border_color = Color(0.435375, 0.471656, 0.503906, 1)
 border_blend = true
 corner_radius_top_left = 25
 corner_radius_top_right = 25
@@ -213,14 +213,14 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imkp6"]
-bg_color = Color(0.847656, 0.847656, 0.847656, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86o4v"]
+bg_color = Color(0.726563, 0.726563, 0.726563, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wg1y"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4swim"]
 bg_color = Color(0.570313, 0.570313, 0.570313, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
@@ -234,15 +234,15 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4swim"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wg1y"]
 bg_color = Color(0.570313, 0.570313, 0.570313, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86o4v"]
-bg_color = Color(0.726563, 0.726563, 0.726563, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imkp6"]
+bg_color = Color(0.847656, 0.847656, 0.847656, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -361,11 +361,11 @@ alignment = 1
 [node name="Create" type="Button" parent="GiftContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_o8oo7")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lfxvg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o8oo7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ts5oh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_a65ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ts5oh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8oo7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lfxvg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8oo7")
 text = "Create Gift"
 icon = ExtResource("2_b3nqf")
 
@@ -387,11 +387,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6pviv")
 [node name="Load" type="Button" parent="GiftContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_vhcb0")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_h7eoe")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vhcb0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a82ge")
 theme_override_styles/normal = SubResource("StyleBoxFlat_fpljh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a82ge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhcb0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_h7eoe")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vhcb0")
 text = "Open Gift"
 icon = ExtResource("3_6pviv")
 
@@ -415,11 +415,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 10
 theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxFlat_xnbih")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ceq22")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xnbih")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ceq22")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5yl4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ceq22")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnbih")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ceq22")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xnbih")
 text = "Back"
 icon = ExtResource("5_86o4v")
 
@@ -500,29 +500,29 @@ alignment = 1
 [node name="Yes" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
 theme_override_styles/normal = SubResource("StyleBoxFlat_86o4v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
 text = "Choose"
 
 [node name="No" type="Button" parent="SelectionPanel/ConfirmPanel/VBoxContainer/OptionsContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
 theme_override_styles/normal = SubResource("StyleBoxFlat_86o4v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4swim")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vbjin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8wg1y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_imkp6")
 text = "Cancel"
 
 [node name="GiftManager" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2h6k3e2vfbhy"]
 
-[ext_resource type="Script" path="res://Core/Actions/Resources/ObjectTrail.gd" id="1_ftman"]
+[ext_resource type="Script" uid="uid://b2k22ciyeqbau" path="res://Core/Actions/Resources/ObjectTrail.gd" id="1_ftman"]
 
 [node name="Trail" type="Line2D"]
 script = ExtResource("1_ftman")

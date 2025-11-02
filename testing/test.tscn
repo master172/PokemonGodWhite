@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://c5iywfojdo8oo"]
 
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_065gg"]
-[ext_resource type="Script" path="res://src/World/mainTilemap.gd" id="1_bqae5"]
-[ext_resource type="Script" path="res://testing/test.gd" id="1_e3oeq"]
+[ext_resource type="Script" uid="uid://cfo58sxvffl2w" path="res://src/World/mainTilemap.gd" id="1_bqae5"]
+[ext_resource type="Script" uid="uid://ctbh6bktrqxtn" path="res://testing/test.gd" id="1_e3oeq"]
 [ext_resource type="Resource" uid="uid://cnv2hjfuown6s" path="res://Resources/PokeMon/Natures/Hardy.tres" id="2_7jxsq"]
 [ext_resource type="PackedScene" uid="uid://dv6h8hgby3phq" path="res://src/player/ash/ash.tscn" id="2_mblat"]
 [ext_resource type="Texture2D" uid="uid://dlo2s56un6yn2" path="res://assets/SolariaTileset/Solaria Demo Pack Update 03/16x16/Tilesets/Solaria Demo Update 01.png" id="2_uyil8"]

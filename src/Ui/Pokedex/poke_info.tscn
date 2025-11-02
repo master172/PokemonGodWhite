@@ -64,10 +64,8 @@ shader_parameter/base_texture = ExtResource("3_42d6g")
 shader_parameter/gradient_radius = 0.432
 shader_parameter/gradient_intensity = 1.491
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70dy"]
-bg_color = Color(1, 1, 1, 0)
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8x7n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rgeh"]
 bg_color = Color(1, 1, 1, 1)
@@ -79,14 +77,11 @@ border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8x7n"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gxqa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe60t"]
 content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.675781, 0.675781, 0.675781, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmmef"]
 content_margin_right = 20.0
@@ -94,11 +89,16 @@ bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
 border_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe60t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gxqa"]
 content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
-border_color = Color(0.675781, 0.675781, 0.675781, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70dy"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnfwd"]
 bg_color = Color(1, 1, 1, 1)
@@ -215,7 +215,6 @@ grow_vertical = 2
 script = ExtResource("4_7m20b")
 
 [node name="Main" type="Control" parent="."]
-layout_mode = 2
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -424,15 +423,15 @@ vertical_alignment = 1
 [node name="InfoContainer" type="TabContainer" parent="Main/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_unselected_color = Color(0.67451, 0.67451, 0.67451, 1)
-theme_override_colors/font_hovered_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_styles/tab_focus = SubResource("StyleBoxFlat_r70dy")
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_1rgeh")
+theme_override_colors/font_hovered_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_colors/font_unselected_color = Color(0.67451, 0.67451, 0.67451, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8x7n")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_1rgeh")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_oe60t")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_xmmef")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7gxqa")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_r70dy")
 current_tab = 0
 script = ExtResource("12_od8su")
 

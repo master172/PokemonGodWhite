@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ad1pwbjuqpt"]
+[gd_scene load_steps=8 format=3 uid="uid://8ad1pwbjuqpt"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/character_settings/character_moods_settings.gd" id="1_3px07"]
+[ext_resource type="Script" uid="uid://cuyrk5rl4q43" path="res://addons/dialogic/Modules/Text/character_settings/character_moods_settings.gd" id="1_3px07"]
 [ext_resource type="PackedScene" uid="uid://7mvxuaulctcq" path="res://addons/dialogic/Editor/Events/Fields/field_file.tscn" id="2_e1vyd"]
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/dialogic/Editor/Events/Fields/field_number.tscn" id="3_yjcns"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_yscws"]
+[ext_resource type="Script" uid="uid://ba5woe8o30hwd" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_yscws"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7t05"]
 content_margin_left = 10.0
@@ -14,17 +14,9 @@ bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 
-[sub_resource type="Image" id="Image_ylh4a"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_drtd2"]
-image = SubResource("Image_ylh4a")
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40fkd"]
 content_margin_top = 10.0
@@ -62,19 +54,19 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Add type sound mood"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="Duplicate" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Duplicate"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="Delete" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Delete mood"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="VSeparator" type="VSeparator" parent="VBox/ListPanel/Vbox/HBoxContainer"]
 layout_mode = 2
@@ -83,14 +75,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Preview"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="Default" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Default"
 toggle_mode = true
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
 [node name="MoodList" type="ItemList" parent="VBox/ListPanel/Vbox"]
 unique_name_in_owner = true
@@ -129,7 +121,7 @@ anchor_bottom = 1.0
 offset_left = -31.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = SubResource("ImageTexture_drtd2")
+texture = SubResource("DPITexture_2j4b6")
 stretch_mode = 3
 
 [node name="Label6" type="Label" parent="VBox/Settings/Grid"]
@@ -142,8 +134,8 @@ layout_mode = 2
 tooltip_text = "Interrupt = The next sound will stop the previous
 Overlap = Multiple sounds may play at once
 Await = A sound will only be played if the previous has finished"
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Interrupt"
 popup/item_0/id = 0
 popup/item_1/text = "Overlap"

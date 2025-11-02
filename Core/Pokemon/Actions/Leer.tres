@@ -5,9 +5,5 @@
 [resource]
 script = ExtResource("2_e03gc")
 name = "Growl"
-learned_level = 1
 action = "uid://du6fhdd45op8m"
-staminaCost = 10
-Type = "Normal"
 power = 0.0
-range = 0

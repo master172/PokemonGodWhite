@@ -5,13 +5,13 @@ extends CanvasLayer
 
 var is_pokedex_active = false
 
-	
+
 func pokedex_active():
 	is_pokedex_active = true
 
 func pokedex_inactive():
 	is_pokedex_active = false
-	
+
 func toggle_battle(val:bool):
 	battle.visible = val
 
@@ -83,3 +83,7 @@ func _on_down_released() -> void:
 		event.action = "ui_down"
 		event.pressed = false
 		Input.parse_input_event(event)
+
+func _ready() -> void:
+	if !OS.has_feature("Android"):
+		hide()

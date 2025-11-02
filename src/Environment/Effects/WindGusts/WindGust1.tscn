@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwq4yce2bb5e1"]
 
-[ext_resource type="Script" path="res://src/Environment/Effects/WindGusts/WindGust.gd" id="1_7147f"]
+[ext_resource type="Script" uid="uid://bgt6axoa54ssg" path="res://src/Environment/Effects/WindGusts/WindGust.gd" id="1_7147f"]
 
 [sub_resource type="Curve" id="Curve_m727m"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

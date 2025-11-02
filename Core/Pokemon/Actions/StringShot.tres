@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("2_gbovc")
 name = "StringShot"
-learned_level = 1
 action = "uid://cbh7ttclrfj6x"
-staminaCost = 10
 Type = "Bug"
 power = 0.0
-range = 0

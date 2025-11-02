@@ -1,12 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://lflofo4b3ksh"]
 
-[ext_resource type="Script" path="res://src/Ui/Summary/trigger.gd" id="1_e1uj2"]
+[ext_resource type="Script" uid="uid://cudklu2u7typa" path="res://src/Ui/Summary/trigger.gd" id="1_e1uj2"]
 [ext_resource type="Texture2D" uid="uid://bgdej8mw8jq5y" path="res://Core/Graphics/Pokemon/Gen4/Front/LUCARIO.png" id="2_emtkm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ftno"]
 bg_color = Color(0.0196078, 0.768627, 0.235294, 0.584314)
 
 [sub_resource type="SystemFont" id="SystemFont_dmvho"]
+subpixel_positioning = 0
 
 [node name="Trigger" type="Panel"]
 custom_minimum_size = Vector2(0, 200)

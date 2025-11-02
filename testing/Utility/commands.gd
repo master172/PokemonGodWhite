@@ -9,26 +9,26 @@ var default_pokemon_path = "res://Core/Pokemon/"
 func add_debug_party():
 	var ralts = load("res://Core/Pokemon/Ralts.tres")
 	var Ralts:game_pokemon = game_pokemon.new(ralts,5,"Beta",1)
-	
+
 	var buneary = load("res://Core/Pokemon/Buneary.tres")
 	var Buneary:game_pokemon = game_pokemon.new(buneary,5,"Gamma",1)
-	
+
 	var fennekin = load("res://Core/Pokemon/Fennekin.tres")
 	var Fennekin:game_pokemon = game_pokemon.new(fennekin,5,"Zeta",1)
-	
+
 	var gible = load("res://Core/Pokemon/Gible.tres")
 	var Gible:game_pokemon = game_pokemon.new(gible,5,"Eta",1)
-	
+
 	var riolu = load("res://Core/Pokemon/Riolu.tres")
 	var Riolu:game_pokemon = game_pokemon.new(riolu,5,"Epsilon",1)
-	
+
 	var pidgey = load("res://Core/Pokemon/Pidgey.tres")
 	var Pidgey:game_pokemon = game_pokemon.new(pidgey,17,"Nu",1)
-	
+
 	var pidgeotto = load("res://Core/Pokemon/Pidgeotto.tres")
 	var Pidgeotto:game_pokemon = game_pokemon.new(pidgeotto,5,"Theta",1)
-	
-	
+
+
 	AllyPokemon.add_pokemon(Ralts)
 	AllyPokemon.add_pokemon(Buneary)
 	AllyPokemon.add_pokemon(Fennekin)
@@ -36,8 +36,14 @@ func add_debug_party():
 	AllyPokemon.add_pokemon(Riolu)
 	AllyPokemon.add_pokemon(Pidgeotto)
 	AllyPokemon.add_pokemon(Pidgey)
-	
+
 	return "added debug party"
+
+func help():
+	var methods = []
+	for fun in self.get_script().get_script_method_list():
+		methods.append(fun["name"])
+	return methods
 
 func say_hello():
 	return "Hello, World!"
@@ -89,7 +95,7 @@ func set_position(x:int,y:int):
 	var player :CharacterBody2D = Utils.get_player()
 	if player != null:
 		player.global_position = Vector2(x,y)
-		
+
 		return "set player position to " + str(player.global_position)
 	return "[color=red]player not found[/color]"
 
@@ -97,7 +103,7 @@ func move_position(x:int,y:int):
 	var player :CharacterBody2D = Utils.get_player()
 	if player != null:
 		player.global_position += Vector2(x*16,y*16)
-		
+
 		return "move player to " + str(player.global_position)
 	return "[color=red]player not found[/color]"
 
@@ -137,12 +143,12 @@ func add_pokemon(Name:String,level:int = 5, NickName:String = "",gender:int = -1
 		return "pokemon not found"
 	AllyPokemon.add_pokemon(game_pokemon.new(pokemon,level,NickName,gender))
 	return "pokemon sucessfully added"
-	
+
 func find_pokemon_by_path(Name:String = "",path:String = default_pokemon_path):
 	var dir = DirAccess.open(path)
 	if not dir:
 		return null
-		
+
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
@@ -157,7 +163,7 @@ func find_pokemon_by_path(Name:String = "",path:String = default_pokemon_path):
 			continue
 		return path+file_name
 		file_name = dir.get_next()
-		
+
 	return null
 
 func change_animation_player(state:bool):

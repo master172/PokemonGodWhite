@@ -5,5 +5,4 @@
 
 [resource]
 script = ExtResource("2_uausa")
-EvolutionLine = Array[ExtResource("1_evgd4")]([])
 metadata/_custom_type_script = "uid://ca6xt333hqj0u"

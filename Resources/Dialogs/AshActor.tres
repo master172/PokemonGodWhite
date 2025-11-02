@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Actor" load_steps=3 format=3 uid="uid://budscqmll3kan"]
 
-[ext_resource type="Script" path="res://Libraries/Resources/Dialog/Actor.gd" id="1_qqyau"]
+[ext_resource type="Script" uid="uid://csvv8400abb0s" path="res://Libraries/Resources/Dialog/Actor.gd" id="1_qqyau"]
 [ext_resource type="Texture2D" uid="uid://br2vyo0xfy4rl" path="res://assets/player/ash/AshSpeaker.png" id="2_af8vo"]
 
 [resource]
@@ -9,4 +9,3 @@ actor_type = 2
 sprite_normal = ExtResource("2_af8vo")
 sprite_happy = ExtResource("2_af8vo")
 sprite_Angered = ExtResource("2_af8vo")
-mood = 0

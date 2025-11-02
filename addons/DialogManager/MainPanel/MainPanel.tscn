@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blifptthn8rti"]
 
-[ext_resource type="Script" path="res://addons/DialogManager/MainPanel/MainPanel.gd" id="1_y42wk"]
+[ext_resource type="Script" uid="uid://b0asog2dqv3ir" path="res://addons/DialogManager/MainPanel/MainPanel.gd" id="1_y42wk"]
 
 [node name="MainPanel" type="Control"]
 layout_mode = 3

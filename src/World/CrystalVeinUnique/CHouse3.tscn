@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1qclxar0dj"]
+
+[ext_resource type="Texture2D" uid="uid://dpxr4w8w14hny" path="res://assets/PokemonTilesets/Outdoors.png" id="1_t45ub"]
+[ext_resource type="PackedScene" uid="uid://c33p1dn5wi8t6" path="res://Libraries/Houses/door.tscn" id="2_uav12"]
+
+[node name="CHouse1" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16, -40)
+texture = ExtResource("1_t45ub")
+region_enabled = true
+region_rect = Rect2(80, 528, 88, 80)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16, -40)
+polygon = PackedVector2Array(24, 40, 24, 24, 8, 24, 8, 40, -40, 40, -40, -8, 40, -8, 40, 40)
+
+[node name="Door" parent="." instance=ExtResource("2_uav12")]
+position = Vector2(0, -8)

@@ -11,12 +11,9 @@
 
 [sub_resource type="Resource" id="Resource_0sakw"]
 script = ExtResource("2_v4m4j")
-Dialog_type = 0
 text = "{Welcome} to {NewfoundLand}"
 next = -1
 Actors = Array[ExtResource("3_b4nc7")]([ExtResource("2_5nit4")])
-functions = Array[ExtResource("6_dwl08")]([])
-Options = Array[ExtResource("5_t3ioi")]([])
 
 [sub_resource type="Resource" id="Resource_la14q"]
 script = ExtResource("3_bv0gl")

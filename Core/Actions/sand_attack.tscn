@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ch7oy3u8esah0"]
 
-[ext_resource type="Script" path="res://Core/Actions/sand_attack.gd" id="1_ig7d7"]
+[ext_resource type="Script" uid="uid://bhuyxbfpc4s50" path="res://Core/Actions/sand_attack.gd" id="1_ig7d7"]
 [ext_resource type="Texture2D" uid="uid://b1i85d4eo1pgw" path="res://assets/BattleEffects/SandAttack.png" id="2_cid1h"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n10lk"]
@@ -10,7 +10,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_dpobe"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.771084, 1.38947), -2.55021, -2.55021, 0, 0, Vector2(1, 0), -5.74136, 0.0, 0, 0]
 point_count = 3
 
@@ -21,13 +21,11 @@ curve = SubResource("Curve_dpobe")
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 70.0
 angular_velocity_min = -5.0
 angular_velocity_max = 5.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_i1lq5")
 anim_speed_min = 0.1
@@ -45,9 +43,9 @@ script = ExtResource("1_ig7d7")
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_n10lk")
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_m76k8")
 texture = ExtResource("2_cid1h")
 explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_m76k8")
 
 [node name="Area2D" type="Area2D" parent="."]
 

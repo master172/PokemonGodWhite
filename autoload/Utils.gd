@@ -35,7 +35,7 @@ func player_dialog_end(sign):
 		get_viewport().set_input_as_handled()
 		await get_tree().create_timer(0.1).timeout
 		get_player().set_physics_process_custom(true)
-		
+
 func _ready():
 	Dialogic.connect("signal_event",player_dialog_end)
 
@@ -43,7 +43,7 @@ func handle_load():
 	save_file_path =  "user://save/"+str(Global.current_load_path) + "/Utils/"
 	verify_save_directory(save_file_path)
 	load_data()
-	
+
 func verify_save_directory(path:String):
 	DirAccess.make_dir_recursive_absolute(path)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +51,7 @@ func verify_save_directory(path:String):
 func save_self_data():
 	update_self_data()
 	ResourceSaver.save(storyData,save_file_path + save_file_name)
-	
+
 func get_player():
 	if get_tree().get_current_scene().name == "SceneManager":
 		return get_node("/root/SceneManager/Current_scene").get_children().back().get_node("player")
@@ -76,8 +76,6 @@ func set_player(set_see:bool = true):
 	var player = get_player()
 	if player != null:
 		player.check_to_add_overworld_pokemon(set_see)
-	else:
-		pass
 
 func save_data(sign:bool = true):
 	get_player().save_data()
@@ -86,7 +84,7 @@ func save_data(sign:bool = true):
 	Inventory.save_data()
 	Global.save_config_info()
 	save_self_data()
-	
+
 	if sign == true:
 		emit_signal("saving_done")
 
@@ -98,12 +96,12 @@ func update_self_data():
 	storyData.Badge_count = Badge_count
 	storyData.Money = Money
 	storyData.talisman_active = talisman_active
-	
+
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
 		storyData = ResourceLoader.load(save_file_path + save_file_name).duplicate(true)
 		apply_self_data()
-		
+
 func apply_self_data():
 	player_uid = storyData.player_uid
 	Money = storyData.Money
@@ -112,14 +110,14 @@ func apply_self_data():
 	Bea_met = storyData.Bea_met
 	William_met = storyData.William_met
 	talisman_active = storyData.talisman_active
-	
+
 func remove_save_files(slot:int):
-	
+
 	##deleting the player save files
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Player/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/Player/")
 		var files = dir.get_files()
-		
+
 		for file in files:
 			dir.remove(file)
 		dir.remove("user://save/"+str(slot) + "/Player/")
@@ -127,16 +125,16 @@ func remove_save_files(slot:int):
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Scene/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/Scene/")
 		var files = dir.get_files()
-		
+
 		for file in files:
 			dir.remove(file)
 		dir.remove("user://save/"+str(slot) + "/Scene/")
-		
+
 	##deleting Trainer save files
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Trainers/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/Trainers/")
 		var files = dir.get_files()
-		
+
 		for file in files:
 			dir.remove(file)
 		dir.remove("user://save/"+str(slot) + "/Trainers/")
@@ -144,40 +142,40 @@ func remove_save_files(slot:int):
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Global/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/Global/")
 		var files = dir.get_files()
-		
+
 		for file in files:
 			dir.remove(file)
 		dir.remove("user://save/"+str(slot) + "/Global/")
 	##Deleting the pokemon save files
 	AllyPokemon.remove_data(slot)
-	
+
 	##Deleting the inventory save files
-	
+
 	Inventory.remove_data(slot)
-	
+
 	##Deleting story data
 	remove_self_data(slot)
-	
-	
-	
+
+
+
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/")
 		var err = dir.remove("user://save/"+str(slot) + "/")
 		if err != OK:
 			push_error("failed to delete save slot " + str(slot))
-	
+
 	#shift_save_slots_down(slot)
 
-	
+
 func remove_self_data(slot:int):
 	if DirAccess.dir_exists_absolute("user://save/"+str(slot) + "/Utils/"):
 		var dir = DirAccess.open("user://save/"+str(slot) + "/Utils/")
 		var files = dir.get_files()
-		
+
 		for file in files:
 			dir.remove(file)
 		dir.remove("user://save/"+str(slot) + "/Utils/")
-	
+
 	unload_data()
 
 func unload_data():
@@ -193,10 +191,10 @@ func create_uid():
 	var uid = ""
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
+
 	for i in range(16):
 		uid += chars[rng.randi_range(0, chars.length() - 1)]
-	
+
 	player_uid = uid
 
 func autosave():

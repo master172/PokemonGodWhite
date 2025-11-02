@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1l5inso4oeik"]
+[gd_scene load_steps=31 format=3 uid="uid://c1l5inso4oeik"]
 
-[ext_resource type="Script" path="res://Resources/Npc/Npcs/Jenney.gd" id="1_0ew76"]
+[ext_resource type="Script" uid="uid://3r1ucmnawbfd" path="res://Resources/Npc/Npcs/Jenney.gd" id="1_0ew76"]
+[ext_resource type="Script" uid="uid://ke3dynqcoegg" path="res://Resources/PokeMon/Pokemon.gd" id="2_mre81"]
 [ext_resource type="Resource" uid="uid://bj22iqgv73rue" path="res://Core/Pokemon/Trapinch.tres" id="2_wk02s"]
 [ext_resource type="Texture2D" uid="uid://de3gunnci730h" path="res://assets/Npc/Trainers/General/trainer_BEAUTY.png" id="4_1an6n"]
 [ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="5_hs3ny"]
@@ -162,15 +163,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxxnt"]
 _data = {
-"IdleDown": SubResource("Animation_8wmt8"),
-"IdleLeft": SubResource("Animation_laooc"),
-"IdleRight": SubResource("Animation_as7ej"),
-"IdleUp": SubResource("Animation_as4e3"),
-"RESET": SubResource("Animation_mf4l2"),
-"WalkDown": SubResource("Animation_61t2r"),
-"WalkLeft": SubResource("Animation_egh3c"),
-"WalkRight": SubResource("Animation_rwsci"),
-"WalkUp": SubResource("Animation_tuuhl")
+&"IdleDown": SubResource("Animation_8wmt8"),
+&"IdleLeft": SubResource("Animation_laooc"),
+&"IdleRight": SubResource("Animation_as7ej"),
+&"IdleUp": SubResource("Animation_as4e3"),
+&"RESET": SubResource("Animation_mf4l2"),
+&"WalkDown": SubResource("Animation_61t2r"),
+&"WalkLeft": SubResource("Animation_egh3c"),
+&"WalkRight": SubResource("Animation_rwsci"),
+&"WalkUp": SubResource("Animation_tuuhl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hknln"]
@@ -243,7 +244,7 @@ script = ExtResource("1_0ew76")
 LineOfSight = NodePath("RayCast2D")
 exclamation = NodePath("exclamation")
 look_distance = 3
-pokemons = Array[Resource("res://Resources/PokeMon/Pokemon.gd")]([ExtResource("2_wk02s")])
+pokemons = Array[ExtResource("2_mre81")]([ExtResource("2_wk02s")])
 levels = Array[int]([7])
 current_dialog = "JenneyStart"
 ending_dialog = "JenneyEnd"
@@ -263,13 +264,10 @@ frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
+&"": SubResource("AnimationLibrary_nxxnt")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nxxnt")
-}
 tree_root = SubResource("AnimationNodeStateMachine_uymiu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.00510722, 0.650655)

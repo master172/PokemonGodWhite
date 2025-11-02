@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("2_krbhn")
 type_Hint = "Medicine"
-count = 1
 Name = "Max Revive"
 item = ExtResource("1_m3gbf")
 sprite = ExtResource("3_krbhn")

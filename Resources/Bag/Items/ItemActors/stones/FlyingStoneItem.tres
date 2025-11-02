@@ -6,6 +6,5 @@
 [resource]
 script = ExtResource("1_xe8i5")
 evolving_stone = ExtResource("1_x7f7c")
-singal_use = true
 my_function = 0
 metadata/_custom_type_script = "uid://cl4mjh2d7kjio"

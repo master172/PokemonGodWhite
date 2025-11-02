@@ -5,9 +5,7 @@
 [resource]
 script = ExtResource("2_qu7bl")
 name = "ThunderShock"
-learned_level = 1
 action = "uid://bvweomq4x18ny"
 staminaCost = 17
 Type = "Electric"
 power = 1.0
-range = 0

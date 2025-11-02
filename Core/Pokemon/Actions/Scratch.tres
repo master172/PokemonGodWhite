@@ -5,9 +5,6 @@
 [resource]
 script = ExtResource("1_1ufn6")
 name = "Scratch"
-learned_level = 1
 action = "uid://dmndgntrn1nfe"
-staminaCost = 10
-Type = "Normal"
 power = 40.0
 range = 1

@@ -1,7 +1,6 @@
 extends Node2D
 class_name MapRoom
 
-@export_subgroup("land pokemons")
 @export_subgroup("common")
 @export var common_pokemons :Array[Pokemon] = []
 @export var common_relative:int = 10

@@ -10,17 +10,12 @@
 
 [sub_resource type="Resource" id="Resource_wlxwi"]
 script = ExtResource("2_sxyao")
-Dialog_type = 0
 text = "Ash found an {Item}"
 next = 1
-Actors = Array[ExtResource("3_48d6h")]([])
-functions = Array[ExtResource("3_ttta6")]([])
-Options = Array[ExtResource("4_33l5c")]([])
 
 [sub_resource type="Resource" id="Resource_6tkvb"]
 script = ExtResource("3_ttta6")
 function = "PickUpItem"
-parameters = []
 
 [sub_resource type="Resource" id="Resource_53e0n"]
 script = ExtResource("4_33l5c")
@@ -31,22 +26,17 @@ next = -1
 [sub_resource type="Resource" id="Resource_ympvx"]
 script = ExtResource("4_33l5c")
 text = "No"
-functions = Array[ExtResource("3_ttta6")]([])
 next = -1
 
 [sub_resource type="Resource" id="Resource_hpobu"]
 script = ExtResource("2_sxyao")
 Dialog_type = 1
 text = "Do you want to pick the item up"
-next = 0
-Actors = Array[ExtResource("3_48d6h")]([])
-functions = Array[ExtResource("3_ttta6")]([])
 Options = Array[ExtResource("4_33l5c")]([SubResource("Resource_53e0n"), SubResource("Resource_ympvx")])
 
 [sub_resource type="Resource" id="Resource_cvyf1"]
 script = ExtResource("3_w1tyw")
 Dialogs = Array[ExtResource("2_sxyao")]([SubResource("Resource_wlxwi"), SubResource("Resource_hpobu")])
-Format = {}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q0xc"]
 size = Vector2(16, 16)

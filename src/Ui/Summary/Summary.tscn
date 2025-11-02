@@ -47,7 +47,7 @@ texture = ExtResource("1_h0y60")
 script = ExtResource("3_4a30r")
 
 [node name="Tag" type="Label" parent="info"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 47.0
 offset_top = 34.0
 offset_right = 145.0
@@ -72,7 +72,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "Species:"
 
 [node name="Species" type="Label" parent="info/Info/Species"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
@@ -91,7 +91,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "Dex No:"
 
 [node name="DexNo" type="Label" parent="info/Info/DexNo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
@@ -110,7 +110,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "Ot:"
 
 [node name="Ot" type="Label" parent="info/Info/Ot"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
@@ -129,7 +129,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "Natue:"
 
 [node name="PokemonID" type="Label" parent="info/Info/PokemonID"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 210.526
 offset_right = 334.526
 offset_bottom = 41.0
@@ -148,7 +148,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "Exp Points:"
 
 [node name="ExpPoints" type="Label" parent="info/Info/ExpPoints"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 215.924
 offset_top = 45.8839
 offset_right = 339.924
@@ -168,7 +168,7 @@ theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 text = "To next level:"
 
 [node name="ToNextLevel" type="Label" parent="info/Info/ToNextLevel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 215.924
 offset_top = 45.8839
 offset_right = 339.924
@@ -223,7 +223,7 @@ texture = ExtResource("8_xk48v")
 script = ExtResource("8_cr8m8")
 
 [node name="Tag" type="Label" parent="moves"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 46.0
 offset_top = 34.0
 offset_right = 197.0
@@ -296,7 +296,7 @@ grow_vertical = 2
 texture = ExtResource("8_vv2m0")
 
 [node name="Tag" type="Label" parent="memo"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 47.0
 offset_top = 34.0
 offset_right = 191.0
@@ -318,7 +318,7 @@ texture = ExtResource("9_e84sw")
 script = ExtResource("11_g8v2c")
 
 [node name="Tag" type="Label" parent="skills"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 48.0
 offset_top = 34.0
 offset_right = 191.0
@@ -492,7 +492,7 @@ grow_vertical = 2
 texture = ExtResource("10_erw2v")
 
 [node name="Tag" type="Label" parent="ribbons"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 46.0
 offset_top = 34.0
 offset_right = 234.0
@@ -514,7 +514,7 @@ texture = ExtResource("12_x1t8v")
 script = ExtResource("13_aw7q6")
 
 [node name="Tag" type="Label" parent="evolution"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 46.0
 offset_top = 34.0
 offset_right = 234.0

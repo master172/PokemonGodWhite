@@ -1662,9 +1662,9 @@ fractal_octaves = 4
 domain_warp_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xhlmr"]
-seamless = true
-color_ramp = SubResource("Gradient_pojdi")
 noise = SubResource("FastNoiseLite_ta3ki")
+color_ramp = SubResource("Gradient_pojdi")
+seamless = true
 
 [sub_resource type="Animation" id="Animation_tlwsx"]
 resource_name = "Default"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp3pvr52m44pv"]
 
 [ext_resource type="Texture2D" uid="uid://bbuod1dcdd4c6" path="res://assets/player/ash/Smartphones/Apps/AppGreen.png" id="1_v75y7"]
-[ext_resource type="Script" path="res://src/Ui/Menu/app.gd" id="2_yfnh1"]
+[ext_resource type="Script" uid="uid://d0jcd8jh0ee3p" path="res://src/Ui/Menu/app.gd" id="2_yfnh1"]
 
 [node name="App" type="TextureRect"]
 texture_filter = 1

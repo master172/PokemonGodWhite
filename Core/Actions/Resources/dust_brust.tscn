@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://beliewtyy2emk"]
 
 [ext_resource type="Texture2D" uid="uid://dldqfff4kts33" path="res://assets/Effects/Dust/dust.png" id="1_tia4d"]
-[ext_resource type="Script" path="res://Core/Actions/Resources/dust_brust.gd" id="2_uifjy"]
+[ext_resource type="Script" uid="uid://bowc1wxh3i7eo" path="res://Core/Actions/Resources/dust_brust.gd" id="2_uifjy"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kg4x8"]
 particles_animation = true
@@ -18,16 +18,14 @@ curve = SubResource("Curve_q42ui")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ophj"]
 lifetime_randomness = 1.0
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 10.0
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 5.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_max = 3.0
 anim_speed_min = 0.1
 anim_speed_max = 1.0
@@ -37,11 +35,11 @@ anim_speed_curve = SubResource("CurveTexture_u673i")
 material = SubResource("CanvasItemMaterial_kg4x8")
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_0ophj")
 texture = ExtResource("1_tia4d")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0ophj")
 script = ExtResource("2_uifjy")
 
 [node name="Timer" type="Timer" parent="."]

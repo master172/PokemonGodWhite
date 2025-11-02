@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://by58558l7umui"]
 
-[ext_resource type="Script" path="res://Core/Actions/Harden.gd" id="1_o34q7"]
+[ext_resource type="Script" uid="uid://bdogyr0dv5q03" path="res://Core/Actions/Harden.gd" id="1_o34q7"]
 
 [node name="Harden" type="Node2D"]
 scale = Vector2(2, 2)
