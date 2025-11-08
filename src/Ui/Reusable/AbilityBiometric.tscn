@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://0qy1m1a152j0" path="res://src/Ui/Reusable/ability_biometric.gd" id="1_5r3c6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgyb"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -30,7 +30,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="DataContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 text = "Ability"
@@ -39,7 +41,9 @@ vertical_alignment = 1
 
 [node name="Data" type="Label" parent="DataContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 text = "Blaze"

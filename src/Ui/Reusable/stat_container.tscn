@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://clo4ydaxllhtv" path="res://src/Ui/Reusable/stat_container.gd" id="1_uvwce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvwce"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_right = 1
 border_width_bottom = 1
@@ -39,7 +39,9 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 text = "Hp"
@@ -47,7 +49,9 @@ text = "Hp"
 [node name="Value" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 

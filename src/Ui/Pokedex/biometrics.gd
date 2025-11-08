@@ -6,6 +6,11 @@ const ABILITY_BIOMETRIC = preload("res://src/Ui/Reusable/AbilityBiometric.tscn")
 @onready var height: Panel = $GridContainer/Height
 @onready var weight: Panel = $GridContainer/Weight
 
+func reset_data():
+	for i in grid_container.get_children():
+		if i is AbilityBiometric:
+			i.queue_free()
+
 func set_data(pokemon:Pokemon):
 	height.set_data(pokemon)
 	weight.set_data(pokemon)

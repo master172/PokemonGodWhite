@@ -1,4 +1,5 @@
 extends Panel
+class_name AbilityBiometric
 
 @onready var data: Label = $DataContainer/Data
 

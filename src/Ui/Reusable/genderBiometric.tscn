@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="1_k0ee6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgyb"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -29,7 +29,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="DataContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 text = "Gender"

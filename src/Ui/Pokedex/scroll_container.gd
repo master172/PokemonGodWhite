@@ -4,6 +4,9 @@ const MOVE_CONTAINER = preload("res://src/Ui/Pokedex/move_container.tscn")
 var max_scroll:int = 0
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
+func reset_data():
+	for i in v_box_container.get_children():
+		i.queue_free()
 func set_data(pokemon:Pokemon):
 	for i in pokemon.Actions:
 		var A = MOVE_CONTAINER.instantiate()

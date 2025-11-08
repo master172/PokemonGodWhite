@@ -4,16 +4,22 @@ signal closed
 @onready var base_container: VBoxContainer = $Main/TopContainer/BaseContainer
 @onready var info_container: TabContainer = $Main/TopContainer/InfoContainer
 @onready var bacground: ColorRect = $Bacground
+@onready var moves: VBoxContainer = $Main/TopContainer/InfoContainer/Moves
 
 var prev_pokemon:Pokemon = null
+
 func _set_details(pokemon:Pokemon):
 	if prev_pokemon != pokemon:
+		reset()
 		base_container.present_info(pokemon)
 		info_container.present_info(pokemon)
 		bacground.set_background(pokemon)
-		
 	prev_pokemon = pokemon
 
+func reset():
+	info_container.reset_data()
+	moves.reset_data()
+	
 var current_panel:int = 0:
 	set(value):
 			if current_panel != value:

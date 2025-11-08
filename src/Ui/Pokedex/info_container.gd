@@ -14,7 +14,15 @@ func present_info(pokemon:Pokemon):
 	biometrics.set_data(pokemon)
 	stats.set_data(pokemon)
 	scroll_container.set_data(pokemon)
+
+func reset_data():
+	reset_weaknesses()
+	biometrics.reset_data()
 	
+func reset_weaknesses():
+	for i in types.get_children():
+		i.queue_free()
+		
 func set_weaknesses(pokemon:Pokemon):
 	var weaknesses = BattleManager.get_weaknesses(pokemon)
 	print(weaknesses)

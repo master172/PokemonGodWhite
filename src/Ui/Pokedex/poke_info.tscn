@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d174ktbsf1qmn"]
+[gd_scene load_steps=46 format=3 uid="uid://d174ktbsf1qmn"]
 
 [ext_resource type="Script" uid="uid://brxeihobt3m3m" path="res://src/Ui/Pokedex/poke_info.gd" id="1_hq1x4"]
 [ext_resource type="Texture2D" uid="uid://diuk6midfscvh" path="res://Core/Graphics/Zehlvogs/Front/NAICHI.png" id="2_dx2s2"]
@@ -13,13 +13,14 @@
 [ext_resource type="Script" uid="uid://dui10tcpp0bdv" path="res://src/Ui/Pokedex/stage.gd" id="6_e2w3g"]
 [ext_resource type="Script" uid="uid://dt47yflqsweea" path="res://src/Ui/Pokedex/evolution_container.gd" id="7_byty8"]
 [ext_resource type="Shader" uid="uid://dp00ag4ip61e0" path="res://src/Ui/Pokedex/fill.gdshader" id="8_c6bel"]
-[ext_resource type="Texture2D" uid="uid://b8ph084si4kfl" path="res://Core/Graphics/Pokemon/Gen1/Front/CATERPIE.png" id="9_kypdb"]
+[ext_resource type="Texture2D" uid="uid://2d3q4rc5q0io" path="res://Core/Graphics/Pokemon/Gen1/Back/CATERPIE.png" id="8_kypdb"]
 [ext_resource type="Script" uid="uid://sapj57njlqx8" path="res://src/Ui/Pokedex/info_container.gd" id="12_od8su"]
 [ext_resource type="PackedScene" uid="uid://dwp0maanniovr" path="res://src/Ui/Reusable/stat_container.tscn" id="12_r70dy"]
 [ext_resource type="PackedScene" uid="uid://dwoakijjp87mk" path="res://src/Ui/Reusable/BiometricPanel.tscn" id="13_c8x7n"]
 [ext_resource type="Script" uid="uid://dva3xpvh7ek82" path="res://src/Ui/Pokedex/biometrics.gd" id="13_mux3a"]
 [ext_resource type="PackedScene" uid="uid://lnn7c3si74j2" path="res://src/Ui/Reusable/genderBiometric.tscn" id="14_c8x7n"]
 [ext_resource type="Script" uid="uid://dc4k82stvq6iv" path="res://src/Ui/Pokedex/stats.gd" id="17_mux3a"]
+[ext_resource type="Script" uid="uid://dtx7b74hfnj6w" path="res://src/Ui/Pokedex/moves.gd" id="21_7oys0"]
 [ext_resource type="Script" uid="uid://4omrooepqw6j" path="res://src/Ui/Pokedex/scroll_container.gd" id="21_crd1n"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mux3a"]
@@ -39,7 +40,7 @@ shader_parameter/noise_intensity = 1.0
 subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kypdb"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -52,23 +53,23 @@ corner_radius_bottom_left = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7oys0"]
 shader = ExtResource("8_c6bel")
-shader_parameter/base_texture = ExtResource("9_kypdb")
-shader_parameter/gradient_strength = 0.745
-shader_parameter/gradient_falloff = 1.073
-shader_parameter/center_size = 0.114
-shader_parameter/smoothness = 0.0
+shader_parameter/base_texture = ExtResource("8_kypdb")
+shader_parameter/gradient_strength = 0.1810000085975
+shader_parameter/gradient_falloff = 0.80100003478762
+shader_parameter/center_size = 0.10000000475
+shader_parameter/smoothness = 0.16400000779
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_56h31"]
 shader = ExtResource("4_3w12g")
-shader_parameter/base_texture = ExtResource("3_42d6g")
-shader_parameter/gradient_radius = 0.432
-shader_parameter/gradient_intensity = 1.491
+shader_parameter/base_texture = ExtResource("8_kypdb")
+shader_parameter/gradient_radius = 0.282000013395
+shader_parameter/gradient_intensity = 1.382000065645
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8x7n"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rgeh"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -81,7 +82,7 @@ corner_radius_top_right = 12
 content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
-border_color = Color(0.675781, 0.675781, 0.675781, 1)
+border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmmef"]
 content_margin_right = 20.0
@@ -93,7 +94,7 @@ border_color = Color(0.5, 0.5, 0.5, 1)
 content_margin_right = 20.0
 bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r70dy"]
 bg_color = Color(1, 1, 1, 0)
@@ -101,7 +102,7 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnfwd"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
@@ -110,7 +111,7 @@ corner_radius_bottom_left = 12
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s0qw"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -121,7 +122,7 @@ corner_radius_top_right = 12
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6umkd"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_right = 1
 border_width_bottom = 1
@@ -130,7 +131,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3qvx"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -142,7 +143,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usew4"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -153,16 +154,16 @@ corner_radius_top_right = 12
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6bel"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crd1n"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
@@ -170,13 +171,13 @@ corner_radius_bottom_left = 12
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oys0"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkhsg"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
@@ -184,7 +185,7 @@ corner_radius_bottom_right = 12
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2se5"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -212,6 +213,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("4_7m20b")
 
 [node name="Main" type="Control" parent="."]
@@ -243,14 +245,18 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="Main/TopContainer/BaseContainer/NameContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 32
 text = "Charmander"
 
 [node name="id" type="Label" parent="Main/TopContainer/BaseContainer/NameContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.253906, 0.253906, 0.253906, 1)
+theme_override_colors/font_color = Color(0.7890625, 0.7890625, 0.7890625, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 24
 text = "#001"
@@ -278,7 +284,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 486.0
 grow_horizontal = 2
-texture = ExtResource("3_42d6g")
+texture = ExtResource("8_kypdb")
 expand_mode = 5
 stretch_mode = 5
 
@@ -423,7 +429,6 @@ vertical_alignment = 1
 [node name="InfoContainer" type="TabContainer" parent="Main/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hovered_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_colors/font_unselected_color = Color(0.67451, 0.67451, 0.67451, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8x7n")
@@ -446,7 +451,9 @@ theme_override_constants/separation = 2
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Weaknesses"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_xnfwd")
@@ -463,7 +470,9 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Story"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_3s0qw")
@@ -473,7 +482,9 @@ text = "Story"
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_6umkd")
 bbcode_enabled = true
@@ -487,7 +498,9 @@ script = ExtResource("13_mux3a")
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Biometrics"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_d3qvx")
@@ -514,7 +527,9 @@ script = ExtResource("17_mux3a")
 
 [node name="Title" type="Label" parent="Main/TopContainer/InfoContainer/About/Stats"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_usew4")
@@ -559,6 +574,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_c6bel")
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
+script = ExtResource("21_7oys0")
 metadata/_tab_index = 1
 
 [node name="TitleContainer" type="HBoxContainer" parent="Main/TopContainer/InfoContainer/Moves"]
@@ -569,7 +585,9 @@ theme_override_constants/separation = 0
 texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_crd1n")
@@ -579,7 +597,9 @@ vertical_alignment = 1
 [node name="Title2" type="Label" parent="Main/TopContainer/InfoContainer/Moves/TitleContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_7oys0")
@@ -590,7 +610,9 @@ vertical_alignment = 1
 [node name="Title3" type="Label" parent="Main/TopContainer/InfoContainer/Moves/TitleContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_w81bp")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_lkhsg")

@@ -22,6 +22,7 @@ var active:bool = false
 
 signal pokemon_searched
 signal selected(poke:Pokemon)
+signal leaving
 
 func dir_contents(path,search:String=""):
 	var dir = DirAccess.open(path)
@@ -41,14 +42,30 @@ func dir_contents(path,search:String=""):
 	else:
 		print("An error occurred when trying to access the path.")
 
+func reset():
+	current_selected = 0
+	max_selected = v_box_container.get_child_count() - 1
+	
+func deactivate():
+	current_selected = 0
+	if v_box_container.get_child_count() > 0:
+		for i in v_box_container.get_children():
+			i.queue_free()
+	max_selected = 0
+	active = false
+	
 func _on_line_edit_text_submitted(new_text):
 	matched_results.clear()
 	print(new_text)
 	dir_contents(PATH,new_text)
+	current_selected = 0
+	max_selected = 0
 	display_results()
 	pokemon_searched.emit()
 	
 func display_results():
+	current_selected = 0
+	max_selected = 0
 	if v_box_container.get_child_count() > 0:
 		for i in v_box_container.get_children():
 			i.queue_free()
@@ -57,44 +74,44 @@ func display_results():
 		var ENTRY = POKE_ENTRY.instantiate()
 		ENTRY.pokemon = i
 		v_box_container.add_child(ENTRY)
-	
-	max_selected = v_box_container.get_child_count() - 1
+		max_selected += 1
+	max_selected -= 1
+	print_debug(max_selected)
 
 func _input(event):
-	if event is InputEventAction:
-		if event.is_action_pressed("S"):
-			if active == true:
-				set_inactive()
-				
-				if current_selected >= 4:
-					scroll_container.scroll_vertical += 128
-				if current_selected < max_selected:
-					current_selected = current_selected + 1
-				else:
-					current_selected = 0
-				
-				if current_selected == 0:
-					scroll_container.scroll_vertical = 0
-				
-				set_active()
-		elif event.is_action_pressed("W"):
-			if active == true:
-				set_inactive()
-				
-				scroll_container.scroll_vertical -= 128
-				
-				if current_selected > 0:
-					current_selected = current_selected - 1
-				else:
-					current_selected = max_selected
-				
-				if current_selected == max_selected:
-					scroll_container.scroll_vertical = v_box_container.get_child_count() * 128
-				set_active()
-		elif event.is_action_pressed("Yes"):
-			if active == true:
-				var pokemon = v_box_container.get_child(current_selected).pokemon
-				selected.emit(pokemon)
+	if event.is_action_pressed("S"):
+		if active == true:
+			set_inactive()
+			
+			if current_selected >= 4:
+				scroll_container.scroll_vertical += 128
+			if current_selected < max_selected:
+				current_selected = current_selected + 1
+			else:
+				current_selected = 0
+			
+			if current_selected == 0:
+				scroll_container.scroll_vertical = 0
+			
+			set_active()
+	elif event.is_action_pressed("W"):
+		if active == true:
+			set_inactive()
+			
+			scroll_container.scroll_vertical -= 128
+			
+			if current_selected > 0:
+				current_selected = current_selected - 1
+			else:
+				emit_signal("leaving")
+			
+			if current_selected == max_selected:
+				scroll_container.scroll_vertical = v_box_container.get_child_count() * 128
+			set_active()
+	elif event.is_action_pressed("Yes"):
+		if active == true:
+			var pokemon = v_box_container.get_child(current_selected).pokemon
+			selected.emit(pokemon)
 
 func set_inactive():
 	if v_box_container.get_child_count() > 0:

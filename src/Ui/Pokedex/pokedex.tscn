@@ -70,7 +70,6 @@ editable = false
 [node name="SearchBar" type="LineEdit" parent="MainContainer/MainBar/HBoxContainer"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
-focus_neighbor_left = NodePath("../NavLine")
 placeholder_text = "Search 🔍"
 
 [node name="ContentContainer" type="HBoxContainer" parent="MainContainer"]
@@ -95,15 +94,10 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_y2h6r")
 
 [node name="Home" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Party")
 text = "⌂ Home"
 
 [node name="Party" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Home")
-focus_neighbor_bottom = NodePath("../Taxonomy")
 text = "⭗ Party"
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
@@ -112,19 +106,14 @@ theme_override_constants/separation = 32
 
 [node name="Taxonomy" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Party")
-focus_neighbor_bottom = NodePath("../Universal")
 text = "🗀 Taxonomy"
 
 [node name="Universal" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Taxonomy")
-focus_neighbor_bottom = NodePath("../Alphabetcial")
 text = "🗀 Universal"
 
 [node name="Alphabetcial" type="Button" parent="MainContainer/ContentContainer/SideBar/ListContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Universal")
 text = "🗀 Alphabetical"
 
 [node name="MainContainer" type="Control" parent="MainContainer/ContentContainer"]
@@ -147,6 +136,7 @@ layout_mode = 1
 [connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Taxonomy" to="." method="_on_taxonomy_pressed"]
 [connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Universal" to="." method="_on_universal_pressed"]
 [connection signal="pressed" from="MainContainer/ContentContainer/SideBar/ListContainer/Alphabetcial" to="." method="_on_alphabetcial_pressed"]
+[connection signal="leaving" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_leaving"]
 [connection signal="pokemon_searched" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_pokemon_searched"]
 [connection signal="selected" from="MainContainer/ContentContainer/MainContainer/PokeSearch" to="." method="_on_poke_search_selected"]
 [connection signal="closed" from="PokeInfo" to="." method="_on_poke_info_closed"]
