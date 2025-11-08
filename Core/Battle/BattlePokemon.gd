@@ -94,6 +94,8 @@ func _ready():
 			held_items.add_child(held_item)
 			held_item.pre_setup()
 		set_inital_status()
+
+func sign_usage():
 	sign_manager.pokemon = self.pokemon
 	
 func calc_move_speed():

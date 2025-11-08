@@ -83,7 +83,8 @@ func _on_hud_pokemon_selected(pokemon):
 	poke_data.player_pokemon = BATTLE_POKEMON
 	emit_signal("start")
 	load_abilities_player()
-
+	BATTLE_POKEMON.sign_usage()
+	
 func _bag():
 	emit_signal("stop")
 	emit_signal("poke_enemy_stop")
