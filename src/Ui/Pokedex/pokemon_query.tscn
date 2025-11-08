@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxfrk8rwr27sl"]
+
+[ext_resource type="Script" uid="uid://qogf3coucuss" path="res://src/Ui/Pokedex/PokemonQuery.gd" id="1_mqtbi"]
+
+[node name="PokemonQuery" type="Node"]
+script = ExtResource("1_mqtbi")

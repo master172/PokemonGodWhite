@@ -1,4 +1,4 @@
-extends TextureRect
+extends ColorRect
 
 const Trigger = preload("res://src/Ui/Summary/trigger.tscn")
 

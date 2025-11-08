@@ -1,30 +1,86 @@
-[gd_scene load_steps=26 format=3 uid="uid://cg2rtptj7jo3r"]
+[gd_scene load_steps=27 format=3 uid="uid://cg2rtptj7jo3r"]
 
-[ext_resource type="Texture2D" uid="uid://tbpfupvboqon" path="res://assets/Ui/Summary/bg_info.png" id="1_h0y60"]
 [ext_resource type="Script" uid="uid://kkfu0cfybbeh" path="res://src/Ui/Summary/Summary.gd" id="1_tqhau"]
 [ext_resource type="Theme" uid="uid://df1kxsq56qko5" path="res://Libraries/Fonts/dialog.tres" id="2_0rgf5"]
+[ext_resource type="Script" uid="uid://c0samnp0ippgs" path="res://Resources/PokeMon/MovePoolAction.gd" id="2_5uqvl"]
+[ext_resource type="Script" uid="uid://dodry51l2mo73" path="res://Resources/PokeMon/GameAction.gd" id="3_1ht4x"]
 [ext_resource type="Script" uid="uid://cfog1yicxximo" path="res://src/Ui/Summary/info.gd" id="3_4a30r"]
 [ext_resource type="Texture2D" uid="uid://c6vuk5wnqcujs" path="res://assets/Ui/Summary/POKEBALL.png" id="3_a8ai2"]
-[ext_resource type="Texture2D" uid="uid://bqw3xd0to5ien" path="res://assets/Ui/Summary/page_info.png" id="3_oogwt"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_16jd6"]
-[ext_resource type="Texture2D" uid="uid://cqi0e0r16pkhy" path="res://assets/Ui/Summary/page_moves.png" id="4_rppev"]
-[ext_resource type="Texture2D" uid="uid://bmejnkh1nhnhx" path="res://assets/Ui/Summary/page_memo.png" id="5_jsjwq"]
-[ext_resource type="Texture2D" uid="uid://dt15mempfrgog" path="res://assets/Ui/Summary/types.png" id="6_ef2bl"]
-[ext_resource type="Texture2D" uid="uid://drmnhc7q1w8ut" path="res://assets/Ui/Summary/page_skills.png" id="6_finb3"]
-[ext_resource type="Texture2D" uid="uid://dqqbqqtk7pu2k" path="res://assets/Ui/Summary/page_ribbons.png" id="7_ftuab"]
+[ext_resource type="Script" uid="uid://du4g72lk20kmb" path="res://Resources/PokeMon/Game/GamePokemon.gd" id="4_31he3"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="7_hhiqc"]
+[ext_resource type="PackedScene" uid="uid://caqshdikt58mh" path="res://src/Ui/Reusable/type_background.tscn" id="7_sryin"]
 [ext_resource type="Script" uid="uid://dbfaf0ah1itr3" path="res://src/Ui/Summary/moves.gd" id="8_cr8m8"]
-[ext_resource type="Texture2D" uid="uid://df2t0ubvupo0m" path="res://assets/Ui/Summary/bg_memo.png" id="8_vv2m0"]
-[ext_resource type="Texture2D" uid="uid://kikls6g3a3hb" path="res://assets/Ui/Summary/bg_moves.png" id="8_xk48v"]
-[ext_resource type="Texture2D" uid="uid://p2etjc5agv6" path="res://assets/Ui/Summary/bg_skills.png" id="9_e84sw"]
-[ext_resource type="Texture2D" uid="uid://bqdylfqljuf5o" path="res://assets/Ui/Summary/bg_ribbons.png" id="10_erw2v"]
 [ext_resource type="Script" uid="uid://dpubcuslkm07c" path="res://src/Ui/Summary/skills.gd" id="11_g8v2c"]
-[ext_resource type="Texture2D" uid="uid://b4oii4yq02iaj" path="res://assets/Ui/Summary/bg_evolution.png" id="12_x1t8v"]
 [ext_resource type="Script" uid="uid://cv04knmnimkkb" path="res://src/Ui/Summary/evolution.gd" id="13_aw7q6"]
-[ext_resource type="Texture2D" uid="uid://bfr5cxpqegvce" path="res://assets/Ui/Summary/page_evolution.png" id="18_76lr1"]
 [ext_resource type="PackedScene" uid="uid://bhg0w3hc6j2dh" path="res://src/Ui/MoveManager/MoveManager.tscn" id="19_qo35f"]
+[ext_resource type="Texture2D" uid="uid://xuniqf2q2la2" path="res://Core/Graphics/Zehlvogs/Front/NOCTICHI.png" id="19_sryin"]
+[ext_resource type="Texture2D" uid="uid://qgs527o5itk1" path="res://assets/items/POTION.png" id="20_seykb"]
 [ext_resource type="Script" uid="uid://dbnl3oeaf743" path="res://src/Ui/Summary/naming_screen.gd" id="24_ailn7"]
 [ext_resource type="Theme" uid="uid://b4g0dqxjsxjp1" path="res://Libraries/Fonts/bag.tres" id="24_seykb"]
+
+[sub_resource type="Resource" id="Resource_sswjy"]
+script = ExtResource("4_31he3")
+metadata/_custom_type_script = "uid://du4g72lk20kmb"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seykb"]
+bg_color = Color(0.4296875, 0.4296875, 0.4296875, 1)
+skew = Vector2(1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ailn7"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfkvm"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4syxm"]
+atlas = ExtResource("4_16jd6")
+region = Rect2(5, 0, 5, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sryin"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iho0l"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f7kk"]
+bg_color = Color(0.92578125, 0.92578125, 0.92578125, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="Summary" type="Control"]
 layout_mode = 3
@@ -34,619 +90,608 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tqhau")
+showing_pokemon = SubResource("Resource_sswjy")
 
-[node name="info" type="TextureRect" parent="."]
-texture_filter = 1
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_h0y60")
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="Tabs" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="info" type="ColorRect" parent="Tabs"]
+texture_filter = 1
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("3_4a30r")
+metadata/_tab_index = 0
 
-[node name="Tag" type="Label" parent="info"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 34.0
-offset_right = 145.0
-offset_bottom = 99.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.0509804, 0.215686, 0.490196, 1)
-theme_override_font_sizes/font_size = 52
-text = "Info"
+[node name="Info" type="VBoxContainer" parent="Tabs/info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.054
+anchor_right = 0.984
+anchor_bottom = 0.705
+offset_left = -352.0
+grow_horizontal = 0
+grow_vertical = 2
 
-[node name="Info" type="Node2D" parent="info"]
-position = Vector2(246, 429)
-scale = Vector2(5.2, 5.2)
+[node name="Main" type="HBoxContainer" parent="Tabs/info/Info"]
+layout_mode = 2
+theme_override_constants/separation = 64
 
-[node name="Species" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = -50.1923
-offset_right = 174.692
-offset_bottom = -9.1923
-scale = Vector2(0.285, 0.285)
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Species:"
+[node name="Tags" type="VBoxContainer" parent="Tabs/info/Info/Main"]
+layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="Species" type="Label" parent="info/Info/Species"]
-layout_mode = 0
-offset_left = 210.526
-offset_right = 334.526
-offset_bottom = 41.0
+[node name="Species" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Bulbasaur"
+theme_override_font_sizes/font_size = 56
+text = "Species"
 
-[node name="DexNo" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = -37.5
-offset_right = 181.692
-offset_bottom = 3.5
-scale = Vector2(0.285, 0.285)
+[node name="DexNo" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Dex No:"
+theme_override_font_sizes/font_size = 56
+text = "DexNo"
 
-[node name="DexNo" type="Label" parent="info/Info/DexNo"]
-layout_mode = 0
-offset_left = 210.526
-offset_right = 334.526
-offset_bottom = 41.0
+[node name="Ot" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "215"
-
-[node name="Ot" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = -24.4231
-offset_right = 181.692
-offset_bottom = 16.5769
-scale = Vector2(0.285, 0.285)
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Ot:"
-
-[node name="Ot" type="Label" parent="info/Info/Ot"]
-layout_mode = 0
-offset_left = 210.526
-offset_right = 334.526
-offset_bottom = 41.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
 text = "Ot"
 
-[node name="PokemonID" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = 1.15393
-offset_right = 181.692
-offset_bottom = 42.1539
-scale = Vector2(0.285, 0.285)
+[node name="PokemonID" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Natue:"
+theme_override_font_sizes/font_size = 56
+text = "Pokemon Id"
 
-[node name="PokemonID" type="Label" parent="info/Info/PokemonID"]
-layout_mode = 0
-offset_left = 210.526
-offset_right = 334.526
-offset_bottom = 41.0
+[node name="ExpPoints" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "53455"
+theme_override_font_sizes/font_size = 56
+text = "Exp Points"
 
-[node name="ExpPoints" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = 13.6539
-offset_right = 218.692
-offset_bottom = 54.6539
-scale = Vector2(0.285, 0.285)
+[node name="ToNextLevel" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "Exp Points:"
+theme_override_font_sizes/font_size = 56
+text = "To next level"
 
-[node name="ExpPoints" type="Label" parent="info/Info/ExpPoints"]
-layout_mode = 0
-offset_left = 215.924
-offset_top = 45.8839
-offset_right = 339.924
-offset_bottom = 86.8839
+[node name="Type" type="Label" parent="Tabs/info/Info/Main/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "0"
-
-[node name="ToNextLevel" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = 40.5769
-offset_right = 259.692
-offset_bottom = 81.5769
-scale = Vector2(0.285, 0.285)
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "To next level:"
-
-[node name="ToNextLevel" type="Label" parent="info/Info/ToNextLevel"]
-layout_mode = 0
-offset_left = 215.924
-offset_top = 45.8839
-offset_right = 339.924
-offset_bottom = 86.8839
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
-text = "0"
-
-[node name="Type" type="Label" parent="info/Info"]
-offset_left = 57.6923
-offset_top = -11.5385
-offset_right = 181.692
-offset_bottom = 29.4615
-scale = Vector2(0.285, 0.285)
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
 text = "Types:"
 
-[node name="Type1" type="Sprite2D" parent="info/Info/Type"]
-position = Vector2(254.652, 20.9496)
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("6_ef2bl")
-vframes = 19
+[node name="Items" type="VBoxContainer" parent="Tabs/info/Info/Main"]
+layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="Type2" type="Sprite2D" parent="info/Info/Type"]
-position = Vector2(352.395, 20.9496)
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("6_ef2bl")
-vframes = 19
+[node name="Species" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "Bulbasaur"
 
-[node name="ExpBar" type="ProgressBar" parent="info"]
-modulate = Color(0.415686, 0.917647, 1, 1)
-layout_mode = 0
-offset_left = 838.0
-offset_top = 775.0
-offset_right = 1145.0
-offset_bottom = 788.0
+[node name="DexNo" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "215"
+
+[node name="Ot" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "Ot"
+
+[node name="PokemonID" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "53455"
+
+[node name="ExpPoints" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "0"
+
+[node name="ToNextLevel" type="Label" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "0"
+
+[node name="Types" type="HBoxContainer" parent="Tabs/info/Info/Main/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Type1" parent="Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
+layout_mode = 2
+
+[node name="Type2" parent="Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
+layout_mode = 2
+
+[node name="ExpContainer" type="HBoxContainer" parent="Tabs/info/Info"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 64
+
+[node name="Tag" type="Label" parent="Tabs/info/Info/ExpContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
+theme_override_font_sizes/font_size = 56
+text = "Exp Bar"
+
+[node name="ExpBar" type="ProgressBar" parent="Tabs/info/Info/ExpContainer"]
+self_modulate = Color(0, 0.9710715, 1, 1)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme = ExtResource("7_hhiqc")
+theme_override_styles/background = SubResource("StyleBoxFlat_seykb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ailn7")
 value = 62.51
 show_percentage = false
 
-[node name="moves" type="TextureRect" parent="."]
+[node name="moves" type="ColorRect" parent="Tabs"]
 visible = false
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_xk48v")
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("8_cr8m8")
+metadata/_tab_index = 1
 
-[node name="Tag" type="Label" parent="moves"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 34.0
-offset_right = 197.0
-offset_bottom = 99.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Moves"
-
-[node name="Move1" type="Label" parent="moves"]
-layout_mode = 0
-offset_left = 584.0
-offset_top = 208.0
-offset_right = 1136.0
-offset_bottom = 264.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
-theme_override_font_sizes/font_size = 45
-text = "Quick Attack"
-
-[node name="Move2" type="Label" parent="moves"]
-layout_mode = 0
-offset_left = 584.0
-offset_top = 344.0
-offset_right = 1136.0
-offset_bottom = 400.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
-theme_override_font_sizes/font_size = 45
-text = "Quick Attack"
-
-[node name="Move3" type="Label" parent="moves"]
-layout_mode = 0
-offset_left = 584.0
-offset_top = 476.0
-offset_right = 1136.0
-offset_bottom = 532.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
-theme_override_font_sizes/font_size = 45
-text = "Quick Attack"
-
-[node name="Move4" type="Label" parent="moves"]
-layout_mode = 0
-offset_left = 584.0
-offset_top = 609.0
-offset_right = 1136.0
-offset_bottom = 665.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
-theme_override_font_sizes/font_size = 45
-text = "Quick Attack"
-
-[node name="memo" type="TextureRect" parent="."]
-visible = false
-texture_filter = 1
+[node name="Moves" type="VBoxContainer" parent="Tabs/moves"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 0.06
+anchor_right = 0.969
+anchor_bottom = 0.674
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Panel" type="Panel" parent="Tabs/moves/Moves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
+
+[node name="Move1" type="Label" parent="Tabs/moves/Moves/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.00003
+offset_top = -28.0
+offset_right = 276.00003
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_vv2m0")
-
-[node name="Tag" type="Label" parent="memo"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 34.0
-offset_right = 191.0
-offset_bottom = 99.0
 theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Memo"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="skills" type="TextureRect" parent="."]
-visible = false
-texture_filter = 1
+[node name="Panel2" type="Panel" parent="Tabs/moves/Moves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
+
+[node name="Move2" type="Label" parent="Tabs/moves/Moves/Panel2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.00003
+offset_top = -28.0
+offset_right = 276.00003
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_e84sw")
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tabs/moves/Moves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
+
+[node name="Move3" type="Label" parent="Tabs/moves/Moves/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.00003
+offset_top = -28.0
+offset_right = 276.00003
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="Tabs/moves/Moves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
+
+[node name="Move4" type="Label" parent="Tabs/moves/Moves/Panel4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.00003
+offset_top = -28.0
+offset_right = 276.00003
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9375, 0.375, 0.34375, 1)
+theme_override_font_sizes/font_size = 45
+text = "Quick Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="memo" type="ColorRect" parent="Tabs"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+metadata/_tab_index = 2
+
+[node name="skills" type="ColorRect" parent="Tabs"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("11_g8v2c")
+metadata/_tab_index = 3
 
-[node name="Tag" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 34.0
-offset_right = 191.0
-offset_bottom = 99.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
-theme_override_font_sizes/font_size = 52
-text = "Skills"
+[node name="MainContainer" type="HBoxContainer" parent="Tabs/skills"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.271
+anchor_top = 0.085
+anchor_right = 0.977
+anchor_bottom = 0.767
+offset_right = 0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 128
 
-[node name="Ability" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 566.0
-offset_top = 157.0
-offset_right = 815.0
-offset_bottom = 217.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
-theme_override_font_sizes/font_size = 48
-text = "Ability:"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Tags" type="VBoxContainer" parent="Tabs/skills/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="AblTag" type="Label" parent="skills/Ability"]
-layout_mode = 0
-offset_left = 284.0
-offset_top = 2.0
-offset_right = 542.0
-offset_bottom = 62.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
-theme_override_font_sizes/font_size = 48
-text = "None"
-
-[node name="Attack" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 566.0
-offset_top = 252.0
-offset_right = 815.0
-offset_bottom = 312.0
+[node name="Ability" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
-text = "Attack:"
-horizontal_alignment = 1
+text = "Ability"
 vertical_alignment = 1
 
-[node name="AtTag" type="Label" parent="skills/Attack"]
-layout_mode = 0
-offset_left = 285.0
-offset_top = -1.0
-offset_right = 543.0
-offset_bottom = 59.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
-theme_override_font_sizes/font_size = 48
-text = "None"
-
-[node name="SpAttack" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 566.0
-offset_top = 318.0
-offset_right = 815.0
-offset_bottom = 378.0
+[node name="Attack" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
-text = "Sp.Attack:"
-horizontal_alignment = 1
+text = "Attack"
 vertical_alignment = 1
 
-[node name="SpAtTag" type="Label" parent="skills/SpAttack"]
-layout_mode = 0
-offset_left = 284.0
-offset_right = 542.0
-offset_bottom = 60.0
+[node name="SpAttack" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
-text = "None"
+text = "Sp.Attack"
+vertical_alignment = 1
 
-[node name="Defense" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 569.0
-offset_top = 385.0
-offset_right = 818.0
-offset_bottom = 445.0
+[node name="Defense" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
 text = "Defense"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefTag" type="Label" parent="skills/Defense"]
-layout_mode = 0
-offset_left = 281.0
-offset_right = 539.0
-offset_bottom = 60.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
-theme_override_font_sizes/font_size = 48
-text = "None"
-
-[node name="SpDefense" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 562.0
-offset_top = 451.0
-offset_right = 825.0
-offset_bottom = 511.0
+[node name="SpDefense" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
-text = "Sp.Defense:"
-horizontal_alignment = 1
+text = "Sp.Defense"
 vertical_alignment = 1
 
-[node name="SpDefTag" type="Label" parent="skills/SpDefense"]
-layout_mode = 0
-offset_left = 288.0
-offset_right = 546.0
-offset_bottom = 60.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
-theme_override_font_sizes/font_size = 48
-text = "None"
-
-[node name="Speed" type="Label" parent="skills"]
-layout_mode = 0
-offset_left = 565.0
-offset_top = 519.0
-offset_right = 814.0
-offset_bottom = 579.0
+[node name="Speed" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
 theme_override_font_sizes/font_size = 48
 text = "Speed"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpdTag" type="Label" parent="skills/Speed"]
-layout_mode = 0
-offset_left = 286.0
-offset_top = -1.0
-offset_right = 544.0
-offset_bottom = 59.0
+[node name="Health" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
+theme_override_font_sizes/font_size = 48
+text = "Health"
+vertical_alignment = 2
+
+[node name="Items" type="VBoxContainer" parent="Tabs/skills/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="AblTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="HealthBar" type="ProgressBar" parent="skills"]
+[node name="AtTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="SpAtTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="DefTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="SpDefTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="SpdTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
+theme_override_font_sizes/font_size = 48
+text = "None"
+
+[node name="HealthBar" type="ProgressBar" parent="Tabs/skills/MainContainer/Items"]
 modulate = Color(0.308594, 0.796875, 0.394531, 1)
-layout_mode = 0
-offset_left = 843.0
-offset_top = 229.0
-offset_right = 1069.0
-offset_bottom = 242.0
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 6
 theme = ExtResource("7_hhiqc")
-value = 100.0
+value = 61.1
 show_percentage = false
 
-[node name="ribbons" type="TextureRect" parent="."]
+[node name="ribbons" type="ColorRect" parent="Tabs"]
 visible = false
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_erw2v")
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+metadata/_tab_index = 4
 
-[node name="Tag" type="Label" parent="ribbons"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 34.0
-offset_right = 234.0
-offset_bottom = 99.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Ribbons"
-
-[node name="evolution" type="TextureRect" parent="."]
+[node name="evolution" type="ColorRect" parent="Tabs"]
 visible = false
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_x1t8v")
+layout_mode = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("13_aw7q6")
+metadata/_tab_index = 5
 
-[node name="Tag" type="Label" parent="evolution"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 34.0
-offset_right = 234.0
-offset_bottom = 99.0
-theme = ExtResource("2_0rgf5")
-theme_override_font_sizes/font_size = 52
-text = "Evolution"
+[node name="ScrollContainer" type="ScrollContainer" parent="Tabs/evolution"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 97.0
+offset_right = -64.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="evolution"]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 148.0
-offset_right = 1172.0
-offset_bottom = 667.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="evolution/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tabs/evolution/ScrollContainer"]
 custom_minimum_size = Vector2(643, 519)
 layout_mode = 2
 theme_override_constants/separation = 80
 
-[node name="Info" type="Sprite2D" parent="."]
+[node name="presisting" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="presisting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="presisting/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="DataContainer" type="VBoxContainer" parent="presisting/MainContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Basic" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 52
+text = "Basic Info"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="BallCaught" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
 texture_filter = 1
-position = Vector2(576, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("3_oogwt")
-hframes = 2
+layout_mode = 2
+texture = ExtResource("3_a8ai2")
+expand_mode = 3
+stretch_mode = 6
 
-[node name="Moves" type="Sprite2D" parent="."]
+[node name="Name" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+
+[node name="Gender" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
 texture_filter = 1
-position = Vector2(676, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("4_rppev")
-hframes = 2
+layout_mode = 2
+texture = SubResource("AtlasTexture_4syxm")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="Memo" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(775, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("5_jsjwq")
-hframes = 2
-
-[node name="Skills" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(874, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("6_finb3")
-hframes = 2
-
-[node name="Ribbons" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(973, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("7_ftuab")
-hframes = 2
-
-[node name="Evolution" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1072, 69)
-scale = Vector2(2, 2)
-texture = ExtResource("18_76lr1")
-hframes = 2
-
-[node name="presisting" type="Node2D" parent="."]
-
-[node name="Level" type="Label" parent="presisting"]
-offset_left = 109.0
-offset_top = 196.0
-offset_right = 207.0
-offset_bottom = 261.0
+[node name="Level" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-text = "24"
+text = "Level:- 24"
 
-[node name="Name" type="Label" parent="presisting"]
-offset_left = 129.0
-offset_top = 126.0
-offset_right = 314.0
-offset_bottom = 191.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 52
-text = "Pikachu"
+[node name="Pokemon" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("19_sryin")
+stretch_mode = 5
 
-[node name="Item" type="Label" parent="presisting"]
-offset_left = 144.0
-offset_top = 661.0
-offset_right = 329.0
-offset_bottom = 726.0
+[node name="ItemContainer" type="HBoxContainer" parent="presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Item" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
+layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
 text = "Item"
 
-[node name="What" type="Label" parent="presisting"]
-offset_left = 24.0
-offset_top = 736.0
-offset_right = 209.0
-offset_bottom = 801.0
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 52
-text = "None"
-
-[node name="Gender" type="Sprite2D" parent="presisting"]
-texture_filter = 1
-position = Vector2(440, 160)
-scale = Vector2(7.15, 6.875)
-texture = ExtResource("4_16jd6")
-hframes = 2
-
-[node name="Pokemon" type="Sprite2D" parent="presisting"]
-texture_filter = 1
-position = Vector2(246, 429)
-scale = Vector2(5.2, 5.2)
-
-[node name="BallCaught" type="Sprite2D" parent="presisting"]
-texture_filter = 1
-position = Vector2(81, 160)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_a8ai2")
-
-[node name="ItemTex" type="TextureRect" parent="presisting"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 618.0
-offset_right = 119.0
-offset_bottom = 714.0
-grow_vertical = 0
+[node name="ItemTex" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
+layout_mode = 2
+texture = ExtResource("20_seykb")
 stretch_mode = 6
+
+[node name="DataContainer" type="MarginContainer" parent="presisting/MainContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="What" type="RichTextLabel" parent="presisting/MainContainer/DataContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_sryin")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in felis quis mauris aliquet semper eu et mi. In id risus vel enim dignissim tempus eget et ante. Praesent mollis ligula a lobortis ultricies. Curabitur lobortis urna sit amet facilisis fringilla. Vestibulum accumsan at sapien eu viverra. Mauris porta quis lacus ut lacinia. In porta orci eu erat tincidunt, sit amet rhoncus metus aliquet. Fusce nec pretium justo. Vestibulum a turpis enim.
+
+Aenean convallis augue sed orci congue facilisis. Vestibulum at odio vitae risus porta tincidunt. Sed sit amet porttitor eros. Nunc elementum, magna vitae ornare eleifend, magna enim egestas massa, at varius odio odio sodales nibh. Phasellus quis elit nibh. Curabitur volutpat elit ut arcu tempor imperdiet. Pellentesque gravida nisi purus, sed scelerisque ante suscipit et. Nullam sit amet tortor nec metus viverra condimentum ac vel sapien. Vivamus in rutrum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis sagittis tortor. Nulla ut consectetur lectus, in viverra sem. Fusce commodo porta ornare. Phasellus id imperdiet metus. Etiam luctus lorem id egestas lobortis.
+
+Praesent ullamcorper lacus vel volutpat venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur ultrices nibh sed suscipit aliquam. Fusce varius efficitur suscipit. Integer id viverra mauris. Donec accumsan semper mi. Maecenas augue ipsum, tempor ac aliquam eu, vehicula at est. Donec sagittis tristique dolor, a tincidunt nunc pulvinar quis. In consequat magna sed sem mattis scelerisque et quis libero. Aenean ultricies neque sit amet ipsum tempus, in bibendum lectus vestibulum. Curabitur et vulputate neque. Curabitur aliquet tempus magna eu suscipit. Integer elit orci, ornare vitae erat sed, sollicitudin dapibus mi. Curabitur ac dapibus nibh, vel varius neque.
+
+Morbi ultrices efficitur sapien eu eleifend. Proin sed nibh facilisis, interdum erat at, ultricies elit. Praesent a vestibulum erat. Sed vel massa iaculis, faucibus tellus pharetra, commodo mauris. Quisque sit amet enim neque. Pellentesque quis dolor et nisl imperdiet commodo tempor at arcu. Integer varius tellus in est volutpat, eget tristique tellus tempor. Nunc eu odio accumsan, lobortis urna rutrum, porttitor magna. Proin ac porttitor lectus. Praesent luctus placerat ex, nec egestas velit egestas quis. Nunc pulvinar condimentum faucibus. Etiam eget dolor risus. Nullam eget dignissim mi. Fusce urna nibh, tempor in egestas et, scelerisque eu metus.
+
+Mauris vehicula, nisl id tincidunt viverra, mi nunc aliquet sapien, id ullamcorper dolor tortor non dolor. Maecenas fringilla volutpat ex, ac lobortis est. Donec ultrices dignissim sem ut pretium. In convallis, urna eget tincidunt tristique, libero quam eleifend enim, ut malesuada lacus massa at lectus. Etiam hendrerit elit velit, nec tempor risus sollicitudin quis. Nunc at blandit ipsum. Vestibulum facilisis turpis ligula, nec malesuada felis fringilla in. Nulla neque arcu, tincidunt ac libero sit amet, vestibulum mattis orci. Nullam placerat iaculis pharetra. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 [node name="MoveManager" parent="." instance=ExtResource("19_qo35f")]
 visible = false
@@ -684,6 +729,7 @@ offset_right = 300.0
 offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iho0l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NamingScreen/ColorRect/Panel"]
 layout_mode = 1
@@ -708,11 +754,16 @@ vertical_alignment = 1
 [node name="TextEdit" type="LineEdit" parent="NamingScreen/ColorRect/Panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("24_seykb")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_4f7kk")
 placeholder_text = "Enter The new name"
 alignment = 1
+max_length = 15
 
-[connection signal="visibility_changed" from="evolution" to="evolution" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Tabs/evolution" to="Tabs/evolution" method="_on_visibility_changed"]
 [connection signal="quit" from="MoveManager" to="." method="_on_move_manager_quit"]
 [connection signal="naming_done" from="NamingScreen" to="." method="_on_naming_screen_naming_done"]
 [connection signal="text_submitted" from="NamingScreen/ColorRect/Panel/VBoxContainer/TextEdit" to="NamingScreen" method="_on_text_edit_text_submitted"]

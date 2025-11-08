@@ -1,15 +1,17 @@
-extends TextureRect
+extends ColorRect
 
-@onready var abl_tag = $Ability/AblTag
-@onready var at_tag = $Attack/AtTag
-@onready var sp_at_tag = $SpAttack/SpAtTag
-@onready var def_tag = $Defense/DefTag
-@onready var sp_def_tag = $SpDefense/SpDefTag
-@onready var spd_tag = $Speed/SpdTag
-@onready var health_bar = $HealthBar
+@onready var abl_tag: Label = $MainContainer/Items/AblTag
+@onready var at_tag: Label = $MainContainer/Items/AtTag
+@onready var sp_at_tag: Label = $MainContainer/Items/SpAtTag
+@onready var def_tag: Label = $MainContainer/Items/DefTag
+@onready var sp_def_tag: Label = $MainContainer/Items/SpDefTag
+@onready var spd_tag: Label = $MainContainer/Items/SpdTag
+@onready var health_bar: ProgressBar = $MainContainer/Items/HealthBar
+
 
 func _display(pokemon:game_pokemon):
-	abl_tag.text = pokemon.Ability.Name
+	if pokemon.Ability != null:
+		abl_tag.text = pokemon.Ability.Name
 	health_bar.max_value = pokemon.Max_Health
 	health_bar.value = pokemon.Health
 	at_tag.text = str(pokemon.Attack, "/" , pokemon.Max_Attack)

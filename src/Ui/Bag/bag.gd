@@ -90,7 +90,7 @@ var hints:Dictionary = {
 }
 
 var current_pocket = null
-var itemScrollThreshold:int = 7
+var itemScrollThreshold:int = 10
 
 var current_item:int = 0
 
@@ -291,7 +291,6 @@ func _input(event):
 
 func handle_item_use_closing():
 	clear_items()
-	var temp = current_selected
 	current_selected = bagkey
 	add_items()
 	

@@ -83,7 +83,7 @@ func _input(event: InputEvent) -> void:
 			current_button_active = side_list[side_list_index]
 			current_button_active.grab_focus()
 	elif event.is_action_pressed("No"):
-		if poke_info.visible == false:
+		if poke_info.visible == false and search_bar.is_editing() == false:
 			TouchInput.pokedex_inactive()
 			Utils.get_scene_manager().transition_exit_pokedex_scene()
 				

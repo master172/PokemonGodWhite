@@ -1,42 +1,14 @@
-extends TextureRect
+extends ColorRect
 
-
-@onready var info = $Info
-@onready var species = $Info/Species/Species
-@onready var dex_no = $Info/DexNo/DexNo
-@onready var ot = $Info/Ot/Ot
-@onready var pokemon_id = $Info/PokemonID/PokemonID
-@onready var exp_points = $Info/ExpPoints/ExpPoints
-@onready var to_next_level = $Info/ToNextLevel/ToNextLevel
-@onready var type = $Info/Type
-@onready var type_1 = $Info/Type/Type1
-@onready var type_2 = $Info/Type/Type2
-@onready var exp_bar = $ExpBar
-
-var type_to_frame:Dictionary = {
-	"Normal":0,
-	"Fighting":1,
-	"Flying":2,
-	"Poison":3,
-	"Ground":4,
-	"Rock":5,
-	"Bug":6,
-	"Ghost":7,
-	"Steel":8,
-	"Fire":9,
-	"Water":10,
-	"Grass":11,
-	"Electric":12,
-	"Psychic":13,
-	"Ice":14,
-	"Dragon":15,
-	"Dark":16,
-	"Fairy":17,
-	"NONE":18
-}
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var species: Label = $Info/Main/Items/Species
+@onready var dex_no: Label = $Info/Main/Items/DexNo
+@onready var ot: Label = $Info/Main/Items/Ot
+@onready var pokemon_id: Label = $Info/Main/Items/PokemonID
+@onready var exp_points: Label = $Info/Main/Items/ExpPoints
+@onready var to_next_level: Label = $Info/Main/Items/ToNextLevel
+@onready var type_1: Panel = $Info/Main/Items/Types/Type1
+@onready var exp_bar: ProgressBar = $Info/ExpContainer/ExpBar
+@onready var type_2: Panel = $Info/Main/Items/Types/Type2
 
 func _display(pokemon:game_pokemon):
 	species.text = pokemon.Base_Pokemon.Name
@@ -48,13 +20,10 @@ func _display(pokemon:game_pokemon):
 	exp_bar.max_value = pokemon.exp_to_next_level
 	exp_bar.value = pokemon.exp
 	set_type(pokemon)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func set_type(pokemon:game_pokemon):
-	type_1.frame = type_to_frame[pokemon.Base_Pokemon.Type1]
-	type_2.frame = type_to_frame[pokemon.Base_Pokemon.Type2]
+	type_1.set_type(pokemon.Base_Pokemon.Type1)
+	type_2.set_type(pokemon.Base_Pokemon.Type2)
 
 func get_file_name_no_extension(resource: Nature) -> String:
 	if resource.resource_path != "":

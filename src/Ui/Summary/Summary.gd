@@ -2,20 +2,22 @@ extends Control
 
 @export var showing_pokemon:game_pokemon
 
-@onready var info = $info
+@onready var info = $Tabs/info
 @onready var move_manager = $MoveManager
-@onready var evolution = $evolution
-@onready var moves = $moves
+@onready var evolution = $Tabs/evolution
+@onready var moves = $Tabs/moves
 @onready var naming_screen = $NamingScreen
 
-@onready var level = $presisting/Level
-@onready var Name = $presisting/Name
-@onready var item = $presisting/Item
-@onready var what = $presisting/What
-@onready var ball_caught = $presisting/BallCaught
-@onready var gender = $presisting/Gender
-@onready var poke = $presisting/Pokemon
-@onready var item_tex: TextureRect = $presisting/ItemTex
+@onready var ball_caught: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/BallCaught
+@onready var Name: Label = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Name
+@onready var gender: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Gender
+@onready var level: Label = $presisting/MainContainer/MarginContainer/DataContainer/Level
+@onready var poke: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/Pokemon
+@onready var item: Label = $presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/Item
+@onready var item_tex: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/ItemTex
+@onready var what: RichTextLabel = $presisting/MainContainer/DataContainer/What
+
+@onready var tabs: TabContainer = $Tabs
 
 enum Options {FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, FOURTH_SLOT, FIFTH_SLOT,SIXTH_SLOT}
 enum States {Normal,Selection,MoveManagement,Evolution,Inactive,Naming,Items}
@@ -25,24 +27,13 @@ var selected_option: int = Options.FIRST_SLOT
 
 var options_selectable:int = 6
 
-
-
-@onready var options: Dictionary = {
-	Options.FIRST_SLOT: $Info,
-	Options.SECOND_SLOT: $Moves,
-	Options.THIRD_SLOT: $Memo,
-	Options.FOURTH_SLOT: $Skills,
-	Options.FIFTH_SLOT: $Ribbons,
-	Options.SIXTH_SLOT: $Evolution
-
-}
 @onready var panels :Dictionary = {
-	Options.FIRST_SLOT: $info,
-	Options.SECOND_SLOT: $moves,
-	Options.THIRD_SLOT: $memo,
-	Options.FOURTH_SLOT: $skills,
-	Options.FIFTH_SLOT: $ribbons,
-	Options.SIXTH_SLOT: $evolution
+	Options.FIRST_SLOT: $Tabs/info,
+	Options.SECOND_SLOT: $Tabs/moves,
+	Options.THIRD_SLOT: $Tabs/memo,
+	Options.FOURTH_SLOT: $Tabs/skills,
+	Options.FIFTH_SLOT: $Tabs/ribbons,
+	Options.SIXTH_SLOT: $Tabs/evolution
 }
 
 var temp_panel:int = 0
@@ -52,12 +43,11 @@ func _ready():
 	move_manager.hide()
 	
 func unset_active_option():
-	options[selected_option].frame = 0
-	panels[selected_option].visible = false
+	pass
 	
 func set_active_option():
-	options[selected_option].frame = 1
-	panels[selected_option].visible = true
+	tabs.current_tab = selected_option
+	
 	
 func _show_info():
 	info._display(showing_pokemon)
@@ -188,10 +178,13 @@ func _on_move_manager_quit():
 	moves._display(showing_pokemon)
 
 func _display(pokemon:game_pokemon):
-	level.text = str(pokemon.level)
+	level.text = "Level:- "+str(pokemon.level)
 	Name.text = pokemon.Nick_name
 	poke.texture = pokemon.Base_Pokemon.Front
-	gender.frame = pokemon.gender
+	if pokemon.gender == 0:
+		gender.texture.region = Rect2(0,0,5,8)
+	elif pokemon.gender == 1:
+		gender.texture.region = Rect2(5,0,5,8)
 	if pokemon.held_item != null:
 		what.text = pokemon.held_item.Name
 		item_tex.texture = pokemon.held_item.sprite
