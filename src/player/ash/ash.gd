@@ -94,6 +94,15 @@ signal player_ready
 signal evolve
 var Player_ready:bool = false
 
+var ledge_tilemaps:Array[TileMapLayer]
+
+const buffer_indexes :Dictionary = {
+	Vector2(0,-1):Vector2(0,-8),
+	Vector2(0,1):Vector2(0,8),
+	Vector2(-1,0):Vector2(-8,0),
+	Vector2(1,0):Vector2(8,0)
+}
+
 func _ready():
 
 	Utils.Player = self
@@ -124,7 +133,8 @@ func _ready():
 	animation_tree.set("parameters/cycleIdle/blend_position",input_direction)
 	animation_tree.set("parameters/cycleTurn/blend_position",input_direction)
 
-
+	for i in Utils.Tilemaps:
+		ledge_tilemaps.append(i.ground_object_layer)
 	emit_signal("player_ready")
 	Player_ready = true
 
@@ -198,7 +208,7 @@ func _physics_process(delta):
 	speed_handler()
 #	get_clicked_tile_power()
 	if Player_ready == true:
-		check_ledge_direction()
+		check_ledge_direction(ledge_tilemaps)
 	check_interaction()
 
 func process_player_input():
@@ -536,19 +546,16 @@ func facing_direction_to_enum(direction:Vector2):
 	elif direction == Vector2(1,0):
 		return FacingDirection.RIGHT
 
-func check_ledge_direction():
-	var collided_tile_cords
+func check_ledge_direction(tilemaps:Array[TileMapLayer]):
 	var tile_data
+	
+	var buffer_pos :Vector2 = buffer_indexes[get_current_facing_direction()]
 	if ledge_cast.is_colliding():
-		var body_rid = ledge_cast.get_collider_rid()
-		var tilemaps:Array[TileMapLayer]
-		for i in Utils.Tilemaps:
-			tilemaps.append(i.ground_object_layer)
 		for i in tilemaps:
 			if is_instance_valid(i):
-				collided_tile_cords = i.get_coords_for_body_rid(body_rid)
-
-				tile_data = i.get_cell_tile_data(collided_tile_cords)
+				var collision_point = ledge_cast.get_collision_point() + buffer_pos
+				var map_pos = i.local_to_map(i.to_local(collision_point))
+				tile_data = i.get_cell_tile_data(map_pos)
 				if tile_data:
 					ledge_direction = tile_data.get_custom_data("ledgeDirection")
 
