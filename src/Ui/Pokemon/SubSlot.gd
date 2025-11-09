@@ -1,12 +1,15 @@
-extends Node2D
-@onready var background = $BackGround
-@onready var sprite = $Sprite
-@onready var Name = $Name
-@onready var level = $Level
-@onready var gender = $Gender
-@onready var health_bar = $HealthBar
-@onready var current_health = $CurrentHealth
-@onready var max_health = $MaxHealth
+extends Control
+
+
+
+@onready var background: Panel = $Background
+@onready var sprite: TextureRect = $Background/Main/Top/Sprite
+@onready var Name: Label = $Background/Main/Top/VBoxContainer/Name
+@onready var level: Label = $Background/Main/Top/VBoxContainer/Level
+@onready var gender: TextureRect = $Background/Main/Top/Gender
+@onready var health_bar: ProgressBar = $Background/Main/Top/Panel/HealthBar
+@onready var current_health: Label = $Background/Main/Top/HBoxContainer/CurrentHealth
+@onready var max_health: Label = $Background/Main/Top/HBoxContainer/MaxHealth
 
 
 @export var slot_no:int = 0
@@ -34,13 +37,16 @@ func update():
 		clear_items()
 		
 func update_items():
-	sprite.texture = pokemon.get_icon()
+	sprite.texture.atlas = pokemon.get_icon()
 	Name.text = pokemon.Nick_name
 	level.text = str(pokemon.level)
 	health_bar.max_value = pokemon.Max_Health
 	health_bar.value = pokemon.Health
-	gender.frame = pokemon.gender
-	current_health.text = str(pokemon.Health)
+	if pokemon.gender == 0:
+		gender.texture.region = Rect2(0,0,5,8)
+	elif pokemon.gender == 1:
+		gender.texture.region = Rect2(5,0,5,8)
+	current_health.text = str(pokemon.Health) + "/"
 	max_health.text = str(pokemon.Max_Health)
 	
 func clear_items():

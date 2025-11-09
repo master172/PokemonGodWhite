@@ -16,13 +16,13 @@ var options_selectable:int = 7
 var summary:bool = false
 
 @onready var options: Dictionary = {
-	Options.FIRST_SLOT: $MainSlot,
-	Options.SECOND_SLOT: $Slot2,
-	Options.THIRD_SLOT: $Slot3,
-	Options.FOURTH_SLOT: $Slot4,
-	Options.FIFTH_SLOT: $Slot5,
-	Options.SIXTH_SLOT: $Slot6,
-	Options.CANCEL: $Cancel,
+	Options.FIRST_SLOT: $Main/MainSlot,
+	Options.SECOND_SLOT: $Main/Items/Slot2,
+	Options.THIRD_SLOT: $Main/Items/Slot3,
+	Options.FOURTH_SLOT: $Main/Items/Slot4,
+	Options.FIFTH_SLOT: $Main/Items/Slot5,
+	Options.SIXTH_SLOT: $Main/Items/Slot6,
+	Options.CANCEL: $Main/Items/Cancel,
 }
 
 enum states {

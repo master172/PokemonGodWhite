@@ -30,8 +30,8 @@ var save_file_path = "user://save/Utils/"
 var save_file_name = "Story.tres"
 
 
-func player_dialog_end(sign):
-	if sign == "DialogicDone":
+func player_dialog_end(sig):
+	if sig == "DialogicDone":
 		get_viewport().set_input_as_handled()
 		await get_tree().create_timer(0.1).timeout
 		get_player().set_physics_process_custom(true)
@@ -77,7 +77,7 @@ func set_player(set_see:bool = true):
 	if player != null:
 		player.check_to_add_overworld_pokemon(set_see)
 
-func save_data(sign:bool = true):
+func save_data(sig:bool = true):
 	get_player().save_data()
 	get_scene_manager().save_data()
 	AllyPokemon.save_data()
@@ -85,7 +85,7 @@ func save_data(sign:bool = true):
 	Global.save_config_info()
 	save_self_data()
 
-	if sign == true:
+	if sig == true:
 		emit_signal("saving_done")
 
 func update_self_data():

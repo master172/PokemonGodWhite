@@ -1,49 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbk2dilhl5dmm"]
+[gd_scene load_steps=15 format=3 uid="uid://bbk2dilhl5dmm"]
 
 [ext_resource type="Script" uid="uid://b765aage71ce" path="res://src/Ui/Pokemon/main_slot.gd" id="1_j5hej"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_xgbbi"]
-[ext_resource type="Texture2D" uid="uid://ddepnuwob1ehj" path="res://Core/Graphics/Zehlvogs/Icons/NAICHI.png" id="3_kdkpd"]
+[ext_resource type="Texture2D" uid="uid://08fa8ft1mmmx" path="res://Core/Graphics/Zehlvogs/Icons/NOCTICHI.png" id="3_kl8vb"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_oq0tl"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_dqdfx"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="5_lpud0"]
 
-[sub_resource type="Animation" id="Animation_c0kax"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_q32s4"]
+atlas = ExtResource("3_kl8vb")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_uqftl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_owvcl"]
-_data = {
-&"Idle": SubResource("Animation_c0kax"),
-&"RESET": SubResource("Animation_uqftl")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl8vb"]
+atlas = ExtResource("4_dqdfx")
+region = Rect2(0, 0, 5, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nia2x"]
 bg_color = Color(0, 0, 0, 0.572549)
@@ -61,35 +31,90 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[node name="MainSlot" type="Node2D"]
+[sub_resource type="Animation" id="Animation_c0kax"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Main/Top/Sprite:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 32, 32), Rect2(32, 0, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_uqftl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Main/Top/Sprite:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owvcl"]
+_data = {
+&"Idle": SubResource("Animation_c0kax"),
+&"RESET": SubResource("Animation_uqftl")
+}
+
+[node name="MainSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
 script = ExtResource("1_j5hej")
 
 [node name="Background" type="Panel" parent="."]
-offset_left = -184.0
-offset_top = -104.0
-offset_right = 208.0
-offset_bottom = 144.0
+layout_mode = 1
+offset_right = 392.0
+offset_bottom = 248.0
 theme_override_styles/panel = ExtResource("2_xgbbi")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-128, 0)
-scale = Vector2(6, 6)
-texture = ExtResource("3_kdkpd")
-hframes = 2
+[node name="Main" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_owvcl")
-}
-autoplay = "Idle"
+[node name="Top" type="HBoxContainer" parent="Background/Main"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="."]
+[node name="Sprite" type="TextureRect" parent="Background/Main/Top"]
 texture_filter = 1
-offset_left = -25.0
-offset_top = -61.0
-offset_right = 195.0
-offset_bottom = -21.0
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_q32s4")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Main/Top"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Background/Main/Top/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
@@ -97,12 +122,9 @@ theme_override_font_sizes/font_size = 31
 text = "Naichi"
 vertical_alignment = 1
 
-[node name="Level" type="Label" parent="."]
+[node name="Level" type="Label" parent="Background/Main/Top/VBoxContainer"]
 texture_filter = 1
-offset_left = 24.0
-offset_top = 11.0
-offset_right = 81.0
-offset_bottom = 54.0
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
@@ -110,12 +132,46 @@ theme_override_font_sizes/font_size = 33
 text = "100"
 vertical_alignment = 1
 
-[node name="CurrentHealth" type="Label" parent="."]
+[node name="Gender" type="TextureRect" parent="Background/Main/Top"]
 texture_filter = 1
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 81.0
-offset_bottom = 131.0
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_kl8vb")
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Background/Main"]
+custom_minimum_size = Vector2(256, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nia2x")
+
+[node name="HealthBar" type="ProgressBar" parent="Background/Main/Panel"]
+modulate = Color(0, 1, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_lpud0")
+theme_override_styles/background = SubResource("StyleBoxEmpty_pbmg6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k01bk")
+value = 82.0
+rounded = true
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CurrentHealth" type="Label" parent="Background/Main/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
@@ -123,12 +179,9 @@ theme_override_font_sizes/font_size = 32
 text = "520"
 vertical_alignment = 1
 
-[node name="MaxHealth" type="Label" parent="."]
+[node name="MaxHealth" type="Label" parent="Background/Main/HBoxContainer"]
 texture_filter = 1
-offset_left = 96.0
-offset_top = 88.0
-offset_right = 153.0
-offset_bottom = 131.0
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_oq0tl")
@@ -136,29 +189,8 @@ theme_override_font_sizes/font_size = 32
 text = "/  520"
 vertical_alignment = 1
 
-[node name="Gender" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(170, 30)
-scale = Vector2(4, 4)
-texture = ExtResource("4_dqdfx")
-hframes = 2
-
-[node name="Panel" type="Panel" parent="."]
-offset_left = -64.0
-offset_top = 56.0
-offset_right = 192.0
-offset_bottom = 88.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nia2x")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(0, 1, 0.286275, 1)
-offset_left = -56.0
-offset_top = 64.0
-offset_right = 184.0
-offset_bottom = 80.0
-theme = ExtResource("5_lpud0")
-theme_override_styles/background = SubResource("StyleBoxEmpty_pbmg6")
-theme_override_styles/fill = SubResource("StyleBoxFlat_k01bk")
-value = 82.0
-rounded = true
-show_percentage = false
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_owvcl")
+}
+autoplay = "Idle"
