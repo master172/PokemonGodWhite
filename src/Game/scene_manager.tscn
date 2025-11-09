@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ca5hmpmyu5bs4" path="res://assets/Ui/Hud/autosave.svg" id="11_n82tn"]
 [ext_resource type="Script" uid="uid://bqacquon4a7uv" path="res://src/Game/DayAndNight.gd" id="12_bndex"]
 [ext_resource type="PackedScene" uid="uid://2o1txcjdlokb" path="res://src/Ui/Trading/Npc/NpcTradingSelector.tscn" id="12_uius2"]
-[ext_resource type="Environment" uid="uid://co5ke1rxd3epw" path="res://src/Environment/world_environment.tres" id="13_8glvd"]
+[ext_resource type="Environment" uid="uid://ssujpccv6q8e" path="res://Core/Evolutions/Glow.tres" id="17_n82tn"]
 
 [sub_resource type="Resource" id="Resource_v2f5h"]
 script = ExtResource("2_spcle")
@@ -340,6 +340,8 @@ visible = false
 [node name="Mart_View" type="CanvasLayer" parent="."]
 layer = 3
 
+[node name="EvolutionLayer" type="CanvasLayer" parent="."]
+
 [node name="DayAndNight" type="CanvasModulate" parent="."]
 color = Color(0.169088, 0.18037, 0.333017, 1)
 
@@ -350,7 +352,7 @@ libraries = {
 script = ExtResource("12_bndex")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("13_8glvd")
+environment = ExtResource("17_n82tn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 300.0

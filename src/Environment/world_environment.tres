@@ -6,5 +6,5 @@ background_canvas_max_layer = 4
 tonemap_mode = 1
 glow_enabled = true
 glow_bloom = 0.2
-glow_blend_mode = 4
+glow_blend_mode = 0
 adjustment_enabled = true

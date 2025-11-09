@@ -1,0 +1,413 @@
+[gd_scene load_steps=21 format=3 uid="uid://dgx7g828eowy5"]
+
+[ext_resource type="Shader" uid="uid://c2jiryqirl4t" path="res://src/Ui/Pokedex/Background.gdshader" id="1_2v36i"]
+[ext_resource type="Script" uid="uid://bjcuelouub4t1" path="res://src/Ui/Descent/descent_scene.gd" id="1_mu50r"]
+[ext_resource type="Shader" uid="uid://puou1xfx7ndw" path="res://src/Ui/Descent/Vignette.gdshader" id="2_vu0by"]
+[ext_resource type="Shader" uid="uid://dsq0dyf2rdids" path="res://src/Ui/Descent/dark_vignette.gdshader" id="3_qt873"]
+[ext_resource type="Shader" uid="uid://ckxfq5mqwk6c" path="res://src/Ui/Descent/Oval.gdshader" id="3_xy28l"]
+[ext_resource type="Texture2D" uid="uid://1sic5prx2ubv" path="res://assets/Ui/Descent/SummonigCircle.png" id="4_jyn52"]
+[ext_resource type="Shader" uid="uid://vj711nbs7w8d" path="res://src/Ui/Descent/SolidOval.gdshader" id="5_e8dqr"]
+
+[sub_resource type="Gradient" id="Gradient_vu0by"]
+colors = PackedColorArray(0, 0, 0, 1, 0.65234375, 0.65234375, 0.65234375, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_swjut"]
+gradient = SubResource("Gradient_vu0by")
+fill_from = Vector2(0.4871795, 1)
+fill_to = Vector2(0.47008547, 0)
+
+[sub_resource type="Gradient" id="Gradient_xy28l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jyn52"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mb73p"]
+noise = SubResource("FastNoiseLite_jyn52")
+color_ramp = SubResource("Gradient_xy28l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8dqr"]
+shader = ExtResource("1_2v36i")
+shader_parameter/base_texture = SubResource("GradientTexture2D_swjut")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_mb73p")
+shader_parameter/tint_strength = 0.326000015485
+shader_parameter/noise_scale = 0.78800003417012
+shader_parameter/noise_intensity = 0.6950000330125
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swjut"]
+shader = ExtResource("2_vu0by")
+shader_parameter/alpha = 0.8
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 0.89
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mu50r"]
+shader = ExtResource("3_qt873")
+shader_parameter/radius = 0.565
+shader_parameter/speed = 5.0000002375
+shader_parameter/effect_color = Color(0.2509804, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb73p"]
+shader = ExtResource("3_xy28l")
+shader_parameter/inner_color = Color(0.43359375, 0.43359375, 0.43359375, 1)
+shader_parameter/outer_color = Color(0.1, 0, 0.2, 0)
+shader_parameter/radius = 1.0
+shader_parameter/softness = 0.02
+shader_parameter/noise_strength = 0.1
+shader_parameter/noise_scale = 6.28
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmqof"]
+shader = ExtResource("5_e8dqr")
+shader_parameter/inner_color = Color(0, 0, 0, 1)
+shader_parameter/outer_color = Color(0, 0, 0, 1)
+shader_parameter/radius = Vector2(0, 0)
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/softness = 0.0
+shader_parameter/gradient = true
+
+[sub_resource type="Animation" id="Animation_4cc36"]
+resource_name = "Evolve"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Previous:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.2, 4.2),
+"transitions": PackedFloat32Array(1, 1.9318736, 3.732131),
+"update": 0,
+"values": [Vector2(711, 378), Vector2(711, 378), Vector2(711, 972)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/Current:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 6),
+"transitions": PackedFloat32Array(4.756827, 0.63728005, 1),
+"update": 0,
+"values": [Vector2(711, 926), Vector2(711, 926), Vector2(711, 378)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SummoningCircle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SummoningCircle:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container/Current:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Container/Previous:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Container/Previous:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shadow:material:shader_parameter/radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 3, 7.2, 8.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.4, 0.25), Vector2(0.4, 0.25), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Container/Current:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0p6rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Previous:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(711, 401)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/Current:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(711, 401)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SummoningCircle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SummoningCircle:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container/Current:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Container/Previous:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Container/Previous:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shadow:material:shader_parameter/radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Container/Current:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pwwc"]
+_data = {
+&"Evolve": SubResource("Animation_4cc36"),
+&"RESET": SubResource("Animation_0p6rt")
+}
+
+[node name="DescentScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mu50r")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_e8dqr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17578125, 0.17578125, 0.17578125, 1)
+
+[node name="Vignette" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_swjut")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Effect" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_mu50r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Foreground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mb73p")
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -421.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SummoningCircle" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_top = 790.0
+offset_right = -316.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jyn52")
+expand_mode = 1
+
+[node name="Shadow" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tmqof")
+layout_mode = 0
+offset_left = 569.0
+offset_top = 778.0
+offset_right = 1377.0
+offset_bottom = 969.0
+
+[node name="Container" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Previous" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -249.0
+offset_top = -497.0
+offset_right = 250.0
+offset_bottom = 2.0019531
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Current" type="TextureRect" parent="Container"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -249.0
+offset_top = -497.0
+offset_right = 250.0
+offset_bottom = 2.001892
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 4
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3pwwc")
+}

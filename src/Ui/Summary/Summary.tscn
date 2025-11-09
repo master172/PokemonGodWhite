@@ -23,6 +23,10 @@
 script = ExtResource("4_31he3")
 metadata/_custom_type_script = "uid://du4g72lk20kmb"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4syxm"]
+atlas = ExtResource("4_16jd6")
+region = Rect2(5, 0, 5, 8)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seykb"]
 bg_color = Color(0.4296875, 0.4296875, 0.4296875, 1)
 skew = Vector2(1, 0)
@@ -51,10 +55,6 @@ corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4syxm"]
-atlas = ExtResource("4_16jd6")
-region = Rect2(5, 0, 5, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sryin"]
 bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
@@ -101,159 +101,261 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 
-[node name="Tabs" type="TabContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panels" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="presisting" type="Control" parent="MarginContainer/Main/Panels"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer/Main/Panels/presisting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Main/Panels/presisting/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="DataContainer" type="VBoxContainer" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Basic" type="Label" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 52
+text = "Basic Info"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="BallCaught" type="TextureRect" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_a8ai2")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+
+[node name="Gender" type="TextureRect" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_4syxm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Level:- 24"
+
+[node name="Pokemon" type="TextureRect" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("19_sryin")
+stretch_mode = 5
+
+[node name="ItemContainer" type="HBoxContainer" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Item" type="Label" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
+layout_mode = 2
+theme = ExtResource("2_0rgf5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Item"
+
+[node name="ItemTex" type="TextureRect" parent="MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
+layout_mode = 2
+texture = ExtResource("20_seykb")
+stretch_mode = 6
+
+[node name="Tabs" type="TabContainer" parent="MarginContainer/Main/Panels"]
+layout_mode = 2
+size_flags_horizontal = 3
 current_tab = 0
 
-[node name="info" type="ColorRect" parent="Tabs"]
+[node name="info" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 texture_filter = 1
 layout_mode = 2
 color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("3_4a30r")
 metadata/_tab_index = 0
 
-[node name="Info" type="VBoxContainer" parent="Tabs/info"]
+[node name="Info" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.054
-anchor_right = 0.984
-anchor_bottom = 0.705
-offset_left = -352.0
-grow_horizontal = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main" type="HBoxContainer" parent="Tabs/info/Info"]
+[node name="Main" type="HBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info/Info"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Tags" type="VBoxContainer" parent="Tabs/info/Info/Main"]
+[node name="Tags" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Species" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="Species" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Species"
 
-[node name="DexNo" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="DexNo" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "DexNo"
 
-[node name="Ot" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="Ot" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Ot"
 
-[node name="PokemonID" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="PokemonID" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Pokemon Id"
 
-[node name="ExpPoints" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="ExpPoints" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Exp Points"
 
-[node name="ToNextLevel" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="ToNextLevel" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "To next level"
 
-[node name="Type" type="Label" parent="Tabs/info/Info/Main/Tags"]
+[node name="Type" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Types:"
 
-[node name="Items" type="VBoxContainer" parent="Tabs/info/Info/Main"]
+[node name="Items" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Species" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="Species" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Bulbasaur"
 
-[node name="DexNo" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="DexNo" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "215"
 
-[node name="Ot" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="Ot" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Ot"
 
-[node name="PokemonID" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="PokemonID" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "53455"
 
-[node name="ExpPoints" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="ExpPoints" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "0"
 
-[node name="ToNextLevel" type="Label" parent="Tabs/info/Info/Main/Items"]
+[node name="ToNextLevel" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "0"
 
-[node name="Types" type="HBoxContainer" parent="Tabs/info/Info/Main/Items"]
+[node name="Types" type="HBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Type1" parent="Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
+[node name="Type1" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
 layout_mode = 2
 
-[node name="Type2" parent="Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
+[node name="Type2" parent="MarginContainer/Main/Panels/Tabs/info/Info/Main/Items/Types" instance=ExtResource("7_sryin")]
 layout_mode = 2
 
-[node name="ExpContainer" type="HBoxContainer" parent="Tabs/info/Info"]
+[node name="ExpContainer" type="HBoxContainer" parent="MarginContainer/Main/Panels/Tabs/info/Info"]
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 64
 
-[node name="Tag" type="Label" parent="Tabs/info/Info/ExpContainer"]
+[node name="Tag" type="Label" parent="MarginContainer/Main/Panels/Tabs/info/Info/ExpContainer"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.34375, 0.59375, 0.96875, 1)
 theme_override_font_sizes/font_size = 56
 text = "Exp Bar"
 
-[node name="ExpBar" type="ProgressBar" parent="Tabs/info/Info/ExpContainer"]
+[node name="ExpBar" type="ProgressBar" parent="MarginContainer/Main/Panels/Tabs/info/Info/ExpContainer"]
 self_modulate = Color(0, 0.9710715, 1, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -265,7 +367,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ailn7")
 value = 62.51
 show_percentage = false
 
-[node name="moves" type="ColorRect" parent="Tabs"]
+[node name="moves" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -273,23 +375,21 @@ color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("8_cr8m8")
 metadata/_tab_index = 1
 
-[node name="Moves" type="VBoxContainer" parent="Tabs/moves"]
+[node name="Moves" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/moves"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.295
-anchor_top = 0.06
-anchor_right = 0.969
-anchor_bottom = 0.674
-grow_horizontal = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Panel" type="Panel" parent="Tabs/moves/Moves"]
+[node name="Panel" type="Panel" parent="MarginContainer/Main/Panels/Tabs/moves/Moves"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
 
-[node name="Move1" type="Label" parent="Tabs/moves/Moves/Panel"]
+[node name="Move1" type="Label" parent="MarginContainer/Main/Panels/Tabs/moves/Moves/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -311,12 +411,12 @@ text = "Quick Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="Tabs/moves/Moves"]
+[node name="Panel2" type="Panel" parent="MarginContainer/Main/Panels/Tabs/moves/Moves"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
 
-[node name="Move2" type="Label" parent="Tabs/moves/Moves/Panel2"]
+[node name="Move2" type="Label" parent="MarginContainer/Main/Panels/Tabs/moves/Moves/Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -338,12 +438,12 @@ text = "Quick Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel3" type="Panel" parent="Tabs/moves/Moves"]
+[node name="Panel3" type="Panel" parent="MarginContainer/Main/Panels/Tabs/moves/Moves"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
 
-[node name="Move3" type="Label" parent="Tabs/moves/Moves/Panel3"]
+[node name="Move3" type="Label" parent="MarginContainer/Main/Panels/Tabs/moves/Moves/Panel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -365,12 +465,12 @@ text = "Quick Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel4" type="Panel" parent="Tabs/moves/Moves"]
+[node name="Panel4" type="Panel" parent="MarginContainer/Main/Panels/Tabs/moves/Moves"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfkvm")
 
-[node name="Move4" type="Label" parent="Tabs/moves/Moves/Panel4"]
+[node name="Move4" type="Label" parent="MarginContainer/Main/Panels/Tabs/moves/Moves/Panel4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -392,14 +492,14 @@ text = "Quick Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="memo" type="ColorRect" parent="Tabs"]
+[node name="memo" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 visible = false
 texture_filter = 1
 layout_mode = 2
 color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 metadata/_tab_index = 2
 
-[node name="skills" type="ColorRect" parent="Tabs"]
+[node name="skills" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -407,23 +507,20 @@ color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("11_g8v2c")
 metadata/_tab_index = 3
 
-[node name="MainContainer" type="HBoxContainer" parent="Tabs/skills"]
+[node name="MainContainer" type="HBoxContainer" parent="MarginContainer/Main/Panels/Tabs/skills"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.271
-anchor_top = 0.085
-anchor_right = 0.977
-anchor_bottom = 0.767
-offset_right = 0.00012207031
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 128
 
-[node name="Tags" type="VBoxContainer" parent="Tabs/skills/MainContainer"]
+[node name="Tags" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Ability" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="Ability" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -431,7 +528,7 @@ theme_override_font_sizes/font_size = 48
 text = "Ability"
 vertical_alignment = 1
 
-[node name="Attack" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="Attack" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -439,7 +536,7 @@ theme_override_font_sizes/font_size = 48
 text = "Attack"
 vertical_alignment = 1
 
-[node name="SpAttack" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="SpAttack" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -447,7 +544,7 @@ theme_override_font_sizes/font_size = 48
 text = "Sp.Attack"
 vertical_alignment = 1
 
-[node name="Defense" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="Defense" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -455,7 +552,7 @@ theme_override_font_sizes/font_size = 48
 text = "Defense"
 vertical_alignment = 1
 
-[node name="SpDefense" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="SpDefense" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -463,7 +560,7 @@ theme_override_font_sizes/font_size = 48
 text = "Sp.Defense"
 vertical_alignment = 1
 
-[node name="Speed" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="Speed" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.308594, 0.796875, 0.394531, 1)
@@ -471,7 +568,7 @@ theme_override_font_sizes/font_size = 48
 text = "Speed"
 vertical_alignment = 1
 
-[node name="Health" type="Label" parent="Tabs/skills/MainContainer/Tags"]
+[node name="Health" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Tags"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_0rgf5")
@@ -480,54 +577,54 @@ theme_override_font_sizes/font_size = 48
 text = "Health"
 vertical_alignment = 2
 
-[node name="Items" type="VBoxContainer" parent="Tabs/skills/MainContainer"]
+[node name="Items" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="AblTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="AblTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="AtTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="AtTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="SpAtTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="SpAtTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="DefTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="DefTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="SpDefTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="SpDefTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="SpdTag" type="Label" parent="Tabs/skills/MainContainer/Items"]
+[node name="SpdTag" type="Label" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/font_outline_color = Color(0.207031, 0.597656, 0.273438, 1)
 theme_override_font_sizes/font_size = 48
 text = "None"
 
-[node name="HealthBar" type="ProgressBar" parent="Tabs/skills/MainContainer/Items"]
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Main/Panels/Tabs/skills/MainContainer/Items"]
 modulate = Color(0.308594, 0.796875, 0.394531, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -536,14 +633,14 @@ theme = ExtResource("7_hhiqc")
 value = 61.1
 show_percentage = false
 
-[node name="ribbons" type="ColorRect" parent="Tabs"]
+[node name="ribbons" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 visible = false
 texture_filter = 1
 layout_mode = 2
 color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 metadata/_tab_index = 4
 
-[node name="evolution" type="ColorRect" parent="Tabs"]
+[node name="evolution" type="ColorRect" parent="MarginContainer/Main/Panels/Tabs"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -551,127 +648,28 @@ color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 script = ExtResource("13_aw7q6")
 metadata/_tab_index = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Tabs/evolution"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Main/Panels/Tabs/evolution"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 576.0
-offset_top = 97.0
-offset_right = -64.0
-offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Tabs/evolution/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Main/Panels/Tabs/evolution/ScrollContainer"]
 custom_minimum_size = Vector2(643, 519)
 layout_mode = 2
 theme_override_constants/separation = 80
 
-[node name="presisting" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MainContainer" type="VBoxContainer" parent="presisting"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="presisting/MainContainer"]
+[node name="DataContainer" type="MarginContainer" parent="MarginContainer/Main"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="DataContainer" type="VBoxContainer" parent="presisting/MainContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Basic" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer"]
-layout_mode = 2
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 52
-text = "Basic Info"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="presisting/MainContainer/MarginContainer/DataContainer"]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="BallCaught" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_a8ai2")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 32
-
-[node name="Gender" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_4syxm")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Level" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer"]
-layout_mode = 2
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 52
-text = "Level:- 24"
-
-[node name="Pokemon" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
-texture = ExtResource("19_sryin")
-stretch_mode = 5
-
-[node name="ItemContainer" type="HBoxContainer" parent="presisting/MainContainer/MarginContainer/DataContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Item" type="Label" parent="presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
-layout_mode = 2
-theme = ExtResource("2_0rgf5")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 52
-text = "Item"
-
-[node name="ItemTex" type="TextureRect" parent="presisting/MainContainer/MarginContainer/DataContainer/ItemContainer"]
-layout_mode = 2
-texture = ExtResource("20_seykb")
-stretch_mode = 6
-
-[node name="DataContainer" type="MarginContainer" parent="presisting/MainContainer"]
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="What" type="RichTextLabel" parent="presisting/MainContainer/DataContainer"]
+[node name="What" type="RichTextLabel" parent="MarginContainer/Main/DataContainer"]
 layout_mode = 2
 theme = ExtResource("2_0rgf5")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -763,7 +761,7 @@ placeholder_text = "Enter The new name"
 alignment = 1
 max_length = 15
 
-[connection signal="visibility_changed" from="Tabs/evolution" to="Tabs/evolution" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="MarginContainer/Main/Panels/Tabs/evolution" to="MarginContainer/Main/Panels/Tabs/evolution" method="_on_visibility_changed"]
 [connection signal="quit" from="MoveManager" to="." method="_on_move_manager_quit"]
 [connection signal="naming_done" from="NamingScreen" to="." method="_on_naming_screen_naming_done"]
 [connection signal="text_submitted" from="NamingScreen/ColorRect/Panel/VBoxContainer/TextEdit" to="NamingScreen" method="_on_text_edit_text_submitted"]

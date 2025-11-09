@@ -55,6 +55,12 @@ variables={
 "OverWorld": {
 "Pokemon": "DefaultPokemon",
 "Response": "DefaultResponse"
+},
+"Utils": {
+"Evolution": {
+"current": "Curr",
+"previous": "Prev"
+}
 }
 }
 text/letter_speed=0.01
@@ -109,6 +115,7 @@ directories/dtl_directory={
 "CarterStart": "res://src/Dialogs/CarterStart.dtl",
 "Caught": "res://src/Dialogs/Caught.dtl",
 "DefaultOverworld": "res://src/Dialogs/OverWorldPokemon/DefaultOverworld.dtl",
+"Descent": "res://src/Dialogs/Utils/Descent.dtl",
 "FN1END": "res://src/Dialogs/FN1END.dtl",
 "FN1Start": "res://src/Dialogs/FN1Start.dtl",
 "FN2END": "res://src/Dialogs/FN2END.dtl",

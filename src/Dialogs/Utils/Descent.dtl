@@ -1,0 +1,5 @@
+Your {Utils.Evolution.previous} is about to descent into its next stage
+[signal arg="Start Evolving"]
+[wait time="10.0"]
+Congratulations your {Utils.Evolution.previous} descended into {Utils.Evolution.current}.
+[signal arg="END"]

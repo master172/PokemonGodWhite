@@ -2,22 +2,23 @@ extends Control
 
 @export var showing_pokemon:game_pokemon
 
-@onready var info = $Tabs/info
+@onready var info: ColorRect = $MarginContainer/Main/Panels/Tabs/info
+@onready var moves: ColorRect = $MarginContainer/Main/Panels/Tabs/moves
+@onready var evolution: ColorRect = $MarginContainer/Main/Panels/Tabs/evolution
+
 @onready var move_manager = $MoveManager
-@onready var evolution = $Tabs/evolution
-@onready var moves = $Tabs/moves
 @onready var naming_screen = $NamingScreen
 
-@onready var ball_caught: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/BallCaught
-@onready var Name: Label = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Name
-@onready var gender: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Gender
-@onready var level: Label = $presisting/MainContainer/MarginContainer/DataContainer/Level
-@onready var poke: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/Pokemon
-@onready var item: Label = $presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/Item
-@onready var item_tex: TextureRect = $presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/ItemTex
-@onready var what: RichTextLabel = $presisting/MainContainer/DataContainer/What
+@onready var ball_caught: TextureRect = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/BallCaught
+@onready var Name: Label = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Name
+@onready var gender: TextureRect = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/HBoxContainer/Gender
+@onready var level: Label = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/Level
+@onready var poke: TextureRect = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/Pokemon
+@onready var item: Label = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/Item
+@onready var item_tex: TextureRect = $MarginContainer/Main/Panels/presisting/MainContainer/MarginContainer/DataContainer/ItemContainer/ItemTex
+@onready var what: RichTextLabel = $MarginContainer/Main/DataContainer/What
 
-@onready var tabs: TabContainer = $Tabs
+@onready var tabs: TabContainer = $MarginContainer/Main/Panels/Tabs
 
 enum Options {FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, FOURTH_SLOT, FIFTH_SLOT,SIXTH_SLOT}
 enum States {Normal,Selection,MoveManagement,Evolution,Inactive,Naming,Items}
@@ -28,12 +29,12 @@ var selected_option: int = Options.FIRST_SLOT
 var options_selectable:int = 6
 
 @onready var panels :Dictionary = {
-	Options.FIRST_SLOT: $Tabs/info,
-	Options.SECOND_SLOT: $Tabs/moves,
-	Options.THIRD_SLOT: $Tabs/memo,
-	Options.FOURTH_SLOT: $Tabs/skills,
-	Options.FIFTH_SLOT: $Tabs/ribbons,
-	Options.SIXTH_SLOT: $Tabs/evolution
+	Options.FIRST_SLOT: $MarginContainer/Main/Panels/Tabs/info,
+	Options.SECOND_SLOT: $MarginContainer/Main/Panels/Tabs/moves,
+	Options.THIRD_SLOT: $MarginContainer/Main/Panels/Tabs/memo,
+	Options.FOURTH_SLOT: $MarginContainer/Main/Panels/Tabs/skills,
+	Options.FIFTH_SLOT: $MarginContainer/Main/Panels/Tabs/ribbons,
+	Options.SIXTH_SLOT: $MarginContainer/Main/Panels/Tabs/evolution
 }
 
 var temp_panel:int = 0
@@ -53,8 +54,8 @@ func _show_info():
 	info._display(showing_pokemon)
 	_display(showing_pokemon)
 	
-func set_pokemon(poke:game_pokemon):
-	showing_pokemon = poke
+func set_pokemon(poke_:game_pokemon):
+	showing_pokemon = poke_
 	_show_info()
 
 
@@ -139,7 +140,6 @@ func _unhandled_input(event):
 				move_manager.active = true
 				Global.move_management = true
 		elif state == States.Evolution:
-			var pokemon = showing_pokemon
 			var next_pokemon = showing_pokemon.get_current_evolution_pokemon(selected_option)
 			EvolutionManager.Pokemon_to_evolve = showing_pokemon.duplicate()
 			EvolutionManager.Evolving_pokemon = next_pokemon
@@ -166,6 +166,7 @@ func set_active():
 	temp_panel = 0
 	options_selectable = 6
 	evolution.update_after_evolution(showing_pokemon)
+	_display(showing_pokemon)
 	info._display(showing_pokemon)
 	
 func _on_move_manager_quit():

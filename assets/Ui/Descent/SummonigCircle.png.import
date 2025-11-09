@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqdylfqljuf5o"
-path="res://.godot/imported/bg_ribbons.png-3ae3e53b21a1e807fb65a627c2814057.ctex"
+uid="uid://1sic5prx2ubv"
+path="res://.godot/imported/SummonigCircle.png-83608b2eb3b3836139a64b0104ab49f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ui/Summary/bg_ribbons.png"
-dest_files=["res://.godot/imported/bg_ribbons.png-3ae3e53b21a1e807fb65a627c2814057.ctex"]
+source_file="res://assets/Ui/Descent/SummonigCircle.png"
+dest_files=["res://.godot/imported/SummonigCircle.png-83608b2eb3b3836139a64b0104ab49f9.ctex"]
 
 [params]
 

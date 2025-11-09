@@ -1,7 +1,7 @@
 extends Node2D
 
 var battle_scene = preload("res://Core/Battle/battle_scene.tscn")
-const evolution_scene = preload("res://Core/Evolutions/evolution_screen.tscn")
+const evolution_scene = preload("res://src/Ui/Descent/descent_scene.tscn")
 const evolution_environment = preload("res://src/Environment/world_environment.tscn")
 
 const default_healing_place_path = "res://src/World/Houses/InnHouse.tscn"
@@ -18,6 +18,7 @@ var next_scene = null
 @onready var mart_view = $Mart_View
 @onready var day_and_night = $DayAndNight
 @onready var HudLayer = $HudLayer
+@onready var evolution_layer: CanvasLayer = $EvolutionLayer
 
 @export var evolution_dialog:DialogueLine = DialogueLine.new()
 @export var selector:Control = null
@@ -141,7 +142,6 @@ func transition_to_evolution():
 func transition_exit_evolution():
 	menu.get_parent().show()
 	re_check_evolution()
-	Utils.get_player().switch_default_camera()
 
 func transition_exit_pokedex_scene():
 	transition_player.play("FadeToBlack")
@@ -365,8 +365,7 @@ func load_evolution():
 	else:
 		var EvolutionScreen = evolution_scene.instantiate()
 		EvolutionScreen.set_pokemons(EvolutionManager.Pokemon_to_evolve,EvolutionManager.Evolving_pokemon)
-		Utils.get_player().add_child(EvolutionScreen)
-		Utils.get_player().switch_evolution_camera()
+		evolution_layer.add_child(EvolutionScreen)
 		menu.get_parent().hide()
 	
 func load_battle_scene(pokemon,map):

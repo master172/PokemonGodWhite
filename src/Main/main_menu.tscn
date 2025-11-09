@@ -348,7 +348,7 @@ text = "Wonder Trade"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
