@@ -7,7 +7,7 @@ extends Node
 @export var websocket_url = "ws://localhost:8080/ws"
 
 # Our WebSocketClient instance.
-var socket = WebSocketPeer.new()
+var socket :WebSocketPeer
 
 signal room_created(room_code:String)
 signal room_joined(code:String)
@@ -15,18 +15,32 @@ signal join_failed(reason:String)
 signal partner_disconnected
 signal trade_message(messgae:Dictionary)
 
-func _ready():
-	# Initiate connection to the given URL.
+var connected_to_server :bool = false
+
+func _ready() -> void:
+	set_process(false)
+	
+func connect_to_server():
+	if connected_to_server:
+		return
+	
+	socket = WebSocketPeer.new()
+	
 	var err = socket.connect_to_url(websocket_url)
-	if err == OK:
-		print("Connecting to %s..." % websocket_url)
-		# Wait for the socket to connect.
-		await get_tree().create_timer(2).timeout
-	else:
-		push_error("Unable to connect.")
-		set_process(false)
+	if err != OK:
+		push_error("Failed to connect via Websocket")
+		return
+	set_process(true)
+	connected_to_server = true
 
-
+func disconnect_from_server():
+	if not connected_to_server:
+		return
+	
+	socket.close(1000,"Client closed connection")
+	connected_to_server = false
+	set_process(false)
+	
 func _process(_delta):
 	# Call this in `_process()` or `_physics_process()`.
 	# Data transfer and state updates will only happen when calling this function.
@@ -45,9 +59,7 @@ func _process(_delta):
 				var data = JSON.parse_string(packet_text)
 				if typeof(data) == TYPE_DICTIONARY:
 					handle_recived_messages(data)
-				print("< Got text data from server: %s" % packet_text)
-			else:
-				print("< Got binary data from server: %d bytes" % packet.size())
+				
 
 	# `WebSocketPeer.STATE_CLOSING` means the socket is closing.
 	# It is important to keep polling for a clean close.

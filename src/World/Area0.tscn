@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://i3rtwnl4su6j"]
+[gd_scene load_steps=55 format=4 uid="uid://i3rtwnl4su6j"]
 
 [ext_resource type="Script" uid="uid://b3k7l5fkt0ruj" path="res://src/World/Area0.gd" id="1_2ofmc"]
 [ext_resource type="PackedScene" uid="uid://bxd3fxljtidla" path="res://src/World/trees/tree.tscn" id="1_vxacm"]
@@ -35,6 +35,8 @@
 [ext_resource type="Resource" uid="uid://ybd037xsc7be" path="res://Core/Pokemon/Buneary.tres" id="31_pm2q6"]
 [ext_resource type="Resource" uid="uid://xqnf3jkcoya3" path="res://Core/Pokemon/Ralts.tres" id="32_w0qkq"]
 [ext_resource type="Resource" uid="uid://dnejklnbktcw4" path="res://Core/Pokemon/Chikorita.tres" id="33_wk2t4"]
+[ext_resource type="PackedScene" uid="uid://ng37iihckul2" path="res://Resources/trading/trade_opner.tscn" id="36_cof83"]
+[ext_resource type="Texture2D" uid="uid://cttdpjvmon15x" path="res://assets/Npc/icon_ball.png" id="37_kbdl3"]
 
 [sub_resource type="Resource" id="Resource_lhkw0"]
 script = ExtResource("24_jks6w")
@@ -1916,5 +1918,12 @@ min_level = 5
 max_level = 10
 map = 0
 metadata/_custom_type_script = "uid://c1o1d6tb134ol"
+
+[node name="TradeOpner" parent="." instance=ExtResource("36_cof83")]
+position = Vector2(-104, -88)
+
+[node name="Sprite2D" type="Sprite2D" parent="TradeOpner"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("37_kbdl3")
 
 [editable path="player"]

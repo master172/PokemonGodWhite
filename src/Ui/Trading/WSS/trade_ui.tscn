@@ -1,14 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://fs8yhbiri3jq"]
+[gd_scene load_steps=15 format=3 uid="uid://fs8yhbiri3jq"]
 
 [ext_resource type="Script" uid="uid://rlxie4g3qb6r" path="res://src/Ui/Trading/WSS/trade_ui.gd" id="1_5jetm"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="1_626en"]
 [ext_resource type="Script" uid="uid://1ldvvduxl0r3" path="res://src/Ui/Trading/WSS/trade_relay.gd" id="3_36vii"]
 [ext_resource type="Script" uid="uid://bxp60p7tlx2vg" path="res://src/Ui/Trading/WSS/waiting_room.gd" id="3_bxula"]
 [ext_resource type="Script" uid="uid://sbko4pmfc3vi" path="res://src/Ui/Trading/WSS/trade_room.gd" id="5_k5hf2"]
-[ext_resource type="PackedScene" uid="uid://2o1txcjdlokb" path="res://src/Ui/Trading/Npc/NpcTradingSelector.tscn" id="5_po4sy"]
+[ext_resource type="Script" uid="uid://clgca341ingb6" path="res://src/Ui/Trading/WSS/selector.gd" id="6_iwfo5"]
+[ext_resource type="PackedScene" uid="uid://dhoey1dbbtoc2" path="res://src/Ui/Bag/PokeSelector.tscn" id="7_c1b4r"]
+[ext_resource type="Script" uid="uid://cv7i17csh54yj" path="res://src/Ui/Trading/WSS/confirmation.gd" id="9_0gfwx"]
+[ext_resource type="Script" uid="uid://cv0i5hjs5yyvb" path="res://src/Ui/Trading/WSS/Monster_Trader.gd" id="9_c1b4r"]
+[ext_resource type="Script" uid="uid://b43s8v1n4oqwm" path="res://src/Ui/Trading/WSS/trade_finisher.gd" id="9_s1ykd"]
+[ext_resource type="Script" uid="uid://kv8ukkrq6x62" path="res://src/Ui/Trading/WSS/message_box.gd" id="10_0gfwx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po4sy"]
 bg_color = Color(1, 1, 1, 0.14117648)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5hf2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8ibq"]
+bg_color = Color(1, 1, 1, 0.77254903)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
 
 [node name="TradeUi" type="Control"]
 layout_mode = 3
@@ -276,15 +290,252 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="TradeRoom/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 128
 
-[node name="Selector" parent="TradeRoom/VBoxContainer/HBoxContainer" instance=ExtResource("5_po4sy")]
+[node name="Selector" type="Control" parent="TradeRoom/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_iwfo5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon0" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+
+[node name="Icon1" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+pokemon_number = 1
+
+[node name="Icon2" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+pokemon_number = 2
+
+[node name="Icon3" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+pokemon_number = 3
+
+[node name="Icon4" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+pokemon_number = 4
+
+[node name="Icon5" parent="TradeRoom/VBoxContainer/HBoxContainer/Selector/VBoxContainer" instance=ExtResource("7_c1b4r")]
+layout_mode = 2
+pokemon_number = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(704, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="HSeparator" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxFlat_k5hf2")
+
+[node name="Panel" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 68
+alignment = 1
+
+[node name="Panel" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.34117648, 0.8901961, 0.75686276, 1)
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8ibq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -184.0
+offset_right = 120.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Inner" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="TextureRect" type="TextureRect" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/Inner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.78039217, 0.4392157, 1, 1)
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8ibq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -184.0
+offset_right = 120.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Inner" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2/VBoxContainer"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="TextureRect2" type="TextureRect" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2/VBoxContainer/Inner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/HBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lock" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/Lock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Lock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Panel" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer/Panel/VBoxContainer/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Reject"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="HSeparator" parent="TradeRoom/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 256
+theme_override_styles/separator = SubResource("StyleBoxFlat_k5hf2")
 
 [node name="Control" type="Control" parent="TradeRoom/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ColorRect" type="ColorRect" parent="TradeRoom/VBoxContainer/HBoxContainer/Control"]
 layout_mode = 1
@@ -320,5 +571,189 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 32
 placeholder_text = "Chat over here"
 
+[node name="Trade_Relay" type="Node" parent="TradeRoom" node_paths=PackedStringArray("trade_finisher")]
+script = ExtResource("9_c1b4r")
+trade_finisher = NodePath("../TradeFinisher")
+metadata/_custom_type_script = "uid://1ldvvduxl0r3"
+
+[node name="TradeFinisher" type="Node" parent="TradeRoom"]
+script = ExtResource("9_s1ykd")
+
+[node name="Confirmation" type="Control" parent="TradeRoom"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_0gfwx")
+
+[node name="Background" type="ColorRect" parent="TradeRoom/Confirmation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.26666668, 0.26666668, 0.53333336)
+
+[node name="Panel" type="Panel" parent="TradeRoom/Confirmation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = -148.0
+offset_right = 624.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/Confirmation/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TradeRoom/Confirmation/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Do you want to confirm this trade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TradeRoom/Confirmation/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Confirm" type="Panel" parent="TradeRoom/Confirmation/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="TradeRoom/Confirmation/Panel/VBoxContainer/HBoxContainer/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cancel" type="Panel" parent="TradeRoom/Confirmation/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="TradeRoom/Confirmation/Panel/VBoxContainer/HBoxContainer/Cancel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageBox" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_0gfwx")
+
+[node name="Background" type="ColorRect" parent="MessageBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.26666668, 0.26666668, 0.53333336)
+
+[node name="Panel" type="Panel" parent="MessageBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = -148.0
+offset_right = 624.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MessageBox/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="MessageBox/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Waiting for connections"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="MessageBox/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Room Code:- "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="text_submitted" from="RoomEntry/Panel/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="closed" from="TradeRoom" to="." method="_on_trade_room_closed"]
+[connection signal="select" from="TradeRoom/VBoxContainer/HBoxContainer/Selector" to="TradeRoom" method="_on_selector_select"]
 [connection signal="text_submitted" from="TradeRoom/VBoxContainer/HBoxContainer/Control/VBoxContainer/LineEdit" to="TradeRoom" method="_on_line_edit_text_submitted"]
+[connection signal="cancel_trade" from="TradeRoom/Confirmation" to="TradeRoom" method="_on_confirmation_cancel_trade"]
+[connection signal="confirm_trade" from="TradeRoom/Confirmation" to="TradeRoom" method="_on_confirmation_confirm_trade"]

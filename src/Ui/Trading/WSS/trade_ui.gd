@@ -4,7 +4,8 @@ enum states {
 	ROOM_SETUP,
 	ROOM_ENTRY,
 	TRADING,
-	WAITING
+	WAITING,
+	AWAITING
 }
 
 @onready var trade_relay: Trade_Relay = $TradeRelay
@@ -37,13 +38,14 @@ func connect_signals()->void:
 	TradeManager.trade_message.connect(_handle_trade_message)
 	
 func _ready() -> void:
+	
 	connect_signals()
 	set_room_button_active()
 	room_entry.visible = false
 	waiting_room.visible = false
 	trade_room.visible = false
 	room_setup.visible = true
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("W"):
 		
@@ -64,14 +66,33 @@ func _input(event: InputEvent) -> void:
 		if current_state == states.ROOM_SETUP:
 			AudioManager.select()
 			if current_selected == 0:
+				TradeManager.connect_to_server()
+				current_state = states.AWAITING
+				await get_tree().create_timer(2).timeout
 				trade_relay.send_create_room_request()
 				
 			elif current_selected == 1:
+				TradeManager.connect_to_server()
+				current_state = states.AWAITING
+				await get_tree().create_timer(2).timeout
 				room_entry.visible=true
 				current_state = states.ROOM_ENTRY
 				await get_tree().create_timer(0.1).timeout
 				line_edit.grab_focus()
-
+	elif event.is_action_pressed("No"):
+		if current_state == states.ROOM_SETUP:
+			AudioManager.cancel()
+			queue_free()
+		elif current_state == states.WAITING:
+			TradeManager.disconnect_from_server()
+			waiting_room.visible = false
+			current_state = states.ROOM_SETUP
+		elif current_state == states.ROOM_ENTRY and line_edit.is_editing() == false:
+			AudioManager.cancel()
+			room_entry.visible = false
+			line_edit.text = ""
+			current_state =states.ROOM_SETUP
+			
 func _room_created(code:String):
 	current_state = states.WAITING
 	current_selected = 0
@@ -99,3 +120,12 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	AudioManager.select()
 	trade_relay.send_join_room_request(new_text)
 	room_entry.visible = false
+
+
+func _on_trade_room_closed() -> void:
+	AudioManager.cancel()
+	TradeManager.disconnect_from_server()
+	trade_room.visible = false
+	room_setup.visible = true
+	await get_tree().create_timer(0.1).timeout
+	current_state = states.ROOM_SETUP

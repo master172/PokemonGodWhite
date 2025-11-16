@@ -1,14 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bomnjll0jderl"]
+[gd_scene load_steps=14 format=3 uid="uid://bomnjll0jderl"]
 
 [ext_resource type="Script" uid="uid://b2w6frxk6xltu" path="res://src/Ui/Pokemon/SubSlot.gd" id="1_dk3ed"]
 [ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="2_gj7o8"]
-[ext_resource type="Texture2D" uid="uid://dkye5s4jjd5kq" path="res://Core/Graphics/Zehlvogs/Icons/CANARIS.png" id="3_hlpqa"]
 [ext_resource type="FontFile" uid="uid://bdivwqul7a003" path="res://assets/Fonts/Aller/AllerDisplay.ttf" id="3_vkix7"]
 [ext_resource type="Texture2D" uid="uid://dy08s2t02h6n2" path="res://assets/Ui/PartyScreen/gender_icons.png" id="4_ykvxn"]
 [ext_resource type="Theme" uid="uid://jfmnyqdnyj3" path="res://Libraries/Themes/HealthBar.tres" id="6_28pws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byjnd"]
-atlas = ExtResource("3_hlpqa")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4l48u"]

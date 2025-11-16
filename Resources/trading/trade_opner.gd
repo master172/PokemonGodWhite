@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-const TRADE = "res://testing/Multiplayer/trade.tscn"
+const TRADE = "res://src/Ui/Trading/WSS/trade_ui.tscn"
 
 var interacting:bool = false
 

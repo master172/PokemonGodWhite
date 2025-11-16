@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxf5ewkbq7wsk"]
+[gd_scene load_steps=21 format=3 uid="uid://cxf5ewkbq7wsk"]
 
 [ext_resource type="Script" uid="uid://bhbkmecqfd6km" path="res://src/Ui/Pokemon/party_screen.gd" id="1_4o2vg"]
 [ext_resource type="PackedScene" uid="uid://bbk2dilhl5dmm" path="res://src/Ui/Pokemon/main_slot.tscn" id="2_shw64"]
@@ -17,6 +17,21 @@ colors = PackedColorArray(0, 0.0639589, 0.363281, 1, 0, 0.0016559, 0.00940534, 1
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_34c7m"]
 gradient = SubResource("Gradient_wxt44")
 fill_to = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g85ho"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvse6"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ob0"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwuhx"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c7qm"]
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m0as"]
 atlas = ExtResource("4_dbhfa")
@@ -81,11 +96,17 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 slot_no = 1
 
+[node name="Sprite" parent="Main/Items/Slot2/Background/Main/Top" index="0"]
+texture = SubResource("AtlasTexture_g85ho")
+
 [node name="Slot3" parent="Main/Items" instance=ExtResource("3_7xald")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 slot_no = 2
+
+[node name="Sprite" parent="Main/Items/Slot3/Background/Main/Top" index="0"]
+texture = SubResource("AtlasTexture_pvse6")
 
 [node name="Slot4" parent="Main/Items" instance=ExtResource("3_7xald")]
 layout_mode = 2
@@ -93,17 +114,26 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 slot_no = 3
 
+[node name="Sprite" parent="Main/Items/Slot4/Background/Main/Top" index="0"]
+texture = SubResource("AtlasTexture_i5ob0")
+
 [node name="Slot5" parent="Main/Items" instance=ExtResource("3_7xald")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 slot_no = 4
 
+[node name="Sprite" parent="Main/Items/Slot5/Background/Main/Top" index="0"]
+texture = SubResource("AtlasTexture_lwuhx")
+
 [node name="Slot6" parent="Main/Items" instance=ExtResource("3_7xald")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 slot_no = 5
+
+[node name="Sprite" parent="Main/Items/Slot6/Background/Main/Top" index="0"]
+texture = SubResource("AtlasTexture_5c7qm")
 
 [node name="Cancel" type="TextureRect" parent="Main/Items"]
 texture_filter = 1
@@ -182,3 +212,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="ButtonPressTimer" to="." method="_on_button_press_timer_timeout"]
+
+[editable path="Main/Items/Slot2"]
+[editable path="Main/Items/Slot3"]
+[editable path="Main/Items/Slot4"]
+[editable path="Main/Items/Slot5"]
+[editable path="Main/Items/Slot6"]
