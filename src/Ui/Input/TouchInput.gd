@@ -85,5 +85,7 @@ func _on_down_released() -> void:
 		Input.parse_input_event(event)
 
 func _ready() -> void:
-	if !OS.has_feature("Android"):
+	if !OS.has_feature("android"):
 		hide()
+	else:
+		show()

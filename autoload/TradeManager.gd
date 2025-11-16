@@ -4,7 +4,7 @@ extends Node
 # Use "ws://localhost:9080" if testing with the minimal server example below.
 # `wss://` is used for secure connections,
 # while `ws://` is used for plain text (insecure) connections.
-@export var websocket_url = "ws://localhost:8080/ws"
+@export var websocket_url = "wss://trademanagergoserver.onrender.com/ws"
 
 # Our WebSocketClient instance.
 var socket :WebSocketPeer

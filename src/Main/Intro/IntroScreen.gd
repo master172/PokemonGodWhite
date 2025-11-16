@@ -13,7 +13,7 @@ func start():
 	animation_player.play("Intro")
 
 func _emit_done():
-	if OS.has_feature("Android"):
+	if OS.has_feature("android"):
 		TouchInput.show()
 	emit_signal("done")
 
