@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_5jetm")
 
 [node name="RoomSetup" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -233,7 +234,6 @@ vertical_alignment = 1
 script = ExtResource("3_36vii")
 
 [node name="TradeRoom" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,8 +273,52 @@ text = "Room Code: "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Selector" parent="TradeRoom/VBoxContainer" instance=ExtResource("5_po4sy")]
+[node name="HBoxContainer" type="HBoxContainer" parent="TradeRoom/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Selector" parent="TradeRoom/VBoxContainer/HBoxContainer" instance=ExtResource("5_po4sy")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="TradeRoom/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="TradeRoom/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.41960785)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 20.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TradeRoom/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="LineEdit" type="LineEdit" parent="TradeRoom/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Chat over here"
+
 [connection signal="text_submitted" from="RoomEntry/Panel/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="TradeRoom/VBoxContainer/HBoxContainer/Control/VBoxContainer/LineEdit" to="TradeRoom" method="_on_line_edit_text_submitted"]

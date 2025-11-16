@@ -12,6 +12,8 @@ var socket = WebSocketPeer.new()
 signal room_created(room_code:String)
 signal room_joined(code:String)
 signal join_failed(reason:String)
+signal partner_disconnected
+signal trade_message(messgae:Dictionary)
 
 func _ready():
 	# Initiate connection to the given URL.
@@ -69,7 +71,10 @@ func handle_recived_messages(msg:Dictionary)->void:
 			room_joined.emit(msg["code"])
 		"join_failed":
 			join_failed.emit(msg["reason"])
-	
+		"partner_disconnected":
+			partner_disconnected.emit()
+		"trade_message":
+			trade_message.emit(msg)
 
 func send_message(msg:Dictionary):
 	socket.send_text(JSON.stringify(msg))

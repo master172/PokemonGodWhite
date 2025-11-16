@@ -3,6 +3,7 @@ class_name Trade_Relay
 
 const create_room_message:Dictionary = {"type":"create_room"}
 const join_room_message:Dictionary = {"type":"join_room","code":""}
+
 func send_create_room_request():
 	TradeManager.send_message(create_room_message)
 

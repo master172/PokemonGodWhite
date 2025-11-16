@@ -33,6 +33,8 @@ func connect_signals()->void:
 	TradeManager.room_created.connect(_room_created)
 	TradeManager.room_joined.connect(_room_joined)
 	TradeManager.join_failed.connect(_join_failed)
+	TradeManager.partner_disconnected.connect(_partner_disconnected)
+	TradeManager.trade_message.connect(_handle_trade_message)
 	
 func _ready() -> void:
 	connect_signals()
@@ -40,6 +42,7 @@ func _ready() -> void:
 	room_entry.visible = false
 	waiting_room.visible = false
 	trade_room.visible = false
+	room_setup.visible = true
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("W"):
@@ -85,6 +88,12 @@ func _room_joined(code:String):
 func _join_failed(reason:String):
 	OS.alert(reason)
 	current_state = states.ROOM_SETUP
+
+func _partner_disconnected():
+	OS.alert("partner disconnected")
+
+func _handle_trade_message(msg:Dictionary):
+	trade_room.handle_trade_message(msg)
 	
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	AudioManager.select()
