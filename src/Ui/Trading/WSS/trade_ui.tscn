@@ -1,0 +1,280 @@
+[gd_scene load_steps=8 format=3 uid="uid://fs8yhbiri3jq"]
+
+[ext_resource type="Script" uid="uid://rlxie4g3qb6r" path="res://src/Ui/Trading/WSS/trade_ui.gd" id="1_5jetm"]
+[ext_resource type="StyleBox" uid="uid://c7d0ndwlc4l0k" path="res://src/Ui/Settings/DefPanel.tres" id="1_626en"]
+[ext_resource type="Script" uid="uid://1ldvvduxl0r3" path="res://src/Ui/Trading/WSS/trade_relay.gd" id="3_36vii"]
+[ext_resource type="Script" uid="uid://bxp60p7tlx2vg" path="res://src/Ui/Trading/WSS/waiting_room.gd" id="3_bxula"]
+[ext_resource type="Script" uid="uid://sbko4pmfc3vi" path="res://src/Ui/Trading/WSS/trade_room.gd" id="5_k5hf2"]
+[ext_resource type="PackedScene" uid="uid://2o1txcjdlokb" path="res://src/Ui/Trading/Npc/NpcTradingSelector.tscn" id="5_po4sy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po4sy"]
+bg_color = Color(1, 1, 1, 0.14117648)
+
+[node name="TradeUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5jetm")
+
+[node name="RoomSetup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Option" type="Panel" parent="RoomSetup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -148.0
+offset_right = 272.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomSetup/Option"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Create" type="Panel" parent="RoomSetup/Option/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="RoomSetup/Option/VBoxContainer/Create"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Create"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Join" type="Panel" parent="RoomSetup/Option/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="Label" type="Label" parent="RoomSetup/Option/VBoxContainer/Join"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Join"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoomEntry" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="RoomEntry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.26666668, 0.26666668, 0.53333336)
+
+[node name="Panel" type="Panel" parent="RoomEntry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = -148.0
+offset_right = 624.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomEntry/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="RoomEntry/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Enter Room Code"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="RoomEntry/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+alignment = 1
+
+[node name="WaitingRoom" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bxula")
+
+[node name="Background" type="ColorRect" parent="WaitingRoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.26666668, 0.26666668, 0.53333336)
+
+[node name="Panel" type="Panel" parent="WaitingRoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = -148.0
+offset_right = 624.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_626en")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaitingRoom/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Waiting for connections"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Room Code:- "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TradeRelay" type="Node" parent="."]
+script = ExtResource("3_36vii")
+
+[node name="TradeRoom" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_k5hf2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TradeRoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="TradeRoom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_po4sy")
+
+[node name="CodeLabel" type="Label" parent="TradeRoom/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Room Code: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Selector" parent="TradeRoom/VBoxContainer" instance=ExtResource("5_po4sy")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="text_submitted" from="RoomEntry/Panel/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -33,7 +33,7 @@ EvolutionManager="*res://autoload/EvolutionManager.gd"
 AudioManager="*res://autoload/audio_manager.tscn"
 TouchInput="*res://src/Ui/Input/TouchInput.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-TradeManager="*res://src/Trading/trade_manager.tscn"
+TradeManager="*res://autoload/TradeManager.gd"
 
 [dialogic]
 

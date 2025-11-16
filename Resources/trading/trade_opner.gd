@@ -14,8 +14,8 @@ func _interact():
 	Utils.get_player().set_physics_process(false)
 	Dialogic.start("trade_start")
 
-func trading(sign:String = "") ->void:
-	if sign == "StartTrading":
+func trading(sign_type:String = "") ->void:
+	if sign_type == "StartTrading":
 		Utils.save_data(false)
 		var trade :PackedScene= load(TRADE)
 		var trade_scne = trade.instantiate()
@@ -24,7 +24,7 @@ func trading(sign:String = "") ->void:
 		if Utils.Menu != null and is_instance_valid(Utils.Menu):
 			Utils.Menu.lock = true
 		interacting = false
-	elif sign == "CancelTrading":
+	elif sign_type == "CancelTrading":
 		print("canceling trading")
 
 func finish_trading():

@@ -52,8 +52,8 @@ func update():
 		connection_screen.visible = false
 		trade_screen.visible = true
 
-func update_connection_label(str:String):
-	connection_label.text = str
+func update_connection_label(string:String):
+	connection_label.text = string
 
 func _on_player_connected(_id:int):
 	current_state = states.TRADE
@@ -91,7 +91,7 @@ func _on_offer_pressed() -> void:
 func _on_reject_pressed() -> void:
 	TradeManager.reject_trade()
 
-func _on_port_value_changed(value: float) -> void:
+func _on_port_value_changed(value: int) -> void:
 	PORT = value
 
 func _on_line_edit_text_submitted(new_text: String) -> void:

@@ -55,7 +55,7 @@ func create_game(port:int = PORT):
 
 func join_game(port:int = PORT,address :String= "127.0.0.1"):
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	var error = peer.create_client(address, port)
 	if error != OK: return error
 	multiplayer.multiplayer_peer = peer
 	return OK
