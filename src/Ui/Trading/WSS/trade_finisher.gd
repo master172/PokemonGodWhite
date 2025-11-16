@@ -25,21 +25,19 @@ func receive_resource_file(bytes:String)->game_pokemon:
 	var traded_pokemon :game_pokemon = ResourceLoader.load(path_to_temp + temp_file_name)
 	return traded_pokemon
 
-#region after trade stuff
-#endregion
 #region dir stuff
 func remove_directires():
-	if DirAccess.dir_exists_absolute("user://Trade/"):
-		var dir = DirAccess.open("user://Trade/")
+	if DirAccess.dir_exists_absolute("user://Trade/"+str(Global.current_load_path)+"/"):
+		var dir = DirAccess.open("user://Trade/"+str(Global.current_load_path)+"/")
 		var files = dir.get_files()
 		for file in files:
 			dir.remove(file)
-		dir.remove("user://Trade/")
+		dir.remove("user://Trade/"+str(Global.current_load_path)+"/")
 		
-	if DirAccess.dir_exists_absolute("user://Temp/"):
-		var dir = DirAccess.open("user://Temp/")
+	if DirAccess.dir_exists_absolute("user://Temp/"+str(Global.current_load_path)+"/"):
+		var dir = DirAccess.open("user://Temp/"+str(Global.current_load_path)+"/")
 		var files = dir.get_files()
 		for file in files:
 			dir.remove(file)
-		dir.remove("user://Temp/")
+		dir.remove("user://Temp/"+str(Global.current_load_path)+"/")
 #endregion

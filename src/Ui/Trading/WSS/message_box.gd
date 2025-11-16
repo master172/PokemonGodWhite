@@ -3,6 +3,8 @@ extends Control
 @onready var title: Label = $Panel/VBoxContainer/Title
 @onready var message: Label = $Panel/VBoxContainer/Message
 
+signal message_closed
+
 func display():
 	show()
 
@@ -19,3 +21,4 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Yes") or event.is_action_pressed("No"):
 		if visible == true:
 			hide()
+			message_closed.emit()

@@ -684,7 +684,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MessageBox" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -757,3 +756,4 @@ vertical_alignment = 1
 [connection signal="text_submitted" from="TradeRoom/VBoxContainer/HBoxContainer/Control/VBoxContainer/LineEdit" to="TradeRoom" method="_on_line_edit_text_submitted"]
 [connection signal="cancel_trade" from="TradeRoom/Confirmation" to="TradeRoom" method="_on_confirmation_cancel_trade"]
 [connection signal="confirm_trade" from="TradeRoom/Confirmation" to="TradeRoom" method="_on_confirmation_confirm_trade"]
+[connection signal="message_closed" from="MessageBox" to="." method="_on_message_box_message_closed"]

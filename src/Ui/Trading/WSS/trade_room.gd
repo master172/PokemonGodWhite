@@ -30,6 +30,7 @@ enum states {
 	SELECTION,
 	CONFIRMATION,
 	TRADING,
+	MESSAGE,
 }
 
 var current_selected:int = 0
@@ -43,6 +44,7 @@ var deselcted_color:Color=Color(1.0, 1.0, 1.0, 1.0)
 
 signal closed
 
+
 #region tradevariables
 var offered_pokemon_num:int = -1
 var offered_pokemon:game_pokemon
@@ -52,6 +54,9 @@ var confirmed:bool = false
 var partner_confirmed:bool = false
 #endregion
 
+func set_state_to_message():
+	current_state = states.MESSAGE
+	
 func set_code(code_:String):
 	code = code_
 	code_label.text = "Room Code: "+code

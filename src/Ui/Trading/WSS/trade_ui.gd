@@ -5,7 +5,8 @@ enum states {
 	ROOM_ENTRY,
 	TRADING,
 	WAITING,
-	AWAITING
+	AWAITING,
+	MESSAGE
 }
 
 @onready var trade_relay: Trade_Relay = $TradeRelay
@@ -15,6 +16,7 @@ enum states {
 @onready var room_setup: Control = $RoomSetup
 @onready var room_entry: Control = $RoomEntry
 @onready var trade_room: Control = $TradeRoom
+@onready var message_box: Control = $MessageBox
 
 var current_state:int = states.ROOM_SETUP
 
@@ -111,7 +113,11 @@ func _join_failed(reason:String):
 	current_state = states.ROOM_SETUP
 
 func _partner_disconnected():
-	OS.alert("partner disconnected")
+	current_state = states.MESSAGE
+	trade_room.set_state_to_message()
+	message_box.set_title("Client disconnected")
+	message_box.set_message("The trading scene will be closed now")
+	message_box.display()
 
 func _handle_trade_message(msg:Dictionary):
 	trade_room.handle_trade_message(msg)
@@ -129,3 +135,8 @@ func _on_trade_room_closed() -> void:
 	room_setup.visible = true
 	await get_tree().create_timer(0.1).timeout
 	current_state = states.ROOM_SETUP
+
+
+func _on_message_box_message_closed() -> void:
+	TradeManager.disconnect_from_server()
+	queue_free()

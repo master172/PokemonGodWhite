@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://defswl6vulc2b"]
-
-[ext_resource type="Script" uid="uid://c5vcbgffqm3ks" path="res://src/Trading/trade_manager.gd" id="1_yjsju"]
-
-[node name="TradeManager" type="Node"]
-script = ExtResource("1_yjsju")
