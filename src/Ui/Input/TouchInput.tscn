@@ -20,11 +20,17 @@
 [ext_resource type="Texture2D" uid="uid://boq0fvs7fdk32" path="res://assets/Ui/Input/debug.svg" id="18_os0fl"]
 [ext_resource type="Texture2D" uid="uid://luf5xg5xvenc" path="res://assets/Ui/Input/debugPressed.svg" id="19_83erp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_83erp"]
+radius = 42.25
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtlh5"]
 size = Vector2(64, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_567y2"]
 size = Vector2(114, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_am44n"]
+radius = 53.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_url30"]
 radius = 53.0
@@ -35,19 +41,40 @@ radius = 53.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_twoeo"]
 radius = 53.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_am44n"]
-radius = 53.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_83erp"]
-radius = 42.25
-
 [node name="TouchInput" type="CanvasLayer"]
 layer = 50
 script = ExtResource("1_c8ig2")
 
-[node name="Up" type="TouchScreenButton" parent="."]
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Debug" type="Control" parent="Main"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Debug" type="TouchScreenButton" parent="Main/Debug"]
+position = Vector2(8, 8)
+texture_normal = ExtResource("18_os0fl")
+texture_pressed = ExtResource("19_83erp")
+shape = SubResource("CircleShape2D_83erp")
+passby_press = true
+action = "debug"
+
+[node name="Left" type="Control" parent="Main"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Up" type="TouchScreenButton" parent="Main/Left"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(136, 488.00003)
+position = Vector2(136, -304)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("1_i2k6i")
 texture_pressed = ExtResource("2_o3vj2")
@@ -56,9 +83,9 @@ passby_press = true
 action = "W"
 visibility_mode = 1
 
-[node name="Right" type="TouchScreenButton" parent="."]
+[node name="Right" type="TouchScreenButton" parent="Main/Left"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(209, 561)
+position = Vector2(209, -231)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("3_4ex3q")
 texture_pressed = ExtResource("4_t01xd")
@@ -67,9 +94,9 @@ passby_press = true
 action = "D"
 visibility_mode = 1
 
-[node name="Left" type="TouchScreenButton" parent="."]
+[node name="Left" type="TouchScreenButton" parent="Main/Left"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(64, 561)
+position = Vector2(63.999996, -231)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("5_trcgv")
 texture_pressed = ExtResource("6_6oe4j")
@@ -78,9 +105,9 @@ passby_press = true
 action = "A"
 visibility_mode = 1
 
-[node name="Down" type="TouchScreenButton" parent="."]
+[node name="Down" type="TouchScreenButton" parent="Main/Left"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(136, 634)
+position = Vector2(136, -158)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("7_kf1vn")
 texture_pressed = ExtResource("8_2tsag")
@@ -89,11 +116,39 @@ passby_press = true
 action = "S"
 visibility_mode = 1
 
-[node name="Default" type="Node2D" parent="."]
-
-[node name="Circle" type="TouchScreenButton" parent="Default"]
+[node name="No" type="TouchScreenButton" parent="Main/Left"]
+visible = false
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1052, 480)
+position = Vector2(135.99994, -464)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("15_xpbgu")
+texture_pressed = ExtResource("16_cqova")
+shape = SubResource("CircleShape2D_am44n")
+passby_press = true
+action = "No"
+visibility_mode = 1
+
+[node name="Right" type="Control" parent="Main"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Default" type="Control" parent="Main/Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle" type="TouchScreenButton" parent="Main/Right/Default"]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(-236, -312)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("9_7b3yt")
 texture_pressed = ExtResource("10_f2mry")
@@ -102,9 +157,9 @@ passby_press = true
 action = "Yes"
 visibility_mode = 1
 
-[node name="Square" type="TouchScreenButton" parent="Default"]
+[node name="Square" type="TouchScreenButton" parent="Main/Right/Default"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1128, 556)
+position = Vector2(-160, -236)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("11_ift5e")
 texture_pressed = ExtResource("12_opmj2")
@@ -113,9 +168,9 @@ passby_press = true
 action = "Menu"
 visibility_mode = 1
 
-[node name="Triangle" type="TouchScreenButton" parent="Default"]
+[node name="Triangle" type="TouchScreenButton" parent="Main/Right/Default"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(976, 556)
+position = Vector2(-312, -236)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("13_jb6ta")
 texture_pressed = ExtResource("14_dm8io")
@@ -124,9 +179,9 @@ passby_press = true
 action = "cycleQuick"
 visibility_mode = 1
 
-[node name="Cross" type="TouchScreenButton" parent="Default"]
+[node name="Cross" type="TouchScreenButton" parent="Main/Right/Default"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1052, 632)
+position = Vector2(-236, -160)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("15_xpbgu")
 texture_pressed = ExtResource("16_cqova")
@@ -135,12 +190,18 @@ passby_press = true
 action = "No"
 visibility_mode = 1
 
-[node name="Battle" type="Node2D" parent="."]
+[node name="Battle" type="Control" parent="Main/Right"]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Circle" type="TouchScreenButton" parent="Battle"]
+[node name="Circle" type="TouchScreenButton" parent="Main/Right/Battle"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1052, 480)
+position = Vector2(-236, -312)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("9_7b3yt")
 texture_pressed = ExtResource("10_f2mry")
@@ -149,9 +210,9 @@ passby_press = true
 action = "attack1"
 visibility_mode = 1
 
-[node name="Square" type="TouchScreenButton" parent="Battle"]
+[node name="Square" type="TouchScreenButton" parent="Main/Right/Battle"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1128, 556)
+position = Vector2(-160, -236)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("11_ift5e")
 texture_pressed = ExtResource("12_opmj2")
@@ -160,9 +221,9 @@ passby_press = true
 action = "attack2"
 visibility_mode = 1
 
-[node name="Triangle" type="TouchScreenButton" parent="Battle"]
+[node name="Triangle" type="TouchScreenButton" parent="Main/Right/Battle"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(976, 556)
+position = Vector2(-312, -236)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("13_jb6ta")
 texture_pressed = ExtResource("14_dm8io")
@@ -171,9 +232,9 @@ passby_press = true
 action = "attack3"
 visibility_mode = 1
 
-[node name="Cross" type="TouchScreenButton" parent="Battle"]
+[node name="Cross" type="TouchScreenButton" parent="Main/Right/Battle"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1052, 632)
+position = Vector2(-236, -160)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("15_xpbgu")
 texture_pressed = ExtResource("16_cqova")
@@ -182,9 +243,9 @@ passby_press = true
 action = "attack4"
 visibility_mode = 1
 
-[node name="Yes" type="TouchScreenButton" parent="Battle"]
+[node name="Yes" type="TouchScreenButton" parent="Main/Right/Battle"]
 modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(1052, 352)
+position = Vector2(-236, -472.00006)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("9_7b3yt")
 texture_pressed = ExtResource("10_f2mry")
@@ -193,34 +254,15 @@ passby_press = true
 action = "Yes"
 visibility_mode = 1
 
-[node name="No" type="TouchScreenButton" parent="Battle"]
-modulate = Color(1, 1, 1, 0.662745)
-position = Vector2(136, 352)
-scale = Vector2(0.8, 0.8)
-texture_normal = ExtResource("15_xpbgu")
-texture_pressed = ExtResource("16_cqova")
-shape = SubResource("CircleShape2D_am44n")
-passby_press = true
-action = "No"
-visibility_mode = 1
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(8, 8)
-texture_normal = ExtResource("18_os0fl")
-texture_pressed = ExtResource("19_83erp")
-shape = SubResource("CircleShape2D_83erp")
-passby_press = true
-action = "debug"
-
-[connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
-[connection signal="released" from="Up" to="." method="_on_up_released"]
-[connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
-[connection signal="released" from="Down" to="." method="_on_down_released"]
-[connection signal="pressed" from="Default/Circle" to="." method="_on_circle_pressed"]
-[connection signal="released" from="Default/Circle" to="." method="_on_circle_released"]
-[connection signal="pressed" from="Default/Cross" to="." method="_on_cross_pressed"]
-[connection signal="released" from="Default/Cross" to="." method="_on_cross_released"]
-[connection signal="pressed" from="Battle/Yes" to="." method="_on_circle_pressed"]
-[connection signal="released" from="Battle/Yes" to="." method="_on_circle_released"]
-[connection signal="pressed" from="Battle/No" to="." method="_on_cross_pressed"]
-[connection signal="released" from="Battle/No" to="." method="_on_cross_released"]
+[connection signal="pressed" from="Main/Left/Up" to="." method="_on_up_pressed"]
+[connection signal="released" from="Main/Left/Up" to="." method="_on_up_released"]
+[connection signal="pressed" from="Main/Left/Down" to="." method="_on_down_pressed"]
+[connection signal="released" from="Main/Left/Down" to="." method="_on_down_released"]
+[connection signal="pressed" from="Main/Left/No" to="." method="_on_cross_pressed"]
+[connection signal="released" from="Main/Left/No" to="." method="_on_cross_released"]
+[connection signal="pressed" from="Main/Right/Default/Circle" to="." method="_on_circle_pressed"]
+[connection signal="released" from="Main/Right/Default/Circle" to="." method="_on_circle_released"]
+[connection signal="pressed" from="Main/Right/Default/Cross" to="." method="_on_cross_pressed"]
+[connection signal="released" from="Main/Right/Default/Cross" to="." method="_on_cross_released"]
+[connection signal="pressed" from="Main/Right/Battle/Yes" to="." method="_on_circle_pressed"]
+[connection signal="released" from="Main/Right/Battle/Yes" to="." method="_on_circle_released"]

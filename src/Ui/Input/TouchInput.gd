@@ -1,7 +1,10 @@
 extends CanvasLayer
 
-@onready var battle = $Battle
-@onready var default = $Default
+@onready var default: Control = $Main/Right/Default
+@onready var battle_movement: Control = $Main/Right/Battle
+@onready var no: TouchScreenButton = $Main/Left/No
+
+@onready var battles:Array[Node] = [no,battle_movement]
 
 var is_pokedex_active = false
 
@@ -13,7 +16,8 @@ func pokedex_inactive():
 	is_pokedex_active = false
 
 func toggle_battle(val:bool):
-	battle.visible = val
+	for battle in battles:
+		battle.visible = val
 
 func toogele_default(val:bool):
 	default.visible = val
@@ -85,6 +89,7 @@ func _on_down_released() -> void:
 		Input.parse_input_event(event)
 
 func _ready() -> void:
+	toggle_battle(false)
 	if !OS.has_feature("android"):
 		hide()
 	else:
